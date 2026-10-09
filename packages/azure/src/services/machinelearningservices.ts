@@ -7,16 +7,13 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 /** Resource tags. */
 export type BatchDeploymentsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const BatchDeploymentsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<BatchDeploymentsCreateOrUpdateRequestTagsMap>;
-
 /** Configuration for a scoring code asset. */
 export interface CodeConfiguration {
   /** ARM resource ID of the code asset. */
@@ -24,44 +21,23 @@ export interface CodeConfiguration {
   /** [Required] The script to execute on startup. eg. "score.py" */
   scoringScript: string;
 }
-const CodeConfiguration = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CodeConfiguration>;
-
 /** Environment variables configuration for the deployment. */
 export type BatchDeploymentPropertiesEnvironmentVariablesMap = {
   [key: string]: string | null | undefined;
 };
-const BatchDeploymentPropertiesEnvironmentVariablesMap = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<BatchDeploymentPropertiesEnvironmentVariablesMap>;
-
 /** Property dictionary. Properties can be added, but not removed or altered. */
 export type BatchDeploymentPropertiesPropertiesMap = { [key: string]: string | null | undefined };
-const BatchDeploymentPropertiesPropertiesMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<BatchDeploymentPropertiesPropertiesMap>;
-
 /** The enumerated property types for batch deployments. */
 export type BatchDeploymentConfigurationType = "Model" | "PipelineComponent";
-const BatchDeploymentConfigurationType = S.String;
-
 /** Properties relevant to different deployment types. */
 export interface BatchDeploymentConfiguration {
   /** [Required] The type of the deployment */
   deploymentConfigurationType: BatchDeploymentConfigurationType | (string & {});
 }
-const BatchDeploymentConfiguration = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<BatchDeploymentConfiguration>;
-
 /** Log verbosity for batch inferencing. Increasing verbosity order for logging is : Warning, Info and Debug. The default value is Info. */
 export type BatchDeploymentPropertiesLoggingLevel = "Info" | "Warning" | "Debug";
-const BatchDeploymentPropertiesLoggingLevel = S.String;
-
 /** Enum to determine which reference method to use for an asset. */
 export type ReferenceType = "Id" | "DataPath" | "OutputPath";
-const ReferenceType = S.String;
-
 /** Base definition for asset references. */
 export interface AssetReferenceBase {
   /** [Required] Specifies the type of asset reference. */
@@ -75,12 +51,8 @@ export interface AssetReferenceBase {
   /** OutputPath: ARM resource ID of the job. */
   jobId?: string;
 }
-const AssetReferenceBase = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<AssetReferenceBase>;
-
 /** Enum to determine how batch inferencing will handle output */
 export type BatchDeploymentPropertiesOutputAction = "SummaryOnly" | "AppendRow";
-const BatchDeploymentPropertiesOutputAction = S.String;
-
 /** Possible values for DeploymentProvisioningState. */
 export type DeploymentProvisioningState =
   | "Creating"
@@ -90,15 +62,8 @@ export type DeploymentProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Canceled";
-const DeploymentProvisioningState = S.String;
-
 /** Additional properties bag. */
 export type ResourceConfigurationPropertiesMap = { [key: string]: unknown | null | undefined };
-const ResourceConfigurationPropertiesMap = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ResourceConfigurationPropertiesMap>;
-
 export interface ResourceConfiguration {
   /** Optional number of instances or nodes used by the compute target. */
   instanceCount?: number;
@@ -107,11 +72,6 @@ export interface ResourceConfiguration {
   /** Additional properties bag. */
   properties?: ResourceConfigurationPropertiesMap | null;
 }
-const ResourceConfiguration = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ResourceConfiguration>;
-
 /** Retry settings for a batch inference operation. */
 export interface BatchRetrySettings {
   /** Maximum retry count for a mini-batch */
@@ -119,8 +79,6 @@ export interface BatchRetrySettings {
   /** Invocation timeout for a mini-batch, in ISO 8601 format. */
   timeout?: string;
 }
-const BatchRetrySettings = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<BatchRetrySettings>;
-
 /** Batch inference settings per deployment. */
 export interface BatchDeploymentProperties {
   /** Code configuration for the endpoint deployment. */
@@ -158,47 +116,23 @@ export interface BatchDeploymentProperties {
   /** Retry Settings for the batch inference operation. If not provided, will default to the defaults defined in BatchRetrySettings. */
   retrySettings?: BatchRetrySettings | null;
 }
-const BatchDeploymentProperties = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<BatchDeploymentProperties>;
-
 /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
 export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
-const ManagedServiceIdentityType = S.String;
-
 /** User assigned identity properties */
 export interface UserAssignedIdentityInput {}
-const UserAssignedIdentityInput = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<UserAssignedIdentityInput>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentitiesInput = { [key: string]: UserAssignedIdentityInput | undefined };
-const UserAssignedIdentitiesInput = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<UserAssignedIdentitiesInput>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface BatchDeploymentsCreateOrUpdateRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput | null;
 }
-const BatchDeploymentsCreateOrUpdateRequestIdentity = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<BatchDeploymentsCreateOrUpdateRequestIdentity>;
-
 /** This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT. */
 export type SkuTier = "Free" | "Basic" | "Standard" | "Premium";
-const SkuTier = S.String;
-
 /** The resource model definition representing SKU */
 export interface BatchDeploymentsCreateOrUpdateRequestSku {
   /** The name of the SKU. Ex - P3. It is typically a letter+number code */
@@ -211,11 +145,6 @@ export interface BatchDeploymentsCreateOrUpdateRequestSku {
   /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
   capacity?: number;
 }
-const BatchDeploymentsCreateOrUpdateRequestSku = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<BatchDeploymentsCreateOrUpdateRequestSku>;
-
 export interface BatchDeploymentsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -240,19 +169,10 @@ export interface BatchDeploymentsCreateOrUpdateRequest {
   /** The resource model definition representing SKU */
   sku?: BatchDeploymentsCreateOrUpdateRequestSku;
 }
-const BatchDeploymentsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<BatchDeploymentsCreateOrUpdateRequest>;
-
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -268,13 +188,8 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const SystemData = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<SystemData>;
-
 /** Resource tags. */
 export type BatchDeploymentsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const BatchDeploymentsCreateOrUpdateResponseTagsMap =
-  BatchDeploymentsCreateOrUpdateRequestTagsMap as any as S.Schema<BatchDeploymentsCreateOrUpdateResponseTagsMap>;
-
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
   /** The principal ID of the assigned identity. */
@@ -282,15 +197,8 @@ export interface UserAssignedIdentity {
   /** The client ID of the assigned identity. */
   clientId?: string;
 }
-const UserAssignedIdentity = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<UserAssignedIdentity>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentities = { [key: string]: UserAssignedIdentity | undefined };
-const UserAssignedIdentities = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<UserAssignedIdentities>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface BatchDeploymentsCreateOrUpdateResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -300,11 +208,6 @@ export interface BatchDeploymentsCreateOrUpdateResponseIdentity {
   type: ManagedServiceIdentityType;
   userAssignedIdentities?: UserAssignedIdentities | null;
 }
-const BatchDeploymentsCreateOrUpdateResponseIdentity = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<BatchDeploymentsCreateOrUpdateResponseIdentity>;
-
 /** The resource model definition representing SKU */
 export interface BatchDeploymentsCreateOrUpdateResponseSku {
   /** The name of the SKU. Ex - P3. It is typically a letter+number code */
@@ -317,9 +220,6 @@ export interface BatchDeploymentsCreateOrUpdateResponseSku {
   /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
   capacity?: number;
 }
-const BatchDeploymentsCreateOrUpdateResponseSku =
-  BatchDeploymentsCreateOrUpdateRequestSku as any as S.Schema<BatchDeploymentsCreateOrUpdateResponseSku>;
-
 export interface BatchDeploymentsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -342,20 +242,10 @@ export interface BatchDeploymentsCreateOrUpdateResponse {
   /** The resource model definition representing SKU */
   sku?: BatchDeploymentsCreateOrUpdateResponseSku;
 }
-const BatchDeploymentsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<BatchDeploymentsCreateOrUpdateResponse>;
-
 /** Resource tags. */
 export type BatchEndpointsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const BatchEndpointsCreateOrUpdateRequestTagsMap =
-  BatchDeploymentsCreateOrUpdateRequestTagsMap as any as S.Schema<BatchEndpointsCreateOrUpdateRequestTagsMap>;
-
 /** Enum to determine endpoint authentication mode. */
 export type EndpointAuthMode = "AMLToken" | "Key" | "AADToken";
-const EndpointAuthMode = S.String;
-
 /** Keys for endpoint authentication. */
 export interface EndpointAuthKeys {
   /** The primary key. */
@@ -363,25 +253,15 @@ export interface EndpointAuthKeys {
   /** The secondary key. */
   secondaryKey?: string | null;
 }
-const EndpointAuthKeys = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<EndpointAuthKeys>;
-
 /** Property dictionary. Properties can be added, but not removed or altered. */
 export type BatchEndpointPropertiesInputPropertiesMap = {
   [key: string]: string | null | undefined;
 };
-const BatchEndpointPropertiesInputPropertiesMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<BatchEndpointPropertiesInputPropertiesMap>;
-
 /** Batch endpoint default values */
 export interface BatchEndpointDefaults {
   /** Name of the deployment that will be default for the endpoint. This deployment will end up getting 100% traffic when the endpoint scoring URL is invoked. */
   deploymentName?: string | null;
 }
-const BatchEndpointDefaults = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<BatchEndpointDefaults>;
-
 /** Batch endpoint configuration. */
 export interface BatchEndpointPropertiesInput {
   /** [Required] The authentication method for invoking the endpoint (data plane operation). Use 'Key' for key-based authentication. Use 'AMLToken' for Azure Machine Learning token-based authentication. Use 'AADToken' for Microsoft Entra token-based authentication. */
@@ -395,11 +275,6 @@ export interface BatchEndpointPropertiesInput {
   /** Default values for Batch Endpoint */
   defaults?: BatchEndpointDefaults | null;
 }
-const BatchEndpointPropertiesInput = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<BatchEndpointPropertiesInput>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type BatchEndpointsCreateOrUpdateRequestIdentity =
   BatchDeploymentsCreateOrUpdateRequestIdentity;
@@ -427,21 +302,10 @@ export interface BatchEndpointsCreateOrUpdateRequest {
   /** The resource model definition representing SKU */
   sku?: BatchDeploymentsCreateOrUpdateRequestSku;
 }
-const BatchEndpointsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<BatchEndpointsCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type BatchEndpointsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const BatchEndpointsCreateOrUpdateResponseTagsMap =
-  BatchDeploymentsCreateOrUpdateRequestTagsMap as any as S.Schema<BatchEndpointsCreateOrUpdateResponseTagsMap>;
-
 /** Property dictionary. Properties can be added, but not removed or altered. */
 export type BatchEndpointPropertiesPropertiesMap = { [key: string]: string | null | undefined };
-const BatchEndpointPropertiesPropertiesMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<BatchEndpointPropertiesPropertiesMap>;
-
 /** State of endpoint provisioning. */
 export type EndpointProvisioningState =
   | "Creating"
@@ -450,8 +314,6 @@ export type EndpointProvisioningState =
   | "Failed"
   | "Updating"
   | "Canceled";
-const EndpointProvisioningState = S.String;
-
 /** Batch endpoint configuration. */
 export interface BatchEndpointProperties {
   /** [Required] The authentication method for invoking the endpoint (data plane operation). Use 'Key' for key-based authentication. Use 'AMLToken' for Azure Machine Learning token-based authentication. Use 'AADToken' for Microsoft Entra token-based authentication. */
@@ -471,11 +333,6 @@ export interface BatchEndpointProperties {
   /** Provisioning state for the endpoint. */
   provisioningState?: EndpointProvisioningState;
 }
-const BatchEndpointProperties = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<BatchEndpointProperties>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type BatchEndpointsCreateOrUpdateResponseIdentity =
   BatchDeploymentsCreateOrUpdateResponseIdentity;
@@ -503,11 +360,6 @@ export interface BatchEndpointsCreateOrUpdateResponse {
   /** The resource model definition representing SKU */
   sku?: BatchDeploymentsCreateOrUpdateResponseSku;
 }
-const BatchEndpointsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<BatchEndpointsCreateOrUpdateResponse>;
-
 export interface CancelJobRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -518,54 +370,25 @@ export interface CancelJobRequest {
   /** The name and identifier for the Job. This is case-sensitive. */
   id: string;
 }
-const CancelJobRequest = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<CancelJobRequest>;
-
 export interface CancelJobResponse {}
-const CancelJobResponse = UserAssignedIdentityInput as any as S.Schema<CancelJobResponse>;
-
 /** The asset property dictionary. */
 export type CapabilityHostPropertiesInputPropertiesMap = {
   [key: string]: string | null | undefined;
 };
-const CapabilityHostPropertiesInputPropertiesMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<CapabilityHostPropertiesInputPropertiesMap>;
-
 /** Tag dictionary. Tags can be added, removed, and updated. */
 export type CapabilityHostPropertiesInputTagsMap = { [key: string]: string | null | undefined };
-const CapabilityHostPropertiesInputTagsMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<CapabilityHostPropertiesInputTagsMap>;
-
 /** List of Aca Environment connections. */
 export type CapabilityHostPropertiesInputAcaEnvironmentConnectionsList = Array<string>;
-const CapabilityHostPropertiesInputAcaEnvironmentConnectionsList = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<CapabilityHostPropertiesInputAcaEnvironmentConnectionsList>;
-
 /** List of AI services connections. */
 export type CapabilityHostPropertiesInputAiServicesConnectionsList = Array<string>;
-const CapabilityHostPropertiesInputAiServicesConnectionsList =
-  CapabilityHostPropertiesInputAcaEnvironmentConnectionsList as any as S.Schema<CapabilityHostPropertiesInputAiServicesConnectionsList>;
-
 /** Kind of this capability host. */
 export type CapabilityHostPropertiesInputCapabilityHostKind = "Agents";
-const CapabilityHostPropertiesInputCapabilityHostKind = S.String;
-
 /** List of Storage connections. */
 export type CapabilityHostPropertiesInputStorageConnectionsList = Array<string>;
-const CapabilityHostPropertiesInputStorageConnectionsList =
-  CapabilityHostPropertiesInputAcaEnvironmentConnectionsList as any as S.Schema<CapabilityHostPropertiesInputStorageConnectionsList>;
-
 /** List of Thread storage connections. */
 export type CapabilityHostPropertiesInputThreadStorageConnectionsList = Array<string>;
-const CapabilityHostPropertiesInputThreadStorageConnectionsList =
-  CapabilityHostPropertiesInputAcaEnvironmentConnectionsList as any as S.Schema<CapabilityHostPropertiesInputThreadStorageConnectionsList>;
-
 /** List of VectorStore connections. */
 export type CapabilityHostPropertiesInputVectorStoreConnectionsList = Array<string>;
-const CapabilityHostPropertiesInputVectorStoreConnectionsList =
-  CapabilityHostPropertiesInputAcaEnvironmentConnectionsList as any as S.Schema<CapabilityHostPropertiesInputVectorStoreConnectionsList>;
-
 export interface CapabilityHostPropertiesInput {
   /** The asset description text. */
   description?: string | null;
@@ -588,11 +411,6 @@ export interface CapabilityHostPropertiesInput {
   /** List of VectorStore connections. */
   vectorStoreConnections?: CapabilityHostPropertiesInputVectorStoreConnectionsList | null;
 }
-const CapabilityHostPropertiesInput = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<CapabilityHostPropertiesInput>;
-
 export interface CapabilityHostsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -605,35 +423,16 @@ export interface CapabilityHostsCreateOrUpdateRequest {
   /** [Required] Additional attributes of the entity. */
   properties: CapabilityHostPropertiesInput;
 }
-const CapabilityHostsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<CapabilityHostsCreateOrUpdateRequest>;
-
 /** The asset property dictionary. */
 export type CapabilityHostPropertiesPropertiesMap = { [key: string]: string | null | undefined };
-const CapabilityHostPropertiesPropertiesMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<CapabilityHostPropertiesPropertiesMap>;
-
 /** Tag dictionary. Tags can be added, removed, and updated. */
 export type CapabilityHostPropertiesTagsMap = { [key: string]: string | null | undefined };
-const CapabilityHostPropertiesTagsMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<CapabilityHostPropertiesTagsMap>;
-
 /** List of Aca Environment connections. */
 export type CapabilityHostPropertiesAcaEnvironmentConnectionsList = Array<string>;
-const CapabilityHostPropertiesAcaEnvironmentConnectionsList =
-  CapabilityHostPropertiesInputAcaEnvironmentConnectionsList as any as S.Schema<CapabilityHostPropertiesAcaEnvironmentConnectionsList>;
-
 /** List of AI services connections. */
 export type CapabilityHostPropertiesAiServicesConnectionsList = Array<string>;
-const CapabilityHostPropertiesAiServicesConnectionsList =
-  CapabilityHostPropertiesInputAcaEnvironmentConnectionsList as any as S.Schema<CapabilityHostPropertiesAiServicesConnectionsList>;
-
 /** Kind of this capability host. */
 export type CapabilityHostPropertiesCapabilityHostKind = "Agents";
-const CapabilityHostPropertiesCapabilityHostKind = S.String;
-
 /** Provisioning state of capability host. */
 export type CapabilityHostProvisioningState =
   | "Succeeded"
@@ -642,28 +441,14 @@ export type CapabilityHostProvisioningState =
   | "Creating"
   | "Updating"
   | "Deleting";
-const CapabilityHostProvisioningState = S.String;
-
 /** List of Storage connections. */
 export type CapabilityHostPropertiesStorageConnectionsList = Array<string>;
-const CapabilityHostPropertiesStorageConnectionsList =
-  CapabilityHostPropertiesInputAcaEnvironmentConnectionsList as any as S.Schema<CapabilityHostPropertiesStorageConnectionsList>;
-
 /** List of Thread storage connections. */
 export type CapabilityHostPropertiesThreadStorageConnectionsList = Array<string>;
-const CapabilityHostPropertiesThreadStorageConnectionsList =
-  CapabilityHostPropertiesInputAcaEnvironmentConnectionsList as any as S.Schema<CapabilityHostPropertiesThreadStorageConnectionsList>;
-
 /** List of VectorStore connections. */
 export type CapabilityHostPropertiesVectorStoreConnectionsList = Array<string>;
-const CapabilityHostPropertiesVectorStoreConnectionsList =
-  CapabilityHostPropertiesInputAcaEnvironmentConnectionsList as any as S.Schema<CapabilityHostPropertiesVectorStoreConnectionsList>;
-
 /** List of messages containing errors. */
 export type CapabilityHostPropertiesMessagesList = Array<string>;
-const CapabilityHostPropertiesMessagesList =
-  CapabilityHostPropertiesInputAcaEnvironmentConnectionsList as any as S.Schema<CapabilityHostPropertiesMessagesList>;
-
 export interface CapabilityHostProperties {
   /** The asset description text. */
   description?: string | null;
@@ -690,11 +475,6 @@ export interface CapabilityHostProperties {
   /** List of messages containing errors. */
   messages?: CapabilityHostPropertiesMessagesList | null;
 }
-const CapabilityHostProperties = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<CapabilityHostProperties>;
-
 export interface CapabilityHostsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -707,23 +487,12 @@ export interface CapabilityHostsCreateOrUpdateResponse {
   /** [Required] Additional attributes of the entity. */
   properties: CapabilityHostProperties;
 }
-const CapabilityHostsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<CapabilityHostsCreateOrUpdateResponse>;
-
 /** The asset property dictionary. */
 export type CodeContainerPropertiesInputPropertiesMap = {
   [key: string]: string | null | undefined;
 };
-const CodeContainerPropertiesInputPropertiesMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<CodeContainerPropertiesInputPropertiesMap>;
-
 /** Tag dictionary. Tags can be added, removed, and updated. */
 export type CodeContainerPropertiesInputTagsMap = { [key: string]: string | null | undefined };
-const CodeContainerPropertiesInputTagsMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<CodeContainerPropertiesInputTagsMap>;
-
 /** Container for code asset versions. */
 export interface CodeContainerPropertiesInput {
   /** The asset description text. */
@@ -735,11 +504,6 @@ export interface CodeContainerPropertiesInput {
   /** Is the asset archived? */
   isArchived?: boolean;
 }
-const CodeContainerPropertiesInput = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<CodeContainerPropertiesInput>;
-
 export interface CodeContainersCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -752,21 +516,10 @@ export interface CodeContainersCreateOrUpdateRequest {
   /** [Required] Additional attributes of the entity. */
   properties: CodeContainerPropertiesInput;
 }
-const CodeContainersCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<CodeContainersCreateOrUpdateRequest>;
-
 /** The asset property dictionary. */
 export type CodeContainerPropertiesPropertiesMap = { [key: string]: string | null | undefined };
-const CodeContainerPropertiesPropertiesMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<CodeContainerPropertiesPropertiesMap>;
-
 /** Tag dictionary. Tags can be added, removed, and updated. */
 export type CodeContainerPropertiesTagsMap = { [key: string]: string | null | undefined };
-const CodeContainerPropertiesTagsMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<CodeContainerPropertiesTagsMap>;
-
 /** Provisioning state of registry asset. */
 export type AssetProvisioningState =
   | "Succeeded"
@@ -775,8 +528,6 @@ export type AssetProvisioningState =
   | "Creating"
   | "Updating"
   | "Deleting";
-const AssetProvisioningState = S.String;
-
 /** Container for code asset versions. */
 export interface CodeContainerProperties {
   /** The asset description text. */
@@ -794,11 +545,6 @@ export interface CodeContainerProperties {
   /** Provisioning state for the code container. */
   provisioningState?: AssetProvisioningState;
 }
-const CodeContainerProperties = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<CodeContainerProperties>;
-
 export interface CodeContainersCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -811,17 +557,10 @@ export interface CodeContainersCreateOrUpdateResponse {
   /** [Required] Additional attributes of the entity. */
   properties: CodeContainerProperties;
 }
-const CodeContainersCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<CodeContainersCreateOrUpdateResponse>;
-
 /** Type of storage to use for the pending upload location */
 export type CodeVersionsCreateOrGetStartPendingUploadRequestPendingUploadType =
   | "None"
   | "TemporaryBlobReference";
-const CodeVersionsCreateOrGetStartPendingUploadRequestPendingUploadType = S.String;
-
 export interface CodeVersionsCreateOrGetStartPendingUploadRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -840,24 +579,12 @@ export interface CodeVersionsCreateOrGetStartPendingUploadRequest {
     | CodeVersionsCreateOrGetStartPendingUploadRequestPendingUploadType
     | (string & {});
 }
-const CodeVersionsCreateOrGetStartPendingUploadRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<CodeVersionsCreateOrGetStartPendingUploadRequest>;
-
 /** Enum to determine the PendingUpload credentials type. */
 export type PendingUploadCredentialType = "SAS";
-const PendingUploadCredentialType = S.String;
-
 export interface PendingUploadCredentialDto {
   /** [Required] Credential type used to authentication with storage. */
   credentialType: PendingUploadCredentialType;
 }
-const PendingUploadCredentialDto = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<PendingUploadCredentialDto>;
-
 export interface BlobReferenceForConsumptionDto {
   /** Blob URI path for client to upload data. Example: https://blob.windows.core.net/Container/Path */
   blobUri?: string | null;
@@ -866,15 +593,8 @@ export interface BlobReferenceForConsumptionDto {
   /** Arm ID of the storage account to use */
   storageAccountArmId?: string | null;
 }
-const BlobReferenceForConsumptionDto = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<BlobReferenceForConsumptionDto>;
-
 /** Type of storage to use for the pending upload location */
 export type PendingUploadResponseDtoPendingUploadType = "None" | "TemporaryBlobReference";
-const PendingUploadResponseDtoPendingUploadType = S.String;
-
 export interface PendingUploadResponseDto {
   /** Container level read, write, list SAS */
   blobReferenceForConsumption?: BlobReferenceForConsumptionDto | null;
@@ -883,21 +603,10 @@ export interface PendingUploadResponseDto {
   /** Type of storage to use for the pending upload location */
   pendingUploadType?: PendingUploadResponseDtoPendingUploadType;
 }
-const PendingUploadResponseDto = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<PendingUploadResponseDto>;
-
 /** The asset property dictionary. */
 export type CodeVersionPropertiesPropertiesMap = { [key: string]: string | null | undefined };
-const CodeVersionPropertiesPropertiesMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<CodeVersionPropertiesPropertiesMap>;
-
 /** Tag dictionary. Tags can be added, removed, and updated. */
 export type CodeVersionPropertiesTagsMap = { [key: string]: string | null | undefined };
-const CodeVersionPropertiesTagsMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<CodeVersionPropertiesTagsMap>;
-
 /** Code asset version details. */
 export interface CodeVersionProperties {
   /** The asset description text. */
@@ -915,11 +624,6 @@ export interface CodeVersionProperties {
   /** Provisioning state for the code version. */
   provisioningState?: AssetProvisioningState | (string & {});
 }
-const CodeVersionProperties = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<CodeVersionProperties>;
-
 export interface CodeVersionsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -934,11 +638,6 @@ export interface CodeVersionsCreateOrUpdateRequest {
   /** [Required] Additional attributes of the entity. */
   properties: CodeVersionProperties;
 }
-const CodeVersionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<CodeVersionsCreateOrUpdateRequest>;
-
 export interface CodeVersionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -951,11 +650,6 @@ export interface CodeVersionsCreateOrUpdateResponse {
   /** [Required] Additional attributes of the entity. */
   properties: CodeVersionProperties;
 }
-const CodeVersionsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<CodeVersionsCreateOrUpdateResponse>;
-
 /** The asset property dictionary. */
 export type ComponentContainerPropertiesInputPropertiesMap = {
   [key: string]: string | null | undefined;
@@ -973,9 +667,6 @@ export interface ComponentContainerPropertiesInput {
   /** Is the asset archived? */
   isArchived?: boolean;
 }
-const ComponentContainerPropertiesInput =
-  CodeContainerPropertiesInput as any as S.Schema<ComponentContainerPropertiesInput>;
-
 export interface ComponentContainersCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -988,23 +679,12 @@ export interface ComponentContainersCreateOrUpdateRequest {
   /** [Required] Additional attributes of the entity. */
   properties: ComponentContainerPropertiesInput;
 }
-const ComponentContainersCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<ComponentContainersCreateOrUpdateRequest>;
-
 /** The asset property dictionary. */
 export type ComponentContainerPropertiesPropertiesMap = {
   [key: string]: string | null | undefined;
 };
-const ComponentContainerPropertiesPropertiesMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<ComponentContainerPropertiesPropertiesMap>;
-
 /** Tag dictionary. Tags can be added, removed, and updated. */
 export type ComponentContainerPropertiesTagsMap = { [key: string]: string | null | undefined };
-const ComponentContainerPropertiesTagsMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<ComponentContainerPropertiesTagsMap>;
-
 /** Component container definition. <see href="https://docs.microsoft.com/en-us/azure/machine-learning/reference-yaml-component-command" /> */
 export interface ComponentContainerProperties {
   /** The asset description text. */
@@ -1022,11 +702,6 @@ export interface ComponentContainerProperties {
   /** Provisioning state for the component container. */
   provisioningState?: AssetProvisioningState;
 }
-const ComponentContainerProperties = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<ComponentContainerProperties>;
-
 export interface ComponentContainersCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1039,21 +714,10 @@ export interface ComponentContainersCreateOrUpdateResponse {
   /** [Required] Additional attributes of the entity. */
   properties: ComponentContainerProperties;
 }
-const ComponentContainersCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<ComponentContainersCreateOrUpdateResponse>;
-
 /** The asset property dictionary. */
 export type ComponentVersionPropertiesPropertiesMap = { [key: string]: string | null | undefined };
-const ComponentVersionPropertiesPropertiesMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<ComponentVersionPropertiesPropertiesMap>;
-
 /** Tag dictionary. Tags can be added, removed, and updated. */
 export type ComponentVersionPropertiesTagsMap = { [key: string]: string | null | undefined };
-const ComponentVersionPropertiesTagsMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<ComponentVersionPropertiesTagsMap>;
-
 /** Definition of a component version: defines resources that span component types. */
 export interface ComponentVersionProperties {
   /** The asset description text. */
@@ -1071,11 +735,6 @@ export interface ComponentVersionProperties {
   /** Provisioning state for the component version. */
   provisioningState?: AssetProvisioningState | (string & {});
 }
-const ComponentVersionProperties = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<ComponentVersionProperties>;
-
 export interface ComponentVersionsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1090,11 +749,6 @@ export interface ComponentVersionsCreateOrUpdateRequest {
   /** [Required] Additional attributes of the entity. */
   properties: ComponentVersionProperties;
 }
-const ComponentVersionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<ComponentVersionsCreateOrUpdateRequest>;
-
 export interface ComponentVersionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1107,11 +761,6 @@ export interface ComponentVersionsCreateOrUpdateResponse {
   /** [Required] Additional attributes of the entity. */
   properties: ComponentVersionProperties;
 }
-const ComponentVersionsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<ComponentVersionsCreateOrUpdateResponse>;
-
 /** The type of compute */
 export type ComputeType =
   | "AKS"
@@ -1124,8 +773,6 @@ export type ComputeType =
   | "Databricks"
   | "DataLakeAnalytics"
   | "SynapseSpark";
-const ComputeType = S.String;
-
 /** Machine Learning compute object. */
 export interface ComputeInput {
   /** The type of compute */
@@ -1141,13 +788,8 @@ export interface ComputeInput {
   /** Per-computeType properties (e.g. AmlCompute: vmSize, vmPriority, scaleSettings). */
   properties?: unknown;
 }
-const ComputeInput = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<ComputeInput>;
-
 /** Contains resource tags defined as key/value pairs. */
 export type ComputeCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const ComputeCreateOrUpdateRequestTagsMap =
-  BatchDeploymentsCreateOrUpdateRequestTagsMap as any as S.Schema<ComputeCreateOrUpdateRequestTagsMap>;
-
 /** The resource model definition representing SKU */
 export type ComputeCreateOrUpdateRequestSku = BatchDeploymentsCreateOrUpdateRequestSku;
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -1172,11 +814,6 @@ export interface ComputeCreateOrUpdateRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: BatchDeploymentsCreateOrUpdateRequestIdentity;
 }
-const ComputeCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<ComputeCreateOrUpdateRequest>;
-
 /** The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed. */
 export type ProvisioningState =
   | "Unknown"
@@ -1186,15 +823,8 @@ export type ProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Canceled";
-const ProvisioningState = S.String;
-
 /** The error details. */
 export type ErrorDetailDetailsList = Array<ErrorDetail>;
-const ErrorDetailDetailsList = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<ErrorDetailDetailsList>;
-
 /** The resource management error additional info. */
 export interface ErrorAdditionalInfo {
   /** The additional info type. */
@@ -1202,15 +832,8 @@ export interface ErrorAdditionalInfo {
   /** The additional info. */
   info?: unknown;
 }
-const ErrorAdditionalInfo = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<ErrorAdditionalInfo>;
-
 /** The error additional info. */
 export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
-const ErrorDetailAdditionalInfoList = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<ErrorDetailAdditionalInfoList>;
-
 /** The error detail. */
 export interface ErrorDetail {
   /** The error code. */
@@ -1224,25 +847,13 @@ export interface ErrorDetail {
   /** The error additional info. */
   additionalInfo?: ErrorDetailAdditionalInfoList;
 }
-const ErrorDetail = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<ErrorDetail>;
-
 /** Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows the OData error response format.). */
 export interface ComputeProvisioningErrorsItem {
   /** The error object. */
   error?: ErrorDetail;
 }
-const ComputeProvisioningErrorsItem = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<ComputeProvisioningErrorsItem>;
-
 /** Errors during provisioning */
 export type ComputeProvisioningErrorsList = Array<ComputeProvisioningErrorsItem>;
-const ComputeProvisioningErrorsList = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<ComputeProvisioningErrorsList>;
-
 /** Machine Learning compute object. */
 export interface Compute {
   /** The type of compute */
@@ -1268,13 +879,8 @@ export interface Compute {
   /** Per-computeType properties (e.g. AmlCompute: vmSize, vmPriority, scaleSettings, currentNodeCount). */
   properties?: unknown;
 }
-const Compute = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<Compute>;
-
 /** Contains resource tags defined as key/value pairs. */
 export type ComputeCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const ComputeCreateOrUpdateResponseTagsMap =
-  BatchDeploymentsCreateOrUpdateRequestTagsMap as any as S.Schema<ComputeCreateOrUpdateResponseTagsMap>;
-
 /** The resource model definition representing SKU */
 export type ComputeCreateOrUpdateResponseSku = BatchDeploymentsCreateOrUpdateResponseSku;
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -1299,11 +905,6 @@ export interface ComputeCreateOrUpdateResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: BatchDeploymentsCreateOrUpdateResponseIdentity;
 }
-const ComputeCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<ComputeCreateOrUpdateResponse>;
-
 /** Authentication type of the connection target */
 export type ConnectionAuthType =
   | "PAT"
@@ -1325,8 +926,6 @@ export type ConnectionAuthType =
   | "AgentUserImpersonation"
   | "AgenticIdentityToken"
   | "AgenticUser";
-const ConnectionAuthType = S.String;
-
 /** Category of the connection */
 export type ConnectionCategory =
   | "PythonFeed"
@@ -1449,23 +1048,11 @@ export type ConnectionCategory =
   | "MicrosoftFabric"
   | "PowerPlatformEnvironment"
   | "RemoteA2A";
-const ConnectionCategory = S.String;
-
 /** Store user metadata for this connection */
 export type WorkspaceConnectionPropertiesV2InputMetadataMap = { [key: string]: string | undefined };
-const WorkspaceConnectionPropertiesV2InputMetadataMap =
-  BatchDeploymentsCreateOrUpdateRequestTagsMap as any as S.Schema<WorkspaceConnectionPropertiesV2InputMetadataMap>;
-
 export type ManagedPERequirement = "Required" | "NotRequired" | "NotApplicable";
-const ManagedPERequirement = S.String;
-
 export type ManagedPEStatus = "Inactive" | "Active" | "NotApplicable";
-const ManagedPEStatus = S.String;
-
 export type WorkspaceConnectionPropertiesV2InputSharedUserListList = Array<string>;
-const WorkspaceConnectionPropertiesV2InputSharedUserListList =
-  CapabilityHostPropertiesInputAcaEnvironmentConnectionsList as any as S.Schema<WorkspaceConnectionPropertiesV2InputSharedUserListList>;
-
 export interface WorkspaceConnectionPropertiesV2Input {
   /** Authentication type of the connection target */
   authType: ConnectionAuthType | (string & {});
@@ -1484,11 +1071,6 @@ export interface WorkspaceConnectionPropertiesV2Input {
   /** Credentials for the authType (ApiKey: {key}; CustomKeys: {keys}; AccessKey: {accessKeyId, secretAccessKey}; ...). */
   credentials?: unknown;
 }
-const WorkspaceConnectionPropertiesV2Input = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<WorkspaceConnectionPropertiesV2Input>;
-
 export interface CreateWorkspaceConnectionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1500,11 +1082,6 @@ export interface CreateWorkspaceConnectionRequest {
   connectionName: string;
   properties: WorkspaceConnectionPropertiesV2Input;
 }
-const CreateWorkspaceConnectionRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<CreateWorkspaceConnectionRequest>;
-
 /** Group based on connection category */
 export type ConnectionGroup =
   | "Azure"
@@ -1514,17 +1091,9 @@ export type ConnectionGroup =
   | "File"
   | "GenericProtocol"
   | "ServicesAndApps";
-const ConnectionGroup = S.String;
-
 /** Store user metadata for this connection */
 export type WorkspaceConnectionPropertiesV2MetadataMap = { [key: string]: string | undefined };
-const WorkspaceConnectionPropertiesV2MetadataMap =
-  BatchDeploymentsCreateOrUpdateRequestTagsMap as any as S.Schema<WorkspaceConnectionPropertiesV2MetadataMap>;
-
 export type WorkspaceConnectionPropertiesV2SharedUserListList = Array<string>;
-const WorkspaceConnectionPropertiesV2SharedUserListList =
-  CapabilityHostPropertiesInputAcaEnvironmentConnectionsList as any as S.Schema<WorkspaceConnectionPropertiesV2SharedUserListList>;
-
 export interface WorkspaceConnectionPropertiesV2 {
   /** Authentication type of the connection target */
   authType: ConnectionAuthType;
@@ -1547,11 +1116,6 @@ export interface WorkspaceConnectionPropertiesV2 {
   /** Credentials for the authType; only returned by listSecrets. */
   credentials?: unknown;
 }
-const WorkspaceConnectionPropertiesV2 = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<WorkspaceConnectionPropertiesV2>;
-
 export interface CreateWorkspaceConnectionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1563,27 +1127,14 @@ export interface CreateWorkspaceConnectionResponse {
   systemData?: SystemData;
   properties: WorkspaceConnectionPropertiesV2;
 }
-const CreateWorkspaceConnectionResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<CreateWorkspaceConnectionResponse>;
-
 /** The asset property dictionary. */
 export type DataContainerPropertiesInputPropertiesMap = {
   [key: string]: string | null | undefined;
 };
-const DataContainerPropertiesInputPropertiesMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<DataContainerPropertiesInputPropertiesMap>;
-
 /** Tag dictionary. Tags can be added, removed, and updated. */
 export type DataContainerPropertiesInputTagsMap = { [key: string]: string | null | undefined };
-const DataContainerPropertiesInputTagsMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<DataContainerPropertiesInputTagsMap>;
-
 /** Enum to determine the type of data. */
 export type DataType = "uri_file" | "uri_folder" | "mltable";
-const DataType = S.String;
-
 /** Container for data asset versions. */
 export interface DataContainerPropertiesInput {
   /** The asset description text. */
@@ -1597,11 +1148,6 @@ export interface DataContainerPropertiesInput {
   /** [Required] Specifies the type of data. */
   dataType: DataType | (string & {});
 }
-const DataContainerPropertiesInput = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<DataContainerPropertiesInput>;
-
 export interface DataContainersCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1614,21 +1160,10 @@ export interface DataContainersCreateOrUpdateRequest {
   /** [Required] Additional attributes of the entity. */
   properties: DataContainerPropertiesInput;
 }
-const DataContainersCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<DataContainersCreateOrUpdateRequest>;
-
 /** The asset property dictionary. */
 export type DataContainerPropertiesPropertiesMap = { [key: string]: string | null | undefined };
-const DataContainerPropertiesPropertiesMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<DataContainerPropertiesPropertiesMap>;
-
 /** Tag dictionary. Tags can be added, removed, and updated. */
 export type DataContainerPropertiesTagsMap = { [key: string]: string | null | undefined };
-const DataContainerPropertiesTagsMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<DataContainerPropertiesTagsMap>;
-
 /** Container for data asset versions. */
 export interface DataContainerProperties {
   /** The asset description text. */
@@ -1646,11 +1181,6 @@ export interface DataContainerProperties {
   /** [Required] Specifies the type of data. */
   dataType: DataType;
 }
-const DataContainerProperties = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<DataContainerProperties>;
-
 export interface DataContainersCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1663,25 +1193,12 @@ export interface DataContainersCreateOrUpdateResponse {
   /** [Required] Additional attributes of the entity. */
   properties: DataContainerProperties;
 }
-const DataContainersCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<DataContainersCreateOrUpdateResponse>;
-
 /** The asset property dictionary. */
 export type DatastorePropertiesInputPropertiesMap = { [key: string]: string | null | undefined };
-const DatastorePropertiesInputPropertiesMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<DatastorePropertiesInputPropertiesMap>;
-
 /** Tag dictionary. Tags can be added, removed, and updated. */
 export type DatastorePropertiesInputTagsMap = { [key: string]: string | null | undefined };
-const DatastorePropertiesInputTagsMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<DatastorePropertiesInputTagsMap>;
-
 /** Enum to determine the datastore credentials type. */
 export type CredentialsType = "AccountKey" | "Certificate" | "None" | "Sas" | "ServicePrincipal";
-const CredentialsType = S.String;
-
 /** Base definition for datastore credentials. */
 export interface DatastoreCredentials {
   /** [Required] Credential type used to authentication with storage. */
@@ -1697,8 +1214,6 @@ export interface DatastoreCredentials {
   /** ServicePrincipal/Certificate: resource URL. */
   resourceUrl?: string;
 }
-const DatastoreCredentials = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<DatastoreCredentials>;
-
 /** Enum to determine the datastore contents type. */
 export type DatastoreType =
   | "AzureBlob"
@@ -1706,8 +1221,6 @@ export type DatastoreType =
   | "AzureDataLakeGen2"
   | "AzureFile"
   | "OneLake";
-const DatastoreType = S.String;
-
 /** Base definition for datastore contents configuration. */
 export interface DatastorePropertiesInput {
   /** The asset description text. */
@@ -1741,11 +1254,6 @@ export interface DatastorePropertiesInput {
   /** subscriptionId (AzureBlob/AzureFile/AzureDataLakeGen1/AzureDataLakeGen2 subtypes). */
   subscriptionId?: string;
 }
-const DatastorePropertiesInput = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<DatastorePropertiesInput>;
-
 export interface DatastoresCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1760,21 +1268,10 @@ export interface DatastoresCreateOrUpdateRequest {
   /** [Required] Additional attributes of the entity. */
   properties: DatastorePropertiesInput;
 }
-const DatastoresCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<DatastoresCreateOrUpdateRequest>;
-
 /** The asset property dictionary. */
 export type DatastorePropertiesPropertiesMap = { [key: string]: string | null | undefined };
-const DatastorePropertiesPropertiesMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<DatastorePropertiesPropertiesMap>;
-
 /** Tag dictionary. Tags can be added, removed, and updated. */
 export type DatastorePropertiesTagsMap = { [key: string]: string | null | undefined };
-const DatastorePropertiesTagsMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<DatastorePropertiesTagsMap>;
-
 /** Base definition for datastore contents configuration. */
 export interface DatastoreProperties {
   /** The asset description text. */
@@ -1810,8 +1307,6 @@ export interface DatastoreProperties {
   /** subscriptionId (AzureBlob/AzureFile/AzureDataLakeGen1/AzureDataLakeGen2 subtypes). */
   subscriptionId?: string;
 }
-const DatastoreProperties = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<DatastoreProperties>;
-
 export interface DatastoresCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1824,21 +1319,10 @@ export interface DatastoresCreateOrUpdateResponse {
   /** [Required] Additional attributes of the entity. */
   properties: DatastoreProperties;
 }
-const DatastoresCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<DatastoresCreateOrUpdateResponse>;
-
 /** The asset property dictionary. */
 export type DataVersionBasePropertiesPropertiesMap = { [key: string]: string | null | undefined };
-const DataVersionBasePropertiesPropertiesMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<DataVersionBasePropertiesPropertiesMap>;
-
 /** Tag dictionary. Tags can be added, removed, and updated. */
 export type DataVersionBasePropertiesTagsMap = { [key: string]: string | null | undefined };
-const DataVersionBasePropertiesTagsMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<DataVersionBasePropertiesTagsMap>;
-
 /** Data version base definition */
 export interface DataVersionBaseProperties {
   /** The asset description text. */
@@ -1856,11 +1340,6 @@ export interface DataVersionBaseProperties {
   /** [Required] Uri of the data. Example: https://go.microsoft.com/fwlink/?linkid=2202330 */
   dataUri: string;
 }
-const DataVersionBaseProperties = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<DataVersionBaseProperties>;
-
 export interface DataVersionsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1875,11 +1354,6 @@ export interface DataVersionsCreateOrUpdateRequest {
   /** [Required] Additional attributes of the entity. */
   properties: DataVersionBaseProperties;
 }
-const DataVersionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<DataVersionsCreateOrUpdateRequest>;
-
 export interface DataVersionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1892,11 +1366,6 @@ export interface DataVersionsCreateOrUpdateResponse {
   /** [Required] Additional attributes of the entity. */
   properties: DataVersionBaseProperties;
 }
-const DataVersionsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<DataVersionsCreateOrUpdateResponse>;
-
 export interface DeleteBatchDeploymentRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1909,15 +1378,7 @@ export interface DeleteBatchDeploymentRequest {
   /** The identifier for the Batch deployments. */
   deploymentName: string;
 }
-const DeleteBatchDeploymentRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<DeleteBatchDeploymentRequest>;
-
 export interface DeleteBatchDeploymentResponse {}
-const DeleteBatchDeploymentResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteBatchDeploymentResponse>;
-
 export interface DeleteBatchEndpointRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1928,15 +1389,7 @@ export interface DeleteBatchEndpointRequest {
   /** Name for the Batch Endpoint. */
   endpointName: string;
 }
-const DeleteBatchEndpointRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<DeleteBatchEndpointRequest>;
-
 export interface DeleteBatchEndpointResponse {}
-const DeleteBatchEndpointResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteBatchEndpointResponse>;
-
 export interface DeleteCapabilityHostRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1947,15 +1400,7 @@ export interface DeleteCapabilityHostRequest {
   /** CapabilityHost name. */
   name: string;
 }
-const DeleteCapabilityHostRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<DeleteCapabilityHostRequest>;
-
 export interface DeleteCapabilityHostResponse {}
-const DeleteCapabilityHostResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteCapabilityHostResponse>;
-
 export interface DeleteCodeContainerRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1966,15 +1411,7 @@ export interface DeleteCodeContainerRequest {
   /** Container name. This is case-sensitive. */
   name: string;
 }
-const DeleteCodeContainerRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<DeleteCodeContainerRequest>;
-
 export interface DeleteCodeContainerResponse {}
-const DeleteCodeContainerResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteCodeContainerResponse>;
-
 export interface DeleteCodeVersionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1987,15 +1424,7 @@ export interface DeleteCodeVersionRequest {
   /** Version identifier. This is case-sensitive. */
   version: string;
 }
-const DeleteCodeVersionRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<DeleteCodeVersionRequest>;
-
 export interface DeleteCodeVersionResponse {}
-const DeleteCodeVersionResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteCodeVersionResponse>;
-
 export interface DeleteComponentContainerRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2006,17 +1435,7 @@ export interface DeleteComponentContainerRequest {
   /** Container name. */
   name: string;
 }
-const DeleteComponentContainerRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<DeleteComponentContainerRequest>;
-
 export interface DeleteComponentContainerResponse {}
-const DeleteComponentContainerResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<DeleteComponentContainerResponse>;
-
 export interface DeleteComponentVersionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2029,18 +1448,8 @@ export interface DeleteComponentVersionRequest {
   /** Version identifier. */
   version: string;
 }
-const DeleteComponentVersionRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<DeleteComponentVersionRequest>;
-
 export interface DeleteComponentVersionResponse {}
-const DeleteComponentVersionResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteComponentVersionResponse>;
-
 export type DeleteComputeRequestUnderlyingResourceAction = "Delete" | "Detach";
-const DeleteComputeRequestUnderlyingResourceAction = S.String;
-
 export interface DeleteComputeRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2053,14 +1462,7 @@ export interface DeleteComputeRequest {
   /** Delete the underlying compute if 'Delete', or detach the underlying compute from workspace if 'Detach'. */
   underlyingResourceAction: DeleteComputeRequestUnderlyingResourceAction | (string & {});
 }
-const DeleteComputeRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<DeleteComputeRequest>;
-
 export interface DeleteComputeResponse {}
-const DeleteComputeResponse = UserAssignedIdentityInput as any as S.Schema<DeleteComputeResponse>;
-
 export interface DeleteDataContainerRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2071,15 +1473,7 @@ export interface DeleteDataContainerRequest {
   /** Container name. */
   name: string;
 }
-const DeleteDataContainerRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<DeleteDataContainerRequest>;
-
 export interface DeleteDataContainerResponse {}
-const DeleteDataContainerResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteDataContainerResponse>;
-
 export interface DeleteDatastoreRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2090,15 +1484,7 @@ export interface DeleteDatastoreRequest {
   /** Datastore name. */
   name: string;
 }
-const DeleteDatastoreRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<DeleteDatastoreRequest>;
-
 export interface DeleteDatastoreResponse {}
-const DeleteDatastoreResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteDatastoreResponse>;
-
 export interface DeleteDataVersionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2111,15 +1497,7 @@ export interface DeleteDataVersionRequest {
   /** Version identifier. */
   version: string;
 }
-const DeleteDataVersionRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<DeleteDataVersionRequest>;
-
 export interface DeleteDataVersionResponse {}
-const DeleteDataVersionResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteDataVersionResponse>;
-
 export interface DeleteEnvironmentContainerRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2130,15 +1508,7 @@ export interface DeleteEnvironmentContainerRequest {
   /** Container name. This is case-sensitive. */
   name: string;
 }
-const DeleteEnvironmentContainerRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<DeleteEnvironmentContainerRequest>;
-
 export interface DeleteEnvironmentContainerResponse {}
-const DeleteEnvironmentContainerResponse =
-  DeleteComponentContainerResponse as any as S.Schema<DeleteEnvironmentContainerResponse>;
-
 export interface DeleteEnvironmentVersionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2151,15 +1521,7 @@ export interface DeleteEnvironmentVersionRequest {
   /** Version identifier. This is case-sensitive. */
   version: string;
 }
-const DeleteEnvironmentVersionRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<DeleteEnvironmentVersionRequest>;
-
 export interface DeleteEnvironmentVersionResponse {}
-const DeleteEnvironmentVersionResponse =
-  DeleteComponentContainerResponse as any as S.Schema<DeleteEnvironmentVersionResponse>;
-
 export interface DeleteFeaturesetContainerRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2170,15 +1532,7 @@ export interface DeleteFeaturesetContainerRequest {
   /** Container name. This is case-sensitive. */
   name: string;
 }
-const DeleteFeaturesetContainerRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<DeleteFeaturesetContainerRequest>;
-
 export interface DeleteFeaturesetContainerResponse {}
-const DeleteFeaturesetContainerResponse =
-  DeleteComponentContainerResponse as any as S.Schema<DeleteFeaturesetContainerResponse>;
-
 export interface DeleteFeaturesetVersionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2191,17 +1545,7 @@ export interface DeleteFeaturesetVersionRequest {
   /** Version identifier. This is case-sensitive. */
   version: string;
 }
-const DeleteFeaturesetVersionRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<DeleteFeaturesetVersionRequest>;
-
 export interface DeleteFeaturesetVersionResponse {}
-const DeleteFeaturesetVersionResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<DeleteFeaturesetVersionResponse>;
-
 export interface DeleteFeaturestoreEntityContainerRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2212,15 +1556,7 @@ export interface DeleteFeaturestoreEntityContainerRequest {
   /** Container name. This is case-sensitive. */
   name: string;
 }
-const DeleteFeaturestoreEntityContainerRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<DeleteFeaturestoreEntityContainerRequest>;
-
 export interface DeleteFeaturestoreEntityContainerResponse {}
-const DeleteFeaturestoreEntityContainerResponse =
-  DeleteComponentContainerResponse as any as S.Schema<DeleteFeaturestoreEntityContainerResponse>;
-
 export interface DeleteFeaturestoreEntityVersionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2233,15 +1569,7 @@ export interface DeleteFeaturestoreEntityVersionRequest {
   /** Version identifier. This is case-sensitive. */
   version: string;
 }
-const DeleteFeaturestoreEntityVersionRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<DeleteFeaturestoreEntityVersionRequest>;
-
 export interface DeleteFeaturestoreEntityVersionResponse {}
-const DeleteFeaturestoreEntityVersionResponse =
-  DeleteComponentContainerResponse as any as S.Schema<DeleteFeaturestoreEntityVersionResponse>;
-
 export interface DeleteJobRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2252,11 +1580,7 @@ export interface DeleteJobRequest {
   /** The name and identifier for the Job. This is case-sensitive. */
   id: string;
 }
-const DeleteJobRequest = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<DeleteJobRequest>;
-
 export interface DeleteJobResponse {}
-const DeleteJobResponse = UserAssignedIdentityInput as any as S.Schema<DeleteJobResponse>;
-
 export interface DeleteManagedNetworkSettingsRuleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2267,15 +1591,7 @@ export interface DeleteManagedNetworkSettingsRuleRequest {
   /** Name of the workspace managed network outbound rule */
   ruleName: string;
 }
-const DeleteManagedNetworkSettingsRuleRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<DeleteManagedNetworkSettingsRuleRequest>;
-
 export interface DeleteManagedNetworkSettingsRuleResponse {}
-const DeleteManagedNetworkSettingsRuleResponse =
-  DeleteComponentContainerResponse as any as S.Schema<DeleteManagedNetworkSettingsRuleResponse>;
-
 export interface DeleteMarketplaceSubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2286,15 +1602,7 @@ export interface DeleteMarketplaceSubscriptionRequest {
   /** Container name. */
   name: string;
 }
-const DeleteMarketplaceSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<DeleteMarketplaceSubscriptionRequest>;
-
 export interface DeleteMarketplaceSubscriptionResponse {}
-const DeleteMarketplaceSubscriptionResponse =
-  DeleteComponentContainerResponse as any as S.Schema<DeleteMarketplaceSubscriptionResponse>;
-
 export interface DeleteModelContainerRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2305,15 +1613,7 @@ export interface DeleteModelContainerRequest {
   /** Container name. This is case-sensitive. */
   name: string;
 }
-const DeleteModelContainerRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<DeleteModelContainerRequest>;
-
 export interface DeleteModelContainerResponse {}
-const DeleteModelContainerResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteModelContainerResponse>;
-
 export interface DeleteModelVersionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2326,15 +1626,7 @@ export interface DeleteModelVersionRequest {
   /** Version identifier. This is case-sensitive. */
   version: string;
 }
-const DeleteModelVersionRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<DeleteModelVersionRequest>;
-
 export interface DeleteModelVersionResponse {}
-const DeleteModelVersionResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteModelVersionResponse>;
-
 export interface DeleteOnlineDeploymentRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2347,15 +1639,7 @@ export interface DeleteOnlineDeploymentRequest {
   /** Inference Endpoint Deployment name. */
   deploymentName: string;
 }
-const DeleteOnlineDeploymentRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<DeleteOnlineDeploymentRequest>;
-
 export interface DeleteOnlineDeploymentResponse {}
-const DeleteOnlineDeploymentResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteOnlineDeploymentResponse>;
-
 export interface DeleteOnlineEndpointRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2366,15 +1650,7 @@ export interface DeleteOnlineEndpointRequest {
   /** Online Endpoint name. */
   endpointName: string;
 }
-const DeleteOnlineEndpointRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<DeleteOnlineEndpointRequest>;
-
 export interface DeleteOnlineEndpointResponse {}
-const DeleteOnlineEndpointResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteOnlineEndpointResponse>;
-
 export interface DeletePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2385,15 +1661,7 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** NRP Private Endpoint Connection Name */
   privateEndpointConnectionName: string;
 }
-const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
-
 export interface DeletePrivateEndpointConnectionResponse {}
-const DeletePrivateEndpointConnectionResponse =
-  DeleteComponentContainerResponse as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
-
 export interface DeleteRegistryRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2402,14 +1670,7 @@ export interface DeleteRegistryRequest {
   /** Name of Azure Machine Learning registry. This is case-insensitive */
   registryName: string;
 }
-const DeleteRegistryRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<DeleteRegistryRequest>;
-
 export interface DeleteRegistryResponse {}
-const DeleteRegistryResponse = UserAssignedIdentityInput as any as S.Schema<DeleteRegistryResponse>;
-
 export interface DeleteRegistryCodeContainerRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2420,15 +1681,7 @@ export interface DeleteRegistryCodeContainerRequest {
   /** Container name. */
   codeName: string;
 }
-const DeleteRegistryCodeContainerRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<DeleteRegistryCodeContainerRequest>;
-
 export interface DeleteRegistryCodeContainerResponse {}
-const DeleteRegistryCodeContainerResponse =
-  DeleteComponentContainerResponse as any as S.Schema<DeleteRegistryCodeContainerResponse>;
-
 export interface DeleteRegistryCodeVersionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2441,15 +1694,7 @@ export interface DeleteRegistryCodeVersionRequest {
   /** Version identifier. */
   version: string;
 }
-const DeleteRegistryCodeVersionRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<DeleteRegistryCodeVersionRequest>;
-
 export interface DeleteRegistryCodeVersionResponse {}
-const DeleteRegistryCodeVersionResponse =
-  DeleteComponentContainerResponse as any as S.Schema<DeleteRegistryCodeVersionResponse>;
-
 export interface DeleteRegistryComponentContainerRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2460,15 +1705,7 @@ export interface DeleteRegistryComponentContainerRequest {
   /** Container name. */
   componentName: string;
 }
-const DeleteRegistryComponentContainerRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<DeleteRegistryComponentContainerRequest>;
-
 export interface DeleteRegistryComponentContainerResponse {}
-const DeleteRegistryComponentContainerResponse =
-  DeleteComponentContainerResponse as any as S.Schema<DeleteRegistryComponentContainerResponse>;
-
 export interface DeleteRegistryComponentVersionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2481,15 +1718,7 @@ export interface DeleteRegistryComponentVersionRequest {
   /** Version identifier. */
   version: string;
 }
-const DeleteRegistryComponentVersionRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<DeleteRegistryComponentVersionRequest>;
-
 export interface DeleteRegistryComponentVersionResponse {}
-const DeleteRegistryComponentVersionResponse =
-  DeleteComponentContainerResponse as any as S.Schema<DeleteRegistryComponentVersionResponse>;
-
 export interface DeleteRegistryDataContainerRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2500,15 +1729,7 @@ export interface DeleteRegistryDataContainerRequest {
   /** Container name. */
   name: string;
 }
-const DeleteRegistryDataContainerRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<DeleteRegistryDataContainerRequest>;
-
 export interface DeleteRegistryDataContainerResponse {}
-const DeleteRegistryDataContainerResponse =
-  DeleteComponentContainerResponse as any as S.Schema<DeleteRegistryDataContainerResponse>;
-
 export interface DeleteRegistryDataVersionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2521,15 +1742,7 @@ export interface DeleteRegistryDataVersionRequest {
   /** Version identifier. */
   version: string;
 }
-const DeleteRegistryDataVersionRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<DeleteRegistryDataVersionRequest>;
-
 export interface DeleteRegistryDataVersionResponse {}
-const DeleteRegistryDataVersionResponse =
-  DeleteComponentContainerResponse as any as S.Schema<DeleteRegistryDataVersionResponse>;
-
 export interface DeleteRegistryEnvironmentContainerRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2540,15 +1753,7 @@ export interface DeleteRegistryEnvironmentContainerRequest {
   /** Container name. This is case-sensitive. */
   environmentName: string;
 }
-const DeleteRegistryEnvironmentContainerRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<DeleteRegistryEnvironmentContainerRequest>;
-
 export interface DeleteRegistryEnvironmentContainerResponse {}
-const DeleteRegistryEnvironmentContainerResponse =
-  DeleteComponentContainerResponse as any as S.Schema<DeleteRegistryEnvironmentContainerResponse>;
-
 export interface DeleteRegistryEnvironmentVersionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2561,15 +1766,7 @@ export interface DeleteRegistryEnvironmentVersionRequest {
   /** Version identifier. This is case-sensitive. */
   version: string;
 }
-const DeleteRegistryEnvironmentVersionRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<DeleteRegistryEnvironmentVersionRequest>;
-
 export interface DeleteRegistryEnvironmentVersionResponse {}
-const DeleteRegistryEnvironmentVersionResponse =
-  DeleteComponentContainerResponse as any as S.Schema<DeleteRegistryEnvironmentVersionResponse>;
-
 export interface DeleteRegistryModelContainerRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2580,15 +1777,7 @@ export interface DeleteRegistryModelContainerRequest {
   /** Container name. This is case-sensitive. */
   modelName: string;
 }
-const DeleteRegistryModelContainerRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<DeleteRegistryModelContainerRequest>;
-
 export interface DeleteRegistryModelContainerResponse {}
-const DeleteRegistryModelContainerResponse =
-  DeleteComponentContainerResponse as any as S.Schema<DeleteRegistryModelContainerResponse>;
-
 export interface DeleteRegistryModelVersionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2601,15 +1790,7 @@ export interface DeleteRegistryModelVersionRequest {
   /** Version identifier. This is case-sensitive. */
   version: string;
 }
-const DeleteRegistryModelVersionRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<DeleteRegistryModelVersionRequest>;
-
 export interface DeleteRegistryModelVersionResponse {}
-const DeleteRegistryModelVersionResponse =
-  DeleteComponentContainerResponse as any as S.Schema<DeleteRegistryModelVersionResponse>;
-
 export interface DeleteScheduleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2620,14 +1801,7 @@ export interface DeleteScheduleRequest {
   /** Schedule name. */
   name: string;
 }
-const DeleteScheduleRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<DeleteScheduleRequest>;
-
 export interface DeleteScheduleResponse {}
-const DeleteScheduleResponse = UserAssignedIdentityInput as any as S.Schema<DeleteScheduleResponse>;
-
 export interface DeleteServerlessEndpointRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2638,15 +1812,7 @@ export interface DeleteServerlessEndpointRequest {
   /** Serverless Endpoint name. */
   name: string;
 }
-const DeleteServerlessEndpointRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<DeleteServerlessEndpointRequest>;
-
 export interface DeleteServerlessEndpointResponse {}
-const DeleteServerlessEndpointResponse =
-  DeleteComponentContainerResponse as any as S.Schema<DeleteServerlessEndpointResponse>;
-
 export interface DeleteWorkspaceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2657,15 +1823,7 @@ export interface DeleteWorkspaceRequest {
   /** Flag to indicate delete is a purge request. */
   forceToPurge?: boolean;
 }
-const DeleteWorkspaceRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<DeleteWorkspaceRequest>;
-
 export interface DeleteWorkspaceResponse {}
-const DeleteWorkspaceResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteWorkspaceResponse>;
-
 export interface DeleteWorkspaceConnectionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2676,15 +1834,7 @@ export interface DeleteWorkspaceConnectionRequest {
   /** Friendly name of the workspace connection */
   connectionName: string;
 }
-const DeleteWorkspaceConnectionRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<DeleteWorkspaceConnectionRequest>;
-
 export interface DeleteWorkspaceConnectionResponse {}
-const DeleteWorkspaceConnectionResponse =
-  DeleteComponentContainerResponse as any as S.Schema<DeleteWorkspaceConnectionResponse>;
-
 /** The asset property dictionary. */
 export type EnvironmentContainerPropertiesInputPropertiesMap = {
   [key: string]: string | null | undefined;
@@ -2704,9 +1854,6 @@ export interface EnvironmentContainerPropertiesInput {
   /** Is the asset archived? */
   isArchived?: boolean;
 }
-const EnvironmentContainerPropertiesInput =
-  CodeContainerPropertiesInput as any as S.Schema<EnvironmentContainerPropertiesInput>;
-
 export interface EnvironmentContainersCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2719,11 +1866,6 @@ export interface EnvironmentContainersCreateOrUpdateRequest {
   /** [Required] Additional attributes of the entity. */
   properties: EnvironmentContainerPropertiesInput;
 }
-const EnvironmentContainersCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<EnvironmentContainersCreateOrUpdateRequest>;
-
 /** The asset property dictionary. */
 export type EnvironmentContainerPropertiesPropertiesMap = {
   [key: string]: string | null | undefined;
@@ -2759,25 +1901,14 @@ export interface EnvironmentContainersCreateOrUpdateResponse {
   /** [Required] Additional attributes of the entity. */
   properties: EnvironmentContainerProperties;
 }
-const EnvironmentContainersCreateOrUpdateResponse =
-  ComponentContainersCreateOrUpdateResponse as any as S.Schema<EnvironmentContainersCreateOrUpdateResponse>;
-
 /** The asset property dictionary. */
 export type EnvironmentVersionPropertiesPropertiesMap = {
   [key: string]: string | null | undefined;
 };
-const EnvironmentVersionPropertiesPropertiesMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<EnvironmentVersionPropertiesPropertiesMap>;
-
 /** Tag dictionary. Tags can be added, removed, and updated. */
 export type EnvironmentVersionPropertiesTagsMap = { [key: string]: string | null | undefined };
-const EnvironmentVersionPropertiesTagsMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<EnvironmentVersionPropertiesTagsMap>;
-
 /** AutoRebuild setting for the derived image */
 export type EnvironmentVersionPropertiesAutoRebuild = "Disabled" | "OnBaseImageUpdate";
-const EnvironmentVersionPropertiesAutoRebuild = S.String;
-
 /** Configuration settings for Docker build context */
 export interface BuildContext {
   /** [Required] URI of the Docker build context used to build the image. Supports blob URIs on environment creation and may return blob or Git URIs. <seealso href="https://docs.docker.com/engine/reference/commandline/build/#extended-description" /> */
@@ -2785,20 +1916,14 @@ export interface BuildContext {
   /** Path to the Dockerfile in the build context. <seealso href="https://docs.docker.com/engine/reference/builder/" /> */
   dockerfilePath?: string;
 }
-const BuildContext = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<BuildContext>;
-
 /** Environment type is either user created or curated by Azure ML service */
 export type EnvironmentType = "Curated" | "UserCreated";
-const EnvironmentType = S.String;
-
 export interface Route {
   /** [Required] The path for the route. */
   path: string;
   /** [Required] The port for the route. */
   port: number;
 }
-const Route = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<Route>;
-
 export interface InferenceContainerProperties {
   /** The route to check the liveness of the inference server container. */
   livenessRoute?: Route;
@@ -2809,15 +1934,8 @@ export interface InferenceContainerProperties {
   /** The route to check the startup of the application in the container. */
   startupRoute?: Route | null;
 }
-const InferenceContainerProperties = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<InferenceContainerProperties>;
-
 /** The type of operating system. */
 export type EnvironmentVersionPropertiesOsType = "Linux" | "Windows";
-const EnvironmentVersionPropertiesOsType = S.String;
-
 /** Environment version details. */
 export interface EnvironmentVersionProperties {
   /** The asset description text. */
@@ -2849,11 +1967,6 @@ export interface EnvironmentVersionProperties {
   /** Stage in the environment lifecycle assigned to this environment */
   stage?: string | null;
 }
-const EnvironmentVersionProperties = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<EnvironmentVersionProperties>;
-
 export interface EnvironmentVersionsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2868,11 +1981,6 @@ export interface EnvironmentVersionsCreateOrUpdateRequest {
   /** [Required] Additional attributes of the entity. */
   properties: EnvironmentVersionProperties;
 }
-const EnvironmentVersionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<EnvironmentVersionsCreateOrUpdateRequest>;
-
 export interface EnvironmentVersionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -2885,11 +1993,6 @@ export interface EnvironmentVersionsCreateOrUpdateResponse {
   /** [Required] Additional attributes of the entity. */
   properties: EnvironmentVersionProperties;
 }
-const EnvironmentVersionsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<EnvironmentVersionsCreateOrUpdateResponse>;
-
 /** The asset property dictionary. */
 export type FeaturesetContainerPropertiesInputPropertiesMap = {
   [key: string]: string | null | undefined;
@@ -2909,9 +2012,6 @@ export interface FeaturesetContainerPropertiesInput {
   /** Is the asset archived? */
   isArchived?: boolean;
 }
-const FeaturesetContainerPropertiesInput =
-  CodeContainerPropertiesInput as any as S.Schema<FeaturesetContainerPropertiesInput>;
-
 export interface FeaturesetContainersCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2924,11 +2024,6 @@ export interface FeaturesetContainersCreateOrUpdateRequest {
   /** [Required] Additional attributes of the entity. */
   properties: FeaturesetContainerPropertiesInput;
 }
-const FeaturesetContainersCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<FeaturesetContainersCreateOrUpdateRequest>;
-
 /** The asset property dictionary. */
 export type FeaturesetContainerPropertiesPropertiesMap = {
   [key: string]: string | null | undefined;
@@ -2964,21 +2059,11 @@ export interface FeaturesetContainersCreateOrUpdateResponse {
   /** [Required] Additional attributes of the entity. */
   properties: FeaturesetContainerProperties;
 }
-const FeaturesetContainersCreateOrUpdateResponse =
-  ComponentContainersCreateOrUpdateResponse as any as S.Schema<FeaturesetContainersCreateOrUpdateResponse>;
-
 export type DataAvailabilityStatus = "None" | "Pending" | "Incomplete" | "Complete";
-const DataAvailabilityStatus = S.String;
-
 /** Specified the data availability status that you want to backfill */
 export type FeaturesetVersionsBackfillRequestDataAvailabilityStatusList = Array<
   DataAvailabilityStatus | (string & {})
 >;
-const FeaturesetVersionsBackfillRequestDataAvailabilityStatusList = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<FeaturesetVersionsBackfillRequestDataAvailabilityStatusList>;
-
 /** Specifies the feature window */
 export interface FeatureWindow {
   /** Specifies the feature window end time */
@@ -2986,37 +2071,21 @@ export interface FeatureWindow {
   /** Specifies the feature window start time */
   featureWindowStart?: string | null;
 }
-const FeatureWindow = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<FeatureWindow>;
-
 /** Specifies the properties */
 export type FeaturesetVersionsBackfillRequestPropertiesMap = {
   [key: string]: string | null | undefined;
 };
-const FeaturesetVersionsBackfillRequestPropertiesMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<FeaturesetVersionsBackfillRequestPropertiesMap>;
-
 /** DTO object representing compute resource */
 export interface MaterializationComputeResource {
   /** Specifies the instance type */
   instanceType?: string | null;
 }
-const MaterializationComputeResource = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<MaterializationComputeResource>;
-
 /** Specifies the spark compute settings */
 export type FeaturesetVersionsBackfillRequestSparkConfigurationMap = {
   [key: string]: string | null | undefined;
 };
-const FeaturesetVersionsBackfillRequestSparkConfigurationMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<FeaturesetVersionsBackfillRequestSparkConfigurationMap>;
-
 /** Specifies the tags */
 export type FeaturesetVersionsBackfillRequestTagsMap = { [key: string]: string | null | undefined };
-const FeaturesetVersionsBackfillRequestTagsMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<FeaturesetVersionsBackfillRequestTagsMap>;
-
 export interface FeaturesetVersionsBackfillRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3047,57 +2116,27 @@ export interface FeaturesetVersionsBackfillRequest {
   /** Specifies the tags */
   tags?: FeaturesetVersionsBackfillRequestTagsMap;
 }
-const FeaturesetVersionsBackfillRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<FeaturesetVersionsBackfillRequest>;
-
 /** List of jobs submitted as part of the backfill request. */
 export type FeaturesetVersionBackfillResponseJobIdsList = Array<string>;
-const FeaturesetVersionBackfillResponseJobIdsList =
-  CapabilityHostPropertiesInputAcaEnvironmentConnectionsList as any as S.Schema<FeaturesetVersionBackfillResponseJobIdsList>;
-
 /** Response payload for creating a backfill request for a given feature set version */
 export interface FeaturesetVersionBackfillResponse {
   /** List of jobs submitted as part of the backfill request. */
   jobIds?: FeaturesetVersionBackfillResponseJobIdsList | null;
 }
-const FeaturesetVersionBackfillResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<FeaturesetVersionBackfillResponse>;
-
 /** The asset property dictionary. */
 export type FeaturesetVersionPropertiesPropertiesMap = { [key: string]: string | null | undefined };
-const FeaturesetVersionPropertiesPropertiesMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<FeaturesetVersionPropertiesPropertiesMap>;
-
 /** Tag dictionary. Tags can be added, removed, and updated. */
 export type FeaturesetVersionPropertiesTagsMap = { [key: string]: string | null | undefined };
-const FeaturesetVersionPropertiesTagsMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<FeaturesetVersionPropertiesTagsMap>;
-
 /** Specifies list of entities */
 export type FeaturesetVersionPropertiesEntitiesList = Array<string>;
-const FeaturesetVersionPropertiesEntitiesList =
-  CapabilityHostPropertiesInputAcaEnvironmentConnectionsList as any as S.Schema<FeaturesetVersionPropertiesEntitiesList>;
-
 /** Enum to determine the email notification type. */
 export type EmailNotificationEnableType = "JobCompleted" | "JobFailed" | "JobCancelled";
 /** Send email notification to user on specified notification type */
 export type NotificationSettingEmailOnList = Array<EmailNotificationEnableType | (string & {})>;
-const NotificationSettingEmailOnList =
-  FeaturesetVersionsBackfillRequestDataAvailabilityStatusList as any as S.Schema<NotificationSettingEmailOnList>;
-
 /** This is the email recipient list which has a limitation of 499 characters in total concat with comma separator */
 export type NotificationSettingEmailsList = Array<string>;
-const NotificationSettingEmailsList =
-  CapabilityHostPropertiesInputAcaEnvironmentConnectionsList as any as S.Schema<NotificationSettingEmailsList>;
-
 /** Enum to determine the webhook callback service type. */
 export type WebhookType = "AzureDevOps";
-const WebhookType = S.String;
-
 /** Webhook base */
 export interface Webhook {
   /** Send callback on a specified notification event */
@@ -3105,15 +2144,8 @@ export interface Webhook {
   /** [Required] Specifies the type of service to send a callback */
   webhookType: WebhookType | (string & {});
 }
-const Webhook = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<Webhook>;
-
 /** Send webhook callback to a service. Key is a user-provided name for the webhook. */
 export type NotificationSettingWebhooksMap = { [key: string]: Webhook | null | undefined };
-const NotificationSettingWebhooksMap = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<NotificationSettingWebhooksMap>;
-
 /** Configuration for notification. */
 export interface NotificationSetting {
   /** Send email notification to user on specified notification type */
@@ -3123,32 +2155,15 @@ export interface NotificationSetting {
   /** Send webhook callback to a service. Key is a user-provided name for the webhook. */
   webhooks?: NotificationSettingWebhooksMap | null;
 }
-const NotificationSetting = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<NotificationSetting>;
-
 export type TriggerType = "Recurrence" | "Cron";
-const TriggerType = S.String;
-
 /** Enum to describe the frequency of a recurrence schedule */
 export type RecurrenceFrequency = "Minute" | "Hour" | "Day" | "Week" | "Month";
-const RecurrenceFrequency = S.String;
-
 /** [Required] List of hours for the schedule. */
 export type RecurrenceScheduleHoursList = Array<number>;
-const RecurrenceScheduleHoursList = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<RecurrenceScheduleHoursList>;
-
 /** [Required] List of minutes for the schedule. */
 export type RecurrenceScheduleMinutesList = Array<number>;
-const RecurrenceScheduleMinutesList =
-  RecurrenceScheduleHoursList as any as S.Schema<RecurrenceScheduleMinutesList>;
-
 /** List of month days for the schedule */
 export type RecurrenceScheduleMonthDaysList = Array<number>;
-const RecurrenceScheduleMonthDaysList =
-  RecurrenceScheduleHoursList as any as S.Schema<RecurrenceScheduleMonthDaysList>;
-
 /** Enum of weekday */
 export type WeekDay =
   | "Monday"
@@ -3160,9 +2175,6 @@ export type WeekDay =
   | "Sunday";
 /** List of days for the schedule. */
 export type RecurrenceScheduleWeekDaysList = Array<WeekDay | (string & {})>;
-const RecurrenceScheduleWeekDaysList =
-  FeaturesetVersionsBackfillRequestDataAvailabilityStatusList as any as S.Schema<RecurrenceScheduleWeekDaysList>;
-
 export interface RecurrenceSchedule {
   /** [Required] List of hours for the schedule. */
   hours: RecurrenceScheduleHoursList;
@@ -3173,8 +2185,6 @@ export interface RecurrenceSchedule {
   /** List of days for the schedule. */
   weekDays?: RecurrenceScheduleWeekDaysList | null;
 }
-const RecurrenceSchedule = /*@__PURE__*/ __L.at(__c16, 5) as any as S.Schema<RecurrenceSchedule>;
-
 export interface RecurrenceTrigger {
   /** Specifies end time of schedule in ISO 8601, but without a UTC offset. Refer https://en.wikipedia.org/wiki/ISO_8601. Recommented format would be "2022-06-01T00:00:01" If not present, the schedule will run indefinitely */
   endTime?: string | null;
@@ -3191,19 +2201,12 @@ export interface RecurrenceTrigger {
   /** The recurrence schedule. */
   schedule?: RecurrenceSchedule | null;
 }
-const RecurrenceTrigger = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<RecurrenceTrigger>;
-
 /** Specifies the spark compute settings */
 export type MaterializationSettingsSparkConfigurationMap = {
   [key: string]: string | null | undefined;
 };
-const MaterializationSettingsSparkConfigurationMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<MaterializationSettingsSparkConfigurationMap>;
-
 /** Specifies the stores to which materialization should happen */
 export type MaterializationSettingsStoreType = "None" | "Online" | "Offline" | "OnlineAndOffline";
-const MaterializationSettingsStoreType = S.String;
-
 export interface MaterializationSettings {
   /** Specifies the notification details */
   notification?: NotificationSetting | null;
@@ -3216,21 +2219,11 @@ export interface MaterializationSettings {
   /** Specifies the stores to which materialization should happen */
   storeType?: MaterializationSettingsStoreType | (string & {});
 }
-const MaterializationSettings = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<MaterializationSettings>;
-
 /** DTO object representing specification */
 export interface FeaturesetSpecification {
   /** Specifies the spec path */
   path?: string | null;
 }
-const FeaturesetSpecification = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<FeaturesetSpecification>;
-
 /** DTO object representing feature set version */
 export interface FeaturesetVersionProperties {
   /** The asset description text. */
@@ -3254,11 +2247,6 @@ export interface FeaturesetVersionProperties {
   /** Specifies the asset stage */
   stage?: string | null;
 }
-const FeaturesetVersionProperties = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<FeaturesetVersionProperties>;
-
 export interface FeaturesetVersionsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3273,11 +2261,6 @@ export interface FeaturesetVersionsCreateOrUpdateRequest {
   /** [Required] Additional attributes of the entity. */
   properties: FeaturesetVersionProperties;
 }
-const FeaturesetVersionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<FeaturesetVersionsCreateOrUpdateRequest>;
-
 export interface FeaturesetVersionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3290,11 +2273,6 @@ export interface FeaturesetVersionsCreateOrUpdateResponse {
   /** [Required] Additional attributes of the entity. */
   properties: FeaturesetVersionProperties;
 }
-const FeaturesetVersionsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<FeaturesetVersionsCreateOrUpdateResponse>;
-
 /** The asset property dictionary. */
 export type FeaturestoreEntityContainerPropertiesInputPropertiesMap = {
   [key: string]: string | null | undefined;
@@ -3314,9 +2292,6 @@ export interface FeaturestoreEntityContainerPropertiesInput {
   /** Is the asset archived? */
   isArchived?: boolean;
 }
-const FeaturestoreEntityContainerPropertiesInput =
-  CodeContainerPropertiesInput as any as S.Schema<FeaturestoreEntityContainerPropertiesInput>;
-
 export interface FeaturestoreEntityContainersCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3329,11 +2304,6 @@ export interface FeaturestoreEntityContainersCreateOrUpdateRequest {
   /** [Required] Additional attributes of the entity. */
   properties: FeaturestoreEntityContainerPropertiesInput;
 }
-const FeaturestoreEntityContainersCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<FeaturestoreEntityContainersCreateOrUpdateRequest>;
-
 /** The asset property dictionary. */
 export type FeaturestoreEntityContainerPropertiesPropertiesMap = {
   [key: string]: string | null | undefined;
@@ -3371,23 +2341,14 @@ export interface FeaturestoreEntityContainersCreateOrUpdateResponse {
   /** [Required] Additional attributes of the entity. */
   properties: FeaturestoreEntityContainerProperties;
 }
-const FeaturestoreEntityContainersCreateOrUpdateResponse =
-  ComponentContainersCreateOrUpdateResponse as any as S.Schema<FeaturestoreEntityContainersCreateOrUpdateResponse>;
-
 /** The asset property dictionary. */
 export type FeaturestoreEntityVersionPropertiesPropertiesMap = {
   [key: string]: string | null | undefined;
 };
-const FeaturestoreEntityVersionPropertiesPropertiesMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<FeaturestoreEntityVersionPropertiesPropertiesMap>;
-
 /** Tag dictionary. Tags can be added, removed, and updated. */
 export type FeaturestoreEntityVersionPropertiesTagsMap = {
   [key: string]: string | null | undefined;
 };
-const FeaturestoreEntityVersionPropertiesTagsMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<FeaturestoreEntityVersionPropertiesTagsMap>;
-
 /** Specifies the data type */
 export type IndexColumnDataType =
   | "String"
@@ -3398,8 +2359,6 @@ export type IndexColumnDataType =
   | "Binary"
   | "Datetime"
   | "Boolean";
-const IndexColumnDataType = S.String;
-
 /** DTO object representing index column */
 export interface IndexColumn {
   /** Specifies the column name */
@@ -3407,15 +2366,8 @@ export interface IndexColumn {
   /** Specifies the data type */
   dataType?: IndexColumnDataType | (string & {});
 }
-const IndexColumn = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<IndexColumn>;
-
 /** Specifies index columns */
 export type FeaturestoreEntityVersionPropertiesIndexColumnsList = Array<IndexColumn>;
-const FeaturestoreEntityVersionPropertiesIndexColumnsList = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<FeaturestoreEntityVersionPropertiesIndexColumnsList>;
-
 /** DTO object representing feature entity version */
 export interface FeaturestoreEntityVersionProperties {
   /** The asset description text. */
@@ -3435,11 +2387,6 @@ export interface FeaturestoreEntityVersionProperties {
   /** Specifies the asset stage */
   stage?: string | null;
 }
-const FeaturestoreEntityVersionProperties = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<FeaturestoreEntityVersionProperties>;
-
 export interface FeaturestoreEntityVersionsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3454,11 +2401,6 @@ export interface FeaturestoreEntityVersionsCreateOrUpdateRequest {
   /** [Required] Additional attributes of the entity. */
   properties: FeaturestoreEntityVersionProperties;
 }
-const FeaturestoreEntityVersionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<FeaturestoreEntityVersionsCreateOrUpdateRequest>;
-
 export interface FeaturestoreEntityVersionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3471,11 +2413,6 @@ export interface FeaturestoreEntityVersionsCreateOrUpdateResponse {
   /** [Required] Additional attributes of the entity. */
   properties: FeaturestoreEntityVersionProperties;
 }
-const FeaturestoreEntityVersionsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<FeaturestoreEntityVersionsCreateOrUpdateResponse>;
-
 export interface GetBatchDeploymentRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3488,11 +2425,6 @@ export interface GetBatchDeploymentRequest {
   /** The identifier for the Batch deployments. */
   deploymentName: string;
 }
-const GetBatchDeploymentRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<GetBatchDeploymentRequest>;
-
 /** Resource tags. */
 export type GetBatchDeploymentResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -3521,9 +2453,6 @@ export interface GetBatchDeploymentResponse {
   /** The resource model definition representing SKU */
   sku?: BatchDeploymentsCreateOrUpdateResponseSku;
 }
-const GetBatchDeploymentResponse =
-  BatchDeploymentsCreateOrUpdateResponse as any as S.Schema<GetBatchDeploymentResponse>;
-
 export interface GetBatchEndpointRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3534,16 +2463,8 @@ export interface GetBatchEndpointRequest {
   /** Name for the Batch Endpoint. */
   endpointName: string;
 }
-const GetBatchEndpointRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<GetBatchEndpointRequest>;
-
 /** Resource tags. */
 export type GetBatchEndpointResponseTagsMap = { [key: string]: string | undefined };
-const GetBatchEndpointResponseTagsMap =
-  BatchDeploymentsCreateOrUpdateRequestTagsMap as any as S.Schema<GetBatchEndpointResponseTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type GetBatchEndpointResponseIdentity = BatchDeploymentsCreateOrUpdateResponseIdentity;
 /** The resource model definition representing SKU */
@@ -3570,11 +2491,6 @@ export interface GetBatchEndpointResponse {
   /** The resource model definition representing SKU */
   sku?: BatchDeploymentsCreateOrUpdateResponseSku;
 }
-const GetBatchEndpointResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<GetBatchEndpointResponse>;
-
 export interface GetCapabilityHostRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3585,11 +2501,6 @@ export interface GetCapabilityHostRequest {
   /** CapabilityHost name. */
   name: string;
 }
-const GetCapabilityHostRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<GetCapabilityHostRequest>;
-
 export interface GetCapabilityHostResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3602,9 +2513,6 @@ export interface GetCapabilityHostResponse {
   /** [Required] Additional attributes of the entity. */
   properties: CapabilityHostProperties;
 }
-const GetCapabilityHostResponse =
-  CapabilityHostsCreateOrUpdateResponse as any as S.Schema<GetCapabilityHostResponse>;
-
 export interface GetCodeContainerRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3615,11 +2523,6 @@ export interface GetCodeContainerRequest {
   /** Container name. This is case-sensitive. */
   name: string;
 }
-const GetCodeContainerRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<GetCodeContainerRequest>;
-
 export interface GetCodeContainerResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3632,11 +2535,6 @@ export interface GetCodeContainerResponse {
   /** [Required] Additional attributes of the entity. */
   properties: CodeContainerProperties;
 }
-const GetCodeContainerResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<GetCodeContainerResponse>;
-
 export interface GetCodeVersionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3649,11 +2547,6 @@ export interface GetCodeVersionRequest {
   /** Version identifier. This is case-sensitive. */
   version: string;
 }
-const GetCodeVersionRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<GetCodeVersionRequest>;
-
 export interface GetCodeVersionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3666,11 +2559,6 @@ export interface GetCodeVersionResponse {
   /** [Required] Additional attributes of the entity. */
   properties: CodeVersionProperties;
 }
-const GetCodeVersionResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<GetCodeVersionResponse>;
-
 export interface GetComponentContainerRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3681,11 +2569,6 @@ export interface GetComponentContainerRequest {
   /** Container name. */
   name: string;
 }
-const GetComponentContainerRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<GetComponentContainerRequest>;
-
 export interface GetComponentContainerResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3698,9 +2581,6 @@ export interface GetComponentContainerResponse {
   /** [Required] Additional attributes of the entity. */
   properties: ComponentContainerProperties;
 }
-const GetComponentContainerResponse =
-  ComponentContainersCreateOrUpdateResponse as any as S.Schema<GetComponentContainerResponse>;
-
 export interface GetComponentVersionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3713,11 +2593,6 @@ export interface GetComponentVersionRequest {
   /** Version identifier. */
   version: string;
 }
-const GetComponentVersionRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<GetComponentVersionRequest>;
-
 export interface GetComponentVersionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3730,9 +2605,6 @@ export interface GetComponentVersionResponse {
   /** [Required] Additional attributes of the entity. */
   properties: ComponentVersionProperties;
 }
-const GetComponentVersionResponse =
-  ComponentVersionsCreateOrUpdateResponse as any as S.Schema<GetComponentVersionResponse>;
-
 export interface GetComputeRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3743,13 +2615,8 @@ export interface GetComputeRequest {
   /** Name of the Azure Machine Learning compute. */
   computeName: string;
 }
-const GetComputeRequest = /*@__PURE__*/ __L.at(__c19, 4) as any as S.Schema<GetComputeRequest>;
-
 /** Contains resource tags defined as key/value pairs. */
 export type GetComputeResponseTagsMap = { [key: string]: string | undefined };
-const GetComputeResponseTagsMap =
-  BatchDeploymentsCreateOrUpdateRequestTagsMap as any as S.Schema<GetComputeResponseTagsMap>;
-
 /** The resource model definition representing SKU */
 export type GetComputeResponseSku = BatchDeploymentsCreateOrUpdateResponseSku;
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -3774,8 +2641,6 @@ export interface GetComputeResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: BatchDeploymentsCreateOrUpdateResponseIdentity;
 }
-const GetComputeResponse = /*@__PURE__*/ __L.at(__c19, 5) as any as S.Schema<GetComputeResponse>;
-
 export interface GetDataContainerRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3786,11 +2651,6 @@ export interface GetDataContainerRequest {
   /** Container name. */
   name: string;
 }
-const GetDataContainerRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<GetDataContainerRequest>;
-
 export interface GetDataContainerResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3803,11 +2663,6 @@ export interface GetDataContainerResponse {
   /** [Required] Additional attributes of the entity. */
   properties: DataContainerProperties;
 }
-const GetDataContainerResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<GetDataContainerResponse>;
-
 export interface GetDatastoreRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3818,8 +2673,6 @@ export interface GetDatastoreRequest {
   /** Datastore name. */
   name: string;
 }
-const GetDatastoreRequest = /*@__PURE__*/ __L.at(__c20, 0) as any as S.Schema<GetDatastoreRequest>;
-
 export interface GetDatastoreResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3832,11 +2685,6 @@ export interface GetDatastoreResponse {
   /** [Required] Additional attributes of the entity. */
   properties: DatastoreProperties;
 }
-const GetDatastoreResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<GetDatastoreResponse>;
-
 export interface GetDataVersionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3849,11 +2697,6 @@ export interface GetDataVersionRequest {
   /** Version identifier. */
   version: string;
 }
-const GetDataVersionRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<GetDataVersionRequest>;
-
 export interface GetDataVersionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3866,11 +2709,6 @@ export interface GetDataVersionResponse {
   /** [Required] Additional attributes of the entity. */
   properties: DataVersionBaseProperties;
 }
-const GetDataVersionResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<GetDataVersionResponse>;
-
 export interface GetEnvironmentContainerRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3881,11 +2719,6 @@ export interface GetEnvironmentContainerRequest {
   /** Container name. This is case-sensitive. */
   name: string;
 }
-const GetEnvironmentContainerRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<GetEnvironmentContainerRequest>;
-
 export interface GetEnvironmentContainerResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3898,9 +2731,6 @@ export interface GetEnvironmentContainerResponse {
   /** [Required] Additional attributes of the entity. */
   properties: EnvironmentContainerProperties;
 }
-const GetEnvironmentContainerResponse =
-  ComponentContainersCreateOrUpdateResponse as any as S.Schema<GetEnvironmentContainerResponse>;
-
 export interface GetEnvironmentVersionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3913,11 +2743,6 @@ export interface GetEnvironmentVersionRequest {
   /** Version identifier. This is case-sensitive. */
   version: string;
 }
-const GetEnvironmentVersionRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<GetEnvironmentVersionRequest>;
-
 export interface GetEnvironmentVersionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3930,9 +2755,6 @@ export interface GetEnvironmentVersionResponse {
   /** [Required] Additional attributes of the entity. */
   properties: EnvironmentVersionProperties;
 }
-const GetEnvironmentVersionResponse =
-  EnvironmentVersionsCreateOrUpdateResponse as any as S.Schema<GetEnvironmentVersionResponse>;
-
 export interface GetFeatureRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3947,18 +2769,10 @@ export interface GetFeatureRequest {
   /** Inference FeatureName name. */
   featureName: string;
 }
-const GetFeatureRequest = /*@__PURE__*/ __L.at(__c20, 6) as any as S.Schema<GetFeatureRequest>;
-
 /** The asset property dictionary. */
 export type FeaturePropertiesPropertiesMap = { [key: string]: string | null | undefined };
-const FeaturePropertiesPropertiesMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<FeaturePropertiesPropertiesMap>;
-
 /** Tag dictionary. Tags can be added, removed, and updated. */
 export type FeaturePropertiesTagsMap = { [key: string]: string | null | undefined };
-const FeaturePropertiesTagsMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<FeaturePropertiesTagsMap>;
-
 /** Specifies type */
 export type FeaturePropertiesDataType =
   | "String"
@@ -3969,8 +2783,6 @@ export type FeaturePropertiesDataType =
   | "Binary"
   | "Datetime"
   | "Boolean";
-const FeaturePropertiesDataType = S.String;
-
 /** DTO object representing feature */
 export interface FeatureProperties {
   /** The asset description text. */
@@ -3984,8 +2796,6 @@ export interface FeatureProperties {
   /** Specifies name */
   featureName?: string | null;
 }
-const FeatureProperties = /*@__PURE__*/ __L.at(__c20, 7) as any as S.Schema<FeatureProperties>;
-
 export interface GetFeatureResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3998,8 +2808,6 @@ export interface GetFeatureResponse {
   /** [Required] Additional attributes of the entity. */
   properties: FeatureProperties;
 }
-const GetFeatureResponse = /*@__PURE__*/ __L.at(__c21, 0) as any as S.Schema<GetFeatureResponse>;
-
 export interface GetFeaturesetContainerEntityRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4010,11 +2818,6 @@ export interface GetFeaturesetContainerEntityRequest {
   /** Container name. This is case-sensitive. */
   name: string;
 }
-const GetFeaturesetContainerEntityRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<GetFeaturesetContainerEntityRequest>;
-
 export interface GetFeaturesetContainerEntityResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -4027,9 +2830,6 @@ export interface GetFeaturesetContainerEntityResponse {
   /** [Required] Additional attributes of the entity. */
   properties: FeaturesetContainerProperties;
 }
-const GetFeaturesetContainerEntityResponse =
-  ComponentContainersCreateOrUpdateResponse as any as S.Schema<GetFeaturesetContainerEntityResponse>;
-
 export interface GetFeaturesetVersionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4042,11 +2842,6 @@ export interface GetFeaturesetVersionRequest {
   /** Version identifier. This is case-sensitive. */
   version: string;
 }
-const GetFeaturesetVersionRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<GetFeaturesetVersionRequest>;
-
 export interface GetFeaturesetVersionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -4059,9 +2854,6 @@ export interface GetFeaturesetVersionResponse {
   /** [Required] Additional attributes of the entity. */
   properties: FeaturesetVersionProperties;
 }
-const GetFeaturesetVersionResponse =
-  FeaturesetVersionsCreateOrUpdateResponse as any as S.Schema<GetFeaturesetVersionResponse>;
-
 export interface GetFeaturestoreEntityContainerEntityRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4072,11 +2864,6 @@ export interface GetFeaturestoreEntityContainerEntityRequest {
   /** Container name. This is case-sensitive. */
   name: string;
 }
-const GetFeaturestoreEntityContainerEntityRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<GetFeaturestoreEntityContainerEntityRequest>;
-
 export interface GetFeaturestoreEntityContainerEntityResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -4089,9 +2876,6 @@ export interface GetFeaturestoreEntityContainerEntityResponse {
   /** [Required] Additional attributes of the entity. */
   properties: FeaturestoreEntityContainerProperties;
 }
-const GetFeaturestoreEntityContainerEntityResponse =
-  ComponentContainersCreateOrUpdateResponse as any as S.Schema<GetFeaturestoreEntityContainerEntityResponse>;
-
 export interface GetFeaturestoreEntityVersionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4104,11 +2888,6 @@ export interface GetFeaturestoreEntityVersionRequest {
   /** Version identifier. This is case-sensitive. */
   version: string;
 }
-const GetFeaturestoreEntityVersionRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<GetFeaturestoreEntityVersionRequest>;
-
 export interface GetFeaturestoreEntityVersionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -4121,9 +2900,6 @@ export interface GetFeaturestoreEntityVersionResponse {
   /** [Required] Additional attributes of the entity. */
   properties: FeaturestoreEntityVersionProperties;
 }
-const GetFeaturestoreEntityVersionResponse =
-  FeaturestoreEntityVersionsCreateOrUpdateResponse as any as S.Schema<GetFeaturestoreEntityVersionResponse>;
-
 export interface GetJobRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4134,52 +2910,28 @@ export interface GetJobRequest {
   /** The name and identifier for the Job. This is case-sensitive. */
   id: string;
 }
-const GetJobRequest = /*@__PURE__*/ __L.at(__c21, 5) as any as S.Schema<GetJobRequest>;
-
 /** The asset property dictionary. */
 export type JobBasePropertiesPropertiesMap = { [key: string]: string | null | undefined };
-const JobBasePropertiesPropertiesMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<JobBasePropertiesPropertiesMap>;
-
 /** Tag dictionary. Tags can be added, removed, and updated. */
 export type JobBasePropertiesTagsMap = { [key: string]: string | null | undefined };
-const JobBasePropertiesTagsMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<JobBasePropertiesTagsMap>;
-
 /** Enum to determine identity framework. */
 export type IdentityConfigurationType = "Managed" | "AMLToken" | "UserIdentity";
-const IdentityConfigurationType = S.String;
-
 /** Base definition for identity configuration. */
 export interface IdentityConfiguration {
   /** [Required] Specifies the type of identity framework. */
   identityType: IdentityConfigurationType | (string & {});
 }
-const IdentityConfiguration = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<IdentityConfiguration>;
-
 /** Enum to determine the type of job. */
 export type JobType = "AutoML" | "Command" | "Sweep" | "Pipeline" | "Spark";
-const JobType = S.String;
-
 /** The enumerated types for the nodes value */
 export type NodesValueType = "All";
-const NodesValueType = S.String;
-
 /** Abstract Nodes definition */
 export interface Nodes {
   /** [Required] Type of the Nodes value */
   nodesValueType: NodesValueType | (string & {});
 }
-const Nodes = /*@__PURE__*/ __L.at(__c21, 7) as any as S.Schema<Nodes>;
-
 /** Additional properties to set on the endpoint. */
 export type JobServicePropertiesMap = { [key: string]: string | null | undefined };
-const JobServicePropertiesMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<JobServicePropertiesMap>;
-
 /** Job endpoint definition */
 export interface JobService {
   /** Url for endpoint. */
@@ -4197,15 +2949,8 @@ export interface JobService {
   /** Status of endpoint. */
   status?: string | null;
 }
-const JobService = /*@__PURE__*/ __L.at(__c22, 0) as any as S.Schema<JobService>;
-
 /** List of JobEndpoints. For local jobs, a job endpoint will have an endpoint value of FileStreamObject. */
 export type JobBasePropertiesServicesMap = { [key: string]: JobService | null | undefined };
-const JobBasePropertiesServicesMap = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<JobBasePropertiesServicesMap>;
-
 /** The status of a job. */
 export type JobStatus =
   | "NotStarted"
@@ -4222,8 +2967,6 @@ export type JobStatus =
   | "NotResponding"
   | "Paused"
   | "Unknown";
-const JobStatus = S.String;
-
 /** Base definition for a job. */
 export interface JobBaseProperties {
   /** The asset description text. */
@@ -4253,8 +2996,6 @@ export interface JobBaseProperties {
   /** Status of the job. */
   status?: JobStatus;
 }
-const JobBaseProperties = /*@__PURE__*/ __L.at(__c22, 2) as any as S.Schema<JobBaseProperties>;
-
 export interface GetJobResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -4267,8 +3008,6 @@ export interface GetJobResponse {
   /** [Required] Additional attributes of the entity. */
   properties: JobBaseProperties;
 }
-const GetJobResponse = /*@__PURE__*/ __L.at(__c22, 3) as any as S.Schema<GetJobResponse>;
-
 export interface GetManagedNetworkSettingsRuleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4279,27 +3018,13 @@ export interface GetManagedNetworkSettingsRuleRequest {
   /** Name of the workspace managed network outbound rule */
   ruleName: string;
 }
-const GetManagedNetworkSettingsRuleRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<GetManagedNetworkSettingsRuleRequest>;
-
 /** Category of a managed network Outbound Rule of a machine learning workspace. */
 export type RuleCategory = "Required" | "Recommended" | "UserDefined" | "Dependency";
-const RuleCategory = S.String;
-
 /** Type of a managed network Outbound Rule of a machine learning workspace. */
 export type RuleStatus = "Inactive" | "Active" | "Provisioning" | "Deleting" | "Failed";
-const RuleStatus = S.String;
-
 /** Type of a managed network Outbound Rule of a machine learning workspace. */
 export type RuleType = "FQDN" | "PrivateEndpoint" | "ServiceTag";
-const RuleType = S.String;
-
 export type OutboundRuleParentRuleNamesList = Array<string>;
-const OutboundRuleParentRuleNamesList =
-  CapabilityHostPropertiesInputAcaEnvironmentConnectionsList as any as S.Schema<OutboundRuleParentRuleNamesList>;
-
 /** Outbound Rule for the managed network of a machine learning workspace. */
 export interface OutboundRule {
   /** Category of a managed network Outbound Rule of a machine learning workspace. */
@@ -4314,8 +3039,6 @@ export interface OutboundRule {
   /** FQDN: the host name; PrivateEndpoint: {serviceResourceId, subresourceTarget, sparkEnabled}; ServiceTag: {serviceTag, protocol, portRanges, action}. */
   destination?: unknown;
 }
-const OutboundRule = /*@__PURE__*/ __L.at(__c22, 5) as any as S.Schema<OutboundRule>;
-
 export interface GetManagedNetworkSettingsRuleResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -4328,11 +3051,6 @@ export interface GetManagedNetworkSettingsRuleResponse {
   /** Outbound Rule for the managed network of a machine learning workspace. */
   properties: OutboundRule;
 }
-const GetManagedNetworkSettingsRuleResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<GetManagedNetworkSettingsRuleResponse>;
-
 export interface GetMarketplaceSubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4343,11 +3061,6 @@ export interface GetMarketplaceSubscriptionRequest {
   /** Container name. */
   name: string;
 }
-const GetMarketplaceSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<GetMarketplaceSubscriptionRequest>;
-
 export interface MarketplacePlan {
   /** The identifying name of the Offer of the Marketplace Plan. */
   offerId?: string | null;
@@ -4356,11 +3069,7 @@ export interface MarketplacePlan {
   /** The identifying name of the Publisher of the Marketplace Plan. */
   publisherId?: string | null;
 }
-const MarketplacePlan = /*@__PURE__*/ __L.at(__c23, 0) as any as S.Schema<MarketplacePlan>;
-
 export type MarketplaceSubscriptionStatus = "Subscribed" | "Suspended" | "Unsubscribed";
-const MarketplaceSubscriptionStatus = S.String;
-
 export type MarketplaceSubscriptionProvisioningState =
   | "Creating"
   | "Deleting"
@@ -4368,8 +3077,6 @@ export type MarketplaceSubscriptionProvisioningState =
   | "Failed"
   | "Updating"
   | "Canceled";
-const MarketplaceSubscriptionProvisioningState = S.String;
-
 export interface MarketplaceSubscriptionProperties {
   /** Marketplace Plan associated with the Marketplace Subscription. */
   marketplacePlan?: MarketplacePlan | null;
@@ -4380,11 +3087,6 @@ export interface MarketplaceSubscriptionProperties {
   /** Provisioning State of the Marketplace Subscription. */
   provisioningState?: MarketplaceSubscriptionProvisioningState;
 }
-const MarketplaceSubscriptionProperties = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<MarketplaceSubscriptionProperties>;
-
 export interface GetMarketplaceSubscriptionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -4397,11 +3099,6 @@ export interface GetMarketplaceSubscriptionResponse {
   /** [Required] Additional attributes of the entity. */
   properties: MarketplaceSubscriptionProperties;
 }
-const GetMarketplaceSubscriptionResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<GetMarketplaceSubscriptionResponse>;
-
 export interface GetModelContainerRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4412,11 +3109,6 @@ export interface GetModelContainerRequest {
   /** Container name. This is case-sensitive. */
   name: string;
 }
-const GetModelContainerRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<GetModelContainerRequest>;
-
 /** The asset property dictionary. */
 export type ModelContainerPropertiesPropertiesMap = { [key: string]: string | null | undefined };
 /** Tag dictionary. Tags can be added, removed, and updated. */
@@ -4449,9 +3141,6 @@ export interface GetModelContainerResponse {
   /** [Required] Additional attributes of the entity. */
   properties: ModelContainerProperties;
 }
-const GetModelContainerResponse =
-  CodeContainersCreateOrUpdateResponse as any as S.Schema<GetModelContainerResponse>;
-
 export interface GetModelVersionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4464,39 +3153,18 @@ export interface GetModelVersionRequest {
   /** Version identifier. This is case-sensitive. */
   version: string;
 }
-const GetModelVersionRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<GetModelVersionRequest>;
-
 /** The asset property dictionary. */
 export type ModelVersionPropertiesPropertiesMap = { [key: string]: string | null | undefined };
-const ModelVersionPropertiesPropertiesMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<ModelVersionPropertiesPropertiesMap>;
-
 /** Tag dictionary. Tags can be added, removed, and updated. */
 export type ModelVersionPropertiesTagsMap = { [key: string]: string | null | undefined };
-const ModelVersionPropertiesTagsMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<ModelVersionPropertiesTagsMap>;
-
 /** Model flavor-specific data. */
 export type FlavorDataDataMap = { [key: string]: string | null | undefined };
-const FlavorDataDataMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<FlavorDataDataMap>;
-
 export interface FlavorData {
   /** Model flavor-specific data. */
   data?: FlavorDataDataMap | null;
 }
-const FlavorData = /*@__PURE__*/ __L.at(__c23, 5) as any as S.Schema<FlavorData>;
-
 /** Mapping of model flavors to their properties. */
 export type ModelVersionPropertiesFlavorsMap = { [key: string]: FlavorData | null | undefined };
-const ModelVersionPropertiesFlavorsMap = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<ModelVersionPropertiesFlavorsMap>;
-
 /** Dataset reference object. */
 export interface DatasetReference {
   /** The name of the dataset reference. */
@@ -4504,15 +3172,8 @@ export interface DatasetReference {
   /** The fully qualified ARM id of the dataset reference. */
   id?: string | null;
 }
-const DatasetReference = /*@__PURE__*/ __L.at(__c23, 7) as any as S.Schema<DatasetReference>;
-
 /** Array of dataset references */
 export type ModelVersionPropertiesDatasetsList = Array<DatasetReference>;
-const ModelVersionPropertiesDatasetsList = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<ModelVersionPropertiesDatasetsList>;
-
 /** Model asset version details. */
 export interface ModelVersionProperties {
   /** The asset description text. */
@@ -4540,11 +3201,6 @@ export interface ModelVersionProperties {
   /** Array of dataset references */
   datasets?: ModelVersionPropertiesDatasetsList | null;
 }
-const ModelVersionProperties = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<ModelVersionProperties>;
-
 export interface GetModelVersionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -4557,11 +3213,6 @@ export interface GetModelVersionResponse {
   /** [Required] Additional attributes of the entity. */
   properties: ModelVersionProperties;
 }
-const GetModelVersionResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<GetModelVersionResponse>;
-
 export interface GetOnlineDeploymentRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4574,32 +3225,16 @@ export interface GetOnlineDeploymentRequest {
   /** Inference Endpoint Deployment name. */
   deploymentName: string;
 }
-const GetOnlineDeploymentRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<GetOnlineDeploymentRequest>;
-
 /** Resource tags. */
 export type GetOnlineDeploymentResponseTagsMap = { [key: string]: string | undefined };
-const GetOnlineDeploymentResponseTagsMap =
-  BatchDeploymentsCreateOrUpdateRequestTagsMap as any as S.Schema<GetOnlineDeploymentResponseTagsMap>;
-
 /** Environment variables configuration for the deployment. */
 export type OnlineDeploymentPropertiesEnvironmentVariablesMap = {
   [key: string]: string | null | undefined;
 };
-const OnlineDeploymentPropertiesEnvironmentVariablesMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<OnlineDeploymentPropertiesEnvironmentVariablesMap>;
-
 /** Property dictionary. Properties can be added, but not removed or altered. */
 export type OnlineDeploymentPropertiesPropertiesMap = { [key: string]: string | null | undefined };
-const OnlineDeploymentPropertiesPropertiesMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<OnlineDeploymentPropertiesPropertiesMap>;
-
 /** Enable or disable data collection. */
 export type CollectionDataCollectionMode = "Enabled" | "Disabled";
-const CollectionDataCollectionMode = S.String;
-
 export interface Collection {
   /** The msi client id used to collect logging to blob storage. If it's null,backend will pick a registered endpoint identity to auth. */
   clientId?: string | null;
@@ -4610,30 +3245,16 @@ export interface Collection {
   /** The sampling rate for collection. Sampling rate 1.0 means we collect 100% of data by default. */
   samplingRate?: number;
 }
-const Collection = /*@__PURE__*/ __L.at(__c24, 4) as any as S.Schema<Collection>;
-
 /** [Required] The collection configuration. Each collection has it own configuration to collect model data and the name of collection can be arbitrary string. Model data collector can be used for either payload logging or custom logging or both of them. Collection request and response are reserved for payload logging, others are for custom logging. */
 export type DataCollectorCollectionsMap = { [key: string]: Collection | null | undefined };
-const DataCollectorCollectionsMap = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<DataCollectorCollectionsMap>;
-
 /** For payload logging, we only collect payload by default. If customers also want to collect the specified headers, they can set them in captureHeaders so that backend will collect those headers along with payload. */
 export type RequestLoggingCaptureHeadersList = Array<string>;
-const RequestLoggingCaptureHeadersList =
-  CapabilityHostPropertiesInputAcaEnvironmentConnectionsList as any as S.Schema<RequestLoggingCaptureHeadersList>;
-
 export interface RequestLogging {
   /** For payload logging, we only collect payload by default. If customers also want to collect the specified headers, they can set them in captureHeaders so that backend will collect those headers along with payload. */
   captureHeaders?: RequestLoggingCaptureHeadersList | null;
 }
-const RequestLogging = /*@__PURE__*/ __L.at(__c24, 6) as any as S.Schema<RequestLogging>;
-
 /** When model data is collected to blob storage, we need to roll the data to different path to avoid logging all of them in a single blob file. If the rolling rate is hour, all data will be collected in the blob path /yyyy/MM/dd/HH/. If it's day, all data will be collected in blob path /yyyy/MM/dd/. The other benefit of rolling path is that model monitoring ui is able to select a time range of data very quickly. */
 export type DataCollectorRollingRate = "Year" | "Month" | "Day" | "Hour" | "Minute";
-const DataCollectorRollingRate = S.String;
-
 export interface DataCollector {
   /** [Required] The collection configuration. Each collection has it own configuration to collect model data and the name of collection can be arbitrary string. Model data collector can be used for either payload logging or custom logging or both of them. Collection request and response are reserved for payload logging, others are for custom logging. */
   collections: DataCollectorCollectionsMap;
@@ -4642,16 +3263,10 @@ export interface DataCollector {
   /** When model data is collected to blob storage, we need to roll the data to different path to avoid logging all of them in a single blob file. If the rolling rate is hour, all data will be collected in the blob path /yyyy/MM/dd/HH/. If it's day, all data will be collected in blob path /yyyy/MM/dd/. The other benefit of rolling path is that model monitoring ui is able to select a time range of data very quickly. */
   rollingRate?: DataCollectorRollingRate | (string & {});
 }
-const DataCollector = /*@__PURE__*/ __L.at(__c24, 7) as any as S.Schema<DataCollector>;
-
 /** Enum to determine whether PublicNetworkAccess is Enabled or Disabled for egress of a deployment. */
 export type OnlineDeploymentPropertiesEgressPublicNetworkAccess = "Enabled" | "Disabled";
-const OnlineDeploymentPropertiesEgressPublicNetworkAccess = S.String;
-
 /** Enum to determine endpoint compute type. */
 export type EndpointComputeType = "Managed" | "Kubernetes" | "AzureMLCompute";
-const EndpointComputeType = S.String;
-
 /** Deployment container liveness/readiness probe configuration. */
 export interface ProbeSettings {
   /** The number of failures to allow before returning an unhealthy status. */
@@ -4665,8 +3280,6 @@ export interface ProbeSettings {
   /** The probe timeout in ISO 8601 format. */
   timeout?: string;
 }
-const ProbeSettings = /*@__PURE__*/ __L.at(__c25, 0) as any as S.Schema<ProbeSettings>;
-
 /** Online deployment scoring requests configuration. */
 export interface OnlineRequestSettings {
   /** The number of maximum concurrent requests per node allowed per deployment. Defaults to 1. */
@@ -4676,14 +3289,7 @@ export interface OnlineRequestSettings {
   /** The scoring timeout in ISO 8601 format. Defaults to 5000ms. */
   requestTimeout?: string;
 }
-const OnlineRequestSettings = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<OnlineRequestSettings>;
-
 export type ScaleType = "Default" | "TargetUtilization";
-const ScaleType = S.String;
-
 /** Online deployment scaling configuration. */
 export interface OnlineScaleSettings {
   /** [Required] Type of deployment scaling algorithm */
@@ -4699,8 +3305,6 @@ export interface OnlineScaleSettings {
   /** TargetUtilization: target CPU utilization percentage. */
   targetUtilizationPercentage?: number;
 }
-const OnlineScaleSettings = /*@__PURE__*/ __L.at(__c25, 2) as any as S.Schema<OnlineScaleSettings>;
-
 export interface OnlineDeploymentProperties {
   /** Code configuration for the endpoint deployment. */
   codeConfiguration?: CodeConfiguration | null;
@@ -4739,11 +3343,6 @@ export interface OnlineDeploymentProperties {
   /** Startup probe verify whether an application within a container has started successfully. */
   startupProbe?: ProbeSettings | null;
 }
-const OnlineDeploymentProperties = /*@__PURE__*/ __L.at(
-  __c25,
-  3,
-) as any as S.Schema<OnlineDeploymentProperties>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type GetOnlineDeploymentResponseIdentity = BatchDeploymentsCreateOrUpdateResponseIdentity;
 /** The resource model definition representing SKU */
@@ -4770,15 +3369,8 @@ export interface GetOnlineDeploymentResponse {
   /** The resource model definition representing SKU */
   sku?: BatchDeploymentsCreateOrUpdateResponseSku;
 }
-const GetOnlineDeploymentResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  4,
-) as any as S.Schema<GetOnlineDeploymentResponse>;
-
 /** The type of container to retrieve logs from. */
 export type GetOnlineDeploymentLogsRequestContainerType = "StorageInitializer" | "InferenceServer";
-const GetOnlineDeploymentLogsRequestContainerType = S.String;
-
 export interface GetOnlineDeploymentLogsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4795,17 +3387,10 @@ export interface GetOnlineDeploymentLogsRequest {
   /** The maximum number of lines to tail. */
   tail?: number | null;
 }
-const GetOnlineDeploymentLogsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<GetOnlineDeploymentLogsRequest>;
-
 export interface DeploymentLogs {
   /** The retrieved online deployment logs. */
   content?: string | null;
 }
-const DeploymentLogs = /*@__PURE__*/ __L.at(__c25, 6) as any as S.Schema<DeploymentLogs>;
-
 export interface GetOnlineEndpointRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4816,37 +3401,16 @@ export interface GetOnlineEndpointRequest {
   /** Online Endpoint name. */
   endpointName: string;
 }
-const GetOnlineEndpointRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<GetOnlineEndpointRequest>;
-
 /** Resource tags. */
 export type GetOnlineEndpointResponseTagsMap = { [key: string]: string | undefined };
-const GetOnlineEndpointResponseTagsMap =
-  BatchDeploymentsCreateOrUpdateRequestTagsMap as any as S.Schema<GetOnlineEndpointResponseTagsMap>;
-
 /** Property dictionary. Properties can be added, but not removed or altered. */
 export type OnlineEndpointPropertiesPropertiesMap = { [key: string]: string | null | undefined };
-const OnlineEndpointPropertiesPropertiesMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<OnlineEndpointPropertiesPropertiesMap>;
-
 /** Percentage of traffic to be mirrored to each deployment without using returned scoring. Traffic values need to sum to utmost 50. */
 export type OnlineEndpointPropertiesMirrorTrafficMap = { [key: string]: number | undefined };
-const OnlineEndpointPropertiesMirrorTrafficMap = /*@__PURE__*/ __L.at(
-  __c26,
-  0,
-) as any as S.Schema<OnlineEndpointPropertiesMirrorTrafficMap>;
-
 /** Enum to determine whether PublicNetworkAccess is Enabled or Disabled. */
 export type OnlineEndpointPropertiesPublicNetworkAccess = "Enabled" | "Disabled";
-const OnlineEndpointPropertiesPublicNetworkAccess = S.String;
-
 /** Percentage of traffic from endpoint to divert to each deployment. Traffic values need to sum to 100. */
 export type OnlineEndpointPropertiesTrafficMap = { [key: string]: number | undefined };
-const OnlineEndpointPropertiesTrafficMap =
-  OnlineEndpointPropertiesMirrorTrafficMap as any as S.Schema<OnlineEndpointPropertiesTrafficMap>;
-
 /** Online endpoint configuration */
 export interface OnlineEndpointProperties {
   /** [Required] The authentication method for invoking the endpoint (data plane operation). Use 'Key' for key-based authentication. Use 'AMLToken' for Azure Machine Learning token-based authentication. Use 'AADToken' for Microsoft Entra token-based authentication. */
@@ -4872,11 +3436,6 @@ export interface OnlineEndpointProperties {
   /** Percentage of traffic from endpoint to divert to each deployment. Traffic values need to sum to 100. */
   traffic?: OnlineEndpointPropertiesTrafficMap | null;
 }
-const OnlineEndpointProperties = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<OnlineEndpointProperties>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type GetOnlineEndpointResponseIdentity = BatchDeploymentsCreateOrUpdateResponseIdentity;
 /** The resource model definition representing SKU */
@@ -4903,11 +3462,6 @@ export interface GetOnlineEndpointResponse {
   /** The resource model definition representing SKU */
   sku?: BatchDeploymentsCreateOrUpdateResponseSku;
 }
-const GetOnlineEndpointResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<GetOnlineEndpointResponse>;
-
 export interface GetOnlineEndpointTokenRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4918,11 +3472,6 @@ export interface GetOnlineEndpointTokenRequest {
   /** Online Endpoint name. */
   endpointName: string;
 }
-const GetOnlineEndpointTokenRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  3,
-) as any as S.Schema<GetOnlineEndpointTokenRequest>;
-
 /** Service Token */
 export interface EndpointAuthToken {
   /** Access token for endpoint authentication. */
@@ -4934,8 +3483,6 @@ export interface EndpointAuthToken {
   /** Access token type. */
   tokenType?: string | null;
 }
-const EndpointAuthToken = /*@__PURE__*/ __L.at(__c26, 4) as any as S.Schema<EndpointAuthToken>;
-
 export interface GetPrivateEndpointConnectionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4946,11 +3493,6 @@ export interface GetPrivateEndpointConnectionRequest {
   /** NRP Private Endpoint Connection Name */
   privateEndpointConnectionName: string;
 }
-const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<GetPrivateEndpointConnectionRequest>;
-
 /** The Private Endpoint resource. */
 export interface WorkspacePrivateEndpointResource {
   /** e.g. /subscriptions/{networkSubscriptionId}/resourceGroups/{rgName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName} */
@@ -4958,11 +3500,6 @@ export interface WorkspacePrivateEndpointResource {
   /** The subnetId that the private endpoint is connected to. */
   subnetArmId?: string;
 }
-const WorkspacePrivateEndpointResource = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<WorkspacePrivateEndpointResource>;
-
 /** Connection status of the service consumer with the service provider */
 export type EndpointServiceConnectionStatus =
   | "Approved"
@@ -4970,8 +3507,6 @@ export type EndpointServiceConnectionStatus =
   | "Rejected"
   | "Disconnected"
   | "Timeout";
-const EndpointServiceConnectionStatus = S.String;
-
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateLinkServiceConnectionState {
   /** Some RP chose "None". Other RPs use this for region expansion. */
@@ -4981,19 +3516,12 @@ export interface PrivateLinkServiceConnectionState {
   /** Connection status of the service consumer with the service provider\r\nPossible state transitions\r\nPending -> Approved (Service provider approves the connection request)\r\nPending -> Rejected (Service provider rejects the connection request)\r\nPending -> Disconnected (Service provider deletes the connection)\r\nApproved -> Rejected (Service provider rejects the approved connection)\r\nApproved -> Disconnected (Service provider deletes the connection)\r\nRejected -> Pending (Service consumer re-initiates the connection request that was rejected)\r\nRejected -> Disconnected (Service provider deletes the connection) */
   status?: EndpointServiceConnectionStatus | (string & {});
 }
-const PrivateLinkServiceConnectionState = /*@__PURE__*/ __L.at(
-  __c26,
-  7,
-) as any as S.Schema<PrivateLinkServiceConnectionState>;
-
 /** The current provisioning state. */
 export type PrivateEndpointConnectionProvisioningState =
   | "Succeeded"
   | "Creating"
   | "Deleting"
   | "Failed";
-const PrivateEndpointConnectionProvisioningState = S.String;
-
 /** Private endpoint connection properties. */
 export interface PrivateEndpointConnectionProperties {
   privateEndpoint?: WorkspacePrivateEndpointResource;
@@ -5002,20 +3530,12 @@ export interface PrivateEndpointConnectionProperties {
   /** The current provisioning state. */
   provisioningState?: PrivateEndpointConnectionProvisioningState;
 }
-const PrivateEndpointConnectionProperties = /*@__PURE__*/ __L.at(
-  __c27,
-  0,
-) as any as S.Schema<PrivateEndpointConnectionProperties>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type GetPrivateEndpointConnectionResponseIdentity =
   BatchDeploymentsCreateOrUpdateResponseIdentity;
 /** The resource model definition representing SKU */
 export type GetPrivateEndpointConnectionResponseSku = BatchDeploymentsCreateOrUpdateResponseSku;
 export type GetPrivateEndpointConnectionResponseTagsMap = { [key: string]: string | undefined };
-const GetPrivateEndpointConnectionResponseTagsMap =
-  BatchDeploymentsCreateOrUpdateRequestTagsMap as any as S.Schema<GetPrivateEndpointConnectionResponseTagsMap>;
-
 export interface GetPrivateEndpointConnectionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -5035,11 +3555,6 @@ export interface GetPrivateEndpointConnectionResponse {
   location?: string;
   tags?: GetPrivateEndpointConnectionResponseTagsMap;
 }
-const GetPrivateEndpointConnectionResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  1,
-) as any as S.Schema<GetPrivateEndpointConnectionResponse>;
-
 export interface GetRegistryRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5048,53 +3563,28 @@ export interface GetRegistryRequest {
   /** Name of Azure Machine Learning registry. This is case-insensitive */
   registryName: string;
 }
-const GetRegistryRequest = /*@__PURE__*/ __L.at(__c27, 2) as any as S.Schema<GetRegistryRequest>;
-
 /** Resource tags. */
 export type GetRegistryResponseTagsMap = { [key: string]: string | undefined };
-const GetRegistryResponseTagsMap =
-  BatchDeploymentsCreateOrUpdateRequestTagsMap as any as S.Schema<GetRegistryResponseTagsMap>;
-
 /** ARM ResourceId of a resource */
 export interface ArmResourceId {
   /** Arm ResourceId is in the format "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Storage/storageAccounts/{StorageAccountName}" or "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{AcrName}" */
   resourceId?: string | null;
 }
-const ArmResourceId = /*@__PURE__*/ __L.at(__c27, 3) as any as S.Schema<ArmResourceId>;
-
 /** Details for managed resource group assigned identities. */
 export interface ManagedResourceGroupAssignedIdentities {
   /** Identity principal Id */
   principalId?: string;
 }
-const ManagedResourceGroupAssignedIdentities = /*@__PURE__*/ __L.at(
-  __c27,
-  4,
-) as any as S.Schema<ManagedResourceGroupAssignedIdentities>;
-
 /** List of assigned identities for the managed resource group */
 export type ManagedResourceGroupSettingsAssignedIdentitiesList =
   Array<ManagedResourceGroupAssignedIdentities>;
-const ManagedResourceGroupSettingsAssignedIdentitiesList = /*@__PURE__*/ __L.at(
-  __c27,
-  5,
-) as any as S.Schema<ManagedResourceGroupSettingsAssignedIdentitiesList>;
-
 /** Managed resource group settings */
 export interface ManagedResourceGroupSettings {
   /** List of assigned identities for the managed resource group */
   assignedIdentities?: ManagedResourceGroupSettingsAssignedIdentitiesList | null;
 }
-const ManagedResourceGroupSettings = /*@__PURE__*/ __L.at(
-  __c27,
-  6,
-) as any as S.Schema<ManagedResourceGroupSettings>;
-
 /** The group ids */
 export type RegistryPrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
-const RegistryPrivateEndpointConnectionPropertiesGroupIdsList =
-  CapabilityHostPropertiesInputAcaEnvironmentConnectionsList as any as S.Schema<RegistryPrivateEndpointConnectionPropertiesGroupIdsList>;
-
 /** The PE network resource that is linked to this PE connection. */
 export interface PrivateEndpointResource {
   /** The ARM identifier for Private Endpoint */
@@ -5102,11 +3592,6 @@ export interface PrivateEndpointResource {
   /** The subnetId that the private endpoint is connected to. */
   subnetArmId?: string | null;
 }
-const PrivateEndpointResource = /*@__PURE__*/ __L.at(
-  __c27,
-  7,
-) as any as S.Schema<PrivateEndpointResource>;
-
 /** The connection state. */
 export interface RegistryPrivateLinkServiceConnectionState {
   /** Some RP chose "None". Other RPs use this for region expansion. */
@@ -5116,11 +3601,6 @@ export interface RegistryPrivateLinkServiceConnectionState {
   /** Connection status of the service consumer with the service provider */
   status?: EndpointServiceConnectionStatus | (string & {});
 }
-const RegistryPrivateLinkServiceConnectionState = /*@__PURE__*/ __L.at(
-  __c28,
-  0,
-) as any as S.Schema<RegistryPrivateLinkServiceConnectionState>;
-
 /** Properties of the Private Endpoint Connection */
 export interface RegistryPrivateEndpointConnectionProperties {
   /** The group ids */
@@ -5132,11 +3612,6 @@ export interface RegistryPrivateEndpointConnectionProperties {
   /** One of null, "Succeeded", "Provisioning", "Failed". While not approved, it's null. */
   provisioningState?: string | null;
 }
-const RegistryPrivateEndpointConnectionProperties = /*@__PURE__*/ __L.at(
-  __c28,
-  1,
-) as any as S.Schema<RegistryPrivateEndpointConnectionProperties>;
-
 /** Private endpoint connection definition. */
 export interface RegistryPrivateEndpointConnection {
   /** This is the private endpoint connection name created on SRP Full resource id: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.MachineLearningServices/{resourceType}/{resourceName}/registryPrivateEndpointConnections/{peConnectionName} */
@@ -5146,19 +3621,9 @@ export interface RegistryPrivateEndpointConnection {
   /** Properties of the Private Endpoint Connection */
   properties?: RegistryPrivateEndpointConnectionProperties | null;
 }
-const RegistryPrivateEndpointConnection = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<RegistryPrivateEndpointConnection>;
-
 /** Private endpoint connections info used for pending connections in private link portal */
 export type RegistryPropertiesRegistryPrivateEndpointConnectionsList =
   Array<RegistryPrivateEndpointConnection>;
-const RegistryPropertiesRegistryPrivateEndpointConnectionsList = /*@__PURE__*/ __L.at(
-  __c28,
-  3,
-) as any as S.Schema<RegistryPropertiesRegistryPrivateEndpointConnectionsList>;
-
 export interface SystemCreatedAcrAccount {
   /** Name of the ACR account */
   acrAccountName?: string | null;
@@ -5167,25 +3632,13 @@ export interface SystemCreatedAcrAccount {
   /** This is populated once the ACR account is created. */
   armResourceId?: ArmResourceId | null;
 }
-const SystemCreatedAcrAccount = /*@__PURE__*/ __L.at(
-  __c28,
-  4,
-) as any as S.Schema<SystemCreatedAcrAccount>;
-
 /** Details of ACR account to be used for the Registry */
 export interface AcrDetails {
   /** Details of system created ACR account to be used for the Registry */
   systemCreatedAcrAccount?: SystemCreatedAcrAccount | null;
 }
-const AcrDetails = /*@__PURE__*/ __L.at(__c28, 5) as any as S.Schema<AcrDetails>;
-
 /** List of ACR accounts */
 export type RegistryRegionArmDetailsAcrDetailsList = Array<AcrDetails>;
-const RegistryRegionArmDetailsAcrDetailsList = /*@__PURE__*/ __L.at(
-  __c28,
-  6,
-) as any as S.Schema<RegistryRegionArmDetailsAcrDetailsList>;
-
 export interface SystemCreatedStorageAccount {
   /** Public blob access allowed */
   allowBlobPublicAccess?: boolean;
@@ -5198,28 +3651,13 @@ export interface SystemCreatedStorageAccount {
   /** Allowed values: "Standard_LRS", "Standard_GRS", "Standard_RAGRS", "Standard_ZRS", "Standard_GZRS", "Standard_RAGZRS", "Premium_LRS", "Premium_ZRS" */
   storageAccountType?: string | null;
 }
-const SystemCreatedStorageAccount = /*@__PURE__*/ __L.at(
-  __c28,
-  7,
-) as any as S.Schema<SystemCreatedStorageAccount>;
-
 /** Details of storage account to be used for the Registry */
 export interface StorageAccountDetails {
   /** Details of system created storage account to be used for the registry */
   systemCreatedStorageAccount?: SystemCreatedStorageAccount | null;
 }
-const StorageAccountDetails = /*@__PURE__*/ __L.at(
-  __c29,
-  0,
-) as any as S.Schema<StorageAccountDetails>;
-
 /** List of storage accounts */
 export type RegistryRegionArmDetailsStorageAccountDetailsList = Array<StorageAccountDetails>;
-const RegistryRegionArmDetailsStorageAccountDetailsList = /*@__PURE__*/ __L.at(
-  __c29,
-  1,
-) as any as S.Schema<RegistryRegionArmDetailsStorageAccountDetailsList>;
-
 /** Details for each region the registry is in */
 export interface RegistryRegionArmDetails {
   /** List of ACR accounts */
@@ -5229,18 +3667,8 @@ export interface RegistryRegionArmDetails {
   /** List of storage accounts */
   storageAccountDetails?: RegistryRegionArmDetailsStorageAccountDetailsList | null;
 }
-const RegistryRegionArmDetails = /*@__PURE__*/ __L.at(
-  __c29,
-  2,
-) as any as S.Schema<RegistryRegionArmDetails>;
-
 /** Details of each region the registry is in */
 export type RegistryPropertiesRegionDetailsList = Array<RegistryRegionArmDetails>;
-const RegistryPropertiesRegionDetailsList = /*@__PURE__*/ __L.at(
-  __c29,
-  3,
-) as any as S.Schema<RegistryPropertiesRegionDetailsList>;
-
 /** Details of the Registry */
 export interface RegistryProperties {
   /** Discovery URL for the Registry */
@@ -5260,8 +3688,6 @@ export interface RegistryProperties {
   /** Details of each region the registry is in */
   regionDetails?: RegistryPropertiesRegionDetailsList | null;
 }
-const RegistryProperties = /*@__PURE__*/ __L.at(__c29, 4) as any as S.Schema<RegistryProperties>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type GetRegistryResponseIdentity = BatchDeploymentsCreateOrUpdateResponseIdentity;
 /** The resource model definition representing SKU */
@@ -5288,8 +3714,6 @@ export interface GetRegistryResponse {
   /** The resource model definition representing SKU */
   sku?: BatchDeploymentsCreateOrUpdateResponseSku;
 }
-const GetRegistryResponse = /*@__PURE__*/ __L.at(__c29, 5) as any as S.Schema<GetRegistryResponse>;
-
 export interface GetRegistryCodeContainerRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5300,11 +3724,6 @@ export interface GetRegistryCodeContainerRequest {
   /** Container name. */
   codeName: string;
 }
-const GetRegistryCodeContainerRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  6,
-) as any as S.Schema<GetRegistryCodeContainerRequest>;
-
 export interface GetRegistryCodeContainerResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -5317,9 +3736,6 @@ export interface GetRegistryCodeContainerResponse {
   /** [Required] Additional attributes of the entity. */
   properties: CodeContainerProperties;
 }
-const GetRegistryCodeContainerResponse =
-  CodeContainersCreateOrUpdateResponse as any as S.Schema<GetRegistryCodeContainerResponse>;
-
 export interface GetRegistryCodeVersionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5332,11 +3748,6 @@ export interface GetRegistryCodeVersionRequest {
   /** Version identifier. */
   version: string;
 }
-const GetRegistryCodeVersionRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  7,
-) as any as S.Schema<GetRegistryCodeVersionRequest>;
-
 export interface GetRegistryCodeVersionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -5349,9 +3760,6 @@ export interface GetRegistryCodeVersionResponse {
   /** [Required] Additional attributes of the entity. */
   properties: CodeVersionProperties;
 }
-const GetRegistryCodeVersionResponse =
-  CodeVersionsCreateOrUpdateResponse as any as S.Schema<GetRegistryCodeVersionResponse>;
-
 export interface GetRegistryComponentContainerRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5362,11 +3770,6 @@ export interface GetRegistryComponentContainerRequest {
   /** Container name. */
   componentName: string;
 }
-const GetRegistryComponentContainerRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  0,
-) as any as S.Schema<GetRegistryComponentContainerRequest>;
-
 export interface GetRegistryComponentContainerResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -5379,9 +3782,6 @@ export interface GetRegistryComponentContainerResponse {
   /** [Required] Additional attributes of the entity. */
   properties: ComponentContainerProperties;
 }
-const GetRegistryComponentContainerResponse =
-  ComponentContainersCreateOrUpdateResponse as any as S.Schema<GetRegistryComponentContainerResponse>;
-
 export interface GetRegistryComponentVersionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5394,11 +3794,6 @@ export interface GetRegistryComponentVersionRequest {
   /** Version identifier. */
   version: string;
 }
-const GetRegistryComponentVersionRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  1,
-) as any as S.Schema<GetRegistryComponentVersionRequest>;
-
 export interface GetRegistryComponentVersionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -5411,9 +3806,6 @@ export interface GetRegistryComponentVersionResponse {
   /** [Required] Additional attributes of the entity. */
   properties: ComponentVersionProperties;
 }
-const GetRegistryComponentVersionResponse =
-  ComponentVersionsCreateOrUpdateResponse as any as S.Schema<GetRegistryComponentVersionResponse>;
-
 export interface GetRegistryDataContainerRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5424,11 +3816,6 @@ export interface GetRegistryDataContainerRequest {
   /** Container name. */
   name: string;
 }
-const GetRegistryDataContainerRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  2,
-) as any as S.Schema<GetRegistryDataContainerRequest>;
-
 export interface GetRegistryDataContainerResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -5441,9 +3828,6 @@ export interface GetRegistryDataContainerResponse {
   /** [Required] Additional attributes of the entity. */
   properties: DataContainerProperties;
 }
-const GetRegistryDataContainerResponse =
-  DataContainersCreateOrUpdateResponse as any as S.Schema<GetRegistryDataContainerResponse>;
-
 export interface GetRegistryDataReferenceBlobReferenceSASRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5460,29 +3844,17 @@ export interface GetRegistryDataReferenceBlobReferenceSASRequest {
   /** Blob uri of the asset to be accessed */
   blobUri?: string | null;
 }
-const GetRegistryDataReferenceBlobReferenceSASRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  3,
-) as any as S.Schema<GetRegistryDataReferenceBlobReferenceSASRequest>;
-
 /** Enum to determine the DataReference credentials type. */
 export type DataReferenceCredentialType =
   | "SAS"
   | "DockerCredentials"
   | "ManagedIdentity"
   | "NoCredentials";
-const DataReferenceCredentialType = S.String;
-
 /** DataReferenceCredential base class */
 export interface DataReferenceCredential {
   /** [Required] Credential type used to authentication with storage. */
   credentialType: DataReferenceCredentialType;
 }
-const DataReferenceCredential = /*@__PURE__*/ __L.at(
-  __c30,
-  4,
-) as any as S.Schema<DataReferenceCredential>;
-
 export interface GetBlobReferenceForConsumptionDto {
   /** Blob uri, example: https://blob.windows.core.net/Container/Path */
   blobUri?: string | null;
@@ -5491,21 +3863,11 @@ export interface GetBlobReferenceForConsumptionDto {
   /** The ARM id of the storage account */
   storageAccountArmId?: string | null;
 }
-const GetBlobReferenceForConsumptionDto = /*@__PURE__*/ __L.at(
-  __c30,
-  5,
-) as any as S.Schema<GetBlobReferenceForConsumptionDto>;
-
 /** BlobReferenceSASResponse for getBlobReferenceSAS API */
 export interface GetBlobReferenceSASResponseDto {
   /** Blob reference for consumption details */
   blobReferenceForConsumption?: GetBlobReferenceForConsumptionDto | null;
 }
-const GetBlobReferenceSASResponseDto = /*@__PURE__*/ __L.at(
-  __c30,
-  6,
-) as any as S.Schema<GetBlobReferenceSASResponseDto>;
-
 export interface GetRegistryDataVersionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5518,11 +3880,6 @@ export interface GetRegistryDataVersionRequest {
   /** Version identifier. */
   version: string;
 }
-const GetRegistryDataVersionRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  7,
-) as any as S.Schema<GetRegistryDataVersionRequest>;
-
 export interface GetRegistryDataVersionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -5535,9 +3892,6 @@ export interface GetRegistryDataVersionResponse {
   /** [Required] Additional attributes of the entity. */
   properties: DataVersionBaseProperties;
 }
-const GetRegistryDataVersionResponse =
-  DataVersionsCreateOrUpdateResponse as any as S.Schema<GetRegistryDataVersionResponse>;
-
 export interface GetRegistryEnvironmentContainerRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5548,11 +3902,6 @@ export interface GetRegistryEnvironmentContainerRequest {
   /** Container name. This is case-sensitive. */
   environmentName: string;
 }
-const GetRegistryEnvironmentContainerRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  0,
-) as any as S.Schema<GetRegistryEnvironmentContainerRequest>;
-
 export interface GetRegistryEnvironmentContainerResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -5565,9 +3914,6 @@ export interface GetRegistryEnvironmentContainerResponse {
   /** [Required] Additional attributes of the entity. */
   properties: EnvironmentContainerProperties;
 }
-const GetRegistryEnvironmentContainerResponse =
-  ComponentContainersCreateOrUpdateResponse as any as S.Schema<GetRegistryEnvironmentContainerResponse>;
-
 export interface GetRegistryEnvironmentVersionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5580,11 +3926,6 @@ export interface GetRegistryEnvironmentVersionRequest {
   /** Version identifier. This is case-sensitive. */
   version: string;
 }
-const GetRegistryEnvironmentVersionRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  1,
-) as any as S.Schema<GetRegistryEnvironmentVersionRequest>;
-
 export interface GetRegistryEnvironmentVersionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -5597,9 +3938,6 @@ export interface GetRegistryEnvironmentVersionResponse {
   /** [Required] Additional attributes of the entity. */
   properties: EnvironmentVersionProperties;
 }
-const GetRegistryEnvironmentVersionResponse =
-  EnvironmentVersionsCreateOrUpdateResponse as any as S.Schema<GetRegistryEnvironmentVersionResponse>;
-
 export interface GetRegistryModelContainerRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5610,11 +3948,6 @@ export interface GetRegistryModelContainerRequest {
   /** Container name. This is case-sensitive. */
   modelName: string;
 }
-const GetRegistryModelContainerRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  2,
-) as any as S.Schema<GetRegistryModelContainerRequest>;
-
 export interface GetRegistryModelContainerResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -5627,9 +3960,6 @@ export interface GetRegistryModelContainerResponse {
   /** [Required] Additional attributes of the entity. */
   properties: ModelContainerProperties;
 }
-const GetRegistryModelContainerResponse =
-  CodeContainersCreateOrUpdateResponse as any as S.Schema<GetRegistryModelContainerResponse>;
-
 export interface GetRegistryModelVersionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5642,11 +3972,6 @@ export interface GetRegistryModelVersionRequest {
   /** Version identifier. This is case-sensitive. */
   version: string;
 }
-const GetRegistryModelVersionRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  3,
-) as any as S.Schema<GetRegistryModelVersionRequest>;
-
 export interface GetRegistryModelVersionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -5659,11 +3984,6 @@ export interface GetRegistryModelVersionResponse {
   /** [Required] Additional attributes of the entity. */
   properties: ModelVersionProperties;
 }
-const GetRegistryModelVersionResponse = /*@__PURE__*/ __L.at(
-  __c31,
-  4,
-) as any as S.Schema<GetRegistryModelVersionResponse>;
-
 export interface GetScheduleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5674,21 +3994,11 @@ export interface GetScheduleRequest {
   /** Schedule name. */
   name: string;
 }
-const GetScheduleRequest = /*@__PURE__*/ __L.at(__c31, 5) as any as S.Schema<GetScheduleRequest>;
-
 /** The asset property dictionary. */
 export type SchedulePropertiesPropertiesMap = { [key: string]: string | null | undefined };
-const SchedulePropertiesPropertiesMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<SchedulePropertiesPropertiesMap>;
-
 /** Tag dictionary. Tags can be added, removed, and updated. */
 export type SchedulePropertiesTagsMap = { [key: string]: string | null | undefined };
-const SchedulePropertiesTagsMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<SchedulePropertiesTagsMap>;
-
 export type ScheduleActionType = "CreateJob" | "InvokeBatchEndpoint" | "CreateMonitor";
-const ScheduleActionType = S.String;
-
 export interface ScheduleActionBase {
   /** [Required] Specifies the action type of the schedule */
   actionType: ScheduleActionType | (string & {});
@@ -5699,8 +4009,6 @@ export interface ScheduleActionBase {
   /** InvokeBatchEndpoint: the endpoint invocation definition. */
   endpointInvocationDefinition?: unknown;
 }
-const ScheduleActionBase = /*@__PURE__*/ __L.at(__c31, 6) as any as S.Schema<ScheduleActionBase>;
-
 export type ScheduleProvisioningStatus =
   | "Creating"
   | "Updating"
@@ -5708,8 +4016,6 @@ export type ScheduleProvisioningStatus =
   | "Succeeded"
   | "Failed"
   | "Canceled";
-const ScheduleProvisioningStatus = S.String;
-
 export interface TriggerBase {
   /** Specifies end time of schedule in ISO 8601, but without a UTC offset. Refer https://en.wikipedia.org/wiki/ISO_8601. Recommented format would be "2022-06-01T00:00:01" If not present, the schedule will run indefinitely */
   endTime?: string | null;
@@ -5728,8 +4034,6 @@ export interface TriggerBase {
   /** Recurrence: the recurrence schedule (hours, minutes, weekDays, monthDays). */
   schedule?: unknown;
 }
-const TriggerBase = /*@__PURE__*/ __L.at(__c31, 7) as any as S.Schema<TriggerBase>;
-
 /** Base definition of a schedule */
 export interface ScheduleProperties {
   /** The asset description text. */
@@ -5749,8 +4053,6 @@ export interface ScheduleProperties {
   /** [Required] Specifies the trigger details */
   trigger: TriggerBase;
 }
-const ScheduleProperties = /*@__PURE__*/ __L.at(__c32, 0) as any as S.Schema<ScheduleProperties>;
-
 export interface GetScheduleResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -5763,8 +4065,6 @@ export interface GetScheduleResponse {
   /** [Required] Additional attributes of the entity. */
   properties: ScheduleProperties;
 }
-const GetScheduleResponse = /*@__PURE__*/ __L.at(__c32, 1) as any as S.Schema<GetScheduleResponse>;
-
 export interface GetServerlessEndpointRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5775,29 +4075,15 @@ export interface GetServerlessEndpointRequest {
   /** Serverless Endpoint name. */
   name: string;
 }
-const GetServerlessEndpointRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  2,
-) as any as S.Schema<GetServerlessEndpointRequest>;
-
 /** Resource tags. */
 export type GetServerlessEndpointResponseTagsMap = { [key: string]: string | undefined };
-const GetServerlessEndpointResponseTagsMap =
-  BatchDeploymentsCreateOrUpdateRequestTagsMap as any as S.Schema<GetServerlessEndpointResponseTagsMap>;
-
 export type ServerlessInferenceEndpointAuthMode = "Key" | "AAD" | "KeyAndAAD";
-const ServerlessInferenceEndpointAuthMode = S.String;
-
 /** Specifies the status of content safety. */
 export type ContentSafetyStatus = "Enabled" | "Disabled";
-const ContentSafetyStatus = S.String;
-
 export interface ContentSafety {
   /** [Required] Specifies the status of content safety. */
   contentSafetyStatus: ContentSafetyStatus | (string & {});
 }
-const ContentSafety = /*@__PURE__*/ __L.at(__c32, 3) as any as S.Schema<ContentSafety>;
-
 /** State of the Serverless Endpoint. */
 export type ServerlessEndpointState =
   | "Unknown"
@@ -5809,30 +4095,18 @@ export type ServerlessEndpointState =
   | "Suspended"
   | "CreationFailed"
   | "DeletionFailed";
-const ServerlessEndpointState = S.String;
-
 /** Specifies any required headers to target this serverless endpoint. */
 export type ServerlessInferenceEndpointHeadersMap = { [key: string]: string | null | undefined };
-const ServerlessInferenceEndpointHeadersMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<ServerlessInferenceEndpointHeadersMap>;
-
 export interface ServerlessInferenceEndpoint {
   /** Specifies any required headers to target this serverless endpoint. */
   headers?: ServerlessInferenceEndpointHeadersMap | null;
   /** [Required] The inference uri to target when making requests against the Serverless Endpoint. */
   uri: string;
 }
-const ServerlessInferenceEndpoint = /*@__PURE__*/ __L.at(
-  __c32,
-  4,
-) as any as S.Schema<ServerlessInferenceEndpoint>;
-
 export interface ModelSettings {
   /** The unique model identifier that this ServerlessEndpoint should provision. */
   modelId?: string | null;
 }
-const ModelSettings = /*@__PURE__*/ __L.at(__c32, 5) as any as S.Schema<ModelSettings>;
-
 export interface ServerlessEndpointProperties {
   /** [Required] Specifies the authentication mode for the Serverless endpoint. */
   authMode: ServerlessInferenceEndpointAuthMode;
@@ -5849,11 +4123,6 @@ export interface ServerlessEndpointProperties {
   /** State of endpoint provisioning. */
   provisioningState?: EndpointProvisioningState;
 }
-const ServerlessEndpointProperties = /*@__PURE__*/ __L.at(
-  __c32,
-  6,
-) as any as S.Schema<ServerlessEndpointProperties>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type GetServerlessEndpointResponseIdentity = BatchDeploymentsCreateOrUpdateResponseIdentity;
 /** The resource model definition representing SKU */
@@ -5880,11 +4149,6 @@ export interface GetServerlessEndpointResponse {
   /** The resource model definition representing SKU */
   sku?: BatchDeploymentsCreateOrUpdateResponseSku;
 }
-const GetServerlessEndpointResponse = /*@__PURE__*/ __L.at(
-  __c32,
-  7,
-) as any as S.Schema<GetServerlessEndpointResponse>;
-
 export interface GetWorkspaceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5893,19 +4157,12 @@ export interface GetWorkspaceRequest {
   /** Azure Machine Learning Workspace Name */
   workspaceName: string;
 }
-const GetWorkspaceRequest = /*@__PURE__*/ __L.at(__c33, 0) as any as S.Schema<GetWorkspaceRequest>;
-
 export type WorkspacePropertiesAssociatedWorkspacesList = Array<string>;
-const WorkspacePropertiesAssociatedWorkspacesList =
-  CapabilityHostPropertiesInputAcaEnvironmentConnectionsList as any as S.Schema<WorkspacePropertiesAssociatedWorkspacesList>;
-
 /** Identity object used for encryption. */
 export interface IdentityForCmk {
   /** UserAssignedIdentity to be used to fetch the encryption key from keyVault */
   userAssignedIdentity?: string;
 }
-const IdentityForCmk = /*@__PURE__*/ __L.at(__c33, 1) as any as S.Schema<IdentityForCmk>;
-
 /** Customer Key vault properties. */
 export interface KeyVaultProperties {
   /** Currently, we support only SystemAssigned MSI. We need this when we support UserAssignedIdentities */
@@ -5915,12 +4172,8 @@ export interface KeyVaultProperties {
   /** KeyVault Arm Id that contains the data encryption key */
   keyVaultArmId: string;
 }
-const KeyVaultProperties = /*@__PURE__*/ __L.at(__c33, 2) as any as S.Schema<KeyVaultProperties>;
-
 /** Indicates whether or not the encryption is enabled for the workspace. */
 export type EncryptionStatus = "Enabled" | "Disabled";
-const EncryptionStatus = S.String;
-
 export interface EncryptionProperty {
   /** The byok cosmosdb account that customer brings to store customer's data with encryption */
   cosmosDbResourceId?: string;
@@ -5935,57 +4188,30 @@ export interface EncryptionProperty {
   /** The byok storage account that customer brings to store customer's data with encryption */
   storageAccountResourceId?: string;
 }
-const EncryptionProperty = /*@__PURE__*/ __L.at(__c33, 3) as any as S.Schema<EncryptionProperty>;
-
 export interface ComputeRuntimeDto {
   sparkRuntimeVersion?: string;
 }
-const ComputeRuntimeDto = /*@__PURE__*/ __L.at(__c33, 4) as any as S.Schema<ComputeRuntimeDto>;
-
 export interface FeatureStoreSettings {
   computeRuntime?: ComputeRuntimeDto;
   offlineStoreConnectionName?: string;
   onlineStoreConnectionName?: string;
 }
-const FeatureStoreSettings = /*@__PURE__*/ __L.at(
-  __c33,
-  5,
-) as any as S.Schema<FeatureStoreSettings>;
-
 /** Isolation mode for the managed network of a machine learning workspace. */
 export type IsolationMode = "Disabled" | "AllowInternetOutbound" | "AllowOnlyApprovedOutbound";
-const IsolationMode = S.String;
-
 /** Dictionary of <OutboundRule> */
 export type ManagedNetworkSettingsOutboundRulesMap = { [key: string]: OutboundRule | undefined };
-const ManagedNetworkSettingsOutboundRulesMap = /*@__PURE__*/ __L.at(
-  __c33,
-  6,
-) as any as S.Schema<ManagedNetworkSettingsOutboundRulesMap>;
-
 /** Status for the managed network of a machine learning workspace. */
 export type ManagedNetworkStatus = "Inactive" | "Active";
-const ManagedNetworkStatus = S.String;
-
 /** Status of the Provisioning for the managed network of a machine learning workspace. */
 export interface ManagedNetworkProvisionStatus {
   sparkReady?: boolean;
   /** Status for the managed network of a machine learning workspace. */
   status?: ManagedNetworkStatus | (string & {});
 }
-const ManagedNetworkProvisionStatus = /*@__PURE__*/ __L.at(
-  __c33,
-  7,
-) as any as S.Schema<ManagedNetworkProvisionStatus>;
-
 /** Firewall Sku used for FQDN Rules */
 export type FirewallSku = "Standard" | "Basic";
-const FirewallSku = S.String;
-
 /** The Kind of the managed network. Users can switch from V1 to V2 for granular access controls, but cannot switch back to V1 once V2 is enabled. */
 export type ManagedNetworkKind = "V1" | "V2";
-const ManagedNetworkKind = S.String;
-
 /** Managed Network settings for a machine learning workspace. */
 export interface ManagedNetworkSettings {
   /** A flag to indicate if monitoring needs to be enabled for the managed network. */
@@ -6004,20 +4230,10 @@ export interface ManagedNetworkSettings {
   /** Public IP address assigned to the Azure Firewall. */
   firewallPublicIpAddress?: string | null;
 }
-const ManagedNetworkSettings = /*@__PURE__*/ __L.at(
-  __c34,
-  0,
-) as any as S.Schema<ManagedNetworkSettings>;
-
 export interface NotebookPreparationError {
   errorMessage?: string;
   statusCode?: number;
 }
-const NotebookPreparationError = /*@__PURE__*/ __L.at(
-  __c34,
-  1,
-) as any as S.Schema<NotebookPreparationError>;
-
 export interface NotebookResourceInfo {
   fqdn?: string;
   isPrivateLinkEnabled?: boolean;
@@ -6026,11 +4242,6 @@ export interface NotebookResourceInfo {
   /** the data plane resourceId that used to initialize notebook component */
   resourceId?: string;
 }
-const NotebookResourceInfo = /*@__PURE__*/ __L.at(
-  __c34,
-  2,
-) as any as S.Schema<NotebookResourceInfo>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type PrivateEndpointConnectionIdentity = BatchDeploymentsCreateOrUpdateResponseIdentity;
 /** The resource model definition representing SKU */
@@ -6056,44 +4267,22 @@ export interface PrivateEndpointConnection {
   location?: string;
   tags?: PrivateEndpointConnectionTagsMap;
 }
-const PrivateEndpointConnection =
-  GetPrivateEndpointConnectionResponse as any as S.Schema<PrivateEndpointConnection>;
-
 /** The list of private endpoint connections in the workspace. */
 export type WorkspacePropertiesPrivateEndpointConnectionsList = Array<PrivateEndpointConnection>;
-const WorkspacePropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ __L.at(
-  __c34,
-  3,
-) as any as S.Schema<WorkspacePropertiesPrivateEndpointConnectionsList>;
-
 /** Enum to determine whether PublicNetworkAccess is Enabled or Disabled. */
 export type PublicNetworkAccessType = "Enabled" | "Disabled";
-const PublicNetworkAccessType = S.String;
-
 export interface ServerlessComputeSettings {
   /** The resource ID of an existing virtual network subnet in which serverless compute nodes should be deployed */
   serverlessComputeCustomSubnet?: string;
   /** The flag to signal if serverless compute nodes deployed in custom vNet would have no public IP addresses for a workspace with private endpoint */
   serverlessComputeNoPublicIP?: boolean;
 }
-const ServerlessComputeSettings = /*@__PURE__*/ __L.at(
-  __c34,
-  4,
-) as any as S.Schema<ServerlessComputeSettings>;
-
 export interface CosmosDbSettings {
   collectionsThroughput?: number;
 }
-const CosmosDbSettings = /*@__PURE__*/ __L.at(__c34, 5) as any as S.Schema<CosmosDbSettings>;
-
 export interface ServiceManagedResourcesSettings {
   cosmosDb?: CosmosDbSettings;
 }
-const ServiceManagedResourcesSettings = /*@__PURE__*/ __L.at(
-  __c34,
-  6,
-) as any as S.Schema<ServiceManagedResourcesSettings>;
-
 /** Properties of a shared private link resource. */
 export interface SharedPrivateLinkResourceProperty {
   /** group id of the private link */
@@ -6105,44 +4294,22 @@ export interface SharedPrivateLinkResourceProperty {
   /** Connection status of the service consumer with the service provider\r\nPossible state transitions\r\nPending -> Approved (Service provider approves the connection request)\r\nPending -> Rejected (Service provider rejects the connection request)\r\nPending -> Disconnected (Service provider deletes the connection)\r\nApproved -> Rejected (Service provider rejects the approved connection)\r\nApproved -> Disconnected (Service provider deletes the connection)\r\nRejected -> Pending (Service consumer re-initiates the connection request that was rejected)\r\nRejected -> Disconnected (Service provider deletes the connection) */
   status?: EndpointServiceConnectionStatus | (string & {});
 }
-const SharedPrivateLinkResourceProperty = /*@__PURE__*/ __L.at(
-  __c34,
-  7,
-) as any as S.Schema<SharedPrivateLinkResourceProperty>;
-
 export interface SharedPrivateLinkResource {
   /** Unique name of the private link */
   name?: string;
   /** Properties of a shared private link resource. */
   properties?: SharedPrivateLinkResourceProperty;
 }
-const SharedPrivateLinkResource = /*@__PURE__*/ __L.at(
-  __c35,
-  0,
-) as any as S.Schema<SharedPrivateLinkResource>;
-
 /** The list of shared private link resources in this workspace. */
 export type WorkspacePropertiesSharedPrivateLinkResourcesList = Array<SharedPrivateLinkResource>;
-const WorkspacePropertiesSharedPrivateLinkResourcesList = /*@__PURE__*/ __L.at(
-  __c35,
-  1,
-) as any as S.Schema<WorkspacePropertiesSharedPrivateLinkResourcesList>;
-
 /** The auth mode used for accessing the system datastores of the workspace. */
 export type SystemDatastoresAuthMode = "AccessKey" | "Identity" | "UserDelegationSAS";
-const SystemDatastoresAuthMode = S.String;
-
 export type WorkspaceHubConfigAdditionalWorkspaceStorageAccountsList = Array<string>;
-const WorkspaceHubConfigAdditionalWorkspaceStorageAccountsList =
-  CapabilityHostPropertiesInputAcaEnvironmentConnectionsList as any as S.Schema<WorkspaceHubConfigAdditionalWorkspaceStorageAccountsList>;
-
 /** WorkspaceHub's configuration object. */
 export interface WorkspaceHubConfig {
   additionalWorkspaceStorageAccounts?: WorkspaceHubConfigAdditionalWorkspaceStorageAccountsList;
   defaultWorkspaceResourceGroup?: string;
 }
-const WorkspaceHubConfig = /*@__PURE__*/ __L.at(__c35, 2) as any as S.Schema<WorkspaceHubConfig>;
-
 /** The properties of a machine learning workspace. */
 export interface WorkspaceProperties {
   /** The flag to indicate whether to allow public access when behind VNet. */
@@ -6210,16 +4377,11 @@ export interface WorkspaceProperties {
   /** The immutable id associated with this workspace. */
   workspaceId?: string;
 }
-const WorkspaceProperties = /*@__PURE__*/ __L.at(__c35, 3) as any as S.Schema<WorkspaceProperties>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type GetWorkspaceResponseIdentity = BatchDeploymentsCreateOrUpdateResponseIdentity;
 /** The resource model definition representing SKU */
 export type GetWorkspaceResponseSku = BatchDeploymentsCreateOrUpdateResponseSku;
 export type GetWorkspaceResponseTagsMap = { [key: string]: string | undefined };
-const GetWorkspaceResponseTagsMap =
-  BatchDeploymentsCreateOrUpdateRequestTagsMap as any as S.Schema<GetWorkspaceResponseTagsMap>;
-
 export interface GetWorkspaceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -6239,11 +4401,6 @@ export interface GetWorkspaceResponse {
   sku?: BatchDeploymentsCreateOrUpdateResponseSku;
   tags?: GetWorkspaceResponseTagsMap;
 }
-const GetWorkspaceResponse = /*@__PURE__*/ __L.at(
-  __c35,
-  4,
-) as any as S.Schema<GetWorkspaceResponse>;
-
 export interface GetWorkspaceConnectionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6254,11 +4411,6 @@ export interface GetWorkspaceConnectionRequest {
   /** Friendly name of the workspace connection */
   connectionName: string;
 }
-const GetWorkspaceConnectionRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  5,
-) as any as S.Schema<GetWorkspaceConnectionRequest>;
-
 export interface GetWorkspaceConnectionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -6270,24 +4422,12 @@ export interface GetWorkspaceConnectionResponse {
   systemData?: SystemData;
   properties: WorkspaceConnectionPropertiesV2;
 }
-const GetWorkspaceConnectionResponse =
-  CreateWorkspaceConnectionResponse as any as S.Schema<GetWorkspaceConnectionResponse>;
-
 /** The asset property dictionary. */
 export type JobBasePropertiesInputPropertiesMap = { [key: string]: string | null | undefined };
-const JobBasePropertiesInputPropertiesMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<JobBasePropertiesInputPropertiesMap>;
-
 /** Tag dictionary. Tags can be added, removed, and updated. */
 export type JobBasePropertiesInputTagsMap = { [key: string]: string | null | undefined };
-const JobBasePropertiesInputTagsMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<JobBasePropertiesInputTagsMap>;
-
 /** Additional properties to set on the endpoint. */
 export type JobServiceInputPropertiesMap = { [key: string]: string | null | undefined };
-const JobServiceInputPropertiesMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<JobServiceInputPropertiesMap>;
-
 /** Job endpoint definition */
 export interface JobServiceInput {
   /** Url for endpoint. */
@@ -6301,17 +4441,10 @@ export interface JobServiceInput {
   /** Additional properties to set on the endpoint. */
   properties?: JobServiceInputPropertiesMap | null;
 }
-const JobServiceInput = /*@__PURE__*/ __L.at(__c35, 6) as any as S.Schema<JobServiceInput>;
-
 /** List of JobEndpoints. For local jobs, a job endpoint will have an endpoint value of FileStreamObject. */
 export type JobBasePropertiesInputServicesMap = {
   [key: string]: JobServiceInput | null | undefined;
 };
-const JobBasePropertiesInputServicesMap = /*@__PURE__*/ __L.at(
-  __c35,
-  7,
-) as any as S.Schema<JobBasePropertiesInputServicesMap>;
-
 /** Base definition for a job. */
 export interface JobBasePropertiesInput {
   /** The asset description text. */
@@ -6339,11 +4472,6 @@ export interface JobBasePropertiesInput {
   /** List of JobEndpoints. For local jobs, a job endpoint will have an endpoint value of FileStreamObject. */
   services?: JobBasePropertiesInputServicesMap | null;
 }
-const JobBasePropertiesInput = /*@__PURE__*/ __L.at(
-  __c36,
-  0,
-) as any as S.Schema<JobBasePropertiesInput>;
-
 export interface JobsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6356,11 +4484,6 @@ export interface JobsCreateOrUpdateRequest {
   /** [Required] Additional attributes of the entity. */
   properties: JobBasePropertiesInput;
 }
-const JobsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  1,
-) as any as S.Schema<JobsCreateOrUpdateRequest>;
-
 export interface JobsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -6373,11 +4496,6 @@ export interface JobsCreateOrUpdateResponse {
   /** [Required] Additional attributes of the entity. */
   properties: JobBaseProperties;
 }
-const JobsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c36,
-  2,
-) as any as S.Schema<JobsCreateOrUpdateResponse>;
-
 export interface ListBatchDeploymentsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6394,16 +4512,8 @@ export interface ListBatchDeploymentsRequest {
   /** Continuation token for pagination. */
   _skip?: string;
 }
-const ListBatchDeploymentsRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  3,
-) as any as S.Schema<ListBatchDeploymentsRequest>;
-
 /** Resource tags. */
 export type BatchDeploymentTagsMap = { [key: string]: string | undefined };
-const BatchDeploymentTagsMap =
-  BatchDeploymentsCreateOrUpdateRequestTagsMap as any as S.Schema<BatchDeploymentTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type BatchDeploymentIdentity = BatchDeploymentsCreateOrUpdateResponseIdentity;
 /** The resource model definition representing SKU */
@@ -6431,15 +4541,8 @@ export interface BatchDeployment {
   /** The resource model definition representing SKU */
   sku?: BatchDeploymentsCreateOrUpdateResponseSku;
 }
-const BatchDeployment = /*@__PURE__*/ __L.at(__c36, 4) as any as S.Schema<BatchDeployment>;
-
 /** The BatchDeployment items on this page */
 export type BatchDeploymentTrackedResourceArmPaginatedResultValueList = Array<BatchDeployment>;
-const BatchDeploymentTrackedResourceArmPaginatedResultValueList = /*@__PURE__*/ __L.at(
-  __c36,
-  5,
-) as any as S.Schema<BatchDeploymentTrackedResourceArmPaginatedResultValueList>;
-
 /** A paginated list of BatchDeployment entities. */
 export interface BatchDeploymentTrackedResourceArmPaginatedResult {
   /** The BatchDeployment items on this page */
@@ -6447,11 +4550,6 @@ export interface BatchDeploymentTrackedResourceArmPaginatedResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const BatchDeploymentTrackedResourceArmPaginatedResult = /*@__PURE__*/ __L.at(
-  __c36,
-  6,
-) as any as S.Schema<BatchDeploymentTrackedResourceArmPaginatedResult>;
-
 export interface ListBatchEndpointKeysRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6462,11 +4560,6 @@ export interface ListBatchEndpointKeysRequest {
   /** Name for the Batch Endpoint. */
   endpointName: string;
 }
-const ListBatchEndpointKeysRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  7,
-) as any as S.Schema<ListBatchEndpointKeysRequest>;
-
 export interface ListBatchEndpointsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6479,11 +4572,6 @@ export interface ListBatchEndpointsRequest {
   /** Continuation token for pagination. */
   _skip?: string;
 }
-const ListBatchEndpointsRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  0,
-) as any as S.Schema<ListBatchEndpointsRequest>;
-
 /** Resource tags. */
 export type BatchEndpointTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -6513,15 +4601,8 @@ export interface BatchEndpoint {
   /** The resource model definition representing SKU */
   sku?: BatchDeploymentsCreateOrUpdateResponseSku;
 }
-const BatchEndpoint = GetBatchEndpointResponse as any as S.Schema<BatchEndpoint>;
-
 /** The BatchEndpoint items on this page */
 export type BatchEndpointTrackedResourceArmPaginatedResultValueList = Array<BatchEndpoint>;
-const BatchEndpointTrackedResourceArmPaginatedResultValueList = /*@__PURE__*/ __L.at(
-  __c37,
-  1,
-) as any as S.Schema<BatchEndpointTrackedResourceArmPaginatedResultValueList>;
-
 /** A paginated list of BatchEndpoint entities. */
 export interface BatchEndpointTrackedResourceArmPaginatedResult {
   /** The BatchEndpoint items on this page */
@@ -6529,11 +4610,6 @@ export interface BatchEndpointTrackedResourceArmPaginatedResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const BatchEndpointTrackedResourceArmPaginatedResult = /*@__PURE__*/ __L.at(
-  __c37,
-  2,
-) as any as S.Schema<BatchEndpointTrackedResourceArmPaginatedResult>;
-
 export interface ListCodeContainersRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6544,11 +4620,6 @@ export interface ListCodeContainersRequest {
   /** Continuation token for pagination. */
   _skip?: string;
 }
-const ListCodeContainersRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  3,
-) as any as S.Schema<ListCodeContainersRequest>;
-
 /** Azure Resource Manager resource envelope. */
 export interface CodeContainer {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -6562,15 +4633,8 @@ export interface CodeContainer {
   /** [Required] Additional attributes of the entity. */
   properties: CodeContainerProperties;
 }
-const CodeContainer = GetCodeContainerResponse as any as S.Schema<CodeContainer>;
-
 /** The CodeContainer items on this page */
 export type CodeContainerResourceArmPaginatedResultValueList = Array<CodeContainer>;
-const CodeContainerResourceArmPaginatedResultValueList = /*@__PURE__*/ __L.at(
-  __c37,
-  4,
-) as any as S.Schema<CodeContainerResourceArmPaginatedResultValueList>;
-
 /** A paginated list of CodeContainer entities. */
 export interface CodeContainerResourceArmPaginatedResult {
   /** The CodeContainer items on this page */
@@ -6578,11 +4642,6 @@ export interface CodeContainerResourceArmPaginatedResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const CodeContainerResourceArmPaginatedResult = /*@__PURE__*/ __L.at(
-  __c37,
-  5,
-) as any as S.Schema<CodeContainerResourceArmPaginatedResult>;
-
 export interface ListCodeVersionsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6603,11 +4662,6 @@ export interface ListCodeVersionsRequest {
   /** Hash algorithm version when listing by hash */
   hashVersion?: string;
 }
-const ListCodeVersionsRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  6,
-) as any as S.Schema<ListCodeVersionsRequest>;
-
 /** Azure Resource Manager resource envelope. */
 export interface CodeVersion {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -6621,15 +4675,8 @@ export interface CodeVersion {
   /** [Required] Additional attributes of the entity. */
   properties: CodeVersionProperties;
 }
-const CodeVersion = GetCodeVersionResponse as any as S.Schema<CodeVersion>;
-
 /** The CodeVersion items on this page */
 export type CodeVersionResourceArmPaginatedResultValueList = Array<CodeVersion>;
-const CodeVersionResourceArmPaginatedResultValueList = /*@__PURE__*/ __L.at(
-  __c37,
-  7,
-) as any as S.Schema<CodeVersionResourceArmPaginatedResultValueList>;
-
 /** A paginated list of CodeVersion entities. */
 export interface CodeVersionResourceArmPaginatedResult {
   /** The CodeVersion items on this page */
@@ -6637,14 +4684,7 @@ export interface CodeVersionResourceArmPaginatedResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const CodeVersionResourceArmPaginatedResult = /*@__PURE__*/ __L.at(
-  __c38,
-  0,
-) as any as S.Schema<CodeVersionResourceArmPaginatedResult>;
-
 export type ListComponentContainersRequestListViewType = "ActiveOnly" | "ArchivedOnly" | "All";
-const ListComponentContainersRequestListViewType = S.String;
-
 export interface ListComponentContainersRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6657,11 +4697,6 @@ export interface ListComponentContainersRequest {
   /** View type for including/excluding (for example) archived entities. */
   listViewType?: ListComponentContainersRequestListViewType | (string & {});
 }
-const ListComponentContainersRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  1,
-) as any as S.Schema<ListComponentContainersRequest>;
-
 /** Azure Resource Manager resource envelope. */
 export interface ComponentContainer {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -6675,15 +4710,8 @@ export interface ComponentContainer {
   /** [Required] Additional attributes of the entity. */
   properties: ComponentContainerProperties;
 }
-const ComponentContainer = /*@__PURE__*/ __L.at(__c38, 2) as any as S.Schema<ComponentContainer>;
-
 /** The ComponentContainer items on this page */
 export type ComponentContainerResourceArmPaginatedResultValueList = Array<ComponentContainer>;
-const ComponentContainerResourceArmPaginatedResultValueList = /*@__PURE__*/ __L.at(
-  __c38,
-  3,
-) as any as S.Schema<ComponentContainerResourceArmPaginatedResultValueList>;
-
 /** A paginated list of ComponentContainer entities. */
 export interface ComponentContainerResourceArmPaginatedResult {
   /** The ComponentContainer items on this page */
@@ -6691,14 +4719,7 @@ export interface ComponentContainerResourceArmPaginatedResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ComponentContainerResourceArmPaginatedResult = /*@__PURE__*/ __L.at(
-  __c38,
-  4,
-) as any as S.Schema<ComponentContainerResourceArmPaginatedResult>;
-
 export type ListComponentVersionsRequestListViewType = "ActiveOnly" | "ArchivedOnly" | "All";
-const ListComponentVersionsRequestListViewType = S.String;
-
 export interface ListComponentVersionsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6717,11 +4738,6 @@ export interface ListComponentVersionsRequest {
   /** View type for including/excluding (for example) archived entities. */
   listViewType?: ListComponentVersionsRequestListViewType | (string & {});
 }
-const ListComponentVersionsRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  5,
-) as any as S.Schema<ListComponentVersionsRequest>;
-
 /** Azure Resource Manager resource envelope. */
 export interface ComponentVersion {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -6735,15 +4751,8 @@ export interface ComponentVersion {
   /** [Required] Additional attributes of the entity. */
   properties: ComponentVersionProperties;
 }
-const ComponentVersion = /*@__PURE__*/ __L.at(__c38, 6) as any as S.Schema<ComponentVersion>;
-
 /** The ComponentVersion items on this page */
 export type ComponentVersionResourceArmPaginatedResultValueList = Array<ComponentVersion>;
-const ComponentVersionResourceArmPaginatedResultValueList = /*@__PURE__*/ __L.at(
-  __c38,
-  7,
-) as any as S.Schema<ComponentVersionResourceArmPaginatedResultValueList>;
-
 /** A paginated list of ComponentVersion entities. */
 export interface ComponentVersionResourceArmPaginatedResult {
   /** The ComponentVersion items on this page */
@@ -6751,11 +4760,6 @@ export interface ComponentVersionResourceArmPaginatedResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ComponentVersionResourceArmPaginatedResult = /*@__PURE__*/ __L.at(
-  __c39,
-  0,
-) as any as S.Schema<ComponentVersionResourceArmPaginatedResult>;
-
 export interface ListComputeRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6766,8 +4770,6 @@ export interface ListComputeRequest {
   /** Continuation token for pagination. */
   _skip?: string;
 }
-const ListComputeRequest = /*@__PURE__*/ __L.at(__c39, 1) as any as S.Schema<ListComputeRequest>;
-
 /** Contains resource tags defined as key/value pairs. */
 export type ComputeResourceTagsMap = { [key: string]: string | undefined };
 /** The resource model definition representing SKU */
@@ -6795,15 +4797,8 @@ export interface ComputeResource {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: BatchDeploymentsCreateOrUpdateResponseIdentity;
 }
-const ComputeResource = GetComputeResponse as any as S.Schema<ComputeResource>;
-
 /** The ComputeResource items on this page */
 export type PaginatedComputeResourcesListValueList = Array<ComputeResource>;
-const PaginatedComputeResourcesListValueList = /*@__PURE__*/ __L.at(
-  __c39,
-  2,
-) as any as S.Schema<PaginatedComputeResourcesListValueList>;
-
 /** Paginated list of Machine Learning compute objects wrapped in ARM resource envelope. */
 export interface PaginatedComputeResourcesList {
   /** The ComputeResource items on this page */
@@ -6811,11 +4806,6 @@ export interface PaginatedComputeResourcesList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const PaginatedComputeResourcesList = /*@__PURE__*/ __L.at(
-  __c39,
-  3,
-) as any as S.Schema<PaginatedComputeResourcesList>;
-
 export interface ListComputeKeysRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6826,18 +4816,11 @@ export interface ListComputeKeysRequest {
   /** Name of the Azure Machine Learning compute. */
   computeName: string;
 }
-const ListComputeKeysRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  4,
-) as any as S.Schema<ListComputeKeysRequest>;
-
 /** Secrets related to a Machine Learning compute. Might differ for every type of compute. */
 export interface ComputeSecrets {
   /** The type of compute */
   computeType: ComputeType;
 }
-const ComputeSecrets = /*@__PURE__*/ __L.at(__c39, 5) as any as S.Schema<ComputeSecrets>;
-
 export interface ListComputeNodesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6848,15 +4831,8 @@ export interface ListComputeNodesRequest {
   /** Name of the Azure Machine Learning compute. */
   computeName: string;
 }
-const ListComputeNodesRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  6,
-) as any as S.Schema<ListComputeNodesRequest>;
-
 /** State of the compute node. Values are idle, running, preparing, unusable, leaving and preempted. */
 export type NodeState = "idle" | "running" | "preparing" | "unusable" | "leaving" | "preempted";
-const NodeState = S.String;
-
 /** Compute node information related to a AmlCompute. */
 export interface AmlComputeNodeInformation {
   /** ID of the compute node. */
@@ -6872,18 +4848,8 @@ export interface AmlComputeNodeInformation {
   /** ID of the Experiment running on the node, if any else null. */
   runId?: string | null;
 }
-const AmlComputeNodeInformation = /*@__PURE__*/ __L.at(
-  __c39,
-  7,
-) as any as S.Schema<AmlComputeNodeInformation>;
-
 /** The collection of returned AmlCompute nodes details. */
 export type AmlComputeNodesInformationNodesList = Array<AmlComputeNodeInformation>;
-const AmlComputeNodesInformationNodesList = /*@__PURE__*/ __L.at(
-  __c40,
-  0,
-) as any as S.Schema<AmlComputeNodesInformationNodesList>;
-
 /** Result of AmlCompute Nodes */
 export interface AmlComputeNodesInformation {
   /** The collection of returned AmlCompute nodes details. */
@@ -6891,14 +4857,7 @@ export interface AmlComputeNodesInformation {
   /** The continuation token. */
   nextLink?: string;
 }
-const AmlComputeNodesInformation = /*@__PURE__*/ __L.at(
-  __c40,
-  1,
-) as any as S.Schema<AmlComputeNodesInformation>;
-
 export type ListDataContainersRequestListViewType = "ActiveOnly" | "ArchivedOnly" | "All";
-const ListDataContainersRequestListViewType = S.String;
-
 export interface ListDataContainersRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6911,11 +4870,6 @@ export interface ListDataContainersRequest {
   /** View type for including/excluding (for example) archived entities. */
   listViewType?: ListDataContainersRequestListViewType | (string & {});
 }
-const ListDataContainersRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  2,
-) as any as S.Schema<ListDataContainersRequest>;
-
 /** Azure Resource Manager resource envelope. */
 export interface DataContainer {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -6929,15 +4883,8 @@ export interface DataContainer {
   /** [Required] Additional attributes of the entity. */
   properties: DataContainerProperties;
 }
-const DataContainer = GetDataContainerResponse as any as S.Schema<DataContainer>;
-
 /** The DataContainer items on this page */
 export type DataContainerResourceArmPaginatedResultValueList = Array<DataContainer>;
-const DataContainerResourceArmPaginatedResultValueList = /*@__PURE__*/ __L.at(
-  __c40,
-  3,
-) as any as S.Schema<DataContainerResourceArmPaginatedResultValueList>;
-
 /** A paginated list of DataContainer entities. */
 export interface DataContainerResourceArmPaginatedResult {
   /** The DataContainer items on this page */
@@ -6945,15 +4892,7 @@ export interface DataContainerResourceArmPaginatedResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const DataContainerResourceArmPaginatedResult = /*@__PURE__*/ __L.at(
-  __c40,
-  4,
-) as any as S.Schema<DataContainerResourceArmPaginatedResult>;
-
 export type ListDatastoresRequestNamesList = Array<string>;
-const ListDatastoresRequestNamesList =
-  CapabilityHostPropertiesInputAcaEnvironmentConnectionsList as any as S.Schema<ListDatastoresRequestNamesList>;
-
 export interface ListDatastoresRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6976,11 +4915,6 @@ export interface ListDatastoresRequest {
   /** Order by property in ascending order. */
   orderByAsc?: boolean;
 }
-const ListDatastoresRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  5,
-) as any as S.Schema<ListDatastoresRequest>;
-
 /** Azure Resource Manager resource envelope. */
 export interface Datastore {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -6994,15 +4928,8 @@ export interface Datastore {
   /** [Required] Additional attributes of the entity. */
   properties: DatastoreProperties;
 }
-const Datastore = GetDatastoreResponse as any as S.Schema<Datastore>;
-
 /** The Datastore items on this page */
 export type DatastoreResourceArmPaginatedResultValueList = Array<Datastore>;
-const DatastoreResourceArmPaginatedResultValueList = /*@__PURE__*/ __L.at(
-  __c40,
-  6,
-) as any as S.Schema<DatastoreResourceArmPaginatedResultValueList>;
-
 /** A paginated list of Datastore entities. */
 export interface DatastoreResourceArmPaginatedResult {
   /** The Datastore items on this page */
@@ -7010,11 +4937,6 @@ export interface DatastoreResourceArmPaginatedResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const DatastoreResourceArmPaginatedResult = /*@__PURE__*/ __L.at(
-  __c40,
-  7,
-) as any as S.Schema<DatastoreResourceArmPaginatedResult>;
-
 export interface ListDatastoreSecretsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -7029,25 +4951,14 @@ export interface ListDatastoreSecretsRequest {
   /** Number of hours after which the secret will expire. */
   expireAfterHours?: number;
 }
-const ListDatastoreSecretsRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  0,
-) as any as S.Schema<ListDatastoreSecretsRequest>;
-
 /** Enum to determine the datastore secrets type. */
 export type SecretsType = "AccountKey" | "Certificate" | "Sas" | "ServicePrincipal";
-const SecretsType = S.String;
-
 /** Base definition for datastore secrets. */
 export interface DatastoreSecrets {
   /** [Required] Credential type used to authentication with storage. */
   secretsType: SecretsType;
 }
-const DatastoreSecrets = /*@__PURE__*/ __L.at(__c41, 1) as any as S.Schema<DatastoreSecrets>;
-
 export type ListDataVersionsRequestListViewType = "ActiveOnly" | "ArchivedOnly" | "All";
-const ListDataVersionsRequestListViewType = S.String;
-
 export interface ListDataVersionsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -7068,11 +4979,6 @@ export interface ListDataVersionsRequest {
   /** [ListViewType.ActiveOnly, ListViewType.ArchivedOnly, ListViewType.All]View type for including/excluding (for example) archived entities. */
   listViewType?: ListDataVersionsRequestListViewType | (string & {});
 }
-const ListDataVersionsRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  2,
-) as any as S.Schema<ListDataVersionsRequest>;
-
 /** Azure Resource Manager resource envelope. */
 export interface DataVersionBase {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -7086,15 +4992,8 @@ export interface DataVersionBase {
   /** [Required] Additional attributes of the entity. */
   properties: DataVersionBaseProperties;
 }
-const DataVersionBase = GetDataVersionResponse as any as S.Schema<DataVersionBase>;
-
 /** The DataVersionBase items on this page */
 export type DataVersionBaseResourceArmPaginatedResultValueList = Array<DataVersionBase>;
-const DataVersionBaseResourceArmPaginatedResultValueList = /*@__PURE__*/ __L.at(
-  __c41,
-  3,
-) as any as S.Schema<DataVersionBaseResourceArmPaginatedResultValueList>;
-
 /** A paginated list of DataVersionBase entities. */
 export interface DataVersionBaseResourceArmPaginatedResult {
   /** The DataVersionBase items on this page */
@@ -7102,14 +5001,7 @@ export interface DataVersionBaseResourceArmPaginatedResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const DataVersionBaseResourceArmPaginatedResult = /*@__PURE__*/ __L.at(
-  __c41,
-  4,
-) as any as S.Schema<DataVersionBaseResourceArmPaginatedResult>;
-
 export type ListEnvironmentContainersRequestListViewType = "ActiveOnly" | "ArchivedOnly" | "All";
-const ListEnvironmentContainersRequestListViewType = S.String;
-
 export interface ListEnvironmentContainersRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -7122,11 +5014,6 @@ export interface ListEnvironmentContainersRequest {
   /** View type for including/excluding (for example) archived entities. */
   listViewType?: ListEnvironmentContainersRequestListViewType | (string & {});
 }
-const ListEnvironmentContainersRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  5,
-) as any as S.Schema<ListEnvironmentContainersRequest>;
-
 /** Azure Resource Manager resource envelope. */
 export interface EnvironmentContainer {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -7149,12 +5036,7 @@ export interface EnvironmentContainerResourceArmPaginatedResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const EnvironmentContainerResourceArmPaginatedResult =
-  ComponentContainerResourceArmPaginatedResult as any as S.Schema<EnvironmentContainerResourceArmPaginatedResult>;
-
 export type ListEnvironmentVersionsRequestListViewType = "ActiveOnly" | "ArchivedOnly" | "All";
-const ListEnvironmentVersionsRequestListViewType = S.String;
-
 export interface ListEnvironmentVersionsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -7173,11 +5055,6 @@ export interface ListEnvironmentVersionsRequest {
   /** View type for including/excluding (for example) archived entities. */
   listViewType?: ListEnvironmentVersionsRequestListViewType | (string & {});
 }
-const ListEnvironmentVersionsRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  6,
-) as any as S.Schema<ListEnvironmentVersionsRequest>;
-
 /** Azure Resource Manager resource envelope. */
 export interface EnvironmentVersion {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -7191,15 +5068,8 @@ export interface EnvironmentVersion {
   /** [Required] Additional attributes of the entity. */
   properties: EnvironmentVersionProperties;
 }
-const EnvironmentVersion = /*@__PURE__*/ __L.at(__c41, 7) as any as S.Schema<EnvironmentVersion>;
-
 /** The EnvironmentVersion items on this page */
 export type EnvironmentVersionResourceArmPaginatedResultValueList = Array<EnvironmentVersion>;
-const EnvironmentVersionResourceArmPaginatedResultValueList = /*@__PURE__*/ __L.at(
-  __c42,
-  0,
-) as any as S.Schema<EnvironmentVersionResourceArmPaginatedResultValueList>;
-
 /** A paginated list of EnvironmentVersion entities. */
 export interface EnvironmentVersionResourceArmPaginatedResult {
   /** The EnvironmentVersion items on this page */
@@ -7207,14 +5077,7 @@ export interface EnvironmentVersionResourceArmPaginatedResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const EnvironmentVersionResourceArmPaginatedResult = /*@__PURE__*/ __L.at(
-  __c42,
-  1,
-) as any as S.Schema<EnvironmentVersionResourceArmPaginatedResult>;
-
 export type ListFeaturesRequestListViewType = "ActiveOnly" | "ArchivedOnly" | "All";
-const ListFeaturesRequestListViewType = S.String;
-
 export interface ListFeaturesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -7239,8 +5102,6 @@ export interface ListFeaturesRequest {
   /** Page size. */
   pageSize?: number;
 }
-const ListFeaturesRequest = /*@__PURE__*/ __L.at(__c42, 2) as any as S.Schema<ListFeaturesRequest>;
-
 /** Azure Resource Manager resource envelope. */
 export interface Feature {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -7254,15 +5115,8 @@ export interface Feature {
   /** [Required] Additional attributes of the entity. */
   properties: FeatureProperties;
 }
-const Feature = GetFeatureResponse as any as S.Schema<Feature>;
-
 /** The Feature items on this page */
 export type FeatureResourceArmPaginatedResultValueList = Array<Feature>;
-const FeatureResourceArmPaginatedResultValueList = /*@__PURE__*/ __L.at(
-  __c42,
-  3,
-) as any as S.Schema<FeatureResourceArmPaginatedResultValueList>;
-
 /** A paginated list of Feature entities. */
 export interface FeatureResourceArmPaginatedResult {
   /** The Feature items on this page */
@@ -7270,14 +5124,7 @@ export interface FeatureResourceArmPaginatedResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const FeatureResourceArmPaginatedResult = /*@__PURE__*/ __L.at(
-  __c42,
-  4,
-) as any as S.Schema<FeatureResourceArmPaginatedResult>;
-
 export type ListFeaturesetContainersRequestListViewType = "ActiveOnly" | "ArchivedOnly" | "All";
-const ListFeaturesetContainersRequestListViewType = S.String;
-
 export interface ListFeaturesetContainersRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -7300,11 +5147,6 @@ export interface ListFeaturesetContainersRequest {
   /** createdBy user name */
   createdBy?: string;
 }
-const ListFeaturesetContainersRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  5,
-) as any as S.Schema<ListFeaturesetContainersRequest>;
-
 /** Azure Resource Manager resource envelope. */
 export interface FeaturesetContainer {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -7327,12 +5169,7 @@ export interface FeaturesetContainerResourceArmPaginatedResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const FeaturesetContainerResourceArmPaginatedResult =
-  ComponentContainerResourceArmPaginatedResult as any as S.Schema<FeaturesetContainerResourceArmPaginatedResult>;
-
 export type ListFeaturesetVersionsRequestListViewType = "ActiveOnly" | "ArchivedOnly" | "All";
-const ListFeaturesetVersionsRequestListViewType = S.String;
-
 export interface ListFeaturesetVersionsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -7361,11 +5198,6 @@ export interface ListFeaturesetVersionsRequest {
   /** Specifies the featurestore stage */
   stage?: string;
 }
-const ListFeaturesetVersionsRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  6,
-) as any as S.Schema<ListFeaturesetVersionsRequest>;
-
 /** Azure Resource Manager resource envelope. */
 export interface FeaturesetVersion {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -7379,15 +5211,8 @@ export interface FeaturesetVersion {
   /** [Required] Additional attributes of the entity. */
   properties: FeaturesetVersionProperties;
 }
-const FeaturesetVersion = /*@__PURE__*/ __L.at(__c42, 7) as any as S.Schema<FeaturesetVersion>;
-
 /** The FeaturesetVersion items on this page */
 export type FeaturesetVersionResourceArmPaginatedResultValueList = Array<FeaturesetVersion>;
-const FeaturesetVersionResourceArmPaginatedResultValueList = /*@__PURE__*/ __L.at(
-  __c43,
-  0,
-) as any as S.Schema<FeaturesetVersionResourceArmPaginatedResultValueList>;
-
 /** A paginated list of FeaturesetVersion entities. */
 export interface FeaturesetVersionResourceArmPaginatedResult {
   /** The FeaturesetVersion items on this page */
@@ -7395,17 +5220,10 @@ export interface FeaturesetVersionResourceArmPaginatedResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const FeaturesetVersionResourceArmPaginatedResult = /*@__PURE__*/ __L.at(
-  __c43,
-  1,
-) as any as S.Schema<FeaturesetVersionResourceArmPaginatedResult>;
-
 export type ListFeaturestoreEntityContainersRequestListViewType =
   | "ActiveOnly"
   | "ArchivedOnly"
   | "All";
-const ListFeaturestoreEntityContainersRequestListViewType = S.String;
-
 export interface ListFeaturestoreEntityContainersRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -7428,11 +5246,6 @@ export interface ListFeaturestoreEntityContainersRequest {
   /** createdBy user name */
   createdBy?: string;
 }
-const ListFeaturestoreEntityContainersRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  2,
-) as any as S.Schema<ListFeaturestoreEntityContainersRequest>;
-
 /** Azure Resource Manager resource envelope. */
 export interface FeaturestoreEntityContainer {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -7446,17 +5259,9 @@ export interface FeaturestoreEntityContainer {
   /** [Required] Additional attributes of the entity. */
   properties: FeaturestoreEntityContainerProperties;
 }
-const FeaturestoreEntityContainer =
-  ComponentContainersCreateOrUpdateResponse as any as S.Schema<FeaturestoreEntityContainer>;
-
 /** The FeaturestoreEntityContainer items on this page */
 export type FeaturestoreEntityContainerResourceArmPaginatedResultValueList =
   Array<FeaturestoreEntityContainer>;
-const FeaturestoreEntityContainerResourceArmPaginatedResultValueList = /*@__PURE__*/ __L.at(
-  __c43,
-  3,
-) as any as S.Schema<FeaturestoreEntityContainerResourceArmPaginatedResultValueList>;
-
 /** A paginated list of FeaturestoreEntityContainer entities. */
 export interface FeaturestoreEntityContainerResourceArmPaginatedResult {
   /** The FeaturestoreEntityContainer items on this page */
@@ -7464,17 +5269,10 @@ export interface FeaturestoreEntityContainerResourceArmPaginatedResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const FeaturestoreEntityContainerResourceArmPaginatedResult = /*@__PURE__*/ __L.at(
-  __c43,
-  4,
-) as any as S.Schema<FeaturestoreEntityContainerResourceArmPaginatedResult>;
-
 export type ListFeaturestoreEntityVersionsRequestListViewType =
   | "ActiveOnly"
   | "ArchivedOnly"
   | "All";
-const ListFeaturestoreEntityVersionsRequestListViewType = S.String;
-
 export interface ListFeaturestoreEntityVersionsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -7503,11 +5301,6 @@ export interface ListFeaturestoreEntityVersionsRequest {
   /** Specifies the featurestore stage */
   stage?: string;
 }
-const ListFeaturestoreEntityVersionsRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  5,
-) as any as S.Schema<ListFeaturestoreEntityVersionsRequest>;
-
 /** Azure Resource Manager resource envelope. */
 export interface FeaturestoreEntityVersion {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -7521,17 +5314,9 @@ export interface FeaturestoreEntityVersion {
   /** [Required] Additional attributes of the entity. */
   properties: FeaturestoreEntityVersionProperties;
 }
-const FeaturestoreEntityVersion =
-  FeaturestoreEntityVersionsCreateOrUpdateResponse as any as S.Schema<FeaturestoreEntityVersion>;
-
 /** The FeaturestoreEntityVersion items on this page */
 export type FeaturestoreEntityVersionResourceArmPaginatedResultValueList =
   Array<FeaturestoreEntityVersion>;
-const FeaturestoreEntityVersionResourceArmPaginatedResultValueList = /*@__PURE__*/ __L.at(
-  __c43,
-  6,
-) as any as S.Schema<FeaturestoreEntityVersionResourceArmPaginatedResultValueList>;
-
 /** A paginated list of FeaturestoreEntityVersion entities. */
 export interface FeaturestoreEntityVersionResourceArmPaginatedResult {
   /** The FeaturestoreEntityVersion items on this page */
@@ -7539,14 +5324,7 @@ export interface FeaturestoreEntityVersionResourceArmPaginatedResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const FeaturestoreEntityVersionResourceArmPaginatedResult = /*@__PURE__*/ __L.at(
-  __c43,
-  7,
-) as any as S.Schema<FeaturestoreEntityVersionResourceArmPaginatedResult>;
-
 export type ListJobsRequestListViewType = "ActiveOnly" | "ArchivedOnly" | "All";
-const ListJobsRequestListViewType = S.String;
-
 export interface ListJobsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -7565,8 +5343,6 @@ export interface ListJobsRequest {
   /** Comma-separated list of user property names (and optionally values). Example: prop1,prop2=value2 */
   properties?: string;
 }
-const ListJobsRequest = /*@__PURE__*/ __L.at(__c44, 0) as any as S.Schema<ListJobsRequest>;
-
 /** Azure Resource Manager resource envelope. */
 export interface JobBase {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -7580,15 +5356,8 @@ export interface JobBase {
   /** [Required] Additional attributes of the entity. */
   properties: JobBaseProperties;
 }
-const JobBase = GetJobResponse as any as S.Schema<JobBase>;
-
 /** The JobBase items on this page */
 export type JobBaseResourceArmPaginatedResultValueList = Array<JobBase>;
-const JobBaseResourceArmPaginatedResultValueList = /*@__PURE__*/ __L.at(
-  __c44,
-  1,
-) as any as S.Schema<JobBaseResourceArmPaginatedResultValueList>;
-
 /** A paginated list of JobBase entities. */
 export interface JobBaseResourceArmPaginatedResult {
   /** The JobBase items on this page */
@@ -7596,11 +5365,6 @@ export interface JobBaseResourceArmPaginatedResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const JobBaseResourceArmPaginatedResult = /*@__PURE__*/ __L.at(
-  __c44,
-  2,
-) as any as S.Schema<JobBaseResourceArmPaginatedResult>;
-
 export interface ListManagedNetworkSettingsRuleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -7609,11 +5373,6 @@ export interface ListManagedNetworkSettingsRuleRequest {
   /** Azure Machine Learning Workspace Name */
   workspaceName: string;
 }
-const ListManagedNetworkSettingsRuleRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  3,
-) as any as S.Schema<ListManagedNetworkSettingsRuleRequest>;
-
 /** Concrete proxy resource types can be created by aliasing this type using a specific property type. */
 export interface OutboundRuleBasicResource {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -7627,16 +5386,8 @@ export interface OutboundRuleBasicResource {
   /** Outbound Rule for the managed network of a machine learning workspace. */
   properties: OutboundRule;
 }
-const OutboundRuleBasicResource =
-  GetManagedNetworkSettingsRuleResponse as any as S.Schema<OutboundRuleBasicResource>;
-
 /** The OutboundRuleBasicResource items on this page */
 export type OutboundRuleListResultValueList = Array<OutboundRuleBasicResource>;
-const OutboundRuleListResultValueList = /*@__PURE__*/ __L.at(
-  __c44,
-  4,
-) as any as S.Schema<OutboundRuleListResultValueList>;
-
 /** Paged collection of OutboundRuleBasicResource items */
 export interface OutboundRuleListResult {
   /** The OutboundRuleBasicResource items on this page */
@@ -7644,11 +5395,6 @@ export interface OutboundRuleListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const OutboundRuleListResult = /*@__PURE__*/ __L.at(
-  __c44,
-  5,
-) as any as S.Schema<OutboundRuleListResult>;
-
 export interface ListMarketplaceSubscriptionsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -7659,11 +5405,6 @@ export interface ListMarketplaceSubscriptionsRequest {
   /** Continuation token for pagination. */
   _skip?: string;
 }
-const ListMarketplaceSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  6,
-) as any as S.Schema<ListMarketplaceSubscriptionsRequest>;
-
 /** Azure Resource Manager resource envelope. */
 export interface MarketplaceSubscription {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -7677,19 +5418,9 @@ export interface MarketplaceSubscription {
   /** [Required] Additional attributes of the entity. */
   properties: MarketplaceSubscriptionProperties;
 }
-const MarketplaceSubscription = /*@__PURE__*/ __L.at(
-  __c44,
-  7,
-) as any as S.Schema<MarketplaceSubscription>;
-
 /** The MarketplaceSubscription items on this page */
 export type MarketplaceSubscriptionResourceArmPaginatedResultValueList =
   Array<MarketplaceSubscription>;
-const MarketplaceSubscriptionResourceArmPaginatedResultValueList = /*@__PURE__*/ __L.at(
-  __c45,
-  0,
-) as any as S.Schema<MarketplaceSubscriptionResourceArmPaginatedResultValueList>;
-
 /** A paginated list of MarketplaceSubscription entities. */
 export interface MarketplaceSubscriptionResourceArmPaginatedResult {
   /** The MarketplaceSubscription items on this page */
@@ -7697,14 +5428,7 @@ export interface MarketplaceSubscriptionResourceArmPaginatedResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const MarketplaceSubscriptionResourceArmPaginatedResult = /*@__PURE__*/ __L.at(
-  __c45,
-  1,
-) as any as S.Schema<MarketplaceSubscriptionResourceArmPaginatedResult>;
-
 export type ListModelContainersRequestListViewType = "ActiveOnly" | "ArchivedOnly" | "All";
-const ListModelContainersRequestListViewType = S.String;
-
 export interface ListModelContainersRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -7719,11 +5443,6 @@ export interface ListModelContainersRequest {
   /** View type for including/excluding (for example) archived entities. */
   listViewType?: ListModelContainersRequestListViewType | (string & {});
 }
-const ListModelContainersRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  2,
-) as any as S.Schema<ListModelContainersRequest>;
-
 /** Azure Resource Manager resource envelope. */
 export interface ModelContainer {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -7746,12 +5465,7 @@ export interface ModelContainerResourceArmPaginatedResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ModelContainerResourceArmPaginatedResult =
-  CodeContainerResourceArmPaginatedResult as any as S.Schema<ModelContainerResourceArmPaginatedResult>;
-
 export type ListModelVersionsRequestListViewType = "ActiveOnly" | "ArchivedOnly" | "All";
-const ListModelVersionsRequestListViewType = S.String;
-
 export interface ListModelVersionsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -7782,11 +5496,6 @@ export interface ListModelVersionsRequest {
   /** View type for including/excluding (for example) archived entities. */
   listViewType?: ListModelVersionsRequestListViewType | (string & {});
 }
-const ListModelVersionsRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  3,
-) as any as S.Schema<ListModelVersionsRequest>;
-
 /** Azure Resource Manager resource envelope. */
 export interface ModelVersion {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -7800,15 +5509,8 @@ export interface ModelVersion {
   /** [Required] Additional attributes of the entity. */
   properties: ModelVersionProperties;
 }
-const ModelVersion = GetModelVersionResponse as any as S.Schema<ModelVersion>;
-
 /** The ModelVersion items on this page */
 export type ModelVersionResourceArmPaginatedResultValueList = Array<ModelVersion>;
-const ModelVersionResourceArmPaginatedResultValueList = /*@__PURE__*/ __L.at(
-  __c45,
-  4,
-) as any as S.Schema<ModelVersionResourceArmPaginatedResultValueList>;
-
 /** A paginated list of ModelVersion entities. */
 export interface ModelVersionResourceArmPaginatedResult {
   /** The ModelVersion items on this page */
@@ -7816,11 +5518,6 @@ export interface ModelVersionResourceArmPaginatedResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ModelVersionResourceArmPaginatedResult = /*@__PURE__*/ __L.at(
-  __c45,
-  5,
-) as any as S.Schema<ModelVersionResourceArmPaginatedResult>;
-
 export interface ListOnlineDeploymentsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -7837,16 +5534,8 @@ export interface ListOnlineDeploymentsRequest {
   /** Continuation token for pagination. */
   _skip?: string;
 }
-const ListOnlineDeploymentsRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  6,
-) as any as S.Schema<ListOnlineDeploymentsRequest>;
-
 /** Resource tags. */
 export type OnlineDeploymentTagsMap = { [key: string]: string | undefined };
-const OnlineDeploymentTagsMap =
-  BatchDeploymentsCreateOrUpdateRequestTagsMap as any as S.Schema<OnlineDeploymentTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type OnlineDeploymentIdentity = BatchDeploymentsCreateOrUpdateResponseIdentity;
 /** The resource model definition representing SKU */
@@ -7874,15 +5563,8 @@ export interface OnlineDeployment {
   /** The resource model definition representing SKU */
   sku?: BatchDeploymentsCreateOrUpdateResponseSku;
 }
-const OnlineDeployment = /*@__PURE__*/ __L.at(__c45, 7) as any as S.Schema<OnlineDeployment>;
-
 /** The OnlineDeployment items on this page */
 export type OnlineDeploymentTrackedResourceArmPaginatedResultValueList = Array<OnlineDeployment>;
-const OnlineDeploymentTrackedResourceArmPaginatedResultValueList = /*@__PURE__*/ __L.at(
-  __c46,
-  0,
-) as any as S.Schema<OnlineDeploymentTrackedResourceArmPaginatedResultValueList>;
-
 /** A paginated list of OnlineDeployment entities. */
 export interface OnlineDeploymentTrackedResourceArmPaginatedResult {
   /** The OnlineDeployment items on this page */
@@ -7890,11 +5572,6 @@ export interface OnlineDeploymentTrackedResourceArmPaginatedResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const OnlineDeploymentTrackedResourceArmPaginatedResult = /*@__PURE__*/ __L.at(
-  __c46,
-  1,
-) as any as S.Schema<OnlineDeploymentTrackedResourceArmPaginatedResult>;
-
 export interface ListOnlineDeploymentSkusRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -7911,15 +5588,8 @@ export interface ListOnlineDeploymentSkusRequest {
   /** Continuation token for pagination. */
   _skip?: string;
 }
-const ListOnlineDeploymentSkusRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  2,
-) as any as S.Schema<ListOnlineDeploymentSkusRequest>;
-
 /** Node scaling setting for the compute sku. */
 export type SkuCapacityScaleType = "Automatic" | "Manual" | "None";
-const SkuCapacityScaleType = S.String;
-
 /** SKU capacity information */
 export interface SkuCapacity {
   /** Gets or sets the default capacity. */
@@ -7931,12 +5601,8 @@ export interface SkuCapacity {
   /** Node scaling setting for the compute sku. */
   scaleType?: SkuCapacityScaleType;
 }
-const SkuCapacity = /*@__PURE__*/ __L.at(__c46, 3) as any as S.Schema<SkuCapacity>;
-
 /** This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT. */
 export type SkuSettingTier = "Free" | "Basic" | "Standard" | "Premium";
-const SkuSettingTier = S.String;
-
 /** SkuSetting fulfills the need for stripped down SKU info in ARM contract. */
 export interface SkuSetting {
   /** [Required] The name of the SKU. Ex - P3. It is typically a letter+number code. */
@@ -7944,8 +5610,6 @@ export interface SkuSetting {
   /** This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT. */
   tier?: SkuSettingTier;
 }
-const SkuSetting = /*@__PURE__*/ __L.at(__c46, 4) as any as S.Schema<SkuSetting>;
-
 /** Fulfills ARM Contract requirement to list all available SKUS for a resource. */
 export interface SkuResource {
   /** Gets or sets the Sku Capacity. */
@@ -7955,15 +5619,8 @@ export interface SkuResource {
   /** Gets or sets the Sku. */
   sku?: SkuSetting | null;
 }
-const SkuResource = /*@__PURE__*/ __L.at(__c46, 5) as any as S.Schema<SkuResource>;
-
 /** The SkuResource items on this page */
 export type SkuResourceArmPaginatedResultValueList = Array<SkuResource>;
-const SkuResourceArmPaginatedResultValueList = /*@__PURE__*/ __L.at(
-  __c46,
-  6,
-) as any as S.Schema<SkuResourceArmPaginatedResultValueList>;
-
 /** A paginated list of SkuResource entities. */
 export interface SkuResourceArmPaginatedResult {
   /** The SkuResource items on this page */
@@ -7971,11 +5628,6 @@ export interface SkuResourceArmPaginatedResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const SkuResourceArmPaginatedResult = /*@__PURE__*/ __L.at(
-  __c46,
-  7,
-) as any as S.Schema<SkuResourceArmPaginatedResult>;
-
 export interface ListOnlineEndpointKeysRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -7986,21 +5638,12 @@ export interface ListOnlineEndpointKeysRequest {
   /** Online Endpoint name. */
   endpointName: string;
 }
-const ListOnlineEndpointKeysRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  0,
-) as any as S.Schema<ListOnlineEndpointKeysRequest>;
-
 export type ListOnlineEndpointsRequestComputeType = "Managed" | "Kubernetes" | "AzureMLCompute";
-const ListOnlineEndpointsRequestComputeType = S.String;
-
 export type ListOnlineEndpointsRequestOrderBy =
   | "CreatedAtDesc"
   | "CreatedAtAsc"
   | "UpdatedAtDesc"
   | "UpdatedAtAsc";
-const ListOnlineEndpointsRequestOrderBy = S.String;
-
 export interface ListOnlineEndpointsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -8023,16 +5666,8 @@ export interface ListOnlineEndpointsRequest {
   /** The option to order the response. */
   orderBy?: ListOnlineEndpointsRequestOrderBy | (string & {});
 }
-const ListOnlineEndpointsRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  1,
-) as any as S.Schema<ListOnlineEndpointsRequest>;
-
 /** Resource tags. */
 export type OnlineEndpointTagsMap = { [key: string]: string | undefined };
-const OnlineEndpointTagsMap =
-  BatchDeploymentsCreateOrUpdateRequestTagsMap as any as S.Schema<OnlineEndpointTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type OnlineEndpointIdentity = BatchDeploymentsCreateOrUpdateResponseIdentity;
 /** The resource model definition representing SKU */
@@ -8060,15 +5695,8 @@ export interface OnlineEndpoint {
   /** The resource model definition representing SKU */
   sku?: BatchDeploymentsCreateOrUpdateResponseSku;
 }
-const OnlineEndpoint = /*@__PURE__*/ __L.at(__c47, 2) as any as S.Schema<OnlineEndpoint>;
-
 /** The OnlineEndpoint items on this page */
 export type OnlineEndpointTrackedResourceArmPaginatedResultValueList = Array<OnlineEndpoint>;
-const OnlineEndpointTrackedResourceArmPaginatedResultValueList = /*@__PURE__*/ __L.at(
-  __c47,
-  3,
-) as any as S.Schema<OnlineEndpointTrackedResourceArmPaginatedResultValueList>;
-
 /** A paginated list of OnlineEndpoint entities. */
 export interface OnlineEndpointTrackedResourceArmPaginatedResult {
   /** The OnlineEndpoint items on this page */
@@ -8076,17 +5704,7 @@ export interface OnlineEndpointTrackedResourceArmPaginatedResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const OnlineEndpointTrackedResourceArmPaginatedResult = /*@__PURE__*/ __L.at(
-  __c47,
-  4,
-) as any as S.Schema<OnlineEndpointTrackedResourceArmPaginatedResult>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  5,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -8098,16 +5716,10 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-const OperationDisplay = /*@__PURE__*/ __L.at(__c47, 6) as any as S.Schema<OperationDisplay>;
-
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-const OperationOrigin = S.String;
-
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-const OperationActionType = S.String;
-
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -8121,26 +5733,14 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-const Operation = /*@__PURE__*/ __L.at(__c47, 7) as any as S.Schema<Operation>;
-
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
-  __c48,
-  0,
-) as any as S.Schema<ListOperationsResponseValueList>;
-
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c48,
-  1,
-) as any as S.Schema<ListOperationsResponse>;
-
 export interface ListPrivateEndpointConnectionsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -8149,27 +5749,14 @@ export interface ListPrivateEndpointConnectionsRequest {
   /** Azure Machine Learning Workspace Name */
   workspaceName: string;
 }
-const ListPrivateEndpointConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  2,
-) as any as S.Schema<ListPrivateEndpointConnectionsRequest>;
-
 /** Array of private endpoint connections */
 export type PrivateEndpointConnectionListResultValueList = Array<PrivateEndpointConnection>;
-const PrivateEndpointConnectionListResultValueList =
-  WorkspacePropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
-
 /** List of private endpoint connection associated with the specified workspace */
 export interface PrivateEndpointConnectionListResult {
   /** Array of private endpoint connections */
   value?: PrivateEndpointConnectionListResultValueList;
   nextLink?: string;
 }
-const PrivateEndpointConnectionListResult = /*@__PURE__*/ __L.at(
-  __c48,
-  3,
-) as any as S.Schema<PrivateEndpointConnectionListResult>;
-
 export interface ListPrivateLinkResourcesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -8178,23 +5765,12 @@ export interface ListPrivateLinkResourcesRequest {
   /** Azure Machine Learning Workspace Name */
   workspaceName: string;
 }
-const ListPrivateLinkResourcesRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  4,
-) as any as S.Schema<ListPrivateLinkResourcesRequest>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type PrivateLinkResourceIdentity = BatchDeploymentsCreateOrUpdateResponseIdentity;
 /** The private link resource required member names. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-const PrivateLinkResourcePropertiesRequiredMembersList =
-  CapabilityHostPropertiesInputAcaEnvironmentConnectionsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
-
 /** The private link resource Private link DNS zone name. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-const PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  CapabilityHostPropertiesInputAcaEnvironmentConnectionsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
-
 /** Properties of a private link resource. */
 export interface PrivateLinkResourceProperties {
   /** The private link resource group id. */
@@ -8204,17 +5780,9 @@ export interface PrivateLinkResourceProperties {
   /** The private link resource Private link DNS zone name. */
   requiredZoneNames?: PrivateLinkResourcePropertiesRequiredZoneNamesList;
 }
-const PrivateLinkResourceProperties = /*@__PURE__*/ __L.at(
-  __c48,
-  5,
-) as any as S.Schema<PrivateLinkResourceProperties>;
-
 /** The resource model definition representing SKU */
 export type PrivateLinkResourceSku = BatchDeploymentsCreateOrUpdateResponseSku;
 export type PrivateLinkResourceTagsMap = { [key: string]: string | undefined };
-const PrivateLinkResourceTagsMap =
-  BatchDeploymentsCreateOrUpdateRequestTagsMap as any as S.Schema<PrivateLinkResourceTagsMap>;
-
 /** A private link resource */
 export interface PrivateLinkResource {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -8235,34 +5803,20 @@ export interface PrivateLinkResource {
   sku?: BatchDeploymentsCreateOrUpdateResponseSku;
   tags?: PrivateLinkResourceTagsMap;
 }
-const PrivateLinkResource = /*@__PURE__*/ __L.at(__c48, 6) as any as S.Schema<PrivateLinkResource>;
-
 /** A list of private link resources */
 export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResource>;
-const PrivateLinkResourceListResultValueList = /*@__PURE__*/ __L.at(
-  __c48,
-  7,
-) as any as S.Schema<PrivateLinkResourceListResultValueList>;
-
 /** A list of private link resources */
 export interface PrivateLinkResourceListResult {
   /** A list of private link resources */
   value?: PrivateLinkResourceListResultValueList;
   nextLink?: string;
 }
-const PrivateLinkResourceListResult = /*@__PURE__*/ __L.at(
-  __c49,
-  0,
-) as any as S.Schema<PrivateLinkResourceListResult>;
-
 export interface ListQuotasRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The location name. */
   location: string;
 }
-const ListQuotasRequest = /*@__PURE__*/ __L.at(__c49, 1) as any as S.Schema<ListQuotasRequest>;
-
 /** The Resource Name. */
 export interface ResourceName {
   /** The name of the resource. */
@@ -8270,12 +5824,8 @@ export interface ResourceName {
   /** The localized name of the resource. */
   localizedValue?: string;
 }
-const ResourceName = /*@__PURE__*/ __L.at(__c49, 2) as any as S.Schema<ResourceName>;
-
 /** An enum describing the unit of quota measurement. */
 export type QuotaUnit = "Count";
-const QuotaUnit = S.String;
-
 /** The quota assigned to a resource. */
 export interface ResourceQuota {
   /** Specifies the resource ID. */
@@ -8291,15 +5841,8 @@ export interface ResourceQuota {
   /** An enum describing the unit of quota measurement. */
   unit?: QuotaUnit;
 }
-const ResourceQuota = /*@__PURE__*/ __L.at(__c49, 3) as any as S.Schema<ResourceQuota>;
-
 /** The ResourceQuota items on this page */
 export type ListWorkspaceQuotasValueList = Array<ResourceQuota>;
-const ListWorkspaceQuotasValueList = /*@__PURE__*/ __L.at(
-  __c49,
-  4,
-) as any as S.Schema<ListWorkspaceQuotasValueList>;
-
 /** The List WorkspaceQuotasByVMFamily operation response. */
 export interface ListWorkspaceQuotas {
   /** The ResourceQuota items on this page */
@@ -8307,19 +5850,12 @@ export interface ListWorkspaceQuotas {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ListWorkspaceQuotas = /*@__PURE__*/ __L.at(__c49, 5) as any as S.Schema<ListWorkspaceQuotas>;
-
 export interface ListRegistriesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListRegistriesRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  6,
-) as any as S.Schema<ListRegistriesRequest>;
-
 /** Resource tags. */
 export type RegistryTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -8349,15 +5885,8 @@ export interface Registry {
   /** The resource model definition representing SKU */
   sku?: BatchDeploymentsCreateOrUpdateResponseSku;
 }
-const Registry = GetRegistryResponse as any as S.Schema<Registry>;
-
 /** The Registry items on this page */
 export type RegistryTrackedResourceArmPaginatedResultValueList = Array<Registry>;
-const RegistryTrackedResourceArmPaginatedResultValueList = /*@__PURE__*/ __L.at(
-  __c49,
-  7,
-) as any as S.Schema<RegistryTrackedResourceArmPaginatedResultValueList>;
-
 /** A paginated list of Registry entities. */
 export interface RegistryTrackedResourceArmPaginatedResult {
   /** The Registry items on this page */
@@ -8365,20 +5894,10 @@ export interface RegistryTrackedResourceArmPaginatedResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const RegistryTrackedResourceArmPaginatedResult = /*@__PURE__*/ __L.at(
-  __c50,
-  0,
-) as any as S.Schema<RegistryTrackedResourceArmPaginatedResult>;
-
 export interface ListRegistryBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-const ListRegistryBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  1,
-) as any as S.Schema<ListRegistryBySubscriptionRequest>;
-
 export interface ListRegistryCodeContainersRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -8389,11 +5908,6 @@ export interface ListRegistryCodeContainersRequest {
   /** Continuation token for pagination. */
   _skip?: string;
 }
-const ListRegistryCodeContainersRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  2,
-) as any as S.Schema<ListRegistryCodeContainersRequest>;
-
 export interface ListRegistryCodeVersionsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -8410,11 +5924,6 @@ export interface ListRegistryCodeVersionsRequest {
   /** Continuation token for pagination. */
   _skip?: string;
 }
-const ListRegistryCodeVersionsRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  3,
-) as any as S.Schema<ListRegistryCodeVersionsRequest>;
-
 export interface ListRegistryComponentContainersRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -8425,11 +5934,6 @@ export interface ListRegistryComponentContainersRequest {
   /** Continuation token for pagination. */
   _skip?: string;
 }
-const ListRegistryComponentContainersRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  4,
-) as any as S.Schema<ListRegistryComponentContainersRequest>;
-
 export interface ListRegistryComponentVersionsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -8446,14 +5950,7 @@ export interface ListRegistryComponentVersionsRequest {
   /** Continuation token for pagination. */
   _skip?: string;
 }
-const ListRegistryComponentVersionsRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  5,
-) as any as S.Schema<ListRegistryComponentVersionsRequest>;
-
 export type ListRegistryDataContainersRequestListViewType = "ActiveOnly" | "ArchivedOnly" | "All";
-const ListRegistryDataContainersRequestListViewType = S.String;
-
 export interface ListRegistryDataContainersRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -8466,14 +5963,7 @@ export interface ListRegistryDataContainersRequest {
   /** View type for including/excluding (for example) archived entities. */
   listViewType?: ListRegistryDataContainersRequestListViewType | (string & {});
 }
-const ListRegistryDataContainersRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  6,
-) as any as S.Schema<ListRegistryDataContainersRequest>;
-
 export type ListRegistryDataVersionsRequestListViewType = "ActiveOnly" | "ArchivedOnly" | "All";
-const ListRegistryDataVersionsRequestListViewType = S.String;
-
 export interface ListRegistryDataVersionsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -8494,17 +5984,10 @@ export interface ListRegistryDataVersionsRequest {
   /** [ListViewType.ActiveOnly, ListViewType.ArchivedOnly, ListViewType.All]View type for including/excluding (for example) archived entities. */
   listViewType?: ListRegistryDataVersionsRequestListViewType | (string & {});
 }
-const ListRegistryDataVersionsRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  7,
-) as any as S.Schema<ListRegistryDataVersionsRequest>;
-
 export type ListRegistryEnvironmentContainersRequestListViewType =
   | "ActiveOnly"
   | "ArchivedOnly"
   | "All";
-const ListRegistryEnvironmentContainersRequestListViewType = S.String;
-
 export interface ListRegistryEnvironmentContainersRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -8517,17 +6000,10 @@ export interface ListRegistryEnvironmentContainersRequest {
   /** View type for including/excluding (for example) archived entities. */
   listViewType?: ListRegistryEnvironmentContainersRequestListViewType | (string & {});
 }
-const ListRegistryEnvironmentContainersRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  0,
-) as any as S.Schema<ListRegistryEnvironmentContainersRequest>;
-
 export type ListRegistryEnvironmentVersionsRequestListViewType =
   | "ActiveOnly"
   | "ArchivedOnly"
   | "All";
-const ListRegistryEnvironmentVersionsRequestListViewType = S.String;
-
 export interface ListRegistryEnvironmentVersionsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -8546,14 +6022,7 @@ export interface ListRegistryEnvironmentVersionsRequest {
   /** View type for including/excluding (for example) archived entities. */
   listViewType?: ListRegistryEnvironmentVersionsRequestListViewType | (string & {});
 }
-const ListRegistryEnvironmentVersionsRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  1,
-) as any as S.Schema<ListRegistryEnvironmentVersionsRequest>;
-
 export type ListRegistryModelContainersRequestListViewType = "ActiveOnly" | "ArchivedOnly" | "All";
-const ListRegistryModelContainersRequestListViewType = S.String;
-
 export interface ListRegistryModelContainersRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -8566,14 +6035,7 @@ export interface ListRegistryModelContainersRequest {
   /** View type for including/excluding (for example) archived entities. */
   listViewType?: ListRegistryModelContainersRequestListViewType | (string & {});
 }
-const ListRegistryModelContainersRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  2,
-) as any as S.Schema<ListRegistryModelContainersRequest>;
-
 export type ListRegistryModelVersionsRequestListViewType = "ActiveOnly" | "ArchivedOnly" | "All";
-const ListRegistryModelVersionsRequestListViewType = S.String;
-
 export interface ListRegistryModelVersionsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -8600,14 +6062,7 @@ export interface ListRegistryModelVersionsRequest {
   /** View type for including/excluding (for example) archived entities. */
   listViewType?: ListRegistryModelVersionsRequestListViewType | (string & {});
 }
-const ListRegistryModelVersionsRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  3,
-) as any as S.Schema<ListRegistryModelVersionsRequest>;
-
 export type ListSchedulesRequestListViewType = "EnabledOnly" | "DisabledOnly" | "All";
-const ListSchedulesRequestListViewType = S.String;
-
 export interface ListSchedulesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -8620,11 +6075,6 @@ export interface ListSchedulesRequest {
   /** Status filter for schedule. */
   listViewType?: ListSchedulesRequestListViewType | (string & {});
 }
-const ListSchedulesRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  4,
-) as any as S.Schema<ListSchedulesRequest>;
-
 /** Azure Resource Manager resource envelope. */
 export interface Schedule {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -8638,15 +6088,8 @@ export interface Schedule {
   /** [Required] Additional attributes of the entity. */
   properties: ScheduleProperties;
 }
-const Schedule = GetScheduleResponse as any as S.Schema<Schedule>;
-
 /** The Schedule items on this page */
 export type ScheduleResourceArmPaginatedResultValueList = Array<Schedule>;
-const ScheduleResourceArmPaginatedResultValueList = /*@__PURE__*/ __L.at(
-  __c51,
-  5,
-) as any as S.Schema<ScheduleResourceArmPaginatedResultValueList>;
-
 /** A paginated list of Schedule entities. */
 export interface ScheduleResourceArmPaginatedResult {
   /** The Schedule items on this page */
@@ -8654,11 +6097,6 @@ export interface ScheduleResourceArmPaginatedResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ScheduleResourceArmPaginatedResult = /*@__PURE__*/ __L.at(
-  __c51,
-  6,
-) as any as S.Schema<ScheduleResourceArmPaginatedResult>;
-
 export interface ListServerlessEndpointKeysRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -8669,11 +6107,6 @@ export interface ListServerlessEndpointKeysRequest {
   /** Serverless Endpoint name. */
   name: string;
 }
-const ListServerlessEndpointKeysRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  7,
-) as any as S.Schema<ListServerlessEndpointKeysRequest>;
-
 export interface ListServerlessEndpointsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -8684,16 +6117,8 @@ export interface ListServerlessEndpointsRequest {
   /** Continuation token for pagination. */
   _skip?: string;
 }
-const ListServerlessEndpointsRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  0,
-) as any as S.Schema<ListServerlessEndpointsRequest>;
-
 /** Resource tags. */
 export type ServerlessEndpointTagsMap = { [key: string]: string | undefined };
-const ServerlessEndpointTagsMap =
-  BatchDeploymentsCreateOrUpdateRequestTagsMap as any as S.Schema<ServerlessEndpointTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type ServerlessEndpointIdentity = BatchDeploymentsCreateOrUpdateResponseIdentity;
 /** The resource model definition representing SKU */
@@ -8721,16 +6146,9 @@ export interface ServerlessEndpoint {
   /** The resource model definition representing SKU */
   sku?: BatchDeploymentsCreateOrUpdateResponseSku;
 }
-const ServerlessEndpoint = /*@__PURE__*/ __L.at(__c52, 1) as any as S.Schema<ServerlessEndpoint>;
-
 /** The ServerlessEndpoint items on this page */
 export type ServerlessEndpointTrackedResourceArmPaginatedResultValueList =
   Array<ServerlessEndpoint>;
-const ServerlessEndpointTrackedResourceArmPaginatedResultValueList = /*@__PURE__*/ __L.at(
-  __c52,
-  2,
-) as any as S.Schema<ServerlessEndpointTrackedResourceArmPaginatedResultValueList>;
-
 /** A paginated list of ServerlessEndpoint entities. */
 export interface ServerlessEndpointTrackedResourceArmPaginatedResult {
   /** The ServerlessEndpoint items on this page */
@@ -8738,23 +6156,14 @@ export interface ServerlessEndpointTrackedResourceArmPaginatedResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ServerlessEndpointTrackedResourceArmPaginatedResult = /*@__PURE__*/ __L.at(
-  __c52,
-  3,
-) as any as S.Schema<ServerlessEndpointTrackedResourceArmPaginatedResult>;
-
 export interface ListUsagesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The location name. */
   location: string;
 }
-const ListUsagesRequest = /*@__PURE__*/ __L.at(__c52, 4) as any as S.Schema<ListUsagesRequest>;
-
 /** An enum describing the unit of usage measurement. */
 export type UsageUnit = "Count";
-const UsageUnit = S.String;
-
 /** The Usage Names. */
 export type UsageName = ResourceName;
 /** Describes AML Resource Usage. */
@@ -8774,15 +6183,8 @@ export interface Usage {
   /** The name of the type of usage. */
   name?: ResourceName;
 }
-const Usage = /*@__PURE__*/ __L.at(__c52, 5) as any as S.Schema<Usage>;
-
 /** The Usage items on this page */
 export type ListUsagesResultValueList = Array<Usage>;
-const ListUsagesResultValueList = /*@__PURE__*/ __L.at(
-  __c52,
-  6,
-) as any as S.Schema<ListUsagesResultValueList>;
-
 /** The List Usages operation response. */
 export interface ListUsagesResult {
   /** The Usage items on this page */
@@ -8790,35 +6192,20 @@ export interface ListUsagesResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ListUsagesResult = /*@__PURE__*/ __L.at(__c52, 7) as any as S.Schema<ListUsagesResult>;
-
 export interface ListVirtualMachineSizesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The location name. */
   location: string;
 }
-const ListVirtualMachineSizesRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  0,
-) as any as S.Schema<ListVirtualMachineSizesRequest>;
-
 /** Three lettered code specifying the currency of the VM price. Example: USD */
 export type BillingCurrency = "USD";
-const BillingCurrency = S.String;
-
 /** The unit of time measurement for the specified VM price. Example: OneHour */
 export type UnitOfMeasure = "OneHour";
-const UnitOfMeasure = S.String;
-
 /** Operating system type used by the VM. */
 export type VMPriceOSType = "Linux" | "Windows";
-const VMPriceOSType = S.String;
-
 /** The type of the VM. */
 export type VMTier = "Standard" | "LowPriority" | "Spot";
-const VMTier = S.String;
-
 /** The estimated price info for using a VM of a particular OS type, tier, etc. */
 export interface EstimatedVMPrice {
   /** The price charged for using the VM. */
@@ -8828,15 +6215,8 @@ export interface EstimatedVMPrice {
   /** The type of the VM. */
   vmTier: VMTier;
 }
-const EstimatedVMPrice = /*@__PURE__*/ __L.at(__c53, 1) as any as S.Schema<EstimatedVMPrice>;
-
 /** The list of estimated prices for using a VM of a particular OS type, tier, etc. */
 export type EstimatedVMPricesValuesList = Array<EstimatedVMPrice>;
-const EstimatedVMPricesValuesList = /*@__PURE__*/ __L.at(
-  __c53,
-  2,
-) as any as S.Schema<EstimatedVMPricesValuesList>;
-
 /** The estimated price info for using a VM. */
 export interface EstimatedVMPrices {
   /** Three lettered code specifying the currency of the VM price. Example: USD */
@@ -8846,13 +6226,8 @@ export interface EstimatedVMPrices {
   /** The list of estimated prices for using a VM of a particular OS type, tier, etc. */
   values: EstimatedVMPricesValuesList;
 }
-const EstimatedVMPrices = /*@__PURE__*/ __L.at(__c53, 3) as any as S.Schema<EstimatedVMPrices>;
-
 /** Specifies the compute types supported by the virtual machine size. */
 export type VirtualMachineSizeSupportedComputeTypesList = Array<string>;
-const VirtualMachineSizeSupportedComputeTypesList =
-  CapabilityHostPropertiesInputAcaEnvironmentConnectionsList as any as S.Schema<VirtualMachineSizeSupportedComputeTypesList>;
-
 /** Describes the properties of a VM size. */
 export interface VirtualMachineSize {
   /** The name of the virtual machine size. */
@@ -8878,25 +6253,13 @@ export interface VirtualMachineSize {
   /** Specifies the compute types supported by the virtual machine size. */
   supportedComputeTypes?: VirtualMachineSizeSupportedComputeTypesList;
 }
-const VirtualMachineSize = /*@__PURE__*/ __L.at(__c53, 4) as any as S.Schema<VirtualMachineSize>;
-
 /** The list of virtual machine sizes supported by AmlCompute. */
 export type VirtualMachineSizeListResultValueList = Array<VirtualMachineSize>;
-const VirtualMachineSizeListResultValueList = /*@__PURE__*/ __L.at(
-  __c53,
-  5,
-) as any as S.Schema<VirtualMachineSizeListResultValueList>;
-
 /** The List Virtual Machine size operation response. */
 export interface VirtualMachineSizeListResult {
   /** The list of virtual machine sizes supported by AmlCompute. */
   value?: VirtualMachineSizeListResultValueList;
 }
-const VirtualMachineSizeListResult = /*@__PURE__*/ __L.at(
-  __c53,
-  6,
-) as any as S.Schema<VirtualMachineSizeListResult>;
-
 export interface ListWorkspaceByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -8908,11 +6271,6 @@ export interface ListWorkspaceByResourceGroupRequest {
   _skip?: string;
   aiCapabilities?: string;
 }
-const ListWorkspaceByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  7,
-) as any as S.Schema<ListWorkspaceByResourceGroupRequest>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type WorkspaceIdentity = BatchDeploymentsCreateOrUpdateResponseIdentity;
 /** The resource model definition representing SKU */
@@ -8938,15 +6296,8 @@ export interface Workspace {
   sku?: BatchDeploymentsCreateOrUpdateResponseSku;
   tags?: WorkspaceTagsMap;
 }
-const Workspace = GetWorkspaceResponse as any as S.Schema<Workspace>;
-
 /** The Workspace items on this page */
 export type WorkspaceListResultValueList = Array<Workspace>;
-const WorkspaceListResultValueList = /*@__PURE__*/ __L.at(
-  __c54,
-  0,
-) as any as S.Schema<WorkspaceListResultValueList>;
-
 /** The response of a Workspace list operation. */
 export interface WorkspaceListResult {
   /** The Workspace items on this page */
@@ -8954,8 +6305,6 @@ export interface WorkspaceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const WorkspaceListResult = /*@__PURE__*/ __L.at(__c54, 1) as any as S.Schema<WorkspaceListResult>;
-
 export interface ListWorkspaceBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -8965,11 +6314,6 @@ export interface ListWorkspaceBySubscriptionRequest {
   _skip?: string;
   aiCapabilities?: string;
 }
-const ListWorkspaceBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  2,
-) as any as S.Schema<ListWorkspaceBySubscriptionRequest>;
-
 export interface ListWorkspaceConnectionsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -8984,11 +6328,6 @@ export interface ListWorkspaceConnectionsRequest {
   /** query parameter that indicates if get connection call should return both connections and datastores */
   includeAll?: boolean;
 }
-const ListWorkspaceConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  3,
-) as any as S.Schema<ListWorkspaceConnectionsRequest>;
-
 /** Concrete proxy resource types can be created by aliasing this type using a specific property type. */
 export interface WorkspaceConnectionPropertiesV2BasicResource {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -9001,18 +6340,9 @@ export interface WorkspaceConnectionPropertiesV2BasicResource {
   systemData?: SystemData;
   properties: WorkspaceConnectionPropertiesV2;
 }
-const WorkspaceConnectionPropertiesV2BasicResource =
-  CreateWorkspaceConnectionResponse as any as S.Schema<WorkspaceConnectionPropertiesV2BasicResource>;
-
 /** The WorkspaceConnectionPropertiesV2BasicResource items on this page */
 export type WorkspaceConnectionPropertiesV2BasicResourceArmPaginatedResultValueList =
   Array<WorkspaceConnectionPropertiesV2BasicResource>;
-const WorkspaceConnectionPropertiesV2BasicResourceArmPaginatedResultValueList =
-  /*@__PURE__*/ __L.at(
-    __c54,
-    4,
-  ) as any as S.Schema<WorkspaceConnectionPropertiesV2BasicResourceArmPaginatedResultValueList>;
-
 /** Paged collection of WorkspaceConnectionPropertiesV2BasicResource items */
 export interface WorkspaceConnectionPropertiesV2BasicResourceArmPaginatedResult {
   /** The WorkspaceConnectionPropertiesV2BasicResource items on this page */
@@ -9020,11 +6350,6 @@ export interface WorkspaceConnectionPropertiesV2BasicResourceArmPaginatedResult 
   /** The link to the next page of items */
   nextLink?: string;
 }
-const WorkspaceConnectionPropertiesV2BasicResourceArmPaginatedResult = /*@__PURE__*/ __L.at(
-  __c54,
-  5,
-) as any as S.Schema<WorkspaceConnectionPropertiesV2BasicResourceArmPaginatedResult>;
-
 export interface ListWorkspaceConnectionSecretsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -9035,11 +6360,6 @@ export interface ListWorkspaceConnectionSecretsRequest {
   /** Friendly name of the workspace connection */
   connectionName: string;
 }
-const ListWorkspaceConnectionSecretsRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  6,
-) as any as S.Schema<ListWorkspaceConnectionSecretsRequest>;
-
 export interface ListWorkspaceConnectionSecretsResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -9051,9 +6371,6 @@ export interface ListWorkspaceConnectionSecretsResponse {
   systemData?: SystemData;
   properties: WorkspaceConnectionPropertiesV2;
 }
-const ListWorkspaceConnectionSecretsResponse =
-  CreateWorkspaceConnectionResponse as any as S.Schema<ListWorkspaceConnectionSecretsResponse>;
-
 export interface ListWorkspaceFeaturesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -9062,11 +6379,6 @@ export interface ListWorkspaceFeaturesRequest {
   /** Azure Machine Learning Workspace Name */
   workspaceName: string;
 }
-const ListWorkspaceFeaturesRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  7,
-) as any as S.Schema<ListWorkspaceFeaturesRequest>;
-
 /** Features enabled for a workspace */
 export interface AmlUserFeature {
   /** Specifies the feature ID */
@@ -9076,15 +6388,8 @@ export interface AmlUserFeature {
   /** Describes the feature for user experience */
   description?: string;
 }
-const AmlUserFeature = /*@__PURE__*/ __L.at(__c55, 0) as any as S.Schema<AmlUserFeature>;
-
 /** The AmlUserFeature items on this page */
 export type ListAmlUserFeatureResultValueList = Array<AmlUserFeature>;
-const ListAmlUserFeatureResultValueList = /*@__PURE__*/ __L.at(
-  __c55,
-  1,
-) as any as S.Schema<ListAmlUserFeatureResultValueList>;
-
 /** The List Aml user feature operation response. */
 export interface ListAmlUserFeatureResult {
   /** The AmlUserFeature items on this page */
@@ -9092,11 +6397,6 @@ export interface ListAmlUserFeatureResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ListAmlUserFeatureResult = /*@__PURE__*/ __L.at(
-  __c55,
-  2,
-) as any as S.Schema<ListAmlUserFeatureResult>;
-
 export interface ListWorkspaceKeysRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -9105,23 +6405,11 @@ export interface ListWorkspaceKeysRequest {
   /** Azure Machine Learning Workspace Name */
   workspaceName: string;
 }
-const ListWorkspaceKeysRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  3,
-) as any as S.Schema<ListWorkspaceKeysRequest>;
-
 export interface Password {
   name?: string;
   value?: string;
 }
-const Password = /*@__PURE__*/ __L.at(__c55, 4) as any as S.Schema<Password>;
-
 export type RegistryListCredentialsResultPasswordsList = Array<Password>;
-const RegistryListCredentialsResultPasswordsList = /*@__PURE__*/ __L.at(
-  __c55,
-  5,
-) as any as S.Schema<RegistryListCredentialsResultPasswordsList>;
-
 export interface RegistryListCredentialsResult {
   /** The location of the workspace ACR */
   location?: string;
@@ -9129,22 +6417,12 @@ export interface RegistryListCredentialsResult {
   /** The username of the workspace ACR */
   username?: string;
 }
-const RegistryListCredentialsResult = /*@__PURE__*/ __L.at(
-  __c55,
-  6,
-) as any as S.Schema<RegistryListCredentialsResult>;
-
 export interface ListNotebookKeysResult {
   /** The primary access key of the Notebook */
   primaryAccessKey?: string;
   /** The secondary access key of the Notebook */
   secondaryAccessKey?: string;
 }
-const ListNotebookKeysResult = /*@__PURE__*/ __L.at(
-  __c55,
-  7,
-) as any as S.Schema<ListNotebookKeysResult>;
-
 export interface ListWorkspaceKeysResult {
   /** The access key of the workspace app insights */
   appInsightsInstrumentationKey?: string;
@@ -9155,11 +6433,6 @@ export interface ListWorkspaceKeysResult {
   /** The access key of the workspace storage */
   userStorageKey?: string;
 }
-const ListWorkspaceKeysResult = /*@__PURE__*/ __L.at(
-  __c56,
-  0,
-) as any as S.Schema<ListWorkspaceKeysResult>;
-
 export interface ListWorkspaceNotebookAccessTokenRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -9168,11 +6441,6 @@ export interface ListWorkspaceNotebookAccessTokenRequest {
   /** Azure Machine Learning Workspace Name */
   workspaceName: string;
 }
-const ListWorkspaceNotebookAccessTokenRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  1,
-) as any as S.Schema<ListWorkspaceNotebookAccessTokenRequest>;
-
 export interface NotebookAccessTokenResult {
   accessToken?: string | Redacted.Redacted<string>;
   expiresIn?: number;
@@ -9183,11 +6451,6 @@ export interface NotebookAccessTokenResult {
   scope?: string;
   tokenType?: string;
 }
-const NotebookAccessTokenResult = /*@__PURE__*/ __L.at(
-  __c56,
-  2,
-) as any as S.Schema<NotebookAccessTokenResult>;
-
 export interface ListWorkspaceNotebookKeysRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -9196,11 +6459,6 @@ export interface ListWorkspaceNotebookKeysRequest {
   /** Azure Machine Learning Workspace Name */
   workspaceName: string;
 }
-const ListWorkspaceNotebookKeysRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  3,
-) as any as S.Schema<ListWorkspaceNotebookKeysRequest>;
-
 export interface ListWorkspaceOutboundNetworkDependenciesEndpointsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -9209,63 +6467,27 @@ export interface ListWorkspaceOutboundNetworkDependenciesEndpointsRequest {
   /** Azure Machine Learning Workspace Name */
   workspaceName: string;
 }
-const ListWorkspaceOutboundNetworkDependenciesEndpointsRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  4,
-) as any as S.Schema<ListWorkspaceOutboundNetworkDependenciesEndpointsRequest>;
-
 export interface FQDNEndpointDetail {
   port?: number;
 }
-const FQDNEndpointDetail = /*@__PURE__*/ __L.at(__c56, 5) as any as S.Schema<FQDNEndpointDetail>;
-
 export type FQDNEndpointEndpointDetailsList = Array<FQDNEndpointDetail>;
-const FQDNEndpointEndpointDetailsList = /*@__PURE__*/ __L.at(
-  __c56,
-  6,
-) as any as S.Schema<FQDNEndpointEndpointDetailsList>;
-
 export interface FQDNEndpoint {
   domainName?: string;
   endpointDetails?: FQDNEndpointEndpointDetailsList;
 }
-const FQDNEndpoint = /*@__PURE__*/ __L.at(__c56, 7) as any as S.Schema<FQDNEndpoint>;
-
 export type FQDNEndpointsEndpointsList = Array<FQDNEndpoint>;
-const FQDNEndpointsEndpointsList = /*@__PURE__*/ __L.at(
-  __c57,
-  0,
-) as any as S.Schema<FQDNEndpointsEndpointsList>;
-
 export interface FQDNEndpoints {
   category?: string;
   endpoints?: FQDNEndpointsEndpointsList;
 }
-const FQDNEndpoints = /*@__PURE__*/ __L.at(__c57, 1) as any as S.Schema<FQDNEndpoints>;
-
 /** Property bag for FQDN endpoints result */
 export interface FQDNEndpointsPropertyBag {
   properties?: FQDNEndpoints;
 }
-const FQDNEndpointsPropertyBag = /*@__PURE__*/ __L.at(
-  __c57,
-  2,
-) as any as S.Schema<FQDNEndpointsPropertyBag>;
-
 export type ExternalFQDNResponseValueList = Array<FQDNEndpointsPropertyBag>;
-const ExternalFQDNResponseValueList = /*@__PURE__*/ __L.at(
-  __c57,
-  3,
-) as any as S.Schema<ExternalFQDNResponseValueList>;
-
 export interface ExternalFQDNResponse {
   value?: ExternalFQDNResponseValueList;
 }
-const ExternalFQDNResponse = /*@__PURE__*/ __L.at(
-  __c57,
-  4,
-) as any as S.Schema<ExternalFQDNResponse>;
-
 export interface ListWorkspaceStorageAccountKeysRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -9274,20 +6496,10 @@ export interface ListWorkspaceStorageAccountKeysRequest {
   /** Azure Machine Learning Workspace Name */
   workspaceName: string;
 }
-const ListWorkspaceStorageAccountKeysRequest = /*@__PURE__*/ __L.at(
-  __c57,
-  5,
-) as any as S.Schema<ListWorkspaceStorageAccountKeysRequest>;
-
 export interface ListStorageAccountKeysResult {
   /** The access key of the storage */
   userStorageKey?: string;
 }
-const ListStorageAccountKeysResult = /*@__PURE__*/ __L.at(
-  __c57,
-  6,
-) as any as S.Schema<ListStorageAccountKeysResult>;
-
 /** Outbound Rule for the managed network of a machine learning workspace. */
 export interface OutboundRuleInput {
   /** Category of a managed network Outbound Rule of a machine learning workspace. */
@@ -9299,8 +6511,6 @@ export interface OutboundRuleInput {
   /** FQDN: the host name; PrivateEndpoint: {serviceResourceId, subresourceTarget, sparkEnabled}; ServiceTag: {serviceTag, protocol, portRanges, action}. */
   destination?: unknown;
 }
-const OutboundRuleInput = /*@__PURE__*/ __L.at(__c57, 7) as any as S.Schema<OutboundRuleInput>;
-
 export interface ManagedNetworkSettingsRuleCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -9313,11 +6523,6 @@ export interface ManagedNetworkSettingsRuleCreateOrUpdateRequest {
   /** Outbound Rule for the managed network of a machine learning workspace. */
   properties: OutboundRuleInput;
 }
-const ManagedNetworkSettingsRuleCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  0,
-) as any as S.Schema<ManagedNetworkSettingsRuleCreateOrUpdateRequest>;
-
 export interface ManagedNetworkSettingsRuleCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -9330,18 +6535,10 @@ export interface ManagedNetworkSettingsRuleCreateOrUpdateResponse {
   /** Outbound Rule for the managed network of a machine learning workspace. */
   properties: OutboundRule;
 }
-const ManagedNetworkSettingsRuleCreateOrUpdateResponse =
-  GetManagedNetworkSettingsRuleResponse as any as S.Schema<ManagedNetworkSettingsRuleCreateOrUpdateResponse>;
-
 export interface MarketplaceSubscriptionPropertiesInput {
   /** [Required] Target Marketplace Model ID to create a Marketplace Subscription for. */
   modelId: string;
 }
-const MarketplaceSubscriptionPropertiesInput = /*@__PURE__*/ __L.at(
-  __c58,
-  1,
-) as any as S.Schema<MarketplaceSubscriptionPropertiesInput>;
-
 export interface MarketplaceSubscriptionsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -9354,11 +6551,6 @@ export interface MarketplaceSubscriptionsCreateOrUpdateRequest {
   /** [Required] Additional attributes of the entity. */
   properties: MarketplaceSubscriptionPropertiesInput;
 }
-const MarketplaceSubscriptionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  2,
-) as any as S.Schema<MarketplaceSubscriptionsCreateOrUpdateRequest>;
-
 export interface MarketplaceSubscriptionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -9371,9 +6563,6 @@ export interface MarketplaceSubscriptionsCreateOrUpdateResponse {
   /** [Required] Additional attributes of the entity. */
   properties: MarketplaceSubscriptionProperties;
 }
-const MarketplaceSubscriptionsCreateOrUpdateResponse =
-  GetMarketplaceSubscriptionResponse as any as S.Schema<MarketplaceSubscriptionsCreateOrUpdateResponse>;
-
 /** The asset property dictionary. */
 export type ModelContainerPropertiesInputPropertiesMap = {
   [key: string]: string | null | undefined;
@@ -9390,9 +6579,6 @@ export interface ModelContainerPropertiesInput {
   /** Is the asset archived? */
   isArchived?: boolean;
 }
-const ModelContainerPropertiesInput =
-  CodeContainerPropertiesInput as any as S.Schema<ModelContainerPropertiesInput>;
-
 export interface ModelContainersCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -9405,11 +6591,6 @@ export interface ModelContainersCreateOrUpdateRequest {
   /** [Required] Additional attributes of the entity. */
   properties: ModelContainerPropertiesInput;
 }
-const ModelContainersCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  3,
-) as any as S.Schema<ModelContainersCreateOrUpdateRequest>;
-
 export interface ModelContainersCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -9422,9 +6603,6 @@ export interface ModelContainersCreateOrUpdateResponse {
   /** [Required] Additional attributes of the entity. */
   properties: ModelContainerProperties;
 }
-const ModelContainersCreateOrUpdateResponse =
-  CodeContainersCreateOrUpdateResponse as any as S.Schema<ModelContainersCreateOrUpdateResponse>;
-
 export interface ModelVersionsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -9439,11 +6617,6 @@ export interface ModelVersionsCreateOrUpdateRequest {
   /** [Required] Additional attributes of the entity. */
   properties: ModelVersionProperties;
 }
-const ModelVersionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  4,
-) as any as S.Schema<ModelVersionsCreateOrUpdateRequest>;
-
 export interface ModelVersionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -9456,14 +6629,8 @@ export interface ModelVersionsCreateOrUpdateResponse {
   /** [Required] Additional attributes of the entity. */
   properties: ModelVersionProperties;
 }
-const ModelVersionsCreateOrUpdateResponse =
-  GetRegistryModelVersionResponse as any as S.Schema<ModelVersionsCreateOrUpdateResponse>;
-
 /** Resource tags. */
 export type OnlineDeploymentsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const OnlineDeploymentsCreateOrUpdateRequestTagsMap =
-  BatchDeploymentsCreateOrUpdateRequestTagsMap as any as S.Schema<OnlineDeploymentsCreateOrUpdateRequestTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type OnlineDeploymentsCreateOrUpdateRequestIdentity =
   BatchDeploymentsCreateOrUpdateRequestIdentity;
@@ -9493,11 +6660,6 @@ export interface OnlineDeploymentsCreateOrUpdateRequest {
   /** The resource model definition representing SKU */
   sku?: BatchDeploymentsCreateOrUpdateRequestSku;
 }
-const OnlineDeploymentsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  5,
-) as any as S.Schema<OnlineDeploymentsCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type OnlineDeploymentsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -9527,35 +6689,18 @@ export interface OnlineDeploymentsCreateOrUpdateResponse {
   /** The resource model definition representing SKU */
   sku?: BatchDeploymentsCreateOrUpdateResponseSku;
 }
-const OnlineDeploymentsCreateOrUpdateResponse =
-  GetOnlineDeploymentResponse as any as S.Schema<OnlineDeploymentsCreateOrUpdateResponse>;
-
 /** Resource tags. */
 export type OnlineEndpointsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const OnlineEndpointsCreateOrUpdateRequestTagsMap =
-  BatchDeploymentsCreateOrUpdateRequestTagsMap as any as S.Schema<OnlineEndpointsCreateOrUpdateRequestTagsMap>;
-
 /** Property dictionary. Properties can be added, but not removed or altered. */
 export type OnlineEndpointPropertiesInputPropertiesMap = {
   [key: string]: string | null | undefined;
 };
-const OnlineEndpointPropertiesInputPropertiesMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<OnlineEndpointPropertiesInputPropertiesMap>;
-
 /** Percentage of traffic to be mirrored to each deployment without using returned scoring. Traffic values need to sum to utmost 50. */
 export type OnlineEndpointPropertiesInputMirrorTrafficMap = { [key: string]: number | undefined };
-const OnlineEndpointPropertiesInputMirrorTrafficMap =
-  OnlineEndpointPropertiesMirrorTrafficMap as any as S.Schema<OnlineEndpointPropertiesInputMirrorTrafficMap>;
-
 /** Enum to determine whether PublicNetworkAccess is Enabled or Disabled. */
 export type OnlineEndpointPropertiesInputPublicNetworkAccess = "Enabled" | "Disabled";
-const OnlineEndpointPropertiesInputPublicNetworkAccess = S.String;
-
 /** Percentage of traffic from endpoint to divert to each deployment. Traffic values need to sum to 100. */
 export type OnlineEndpointPropertiesInputTrafficMap = { [key: string]: number | undefined };
-const OnlineEndpointPropertiesInputTrafficMap =
-  OnlineEndpointPropertiesMirrorTrafficMap as any as S.Schema<OnlineEndpointPropertiesInputTrafficMap>;
-
 /** Online endpoint configuration */
 export interface OnlineEndpointPropertiesInput {
   /** [Required] The authentication method for invoking the endpoint (data plane operation). Use 'Key' for key-based authentication. Use 'AMLToken' for Azure Machine Learning token-based authentication. Use 'AADToken' for Microsoft Entra token-based authentication. */
@@ -9575,11 +6720,6 @@ export interface OnlineEndpointPropertiesInput {
   /** Percentage of traffic from endpoint to divert to each deployment. Traffic values need to sum to 100. */
   traffic?: OnlineEndpointPropertiesInputTrafficMap | null;
 }
-const OnlineEndpointPropertiesInput = /*@__PURE__*/ __L.at(
-  __c58,
-  6,
-) as any as S.Schema<OnlineEndpointPropertiesInput>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type OnlineEndpointsCreateOrUpdateRequestIdentity =
   BatchDeploymentsCreateOrUpdateRequestIdentity;
@@ -9607,11 +6747,6 @@ export interface OnlineEndpointsCreateOrUpdateRequest {
   /** The resource model definition representing SKU */
   sku?: BatchDeploymentsCreateOrUpdateRequestSku;
 }
-const OnlineEndpointsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  7,
-) as any as S.Schema<OnlineEndpointsCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type OnlineEndpointsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -9641,9 +6776,6 @@ export interface OnlineEndpointsCreateOrUpdateResponse {
   /** The resource model definition representing SKU */
   sku?: BatchDeploymentsCreateOrUpdateResponseSku;
 }
-const OnlineEndpointsCreateOrUpdateResponse =
-  GetOnlineEndpointResponse as any as S.Schema<OnlineEndpointsCreateOrUpdateResponse>;
-
 /** The Private Endpoint resource. */
 export type WorkspacePrivateEndpointResourceInput = UserAssignedIdentityInput;
 /** Private endpoint connection properties. */
@@ -9652,11 +6784,6 @@ export interface PrivateEndpointConnectionPropertiesInput {
   /** The connection state. */
   privateLinkServiceConnectionState?: PrivateLinkServiceConnectionState;
 }
-const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ __L.at(
-  __c59,
-  0,
-) as any as S.Schema<PrivateEndpointConnectionPropertiesInput>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type PrivateEndpointConnectionsCreateOrUpdateRequestIdentity =
   BatchDeploymentsCreateOrUpdateRequestIdentity;
@@ -9666,9 +6793,6 @@ export type PrivateEndpointConnectionsCreateOrUpdateRequestSku =
 export type PrivateEndpointConnectionsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-const PrivateEndpointConnectionsCreateOrUpdateRequestTagsMap =
-  BatchDeploymentsCreateOrUpdateRequestTagsMap as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequestTagsMap>;
-
 export interface PrivateEndpointConnectionsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -9688,11 +6812,6 @@ export interface PrivateEndpointConnectionsCreateOrUpdateRequest {
   location?: string;
   tags?: PrivateEndpointConnectionsCreateOrUpdateRequestTagsMap;
 }
-const PrivateEndpointConnectionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c59,
-  1,
-) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequest>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type PrivateEndpointConnectionsCreateOrUpdateResponseIdentity =
   BatchDeploymentsCreateOrUpdateResponseIdentity;
@@ -9721,9 +6840,6 @@ export interface PrivateEndpointConnectionsCreateOrUpdateResponse {
   location?: string;
   tags?: PrivateEndpointConnectionsCreateOrUpdateResponseTagsMap;
 }
-const PrivateEndpointConnectionsCreateOrUpdateResponse =
-  GetPrivateEndpointConnectionResponse as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>;
-
 export interface ProvisionManagedNetworkProvisionManagedNetworkRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -9733,11 +6849,6 @@ export interface ProvisionManagedNetworkProvisionManagedNetworkRequest {
   workspaceName: string;
   includeSpark?: boolean;
 }
-const ProvisionManagedNetworkProvisionManagedNetworkRequest = /*@__PURE__*/ __L.at(
-  __c59,
-  2,
-) as any as S.Schema<ProvisionManagedNetworkProvisionManagedNetworkRequest>;
-
 export interface PublishCodeVersionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -9756,15 +6867,7 @@ export interface PublishCodeVersionRequest {
   /** Destination registry name */
   registryName?: string | null;
 }
-const PublishCodeVersionRequest = /*@__PURE__*/ __L.at(
-  __c59,
-  3,
-) as any as S.Schema<PublishCodeVersionRequest>;
-
 export interface PublishCodeVersionResponse {}
-const PublishCodeVersionResponse =
-  UserAssignedIdentityInput as any as S.Schema<PublishCodeVersionResponse>;
-
 export interface PublishComponentVersionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -9783,15 +6886,7 @@ export interface PublishComponentVersionRequest {
   /** Destination registry name */
   registryName?: string | null;
 }
-const PublishComponentVersionRequest = /*@__PURE__*/ __L.at(
-  __c59,
-  4,
-) as any as S.Schema<PublishComponentVersionRequest>;
-
 export interface PublishComponentVersionResponse {}
-const PublishComponentVersionResponse =
-  DeleteFeaturesetVersionResponse as any as S.Schema<PublishComponentVersionResponse>;
-
 export interface PublishDataVersionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -9810,15 +6905,7 @@ export interface PublishDataVersionRequest {
   /** Destination registry name */
   registryName?: string | null;
 }
-const PublishDataVersionRequest = /*@__PURE__*/ __L.at(
-  __c59,
-  5,
-) as any as S.Schema<PublishDataVersionRequest>;
-
 export interface PublishDataVersionResponse {}
-const PublishDataVersionResponse =
-  UserAssignedIdentityInput as any as S.Schema<PublishDataVersionResponse>;
-
 export interface PublishEnvironmentVersionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -9837,15 +6924,7 @@ export interface PublishEnvironmentVersionRequest {
   /** Destination registry name */
   registryName?: string | null;
 }
-const PublishEnvironmentVersionRequest = /*@__PURE__*/ __L.at(
-  __c59,
-  6,
-) as any as S.Schema<PublishEnvironmentVersionRequest>;
-
 export interface PublishEnvironmentVersionResponse {}
-const PublishEnvironmentVersionResponse =
-  DeleteComponentContainerResponse as any as S.Schema<PublishEnvironmentVersionResponse>;
-
 export interface PublishModelVersionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -9864,18 +6943,8 @@ export interface PublishModelVersionRequest {
   /** Destination registry name */
   registryName?: string | null;
 }
-const PublishModelVersionRequest = /*@__PURE__*/ __L.at(
-  __c59,
-  7,
-) as any as S.Schema<PublishModelVersionRequest>;
-
 export interface PublishModelVersionResponse {}
-const PublishModelVersionResponse =
-  UserAssignedIdentityInput as any as S.Schema<PublishModelVersionResponse>;
-
 export type KeyType = "Primary" | "Secondary";
-const KeyType = S.String;
-
 export interface RegenerateOnlineEndpointKeysRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -9890,15 +6959,7 @@ export interface RegenerateOnlineEndpointKeysRequest {
   /** The value the key is set to. */
   keyValue?: string | null;
 }
-const RegenerateOnlineEndpointKeysRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  0,
-) as any as S.Schema<RegenerateOnlineEndpointKeysRequest>;
-
 export interface RegenerateOnlineEndpointKeysResponse {}
-const RegenerateOnlineEndpointKeysResponse =
-  DeleteComponentContainerResponse as any as S.Schema<RegenerateOnlineEndpointKeysResponse>;
-
 export interface RegenerateServerlessEndpointKeysRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -9913,31 +6974,15 @@ export interface RegenerateServerlessEndpointKeysRequest {
   /** The value the key is set to. */
   keyValue?: string | null;
 }
-const RegenerateServerlessEndpointKeysRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  1,
-) as any as S.Schema<RegenerateServerlessEndpointKeysRequest>;
-
 /** Resource tags. */
 export type RegistriesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const RegistriesCreateOrUpdateRequestTagsMap =
-  BatchDeploymentsCreateOrUpdateRequestTagsMap as any as S.Schema<RegistriesCreateOrUpdateRequestTagsMap>;
-
 /** The group ids */
 export type RegistryPrivateEndpointConnectionPropertiesInputGroupIdsList = Array<string>;
-const RegistryPrivateEndpointConnectionPropertiesInputGroupIdsList =
-  CapabilityHostPropertiesInputAcaEnvironmentConnectionsList as any as S.Schema<RegistryPrivateEndpointConnectionPropertiesInputGroupIdsList>;
-
 /** The PE network resource that is linked to this PE connection. */
 export interface PrivateEndpointResourceInput {
   /** The subnetId that the private endpoint is connected to. */
   subnetArmId?: string | null;
 }
-const PrivateEndpointResourceInput = /*@__PURE__*/ __L.at(
-  __c60,
-  2,
-) as any as S.Schema<PrivateEndpointResourceInput>;
-
 /** Properties of the Private Endpoint Connection */
 export interface RegistryPrivateEndpointConnectionPropertiesInput {
   /** The group ids */
@@ -9949,11 +6994,6 @@ export interface RegistryPrivateEndpointConnectionPropertiesInput {
   /** One of null, "Succeeded", "Provisioning", "Failed". While not approved, it's null. */
   provisioningState?: string | null;
 }
-const RegistryPrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ __L.at(
-  __c60,
-  3,
-) as any as S.Schema<RegistryPrivateEndpointConnectionPropertiesInput>;
-
 /** Private endpoint connection definition. */
 export interface RegistryPrivateEndpointConnectionInput {
   /** This is the private endpoint connection name created on SRP Full resource id: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.MachineLearningServices/{resourceType}/{resourceName}/registryPrivateEndpointConnections/{peConnectionName} */
@@ -9963,24 +7003,11 @@ export interface RegistryPrivateEndpointConnectionInput {
   /** Properties of the Private Endpoint Connection */
   properties?: RegistryPrivateEndpointConnectionPropertiesInput | null;
 }
-const RegistryPrivateEndpointConnectionInput = /*@__PURE__*/ __L.at(
-  __c60,
-  4,
-) as any as S.Schema<RegistryPrivateEndpointConnectionInput>;
-
 /** Private endpoint connections info used for pending connections in private link portal */
 export type RegistryPropertiesInputRegistryPrivateEndpointConnectionsList =
   Array<RegistryPrivateEndpointConnectionInput>;
-const RegistryPropertiesInputRegistryPrivateEndpointConnectionsList = /*@__PURE__*/ __L.at(
-  __c60,
-  5,
-) as any as S.Schema<RegistryPropertiesInputRegistryPrivateEndpointConnectionsList>;
-
 /** Details of each region the registry is in */
 export type RegistryPropertiesInputRegionDetailsList = Array<RegistryRegionArmDetails>;
-const RegistryPropertiesInputRegionDetailsList =
-  RegistryPropertiesRegionDetailsList as any as S.Schema<RegistryPropertiesInputRegionDetailsList>;
-
 /** Details of the Registry */
 export interface RegistryPropertiesInput {
   /** Discovery URL for the Registry */
@@ -10000,11 +7027,6 @@ export interface RegistryPropertiesInput {
   /** Details of each region the registry is in */
   regionDetails?: RegistryPropertiesInputRegionDetailsList | null;
 }
-const RegistryPropertiesInput = /*@__PURE__*/ __L.at(
-  __c60,
-  6,
-) as any as S.Schema<RegistryPropertiesInput>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type RegistriesCreateOrUpdateRequestIdentity = BatchDeploymentsCreateOrUpdateRequestIdentity;
 /** The resource model definition representing SKU */
@@ -10029,16 +7051,8 @@ export interface RegistriesCreateOrUpdateRequest {
   /** The resource model definition representing SKU */
   sku?: BatchDeploymentsCreateOrUpdateRequestSku;
 }
-const RegistriesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  7,
-) as any as S.Schema<RegistriesCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type RegistriesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const RegistriesCreateOrUpdateResponseTagsMap =
-  BatchDeploymentsCreateOrUpdateRequestTagsMap as any as S.Schema<RegistriesCreateOrUpdateResponseTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type RegistriesCreateOrUpdateResponseIdentity =
   BatchDeploymentsCreateOrUpdateResponseIdentity;
@@ -10066,11 +7080,6 @@ export interface RegistriesCreateOrUpdateResponse {
   /** The resource model definition representing SKU */
   sku?: BatchDeploymentsCreateOrUpdateResponseSku;
 }
-const RegistriesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c61,
-  0,
-) as any as S.Schema<RegistriesCreateOrUpdateResponse>;
-
 export interface RegistryCodeContainersCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -10083,11 +7092,6 @@ export interface RegistryCodeContainersCreateOrUpdateRequest {
   /** [Required] Additional attributes of the entity. */
   properties: CodeContainerPropertiesInput;
 }
-const RegistryCodeContainersCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  1,
-) as any as S.Schema<RegistryCodeContainersCreateOrUpdateRequest>;
-
 export interface RegistryCodeContainersCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -10100,15 +7104,10 @@ export interface RegistryCodeContainersCreateOrUpdateResponse {
   /** [Required] Additional attributes of the entity. */
   properties: CodeContainerProperties;
 }
-const RegistryCodeContainersCreateOrUpdateResponse =
-  CodeContainersCreateOrUpdateResponse as any as S.Schema<RegistryCodeContainersCreateOrUpdateResponse>;
-
 /** Type of storage to use for the pending upload location */
 export type RegistryCodeVersionsCreateOrGetStartPendingUploadRequestPendingUploadType =
   | "None"
   | "TemporaryBlobReference";
-const RegistryCodeVersionsCreateOrGetStartPendingUploadRequestPendingUploadType = S.String;
-
 export interface RegistryCodeVersionsCreateOrGetStartPendingUploadRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -10127,11 +7126,6 @@ export interface RegistryCodeVersionsCreateOrGetStartPendingUploadRequest {
     | RegistryCodeVersionsCreateOrGetStartPendingUploadRequestPendingUploadType
     | (string & {});
 }
-const RegistryCodeVersionsCreateOrGetStartPendingUploadRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  2,
-) as any as S.Schema<RegistryCodeVersionsCreateOrGetStartPendingUploadRequest>;
-
 export interface RegistryCodeVersionsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -10146,11 +7140,6 @@ export interface RegistryCodeVersionsCreateOrUpdateRequest {
   /** [Required] Additional attributes of the entity. */
   properties: CodeVersionProperties;
 }
-const RegistryCodeVersionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  3,
-) as any as S.Schema<RegistryCodeVersionsCreateOrUpdateRequest>;
-
 export interface RegistryCodeVersionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -10163,9 +7152,6 @@ export interface RegistryCodeVersionsCreateOrUpdateResponse {
   /** [Required] Additional attributes of the entity. */
   properties: CodeVersionProperties;
 }
-const RegistryCodeVersionsCreateOrUpdateResponse =
-  CodeVersionsCreateOrUpdateResponse as any as S.Schema<RegistryCodeVersionsCreateOrUpdateResponse>;
-
 export interface RegistryComponentContainersCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -10178,11 +7164,6 @@ export interface RegistryComponentContainersCreateOrUpdateRequest {
   /** [Required] Additional attributes of the entity. */
   properties: ComponentContainerPropertiesInput;
 }
-const RegistryComponentContainersCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  4,
-) as any as S.Schema<RegistryComponentContainersCreateOrUpdateRequest>;
-
 export interface RegistryComponentContainersCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -10195,9 +7176,6 @@ export interface RegistryComponentContainersCreateOrUpdateResponse {
   /** [Required] Additional attributes of the entity. */
   properties: ComponentContainerProperties;
 }
-const RegistryComponentContainersCreateOrUpdateResponse =
-  ComponentContainersCreateOrUpdateResponse as any as S.Schema<RegistryComponentContainersCreateOrUpdateResponse>;
-
 export interface RegistryComponentVersionsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -10212,11 +7190,6 @@ export interface RegistryComponentVersionsCreateOrUpdateRequest {
   /** [Required] Additional attributes of the entity. */
   properties: ComponentVersionProperties;
 }
-const RegistryComponentVersionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  5,
-) as any as S.Schema<RegistryComponentVersionsCreateOrUpdateRequest>;
-
 export interface RegistryComponentVersionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -10229,9 +7202,6 @@ export interface RegistryComponentVersionsCreateOrUpdateResponse {
   /** [Required] Additional attributes of the entity. */
   properties: ComponentVersionProperties;
 }
-const RegistryComponentVersionsCreateOrUpdateResponse =
-  ComponentVersionsCreateOrUpdateResponse as any as S.Schema<RegistryComponentVersionsCreateOrUpdateResponse>;
-
 export interface RegistryDataContainersCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -10244,11 +7214,6 @@ export interface RegistryDataContainersCreateOrUpdateRequest {
   /** [Required] Additional attributes of the entity. */
   properties: DataContainerPropertiesInput;
 }
-const RegistryDataContainersCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  6,
-) as any as S.Schema<RegistryDataContainersCreateOrUpdateRequest>;
-
 export interface RegistryDataContainersCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -10261,15 +7226,10 @@ export interface RegistryDataContainersCreateOrUpdateResponse {
   /** [Required] Additional attributes of the entity. */
   properties: DataContainerProperties;
 }
-const RegistryDataContainersCreateOrUpdateResponse =
-  DataContainersCreateOrUpdateResponse as any as S.Schema<RegistryDataContainersCreateOrUpdateResponse>;
-
 /** Type of storage to use for the pending upload location */
 export type RegistryDataVersionsCreateOrGetStartPendingUploadRequestPendingUploadType =
   | "None"
   | "TemporaryBlobReference";
-const RegistryDataVersionsCreateOrGetStartPendingUploadRequestPendingUploadType = S.String;
-
 export interface RegistryDataVersionsCreateOrGetStartPendingUploadRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -10288,11 +7248,6 @@ export interface RegistryDataVersionsCreateOrGetStartPendingUploadRequest {
     | RegistryDataVersionsCreateOrGetStartPendingUploadRequestPendingUploadType
     | (string & {});
 }
-const RegistryDataVersionsCreateOrGetStartPendingUploadRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  7,
-) as any as S.Schema<RegistryDataVersionsCreateOrGetStartPendingUploadRequest>;
-
 export interface RegistryDataVersionsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -10307,11 +7262,6 @@ export interface RegistryDataVersionsCreateOrUpdateRequest {
   /** [Required] Additional attributes of the entity. */
   properties: DataVersionBaseProperties;
 }
-const RegistryDataVersionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c62,
-  0,
-) as any as S.Schema<RegistryDataVersionsCreateOrUpdateRequest>;
-
 export interface RegistryDataVersionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -10324,9 +7274,6 @@ export interface RegistryDataVersionsCreateOrUpdateResponse {
   /** [Required] Additional attributes of the entity. */
   properties: DataVersionBaseProperties;
 }
-const RegistryDataVersionsCreateOrUpdateResponse =
-  DataVersionsCreateOrUpdateResponse as any as S.Schema<RegistryDataVersionsCreateOrUpdateResponse>;
-
 export interface RegistryEnvironmentContainersCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -10339,11 +7286,6 @@ export interface RegistryEnvironmentContainersCreateOrUpdateRequest {
   /** [Required] Additional attributes of the entity. */
   properties: EnvironmentContainerPropertiesInput;
 }
-const RegistryEnvironmentContainersCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c62,
-  1,
-) as any as S.Schema<RegistryEnvironmentContainersCreateOrUpdateRequest>;
-
 export interface RegistryEnvironmentContainersCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -10356,9 +7298,6 @@ export interface RegistryEnvironmentContainersCreateOrUpdateResponse {
   /** [Required] Additional attributes of the entity. */
   properties: EnvironmentContainerProperties;
 }
-const RegistryEnvironmentContainersCreateOrUpdateResponse =
-  ComponentContainersCreateOrUpdateResponse as any as S.Schema<RegistryEnvironmentContainersCreateOrUpdateResponse>;
-
 export interface RegistryEnvironmentVersionsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -10373,11 +7312,6 @@ export interface RegistryEnvironmentVersionsCreateOrUpdateRequest {
   /** [Required] Additional attributes of the entity. */
   properties: EnvironmentVersionProperties;
 }
-const RegistryEnvironmentVersionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c62,
-  2,
-) as any as S.Schema<RegistryEnvironmentVersionsCreateOrUpdateRequest>;
-
 export interface RegistryEnvironmentVersionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -10390,9 +7324,6 @@ export interface RegistryEnvironmentVersionsCreateOrUpdateResponse {
   /** [Required] Additional attributes of the entity. */
   properties: EnvironmentVersionProperties;
 }
-const RegistryEnvironmentVersionsCreateOrUpdateResponse =
-  EnvironmentVersionsCreateOrUpdateResponse as any as S.Schema<RegistryEnvironmentVersionsCreateOrUpdateResponse>;
-
 export interface RegistryModelContainersCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -10405,11 +7336,6 @@ export interface RegistryModelContainersCreateOrUpdateRequest {
   /** [Required] Additional attributes of the entity. */
   properties: ModelContainerPropertiesInput;
 }
-const RegistryModelContainersCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c62,
-  3,
-) as any as S.Schema<RegistryModelContainersCreateOrUpdateRequest>;
-
 export interface RegistryModelContainersCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -10422,15 +7348,10 @@ export interface RegistryModelContainersCreateOrUpdateResponse {
   /** [Required] Additional attributes of the entity. */
   properties: ModelContainerProperties;
 }
-const RegistryModelContainersCreateOrUpdateResponse =
-  CodeContainersCreateOrUpdateResponse as any as S.Schema<RegistryModelContainersCreateOrUpdateResponse>;
-
 /** Type of storage to use for the pending upload location */
 export type RegistryModelVersionsCreateOrGetStartPendingUploadRequestPendingUploadType =
   | "None"
   | "TemporaryBlobReference";
-const RegistryModelVersionsCreateOrGetStartPendingUploadRequestPendingUploadType = S.String;
-
 export interface RegistryModelVersionsCreateOrGetStartPendingUploadRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -10449,11 +7370,6 @@ export interface RegistryModelVersionsCreateOrGetStartPendingUploadRequest {
     | RegistryModelVersionsCreateOrGetStartPendingUploadRequestPendingUploadType
     | (string & {});
 }
-const RegistryModelVersionsCreateOrGetStartPendingUploadRequest = /*@__PURE__*/ __L.at(
-  __c62,
-  4,
-) as any as S.Schema<RegistryModelVersionsCreateOrGetStartPendingUploadRequest>;
-
 export interface RegistryModelVersionsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -10468,11 +7384,6 @@ export interface RegistryModelVersionsCreateOrUpdateRequest {
   /** [Required] Additional attributes of the entity. */
   properties: ModelVersionProperties;
 }
-const RegistryModelVersionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c62,
-  5,
-) as any as S.Schema<RegistryModelVersionsCreateOrUpdateRequest>;
-
 export interface RegistryModelVersionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -10485,14 +7396,8 @@ export interface RegistryModelVersionsCreateOrUpdateResponse {
   /** [Required] Additional attributes of the entity. */
   properties: ModelVersionProperties;
 }
-const RegistryModelVersionsCreateOrUpdateResponse =
-  GetRegistryModelVersionResponse as any as S.Schema<RegistryModelVersionsCreateOrUpdateResponse>;
-
 /** Resource tags. */
 export type RemoveRegistryRegionsRequestTagsMap = { [key: string]: string | undefined };
-const RemoveRegistryRegionsRequestTagsMap =
-  BatchDeploymentsCreateOrUpdateRequestTagsMap as any as S.Schema<RemoveRegistryRegionsRequestTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type RemoveRegistryRegionsRequestIdentity = BatchDeploymentsCreateOrUpdateRequestIdentity;
 /** The resource model definition representing SKU */
@@ -10517,11 +7422,6 @@ export interface RemoveRegistryRegionsRequest {
   /** The resource model definition representing SKU */
   sku?: BatchDeploymentsCreateOrUpdateRequestSku;
 }
-const RemoveRegistryRegionsRequest = /*@__PURE__*/ __L.at(
-  __c62,
-  6,
-) as any as S.Schema<RemoveRegistryRegionsRequest>;
-
 /** Resource tags. */
 export type RemoveRegistryRegionsResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -10550,9 +7450,6 @@ export interface RemoveRegistryRegionsResponse {
   /** The resource model definition representing SKU */
   sku?: BatchDeploymentsCreateOrUpdateResponseSku;
 }
-const RemoveRegistryRegionsResponse =
-  RegistriesCreateOrUpdateResponse as any as S.Schema<RemoveRegistryRegionsResponse>;
-
 export interface RestartComputeRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -10563,14 +7460,7 @@ export interface RestartComputeRequest {
   /** Name of the Azure Machine Learning compute. */
   computeName: string;
 }
-const RestartComputeRequest = /*@__PURE__*/ __L.at(
-  __c62,
-  7,
-) as any as S.Schema<RestartComputeRequest>;
-
 export interface RestartComputeResponse {}
-const RestartComputeResponse = UserAssignedIdentityInput as any as S.Schema<RestartComputeResponse>;
-
 export interface SchedulesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -10583,11 +7473,6 @@ export interface SchedulesCreateOrUpdateRequest {
   /** [Required] Additional attributes of the entity. */
   properties: ScheduleProperties;
 }
-const SchedulesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c63,
-  0,
-) as any as S.Schema<SchedulesCreateOrUpdateRequest>;
-
 export interface SchedulesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -10600,16 +7485,8 @@ export interface SchedulesCreateOrUpdateResponse {
   /** [Required] Additional attributes of the entity. */
   properties: ScheduleProperties;
 }
-const SchedulesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c63,
-  1,
-) as any as S.Schema<SchedulesCreateOrUpdateResponse>;
-
 /** Resource tags. */
 export type ServerlessEndpointsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const ServerlessEndpointsCreateOrUpdateRequestTagsMap =
-  BatchDeploymentsCreateOrUpdateRequestTagsMap as any as S.Schema<ServerlessEndpointsCreateOrUpdateRequestTagsMap>;
-
 export interface ServerlessEndpointPropertiesInput {
   /** [Required] Specifies the authentication mode for the Serverless endpoint. */
   authMode: ServerlessInferenceEndpointAuthMode | (string & {});
@@ -10618,11 +7495,6 @@ export interface ServerlessEndpointPropertiesInput {
   /** The model settings (model id) for the model being serviced on the ServerlessEndpoint. */
   modelSettings?: ModelSettings | null;
 }
-const ServerlessEndpointPropertiesInput = /*@__PURE__*/ __L.at(
-  __c63,
-  2,
-) as any as S.Schema<ServerlessEndpointPropertiesInput>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type ServerlessEndpointsCreateOrUpdateRequestIdentity =
   BatchDeploymentsCreateOrUpdateRequestIdentity;
@@ -10650,11 +7522,6 @@ export interface ServerlessEndpointsCreateOrUpdateRequest {
   /** The resource model definition representing SKU */
   sku?: BatchDeploymentsCreateOrUpdateRequestSku;
 }
-const ServerlessEndpointsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c63,
-  3,
-) as any as S.Schema<ServerlessEndpointsCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type ServerlessEndpointsCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
@@ -10687,9 +7554,6 @@ export interface ServerlessEndpointsCreateOrUpdateResponse {
   /** The resource model definition representing SKU */
   sku?: BatchDeploymentsCreateOrUpdateResponseSku;
 }
-const ServerlessEndpointsCreateOrUpdateResponse =
-  GetServerlessEndpointResponse as any as S.Schema<ServerlessEndpointsCreateOrUpdateResponse>;
-
 export interface StartComputeRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -10700,11 +7564,7 @@ export interface StartComputeRequest {
   /** Name of the Azure Machine Learning compute. */
   computeName: string;
 }
-const StartComputeRequest = /*@__PURE__*/ __L.at(__c63, 4) as any as S.Schema<StartComputeRequest>;
-
 export interface StartComputeResponse {}
-const StartComputeResponse = UserAssignedIdentityInput as any as S.Schema<StartComputeResponse>;
-
 export interface StopComputeRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -10715,26 +7575,14 @@ export interface StopComputeRequest {
   /** Name of the Azure Machine Learning compute. */
   computeName: string;
 }
-const StopComputeRequest = /*@__PURE__*/ __L.at(__c63, 5) as any as S.Schema<StopComputeRequest>;
-
 export interface StopComputeResponse {}
-const StopComputeResponse = UserAssignedIdentityInput as any as S.Schema<StopComputeResponse>;
-
 /** Mutable batch inference settings per deployment. */
 export interface PartialBatchDeployment {
   /** Description of the endpoint deployment. */
   description?: string | null;
 }
-const PartialBatchDeployment = /*@__PURE__*/ __L.at(
-  __c63,
-  6,
-) as any as S.Schema<PartialBatchDeployment>;
-
 /** Resource tags. */
 export type UpdateBatchDeploymentRequestTagsMap = { [key: string]: string | null | undefined };
-const UpdateBatchDeploymentRequestTagsMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<UpdateBatchDeploymentRequestTagsMap>;
-
 export interface UpdateBatchDeploymentRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -10751,11 +7599,6 @@ export interface UpdateBatchDeploymentRequest {
   /** Resource tags. */
   tags?: UpdateBatchDeploymentRequestTagsMap;
 }
-const UpdateBatchDeploymentRequest = /*@__PURE__*/ __L.at(
-  __c63,
-  7,
-) as any as S.Schema<UpdateBatchDeploymentRequest>;
-
 /** Resource tags. */
 export type UpdateBatchDeploymentResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -10784,31 +7627,18 @@ export interface UpdateBatchDeploymentResponse {
   /** The resource model definition representing SKU */
   sku?: BatchDeploymentsCreateOrUpdateResponseSku;
 }
-const UpdateBatchDeploymentResponse =
-  BatchDeploymentsCreateOrUpdateResponse as any as S.Schema<UpdateBatchDeploymentResponse>;
-
 /** Resource tags. */
 export type UpdateBatchEndpointRequestTagsMap = { [key: string]: string | null | undefined };
-const UpdateBatchEndpointRequestTagsMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<UpdateBatchEndpointRequestTagsMap>;
-
 /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
 export type PartialManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
-const PartialManagedServiceIdentityType = S.String;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type PartialManagedServiceIdentityUserAssignedIdentitiesMap = {
   [key: string]: unknown | undefined;
 };
-const PartialManagedServiceIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
-  __c64,
-  0,
-) as any as S.Schema<PartialManagedServiceIdentityUserAssignedIdentitiesMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface PartialManagedServiceIdentity {
   /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
@@ -10816,11 +7646,6 @@ export interface PartialManagedServiceIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: PartialManagedServiceIdentityUserAssignedIdentitiesMap;
 }
-const PartialManagedServiceIdentity = /*@__PURE__*/ __L.at(
-  __c64,
-  1,
-) as any as S.Schema<PartialManagedServiceIdentity>;
-
 export interface UpdateBatchEndpointRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -10835,11 +7660,6 @@ export interface UpdateBatchEndpointRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: PartialManagedServiceIdentity;
 }
-const UpdateBatchEndpointRequest = /*@__PURE__*/ __L.at(
-  __c64,
-  2,
-) as any as S.Schema<UpdateBatchEndpointRequest>;
-
 /** Resource tags. */
 export type UpdateBatchEndpointResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -10868,9 +7688,6 @@ export interface UpdateBatchEndpointResponse {
   /** The resource model definition representing SKU */
   sku?: BatchDeploymentsCreateOrUpdateResponseSku;
 }
-const UpdateBatchEndpointResponse =
-  BatchEndpointsCreateOrUpdateResponse as any as S.Schema<UpdateBatchEndpointResponse>;
-
 /** scale settings for AML Compute */
 export interface ScaleSettings {
   /** Max number of nodes to use */
@@ -10880,27 +7697,15 @@ export interface ScaleSettings {
   /** Node Idle Time before scaling down amlCompute. This string needs to be in the RFC Format. */
   nodeIdleTimeBeforeScaleDown?: string;
 }
-const ScaleSettings = /*@__PURE__*/ __L.at(__c64, 3) as any as S.Schema<ScaleSettings>;
-
 /** Desired scale settings for the amlCompute. */
 export interface ScaleSettingsInformation {
   scaleSettings?: ScaleSettings;
 }
-const ScaleSettingsInformation = /*@__PURE__*/ __L.at(
-  __c64,
-  4,
-) as any as S.Schema<ScaleSettingsInformation>;
-
 /** The properties of a amlCompute that need to be updated. */
 export interface ClusterUpdateProperties {
   /** Properties of ClusterUpdate */
   properties?: ScaleSettingsInformation;
 }
-const ClusterUpdateProperties = /*@__PURE__*/ __L.at(
-  __c64,
-  5,
-) as any as S.Schema<ClusterUpdateProperties>;
-
 export interface UpdateComputeRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -10913,11 +7718,6 @@ export interface UpdateComputeRequest {
   /** The properties of the amlCompute. */
   properties?: ClusterUpdateProperties;
 }
-const UpdateComputeRequest = /*@__PURE__*/ __L.at(
-  __c64,
-  6,
-) as any as S.Schema<UpdateComputeRequest>;
-
 /** Contains resource tags defined as key/value pairs. */
 export type UpdateComputeResponseTagsMap = { [key: string]: string | undefined };
 /** The resource model definition representing SKU */
@@ -10944,17 +7744,10 @@ export interface UpdateComputeResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: BatchDeploymentsCreateOrUpdateResponseIdentity;
 }
-const UpdateComputeResponse = GetComputeResponse as any as S.Schema<UpdateComputeResponse>;
-
 /** Resource tags. */
 export type UpdateOnlineDeploymentRequestTagsMap = { [key: string]: string | null | undefined };
-const UpdateOnlineDeploymentRequestTagsMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<UpdateOnlineDeploymentRequestTagsMap>;
-
 /** This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT. */
 export type PartialSkuTier = "Free" | "Basic" | "Standard" | "Premium";
-const PartialSkuTier = S.String;
-
 /** Common SKU definition. */
 export interface PartialSku {
   /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
@@ -10968,8 +7761,6 @@ export interface PartialSku {
   /** This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT. */
   tier?: PartialSkuTier | (string & {});
 }
-const PartialSku = /*@__PURE__*/ __L.at(__c64, 7) as any as S.Schema<PartialSku>;
-
 export interface UpdateOnlineDeploymentRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -10986,11 +7777,6 @@ export interface UpdateOnlineDeploymentRequest {
   /** Sku details required for ARM contract for Autoscaling. */
   sku?: PartialSku;
 }
-const UpdateOnlineDeploymentRequest = /*@__PURE__*/ __L.at(
-  __c65,
-  0,
-) as any as S.Schema<UpdateOnlineDeploymentRequest>;
-
 /** Resource tags. */
 export type UpdateOnlineDeploymentResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -11019,14 +7805,8 @@ export interface UpdateOnlineDeploymentResponse {
   /** The resource model definition representing SKU */
   sku?: BatchDeploymentsCreateOrUpdateResponseSku;
 }
-const UpdateOnlineDeploymentResponse =
-  GetOnlineDeploymentResponse as any as S.Schema<UpdateOnlineDeploymentResponse>;
-
 /** Resource tags. */
 export type UpdateOnlineEndpointRequestTagsMap = { [key: string]: string | null | undefined };
-const UpdateOnlineEndpointRequestTagsMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<UpdateOnlineEndpointRequestTagsMap>;
-
 export interface UpdateOnlineEndpointRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -11041,11 +7821,6 @@ export interface UpdateOnlineEndpointRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: PartialManagedServiceIdentity;
 }
-const UpdateOnlineEndpointRequest = /*@__PURE__*/ __L.at(
-  __c65,
-  1,
-) as any as S.Schema<UpdateOnlineEndpointRequest>;
-
 /** Resource tags. */
 export type UpdateOnlineEndpointResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -11074,9 +7849,6 @@ export interface UpdateOnlineEndpointResponse {
   /** The resource model definition representing SKU */
   sku?: BatchDeploymentsCreateOrUpdateResponseSku;
 }
-const UpdateOnlineEndpointResponse =
-  GetOnlineEndpointResponse as any as S.Schema<UpdateOnlineEndpointResponse>;
-
 /** The properties for Quota update or retrieval. */
 export interface QuotaBaseProperties {
   /** Specifies the resource ID. */
@@ -11088,15 +7860,8 @@ export interface QuotaBaseProperties {
   /** An enum describing the unit of quota measurement. */
   unit?: QuotaUnit | (string & {});
 }
-const QuotaBaseProperties = /*@__PURE__*/ __L.at(__c65, 2) as any as S.Schema<QuotaBaseProperties>;
-
 /** The list for update quota. */
 export type UpdateQuotasRequestValueList = Array<QuotaBaseProperties>;
-const UpdateQuotasRequestValueList = /*@__PURE__*/ __L.at(
-  __c65,
-  3,
-) as any as S.Schema<UpdateQuotasRequestValueList>;
-
 export interface UpdateQuotasRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -11105,8 +7870,6 @@ export interface UpdateQuotasRequest {
   /** The list for update quota. */
   value?: UpdateQuotasRequestValueList;
 }
-const UpdateQuotasRequest = /*@__PURE__*/ __L.at(__c65, 4) as any as S.Schema<UpdateQuotasRequest>;
-
 /** Status of update workspace quota. */
 export type Status =
   | "Undefined"
@@ -11117,8 +7880,6 @@ export type Status =
   | "InvalidVMFamilyName"
   | "OperationNotSupportedForSku"
   | "OperationNotEnabledForRegion";
-const Status = S.String;
-
 /** The properties for update Quota response. */
 export interface UpdateWorkspaceQuotas {
   /** Specifies the resource ID. */
@@ -11132,18 +7893,8 @@ export interface UpdateWorkspaceQuotas {
   /** Status of update workspace quota. */
   status?: Status;
 }
-const UpdateWorkspaceQuotas = /*@__PURE__*/ __L.at(
-  __c65,
-  5,
-) as any as S.Schema<UpdateWorkspaceQuotas>;
-
 /** The list of workspace quota update result. */
 export type UpdateWorkspaceQuotasResultValueList = Array<UpdateWorkspaceQuotas>;
-const UpdateWorkspaceQuotasResultValueList = /*@__PURE__*/ __L.at(
-  __c65,
-  6,
-) as any as S.Schema<UpdateWorkspaceQuotasResultValueList>;
-
 /** The result of update workspace quota. */
 export interface UpdateWorkspaceQuotasResult {
   /** The list of workspace quota update result. */
@@ -11151,19 +7902,11 @@ export interface UpdateWorkspaceQuotasResult {
   /** The URI to fetch the next page of workspace quota update result. Call ListNext() with this to fetch the next page of Workspace Quota update result. */
   nextLink?: string;
 }
-const UpdateWorkspaceQuotasResult = /*@__PURE__*/ __L.at(
-  __c65,
-  7,
-) as any as S.Schema<UpdateWorkspaceQuotasResult>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type RegistryPartialManagedServiceIdentityInput =
   BatchDeploymentsCreateOrUpdateRequestIdentity;
 /** Resource tags. */
 export type UpdateRegistryRequestTagsMap = { [key: string]: string | null | undefined };
-const UpdateRegistryRequestTagsMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<UpdateRegistryRequestTagsMap>;
-
 export interface UpdateRegistryRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -11178,11 +7921,6 @@ export interface UpdateRegistryRequest {
   /** Resource tags. */
   tags?: UpdateRegistryRequestTagsMap;
 }
-const UpdateRegistryRequest = /*@__PURE__*/ __L.at(
-  __c66,
-  0,
-) as any as S.Schema<UpdateRegistryRequest>;
-
 /** Resource tags. */
 export type UpdateRegistryResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -11211,13 +7949,8 @@ export interface UpdateRegistryResponse {
   /** The resource model definition representing SKU */
   sku?: BatchDeploymentsCreateOrUpdateResponseSku;
 }
-const UpdateRegistryResponse = GetRegistryResponse as any as S.Schema<UpdateRegistryResponse>;
-
 /** Resource tags. */
 export type UpdateServerlessEndpointRequestTagsMap = { [key: string]: string | null | undefined };
-const UpdateServerlessEndpointRequestTagsMap =
-  BatchDeploymentPropertiesEnvironmentVariablesMap as any as S.Schema<UpdateServerlessEndpointRequestTagsMap>;
-
 export interface UpdateServerlessEndpointRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -11234,11 +7967,6 @@ export interface UpdateServerlessEndpointRequest {
   /** Sku details required for ARM contract for Autoscaling. */
   sku?: PartialSku;
 }
-const UpdateServerlessEndpointRequest = /*@__PURE__*/ __L.at(
-  __c66,
-  1,
-) as any as S.Schema<UpdateServerlessEndpointRequest>;
-
 /** Resource tags. */
 export type UpdateServerlessEndpointResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -11268,36 +7996,18 @@ export interface UpdateServerlessEndpointResponse {
   /** The resource model definition representing SKU */
   sku?: BatchDeploymentsCreateOrUpdateResponseSku;
 }
-const UpdateServerlessEndpointResponse =
-  GetServerlessEndpointResponse as any as S.Schema<UpdateServerlessEndpointResponse>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateWorkspaceRequestIdentity = BatchDeploymentsCreateOrUpdateRequestIdentity;
 export interface EncryptionKeyVaultUpdateProperties {
   keyIdentifier: string;
 }
-const EncryptionKeyVaultUpdateProperties = /*@__PURE__*/ __L.at(
-  __c66,
-  2,
-) as any as S.Schema<EncryptionKeyVaultUpdateProperties>;
-
 export interface EncryptionUpdateProperties {
   keyVaultProperties: EncryptionKeyVaultUpdateProperties;
 }
-const EncryptionUpdateProperties = /*@__PURE__*/ __L.at(
-  __c66,
-  3,
-) as any as S.Schema<EncryptionUpdateProperties>;
-
 /** Dictionary of <OutboundRule> */
 export type ManagedNetworkSettingsInputOutboundRulesMap = {
   [key: string]: OutboundRuleInput | undefined;
 };
-const ManagedNetworkSettingsInputOutboundRulesMap = /*@__PURE__*/ __L.at(
-  __c66,
-  4,
-) as any as S.Schema<ManagedNetworkSettingsInputOutboundRulesMap>;
-
 /** Managed Network settings for a machine learning workspace. */
 export interface ManagedNetworkSettingsInput {
   /** A flag to indicate if monitoring needs to be enabled for the managed network. */
@@ -11313,11 +8023,6 @@ export interface ManagedNetworkSettingsInput {
   /** The Kind of the managed network. Users can switch from V1 to V2 for granular access controls, but cannot switch back to V1 once V2 is enabled. */
   managedNetworkKind?: ManagedNetworkKind | (string & {});
 }
-const ManagedNetworkSettingsInput = /*@__PURE__*/ __L.at(
-  __c66,
-  5,
-) as any as S.Schema<ManagedNetworkSettingsInput>;
-
 /** The parameters for updating a machine learning workspace. */
 export interface WorkspacePropertiesUpdateParametersInput {
   /** ARM id of the application insights associated with this workspace. */
@@ -11348,18 +8053,10 @@ export interface WorkspacePropertiesUpdateParametersInput {
   /** Enabling v1_legacy_mode may prevent you from using features provided by the v2 API. */
   v1LegacyMode?: boolean;
 }
-const WorkspacePropertiesUpdateParametersInput = /*@__PURE__*/ __L.at(
-  __c66,
-  6,
-) as any as S.Schema<WorkspacePropertiesUpdateParametersInput>;
-
 /** The resource model definition representing SKU */
 export type UpdateWorkspaceRequestSku = BatchDeploymentsCreateOrUpdateRequestSku;
 /** The resource tags for the machine learning workspace. */
 export type UpdateWorkspaceRequestTagsMap = { [key: string]: string | undefined };
-const UpdateWorkspaceRequestTagsMap =
-  BatchDeploymentsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateWorkspaceRequestTagsMap>;
-
 export interface UpdateWorkspaceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -11376,11 +8073,6 @@ export interface UpdateWorkspaceRequest {
   /** The resource tags for the machine learning workspace. */
   tags?: UpdateWorkspaceRequestTagsMap;
 }
-const UpdateWorkspaceRequest = /*@__PURE__*/ __L.at(
-  __c66,
-  7,
-) as any as S.Schema<UpdateWorkspaceRequest>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateWorkspaceResponseIdentity = BatchDeploymentsCreateOrUpdateResponseIdentity;
 /** The resource model definition representing SKU */
@@ -11405,8 +8097,6 @@ export interface UpdateWorkspaceResponse {
   sku?: BatchDeploymentsCreateOrUpdateResponseSku;
   tags?: UpdateWorkspaceResponseTagsMap;
 }
-const UpdateWorkspaceResponse = GetWorkspaceResponse as any as S.Schema<UpdateWorkspaceResponse>;
-
 export interface UpdateWorkspaceConnectionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -11419,11 +8109,6 @@ export interface UpdateWorkspaceConnectionRequest {
   /** The properties that the machine learning workspace connection will be updated with. */
   properties?: WorkspaceConnectionPropertiesV2Input;
 }
-const UpdateWorkspaceConnectionRequest = /*@__PURE__*/ __L.at(
-  __c67,
-  0,
-) as any as S.Schema<UpdateWorkspaceConnectionRequest>;
-
 export interface UpdateWorkspaceConnectionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -11435,19 +8120,10 @@ export interface UpdateWorkspaceConnectionResponse {
   systemData?: SystemData;
   properties: WorkspaceConnectionPropertiesV2;
 }
-const UpdateWorkspaceConnectionResponse =
-  CreateWorkspaceConnectionResponse as any as S.Schema<UpdateWorkspaceConnectionResponse>;
-
 export type WorkspacePropertiesInputAssociatedWorkspacesList = Array<string>;
-const WorkspacePropertiesInputAssociatedWorkspacesList =
-  CapabilityHostPropertiesInputAcaEnvironmentConnectionsList as any as S.Schema<WorkspacePropertiesInputAssociatedWorkspacesList>;
-
 /** The list of shared private link resources in this workspace. */
 export type WorkspacePropertiesInputSharedPrivateLinkResourcesList =
   Array<SharedPrivateLinkResource>;
-const WorkspacePropertiesInputSharedPrivateLinkResourcesList =
-  WorkspacePropertiesSharedPrivateLinkResourcesList as any as S.Schema<WorkspacePropertiesInputSharedPrivateLinkResourcesList>;
-
 /** The properties of a machine learning workspace. */
 export interface WorkspacePropertiesInput {
   /** The flag to indicate whether to allow public access when behind VNet. */
@@ -11497,19 +8173,11 @@ export interface WorkspacePropertiesInput {
   /** WorkspaceHub's configuration object. */
   workspaceHubConfig?: WorkspaceHubConfig;
 }
-const WorkspacePropertiesInput = /*@__PURE__*/ __L.at(
-  __c67,
-  1,
-) as any as S.Schema<WorkspacePropertiesInput>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type WorkspacesCreateOrUpdateRequestIdentity = BatchDeploymentsCreateOrUpdateRequestIdentity;
 /** The resource model definition representing SKU */
 export type WorkspacesCreateOrUpdateRequestSku = BatchDeploymentsCreateOrUpdateRequestSku;
 export type WorkspacesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const WorkspacesCreateOrUpdateRequestTagsMap =
-  BatchDeploymentsCreateOrUpdateRequestTagsMap as any as S.Schema<WorkspacesCreateOrUpdateRequestTagsMap>;
-
 export interface WorkspacesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -11527,20 +8195,12 @@ export interface WorkspacesCreateOrUpdateRequest {
   sku?: BatchDeploymentsCreateOrUpdateRequestSku;
   tags?: WorkspacesCreateOrUpdateRequestTagsMap;
 }
-const WorkspacesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c67,
-  2,
-) as any as S.Schema<WorkspacesCreateOrUpdateRequest>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type WorkspacesCreateOrUpdateResponseIdentity =
   BatchDeploymentsCreateOrUpdateResponseIdentity;
 /** The resource model definition representing SKU */
 export type WorkspacesCreateOrUpdateResponseSku = BatchDeploymentsCreateOrUpdateResponseSku;
 export type WorkspacesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const WorkspacesCreateOrUpdateResponseTagsMap =
-  BatchDeploymentsCreateOrUpdateRequestTagsMap as any as S.Schema<WorkspacesCreateOrUpdateResponseTagsMap>;
-
 export interface WorkspacesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -11560,65 +8220,30 @@ export interface WorkspacesCreateOrUpdateResponse {
   sku?: BatchDeploymentsCreateOrUpdateResponseSku;
   tags?: WorkspacesCreateOrUpdateResponseTagsMap;
 }
-const WorkspacesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c67,
-  3,
-) as any as S.Schema<WorkspacesCreateOrUpdateResponse>;
-
 /** Setting for diagnosing dependent application insights */
 export type DiagnoseRequestPropertiesApplicationInsightsMap = {
   [key: string]: unknown | undefined;
 };
-const DiagnoseRequestPropertiesApplicationInsightsMap =
-  PartialManagedServiceIdentityUserAssignedIdentitiesMap as any as S.Schema<DiagnoseRequestPropertiesApplicationInsightsMap>;
-
 /** Setting for diagnosing dependent container registry */
 export type DiagnoseRequestPropertiesContainerRegistryMap = { [key: string]: unknown | undefined };
-const DiagnoseRequestPropertiesContainerRegistryMap =
-  PartialManagedServiceIdentityUserAssignedIdentitiesMap as any as S.Schema<DiagnoseRequestPropertiesContainerRegistryMap>;
-
 /** Setting for diagnosing dns resolution */
 export type DiagnoseRequestPropertiesDnsResolutionMap = { [key: string]: unknown | undefined };
-const DiagnoseRequestPropertiesDnsResolutionMap =
-  PartialManagedServiceIdentityUserAssignedIdentitiesMap as any as S.Schema<DiagnoseRequestPropertiesDnsResolutionMap>;
-
 /** Setting for diagnosing dependent key vault */
 export type DiagnoseRequestPropertiesKeyVaultMap = { [key: string]: unknown | undefined };
-const DiagnoseRequestPropertiesKeyVaultMap =
-  PartialManagedServiceIdentityUserAssignedIdentitiesMap as any as S.Schema<DiagnoseRequestPropertiesKeyVaultMap>;
-
 /** Setting for diagnosing network security group */
 export type DiagnoseRequestPropertiesNsgMap = { [key: string]: unknown | undefined };
-const DiagnoseRequestPropertiesNsgMap =
-  PartialManagedServiceIdentityUserAssignedIdentitiesMap as any as S.Schema<DiagnoseRequestPropertiesNsgMap>;
-
 /** Setting for diagnosing unclassified category of problems */
 export type DiagnoseRequestPropertiesOthersMap = { [key: string]: unknown | undefined };
-const DiagnoseRequestPropertiesOthersMap =
-  PartialManagedServiceIdentityUserAssignedIdentitiesMap as any as S.Schema<DiagnoseRequestPropertiesOthersMap>;
-
 /** Setting for diagnosing the presence of required resource providers in the workspace. */
 export type DiagnoseRequestPropertiesRequiredResourceProvidersMap = {
   [key: string]: unknown | undefined;
 };
-const DiagnoseRequestPropertiesRequiredResourceProvidersMap =
-  PartialManagedServiceIdentityUserAssignedIdentitiesMap as any as S.Schema<DiagnoseRequestPropertiesRequiredResourceProvidersMap>;
-
 /** Setting for diagnosing resource lock */
 export type DiagnoseRequestPropertiesResourceLockMap = { [key: string]: unknown | undefined };
-const DiagnoseRequestPropertiesResourceLockMap =
-  PartialManagedServiceIdentityUserAssignedIdentitiesMap as any as S.Schema<DiagnoseRequestPropertiesResourceLockMap>;
-
 /** Setting for diagnosing dependent storage account */
 export type DiagnoseRequestPropertiesStorageAccountMap = { [key: string]: unknown | undefined };
-const DiagnoseRequestPropertiesStorageAccountMap =
-  PartialManagedServiceIdentityUserAssignedIdentitiesMap as any as S.Schema<DiagnoseRequestPropertiesStorageAccountMap>;
-
 /** Setting for diagnosing user defined routing */
 export type DiagnoseRequestPropertiesUdrMap = { [key: string]: unknown | undefined };
-const DiagnoseRequestPropertiesUdrMap =
-  PartialManagedServiceIdentityUserAssignedIdentitiesMap as any as S.Schema<DiagnoseRequestPropertiesUdrMap>;
-
 export interface DiagnoseRequestProperties {
   /** Setting for diagnosing dependent application insights */
   applicationInsights?: DiagnoseRequestPropertiesApplicationInsightsMap;
@@ -11641,11 +8266,6 @@ export interface DiagnoseRequestProperties {
   /** Setting for diagnosing user defined routing */
   udr?: DiagnoseRequestPropertiesUdrMap;
 }
-const DiagnoseRequestProperties = /*@__PURE__*/ __L.at(
-  __c67,
-  4,
-) as any as S.Schema<DiagnoseRequestProperties>;
-
 export interface WorkspacesDiagnoseRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -11655,15 +8275,8 @@ export interface WorkspacesDiagnoseRequest {
   workspaceName: string;
   value?: DiagnoseRequestProperties;
 }
-const WorkspacesDiagnoseRequest = /*@__PURE__*/ __L.at(
-  __c67,
-  5,
-) as any as S.Schema<WorkspacesDiagnoseRequest>;
-
 /** Level of workspace setup error */
 export type DiagnoseResultLevel = "Warning" | "Error" | "Information";
-const DiagnoseResultLevel = S.String;
-
 /** Result of Diagnose */
 export interface DiagnoseResult {
   /** Code for workspace setup error */
@@ -11673,46 +8286,15 @@ export interface DiagnoseResult {
   /** Message of workspace setup error */
   message?: string;
 }
-const DiagnoseResult = /*@__PURE__*/ __L.at(__c67, 6) as any as S.Schema<DiagnoseResult>;
-
 export type DiagnoseResponseResultValueUserDefinedRouteResultsList = Array<DiagnoseResult>;
-const DiagnoseResponseResultValueUserDefinedRouteResultsList = /*@__PURE__*/ __L.at(
-  __c67,
-  7,
-) as any as S.Schema<DiagnoseResponseResultValueUserDefinedRouteResultsList>;
-
 export type DiagnoseResponseResultValueNetworkSecurityRuleResultsList = Array<DiagnoseResult>;
-const DiagnoseResponseResultValueNetworkSecurityRuleResultsList =
-  DiagnoseResponseResultValueUserDefinedRouteResultsList as any as S.Schema<DiagnoseResponseResultValueNetworkSecurityRuleResultsList>;
-
 export type DiagnoseResponseResultValueResourceLockResultsList = Array<DiagnoseResult>;
-const DiagnoseResponseResultValueResourceLockResultsList =
-  DiagnoseResponseResultValueUserDefinedRouteResultsList as any as S.Schema<DiagnoseResponseResultValueResourceLockResultsList>;
-
 export type DiagnoseResponseResultValueDnsResolutionResultsList = Array<DiagnoseResult>;
-const DiagnoseResponseResultValueDnsResolutionResultsList =
-  DiagnoseResponseResultValueUserDefinedRouteResultsList as any as S.Schema<DiagnoseResponseResultValueDnsResolutionResultsList>;
-
 export type DiagnoseResponseResultValueStorageAccountResultsList = Array<DiagnoseResult>;
-const DiagnoseResponseResultValueStorageAccountResultsList =
-  DiagnoseResponseResultValueUserDefinedRouteResultsList as any as S.Schema<DiagnoseResponseResultValueStorageAccountResultsList>;
-
 export type DiagnoseResponseResultValueKeyVaultResultsList = Array<DiagnoseResult>;
-const DiagnoseResponseResultValueKeyVaultResultsList =
-  DiagnoseResponseResultValueUserDefinedRouteResultsList as any as S.Schema<DiagnoseResponseResultValueKeyVaultResultsList>;
-
 export type DiagnoseResponseResultValueContainerRegistryResultsList = Array<DiagnoseResult>;
-const DiagnoseResponseResultValueContainerRegistryResultsList =
-  DiagnoseResponseResultValueUserDefinedRouteResultsList as any as S.Schema<DiagnoseResponseResultValueContainerRegistryResultsList>;
-
 export type DiagnoseResponseResultValueApplicationInsightsResultsList = Array<DiagnoseResult>;
-const DiagnoseResponseResultValueApplicationInsightsResultsList =
-  DiagnoseResponseResultValueUserDefinedRouteResultsList as any as S.Schema<DiagnoseResponseResultValueApplicationInsightsResultsList>;
-
 export type DiagnoseResponseResultValueOtherResultsList = Array<DiagnoseResult>;
-const DiagnoseResponseResultValueOtherResultsList =
-  DiagnoseResponseResultValueUserDefinedRouteResultsList as any as S.Schema<DiagnoseResponseResultValueOtherResultsList>;
-
 export interface DiagnoseResponseResultValue {
   userDefinedRouteResults?: DiagnoseResponseResultValueUserDefinedRouteResultsList;
   networkSecurityRuleResults?: DiagnoseResponseResultValueNetworkSecurityRuleResultsList;
@@ -11724,19 +8306,9 @@ export interface DiagnoseResponseResultValue {
   applicationInsightsResults?: DiagnoseResponseResultValueApplicationInsightsResultsList;
   otherResults?: DiagnoseResponseResultValueOtherResultsList;
 }
-const DiagnoseResponseResultValue = /*@__PURE__*/ __L.at(
-  __c68,
-  0,
-) as any as S.Schema<DiagnoseResponseResultValue>;
-
 export interface DiagnoseResponseResult {
   value?: DiagnoseResponseResultValue;
 }
-const DiagnoseResponseResult = /*@__PURE__*/ __L.at(
-  __c68,
-  1,
-) as any as S.Schema<DiagnoseResponseResult>;
-
 export interface WorkspacesPrepareNotebookRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -11745,11 +8317,6 @@ export interface WorkspacesPrepareNotebookRequest {
   /** Azure Machine Learning Workspace Name */
   workspaceName: string;
 }
-const WorkspacesPrepareNotebookRequest = /*@__PURE__*/ __L.at(
-  __c68,
-  2,
-) as any as S.Schema<WorkspacesPrepareNotebookRequest>;
-
 export interface WorkspacesResyncKeysRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -11758,15 +8325,7 @@ export interface WorkspacesResyncKeysRequest {
   /** Azure Machine Learning Workspace Name */
   workspaceName: string;
 }
-const WorkspacesResyncKeysRequest = /*@__PURE__*/ __L.at(
-  __c68,
-  3,
-) as any as S.Schema<WorkspacesResyncKeysRequest>;
-
 export interface WorkspacesResyncKeysResponse {}
-const WorkspacesResyncKeysResponse =
-  UserAssignedIdentityInput as any as S.Schema<WorkspacesResyncKeysResponse>;
-
 export type BatchDeploymentsCreateOrUpdateError = AzureOpError;
 /** Creates/updates a batch inference deployment (asynchronous). Creates/updates a batch inference deployment (asynchronous). */
 export const BatchDeploymentsCreateOrUpdate: API.OperationMethod<
@@ -11775,8 +8334,8 @@ export const BatchDeploymentsCreateOrUpdate: API.OperationMethod<
   BatchDeploymentsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchDeploymentsCreateOrUpdateRequest,
-  output: BatchDeploymentsCreateOrUpdateResponse,
+  input: __S(13, __c1, 5) as any as S.Schema<BatchDeploymentsCreateOrUpdateRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<BatchDeploymentsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11790,8 +8349,8 @@ export const BatchEndpointsCreateOrUpdate: API.OperationMethod<
   BatchEndpointsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchEndpointsCreateOrUpdateRequest,
-  output: BatchEndpointsCreateOrUpdateResponse,
+  input: __S(22, __c2, 6) as any as S.Schema<BatchEndpointsCreateOrUpdateRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<BatchEndpointsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11805,8 +8364,8 @@ export const CancelJob: API.OperationMethod<
   CancelJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelJobRequest,
-  output: CancelJobResponse,
+  input: __S(25, __c3, 1) as any as S.Schema<CancelJobRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<CancelJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11820,8 +8379,8 @@ export const CapabilityHostsCreateOrUpdate: API.OperationMethod<
   CapabilityHostsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CapabilityHostsCreateOrUpdateRequest,
-  output: CapabilityHostsCreateOrUpdateResponse,
+  input: __S(28, __c3, 4) as any as S.Schema<CapabilityHostsCreateOrUpdateRequest>,
+  output: __S(30, __c3, 6) as any as S.Schema<CapabilityHostsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11835,8 +8394,8 @@ export const CodeContainersCreateOrUpdate: API.OperationMethod<
   CodeContainersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CodeContainersCreateOrUpdateRequest,
-  output: CodeContainersCreateOrUpdateResponse,
+  input: __S(32, __c4, 0) as any as S.Schema<CodeContainersCreateOrUpdateRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<CodeContainersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11850,8 +8409,8 @@ export const CodeVersionsCreateOrGetStartPendingUpload: API.OperationMethod<
   CodeVersionsCreateOrGetStartPendingUploadError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CodeVersionsCreateOrGetStartPendingUploadRequest,
-  output: PendingUploadResponseDto,
+  input: __S(35, __c4, 3) as any as S.Schema<CodeVersionsCreateOrGetStartPendingUploadRequest>,
+  output: __S(38, __c4, 6) as any as S.Schema<PendingUploadResponseDto>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11865,8 +8424,8 @@ export const CodeVersionsCreateOrUpdate: API.OperationMethod<
   CodeVersionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CodeVersionsCreateOrUpdateRequest,
-  output: CodeVersionsCreateOrUpdateResponse,
+  input: __S(40, __c5, 0) as any as S.Schema<CodeVersionsCreateOrUpdateRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<CodeVersionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11880,8 +8439,8 @@ export const ComponentContainersCreateOrUpdate: API.OperationMethod<
   ComponentContainersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ComponentContainersCreateOrUpdateRequest,
-  output: ComponentContainersCreateOrUpdateResponse,
+  input: __S(42, __c5, 2) as any as S.Schema<ComponentContainersCreateOrUpdateRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<ComponentContainersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11895,8 +8454,8 @@ export const ComponentVersionsCreateOrUpdate: API.OperationMethod<
   ComponentVersionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ComponentVersionsCreateOrUpdateRequest,
-  output: ComponentVersionsCreateOrUpdateResponse,
+  input: __S(46, __c5, 6) as any as S.Schema<ComponentVersionsCreateOrUpdateRequest>,
+  output: __S(47, __c5, 7) as any as S.Schema<ComponentVersionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11910,8 +8469,8 @@ export const ComputeCreateOrUpdate: API.OperationMethod<
   ComputeCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ComputeCreateOrUpdateRequest,
-  output: ComputeCreateOrUpdateResponse,
+  input: __S(49, __c6, 1) as any as S.Schema<ComputeCreateOrUpdateRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<ComputeCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11925,8 +8484,8 @@ export const CreateWorkspaceConnection: API.OperationMethod<
   CreateWorkspaceConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateWorkspaceConnectionRequest,
-  output: CreateWorkspaceConnectionResponse,
+  input: __S(59, __c7, 3) as any as S.Schema<CreateWorkspaceConnectionRequest>,
+  output: __S(61, __c7, 5) as any as S.Schema<CreateWorkspaceConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11940,8 +8499,8 @@ export const DataContainersCreateOrUpdate: API.OperationMethod<
   DataContainersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DataContainersCreateOrUpdateRequest,
-  output: DataContainersCreateOrUpdateResponse,
+  input: __S(63, __c7, 7) as any as S.Schema<DataContainersCreateOrUpdateRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<DataContainersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11955,8 +8514,8 @@ export const DatastoresCreateOrUpdate: API.OperationMethod<
   DatastoresCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DatastoresCreateOrUpdateRequest,
-  output: DatastoresCreateOrUpdateResponse,
+  input: __S(68, __c8, 4) as any as S.Schema<DatastoresCreateOrUpdateRequest>,
+  output: __S(70, __c8, 6) as any as S.Schema<DatastoresCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11970,8 +8529,8 @@ export const DataVersionsCreateOrUpdate: API.OperationMethod<
   DataVersionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DataVersionsCreateOrUpdateRequest,
-  output: DataVersionsCreateOrUpdateResponse,
+  input: __S(72, __c9, 0) as any as S.Schema<DataVersionsCreateOrUpdateRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<DataVersionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11985,8 +8544,8 @@ export const DeleteBatchDeployment: API.OperationMethod<
   DeleteBatchDeploymentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBatchDeploymentRequest,
-  output: DeleteBatchDeploymentResponse,
+  input: __S(74, __c9, 2) as any as S.Schema<DeleteBatchDeploymentRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<DeleteBatchDeploymentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12000,8 +8559,8 @@ export const DeleteBatchEndpoint: API.OperationMethod<
   DeleteBatchEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBatchEndpointRequest,
-  output: DeleteBatchEndpointResponse,
+  input: __S(75, __c9, 3) as any as S.Schema<DeleteBatchEndpointRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<DeleteBatchEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12015,8 +8574,8 @@ export const DeleteCapabilityHost: API.OperationMethod<
   DeleteCapabilityHostError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCapabilityHostRequest,
-  output: DeleteCapabilityHostResponse,
+  input: __S(76, __c9, 4) as any as S.Schema<DeleteCapabilityHostRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<DeleteCapabilityHostResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12030,8 +8589,8 @@ export const DeleteCodeContainer: API.OperationMethod<
   DeleteCodeContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCodeContainerRequest,
-  output: DeleteCodeContainerResponse,
+  input: __S(77, __c9, 5) as any as S.Schema<DeleteCodeContainerRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<DeleteCodeContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12045,8 +8604,8 @@ export const DeleteCodeVersion: API.OperationMethod<
   DeleteCodeVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCodeVersionRequest,
-  output: DeleteCodeVersionResponse,
+  input: __S(78, __c9, 6) as any as S.Schema<DeleteCodeVersionRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<DeleteCodeVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12060,8 +8619,8 @@ export const DeleteComponentContainer: API.OperationMethod<
   DeleteComponentContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteComponentContainerRequest,
-  output: DeleteComponentContainerResponse,
+  input: __S(79, __c9, 7) as any as S.Schema<DeleteComponentContainerRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<DeleteComponentContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12075,8 +8634,8 @@ export const DeleteComponentVersion: API.OperationMethod<
   DeleteComponentVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteComponentVersionRequest,
-  output: DeleteComponentVersionResponse,
+  input: __S(81, __c10, 1) as any as S.Schema<DeleteComponentVersionRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<DeleteComponentVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12090,8 +8649,8 @@ export const DeleteCompute: API.OperationMethod<
   DeleteComputeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteComputeRequest,
-  output: DeleteComputeResponse,
+  input: __S(82, __c10, 2) as any as S.Schema<DeleteComputeRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<DeleteComputeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12105,8 +8664,8 @@ export const DeleteDataContainer: API.OperationMethod<
   DeleteDataContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDataContainerRequest,
-  output: DeleteDataContainerResponse,
+  input: __S(83, __c10, 3) as any as S.Schema<DeleteDataContainerRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<DeleteDataContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12120,8 +8679,8 @@ export const DeleteDatastore: API.OperationMethod<
   DeleteDatastoreError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDatastoreRequest,
-  output: DeleteDatastoreResponse,
+  input: __S(84, __c10, 4) as any as S.Schema<DeleteDatastoreRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<DeleteDatastoreResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12135,8 +8694,8 @@ export const DeleteDataVersion: API.OperationMethod<
   DeleteDataVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDataVersionRequest,
-  output: DeleteDataVersionResponse,
+  input: __S(85, __c10, 5) as any as S.Schema<DeleteDataVersionRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<DeleteDataVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12150,8 +8709,8 @@ export const DeleteEnvironmentContainer: API.OperationMethod<
   DeleteEnvironmentContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEnvironmentContainerRequest,
-  output: DeleteEnvironmentContainerResponse,
+  input: __S(86, __c10, 6) as any as S.Schema<DeleteEnvironmentContainerRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<DeleteEnvironmentContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12165,8 +8724,8 @@ export const DeleteEnvironmentVersion: API.OperationMethod<
   DeleteEnvironmentVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEnvironmentVersionRequest,
-  output: DeleteEnvironmentVersionResponse,
+  input: __S(87, __c10, 7) as any as S.Schema<DeleteEnvironmentVersionRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<DeleteEnvironmentVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12180,8 +8739,8 @@ export const DeleteFeaturesetContainer: API.OperationMethod<
   DeleteFeaturesetContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFeaturesetContainerRequest,
-  output: DeleteFeaturesetContainerResponse,
+  input: __S(88, __c11, 0) as any as S.Schema<DeleteFeaturesetContainerRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<DeleteFeaturesetContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12195,8 +8754,8 @@ export const DeleteFeaturesetVersion: API.OperationMethod<
   DeleteFeaturesetVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFeaturesetVersionRequest,
-  output: DeleteFeaturesetVersionResponse,
+  input: __S(89, __c11, 1) as any as S.Schema<DeleteFeaturesetVersionRequest>,
+  output: __S(90, __c11, 2) as any as S.Schema<DeleteFeaturesetVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12210,8 +8769,8 @@ export const DeleteFeaturestoreEntityContainer: API.OperationMethod<
   DeleteFeaturestoreEntityContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFeaturestoreEntityContainerRequest,
-  output: DeleteFeaturestoreEntityContainerResponse,
+  input: __S(91, __c11, 3) as any as S.Schema<DeleteFeaturestoreEntityContainerRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<DeleteFeaturestoreEntityContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12225,8 +8784,8 @@ export const DeleteFeaturestoreEntityVersion: API.OperationMethod<
   DeleteFeaturestoreEntityVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFeaturestoreEntityVersionRequest,
-  output: DeleteFeaturestoreEntityVersionResponse,
+  input: __S(92, __c11, 4) as any as S.Schema<DeleteFeaturestoreEntityVersionRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<DeleteFeaturestoreEntityVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12240,8 +8799,8 @@ export const DeleteJob: API.OperationMethod<
   DeleteJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteJobRequest,
-  output: DeleteJobResponse,
+  input: __S(93, __c11, 5) as any as S.Schema<DeleteJobRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<DeleteJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12255,8 +8814,8 @@ export const DeleteManagedNetworkSettingsRule: API.OperationMethod<
   DeleteManagedNetworkSettingsRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteManagedNetworkSettingsRuleRequest,
-  output: DeleteManagedNetworkSettingsRuleResponse,
+  input: __S(94, __c11, 6) as any as S.Schema<DeleteManagedNetworkSettingsRuleRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<DeleteManagedNetworkSettingsRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12270,8 +8829,8 @@ export const DeleteMarketplaceSubscription: API.OperationMethod<
   DeleteMarketplaceSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteMarketplaceSubscriptionRequest,
-  output: DeleteMarketplaceSubscriptionResponse,
+  input: __S(95, __c11, 7) as any as S.Schema<DeleteMarketplaceSubscriptionRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<DeleteMarketplaceSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12285,8 +8844,8 @@ export const DeleteModelContainer: API.OperationMethod<
   DeleteModelContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteModelContainerRequest,
-  output: DeleteModelContainerResponse,
+  input: __S(96, __c12, 0) as any as S.Schema<DeleteModelContainerRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<DeleteModelContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12300,8 +8859,8 @@ export const DeleteModelVersion: API.OperationMethod<
   DeleteModelVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteModelVersionRequest,
-  output: DeleteModelVersionResponse,
+  input: __S(97, __c12, 1) as any as S.Schema<DeleteModelVersionRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<DeleteModelVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12315,8 +8874,8 @@ export const DeleteOnlineDeployment: API.OperationMethod<
   DeleteOnlineDeploymentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOnlineDeploymentRequest,
-  output: DeleteOnlineDeploymentResponse,
+  input: __S(98, __c12, 2) as any as S.Schema<DeleteOnlineDeploymentRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<DeleteOnlineDeploymentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12330,8 +8889,8 @@ export const DeleteOnlineEndpoint: API.OperationMethod<
   DeleteOnlineEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOnlineEndpointRequest,
-  output: DeleteOnlineEndpointResponse,
+  input: __S(99, __c12, 3) as any as S.Schema<DeleteOnlineEndpointRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<DeleteOnlineEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12345,8 +8904,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePrivateEndpointConnectionRequest,
-  output: DeletePrivateEndpointConnectionResponse,
+  input: __S(100, __c12, 4) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12360,8 +8919,8 @@ export const DeleteRegistry: API.OperationMethod<
   DeleteRegistryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRegistryRequest,
-  output: DeleteRegistryResponse,
+  input: __S(101, __c12, 5) as any as S.Schema<DeleteRegistryRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<DeleteRegistryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12375,8 +8934,8 @@ export const DeleteRegistryCodeContainer: API.OperationMethod<
   DeleteRegistryCodeContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRegistryCodeContainerRequest,
-  output: DeleteRegistryCodeContainerResponse,
+  input: __S(102, __c12, 6) as any as S.Schema<DeleteRegistryCodeContainerRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<DeleteRegistryCodeContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12390,8 +8949,8 @@ export const DeleteRegistryCodeVersion: API.OperationMethod<
   DeleteRegistryCodeVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRegistryCodeVersionRequest,
-  output: DeleteRegistryCodeVersionResponse,
+  input: __S(103, __c12, 7) as any as S.Schema<DeleteRegistryCodeVersionRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<DeleteRegistryCodeVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12405,8 +8964,8 @@ export const DeleteRegistryComponentContainer: API.OperationMethod<
   DeleteRegistryComponentContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRegistryComponentContainerRequest,
-  output: DeleteRegistryComponentContainerResponse,
+  input: __S(104, __c13, 0) as any as S.Schema<DeleteRegistryComponentContainerRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<DeleteRegistryComponentContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12420,8 +8979,8 @@ export const DeleteRegistryComponentVersion: API.OperationMethod<
   DeleteRegistryComponentVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRegistryComponentVersionRequest,
-  output: DeleteRegistryComponentVersionResponse,
+  input: __S(105, __c13, 1) as any as S.Schema<DeleteRegistryComponentVersionRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<DeleteRegistryComponentVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12435,8 +8994,8 @@ export const DeleteRegistryDataContainer: API.OperationMethod<
   DeleteRegistryDataContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRegistryDataContainerRequest,
-  output: DeleteRegistryDataContainerResponse,
+  input: __S(106, __c13, 2) as any as S.Schema<DeleteRegistryDataContainerRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<DeleteRegistryDataContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12450,8 +9009,8 @@ export const DeleteRegistryDataVersion: API.OperationMethod<
   DeleteRegistryDataVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRegistryDataVersionRequest,
-  output: DeleteRegistryDataVersionResponse,
+  input: __S(107, __c13, 3) as any as S.Schema<DeleteRegistryDataVersionRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<DeleteRegistryDataVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12465,8 +9024,8 @@ export const DeleteRegistryEnvironmentContainer: API.OperationMethod<
   DeleteRegistryEnvironmentContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRegistryEnvironmentContainerRequest,
-  output: DeleteRegistryEnvironmentContainerResponse,
+  input: __S(108, __c13, 4) as any as S.Schema<DeleteRegistryEnvironmentContainerRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<DeleteRegistryEnvironmentContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12480,8 +9039,8 @@ export const DeleteRegistryEnvironmentVersion: API.OperationMethod<
   DeleteRegistryEnvironmentVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRegistryEnvironmentVersionRequest,
-  output: DeleteRegistryEnvironmentVersionResponse,
+  input: __S(109, __c13, 5) as any as S.Schema<DeleteRegistryEnvironmentVersionRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<DeleteRegistryEnvironmentVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12495,8 +9054,8 @@ export const DeleteRegistryModelContainer: API.OperationMethod<
   DeleteRegistryModelContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRegistryModelContainerRequest,
-  output: DeleteRegistryModelContainerResponse,
+  input: __S(110, __c13, 6) as any as S.Schema<DeleteRegistryModelContainerRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<DeleteRegistryModelContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12510,8 +9069,8 @@ export const DeleteRegistryModelVersion: API.OperationMethod<
   DeleteRegistryModelVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRegistryModelVersionRequest,
-  output: DeleteRegistryModelVersionResponse,
+  input: __S(111, __c13, 7) as any as S.Schema<DeleteRegistryModelVersionRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<DeleteRegistryModelVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12525,8 +9084,8 @@ export const DeleteSchedule: API.OperationMethod<
   DeleteScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteScheduleRequest,
-  output: DeleteScheduleResponse,
+  input: __S(112, __c14, 0) as any as S.Schema<DeleteScheduleRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<DeleteScheduleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12540,8 +9099,8 @@ export const DeleteServerlessEndpoint: API.OperationMethod<
   DeleteServerlessEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteServerlessEndpointRequest,
-  output: DeleteServerlessEndpointResponse,
+  input: __S(113, __c14, 1) as any as S.Schema<DeleteServerlessEndpointRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<DeleteServerlessEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12555,8 +9114,8 @@ export const DeleteWorkspace: API.OperationMethod<
   DeleteWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteWorkspaceRequest,
-  output: DeleteWorkspaceResponse,
+  input: __S(114, __c14, 2) as any as S.Schema<DeleteWorkspaceRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<DeleteWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12570,8 +9129,8 @@ export const DeleteWorkspaceConnection: API.OperationMethod<
   DeleteWorkspaceConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteWorkspaceConnectionRequest,
-  output: DeleteWorkspaceConnectionResponse,
+  input: __S(115, __c14, 3) as any as S.Schema<DeleteWorkspaceConnectionRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<DeleteWorkspaceConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12585,8 +9144,8 @@ export const EnvironmentContainersCreateOrUpdate: API.OperationMethod<
   EnvironmentContainersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnvironmentContainersCreateOrUpdateRequest,
-  output: EnvironmentContainersCreateOrUpdateResponse,
+  input: __S(116, __c14, 4) as any as S.Schema<EnvironmentContainersCreateOrUpdateRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<EnvironmentContainersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12600,8 +9159,8 @@ export const EnvironmentVersionsCreateOrUpdate: API.OperationMethod<
   EnvironmentVersionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnvironmentVersionsCreateOrUpdateRequest,
-  output: EnvironmentVersionsCreateOrUpdateResponse,
+  input: __S(121, __c15, 1) as any as S.Schema<EnvironmentVersionsCreateOrUpdateRequest>,
+  output: __S(122, __c15, 2) as any as S.Schema<EnvironmentVersionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12615,8 +9174,8 @@ export const FeaturesetContainersCreateOrUpdate: API.OperationMethod<
   FeaturesetContainersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FeaturesetContainersCreateOrUpdateRequest,
-  output: FeaturesetContainersCreateOrUpdateResponse,
+  input: __S(123, __c15, 3) as any as S.Schema<FeaturesetContainersCreateOrUpdateRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<FeaturesetContainersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12630,8 +9189,8 @@ export const FeaturesetVersionsBackfill: API.OperationMethod<
   FeaturesetVersionsBackfillError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FeaturesetVersionsBackfillRequest,
-  output: FeaturesetVersionBackfillResponse,
+  input: __S(127, __c15, 7) as any as S.Schema<FeaturesetVersionsBackfillRequest>,
+  output: __S(128, __c16, 0) as any as S.Schema<FeaturesetVersionBackfillResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12645,8 +9204,8 @@ export const FeaturesetVersionsCreateOrUpdate: API.OperationMethod<
   FeaturesetVersionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FeaturesetVersionsCreateOrUpdateRequest,
-  output: FeaturesetVersionsCreateOrUpdateResponse,
+  input: __S(138, __c17, 2) as any as S.Schema<FeaturesetVersionsCreateOrUpdateRequest>,
+  output: __S(139, __c17, 3) as any as S.Schema<FeaturesetVersionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12660,8 +9219,8 @@ export const FeaturestoreEntityContainersCreateOrUpdate: API.OperationMethod<
   FeaturestoreEntityContainersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FeaturestoreEntityContainersCreateOrUpdateRequest,
-  output: FeaturestoreEntityContainersCreateOrUpdateResponse,
+  input: __S(140, __c17, 4) as any as S.Schema<FeaturestoreEntityContainersCreateOrUpdateRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<FeaturestoreEntityContainersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12675,8 +9234,8 @@ export const FeaturestoreEntityVersionsCreateOrUpdate: API.OperationMethod<
   FeaturestoreEntityVersionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FeaturestoreEntityVersionsCreateOrUpdateRequest,
-  output: FeaturestoreEntityVersionsCreateOrUpdateResponse,
+  input: __S(144, __c18, 0) as any as S.Schema<FeaturestoreEntityVersionsCreateOrUpdateRequest>,
+  output: __S(145, __c18, 1) as any as S.Schema<FeaturestoreEntityVersionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12690,8 +9249,8 @@ export const GetBatchDeployment: API.OperationMethod<
   GetBatchDeploymentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBatchDeploymentRequest,
-  output: GetBatchDeploymentResponse,
+  input: __S(146, __c18, 2) as any as S.Schema<GetBatchDeploymentRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<GetBatchDeploymentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12705,8 +9264,8 @@ export const GetBatchEndpoint: API.OperationMethod<
   GetBatchEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBatchEndpointRequest,
-  output: GetBatchEndpointResponse,
+  input: __S(147, __c18, 3) as any as S.Schema<GetBatchEndpointRequest>,
+  output: __S(148, __c18, 4) as any as S.Schema<GetBatchEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12720,8 +9279,8 @@ export const GetCapabilityHost: API.OperationMethod<
   GetCapabilityHostError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCapabilityHostRequest,
-  output: GetCapabilityHostResponse,
+  input: __S(149, __c18, 5) as any as S.Schema<GetCapabilityHostRequest>,
+  output: __S(30, __c3, 6) as any as S.Schema<GetCapabilityHostResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12735,8 +9294,8 @@ export const GetCodeContainer: API.OperationMethod<
   GetCodeContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCodeContainerRequest,
-  output: GetCodeContainerResponse,
+  input: __S(150, __c18, 6) as any as S.Schema<GetCodeContainerRequest>,
+  output: __S(151, __c18, 7) as any as S.Schema<GetCodeContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12750,8 +9309,8 @@ export const GetCodeVersion: API.OperationMethod<
   GetCodeVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCodeVersionRequest,
-  output: GetCodeVersionResponse,
+  input: __S(152, __c19, 0) as any as S.Schema<GetCodeVersionRequest>,
+  output: __S(153, __c19, 1) as any as S.Schema<GetCodeVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12765,8 +9324,8 @@ export const GetComponentContainer: API.OperationMethod<
   GetComponentContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetComponentContainerRequest,
-  output: GetComponentContainerResponse,
+  input: __S(154, __c19, 2) as any as S.Schema<GetComponentContainerRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<GetComponentContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12780,8 +9339,8 @@ export const GetComponentVersion: API.OperationMethod<
   GetComponentVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetComponentVersionRequest,
-  output: GetComponentVersionResponse,
+  input: __S(155, __c19, 3) as any as S.Schema<GetComponentVersionRequest>,
+  output: __S(47, __c5, 7) as any as S.Schema<GetComponentVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12795,8 +9354,8 @@ export const GetCompute: API.OperationMethod<
   GetComputeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetComputeRequest,
-  output: GetComputeResponse,
+  input: __S(156, __c19, 4) as any as S.Schema<GetComputeRequest>,
+  output: __S(157, __c19, 5) as any as S.Schema<GetComputeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12810,8 +9369,8 @@ export const GetDataContainer: API.OperationMethod<
   GetDataContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataContainerRequest,
-  output: GetDataContainerResponse,
+  input: __S(158, __c19, 6) as any as S.Schema<GetDataContainerRequest>,
+  output: __S(159, __c19, 7) as any as S.Schema<GetDataContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12825,8 +9384,8 @@ export const GetDatastore: API.OperationMethod<
   GetDatastoreError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatastoreRequest,
-  output: GetDatastoreResponse,
+  input: __S(160, __c20, 0) as any as S.Schema<GetDatastoreRequest>,
+  output: __S(161, __c20, 1) as any as S.Schema<GetDatastoreResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12840,8 +9399,8 @@ export const GetDataVersion: API.OperationMethod<
   GetDataVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataVersionRequest,
-  output: GetDataVersionResponse,
+  input: __S(162, __c20, 2) as any as S.Schema<GetDataVersionRequest>,
+  output: __S(163, __c20, 3) as any as S.Schema<GetDataVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12855,8 +9414,8 @@ export const GetEnvironmentContainer: API.OperationMethod<
   GetEnvironmentContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEnvironmentContainerRequest,
-  output: GetEnvironmentContainerResponse,
+  input: __S(164, __c20, 4) as any as S.Schema<GetEnvironmentContainerRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<GetEnvironmentContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12870,8 +9429,8 @@ export const GetEnvironmentVersion: API.OperationMethod<
   GetEnvironmentVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEnvironmentVersionRequest,
-  output: GetEnvironmentVersionResponse,
+  input: __S(165, __c20, 5) as any as S.Schema<GetEnvironmentVersionRequest>,
+  output: __S(122, __c15, 2) as any as S.Schema<GetEnvironmentVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12885,8 +9444,8 @@ export const GetFeature: API.OperationMethod<
   GetFeatureError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFeatureRequest,
-  output: GetFeatureResponse,
+  input: __S(166, __c20, 6) as any as S.Schema<GetFeatureRequest>,
+  output: __S(168, __c21, 0) as any as S.Schema<GetFeatureResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12900,8 +9459,8 @@ export const GetFeaturesetContainerEntity: API.OperationMethod<
   GetFeaturesetContainerEntityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFeaturesetContainerEntityRequest,
-  output: GetFeaturesetContainerEntityResponse,
+  input: __S(169, __c21, 1) as any as S.Schema<GetFeaturesetContainerEntityRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<GetFeaturesetContainerEntityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12915,8 +9474,8 @@ export const GetFeaturesetVersion: API.OperationMethod<
   GetFeaturesetVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFeaturesetVersionRequest,
-  output: GetFeaturesetVersionResponse,
+  input: __S(170, __c21, 2) as any as S.Schema<GetFeaturesetVersionRequest>,
+  output: __S(139, __c17, 3) as any as S.Schema<GetFeaturesetVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12930,8 +9489,8 @@ export const GetFeaturestoreEntityContainerEntity: API.OperationMethod<
   GetFeaturestoreEntityContainerEntityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFeaturestoreEntityContainerEntityRequest,
-  output: GetFeaturestoreEntityContainerEntityResponse,
+  input: __S(171, __c21, 3) as any as S.Schema<GetFeaturestoreEntityContainerEntityRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<GetFeaturestoreEntityContainerEntityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12945,8 +9504,8 @@ export const GetFeaturestoreEntityVersion: API.OperationMethod<
   GetFeaturestoreEntityVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFeaturestoreEntityVersionRequest,
-  output: GetFeaturestoreEntityVersionResponse,
+  input: __S(172, __c21, 4) as any as S.Schema<GetFeaturestoreEntityVersionRequest>,
+  output: __S(145, __c18, 1) as any as S.Schema<GetFeaturestoreEntityVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12960,8 +9519,8 @@ export const GetJob: API.OperationMethod<
   GetJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetJobRequest,
-  output: GetJobResponse,
+  input: __S(173, __c21, 5) as any as S.Schema<GetJobRequest>,
+  output: __S(179, __c22, 3) as any as S.Schema<GetJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12975,8 +9534,8 @@ export const GetManagedNetworkSettingsRule: API.OperationMethod<
   GetManagedNetworkSettingsRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetManagedNetworkSettingsRuleRequest,
-  output: GetManagedNetworkSettingsRuleResponse,
+  input: __S(180, __c22, 4) as any as S.Schema<GetManagedNetworkSettingsRuleRequest>,
+  output: __S(182, __c22, 6) as any as S.Schema<GetManagedNetworkSettingsRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12990,8 +9549,8 @@ export const GetMarketplaceSubscription: API.OperationMethod<
   GetMarketplaceSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMarketplaceSubscriptionRequest,
-  output: GetMarketplaceSubscriptionResponse,
+  input: __S(183, __c22, 7) as any as S.Schema<GetMarketplaceSubscriptionRequest>,
+  output: __S(186, __c23, 2) as any as S.Schema<GetMarketplaceSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13005,8 +9564,8 @@ export const GetModelContainer: API.OperationMethod<
   GetModelContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetModelContainerRequest,
-  output: GetModelContainerResponse,
+  input: __S(187, __c23, 3) as any as S.Schema<GetModelContainerRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<GetModelContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13020,8 +9579,8 @@ export const GetModelVersion: API.OperationMethod<
   GetModelVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetModelVersionRequest,
-  output: GetModelVersionResponse,
+  input: __S(188, __c23, 4) as any as S.Schema<GetModelVersionRequest>,
+  output: __S(194, __c24, 2) as any as S.Schema<GetModelVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13035,8 +9594,8 @@ export const GetOnlineDeployment: API.OperationMethod<
   GetOnlineDeploymentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOnlineDeploymentRequest,
-  output: GetOnlineDeploymentResponse,
+  input: __S(195, __c24, 3) as any as S.Schema<GetOnlineDeploymentRequest>,
+  output: __S(204, __c25, 4) as any as S.Schema<GetOnlineDeploymentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13050,8 +9609,8 @@ export const GetOnlineDeploymentLogs: API.OperationMethod<
   GetOnlineDeploymentLogsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOnlineDeploymentLogsRequest,
-  output: DeploymentLogs,
+  input: __S(205, __c25, 5) as any as S.Schema<GetOnlineDeploymentLogsRequest>,
+  output: __S(206, __c25, 6) as any as S.Schema<DeploymentLogs>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13065,8 +9624,8 @@ export const GetOnlineEndpoint: API.OperationMethod<
   GetOnlineEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOnlineEndpointRequest,
-  output: GetOnlineEndpointResponse,
+  input: __S(207, __c25, 7) as any as S.Schema<GetOnlineEndpointRequest>,
+  output: __S(210, __c26, 2) as any as S.Schema<GetOnlineEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13080,8 +9639,8 @@ export const GetOnlineEndpointToken: API.OperationMethod<
   GetOnlineEndpointTokenError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOnlineEndpointTokenRequest,
-  output: EndpointAuthToken,
+  input: __S(211, __c26, 3) as any as S.Schema<GetOnlineEndpointTokenRequest>,
+  output: __S(212, __c26, 4) as any as S.Schema<EndpointAuthToken>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13095,8 +9654,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPrivateEndpointConnectionRequest,
-  output: GetPrivateEndpointConnectionResponse,
+  input: __S(213, __c26, 5) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  output: __S(217, __c27, 1) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13110,8 +9669,8 @@ export const GetRegistry: API.OperationMethod<
   GetRegistryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRegistryRequest,
-  output: GetRegistryResponse,
+  input: __S(218, __c27, 2) as any as S.Schema<GetRegistryRequest>,
+  output: __S(237, __c29, 5) as any as S.Schema<GetRegistryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13125,8 +9684,8 @@ export const GetRegistryCodeContainer: API.OperationMethod<
   GetRegistryCodeContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRegistryCodeContainerRequest,
-  output: GetRegistryCodeContainerResponse,
+  input: __S(238, __c29, 6) as any as S.Schema<GetRegistryCodeContainerRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<GetRegistryCodeContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13140,8 +9699,8 @@ export const GetRegistryCodeVersion: API.OperationMethod<
   GetRegistryCodeVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRegistryCodeVersionRequest,
-  output: GetRegistryCodeVersionResponse,
+  input: __S(239, __c29, 7) as any as S.Schema<GetRegistryCodeVersionRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<GetRegistryCodeVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13155,8 +9714,8 @@ export const GetRegistryComponentContainer: API.OperationMethod<
   GetRegistryComponentContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRegistryComponentContainerRequest,
-  output: GetRegistryComponentContainerResponse,
+  input: __S(240, __c30, 0) as any as S.Schema<GetRegistryComponentContainerRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<GetRegistryComponentContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13170,8 +9729,8 @@ export const GetRegistryComponentVersion: API.OperationMethod<
   GetRegistryComponentVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRegistryComponentVersionRequest,
-  output: GetRegistryComponentVersionResponse,
+  input: __S(241, __c30, 1) as any as S.Schema<GetRegistryComponentVersionRequest>,
+  output: __S(47, __c5, 7) as any as S.Schema<GetRegistryComponentVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13185,8 +9744,8 @@ export const GetRegistryDataContainer: API.OperationMethod<
   GetRegistryDataContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRegistryDataContainerRequest,
-  output: GetRegistryDataContainerResponse,
+  input: __S(242, __c30, 2) as any as S.Schema<GetRegistryDataContainerRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<GetRegistryDataContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13200,8 +9759,8 @@ export const GetRegistryDataReferenceBlobReferenceSAS: API.OperationMethod<
   GetRegistryDataReferenceBlobReferenceSASError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRegistryDataReferenceBlobReferenceSASRequest,
-  output: GetBlobReferenceSASResponseDto,
+  input: __S(243, __c30, 3) as any as S.Schema<GetRegistryDataReferenceBlobReferenceSASRequest>,
+  output: __S(246, __c30, 6) as any as S.Schema<GetBlobReferenceSASResponseDto>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13215,8 +9774,8 @@ export const GetRegistryDataVersion: API.OperationMethod<
   GetRegistryDataVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRegistryDataVersionRequest,
-  output: GetRegistryDataVersionResponse,
+  input: __S(247, __c30, 7) as any as S.Schema<GetRegistryDataVersionRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<GetRegistryDataVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13230,8 +9789,8 @@ export const GetRegistryEnvironmentContainer: API.OperationMethod<
   GetRegistryEnvironmentContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRegistryEnvironmentContainerRequest,
-  output: GetRegistryEnvironmentContainerResponse,
+  input: __S(248, __c31, 0) as any as S.Schema<GetRegistryEnvironmentContainerRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<GetRegistryEnvironmentContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13245,8 +9804,8 @@ export const GetRegistryEnvironmentVersion: API.OperationMethod<
   GetRegistryEnvironmentVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRegistryEnvironmentVersionRequest,
-  output: GetRegistryEnvironmentVersionResponse,
+  input: __S(249, __c31, 1) as any as S.Schema<GetRegistryEnvironmentVersionRequest>,
+  output: __S(122, __c15, 2) as any as S.Schema<GetRegistryEnvironmentVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13260,8 +9819,8 @@ export const GetRegistryModelContainer: API.OperationMethod<
   GetRegistryModelContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRegistryModelContainerRequest,
-  output: GetRegistryModelContainerResponse,
+  input: __S(250, __c31, 2) as any as S.Schema<GetRegistryModelContainerRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<GetRegistryModelContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13275,8 +9834,8 @@ export const GetRegistryModelVersion: API.OperationMethod<
   GetRegistryModelVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRegistryModelVersionRequest,
-  output: GetRegistryModelVersionResponse,
+  input: __S(251, __c31, 3) as any as S.Schema<GetRegistryModelVersionRequest>,
+  output: __S(252, __c31, 4) as any as S.Schema<GetRegistryModelVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13290,8 +9849,8 @@ export const GetSchedule: API.OperationMethod<
   GetScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetScheduleRequest,
-  output: GetScheduleResponse,
+  input: __S(253, __c31, 5) as any as S.Schema<GetScheduleRequest>,
+  output: __S(257, __c32, 1) as any as S.Schema<GetScheduleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13305,8 +9864,8 @@ export const GetServerlessEndpoint: API.OperationMethod<
   GetServerlessEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetServerlessEndpointRequest,
-  output: GetServerlessEndpointResponse,
+  input: __S(258, __c32, 2) as any as S.Schema<GetServerlessEndpointRequest>,
+  output: __S(263, __c32, 7) as any as S.Schema<GetServerlessEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13320,8 +9879,8 @@ export const GetWorkspace: API.OperationMethod<
   GetWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWorkspaceRequest,
-  output: GetWorkspaceResponse,
+  input: __S(264, __c33, 0) as any as S.Schema<GetWorkspaceRequest>,
+  output: __S(284, __c35, 4) as any as S.Schema<GetWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13335,8 +9894,8 @@ export const GetWorkspaceConnection: API.OperationMethod<
   GetWorkspaceConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWorkspaceConnectionRequest,
-  output: GetWorkspaceConnectionResponse,
+  input: __S(285, __c35, 5) as any as S.Schema<GetWorkspaceConnectionRequest>,
+  output: __S(61, __c7, 5) as any as S.Schema<GetWorkspaceConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13350,8 +9909,8 @@ export const JobsCreateOrUpdate: API.OperationMethod<
   JobsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: JobsCreateOrUpdateRequest,
-  output: JobsCreateOrUpdateResponse,
+  input: __S(289, __c36, 1) as any as S.Schema<JobsCreateOrUpdateRequest>,
+  output: __S(290, __c36, 2) as any as S.Schema<JobsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13365,8 +9924,8 @@ export const ListBatchDeployments: API.OperationMethod<
   ListBatchDeploymentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListBatchDeploymentsRequest,
-  output: BatchDeploymentTrackedResourceArmPaginatedResult,
+  input: __S(291, __c36, 3) as any as S.Schema<ListBatchDeploymentsRequest>,
+  output: __S(294, __c36, 6) as any as S.Schema<BatchDeploymentTrackedResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13380,8 +9939,8 @@ export const ListBatchEndpointKeys: API.OperationMethod<
   ListBatchEndpointKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListBatchEndpointKeysRequest,
-  output: EndpointAuthKeys,
+  input: __S(295, __c36, 7) as any as S.Schema<ListBatchEndpointKeysRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<EndpointAuthKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13395,8 +9954,8 @@ export const ListBatchEndpoints: API.OperationMethod<
   ListBatchEndpointsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListBatchEndpointsRequest,
-  output: BatchEndpointTrackedResourceArmPaginatedResult,
+  input: __S(296, __c37, 0) as any as S.Schema<ListBatchEndpointsRequest>,
+  output: __S(298, __c37, 2) as any as S.Schema<BatchEndpointTrackedResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13410,8 +9969,8 @@ export const ListCodeContainers: API.OperationMethod<
   ListCodeContainersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCodeContainersRequest,
-  output: CodeContainerResourceArmPaginatedResult,
+  input: __S(299, __c37, 3) as any as S.Schema<ListCodeContainersRequest>,
+  output: __S(301, __c37, 5) as any as S.Schema<CodeContainerResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13425,8 +9984,8 @@ export const ListCodeVersions: API.OperationMethod<
   ListCodeVersionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCodeVersionsRequest,
-  output: CodeVersionResourceArmPaginatedResult,
+  input: __S(302, __c37, 6) as any as S.Schema<ListCodeVersionsRequest>,
+  output: __S(304, __c38, 0) as any as S.Schema<CodeVersionResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13440,8 +9999,8 @@ export const ListComponentContainers: API.OperationMethod<
   ListComponentContainersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListComponentContainersRequest,
-  output: ComponentContainerResourceArmPaginatedResult,
+  input: __S(305, __c38, 1) as any as S.Schema<ListComponentContainersRequest>,
+  output: __S(308, __c38, 4) as any as S.Schema<ComponentContainerResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13455,8 +10014,8 @@ export const ListComponentVersions: API.OperationMethod<
   ListComponentVersionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListComponentVersionsRequest,
-  output: ComponentVersionResourceArmPaginatedResult,
+  input: __S(309, __c38, 5) as any as S.Schema<ListComponentVersionsRequest>,
+  output: __S(312, __c39, 0) as any as S.Schema<ComponentVersionResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13470,8 +10029,8 @@ export const ListCompute: API.OperationMethod<
   ListComputeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListComputeRequest,
-  output: PaginatedComputeResourcesList,
+  input: __S(313, __c39, 1) as any as S.Schema<ListComputeRequest>,
+  output: __S(315, __c39, 3) as any as S.Schema<PaginatedComputeResourcesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13485,8 +10044,8 @@ export const ListComputeKeys: API.OperationMethod<
   ListComputeKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListComputeKeysRequest,
-  output: ComputeSecrets,
+  input: __S(316, __c39, 4) as any as S.Schema<ListComputeKeysRequest>,
+  output: __S(317, __c39, 5) as any as S.Schema<ComputeSecrets>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13500,8 +10059,8 @@ export const ListComputeNodes: API.OperationMethod<
   ListComputeNodesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListComputeNodesRequest,
-  output: AmlComputeNodesInformation,
+  input: __S(318, __c39, 6) as any as S.Schema<ListComputeNodesRequest>,
+  output: __S(321, __c40, 1) as any as S.Schema<AmlComputeNodesInformation>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13515,8 +10074,8 @@ export const ListDataContainers: API.OperationMethod<
   ListDataContainersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDataContainersRequest,
-  output: DataContainerResourceArmPaginatedResult,
+  input: __S(322, __c40, 2) as any as S.Schema<ListDataContainersRequest>,
+  output: __S(324, __c40, 4) as any as S.Schema<DataContainerResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13530,8 +10089,8 @@ export const ListDatastores: API.OperationMethod<
   ListDatastoresError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDatastoresRequest,
-  output: DatastoreResourceArmPaginatedResult,
+  input: __S(325, __c40, 5) as any as S.Schema<ListDatastoresRequest>,
+  output: __S(327, __c40, 7) as any as S.Schema<DatastoreResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13545,8 +10104,8 @@ export const ListDatastoreSecrets: API.OperationMethod<
   ListDatastoreSecretsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDatastoreSecretsRequest,
-  output: DatastoreSecrets,
+  input: __S(328, __c41, 0) as any as S.Schema<ListDatastoreSecretsRequest>,
+  output: __S(329, __c41, 1) as any as S.Schema<DatastoreSecrets>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13560,8 +10119,8 @@ export const ListDataVersions: API.OperationMethod<
   ListDataVersionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDataVersionsRequest,
-  output: DataVersionBaseResourceArmPaginatedResult,
+  input: __S(330, __c41, 2) as any as S.Schema<ListDataVersionsRequest>,
+  output: __S(332, __c41, 4) as any as S.Schema<DataVersionBaseResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13575,8 +10134,8 @@ export const ListEnvironmentContainers: API.OperationMethod<
   ListEnvironmentContainersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEnvironmentContainersRequest,
-  output: EnvironmentContainerResourceArmPaginatedResult,
+  input: __S(333, __c41, 5) as any as S.Schema<ListEnvironmentContainersRequest>,
+  output: __S(308, __c38, 4) as any as S.Schema<EnvironmentContainerResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13590,8 +10149,8 @@ export const ListEnvironmentVersions: API.OperationMethod<
   ListEnvironmentVersionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEnvironmentVersionsRequest,
-  output: EnvironmentVersionResourceArmPaginatedResult,
+  input: __S(334, __c41, 6) as any as S.Schema<ListEnvironmentVersionsRequest>,
+  output: __S(337, __c42, 1) as any as S.Schema<EnvironmentVersionResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13605,8 +10164,8 @@ export const ListFeatures: API.OperationMethod<
   ListFeaturesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFeaturesRequest,
-  output: FeatureResourceArmPaginatedResult,
+  input: __S(338, __c42, 2) as any as S.Schema<ListFeaturesRequest>,
+  output: __S(340, __c42, 4) as any as S.Schema<FeatureResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13620,8 +10179,8 @@ export const ListFeaturesetContainers: API.OperationMethod<
   ListFeaturesetContainersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFeaturesetContainersRequest,
-  output: FeaturesetContainerResourceArmPaginatedResult,
+  input: __S(341, __c42, 5) as any as S.Schema<ListFeaturesetContainersRequest>,
+  output: __S(308, __c38, 4) as any as S.Schema<FeaturesetContainerResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13635,8 +10194,8 @@ export const ListFeaturesetVersions: API.OperationMethod<
   ListFeaturesetVersionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFeaturesetVersionsRequest,
-  output: FeaturesetVersionResourceArmPaginatedResult,
+  input: __S(342, __c42, 6) as any as S.Schema<ListFeaturesetVersionsRequest>,
+  output: __S(345, __c43, 1) as any as S.Schema<FeaturesetVersionResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13650,8 +10209,12 @@ export const ListFeaturestoreEntityContainers: API.OperationMethod<
   ListFeaturestoreEntityContainersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFeaturestoreEntityContainersRequest,
-  output: FeaturestoreEntityContainerResourceArmPaginatedResult,
+  input: __S(346, __c43, 2) as any as S.Schema<ListFeaturestoreEntityContainersRequest>,
+  output: __S(
+    348,
+    __c43,
+    4,
+  ) as any as S.Schema<FeaturestoreEntityContainerResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13665,8 +10228,12 @@ export const ListFeaturestoreEntityVersions: API.OperationMethod<
   ListFeaturestoreEntityVersionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFeaturestoreEntityVersionsRequest,
-  output: FeaturestoreEntityVersionResourceArmPaginatedResult,
+  input: __S(349, __c43, 5) as any as S.Schema<ListFeaturestoreEntityVersionsRequest>,
+  output: __S(
+    351,
+    __c43,
+    7,
+  ) as any as S.Schema<FeaturestoreEntityVersionResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13680,8 +10247,8 @@ export const ListJobs: API.OperationMethod<
   ListJobsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListJobsRequest,
-  output: JobBaseResourceArmPaginatedResult,
+  input: __S(352, __c44, 0) as any as S.Schema<ListJobsRequest>,
+  output: __S(354, __c44, 2) as any as S.Schema<JobBaseResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13695,8 +10262,8 @@ export const ListManagedNetworkSettingsRule: API.OperationMethod<
   ListManagedNetworkSettingsRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListManagedNetworkSettingsRuleRequest,
-  output: OutboundRuleListResult,
+  input: __S(355, __c44, 3) as any as S.Schema<ListManagedNetworkSettingsRuleRequest>,
+  output: __S(357, __c44, 5) as any as S.Schema<OutboundRuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13710,8 +10277,8 @@ export const ListMarketplaceSubscriptions: API.OperationMethod<
   ListMarketplaceSubscriptionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListMarketplaceSubscriptionsRequest,
-  output: MarketplaceSubscriptionResourceArmPaginatedResult,
+  input: __S(358, __c44, 6) as any as S.Schema<ListMarketplaceSubscriptionsRequest>,
+  output: __S(361, __c45, 1) as any as S.Schema<MarketplaceSubscriptionResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13725,8 +10292,8 @@ export const ListModelContainers: API.OperationMethod<
   ListModelContainersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListModelContainersRequest,
-  output: ModelContainerResourceArmPaginatedResult,
+  input: __S(362, __c45, 2) as any as S.Schema<ListModelContainersRequest>,
+  output: __S(301, __c37, 5) as any as S.Schema<ModelContainerResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13740,8 +10307,8 @@ export const ListModelVersions: API.OperationMethod<
   ListModelVersionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListModelVersionsRequest,
-  output: ModelVersionResourceArmPaginatedResult,
+  input: __S(363, __c45, 3) as any as S.Schema<ListModelVersionsRequest>,
+  output: __S(365, __c45, 5) as any as S.Schema<ModelVersionResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13755,8 +10322,8 @@ export const ListOnlineDeployments: API.OperationMethod<
   ListOnlineDeploymentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOnlineDeploymentsRequest,
-  output: OnlineDeploymentTrackedResourceArmPaginatedResult,
+  input: __S(366, __c45, 6) as any as S.Schema<ListOnlineDeploymentsRequest>,
+  output: __S(369, __c46, 1) as any as S.Schema<OnlineDeploymentTrackedResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13770,8 +10337,8 @@ export const ListOnlineDeploymentSkus: API.OperationMethod<
   ListOnlineDeploymentSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOnlineDeploymentSkusRequest,
-  output: SkuResourceArmPaginatedResult,
+  input: __S(370, __c46, 2) as any as S.Schema<ListOnlineDeploymentSkusRequest>,
+  output: __S(375, __c46, 7) as any as S.Schema<SkuResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13785,8 +10352,8 @@ export const ListOnlineEndpointKeys: API.OperationMethod<
   ListOnlineEndpointKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOnlineEndpointKeysRequest,
-  output: EndpointAuthKeys,
+  input: __S(376, __c47, 0) as any as S.Schema<ListOnlineEndpointKeysRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<EndpointAuthKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13800,8 +10367,8 @@ export const ListOnlineEndpoints: API.OperationMethod<
   ListOnlineEndpointsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOnlineEndpointsRequest,
-  output: OnlineEndpointTrackedResourceArmPaginatedResult,
+  input: __S(377, __c47, 1) as any as S.Schema<ListOnlineEndpointsRequest>,
+  output: __S(380, __c47, 4) as any as S.Schema<OnlineEndpointTrackedResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13815,8 +10382,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(381, __c47, 5) as any as S.Schema<ListOperationsRequest>,
+  output: __S(385, __c48, 1) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13830,8 +10397,8 @@ export const ListPrivateEndpointConnections: API.OperationMethod<
   ListPrivateEndpointConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPrivateEndpointConnectionsRequest,
-  output: PrivateEndpointConnectionListResult,
+  input: __S(386, __c48, 2) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
+  output: __S(387, __c48, 3) as any as S.Schema<PrivateEndpointConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13845,8 +10412,8 @@ export const ListPrivateLinkResources: API.OperationMethod<
   ListPrivateLinkResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPrivateLinkResourcesRequest,
-  output: PrivateLinkResourceListResult,
+  input: __S(388, __c48, 4) as any as S.Schema<ListPrivateLinkResourcesRequest>,
+  output: __S(392, __c49, 0) as any as S.Schema<PrivateLinkResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13860,8 +10427,8 @@ export const ListQuotas: API.OperationMethod<
   ListQuotasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListQuotasRequest,
-  output: ListWorkspaceQuotas,
+  input: __S(393, __c49, 1) as any as S.Schema<ListQuotasRequest>,
+  output: __S(397, __c49, 5) as any as S.Schema<ListWorkspaceQuotas>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13875,8 +10442,8 @@ export const ListRegistries: API.OperationMethod<
   ListRegistriesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRegistriesRequest,
-  output: RegistryTrackedResourceArmPaginatedResult,
+  input: __S(398, __c49, 6) as any as S.Schema<ListRegistriesRequest>,
+  output: __S(400, __c50, 0) as any as S.Schema<RegistryTrackedResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13890,8 +10457,8 @@ export const ListRegistryBySubscription: API.OperationMethod<
   ListRegistryBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRegistryBySubscriptionRequest,
-  output: RegistryTrackedResourceArmPaginatedResult,
+  input: __S(401, __c50, 1) as any as S.Schema<ListRegistryBySubscriptionRequest>,
+  output: __S(400, __c50, 0) as any as S.Schema<RegistryTrackedResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13905,8 +10472,8 @@ export const ListRegistryCodeContainers: API.OperationMethod<
   ListRegistryCodeContainersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRegistryCodeContainersRequest,
-  output: CodeContainerResourceArmPaginatedResult,
+  input: __S(402, __c50, 2) as any as S.Schema<ListRegistryCodeContainersRequest>,
+  output: __S(301, __c37, 5) as any as S.Schema<CodeContainerResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13920,8 +10487,8 @@ export const ListRegistryCodeVersions: API.OperationMethod<
   ListRegistryCodeVersionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRegistryCodeVersionsRequest,
-  output: CodeVersionResourceArmPaginatedResult,
+  input: __S(403, __c50, 3) as any as S.Schema<ListRegistryCodeVersionsRequest>,
+  output: __S(304, __c38, 0) as any as S.Schema<CodeVersionResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13935,8 +10502,8 @@ export const ListRegistryComponentContainers: API.OperationMethod<
   ListRegistryComponentContainersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRegistryComponentContainersRequest,
-  output: ComponentContainerResourceArmPaginatedResult,
+  input: __S(404, __c50, 4) as any as S.Schema<ListRegistryComponentContainersRequest>,
+  output: __S(308, __c38, 4) as any as S.Schema<ComponentContainerResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13950,8 +10517,8 @@ export const ListRegistryComponentVersions: API.OperationMethod<
   ListRegistryComponentVersionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRegistryComponentVersionsRequest,
-  output: ComponentVersionResourceArmPaginatedResult,
+  input: __S(405, __c50, 5) as any as S.Schema<ListRegistryComponentVersionsRequest>,
+  output: __S(312, __c39, 0) as any as S.Schema<ComponentVersionResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13965,8 +10532,8 @@ export const ListRegistryDataContainers: API.OperationMethod<
   ListRegistryDataContainersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRegistryDataContainersRequest,
-  output: DataContainerResourceArmPaginatedResult,
+  input: __S(406, __c50, 6) as any as S.Schema<ListRegistryDataContainersRequest>,
+  output: __S(324, __c40, 4) as any as S.Schema<DataContainerResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13980,8 +10547,8 @@ export const ListRegistryDataVersions: API.OperationMethod<
   ListRegistryDataVersionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRegistryDataVersionsRequest,
-  output: DataVersionBaseResourceArmPaginatedResult,
+  input: __S(407, __c50, 7) as any as S.Schema<ListRegistryDataVersionsRequest>,
+  output: __S(332, __c41, 4) as any as S.Schema<DataVersionBaseResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13995,8 +10562,8 @@ export const ListRegistryEnvironmentContainers: API.OperationMethod<
   ListRegistryEnvironmentContainersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRegistryEnvironmentContainersRequest,
-  output: EnvironmentContainerResourceArmPaginatedResult,
+  input: __S(408, __c51, 0) as any as S.Schema<ListRegistryEnvironmentContainersRequest>,
+  output: __S(308, __c38, 4) as any as S.Schema<EnvironmentContainerResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14010,8 +10577,8 @@ export const ListRegistryEnvironmentVersions: API.OperationMethod<
   ListRegistryEnvironmentVersionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRegistryEnvironmentVersionsRequest,
-  output: EnvironmentVersionResourceArmPaginatedResult,
+  input: __S(409, __c51, 1) as any as S.Schema<ListRegistryEnvironmentVersionsRequest>,
+  output: __S(337, __c42, 1) as any as S.Schema<EnvironmentVersionResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14025,8 +10592,8 @@ export const ListRegistryModelContainers: API.OperationMethod<
   ListRegistryModelContainersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRegistryModelContainersRequest,
-  output: ModelContainerResourceArmPaginatedResult,
+  input: __S(410, __c51, 2) as any as S.Schema<ListRegistryModelContainersRequest>,
+  output: __S(301, __c37, 5) as any as S.Schema<ModelContainerResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14040,8 +10607,8 @@ export const ListRegistryModelVersions: API.OperationMethod<
   ListRegistryModelVersionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRegistryModelVersionsRequest,
-  output: ModelVersionResourceArmPaginatedResult,
+  input: __S(411, __c51, 3) as any as S.Schema<ListRegistryModelVersionsRequest>,
+  output: __S(365, __c45, 5) as any as S.Schema<ModelVersionResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14055,8 +10622,8 @@ export const ListSchedules: API.OperationMethod<
   ListSchedulesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSchedulesRequest,
-  output: ScheduleResourceArmPaginatedResult,
+  input: __S(412, __c51, 4) as any as S.Schema<ListSchedulesRequest>,
+  output: __S(414, __c51, 6) as any as S.Schema<ScheduleResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14070,8 +10637,8 @@ export const ListServerlessEndpointKeys: API.OperationMethod<
   ListServerlessEndpointKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListServerlessEndpointKeysRequest,
-  output: EndpointAuthKeys,
+  input: __S(415, __c51, 7) as any as S.Schema<ListServerlessEndpointKeysRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<EndpointAuthKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14085,8 +10652,12 @@ export const ListServerlessEndpoints: API.OperationMethod<
   ListServerlessEndpointsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListServerlessEndpointsRequest,
-  output: ServerlessEndpointTrackedResourceArmPaginatedResult,
+  input: __S(416, __c52, 0) as any as S.Schema<ListServerlessEndpointsRequest>,
+  output: __S(
+    419,
+    __c52,
+    3,
+  ) as any as S.Schema<ServerlessEndpointTrackedResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14100,8 +10671,8 @@ export const ListUsages: API.OperationMethod<
   ListUsagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListUsagesRequest,
-  output: ListUsagesResult,
+  input: __S(420, __c52, 4) as any as S.Schema<ListUsagesRequest>,
+  output: __S(423, __c52, 7) as any as S.Schema<ListUsagesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14115,8 +10686,8 @@ export const ListVirtualMachineSizes: API.OperationMethod<
   ListVirtualMachineSizesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVirtualMachineSizesRequest,
-  output: VirtualMachineSizeListResult,
+  input: __S(424, __c53, 0) as any as S.Schema<ListVirtualMachineSizesRequest>,
+  output: __S(430, __c53, 6) as any as S.Schema<VirtualMachineSizeListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14130,8 +10701,8 @@ export const ListWorkspaceByResourceGroup: API.OperationMethod<
   ListWorkspaceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWorkspaceByResourceGroupRequest,
-  output: WorkspaceListResult,
+  input: __S(431, __c53, 7) as any as S.Schema<ListWorkspaceByResourceGroupRequest>,
+  output: __S(433, __c54, 1) as any as S.Schema<WorkspaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14145,8 +10716,8 @@ export const ListWorkspaceBySubscription: API.OperationMethod<
   ListWorkspaceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWorkspaceBySubscriptionRequest,
-  output: WorkspaceListResult,
+  input: __S(434, __c54, 2) as any as S.Schema<ListWorkspaceBySubscriptionRequest>,
+  output: __S(433, __c54, 1) as any as S.Schema<WorkspaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14160,8 +10731,12 @@ export const ListWorkspaceConnections: API.OperationMethod<
   ListWorkspaceConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWorkspaceConnectionsRequest,
-  output: WorkspaceConnectionPropertiesV2BasicResourceArmPaginatedResult,
+  input: __S(435, __c54, 3) as any as S.Schema<ListWorkspaceConnectionsRequest>,
+  output: __S(
+    437,
+    __c54,
+    5,
+  ) as any as S.Schema<WorkspaceConnectionPropertiesV2BasicResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14175,8 +10750,8 @@ export const ListWorkspaceConnectionSecrets: API.OperationMethod<
   ListWorkspaceConnectionSecretsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWorkspaceConnectionSecretsRequest,
-  output: ListWorkspaceConnectionSecretsResponse,
+  input: __S(438, __c54, 6) as any as S.Schema<ListWorkspaceConnectionSecretsRequest>,
+  output: __S(61, __c7, 5) as any as S.Schema<ListWorkspaceConnectionSecretsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14190,8 +10765,8 @@ export const ListWorkspaceFeatures: API.OperationMethod<
   ListWorkspaceFeaturesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWorkspaceFeaturesRequest,
-  output: ListAmlUserFeatureResult,
+  input: __S(439, __c54, 7) as any as S.Schema<ListWorkspaceFeaturesRequest>,
+  output: __S(442, __c55, 2) as any as S.Schema<ListAmlUserFeatureResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14205,8 +10780,8 @@ export const ListWorkspaceKeys: API.OperationMethod<
   ListWorkspaceKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWorkspaceKeysRequest,
-  output: ListWorkspaceKeysResult,
+  input: __S(443, __c55, 3) as any as S.Schema<ListWorkspaceKeysRequest>,
+  output: __S(448, __c56, 0) as any as S.Schema<ListWorkspaceKeysResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14220,8 +10795,8 @@ export const ListWorkspaceNotebookAccessToken: API.OperationMethod<
   ListWorkspaceNotebookAccessTokenError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWorkspaceNotebookAccessTokenRequest,
-  output: NotebookAccessTokenResult,
+  input: __S(449, __c56, 1) as any as S.Schema<ListWorkspaceNotebookAccessTokenRequest>,
+  output: __S(450, __c56, 2) as any as S.Schema<NotebookAccessTokenResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14235,8 +10810,8 @@ export const ListWorkspaceNotebookKeys: API.OperationMethod<
   ListWorkspaceNotebookKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWorkspaceNotebookKeysRequest,
-  output: ListNotebookKeysResult,
+  input: __S(451, __c56, 3) as any as S.Schema<ListWorkspaceNotebookKeysRequest>,
+  output: __S(447, __c55, 7) as any as S.Schema<ListNotebookKeysResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14250,8 +10825,12 @@ export const ListWorkspaceOutboundNetworkDependenciesEndpoints: API.OperationMet
   ListWorkspaceOutboundNetworkDependenciesEndpointsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWorkspaceOutboundNetworkDependenciesEndpointsRequest,
-  output: ExternalFQDNResponse,
+  input: __S(
+    452,
+    __c56,
+    4,
+  ) as any as S.Schema<ListWorkspaceOutboundNetworkDependenciesEndpointsRequest>,
+  output: __S(460, __c57, 4) as any as S.Schema<ExternalFQDNResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14265,8 +10844,8 @@ export const ListWorkspaceStorageAccountKeys: API.OperationMethod<
   ListWorkspaceStorageAccountKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWorkspaceStorageAccountKeysRequest,
-  output: ListStorageAccountKeysResult,
+  input: __S(461, __c57, 5) as any as S.Schema<ListWorkspaceStorageAccountKeysRequest>,
+  output: __S(462, __c57, 6) as any as S.Schema<ListStorageAccountKeysResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14280,8 +10859,8 @@ export const ManagedNetworkSettingsRuleCreateOrUpdate: API.OperationMethod<
   ManagedNetworkSettingsRuleCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ManagedNetworkSettingsRuleCreateOrUpdateRequest,
-  output: ManagedNetworkSettingsRuleCreateOrUpdateResponse,
+  input: __S(464, __c58, 0) as any as S.Schema<ManagedNetworkSettingsRuleCreateOrUpdateRequest>,
+  output: __S(182, __c22, 6) as any as S.Schema<ManagedNetworkSettingsRuleCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14295,8 +10874,8 @@ export const MarketplaceSubscriptionsCreateOrUpdate: API.OperationMethod<
   MarketplaceSubscriptionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MarketplaceSubscriptionsCreateOrUpdateRequest,
-  output: MarketplaceSubscriptionsCreateOrUpdateResponse,
+  input: __S(466, __c58, 2) as any as S.Schema<MarketplaceSubscriptionsCreateOrUpdateRequest>,
+  output: __S(186, __c23, 2) as any as S.Schema<MarketplaceSubscriptionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14310,8 +10889,8 @@ export const ModelContainersCreateOrUpdate: API.OperationMethod<
   ModelContainersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ModelContainersCreateOrUpdateRequest,
-  output: ModelContainersCreateOrUpdateResponse,
+  input: __S(467, __c58, 3) as any as S.Schema<ModelContainersCreateOrUpdateRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<ModelContainersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14325,8 +10904,8 @@ export const ModelVersionsCreateOrUpdate: API.OperationMethod<
   ModelVersionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ModelVersionsCreateOrUpdateRequest,
-  output: ModelVersionsCreateOrUpdateResponse,
+  input: __S(468, __c58, 4) as any as S.Schema<ModelVersionsCreateOrUpdateRequest>,
+  output: __S(252, __c31, 4) as any as S.Schema<ModelVersionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14340,8 +10919,8 @@ export const OnlineDeploymentsCreateOrUpdate: API.OperationMethod<
   OnlineDeploymentsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OnlineDeploymentsCreateOrUpdateRequest,
-  output: OnlineDeploymentsCreateOrUpdateResponse,
+  input: __S(469, __c58, 5) as any as S.Schema<OnlineDeploymentsCreateOrUpdateRequest>,
+  output: __S(204, __c25, 4) as any as S.Schema<OnlineDeploymentsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14355,8 +10934,8 @@ export const OnlineEndpointsCreateOrUpdate: API.OperationMethod<
   OnlineEndpointsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OnlineEndpointsCreateOrUpdateRequest,
-  output: OnlineEndpointsCreateOrUpdateResponse,
+  input: __S(471, __c58, 7) as any as S.Schema<OnlineEndpointsCreateOrUpdateRequest>,
+  output: __S(210, __c26, 2) as any as S.Schema<OnlineEndpointsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14370,8 +10949,8 @@ export const PrivateEndpointConnectionsCreateOrUpdate: API.OperationMethod<
   PrivateEndpointConnectionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PrivateEndpointConnectionsCreateOrUpdateRequest,
-  output: PrivateEndpointConnectionsCreateOrUpdateResponse,
+  input: __S(473, __c59, 1) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequest>,
+  output: __S(217, __c27, 1) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14385,8 +10964,12 @@ export const ProvisionManagedNetworkProvisionManagedNetwork: API.OperationMethod
   ProvisionManagedNetworkProvisionManagedNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ProvisionManagedNetworkProvisionManagedNetworkRequest,
-  output: ManagedNetworkProvisionStatus,
+  input: __S(
+    474,
+    __c59,
+    2,
+  ) as any as S.Schema<ProvisionManagedNetworkProvisionManagedNetworkRequest>,
+  output: __S(271, __c33, 7) as any as S.Schema<ManagedNetworkProvisionStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14400,8 +10983,8 @@ export const PublishCodeVersion: API.OperationMethod<
   PublishCodeVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PublishCodeVersionRequest,
-  output: PublishCodeVersionResponse,
+  input: __S(475, __c59, 3) as any as S.Schema<PublishCodeVersionRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<PublishCodeVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14415,8 +10998,8 @@ export const PublishComponentVersion: API.OperationMethod<
   PublishComponentVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PublishComponentVersionRequest,
-  output: PublishComponentVersionResponse,
+  input: __S(476, __c59, 4) as any as S.Schema<PublishComponentVersionRequest>,
+  output: __S(90, __c11, 2) as any as S.Schema<PublishComponentVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14430,8 +11013,8 @@ export const PublishDataVersion: API.OperationMethod<
   PublishDataVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PublishDataVersionRequest,
-  output: PublishDataVersionResponse,
+  input: __S(477, __c59, 5) as any as S.Schema<PublishDataVersionRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<PublishDataVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14445,8 +11028,8 @@ export const PublishEnvironmentVersion: API.OperationMethod<
   PublishEnvironmentVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PublishEnvironmentVersionRequest,
-  output: PublishEnvironmentVersionResponse,
+  input: __S(478, __c59, 6) as any as S.Schema<PublishEnvironmentVersionRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<PublishEnvironmentVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14460,8 +11043,8 @@ export const PublishModelVersion: API.OperationMethod<
   PublishModelVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PublishModelVersionRequest,
-  output: PublishModelVersionResponse,
+  input: __S(479, __c59, 7) as any as S.Schema<PublishModelVersionRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<PublishModelVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14475,8 +11058,8 @@ export const RegenerateOnlineEndpointKeys: API.OperationMethod<
   RegenerateOnlineEndpointKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegenerateOnlineEndpointKeysRequest,
-  output: RegenerateOnlineEndpointKeysResponse,
+  input: __S(480, __c60, 0) as any as S.Schema<RegenerateOnlineEndpointKeysRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<RegenerateOnlineEndpointKeysResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14490,8 +11073,8 @@ export const RegenerateServerlessEndpointKeys: API.OperationMethod<
   RegenerateServerlessEndpointKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegenerateServerlessEndpointKeysRequest,
-  output: EndpointAuthKeys,
+  input: __S(481, __c60, 1) as any as S.Schema<RegenerateServerlessEndpointKeysRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<EndpointAuthKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14505,8 +11088,8 @@ export const RegistriesCreateOrUpdate: API.OperationMethod<
   RegistriesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegistriesCreateOrUpdateRequest,
-  output: RegistriesCreateOrUpdateResponse,
+  input: __S(487, __c60, 7) as any as S.Schema<RegistriesCreateOrUpdateRequest>,
+  output: __S(488, __c61, 0) as any as S.Schema<RegistriesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14520,8 +11103,8 @@ export const RegistryCodeContainersCreateOrUpdate: API.OperationMethod<
   RegistryCodeContainersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegistryCodeContainersCreateOrUpdateRequest,
-  output: RegistryCodeContainersCreateOrUpdateResponse,
+  input: __S(489, __c61, 1) as any as S.Schema<RegistryCodeContainersCreateOrUpdateRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<RegistryCodeContainersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14535,8 +11118,12 @@ export const RegistryCodeVersionsCreateOrGetStartPendingUpload: API.OperationMet
   RegistryCodeVersionsCreateOrGetStartPendingUploadError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegistryCodeVersionsCreateOrGetStartPendingUploadRequest,
-  output: PendingUploadResponseDto,
+  input: __S(
+    490,
+    __c61,
+    2,
+  ) as any as S.Schema<RegistryCodeVersionsCreateOrGetStartPendingUploadRequest>,
+  output: __S(38, __c4, 6) as any as S.Schema<PendingUploadResponseDto>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14550,8 +11137,8 @@ export const RegistryCodeVersionsCreateOrUpdate: API.OperationMethod<
   RegistryCodeVersionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegistryCodeVersionsCreateOrUpdateRequest,
-  output: RegistryCodeVersionsCreateOrUpdateResponse,
+  input: __S(491, __c61, 3) as any as S.Schema<RegistryCodeVersionsCreateOrUpdateRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<RegistryCodeVersionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14565,8 +11152,8 @@ export const RegistryComponentContainersCreateOrUpdate: API.OperationMethod<
   RegistryComponentContainersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegistryComponentContainersCreateOrUpdateRequest,
-  output: RegistryComponentContainersCreateOrUpdateResponse,
+  input: __S(492, __c61, 4) as any as S.Schema<RegistryComponentContainersCreateOrUpdateRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<RegistryComponentContainersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14580,8 +11167,8 @@ export const RegistryComponentVersionsCreateOrUpdate: API.OperationMethod<
   RegistryComponentVersionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegistryComponentVersionsCreateOrUpdateRequest,
-  output: RegistryComponentVersionsCreateOrUpdateResponse,
+  input: __S(493, __c61, 5) as any as S.Schema<RegistryComponentVersionsCreateOrUpdateRequest>,
+  output: __S(47, __c5, 7) as any as S.Schema<RegistryComponentVersionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14595,8 +11182,8 @@ export const RegistryDataContainersCreateOrUpdate: API.OperationMethod<
   RegistryDataContainersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegistryDataContainersCreateOrUpdateRequest,
-  output: RegistryDataContainersCreateOrUpdateResponse,
+  input: __S(494, __c61, 6) as any as S.Schema<RegistryDataContainersCreateOrUpdateRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<RegistryDataContainersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14610,8 +11197,12 @@ export const RegistryDataVersionsCreateOrGetStartPendingUpload: API.OperationMet
   RegistryDataVersionsCreateOrGetStartPendingUploadError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegistryDataVersionsCreateOrGetStartPendingUploadRequest,
-  output: PendingUploadResponseDto,
+  input: __S(
+    495,
+    __c61,
+    7,
+  ) as any as S.Schema<RegistryDataVersionsCreateOrGetStartPendingUploadRequest>,
+  output: __S(38, __c4, 6) as any as S.Schema<PendingUploadResponseDto>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14625,8 +11216,8 @@ export const RegistryDataVersionsCreateOrUpdate: API.OperationMethod<
   RegistryDataVersionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegistryDataVersionsCreateOrUpdateRequest,
-  output: RegistryDataVersionsCreateOrUpdateResponse,
+  input: __S(496, __c62, 0) as any as S.Schema<RegistryDataVersionsCreateOrUpdateRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<RegistryDataVersionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14640,8 +11231,8 @@ export const RegistryEnvironmentContainersCreateOrUpdate: API.OperationMethod<
   RegistryEnvironmentContainersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegistryEnvironmentContainersCreateOrUpdateRequest,
-  output: RegistryEnvironmentContainersCreateOrUpdateResponse,
+  input: __S(497, __c62, 1) as any as S.Schema<RegistryEnvironmentContainersCreateOrUpdateRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<RegistryEnvironmentContainersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14655,8 +11246,8 @@ export const RegistryEnvironmentVersionsCreateOrUpdate: API.OperationMethod<
   RegistryEnvironmentVersionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegistryEnvironmentVersionsCreateOrUpdateRequest,
-  output: RegistryEnvironmentVersionsCreateOrUpdateResponse,
+  input: __S(498, __c62, 2) as any as S.Schema<RegistryEnvironmentVersionsCreateOrUpdateRequest>,
+  output: __S(122, __c15, 2) as any as S.Schema<RegistryEnvironmentVersionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14670,8 +11261,8 @@ export const RegistryModelContainersCreateOrUpdate: API.OperationMethod<
   RegistryModelContainersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegistryModelContainersCreateOrUpdateRequest,
-  output: RegistryModelContainersCreateOrUpdateResponse,
+  input: __S(499, __c62, 3) as any as S.Schema<RegistryModelContainersCreateOrUpdateRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<RegistryModelContainersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14685,8 +11276,12 @@ export const RegistryModelVersionsCreateOrGetStartPendingUpload: API.OperationMe
   RegistryModelVersionsCreateOrGetStartPendingUploadError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegistryModelVersionsCreateOrGetStartPendingUploadRequest,
-  output: PendingUploadResponseDto,
+  input: __S(
+    500,
+    __c62,
+    4,
+  ) as any as S.Schema<RegistryModelVersionsCreateOrGetStartPendingUploadRequest>,
+  output: __S(38, __c4, 6) as any as S.Schema<PendingUploadResponseDto>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14700,8 +11295,8 @@ export const RegistryModelVersionsCreateOrUpdate: API.OperationMethod<
   RegistryModelVersionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegistryModelVersionsCreateOrUpdateRequest,
-  output: RegistryModelVersionsCreateOrUpdateResponse,
+  input: __S(501, __c62, 5) as any as S.Schema<RegistryModelVersionsCreateOrUpdateRequest>,
+  output: __S(252, __c31, 4) as any as S.Schema<RegistryModelVersionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14715,8 +11310,8 @@ export const RemoveRegistryRegions: API.OperationMethod<
   RemoveRegistryRegionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveRegistryRegionsRequest,
-  output: RemoveRegistryRegionsResponse,
+  input: __S(502, __c62, 6) as any as S.Schema<RemoveRegistryRegionsRequest>,
+  output: __S(488, __c61, 0) as any as S.Schema<RemoveRegistryRegionsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14730,8 +11325,8 @@ export const RestartCompute: API.OperationMethod<
   RestartComputeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RestartComputeRequest,
-  output: RestartComputeResponse,
+  input: __S(503, __c62, 7) as any as S.Schema<RestartComputeRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<RestartComputeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14745,8 +11340,8 @@ export const SchedulesCreateOrUpdate: API.OperationMethod<
   SchedulesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SchedulesCreateOrUpdateRequest,
-  output: SchedulesCreateOrUpdateResponse,
+  input: __S(504, __c63, 0) as any as S.Schema<SchedulesCreateOrUpdateRequest>,
+  output: __S(505, __c63, 1) as any as S.Schema<SchedulesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14760,8 +11355,8 @@ export const ServerlessEndpointsCreateOrUpdate: API.OperationMethod<
   ServerlessEndpointsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ServerlessEndpointsCreateOrUpdateRequest,
-  output: ServerlessEndpointsCreateOrUpdateResponse,
+  input: __S(507, __c63, 3) as any as S.Schema<ServerlessEndpointsCreateOrUpdateRequest>,
+  output: __S(263, __c32, 7) as any as S.Schema<ServerlessEndpointsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14775,8 +11370,8 @@ export const StartCompute: API.OperationMethod<
   StartComputeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartComputeRequest,
-  output: StartComputeResponse,
+  input: __S(508, __c63, 4) as any as S.Schema<StartComputeRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<StartComputeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14790,8 +11385,8 @@ export const StopCompute: API.OperationMethod<
   StopComputeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopComputeRequest,
-  output: StopComputeResponse,
+  input: __S(509, __c63, 5) as any as S.Schema<StopComputeRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<StopComputeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14805,8 +11400,8 @@ export const UpdateBatchDeployment: API.OperationMethod<
   UpdateBatchDeploymentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateBatchDeploymentRequest,
-  output: UpdateBatchDeploymentResponse,
+  input: __S(511, __c63, 7) as any as S.Schema<UpdateBatchDeploymentRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<UpdateBatchDeploymentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14820,8 +11415,8 @@ export const UpdateBatchEndpoint: API.OperationMethod<
   UpdateBatchEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateBatchEndpointRequest,
-  output: UpdateBatchEndpointResponse,
+  input: __S(514, __c64, 2) as any as S.Schema<UpdateBatchEndpointRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<UpdateBatchEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14835,8 +11430,8 @@ export const UpdateCompute: API.OperationMethod<
   UpdateComputeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateComputeRequest,
-  output: UpdateComputeResponse,
+  input: __S(518, __c64, 6) as any as S.Schema<UpdateComputeRequest>,
+  output: __S(157, __c19, 5) as any as S.Schema<UpdateComputeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14850,8 +11445,8 @@ export const UpdateOnlineDeployment: API.OperationMethod<
   UpdateOnlineDeploymentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateOnlineDeploymentRequest,
-  output: UpdateOnlineDeploymentResponse,
+  input: __S(520, __c65, 0) as any as S.Schema<UpdateOnlineDeploymentRequest>,
+  output: __S(204, __c25, 4) as any as S.Schema<UpdateOnlineDeploymentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14865,8 +11460,8 @@ export const UpdateOnlineEndpoint: API.OperationMethod<
   UpdateOnlineEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateOnlineEndpointRequest,
-  output: UpdateOnlineEndpointResponse,
+  input: __S(521, __c65, 1) as any as S.Schema<UpdateOnlineEndpointRequest>,
+  output: __S(210, __c26, 2) as any as S.Schema<UpdateOnlineEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14880,8 +11475,8 @@ export const UpdateQuotas: API.OperationMethod<
   UpdateQuotasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateQuotasRequest,
-  output: UpdateWorkspaceQuotasResult,
+  input: __S(524, __c65, 4) as any as S.Schema<UpdateQuotasRequest>,
+  output: __S(527, __c65, 7) as any as S.Schema<UpdateWorkspaceQuotasResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14895,8 +11490,8 @@ export const UpdateRegistry: API.OperationMethod<
   UpdateRegistryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRegistryRequest,
-  output: UpdateRegistryResponse,
+  input: __S(528, __c66, 0) as any as S.Schema<UpdateRegistryRequest>,
+  output: __S(237, __c29, 5) as any as S.Schema<UpdateRegistryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14910,8 +11505,8 @@ export const UpdateServerlessEndpoint: API.OperationMethod<
   UpdateServerlessEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateServerlessEndpointRequest,
-  output: UpdateServerlessEndpointResponse,
+  input: __S(529, __c66, 1) as any as S.Schema<UpdateServerlessEndpointRequest>,
+  output: __S(263, __c32, 7) as any as S.Schema<UpdateServerlessEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14925,8 +11520,8 @@ export const UpdateWorkspace: API.OperationMethod<
   UpdateWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateWorkspaceRequest,
-  output: UpdateWorkspaceResponse,
+  input: __S(535, __c66, 7) as any as S.Schema<UpdateWorkspaceRequest>,
+  output: __S(284, __c35, 4) as any as S.Schema<UpdateWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14940,8 +11535,8 @@ export const UpdateWorkspaceConnection: API.OperationMethod<
   UpdateWorkspaceConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateWorkspaceConnectionRequest,
-  output: UpdateWorkspaceConnectionResponse,
+  input: __S(536, __c67, 0) as any as S.Schema<UpdateWorkspaceConnectionRequest>,
+  output: __S(61, __c7, 5) as any as S.Schema<UpdateWorkspaceConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14955,8 +11550,8 @@ export const WorkspacesCreateOrUpdate: API.OperationMethod<
   WorkspacesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WorkspacesCreateOrUpdateRequest,
-  output: WorkspacesCreateOrUpdateResponse,
+  input: __S(538, __c67, 2) as any as S.Schema<WorkspacesCreateOrUpdateRequest>,
+  output: __S(539, __c67, 3) as any as S.Schema<WorkspacesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14970,8 +11565,8 @@ export const WorkspacesDiagnose: API.OperationMethod<
   WorkspacesDiagnoseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WorkspacesDiagnoseRequest,
-  output: DiagnoseResponseResult,
+  input: __S(541, __c67, 5) as any as S.Schema<WorkspacesDiagnoseRequest>,
+  output: __S(545, __c68, 1) as any as S.Schema<DiagnoseResponseResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14985,8 +11580,8 @@ export const WorkspacesPrepareNotebook: API.OperationMethod<
   WorkspacesPrepareNotebookError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WorkspacesPrepareNotebookRequest,
-  output: NotebookResourceInfo,
+  input: __S(546, __c68, 2) as any as S.Schema<WorkspacesPrepareNotebookRequest>,
+  output: __S(274, __c34, 2) as any as S.Schema<NotebookResourceInfo>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15000,8 +11595,8 @@ export const WorkspacesResyncKeys: API.OperationMethod<
   WorkspacesResyncKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WorkspacesResyncKeysRequest,
-  output: WorkspacesResyncKeysResponse,
+  input: __S(547, __c68, 3) as any as S.Schema<WorkspacesResyncKeysRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<WorkspacesResyncKeysResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15024,7 +11619,7 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          deploymentConfigurationType: BatchDeploymentConfigurationType,
+          deploymentConfigurationType: S.String,
         }),
       ).annotate({
         identifier: "BatchDeploymentConfiguration",
@@ -15032,7 +11627,7 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          referenceType: ReferenceType,
+          referenceType: S.String,
           assetId: S.optional(S.String),
           datastoreId: S.optional(S.String),
           path: S.optional(S.String),
@@ -15046,7 +11641,7 @@ function __c0(j: number): any {
         S.Struct({
           instanceCount: S.optional(S.Number),
           instanceType: S.optional(S.NullOr(S.String)),
-          properties: S.optional(S.NullOr(ResourceConfigurationPropertiesMap)),
+          properties: S.optional(S.NullOr(__S(5, __c0, 5))),
         }),
       ).annotate({ identifier: "ResourceConfiguration" });
     case 7:
@@ -15063,25 +11658,23 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          codeConfiguration: S.optional(S.NullOr(CodeConfiguration)),
+          codeConfiguration: S.optional(S.NullOr(__S(1, __c0, 1))),
           description: S.optional(S.NullOr(S.String)),
           environmentId: S.optional(S.NullOr(S.String)),
-          environmentVariables: S.optional(
-            S.NullOr(BatchDeploymentPropertiesEnvironmentVariablesMap),
-          ),
-          properties: S.optional(S.NullOr(BatchDeploymentPropertiesPropertiesMap)),
+          environmentVariables: S.optional(S.NullOr(__S(2, __c0, 2))),
+          properties: S.optional(S.NullOr(__S(2, __c0, 2))),
           compute: S.optional(S.NullOr(S.String)),
-          deploymentConfiguration: S.optional(S.NullOr(BatchDeploymentConfiguration)),
+          deploymentConfiguration: S.optional(S.NullOr(__S(3, __c0, 3))),
           errorThreshold: S.optional(S.Number),
-          loggingLevel: S.optional(BatchDeploymentPropertiesLoggingLevel),
+          loggingLevel: S.optional(S.String),
           maxConcurrencyPerInstance: S.optional(S.Number),
           miniBatchSize: S.optional(S.Number),
-          model: S.optional(S.NullOr(AssetReferenceBase)),
-          outputAction: S.optional(BatchDeploymentPropertiesOutputAction),
+          model: S.optional(S.NullOr(__S(4, __c0, 4))),
+          outputAction: S.optional(S.String),
           outputFileName: S.optional(S.String),
-          provisioningState: S.optional(DeploymentProvisioningState),
-          resources: S.optional(S.NullOr(ResourceConfiguration)),
-          retrySettings: S.optional(S.NullOr(BatchRetrySettings)),
+          provisioningState: S.optional(S.String),
+          resources: S.optional(S.NullOr(__S(6, __c0, 6))),
+          retrySettings: S.optional(S.NullOr(__S(7, __c0, 7))),
         }),
       ).annotate({
         identifier: "BatchDeploymentProperties",
@@ -15091,12 +11684,12 @@ function __c1(j: number): any {
         identifier: "UserAssignedIdentityInput",
       });
     case 2:
-      return S.Record(S.String, UserAssignedIdentityInput);
+      return S.Record(S.String, __S(9, __c1, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: ManagedServiceIdentityType,
-          userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentitiesInput)),
+          type: S.String,
+          userAssignedIdentities: S.optional(S.NullOr(__S(10, __c1, 2))),
         }),
       ).annotate({
         identifier: "BatchDeploymentsCreateOrUpdateRequestIdentity",
@@ -15105,7 +11698,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          tier: S.optional(SkuTier),
+          tier: S.optional(S.String),
           size: S.optional(S.String),
           family: S.optional(S.String),
           capacity: S.optional(S.Number),
@@ -15121,12 +11714,12 @@ function __c1(j: number): any {
           workspaceName: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
           deploymentName: S.String.pipe(T.Label()),
-          tags: S.optional(BatchDeploymentsCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(0, __c0, 0)),
           location: S.String,
-          properties: BatchDeploymentProperties,
-          identity: S.optional(BatchDeploymentsCreateOrUpdateRequestIdentity),
+          properties: __S(8, __c1, 0),
+          identity: S.optional(__S(11, __c1, 3)),
           kind: S.optional(S.String),
-          sku: S.optional(BatchDeploymentsCreateOrUpdateRequestSku),
+          sku: S.optional(__S(12, __c1, 4)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15142,10 +11735,10 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(SystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -15161,14 +11754,14 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, UserAssignedIdentity);
+      return S.Record(S.String, __S(15, __c1, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: ManagedServiceIdentityType,
-          userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
+          type: S.String,
+          userAssignedIdentities: S.optional(S.NullOr(__S(16, __c2, 0))),
         }),
       ).annotate({
         identifier: "BatchDeploymentsCreateOrUpdateResponseIdentity",
@@ -15179,13 +11772,13 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(BatchDeploymentsCreateOrUpdateResponseTagsMap),
+          systemData: S.optional(__S(14, __c1, 6)),
+          tags: S.optional(__S(0, __c0, 0)),
           location: S.String,
-          properties: BatchDeploymentProperties,
-          identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
+          properties: __S(8, __c1, 0),
+          identity: S.optional(__S(17, __c2, 1)),
           kind: S.optional(S.String),
-          sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
+          sku: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({
         identifier: "BatchDeploymentsCreateOrUpdateResponse",
@@ -15206,11 +11799,11 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          authMode: EndpointAuthMode,
+          authMode: S.String,
           description: S.optional(S.NullOr(S.String)),
-          keys: S.optional(S.NullOr(EndpointAuthKeys)),
-          properties: S.optional(S.NullOr(BatchEndpointPropertiesInputPropertiesMap)),
-          defaults: S.optional(S.NullOr(BatchEndpointDefaults)),
+          keys: S.optional(S.NullOr(__S(19, __c2, 3))),
+          properties: S.optional(S.NullOr(__S(2, __c0, 2))),
+          defaults: S.optional(S.NullOr(__S(20, __c2, 4))),
         }),
       ).annotate({
         identifier: "BatchEndpointPropertiesInput",
@@ -15222,12 +11815,12 @@ function __c2(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
-          tags: S.optional(BatchEndpointsCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(0, __c0, 0)),
           location: S.String,
-          properties: BatchEndpointPropertiesInput,
-          identity: S.optional(BatchDeploymentsCreateOrUpdateRequestIdentity),
+          properties: __S(21, __c2, 5),
+          identity: S.optional(__S(11, __c1, 3)),
           kind: S.optional(S.String),
-          sku: S.optional(BatchDeploymentsCreateOrUpdateRequestSku),
+          sku: S.optional(__S(12, __c1, 4)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15242,14 +11835,14 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          authMode: EndpointAuthMode,
+          authMode: S.String,
           description: S.optional(S.NullOr(S.String)),
-          keys: S.optional(S.NullOr(EndpointAuthKeys)),
-          properties: S.optional(S.NullOr(BatchEndpointPropertiesPropertiesMap)),
+          keys: S.optional(S.NullOr(__S(19, __c2, 3))),
+          properties: S.optional(S.NullOr(__S(2, __c0, 2))),
           scoringUri: S.optional(S.NullOr(S.String)),
           swaggerUri: S.optional(S.NullOr(S.String)),
-          defaults: S.optional(S.NullOr(BatchEndpointDefaults)),
-          provisioningState: S.optional(EndpointProvisioningState),
+          defaults: S.optional(S.NullOr(__S(20, __c2, 4))),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "BatchEndpointProperties" });
   }
@@ -15262,13 +11855,13 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(BatchEndpointsCreateOrUpdateResponseTagsMap),
+          systemData: S.optional(__S(14, __c1, 6)),
+          tags: S.optional(__S(0, __c0, 0)),
           location: S.String,
-          properties: BatchEndpointProperties,
-          identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
+          properties: __S(23, __c2, 7),
+          identity: S.optional(__S(17, __c2, 1)),
           kind: S.optional(S.String),
-          sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
+          sku: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({
         identifier: "BatchEndpointsCreateOrUpdateResponse",
@@ -15295,25 +11888,15 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          properties: S.optional(S.NullOr(CapabilityHostPropertiesInputPropertiesMap)),
-          tags: S.optional(S.NullOr(CapabilityHostPropertiesInputTagsMap)),
-          acaEnvironmentConnections: S.optional(
-            S.NullOr(CapabilityHostPropertiesInputAcaEnvironmentConnectionsList),
-          ),
-          aiServicesConnections: S.optional(
-            S.NullOr(CapabilityHostPropertiesInputAiServicesConnectionsList),
-          ),
-          capabilityHostKind: S.optional(CapabilityHostPropertiesInputCapabilityHostKind),
+          properties: S.optional(S.NullOr(__S(2, __c0, 2))),
+          tags: S.optional(S.NullOr(__S(2, __c0, 2))),
+          acaEnvironmentConnections: S.optional(S.NullOr(__S(26, __c3, 2))),
+          aiServicesConnections: S.optional(S.NullOr(__S(26, __c3, 2))),
+          capabilityHostKind: S.optional(S.String),
           customerSubnet: S.optional(S.NullOr(S.String)),
-          storageConnections: S.optional(
-            S.NullOr(CapabilityHostPropertiesInputStorageConnectionsList),
-          ),
-          threadStorageConnections: S.optional(
-            S.NullOr(CapabilityHostPropertiesInputThreadStorageConnectionsList),
-          ),
-          vectorStoreConnections: S.optional(
-            S.NullOr(CapabilityHostPropertiesInputVectorStoreConnectionsList),
-          ),
+          storageConnections: S.optional(S.NullOr(__S(26, __c3, 2))),
+          threadStorageConnections: S.optional(S.NullOr(__S(26, __c3, 2))),
+          vectorStoreConnections: S.optional(S.NullOr(__S(26, __c3, 2))),
         }),
       ).annotate({
         identifier: "CapabilityHostPropertiesInput",
@@ -15325,7 +11908,7 @@ function __c3(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: CapabilityHostPropertiesInput,
+          properties: __S(27, __c3, 3),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15341,25 +11924,17 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          properties: S.optional(S.NullOr(CapabilityHostPropertiesPropertiesMap)),
-          tags: S.optional(S.NullOr(CapabilityHostPropertiesTagsMap)),
-          acaEnvironmentConnections: S.optional(
-            S.NullOr(CapabilityHostPropertiesAcaEnvironmentConnectionsList),
-          ),
-          aiServicesConnections: S.optional(
-            S.NullOr(CapabilityHostPropertiesAiServicesConnectionsList),
-          ),
-          capabilityHostKind: S.optional(CapabilityHostPropertiesCapabilityHostKind),
+          properties: S.optional(S.NullOr(__S(2, __c0, 2))),
+          tags: S.optional(S.NullOr(__S(2, __c0, 2))),
+          acaEnvironmentConnections: S.optional(S.NullOr(__S(26, __c3, 2))),
+          aiServicesConnections: S.optional(S.NullOr(__S(26, __c3, 2))),
+          capabilityHostKind: S.optional(S.String),
           customerSubnet: S.optional(S.NullOr(S.String)),
-          provisioningState: S.optional(CapabilityHostProvisioningState),
-          storageConnections: S.optional(S.NullOr(CapabilityHostPropertiesStorageConnectionsList)),
-          threadStorageConnections: S.optional(
-            S.NullOr(CapabilityHostPropertiesThreadStorageConnectionsList),
-          ),
-          vectorStoreConnections: S.optional(
-            S.NullOr(CapabilityHostPropertiesVectorStoreConnectionsList),
-          ),
-          messages: S.optional(S.NullOr(CapabilityHostPropertiesMessagesList)),
+          provisioningState: S.optional(S.String),
+          storageConnections: S.optional(S.NullOr(__S(26, __c3, 2))),
+          threadStorageConnections: S.optional(S.NullOr(__S(26, __c3, 2))),
+          vectorStoreConnections: S.optional(S.NullOr(__S(26, __c3, 2))),
+          messages: S.optional(S.NullOr(__S(26, __c3, 2))),
         }),
       ).annotate({ identifier: "CapabilityHostProperties" });
     case 6:
@@ -15368,8 +11943,8 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: CapabilityHostProperties,
+          systemData: S.optional(__S(14, __c1, 6)),
+          properties: __S(29, __c3, 5),
         }),
       ).annotate({
         identifier: "CapabilityHostsCreateOrUpdateResponse",
@@ -15378,8 +11953,8 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          properties: S.optional(S.NullOr(CodeContainerPropertiesInputPropertiesMap)),
-          tags: S.optional(S.NullOr(CodeContainerPropertiesInputTagsMap)),
+          properties: S.optional(S.NullOr(__S(2, __c0, 2))),
+          tags: S.optional(S.NullOr(__S(2, __c0, 2))),
           isArchived: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -15396,7 +11971,7 @@ function __c4(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: CodeContainerPropertiesInput,
+          properties: __S(31, __c3, 7),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15412,12 +11987,12 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          properties: S.optional(S.NullOr(CodeContainerPropertiesPropertiesMap)),
-          tags: S.optional(S.NullOr(CodeContainerPropertiesTagsMap)),
+          properties: S.optional(S.NullOr(__S(2, __c0, 2))),
+          tags: S.optional(S.NullOr(__S(2, __c0, 2))),
           isArchived: S.optional(S.Boolean),
           latestVersion: S.optional(S.NullOr(S.String)),
           nextVersion: S.optional(S.NullOr(S.String)),
-          provisioningState: S.optional(AssetProvisioningState),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "CodeContainerProperties" });
     case 2:
@@ -15426,8 +12001,8 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: CodeContainerProperties,
+          systemData: S.optional(__S(14, __c1, 6)),
+          properties: __S(33, __c4, 1),
         }),
       ).annotate({
         identifier: "CodeContainersCreateOrUpdateResponse",
@@ -15441,9 +12016,7 @@ function __c4(j: number): any {
           name: S.String.pipe(T.Label()),
           version: S.String.pipe(T.Label()),
           pendingUploadId: S.optional(S.NullOr(S.String)),
-          pendingUploadType: S.optional(
-            CodeVersionsCreateOrGetStartPendingUploadRequestPendingUploadType,
-          ),
+          pendingUploadType: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15458,7 +12031,7 @@ function __c4(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          credentialType: PendingUploadCredentialType,
+          credentialType: S.String,
         }),
       ).annotate({
         identifier: "PendingUploadCredentialDto",
@@ -15467,7 +12040,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           blobUri: S.optional(S.NullOr(S.String)),
-          credential: S.optional(S.NullOr(PendingUploadCredentialDto)),
+          credential: S.optional(S.NullOr(__S(36, __c4, 4))),
           storageAccountArmId: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -15476,21 +12049,21 @@ function __c4(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          blobReferenceForConsumption: S.optional(S.NullOr(BlobReferenceForConsumptionDto)),
+          blobReferenceForConsumption: S.optional(S.NullOr(__S(37, __c4, 5))),
           pendingUploadId: S.optional(S.NullOr(S.String)),
-          pendingUploadType: S.optional(PendingUploadResponseDtoPendingUploadType),
+          pendingUploadType: S.optional(S.String),
         }),
       ).annotate({ identifier: "PendingUploadResponseDto" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          properties: S.optional(S.NullOr(CodeVersionPropertiesPropertiesMap)),
-          tags: S.optional(S.NullOr(CodeVersionPropertiesTagsMap)),
+          properties: S.optional(S.NullOr(__S(2, __c0, 2))),
+          tags: S.optional(S.NullOr(__S(2, __c0, 2))),
           isAnonymous: S.optional(S.Boolean),
           isArchived: S.optional(S.Boolean),
           codeUri: S.optional(S.NullOr(S.String)),
-          provisioningState: S.optional(AssetProvisioningState),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "CodeVersionProperties" });
   }
@@ -15505,7 +12078,7 @@ function __c5(j: number): any {
           workspaceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
           version: S.String.pipe(T.Label()),
-          properties: CodeVersionProperties,
+          properties: __S(39, __c4, 7),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15523,8 +12096,8 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: CodeVersionProperties,
+          systemData: S.optional(__S(14, __c1, 6)),
+          properties: __S(39, __c4, 7),
         }),
       ).annotate({
         identifier: "CodeVersionsCreateOrUpdateResponse",
@@ -15536,7 +12109,7 @@ function __c5(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: ComponentContainerPropertiesInput,
+          properties: __S(31, __c3, 7),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15552,12 +12125,12 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          properties: S.optional(S.NullOr(ComponentContainerPropertiesPropertiesMap)),
-          tags: S.optional(S.NullOr(ComponentContainerPropertiesTagsMap)),
+          properties: S.optional(S.NullOr(__S(2, __c0, 2))),
+          tags: S.optional(S.NullOr(__S(2, __c0, 2))),
           isArchived: S.optional(S.Boolean),
           latestVersion: S.optional(S.NullOr(S.String)),
           nextVersion: S.optional(S.NullOr(S.String)),
-          provisioningState: S.optional(AssetProvisioningState),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ComponentContainerProperties",
@@ -15568,8 +12141,8 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: ComponentContainerProperties,
+          systemData: S.optional(__S(14, __c1, 6)),
+          properties: __S(43, __c5, 3),
         }),
       ).annotate({
         identifier: "ComponentContainersCreateOrUpdateResponse",
@@ -15578,12 +12151,12 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          properties: S.optional(S.NullOr(ComponentVersionPropertiesPropertiesMap)),
-          tags: S.optional(S.NullOr(ComponentVersionPropertiesTagsMap)),
+          properties: S.optional(S.NullOr(__S(2, __c0, 2))),
+          tags: S.optional(S.NullOr(__S(2, __c0, 2))),
           isAnonymous: S.optional(S.Boolean),
           isArchived: S.optional(S.Boolean),
           componentSpec: S.optional(S.NullOr(S.Unknown)),
-          provisioningState: S.optional(AssetProvisioningState),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ComponentVersionProperties",
@@ -15596,7 +12169,7 @@ function __c5(j: number): any {
           workspaceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
           version: S.String.pipe(T.Label()),
-          properties: ComponentVersionProperties,
+          properties: __S(45, __c5, 5),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15614,8 +12187,8 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: ComponentVersionProperties,
+          systemData: S.optional(__S(14, __c1, 6)),
+          properties: __S(45, __c5, 5),
         }),
       ).annotate({
         identifier: "ComponentVersionsCreateOrUpdateResponse",
@@ -15627,7 +12200,7 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          computeType: ComputeType,
+          computeType: S.String,
           computeLocation: S.optional(S.String),
           description: S.optional(S.NullOr(S.String)),
           resourceId: S.optional(S.NullOr(S.String)),
@@ -15642,11 +12215,11 @@ function __c6(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           computeName: S.String.pipe(T.Label()),
-          properties: S.optional(ComputeInput),
+          properties: S.optional(__S(48, __c6, 0)),
           location: S.optional(S.String),
-          tags: S.optional(S.NullOr(ComputeCreateOrUpdateRequestTagsMap)),
-          sku: S.optional(BatchDeploymentsCreateOrUpdateRequestSku),
-          identity: S.optional(BatchDeploymentsCreateOrUpdateRequestIdentity),
+          tags: S.optional(S.NullOr(__S(0, __c0, 0))),
+          sku: S.optional(__S(12, __c1, 4)),
+          identity: S.optional(__S(11, __c1, 3)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15659,7 +12232,7 @@ function __c6(j: number): any {
         identifier: "ComputeCreateOrUpdateRequest",
       });
     case 2:
-      return S.Array(/*@__PURE__*/ S.suspend(() => ErrorDetail));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(53, __c6, 5)));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -15668,27 +12241,27 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "ErrorAdditionalInfo" });
     case 4:
-      return S.Array(ErrorAdditionalInfo);
+      return S.Array(__S(51, __c6, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(ErrorDetailDetailsList),
-          additionalInfo: S.optional(ErrorDetailAdditionalInfoList),
+          details: S.optional(__S(50, __c6, 2)),
+          additionalInfo: S.optional(__S(52, __c6, 4)),
         }),
       ).annotate({ identifier: "ErrorDetail" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          error: S.optional(ErrorDetail),
+          error: S.optional(__S(53, __c6, 5)),
         }),
       ).annotate({
         identifier: "ComputeProvisioningErrorsItem",
       });
     case 7:
-      return S.Array(ComputeProvisioningErrorsItem);
+      return S.Array(__S(54, __c6, 6));
   }
 }
 function __c7(j: number): any {
@@ -15696,14 +12269,14 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          computeType: ComputeType,
+          computeType: S.String,
           computeLocation: S.optional(S.String),
-          provisioningState: S.optional(ProvisioningState),
+          provisioningState: S.optional(S.String),
           description: S.optional(S.NullOr(S.String)),
           createdOn: S.optional(S.String),
           modifiedOn: S.optional(S.String),
           resourceId: S.optional(S.NullOr(S.String)),
-          provisioningErrors: S.optional(S.NullOr(ComputeProvisioningErrorsList)),
+          provisioningErrors: S.optional(S.NullOr(__S(55, __c6, 7))),
           isAttachedCompute: S.optional(S.Boolean),
           disableLocalAuth: S.optional(S.Boolean),
           properties: S.optional(S.Unknown),
@@ -15715,12 +12288,12 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(Compute),
+          systemData: S.optional(__S(14, __c1, 6)),
+          properties: S.optional(__S(56, __c7, 0)),
           location: S.optional(S.String),
-          tags: S.optional(S.NullOr(ComputeCreateOrUpdateResponseTagsMap)),
-          sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
-          identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
+          tags: S.optional(S.NullOr(__S(0, __c0, 0))),
+          sku: S.optional(__S(12, __c1, 4)),
+          identity: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({
         identifier: "ComputeCreateOrUpdateResponse",
@@ -15728,15 +12301,15 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          authType: ConnectionAuthType,
-          category: S.optional(ConnectionCategory),
+          authType: S.String,
+          category: S.optional(S.String),
           error: S.optional(S.String),
           expiryTime: S.optional(S.String),
           isSharedToAll: S.optional(S.Boolean),
-          metadata: S.optional(WorkspaceConnectionPropertiesV2InputMetadataMap),
-          peRequirement: S.optional(ManagedPERequirement),
-          peStatus: S.optional(ManagedPEStatus),
-          sharedUserList: S.optional(WorkspaceConnectionPropertiesV2InputSharedUserListList),
+          metadata: S.optional(__S(0, __c0, 0)),
+          peRequirement: S.optional(S.String),
+          peStatus: S.optional(S.String),
+          sharedUserList: S.optional(__S(26, __c3, 2)),
           target: S.optional(S.String),
           useWorkspaceManagedIdentity: S.optional(S.Boolean),
           credentials: S.optional(S.Unknown),
@@ -15751,7 +12324,7 @@ function __c7(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           connectionName: S.String.pipe(T.Label()),
-          properties: WorkspaceConnectionPropertiesV2Input,
+          properties: __S(58, __c7, 2),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15766,17 +12339,17 @@ function __c7(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          authType: ConnectionAuthType,
-          category: S.optional(ConnectionCategory),
+          authType: S.String,
+          category: S.optional(S.String),
           createdByWorkspaceArmId: S.optional(S.String),
           error: S.optional(S.String),
           expiryTime: S.optional(S.String),
-          group: S.optional(ConnectionGroup),
+          group: S.optional(S.String),
           isSharedToAll: S.optional(S.Boolean),
-          metadata: S.optional(WorkspaceConnectionPropertiesV2MetadataMap),
-          peRequirement: S.optional(ManagedPERequirement),
-          peStatus: S.optional(ManagedPEStatus),
-          sharedUserList: S.optional(WorkspaceConnectionPropertiesV2SharedUserListList),
+          metadata: S.optional(__S(0, __c0, 0)),
+          peRequirement: S.optional(S.String),
+          peStatus: S.optional(S.String),
+          sharedUserList: S.optional(__S(26, __c3, 2)),
           target: S.optional(S.String),
           useWorkspaceManagedIdentity: S.optional(S.Boolean),
           credentials: S.optional(S.Unknown),
@@ -15790,8 +12363,8 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: WorkspaceConnectionPropertiesV2,
+          systemData: S.optional(__S(14, __c1, 6)),
+          properties: __S(60, __c7, 4),
         }),
       ).annotate({
         identifier: "CreateWorkspaceConnectionResponse",
@@ -15800,10 +12373,10 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          properties: S.optional(S.NullOr(DataContainerPropertiesInputPropertiesMap)),
-          tags: S.optional(S.NullOr(DataContainerPropertiesInputTagsMap)),
+          properties: S.optional(S.NullOr(__S(2, __c0, 2))),
+          tags: S.optional(S.NullOr(__S(2, __c0, 2))),
           isArchived: S.optional(S.Boolean),
-          dataType: DataType,
+          dataType: S.String,
         }),
       ).annotate({
         identifier: "DataContainerPropertiesInput",
@@ -15815,7 +12388,7 @@ function __c7(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: DataContainerPropertiesInput,
+          properties: __S(62, __c7, 6),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15835,12 +12408,12 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          properties: S.optional(S.NullOr(DataContainerPropertiesPropertiesMap)),
-          tags: S.optional(S.NullOr(DataContainerPropertiesTagsMap)),
+          properties: S.optional(S.NullOr(__S(2, __c0, 2))),
+          tags: S.optional(S.NullOr(__S(2, __c0, 2))),
           isArchived: S.optional(S.Boolean),
           latestVersion: S.optional(S.NullOr(S.String)),
           nextVersion: S.optional(S.NullOr(S.String)),
-          dataType: DataType,
+          dataType: S.String,
         }),
       ).annotate({ identifier: "DataContainerProperties" });
     case 1:
@@ -15849,8 +12422,8 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: DataContainerProperties,
+          systemData: S.optional(__S(14, __c1, 6)),
+          properties: __S(64, __c8, 0),
         }),
       ).annotate({
         identifier: "DataContainersCreateOrUpdateResponse",
@@ -15858,7 +12431,7 @@ function __c8(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          credentialsType: CredentialsType,
+          credentialsType: S.String,
           secrets: S.optional(S.Unknown),
           clientId: S.optional(S.String),
           tenantId: S.optional(S.String),
@@ -15870,10 +12443,10 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          properties: S.optional(S.NullOr(DatastorePropertiesInputPropertiesMap)),
-          tags: S.optional(S.NullOr(DatastorePropertiesInputTagsMap)),
-          credentials: DatastoreCredentials,
-          datastoreType: DatastoreType,
+          properties: S.optional(S.NullOr(__S(2, __c0, 2))),
+          tags: S.optional(S.NullOr(__S(2, __c0, 2))),
+          credentials: __S(66, __c8, 2),
+          datastoreType: S.String,
           accountName: S.optional(S.String),
           containerName: S.optional(S.String),
           fileShareName: S.optional(S.String),
@@ -15894,7 +12467,7 @@ function __c8(j: number): any {
           workspaceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
           skipValidation: S.optional(S.Boolean.pipe(T.Query())),
-          properties: DatastorePropertiesInput,
+          properties: __S(67, __c8, 3),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15910,10 +12483,10 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          properties: S.optional(S.NullOr(DatastorePropertiesPropertiesMap)),
-          tags: S.optional(S.NullOr(DatastorePropertiesTagsMap)),
-          credentials: DatastoreCredentials,
-          datastoreType: DatastoreType,
+          properties: S.optional(S.NullOr(__S(2, __c0, 2))),
+          tags: S.optional(S.NullOr(__S(2, __c0, 2))),
+          credentials: __S(66, __c8, 2),
+          datastoreType: S.String,
           isDefault: S.optional(S.Boolean),
           accountName: S.optional(S.String),
           containerName: S.optional(S.String),
@@ -15933,8 +12506,8 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: DatastoreProperties,
+          systemData: S.optional(__S(14, __c1, 6)),
+          properties: __S(69, __c8, 5),
         }),
       ).annotate({
         identifier: "DatastoresCreateOrUpdateResponse",
@@ -15943,11 +12516,11 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          properties: S.optional(S.NullOr(DataVersionBasePropertiesPropertiesMap)),
-          tags: S.optional(S.NullOr(DataVersionBasePropertiesTagsMap)),
+          properties: S.optional(S.NullOr(__S(2, __c0, 2))),
+          tags: S.optional(S.NullOr(__S(2, __c0, 2))),
           isAnonymous: S.optional(S.Boolean),
           isArchived: S.optional(S.Boolean),
-          dataType: DataType,
+          dataType: S.String,
           dataUri: S.String,
         }),
       ).annotate({
@@ -15965,7 +12538,7 @@ function __c9(j: number): any {
           workspaceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
           version: S.String.pipe(T.Label()),
-          properties: DataVersionBaseProperties,
+          properties: __S(71, __c8, 7),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15983,8 +12556,8 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: DataVersionBaseProperties,
+          systemData: S.optional(__S(14, __c1, 6)),
+          properties: __S(71, __c8, 7),
         }),
       ).annotate({
         identifier: "DataVersionsCreateOrUpdateResponse",
@@ -16131,7 +12704,7 @@ function __c10(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           computeName: S.String.pipe(T.Label()),
-          underlyingResourceAction: DeleteComputeRequestUnderlyingResourceAction.pipe(T.Query()),
+          underlyingResourceAction: S.String.pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -16742,7 +13315,7 @@ function __c14(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: EnvironmentContainerPropertiesInput,
+          properties: __S(31, __c3, 7),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -16771,10 +13344,10 @@ function __c14(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          livenessRoute: S.optional(Route),
-          readinessRoute: S.optional(Route),
-          scoringRoute: S.optional(Route),
-          startupRoute: S.optional(S.NullOr(Route)),
+          livenessRoute: S.optional(__S(118, __c14, 6)),
+          readinessRoute: S.optional(__S(118, __c14, 6)),
+          scoringRoute: S.optional(__S(118, __c14, 6)),
+          startupRoute: S.optional(S.NullOr(__S(118, __c14, 6))),
         }),
       ).annotate({
         identifier: "InferenceContainerProperties",
@@ -16787,18 +13360,18 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          properties: S.optional(S.NullOr(EnvironmentVersionPropertiesPropertiesMap)),
-          tags: S.optional(S.NullOr(EnvironmentVersionPropertiesTagsMap)),
+          properties: S.optional(S.NullOr(__S(2, __c0, 2))),
+          tags: S.optional(S.NullOr(__S(2, __c0, 2))),
           isAnonymous: S.optional(S.Boolean),
           isArchived: S.optional(S.Boolean),
-          autoRebuild: S.optional(EnvironmentVersionPropertiesAutoRebuild),
-          build: S.optional(BuildContext),
+          autoRebuild: S.optional(S.String),
+          build: S.optional(__S(117, __c14, 5)),
           condaFile: S.optional(S.String),
-          environmentType: S.optional(EnvironmentType),
+          environmentType: S.optional(S.String),
           image: S.optional(S.String),
-          inferenceConfig: S.optional(InferenceContainerProperties),
-          osType: S.optional(EnvironmentVersionPropertiesOsType),
-          provisioningState: S.optional(AssetProvisioningState),
+          inferenceConfig: S.optional(__S(119, __c14, 7)),
+          osType: S.optional(S.String),
+          provisioningState: S.optional(S.String),
           stage: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -16812,7 +13385,7 @@ function __c15(j: number): any {
           workspaceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
           version: S.String.pipe(T.Label()),
-          properties: EnvironmentVersionProperties,
+          properties: __S(120, __c15, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -16830,8 +13403,8 @@ function __c15(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: EnvironmentVersionProperties,
+          systemData: S.optional(__S(14, __c1, 6)),
+          properties: __S(120, __c15, 0),
         }),
       ).annotate({
         identifier: "EnvironmentVersionsCreateOrUpdateResponse",
@@ -16843,7 +13416,7 @@ function __c15(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: FeaturesetContainerPropertiesInput,
+          properties: __S(31, __c3, 7),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -16856,7 +13429,7 @@ function __c15(j: number): any {
         identifier: "FeaturesetContainersCreateOrUpdateRequest",
       });
     case 4:
-      return S.Array(DataAvailabilityStatus);
+      return S.Array(S.String);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -16880,17 +13453,15 @@ function __c15(j: number): any {
           workspaceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
           version: S.String.pipe(T.Label()),
-          dataAvailabilityStatus: S.optional(
-            FeaturesetVersionsBackfillRequestDataAvailabilityStatusList,
-          ),
+          dataAvailabilityStatus: S.optional(__S(124, __c15, 4)),
           description: S.optional(S.String),
           displayName: S.optional(S.String),
-          featureWindow: S.optional(S.NullOr(FeatureWindow)),
+          featureWindow: S.optional(S.NullOr(__S(125, __c15, 5))),
           jobId: S.optional(S.String),
-          properties: S.optional(FeaturesetVersionsBackfillRequestPropertiesMap),
-          resource: S.optional(MaterializationComputeResource),
-          sparkConfiguration: S.optional(FeaturesetVersionsBackfillRequestSparkConfigurationMap),
-          tags: S.optional(FeaturesetVersionsBackfillRequestTagsMap),
+          properties: S.optional(__S(2, __c0, 2)),
+          resource: S.optional(__S(126, __c15, 6)),
+          sparkConfiguration: S.optional(__S(2, __c0, 2)),
+          tags: S.optional(__S(2, __c0, 2)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -16909,7 +13480,7 @@ function __c16(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          jobIds: S.optional(S.NullOr(FeaturesetVersionBackfillResponseJobIdsList)),
+          jobIds: S.optional(S.NullOr(__S(26, __c3, 2))),
         }),
       ).annotate({
         identifier: "FeaturesetVersionBackfillResponse",
@@ -16918,17 +13489,17 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           eventType: S.optional(S.NullOr(S.String)),
-          webhookType: WebhookType,
+          webhookType: S.String,
         }),
       ).annotate({ identifier: "Webhook" });
     case 2:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(Webhook));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(129, __c16, 1)));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          emailOn: S.optional(S.NullOr(NotificationSettingEmailOnList)),
-          emails: S.optional(S.NullOr(NotificationSettingEmailsList)),
-          webhooks: S.optional(S.NullOr(NotificationSettingWebhooksMap)),
+          emailOn: S.optional(S.NullOr(__S(124, __c15, 4))),
+          emails: S.optional(S.NullOr(__S(26, __c3, 2))),
+          webhooks: S.optional(S.NullOr(__S(130, __c16, 2))),
         }),
       ).annotate({ identifier: "NotificationSetting" });
     case 4:
@@ -16936,10 +13507,10 @@ function __c16(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          hours: RecurrenceScheduleHoursList,
-          minutes: RecurrenceScheduleMinutesList,
-          monthDays: S.optional(S.NullOr(RecurrenceScheduleMonthDaysList)),
-          weekDays: S.optional(S.NullOr(RecurrenceScheduleWeekDaysList)),
+          hours: __S(132, __c16, 4),
+          minutes: __S(132, __c16, 4),
+          monthDays: S.optional(S.NullOr(__S(132, __c16, 4))),
+          weekDays: S.optional(S.NullOr(__S(124, __c15, 4))),
         }),
       ).annotate({ identifier: "RecurrenceSchedule" });
     case 6:
@@ -16948,20 +13519,20 @@ function __c16(j: number): any {
           endTime: S.optional(S.NullOr(S.String)),
           startTime: S.optional(S.NullOr(S.String)),
           timeZone: S.optional(S.String),
-          triggerType: TriggerType,
-          frequency: RecurrenceFrequency,
+          triggerType: S.String,
+          frequency: S.String,
           interval: S.Number,
-          schedule: S.optional(S.NullOr(RecurrenceSchedule)),
+          schedule: S.optional(S.NullOr(__S(133, __c16, 5))),
         }),
       ).annotate({ identifier: "RecurrenceTrigger" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          notification: S.optional(S.NullOr(NotificationSetting)),
-          resource: S.optional(S.NullOr(MaterializationComputeResource)),
-          schedule: S.optional(S.NullOr(RecurrenceTrigger)),
-          sparkConfiguration: S.optional(S.NullOr(MaterializationSettingsSparkConfigurationMap)),
-          storeType: S.optional(MaterializationSettingsStoreType),
+          notification: S.optional(S.NullOr(__S(131, __c16, 3))),
+          resource: S.optional(S.NullOr(__S(126, __c15, 6))),
+          schedule: S.optional(S.NullOr(__S(134, __c16, 6))),
+          sparkConfiguration: S.optional(S.NullOr(__S(2, __c0, 2))),
+          storeType: S.optional(S.String),
         }),
       ).annotate({ identifier: "MaterializationSettings" });
   }
@@ -16978,14 +13549,14 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          properties: S.optional(S.NullOr(FeaturesetVersionPropertiesPropertiesMap)),
-          tags: S.optional(S.NullOr(FeaturesetVersionPropertiesTagsMap)),
+          properties: S.optional(S.NullOr(__S(2, __c0, 2))),
+          tags: S.optional(S.NullOr(__S(2, __c0, 2))),
           isAnonymous: S.optional(S.Boolean),
           isArchived: S.optional(S.Boolean),
-          entities: S.optional(S.NullOr(FeaturesetVersionPropertiesEntitiesList)),
-          materializationSettings: S.optional(S.NullOr(MaterializationSettings)),
-          provisioningState: S.optional(AssetProvisioningState),
-          specification: S.optional(S.NullOr(FeaturesetSpecification)),
+          entities: S.optional(S.NullOr(__S(26, __c3, 2))),
+          materializationSettings: S.optional(S.NullOr(__S(135, __c16, 7))),
+          provisioningState: S.optional(S.String),
+          specification: S.optional(S.NullOr(__S(136, __c17, 0))),
           stage: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -16999,7 +13570,7 @@ function __c17(j: number): any {
           workspaceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
           version: S.String.pipe(T.Label()),
-          properties: FeaturesetVersionProperties,
+          properties: __S(137, __c17, 1),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -17017,8 +13588,8 @@ function __c17(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: FeaturesetVersionProperties,
+          systemData: S.optional(__S(14, __c1, 6)),
+          properties: __S(137, __c17, 1),
         }),
       ).annotate({
         identifier: "FeaturesetVersionsCreateOrUpdateResponse",
@@ -17030,7 +13601,7 @@ function __c17(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: FeaturestoreEntityContainerPropertiesInput,
+          properties: __S(31, __c3, 7),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -17046,21 +13617,21 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           columnName: S.optional(S.NullOr(S.String)),
-          dataType: S.optional(IndexColumnDataType),
+          dataType: S.optional(S.String),
         }),
       ).annotate({ identifier: "IndexColumn" });
     case 6:
-      return S.Array(IndexColumn);
+      return S.Array(__S(141, __c17, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          properties: S.optional(S.NullOr(FeaturestoreEntityVersionPropertiesPropertiesMap)),
-          tags: S.optional(S.NullOr(FeaturestoreEntityVersionPropertiesTagsMap)),
+          properties: S.optional(S.NullOr(__S(2, __c0, 2))),
+          tags: S.optional(S.NullOr(__S(2, __c0, 2))),
           isAnonymous: S.optional(S.Boolean),
           isArchived: S.optional(S.Boolean),
-          indexColumns: S.optional(S.NullOr(FeaturestoreEntityVersionPropertiesIndexColumnsList)),
-          provisioningState: S.optional(AssetProvisioningState),
+          indexColumns: S.optional(S.NullOr(__S(142, __c17, 6))),
+          provisioningState: S.optional(S.String),
           stage: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -17078,7 +13649,7 @@ function __c18(j: number): any {
           workspaceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
           version: S.String.pipe(T.Label()),
-          properties: FeaturestoreEntityVersionProperties,
+          properties: __S(143, __c17, 7),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -17096,8 +13667,8 @@ function __c18(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: FeaturestoreEntityVersionProperties,
+          systemData: S.optional(__S(14, __c1, 6)),
+          properties: __S(143, __c17, 7),
         }),
       ).annotate({
         identifier: "FeaturestoreEntityVersionsCreateOrUpdateResponse",
@@ -17143,13 +13714,13 @@ function __c18(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(GetBatchEndpointResponseTagsMap),
+          systemData: S.optional(__S(14, __c1, 6)),
+          tags: S.optional(__S(0, __c0, 0)),
           location: S.String,
-          properties: BatchEndpointProperties,
-          identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
+          properties: __S(23, __c2, 7),
+          identity: S.optional(__S(17, __c2, 1)),
           kind: S.optional(S.String),
-          sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
+          sku: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({ identifier: "GetBatchEndpointResponse" });
     case 5:
@@ -17190,8 +13761,8 @@ function __c18(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: CodeContainerProperties,
+          systemData: S.optional(__S(14, __c1, 6)),
+          properties: __S(33, __c4, 1),
         }),
       ).annotate({ identifier: "GetCodeContainerResponse" });
   }
@@ -17221,8 +13792,8 @@ function __c19(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: CodeVersionProperties,
+          systemData: S.optional(__S(14, __c1, 6)),
+          properties: __S(39, __c4, 7),
         }),
       ).annotate({ identifier: "GetCodeVersionResponse" });
     case 2:
@@ -17284,12 +13855,12 @@ function __c19(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(Compute),
+          systemData: S.optional(__S(14, __c1, 6)),
+          properties: S.optional(__S(56, __c7, 0)),
           location: S.optional(S.String),
-          tags: S.optional(S.NullOr(GetComputeResponseTagsMap)),
-          sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
-          identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
+          tags: S.optional(S.NullOr(__S(0, __c0, 0))),
+          sku: S.optional(__S(12, __c1, 4)),
+          identity: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({ identifier: "GetComputeResponse" });
     case 6:
@@ -17314,8 +13885,8 @@ function __c19(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: DataContainerProperties,
+          systemData: S.optional(__S(14, __c1, 6)),
+          properties: __S(64, __c8, 0),
         }),
       ).annotate({ identifier: "GetDataContainerResponse" });
   }
@@ -17344,8 +13915,8 @@ function __c20(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: DatastoreProperties,
+          systemData: S.optional(__S(14, __c1, 6)),
+          properties: __S(69, __c8, 5),
         }),
       ).annotate({ identifier: "GetDatastoreResponse" });
     case 2:
@@ -17371,8 +13942,8 @@ function __c20(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: DataVersionBaseProperties,
+          systemData: S.optional(__S(14, __c1, 6)),
+          properties: __S(71, __c8, 7),
         }),
       ).annotate({ identifier: "GetDataVersionResponse" });
     case 4:
@@ -17434,9 +14005,9 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          properties: S.optional(S.NullOr(FeaturePropertiesPropertiesMap)),
-          tags: S.optional(S.NullOr(FeaturePropertiesTagsMap)),
-          dataType: S.optional(FeaturePropertiesDataType),
+          properties: S.optional(S.NullOr(__S(2, __c0, 2))),
+          tags: S.optional(S.NullOr(__S(2, __c0, 2))),
+          dataType: S.optional(S.String),
           featureName: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "FeatureProperties" });
@@ -17450,8 +14021,8 @@ function __c21(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: FeatureProperties,
+          systemData: S.optional(__S(14, __c1, 6)),
+          properties: __S(167, __c20, 7),
         }),
       ).annotate({ identifier: "GetFeatureResponse" });
     case 1:
@@ -17547,13 +14118,13 @@ function __c21(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          identityType: IdentityConfigurationType,
+          identityType: S.String,
         }),
       ).annotate({ identifier: "IdentityConfiguration" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          nodesValueType: NodesValueType,
+          nodesValueType: S.String,
         }),
       ).annotate({ identifier: "Nodes" });
   }
@@ -17566,30 +14137,30 @@ function __c22(j: number): any {
           endpoint: S.optional(S.NullOr(S.String)),
           errorMessage: S.optional(S.NullOr(S.String)),
           jobServiceType: S.optional(S.NullOr(S.String)),
-          nodes: S.optional(S.NullOr(Nodes)),
+          nodes: S.optional(S.NullOr(__S(175, __c21, 7))),
           port: S.optional(S.NullOr(S.Number)),
-          properties: S.optional(S.NullOr(JobServicePropertiesMap)),
+          properties: S.optional(S.NullOr(__S(2, __c0, 2))),
           status: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "JobService" });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(JobService));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(176, __c22, 0)));
     case 2:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          properties: S.optional(S.NullOr(JobBasePropertiesPropertiesMap)),
-          tags: S.optional(S.NullOr(JobBasePropertiesTagsMap)),
+          properties: S.optional(S.NullOr(__S(2, __c0, 2))),
+          tags: S.optional(S.NullOr(__S(2, __c0, 2))),
           componentId: S.optional(S.NullOr(S.String)),
           computeId: S.optional(S.NullOr(S.String)),
           displayName: S.optional(S.NullOr(S.String)),
           experimentName: S.optional(S.String),
-          identity: S.optional(S.NullOr(IdentityConfiguration)),
+          identity: S.optional(S.NullOr(__S(174, __c21, 6))),
           isArchived: S.optional(S.Boolean),
-          jobType: JobType,
-          notificationSetting: S.optional(S.NullOr(NotificationSetting)),
-          services: S.optional(S.NullOr(JobBasePropertiesServicesMap)),
-          status: S.optional(JobStatus),
+          jobType: S.String,
+          notificationSetting: S.optional(S.NullOr(__S(131, __c16, 3))),
+          services: S.optional(S.NullOr(__S(177, __c22, 1))),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobBaseProperties" });
     case 3:
@@ -17598,8 +14169,8 @@ function __c22(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: JobBaseProperties,
+          systemData: S.optional(__S(14, __c1, 6)),
+          properties: __S(178, __c22, 2),
         }),
       ).annotate({ identifier: "GetJobResponse" });
     case 4:
@@ -17623,11 +14194,11 @@ function __c22(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          category: S.optional(RuleCategory),
-          status: S.optional(RuleStatus),
-          type: RuleType,
+          category: S.optional(S.String),
+          status: S.optional(S.String),
+          type: S.String,
           errorInformation: S.optional(S.String),
-          parentRuleNames: S.optional(OutboundRuleParentRuleNamesList),
+          parentRuleNames: S.optional(__S(26, __c3, 2)),
           destination: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "OutboundRule" });
@@ -17637,8 +14208,8 @@ function __c22(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: OutboundRule,
+          systemData: S.optional(__S(14, __c1, 6)),
+          properties: __S(181, __c22, 5),
         }),
       ).annotate({
         identifier: "GetManagedNetworkSettingsRuleResponse",
@@ -17676,10 +14247,10 @@ function __c23(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          marketplacePlan: S.optional(S.NullOr(MarketplacePlan)),
-          marketplaceSubscriptionStatus: S.optional(MarketplaceSubscriptionStatus),
+          marketplacePlan: S.optional(S.NullOr(__S(184, __c23, 0))),
+          marketplaceSubscriptionStatus: S.optional(S.String),
           modelId: S.String,
-          provisioningState: S.optional(MarketplaceSubscriptionProvisioningState),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "MarketplaceSubscriptionProperties",
@@ -17690,8 +14261,8 @@ function __c23(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: MarketplaceSubscriptionProperties,
+          systemData: S.optional(__S(14, __c1, 6)),
+          properties: __S(185, __c23, 1),
         }),
       ).annotate({
         identifier: "GetMarketplaceSubscriptionResponse",
@@ -17732,11 +14303,11 @@ function __c23(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(FlavorDataDataMap)),
+          data: S.optional(S.NullOr(__S(2, __c0, 2))),
         }),
       ).annotate({ identifier: "FlavorData" });
     case 6:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(FlavorData));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(189, __c23, 5)));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -17749,22 +14320,22 @@ function __c23(j: number): any {
 function __c24(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DatasetReference);
+      return S.Array(__S(191, __c23, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          properties: S.optional(S.NullOr(ModelVersionPropertiesPropertiesMap)),
-          tags: S.optional(S.NullOr(ModelVersionPropertiesTagsMap)),
+          properties: S.optional(S.NullOr(__S(2, __c0, 2))),
+          tags: S.optional(S.NullOr(__S(2, __c0, 2))),
           isAnonymous: S.optional(S.Boolean),
           isArchived: S.optional(S.Boolean),
-          flavors: S.optional(S.NullOr(ModelVersionPropertiesFlavorsMap)),
+          flavors: S.optional(S.NullOr(__S(190, __c23, 6))),
           jobName: S.optional(S.NullOr(S.String)),
           modelType: S.optional(S.NullOr(S.String)),
           modelUri: S.optional(S.NullOr(S.String)),
-          provisioningState: S.optional(AssetProvisioningState),
+          provisioningState: S.optional(S.String),
           stage: S.optional(S.NullOr(S.String)),
-          datasets: S.optional(S.NullOr(ModelVersionPropertiesDatasetsList)),
+          datasets: S.optional(S.NullOr(__S(192, __c24, 0))),
         }),
       ).annotate({ identifier: "ModelVersionProperties" });
     case 2:
@@ -17773,8 +14344,8 @@ function __c24(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: ModelVersionProperties,
+          systemData: S.optional(__S(14, __c1, 6)),
+          properties: __S(193, __c24, 1),
         }),
       ).annotate({ identifier: "GetModelVersionResponse" });
     case 3:
@@ -17800,25 +14371,25 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           clientId: S.optional(S.NullOr(S.String)),
-          dataCollectionMode: S.optional(CollectionDataCollectionMode),
+          dataCollectionMode: S.optional(S.String),
           dataId: S.optional(S.NullOr(S.String)),
           samplingRate: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Collection" });
     case 5:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(Collection));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(196, __c24, 4)));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          captureHeaders: S.optional(S.NullOr(RequestLoggingCaptureHeadersList)),
+          captureHeaders: S.optional(S.NullOr(__S(26, __c3, 2))),
         }),
       ).annotate({ identifier: "RequestLogging" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          collections: DataCollectorCollectionsMap,
-          requestLogging: S.optional(S.NullOr(RequestLogging)),
-          rollingRate: S.optional(DataCollectorRollingRate),
+          collections: __S(197, __c24, 5),
+          requestLogging: S.optional(S.NullOr(__S(198, __c24, 6))),
+          rollingRate: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataCollector" });
   }
@@ -17846,7 +14417,7 @@ function __c25(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          scaleType: ScaleType,
+          scaleType: S.String,
           minInstances: S.optional(S.Number),
           maxInstances: S.optional(S.Number),
           pollingInterval: S.optional(S.String),
@@ -17857,28 +14428,24 @@ function __c25(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          codeConfiguration: S.optional(S.NullOr(CodeConfiguration)),
+          codeConfiguration: S.optional(S.NullOr(__S(1, __c0, 1))),
           description: S.optional(S.NullOr(S.String)),
           environmentId: S.optional(S.NullOr(S.String)),
-          environmentVariables: S.optional(
-            S.NullOr(OnlineDeploymentPropertiesEnvironmentVariablesMap),
-          ),
-          properties: S.optional(S.NullOr(OnlineDeploymentPropertiesPropertiesMap)),
+          environmentVariables: S.optional(S.NullOr(__S(2, __c0, 2))),
+          properties: S.optional(S.NullOr(__S(2, __c0, 2))),
           appInsightsEnabled: S.optional(S.Boolean),
-          dataCollector: S.optional(S.NullOr(DataCollector)),
-          egressPublicNetworkAccess: S.optional(
-            OnlineDeploymentPropertiesEgressPublicNetworkAccess,
-          ),
-          endpointComputeType: EndpointComputeType,
+          dataCollector: S.optional(S.NullOr(__S(199, __c24, 7))),
+          egressPublicNetworkAccess: S.optional(S.String),
+          endpointComputeType: S.String,
           instanceType: S.optional(S.NullOr(S.String)),
-          livenessProbe: S.optional(S.NullOr(ProbeSettings)),
+          livenessProbe: S.optional(S.NullOr(__S(200, __c25, 0))),
           model: S.optional(S.NullOr(S.String)),
           modelMountPath: S.optional(S.NullOr(S.String)),
-          provisioningState: S.optional(DeploymentProvisioningState),
-          readinessProbe: S.optional(S.NullOr(ProbeSettings)),
-          requestSettings: S.optional(S.NullOr(OnlineRequestSettings)),
-          scaleSettings: S.optional(S.NullOr(OnlineScaleSettings)),
-          startupProbe: S.optional(S.NullOr(ProbeSettings)),
+          provisioningState: S.optional(S.String),
+          readinessProbe: S.optional(S.NullOr(__S(200, __c25, 0))),
+          requestSettings: S.optional(S.NullOr(__S(201, __c25, 1))),
+          scaleSettings: S.optional(S.NullOr(__S(202, __c25, 2))),
+          startupProbe: S.optional(S.NullOr(__S(200, __c25, 0))),
         }),
       ).annotate({
         identifier: "OnlineDeploymentProperties",
@@ -17889,13 +14456,13 @@ function __c25(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(GetOnlineDeploymentResponseTagsMap),
+          systemData: S.optional(__S(14, __c1, 6)),
+          tags: S.optional(__S(0, __c0, 0)),
           location: S.String,
-          properties: OnlineDeploymentProperties,
-          identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
+          properties: __S(203, __c25, 3),
+          identity: S.optional(__S(17, __c2, 1)),
           kind: S.optional(S.String),
-          sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
+          sku: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({
         identifier: "GetOnlineDeploymentResponse",
@@ -17908,7 +14475,7 @@ function __c25(j: number): any {
           workspaceName: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
           deploymentName: S.String.pipe(T.Label()),
-          containerType: S.optional(GetOnlineDeploymentLogsRequestContainerType),
+          containerType: S.optional(S.String),
           tail: S.optional(S.NullOr(S.Number)),
         }).pipe(
           T.Http({
@@ -17952,17 +14519,17 @@ function __c26(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          authMode: EndpointAuthMode,
+          authMode: S.String,
           description: S.optional(S.NullOr(S.String)),
-          keys: S.optional(S.NullOr(EndpointAuthKeys)),
-          properties: S.optional(S.NullOr(OnlineEndpointPropertiesPropertiesMap)),
+          keys: S.optional(S.NullOr(__S(19, __c2, 3))),
+          properties: S.optional(S.NullOr(__S(2, __c0, 2))),
           scoringUri: S.optional(S.NullOr(S.String)),
           swaggerUri: S.optional(S.NullOr(S.String)),
           compute: S.optional(S.NullOr(S.String)),
-          mirrorTraffic: S.optional(S.NullOr(OnlineEndpointPropertiesMirrorTrafficMap)),
-          provisioningState: S.optional(EndpointProvisioningState),
-          publicNetworkAccess: S.optional(OnlineEndpointPropertiesPublicNetworkAccess),
-          traffic: S.optional(S.NullOr(OnlineEndpointPropertiesTrafficMap)),
+          mirrorTraffic: S.optional(S.NullOr(__S(208, __c26, 0))),
+          provisioningState: S.optional(S.String),
+          publicNetworkAccess: S.optional(S.String),
+          traffic: S.optional(S.NullOr(__S(208, __c26, 0))),
         }),
       ).annotate({ identifier: "OnlineEndpointProperties" });
     case 2:
@@ -17971,13 +14538,13 @@ function __c26(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(GetOnlineEndpointResponseTagsMap),
+          systemData: S.optional(__S(14, __c1, 6)),
+          tags: S.optional(__S(0, __c0, 0)),
           location: S.String,
-          properties: OnlineEndpointProperties,
-          identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
+          properties: __S(209, __c26, 1),
+          identity: S.optional(__S(17, __c2, 1)),
           kind: S.optional(S.String),
-          sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
+          sku: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({
         identifier: "GetOnlineEndpointResponse",
@@ -18041,7 +14608,7 @@ function __c26(j: number): any {
         S.Struct({
           actionsRequired: S.optional(S.String),
           description: S.optional(S.String),
-          status: S.optional(EndpointServiceConnectionStatus),
+          status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrivateLinkServiceConnectionState",
@@ -18053,9 +14620,9 @@ function __c27(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(WorkspacePrivateEndpointResource),
-          privateLinkServiceConnectionState: S.optional(PrivateLinkServiceConnectionState),
-          provisioningState: S.optional(PrivateEndpointConnectionProvisioningState),
+          privateEndpoint: S.optional(__S(214, __c26, 6)),
+          privateLinkServiceConnectionState: S.optional(__S(215, __c26, 7)),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionProperties",
@@ -18066,12 +14633,12 @@ function __c27(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(PrivateEndpointConnectionProperties),
-          identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
-          sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
+          systemData: S.optional(__S(14, __c1, 6)),
+          properties: S.optional(__S(216, __c27, 0)),
+          identity: S.optional(__S(17, __c2, 1)),
+          sku: S.optional(__S(12, __c1, 4)),
           location: S.optional(S.String),
-          tags: S.optional(GetPrivateEndpointConnectionResponseTagsMap),
+          tags: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({
         identifier: "GetPrivateEndpointConnectionResponse",
@@ -18106,13 +14673,11 @@ function __c27(j: number): any {
         identifier: "ManagedResourceGroupAssignedIdentities",
       });
     case 5:
-      return S.Array(ManagedResourceGroupAssignedIdentities);
+      return S.Array(__S(220, __c27, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          assignedIdentities: S.optional(
-            S.NullOr(ManagedResourceGroupSettingsAssignedIdentitiesList),
-          ),
+          assignedIdentities: S.optional(S.NullOr(__S(221, __c27, 5))),
         }),
       ).annotate({
         identifier: "ManagedResourceGroupSettings",
@@ -18133,7 +14698,7 @@ function __c28(j: number): any {
         S.Struct({
           actionsRequired: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
-          status: S.optional(EndpointServiceConnectionStatus),
+          status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RegistryPrivateLinkServiceConnectionState",
@@ -18141,11 +14706,9 @@ function __c28(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          groupIds: S.optional(S.NullOr(RegistryPrivateEndpointConnectionPropertiesGroupIdsList)),
-          privateEndpoint: S.optional(S.NullOr(PrivateEndpointResource)),
-          registryPrivateLinkServiceConnectionState: S.optional(
-            S.NullOr(RegistryPrivateLinkServiceConnectionState),
-          ),
+          groupIds: S.optional(S.NullOr(__S(26, __c3, 2))),
+          privateEndpoint: S.optional(S.NullOr(__S(223, __c27, 7))),
+          registryPrivateLinkServiceConnectionState: S.optional(S.NullOr(__S(224, __c28, 0))),
           provisioningState: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -18156,34 +14719,34 @@ function __c28(j: number): any {
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           location: S.optional(S.NullOr(S.String)),
-          properties: S.optional(S.NullOr(RegistryPrivateEndpointConnectionProperties)),
+          properties: S.optional(S.NullOr(__S(225, __c28, 1))),
         }),
       ).annotate({
         identifier: "RegistryPrivateEndpointConnection",
       });
     case 3:
-      return S.Array(RegistryPrivateEndpointConnection);
+      return S.Array(__S(226, __c28, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           acrAccountName: S.optional(S.NullOr(S.String)),
           acrAccountSku: S.optional(S.NullOr(S.String)),
-          armResourceId: S.optional(S.NullOr(ArmResourceId)),
+          armResourceId: S.optional(S.NullOr(__S(219, __c27, 3))),
         }),
       ).annotate({ identifier: "SystemCreatedAcrAccount" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          systemCreatedAcrAccount: S.optional(S.NullOr(SystemCreatedAcrAccount)),
+          systemCreatedAcrAccount: S.optional(S.NullOr(__S(228, __c28, 4))),
         }),
       ).annotate({ identifier: "AcrDetails" });
     case 6:
-      return S.Array(AcrDetails);
+      return S.Array(__S(229, __c28, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           allowBlobPublicAccess: S.optional(S.Boolean),
-          armResourceId: S.optional(S.NullOr(ArmResourceId)),
+          armResourceId: S.optional(S.NullOr(__S(219, __c27, 3))),
           storageAccountHnsEnabled: S.optional(S.Boolean),
           storageAccountName: S.optional(S.NullOr(S.String)),
           storageAccountType: S.optional(S.NullOr(S.String)),
@@ -18198,36 +14761,32 @@ function __c29(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          systemCreatedStorageAccount: S.optional(S.NullOr(SystemCreatedStorageAccount)),
+          systemCreatedStorageAccount: S.optional(S.NullOr(__S(231, __c28, 7))),
         }),
       ).annotate({ identifier: "StorageAccountDetails" });
     case 1:
-      return S.Array(StorageAccountDetails);
+      return S.Array(__S(232, __c29, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          acrDetails: S.optional(S.NullOr(RegistryRegionArmDetailsAcrDetailsList)),
+          acrDetails: S.optional(S.NullOr(__S(230, __c28, 6))),
           location: S.optional(S.NullOr(S.String)),
-          storageAccountDetails: S.optional(
-            S.NullOr(RegistryRegionArmDetailsStorageAccountDetailsList),
-          ),
+          storageAccountDetails: S.optional(S.NullOr(__S(233, __c29, 1))),
         }),
       ).annotate({ identifier: "RegistryRegionArmDetails" });
     case 3:
-      return S.Array(RegistryRegionArmDetails);
+      return S.Array(__S(234, __c29, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           discoveryUrl: S.optional(S.NullOr(S.String)),
           intellectualPropertyPublisher: S.optional(S.NullOr(S.String)),
-          managedResourceGroup: S.optional(S.NullOr(ArmResourceId)),
-          managedResourceGroupSettings: S.optional(S.NullOr(ManagedResourceGroupSettings)),
+          managedResourceGroup: S.optional(S.NullOr(__S(219, __c27, 3))),
+          managedResourceGroupSettings: S.optional(S.NullOr(__S(222, __c27, 6))),
           mlFlowRegistryUri: S.optional(S.NullOr(S.String)),
-          registryPrivateEndpointConnections: S.optional(
-            S.NullOr(RegistryPropertiesRegistryPrivateEndpointConnectionsList),
-          ),
+          registryPrivateEndpointConnections: S.optional(S.NullOr(__S(227, __c28, 3))),
           publicNetworkAccess: S.optional(S.NullOr(S.String)),
-          regionDetails: S.optional(S.NullOr(RegistryPropertiesRegionDetailsList)),
+          regionDetails: S.optional(S.NullOr(__S(235, __c29, 3))),
         }),
       ).annotate({ identifier: "RegistryProperties" });
     case 5:
@@ -18236,13 +14795,13 @@ function __c29(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(GetRegistryResponseTagsMap),
+          systemData: S.optional(__S(14, __c1, 6)),
+          tags: S.optional(__S(0, __c0, 0)),
           location: S.String,
-          properties: RegistryProperties,
-          identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
+          properties: __S(236, __c29, 4),
+          identity: S.optional(__S(17, __c2, 1)),
           kind: S.optional(S.String),
-          sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
+          sku: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({ identifier: "GetRegistryResponse" });
     case 6:
@@ -18365,14 +14924,14 @@ function __c30(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          credentialType: DataReferenceCredentialType,
+          credentialType: S.String,
         }),
       ).annotate({ identifier: "DataReferenceCredential" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           blobUri: S.optional(S.NullOr(S.String)),
-          credential: S.optional(S.NullOr(DataReferenceCredential)),
+          credential: S.optional(S.NullOr(__S(244, __c30, 4))),
           storageAccountArmId: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -18381,7 +14940,7 @@ function __c30(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          blobReferenceForConsumption: S.optional(S.NullOr(GetBlobReferenceForConsumptionDto)),
+          blobReferenceForConsumption: S.optional(S.NullOr(__S(245, __c30, 5))),
         }),
       ).annotate({
         identifier: "GetBlobReferenceSASResponseDto",
@@ -18489,8 +15048,8 @@ function __c31(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: ModelVersionProperties,
+          systemData: S.optional(__S(14, __c1, 6)),
+          properties: __S(193, __c24, 1),
         }),
       ).annotate({
         identifier: "GetRegistryModelVersionResponse",
@@ -18514,7 +15073,7 @@ function __c31(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          actionType: ScheduleActionType,
+          actionType: S.String,
           jobDefinition: S.optional(S.Unknown),
           createMonitorRequest: S.optional(S.Unknown),
           endpointInvocationDefinition: S.optional(S.Unknown),
@@ -18526,7 +15085,7 @@ function __c31(j: number): any {
           endTime: S.optional(S.NullOr(S.String)),
           startTime: S.optional(S.NullOr(S.String)),
           timeZone: S.optional(S.String),
-          triggerType: TriggerType,
+          triggerType: S.String,
           expression: S.optional(S.String),
           frequency: S.optional(S.String),
           interval: S.optional(S.Number),
@@ -18541,13 +15100,13 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          properties: S.optional(S.NullOr(SchedulePropertiesPropertiesMap)),
-          tags: S.optional(S.NullOr(SchedulePropertiesTagsMap)),
-          action: ScheduleActionBase,
+          properties: S.optional(S.NullOr(__S(2, __c0, 2))),
+          tags: S.optional(S.NullOr(__S(2, __c0, 2))),
+          action: __S(254, __c31, 6),
           displayName: S.optional(S.NullOr(S.String)),
           isEnabled: S.optional(S.Boolean),
-          provisioningState: S.optional(ScheduleProvisioningStatus),
-          trigger: TriggerBase,
+          provisioningState: S.optional(S.String),
+          trigger: __S(255, __c31, 7),
         }),
       ).annotate({ identifier: "ScheduleProperties" });
     case 1:
@@ -18556,8 +15115,8 @@ function __c32(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: ScheduleProperties,
+          systemData: S.optional(__S(14, __c1, 6)),
+          properties: __S(256, __c32, 0),
         }),
       ).annotate({ identifier: "GetScheduleResponse" });
     case 2:
@@ -18581,13 +15140,13 @@ function __c32(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          contentSafetyStatus: ContentSafetyStatus,
+          contentSafetyStatus: S.String,
         }),
       ).annotate({ identifier: "ContentSafety" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          headers: S.optional(S.NullOr(ServerlessInferenceEndpointHeadersMap)),
+          headers: S.optional(S.NullOr(__S(2, __c0, 2))),
           uri: S.String,
         }),
       ).annotate({
@@ -18602,13 +15161,13 @@ function __c32(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          authMode: ServerlessInferenceEndpointAuthMode,
-          contentSafety: S.optional(S.NullOr(ContentSafety)),
-          endpointState: S.optional(ServerlessEndpointState),
-          inferenceEndpoint: S.optional(S.NullOr(ServerlessInferenceEndpoint)),
+          authMode: S.String,
+          contentSafety: S.optional(S.NullOr(__S(259, __c32, 3))),
+          endpointState: S.optional(S.String),
+          inferenceEndpoint: S.optional(S.NullOr(__S(260, __c32, 4))),
           marketplaceSubscriptionId: S.optional(S.NullOr(S.String)),
-          modelSettings: S.optional(S.NullOr(ModelSettings)),
-          provisioningState: S.optional(EndpointProvisioningState),
+          modelSettings: S.optional(S.NullOr(__S(261, __c32, 5))),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ServerlessEndpointProperties",
@@ -18619,13 +15178,13 @@ function __c32(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(GetServerlessEndpointResponseTagsMap),
+          systemData: S.optional(__S(14, __c1, 6)),
+          tags: S.optional(__S(0, __c0, 0)),
           location: S.String,
-          properties: ServerlessEndpointProperties,
-          identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
+          properties: __S(262, __c32, 6),
+          identity: S.optional(__S(17, __c2, 1)),
           kind: S.optional(S.String),
-          sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
+          sku: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({
         identifier: "GetServerlessEndpointResponse",
@@ -18667,10 +15226,10 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           cosmosDbResourceId: S.optional(S.String),
-          identity: S.optional(IdentityForCmk),
-          keyVaultProperties: KeyVaultProperties,
+          identity: S.optional(__S(265, __c33, 1)),
+          keyVaultProperties: __S(266, __c33, 2),
           searchAccountResourceId: S.optional(S.String),
-          status: EncryptionStatus,
+          status: S.String,
           storageAccountResourceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "EncryptionProperty" });
@@ -18683,18 +15242,18 @@ function __c33(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          computeRuntime: S.optional(ComputeRuntimeDto),
+          computeRuntime: S.optional(__S(268, __c33, 4)),
           offlineStoreConnectionName: S.optional(S.String),
           onlineStoreConnectionName: S.optional(S.String),
         }),
       ).annotate({ identifier: "FeatureStoreSettings" });
     case 6:
-      return S.Record(S.String, OutboundRule);
+      return S.Record(S.String, __S(181, __c22, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           sparkReady: S.optional(S.Boolean),
-          status: S.optional(ManagedNetworkStatus),
+          status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ManagedNetworkProvisionStatus",
@@ -18707,12 +15266,12 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enableNetworkMonitor: S.optional(S.Boolean),
-          isolationMode: S.optional(IsolationMode),
+          isolationMode: S.optional(S.String),
           networkId: S.optional(S.String),
-          outboundRules: S.optional(S.NullOr(ManagedNetworkSettingsOutboundRulesMap)),
-          status: S.optional(ManagedNetworkProvisionStatus),
-          firewallSku: S.optional(FirewallSku),
-          managedNetworkKind: S.optional(ManagedNetworkKind),
+          outboundRules: S.optional(S.NullOr(__S(270, __c33, 6))),
+          status: S.optional(__S(271, __c33, 7)),
+          firewallSku: S.optional(S.String),
+          managedNetworkKind: S.optional(S.String),
           firewallPublicIpAddress: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "ManagedNetworkSettings" });
@@ -18728,12 +15287,12 @@ function __c34(j: number): any {
         S.Struct({
           fqdn: S.optional(S.String),
           isPrivateLinkEnabled: S.optional(S.Boolean),
-          notebookPreparationError: S.optional(NotebookPreparationError),
+          notebookPreparationError: S.optional(__S(273, __c34, 1)),
           resourceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "NotebookResourceInfo" });
     case 3:
-      return S.Array(PrivateEndpointConnection);
+      return S.Array(__S(217, __c27, 1));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -18752,7 +15311,7 @@ function __c34(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          cosmosDb: S.optional(CosmosDbSettings),
+          cosmosDb: S.optional(__S(277, __c34, 5)),
         }),
       ).annotate({
         identifier: "ServiceManagedResourcesSettings",
@@ -18763,7 +15322,7 @@ function __c34(j: number): any {
           groupId: S.optional(S.String),
           privateLinkResourceId: S.optional(S.String),
           requestMessage: S.optional(S.String),
-          status: S.optional(EndpointServiceConnectionStatus),
+          status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SharedPrivateLinkResourceProperty",
@@ -18776,19 +15335,17 @@ function __c35(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          properties: S.optional(SharedPrivateLinkResourceProperty),
+          properties: S.optional(__S(279, __c34, 7)),
         }),
       ).annotate({
         identifier: "SharedPrivateLinkResource",
       });
     case 1:
-      return S.Array(SharedPrivateLinkResource);
+      return S.Array(__S(280, __c35, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          additionalWorkspaceStorageAccounts: S.optional(
-            WorkspaceHubConfigAdditionalWorkspaceStorageAccountsList,
-          ),
+          additionalWorkspaceStorageAccounts: S.optional(__S(26, __c3, 2)),
           defaultWorkspaceResourceGroup: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkspaceHubConfig" });
@@ -18797,38 +15354,38 @@ function __c35(j: number): any {
         S.Struct({
           allowPublicAccessWhenBehindVnet: S.optional(S.Boolean),
           applicationInsights: S.optional(S.String),
-          associatedWorkspaces: S.optional(WorkspacePropertiesAssociatedWorkspacesList),
+          associatedWorkspaces: S.optional(__S(26, __c3, 2)),
           containerRegistry: S.optional(S.String),
           description: S.optional(S.String),
           discoveryUrl: S.optional(S.String),
           enableDataIsolation: S.optional(S.Boolean),
           enableServiceSideCMKEncryption: S.optional(S.Boolean),
-          encryption: S.optional(EncryptionProperty),
-          featureStoreSettings: S.optional(FeatureStoreSettings),
+          encryption: S.optional(__S(267, __c33, 3)),
+          featureStoreSettings: S.optional(__S(269, __c33, 5)),
           friendlyName: S.optional(S.String),
           hbiWorkspace: S.optional(S.Boolean),
           hubResourceId: S.optional(S.String),
           imageBuildCompute: S.optional(S.String),
           keyVault: S.optional(S.String),
-          managedNetwork: S.optional(ManagedNetworkSettings),
+          managedNetwork: S.optional(__S(272, __c34, 0)),
           mlFlowTrackingUri: S.optional(S.String),
-          notebookInfo: S.optional(NotebookResourceInfo),
+          notebookInfo: S.optional(__S(274, __c34, 2)),
           primaryUserAssignedIdentity: S.optional(S.String),
-          privateEndpointConnections: S.optional(WorkspacePropertiesPrivateEndpointConnectionsList),
+          privateEndpointConnections: S.optional(__S(275, __c34, 3)),
           privateLinkCount: S.optional(S.Number),
           provisionNetworkNow: S.optional(S.Boolean),
-          provisioningState: S.optional(ProvisioningState),
-          publicNetworkAccess: S.optional(PublicNetworkAccessType),
-          serverlessComputeSettings: S.optional(ServerlessComputeSettings),
-          serviceManagedResourcesSettings: S.optional(ServiceManagedResourcesSettings),
+          provisioningState: S.optional(S.String),
+          publicNetworkAccess: S.optional(S.String),
+          serverlessComputeSettings: S.optional(__S(276, __c34, 4)),
+          serviceManagedResourcesSettings: S.optional(__S(278, __c34, 6)),
           serviceProvisionedResourceGroup: S.optional(S.String),
-          sharedPrivateLinkResources: S.optional(WorkspacePropertiesSharedPrivateLinkResourcesList),
+          sharedPrivateLinkResources: S.optional(__S(281, __c35, 1)),
           storageAccount: S.optional(S.String),
           storageHnsEnabled: S.optional(S.Boolean),
-          systemDatastoresAuthMode: S.optional(SystemDatastoresAuthMode),
+          systemDatastoresAuthMode: S.optional(S.String),
           tenantId: S.optional(S.String),
           v1LegacyMode: S.optional(S.Boolean),
-          workspaceHubConfig: S.optional(WorkspaceHubConfig),
+          workspaceHubConfig: S.optional(__S(282, __c35, 2)),
           workspaceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkspaceProperties" });
@@ -18838,13 +15395,13 @@ function __c35(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: WorkspaceProperties,
-          identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
+          systemData: S.optional(__S(14, __c1, 6)),
+          properties: __S(283, __c35, 3),
+          identity: S.optional(__S(17, __c2, 1)),
           kind: S.optional(S.String),
           location: S.optional(S.String),
-          sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
-          tags: S.optional(GetWorkspaceResponseTagsMap),
+          sku: S.optional(__S(12, __c1, 4)),
+          tags: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({ identifier: "GetWorkspaceResponse" });
     case 5:
@@ -18870,13 +15427,13 @@ function __c35(j: number): any {
         S.Struct({
           endpoint: S.optional(S.NullOr(S.String)),
           jobServiceType: S.optional(S.NullOr(S.String)),
-          nodes: S.optional(S.NullOr(Nodes)),
+          nodes: S.optional(S.NullOr(__S(175, __c21, 7))),
           port: S.optional(S.NullOr(S.Number)),
-          properties: S.optional(S.NullOr(JobServiceInputPropertiesMap)),
+          properties: S.optional(S.NullOr(__S(2, __c0, 2))),
         }),
       ).annotate({ identifier: "JobServiceInput" });
     case 7:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(JobServiceInput));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(286, __c35, 6)));
   }
 }
 function __c36(j: number): any {
@@ -18885,17 +15442,17 @@ function __c36(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          properties: S.optional(S.NullOr(JobBasePropertiesInputPropertiesMap)),
-          tags: S.optional(S.NullOr(JobBasePropertiesInputTagsMap)),
+          properties: S.optional(S.NullOr(__S(2, __c0, 2))),
+          tags: S.optional(S.NullOr(__S(2, __c0, 2))),
           componentId: S.optional(S.NullOr(S.String)),
           computeId: S.optional(S.NullOr(S.String)),
           displayName: S.optional(S.NullOr(S.String)),
           experimentName: S.optional(S.String),
-          identity: S.optional(S.NullOr(IdentityConfiguration)),
+          identity: S.optional(S.NullOr(__S(174, __c21, 6))),
           isArchived: S.optional(S.Boolean),
-          jobType: JobType,
-          notificationSetting: S.optional(S.NullOr(NotificationSetting)),
-          services: S.optional(S.NullOr(JobBasePropertiesInputServicesMap)),
+          jobType: S.String,
+          notificationSetting: S.optional(S.NullOr(__S(131, __c16, 3))),
+          services: S.optional(S.NullOr(__S(287, __c35, 7))),
         }),
       ).annotate({ identifier: "JobBasePropertiesInput" });
     case 1:
@@ -18905,7 +15462,7 @@ function __c36(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          properties: JobBasePropertiesInput,
+          properties: __S(288, __c36, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -18923,8 +15480,8 @@ function __c36(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: JobBaseProperties,
+          systemData: S.optional(__S(14, __c1, 6)),
+          properties: __S(178, __c22, 2),
         }),
       ).annotate({
         identifier: "JobsCreateOrUpdateResponse",
@@ -18956,21 +15513,21 @@ function __c36(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(BatchDeploymentTagsMap),
+          systemData: S.optional(__S(14, __c1, 6)),
+          tags: S.optional(__S(0, __c0, 0)),
           location: S.String,
-          properties: BatchDeploymentProperties,
-          identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
+          properties: __S(8, __c1, 0),
+          identity: S.optional(__S(17, __c2, 1)),
           kind: S.optional(S.String),
-          sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
+          sku: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({ identifier: "BatchDeployment" });
     case 5:
-      return S.Array(BatchDeployment);
+      return S.Array(__S(292, __c36, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: BatchDeploymentTrackedResourceArmPaginatedResultValueList,
+          value: __S(293, __c36, 5),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -19018,11 +15575,11 @@ function __c37(j: number): any {
         identifier: "ListBatchEndpointsRequest",
       });
     case 1:
-      return S.Array(BatchEndpoint);
+      return S.Array(__S(148, __c18, 4));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: BatchEndpointTrackedResourceArmPaginatedResultValueList,
+          value: __S(297, __c37, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -19047,11 +15604,11 @@ function __c37(j: number): any {
         identifier: "ListCodeContainersRequest",
       });
     case 4:
-      return S.Array(CodeContainer);
+      return S.Array(__S(151, __c18, 7));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: CodeContainerResourceArmPaginatedResultValueList,
+          value: __S(300, __c37, 4),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -19079,7 +15636,7 @@ function __c37(j: number): any {
         ),
       ).annotate({ identifier: "ListCodeVersionsRequest" });
     case 7:
-      return S.Array(CodeVersion);
+      return S.Array(__S(153, __c19, 1));
   }
 }
 function __c38(j: number): any {
@@ -19087,7 +15644,7 @@ function __c38(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: CodeVersionResourceArmPaginatedResultValueList,
+          value: __S(303, __c37, 7),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -19100,7 +15657,7 @@ function __c38(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           _skip: S.optional(S.String.pipe(T.Query("$skip"))),
-          listViewType: S.optional(ListComponentContainersRequestListViewType.pipe(T.Query())),
+          listViewType: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -19118,16 +15675,16 @@ function __c38(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: ComponentContainerProperties,
+          systemData: S.optional(__S(14, __c1, 6)),
+          properties: __S(43, __c5, 3),
         }),
       ).annotate({ identifier: "ComponentContainer" });
     case 3:
-      return S.Array(ComponentContainer);
+      return S.Array(__S(306, __c38, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: ComponentContainerResourceArmPaginatedResultValueList,
+          value: __S(307, __c38, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -19143,7 +15700,7 @@ function __c38(j: number): any {
           _orderBy: S.optional(S.String.pipe(T.Query("$orderBy"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skip: S.optional(S.String.pipe(T.Query("$skip"))),
-          listViewType: S.optional(ListComponentVersionsRequestListViewType.pipe(T.Query())),
+          listViewType: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -19161,12 +15718,12 @@ function __c38(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: ComponentVersionProperties,
+          systemData: S.optional(__S(14, __c1, 6)),
+          properties: __S(45, __c5, 5),
         }),
       ).annotate({ identifier: "ComponentVersion" });
     case 7:
-      return S.Array(ComponentVersion);
+      return S.Array(__S(310, __c38, 6));
   }
 }
 function __c39(j: number): any {
@@ -19174,7 +15731,7 @@ function __c39(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: ComponentVersionResourceArmPaginatedResultValueList,
+          value: __S(311, __c38, 7),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -19197,11 +15754,11 @@ function __c39(j: number): any {
         ),
       ).annotate({ identifier: "ListComputeRequest" });
     case 2:
-      return S.Array(ComputeResource);
+      return S.Array(__S(157, __c19, 5));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: PaginatedComputeResourcesListValueList,
+          value: __S(314, __c39, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -19226,7 +15783,7 @@ function __c39(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          computeType: ComputeType,
+          computeType: S.String,
         }),
       ).annotate({ identifier: "ComputeSecrets" });
     case 6:
@@ -19252,7 +15809,7 @@ function __c39(j: number): any {
           privateIpAddress: S.optional(S.NullOr(S.String)),
           publicIpAddress: S.optional(S.NullOr(S.String)),
           port: S.optional(S.Number),
-          nodeState: S.optional(NodeState),
+          nodeState: S.optional(S.String),
           runId: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -19263,11 +15820,11 @@ function __c39(j: number): any {
 function __c40(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AmlComputeNodeInformation);
+      return S.Array(__S(319, __c39, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          nodes: S.optional(AmlComputeNodesInformationNodesList),
+          nodes: S.optional(__S(320, __c40, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -19280,7 +15837,7 @@ function __c40(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           _skip: S.optional(S.String.pipe(T.Query("$skip"))),
-          listViewType: S.optional(ListDataContainersRequestListViewType.pipe(T.Query())),
+          listViewType: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -19293,11 +15850,11 @@ function __c40(j: number): any {
         identifier: "ListDataContainersRequest",
       });
     case 3:
-      return S.Array(DataContainer);
+      return S.Array(__S(159, __c19, 7));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: DataContainerResourceArmPaginatedResultValueList,
+          value: __S(323, __c40, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -19312,7 +15869,7 @@ function __c40(j: number): any {
           _skip: S.optional(S.String.pipe(T.Query("$skip"))),
           count: S.optional(S.Number.pipe(T.Query())),
           isDefault: S.optional(S.Boolean.pipe(T.Query())),
-          names: S.optional(ListDatastoresRequestNamesList.pipe(T.Query())),
+          names: S.optional(__S(26, __c3, 2).pipe(T.Query())),
           searchText: S.optional(S.String.pipe(T.Query())),
           orderBy: S.optional(S.String.pipe(T.Query())),
           orderByAsc: S.optional(S.Boolean.pipe(T.Query())),
@@ -19326,11 +15883,11 @@ function __c40(j: number): any {
         ),
       ).annotate({ identifier: "ListDatastoresRequest" });
     case 6:
-      return S.Array(Datastore);
+      return S.Array(__S(161, __c20, 1));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: DatastoreResourceArmPaginatedResultValueList,
+          value: __S(326, __c40, 6),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -19363,7 +15920,7 @@ function __c41(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          secretsType: SecretsType,
+          secretsType: S.String,
         }),
       ).annotate({ identifier: "DatastoreSecrets" });
     case 2:
@@ -19377,7 +15934,7 @@ function __c41(j: number): any {
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skip: S.optional(S.String.pipe(T.Query("$skip"))),
           _tags: S.optional(S.String.pipe(T.Query("$tags"))),
-          listViewType: S.optional(ListDataVersionsRequestListViewType.pipe(T.Query())),
+          listViewType: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -19388,11 +15945,11 @@ function __c41(j: number): any {
         ),
       ).annotate({ identifier: "ListDataVersionsRequest" });
     case 3:
-      return S.Array(DataVersionBase);
+      return S.Array(__S(163, __c20, 3));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: DataVersionBaseResourceArmPaginatedResultValueList,
+          value: __S(331, __c41, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -19405,7 +15962,7 @@ function __c41(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           _skip: S.optional(S.String.pipe(T.Query("$skip"))),
-          listViewType: S.optional(ListEnvironmentContainersRequestListViewType.pipe(T.Query())),
+          listViewType: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -19427,7 +15984,7 @@ function __c41(j: number): any {
           _orderBy: S.optional(S.String.pipe(T.Query("$orderBy"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skip: S.optional(S.String.pipe(T.Query("$skip"))),
-          listViewType: S.optional(ListEnvironmentVersionsRequestListViewType.pipe(T.Query())),
+          listViewType: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -19445,8 +16002,8 @@ function __c41(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: EnvironmentVersionProperties,
+          systemData: S.optional(__S(14, __c1, 6)),
+          properties: __S(120, __c15, 0),
         }),
       ).annotate({ identifier: "EnvironmentVersion" });
   }
@@ -19454,11 +16011,11 @@ function __c41(j: number): any {
 function __c42(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(EnvironmentVersion);
+      return S.Array(__S(335, __c41, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: EnvironmentVersionResourceArmPaginatedResultValueList,
+          value: __S(336, __c42, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -19476,7 +16033,7 @@ function __c42(j: number): any {
           tags: S.optional(S.String.pipe(T.Query())),
           featureName: S.optional(S.String.pipe(T.Query())),
           description: S.optional(S.String.pipe(T.Query())),
-          listViewType: S.optional(ListFeaturesRequestListViewType.pipe(T.Query())),
+          listViewType: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -19488,11 +16045,11 @@ function __c42(j: number): any {
         ),
       ).annotate({ identifier: "ListFeaturesRequest" });
     case 3:
-      return S.Array(Feature);
+      return S.Array(__S(168, __c21, 0));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: FeatureResourceArmPaginatedResultValueList,
+          value: __S(339, __c42, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -19506,7 +16063,7 @@ function __c42(j: number): any {
           workspaceName: S.String.pipe(T.Label()),
           _skip: S.optional(S.String.pipe(T.Query("$skip"))),
           tags: S.optional(S.String.pipe(T.Query())),
-          listViewType: S.optional(ListFeaturesetContainersRequestListViewType.pipe(T.Query())),
+          listViewType: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           name: S.optional(S.String.pipe(T.Query())),
           description: S.optional(S.String.pipe(T.Query())),
@@ -19531,7 +16088,7 @@ function __c42(j: number): any {
           name: S.String.pipe(T.Label()),
           _skip: S.optional(S.String.pipe(T.Query("$skip"))),
           tags: S.optional(S.String.pipe(T.Query())),
-          listViewType: S.optional(ListFeaturesetVersionsRequestListViewType.pipe(T.Query())),
+          listViewType: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           versionName: S.optional(S.String.pipe(T.Query())),
           version: S.optional(S.String.pipe(T.Query())),
@@ -19555,8 +16112,8 @@ function __c42(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: FeaturesetVersionProperties,
+          systemData: S.optional(__S(14, __c1, 6)),
+          properties: __S(137, __c17, 1),
         }),
       ).annotate({ identifier: "FeaturesetVersion" });
   }
@@ -19564,11 +16121,11 @@ function __c42(j: number): any {
 function __c43(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(FeaturesetVersion);
+      return S.Array(__S(343, __c42, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: FeaturesetVersionResourceArmPaginatedResultValueList,
+          value: __S(344, __c43, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -19582,9 +16139,7 @@ function __c43(j: number): any {
           workspaceName: S.String.pipe(T.Label()),
           _skip: S.optional(S.String.pipe(T.Query("$skip"))),
           tags: S.optional(S.String.pipe(T.Query())),
-          listViewType: S.optional(
-            ListFeaturestoreEntityContainersRequestListViewType.pipe(T.Query()),
-          ),
+          listViewType: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           name: S.optional(S.String.pipe(T.Query())),
           description: S.optional(S.String.pipe(T.Query())),
@@ -19601,11 +16156,11 @@ function __c43(j: number): any {
         identifier: "ListFeaturestoreEntityContainersRequest",
       });
     case 3:
-      return S.Array(FeaturestoreEntityContainer);
+      return S.Array(__S(44, __c5, 4));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: FeaturestoreEntityContainerResourceArmPaginatedResultValueList,
+          value: __S(347, __c43, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -19620,9 +16175,7 @@ function __c43(j: number): any {
           name: S.String.pipe(T.Label()),
           _skip: S.optional(S.String.pipe(T.Query("$skip"))),
           tags: S.optional(S.String.pipe(T.Query())),
-          listViewType: S.optional(
-            ListFeaturestoreEntityVersionsRequestListViewType.pipe(T.Query()),
-          ),
+          listViewType: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           versionName: S.optional(S.String.pipe(T.Query())),
           version: S.optional(S.String.pipe(T.Query())),
@@ -19641,11 +16194,11 @@ function __c43(j: number): any {
         identifier: "ListFeaturestoreEntityVersionsRequest",
       });
     case 6:
-      return S.Array(FeaturestoreEntityVersion);
+      return S.Array(__S(145, __c18, 1));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: FeaturestoreEntityVersionResourceArmPaginatedResultValueList,
+          value: __S(350, __c43, 6),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -19664,7 +16217,7 @@ function __c44(j: number): any {
           _skip: S.optional(S.String.pipe(T.Query("$skip"))),
           jobType: S.optional(S.String.pipe(T.Query())),
           tag: S.optional(S.String.pipe(T.Query())),
-          listViewType: S.optional(ListJobsRequestListViewType.pipe(T.Query())),
+          listViewType: S.optional(S.String.pipe(T.Query())),
           properties: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -19676,11 +16229,11 @@ function __c44(j: number): any {
         ),
       ).annotate({ identifier: "ListJobsRequest" });
     case 1:
-      return S.Array(JobBase);
+      return S.Array(__S(179, __c22, 3));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: JobBaseResourceArmPaginatedResultValueList,
+          value: __S(353, __c44, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -19704,11 +16257,11 @@ function __c44(j: number): any {
         identifier: "ListManagedNetworkSettingsRuleRequest",
       });
     case 4:
-      return S.Array(OutboundRuleBasicResource);
+      return S.Array(__S(182, __c22, 6));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: OutboundRuleListResultValueList,
+          value: __S(356, __c44, 4),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OutboundRuleListResult" });
@@ -19736,8 +16289,8 @@ function __c44(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: MarketplaceSubscriptionProperties,
+          systemData: S.optional(__S(14, __c1, 6)),
+          properties: __S(185, __c23, 1),
         }),
       ).annotate({ identifier: "MarketplaceSubscription" });
   }
@@ -19745,11 +16298,11 @@ function __c44(j: number): any {
 function __c45(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(MarketplaceSubscription);
+      return S.Array(__S(359, __c44, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: MarketplaceSubscriptionResourceArmPaginatedResultValueList,
+          value: __S(360, __c45, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -19763,7 +16316,7 @@ function __c45(j: number): any {
           workspaceName: S.String.pipe(T.Label()),
           _skip: S.optional(S.String.pipe(T.Query("$skip"))),
           count: S.optional(S.Number.pipe(T.Query())),
-          listViewType: S.optional(ListModelContainersRequestListViewType.pipe(T.Query())),
+          listViewType: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -19791,7 +16344,7 @@ function __c45(j: number): any {
           tags: S.optional(S.String.pipe(T.Query())),
           properties: S.optional(S.String.pipe(T.Query())),
           feed: S.optional(S.String.pipe(T.Query())),
-          listViewType: S.optional(ListModelVersionsRequestListViewType.pipe(T.Query())),
+          listViewType: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -19802,11 +16355,11 @@ function __c45(j: number): any {
         ),
       ).annotate({ identifier: "ListModelVersionsRequest" });
     case 4:
-      return S.Array(ModelVersion);
+      return S.Array(__S(194, __c24, 2));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: ModelVersionResourceArmPaginatedResultValueList,
+          value: __S(364, __c45, 4),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -19839,13 +16392,13 @@ function __c45(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(OnlineDeploymentTagsMap),
+          systemData: S.optional(__S(14, __c1, 6)),
+          tags: S.optional(__S(0, __c0, 0)),
           location: S.String,
-          properties: OnlineDeploymentProperties,
-          identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
+          properties: __S(203, __c25, 3),
+          identity: S.optional(__S(17, __c2, 1)),
           kind: S.optional(S.String),
-          sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
+          sku: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({ identifier: "OnlineDeployment" });
   }
@@ -19853,11 +16406,11 @@ function __c45(j: number): any {
 function __c46(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(OnlineDeployment);
+      return S.Array(__S(367, __c45, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: OnlineDeploymentTrackedResourceArmPaginatedResultValueList,
+          value: __S(368, __c46, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -19890,30 +16443,30 @@ function __c46(j: number): any {
           default: S.optional(S.Number),
           maximum: S.optional(S.Number),
           minimum: S.optional(S.Number),
-          scaleType: S.optional(SkuCapacityScaleType),
+          scaleType: S.optional(S.String),
         }),
       ).annotate({ identifier: "SkuCapacity" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          tier: S.optional(SkuSettingTier),
+          tier: S.optional(S.String),
         }),
       ).annotate({ identifier: "SkuSetting" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          capacity: S.optional(S.NullOr(SkuCapacity)),
+          capacity: S.optional(S.NullOr(__S(371, __c46, 3))),
           resourceType: S.optional(S.NullOr(S.String)),
-          sku: S.optional(S.NullOr(SkuSetting)),
+          sku: S.optional(S.NullOr(__S(372, __c46, 4))),
         }),
       ).annotate({ identifier: "SkuResource" });
     case 6:
-      return S.Array(SkuResource);
+      return S.Array(__S(373, __c46, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: SkuResourceArmPaginatedResultValueList,
+          value: __S(374, __c46, 6),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -19949,11 +16502,11 @@ function __c47(j: number): any {
           workspaceName: S.String.pipe(T.Label()),
           name: S.optional(S.String.pipe(T.Query())),
           count: S.optional(S.Number.pipe(T.Query())),
-          computeType: S.optional(ListOnlineEndpointsRequestComputeType.pipe(T.Query())),
+          computeType: S.optional(S.String.pipe(T.Query())),
           _skip: S.optional(S.String.pipe(T.Query("$skip"))),
           tags: S.optional(S.String.pipe(T.Query())),
           properties: S.optional(S.String.pipe(T.Query())),
-          orderBy: S.optional(ListOnlineEndpointsRequestOrderBy.pipe(T.Query())),
+          orderBy: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -19971,21 +16524,21 @@ function __c47(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(OnlineEndpointTagsMap),
+          systemData: S.optional(__S(14, __c1, 6)),
+          tags: S.optional(__S(0, __c0, 0)),
           location: S.String,
-          properties: OnlineEndpointProperties,
-          identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
+          properties: __S(209, __c26, 1),
+          identity: S.optional(__S(17, __c2, 1)),
           kind: S.optional(S.String),
-          sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
+          sku: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({ identifier: "OnlineEndpoint" });
     case 3:
-      return S.Array(OnlineEndpoint);
+      return S.Array(__S(378, __c47, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: OnlineEndpointTrackedResourceArmPaginatedResultValueList,
+          value: __S(379, __c47, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -20016,9 +16569,9 @@ function __c47(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(OperationDisplay),
-          origin: S.optional(OperationOrigin),
-          actionType: S.optional(OperationActionType),
+          display: S.optional(__S(382, __c47, 6)),
+          origin: S.optional(S.String),
+          actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
   }
@@ -20026,11 +16579,11 @@ function __c47(j: number): any {
 function __c48(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Operation);
+      return S.Array(__S(383, __c47, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ListOperationsResponseValueList),
+          value: S.optional(__S(384, __c48, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -20054,7 +16607,7 @@ function __c48(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(PrivateEndpointConnectionListResultValueList),
+          value: S.optional(__S(275, __c34, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -20081,8 +16634,8 @@ function __c48(j: number): any {
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(PrivateLinkResourcePropertiesRequiredMembersList),
-          requiredZoneNames: S.optional(PrivateLinkResourcePropertiesRequiredZoneNamesList),
+          requiredMembers: S.optional(__S(26, __c3, 2)),
+          requiredZoneNames: S.optional(__S(26, __c3, 2)),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceProperties",
@@ -20093,16 +16646,16 @@ function __c48(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
+          systemData: S.optional(__S(14, __c1, 6)),
+          identity: S.optional(__S(17, __c2, 1)),
           location: S.optional(S.String),
-          properties: S.optional(PrivateLinkResourceProperties),
-          sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
-          tags: S.optional(PrivateLinkResourceTagsMap),
+          properties: S.optional(__S(389, __c48, 5)),
+          sku: S.optional(__S(12, __c1, 4)),
+          tags: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({ identifier: "PrivateLinkResource" });
     case 7:
-      return S.Array(PrivateLinkResource);
+      return S.Array(__S(390, __c48, 6));
   }
 }
 function __c49(j: number): any {
@@ -20110,7 +16663,7 @@ function __c49(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(PrivateLinkResourceListResultValueList),
+          value: S.optional(__S(391, __c48, 7)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -20143,17 +16696,17 @@ function __c49(j: number): any {
           id: S.optional(S.String),
           amlWorkspaceLocation: S.optional(S.String),
           type: S.optional(S.String),
-          name: S.optional(ResourceName),
+          name: S.optional(__S(394, __c49, 2)),
           limit: S.optional(S.Number),
-          unit: S.optional(QuotaUnit),
+          unit: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceQuota" });
     case 4:
-      return S.Array(ResourceQuota);
+      return S.Array(__S(395, __c49, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: ListWorkspaceQuotasValueList,
+          value: __S(396, __c49, 4),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListWorkspaceQuotas" });
@@ -20172,7 +16725,7 @@ function __c49(j: number): any {
         ),
       ).annotate({ identifier: "ListRegistriesRequest" });
     case 7:
-      return S.Array(Registry);
+      return S.Array(__S(237, __c29, 5));
   }
 }
 function __c50(j: number): any {
@@ -20180,7 +16733,7 @@ function __c50(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: RegistryTrackedResourceArmPaginatedResultValueList,
+          value: __S(399, __c49, 7),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -20286,7 +16839,7 @@ function __c50(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           registryName: S.String.pipe(T.Label()),
           _skip: S.optional(S.String.pipe(T.Query("$skip"))),
-          listViewType: S.optional(ListRegistryDataContainersRequestListViewType.pipe(T.Query())),
+          listViewType: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -20309,7 +16862,7 @@ function __c50(j: number): any {
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skip: S.optional(S.String.pipe(T.Query("$skip"))),
           _tags: S.optional(S.String.pipe(T.Query("$tags"))),
-          listViewType: S.optional(ListRegistryDataVersionsRequestListViewType.pipe(T.Query())),
+          listViewType: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -20332,9 +16885,7 @@ function __c51(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           registryName: S.String.pipe(T.Label()),
           _skip: S.optional(S.String.pipe(T.Query("$skip"))),
-          listViewType: S.optional(
-            ListRegistryEnvironmentContainersRequestListViewType.pipe(T.Query()),
-          ),
+          listViewType: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -20356,9 +16907,7 @@ function __c51(j: number): any {
           _orderBy: S.optional(S.String.pipe(T.Query("$orderBy"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skip: S.optional(S.String.pipe(T.Query("$skip"))),
-          listViewType: S.optional(
-            ListRegistryEnvironmentVersionsRequestListViewType.pipe(T.Query()),
-          ),
+          listViewType: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -20377,7 +16926,7 @@ function __c51(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           registryName: S.String.pipe(T.Label()),
           _skip: S.optional(S.String.pipe(T.Query("$skip"))),
-          listViewType: S.optional(ListRegistryModelContainersRequestListViewType.pipe(T.Query())),
+          listViewType: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -20403,7 +16952,7 @@ function __c51(j: number): any {
           description: S.optional(S.String.pipe(T.Query())),
           tags: S.optional(S.String.pipe(T.Query())),
           properties: S.optional(S.String.pipe(T.Query())),
-          listViewType: S.optional(ListRegistryModelVersionsRequestListViewType.pipe(T.Query())),
+          listViewType: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -20422,7 +16971,7 @@ function __c51(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           _skip: S.optional(S.String.pipe(T.Query("$skip"))),
-          listViewType: S.optional(ListSchedulesRequestListViewType.pipe(T.Query())),
+          listViewType: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -20433,11 +16982,11 @@ function __c51(j: number): any {
         ),
       ).annotate({ identifier: "ListSchedulesRequest" });
     case 5:
-      return S.Array(Schedule);
+      return S.Array(__S(257, __c32, 1));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: ScheduleResourceArmPaginatedResultValueList,
+          value: __S(413, __c51, 5),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -20489,21 +17038,21 @@ function __c52(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(ServerlessEndpointTagsMap),
+          systemData: S.optional(__S(14, __c1, 6)),
+          tags: S.optional(__S(0, __c0, 0)),
           location: S.String,
-          properties: ServerlessEndpointProperties,
-          identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
+          properties: __S(262, __c32, 6),
+          identity: S.optional(__S(17, __c2, 1)),
           kind: S.optional(S.String),
-          sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
+          sku: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({ identifier: "ServerlessEndpoint" });
     case 2:
-      return S.Array(ServerlessEndpoint);
+      return S.Array(__S(417, __c52, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: ServerlessEndpointTrackedResourceArmPaginatedResultValueList,
+          value: __S(418, __c52, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -20529,18 +17078,18 @@ function __c52(j: number): any {
           id: S.optional(S.String),
           amlWorkspaceLocation: S.optional(S.String),
           type: S.optional(S.String),
-          unit: S.optional(UsageUnit),
+          unit: S.optional(S.String),
           currentValue: S.optional(S.Number),
           limit: S.optional(S.Number),
-          name: S.optional(ResourceName),
+          name: S.optional(__S(394, __c49, 2)),
         }),
       ).annotate({ identifier: "Usage" });
     case 6:
-      return S.Array(Usage);
+      return S.Array(__S(421, __c52, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: ListUsagesResultValueList,
+          value: __S(422, __c52, 6),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListUsagesResult" });
@@ -20568,18 +17117,18 @@ function __c53(j: number): any {
       return S.suspend(() =>
         S.Struct({
           retailPrice: S.Number,
-          osType: VMPriceOSType,
-          vmTier: VMTier,
+          osType: S.String,
+          vmTier: S.String,
         }),
       ).annotate({ identifier: "EstimatedVMPrice" });
     case 2:
-      return S.Array(EstimatedVMPrice);
+      return S.Array(__S(425, __c53, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          billingCurrency: BillingCurrency,
-          unitOfMeasure: UnitOfMeasure,
-          values: EstimatedVMPricesValuesList,
+          billingCurrency: S.String,
+          unitOfMeasure: S.String,
+          values: __S(426, __c53, 2),
         }),
       ).annotate({ identifier: "EstimatedVMPrices" });
     case 4:
@@ -20594,16 +17143,16 @@ function __c53(j: number): any {
           memoryGB: S.optional(S.Number),
           lowPriorityCapable: S.optional(S.Boolean),
           premiumIO: S.optional(S.Boolean),
-          estimatedVMPrices: S.optional(EstimatedVMPrices),
-          supportedComputeTypes: S.optional(VirtualMachineSizeSupportedComputeTypesList),
+          estimatedVMPrices: S.optional(__S(427, __c53, 3)),
+          supportedComputeTypes: S.optional(__S(26, __c3, 2)),
         }),
       ).annotate({ identifier: "VirtualMachineSize" });
     case 5:
-      return S.Array(VirtualMachineSize);
+      return S.Array(__S(428, __c53, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(VirtualMachineSizeListResultValueList),
+          value: S.optional(__S(429, __c53, 5)),
         }),
       ).annotate({
         identifier: "VirtualMachineSizeListResult",
@@ -20632,11 +17181,11 @@ function __c53(j: number): any {
 function __c54(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Workspace);
+      return S.Array(__S(284, __c35, 4));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: WorkspaceListResultValueList,
+          value: __S(432, __c54, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkspaceListResult" });
@@ -20679,11 +17228,11 @@ function __c54(j: number): any {
         identifier: "ListWorkspaceConnectionsRequest",
       });
     case 4:
-      return S.Array(WorkspaceConnectionPropertiesV2BasicResource);
+      return S.Array(__S(61, __c7, 5));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: WorkspaceConnectionPropertiesV2BasicResourceArmPaginatedResultValueList,
+          value: __S(436, __c54, 4),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -20737,11 +17286,11 @@ function __c55(j: number): any {
         }),
       ).annotate({ identifier: "AmlUserFeature" });
     case 1:
-      return S.Array(AmlUserFeature);
+      return S.Array(__S(440, __c55, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: ListAmlUserFeatureResultValueList,
+          value: __S(441, __c55, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListAmlUserFeatureResult" });
@@ -20768,12 +17317,12 @@ function __c55(j: number): any {
         }),
       ).annotate({ identifier: "Password" });
     case 5:
-      return S.Array(Password);
+      return S.Array(__S(444, __c55, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           location: S.optional(S.String),
-          passwords: S.optional(RegistryListCredentialsResultPasswordsList),
+          passwords: S.optional(__S(445, __c55, 5)),
           username: S.optional(S.String),
         }),
       ).annotate({
@@ -20794,8 +17343,8 @@ function __c56(j: number): any {
       return S.suspend(() =>
         S.Struct({
           appInsightsInstrumentationKey: S.optional(S.String),
-          containerRegistryCredentials: S.optional(RegistryListCredentialsResult),
-          notebookAccessKeys: S.optional(ListNotebookKeysResult),
+          containerRegistryCredentials: S.optional(__S(446, __c55, 6)),
+          notebookAccessKeys: S.optional(__S(447, __c55, 7)),
           userStorageArmId: S.optional(S.String),
           userStorageKey: S.optional(S.String),
         }),
@@ -20873,12 +17422,12 @@ function __c56(j: number): any {
         }),
       ).annotate({ identifier: "FQDNEndpointDetail" });
     case 6:
-      return S.Array(FQDNEndpointDetail);
+      return S.Array(__S(453, __c56, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           domainName: S.optional(S.String),
-          endpointDetails: S.optional(FQDNEndpointEndpointDetailsList),
+          endpointDetails: S.optional(__S(454, __c56, 6)),
         }),
       ).annotate({ identifier: "FQDNEndpoint" });
   }
@@ -20886,26 +17435,26 @@ function __c56(j: number): any {
 function __c57(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(FQDNEndpoint);
+      return S.Array(__S(455, __c56, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           category: S.optional(S.String),
-          endpoints: S.optional(FQDNEndpointsEndpointsList),
+          endpoints: S.optional(__S(456, __c57, 0)),
         }),
       ).annotate({ identifier: "FQDNEndpoints" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(FQDNEndpoints),
+          properties: S.optional(__S(457, __c57, 1)),
         }),
       ).annotate({ identifier: "FQDNEndpointsPropertyBag" });
     case 3:
-      return S.Array(FQDNEndpointsPropertyBag);
+      return S.Array(__S(458, __c57, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ExternalFQDNResponseValueList),
+          value: S.optional(__S(459, __c57, 3)),
         }),
       ).annotate({ identifier: "ExternalFQDNResponse" });
     case 5:
@@ -20936,9 +17485,9 @@ function __c57(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          category: S.optional(RuleCategory),
-          status: S.optional(RuleStatus),
-          type: RuleType,
+          category: S.optional(S.String),
+          status: S.optional(S.String),
+          type: S.String,
           destination: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "OutboundRuleInput" });
@@ -20953,7 +17502,7 @@ function __c58(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           ruleName: S.String.pipe(T.Label()),
-          properties: OutboundRuleInput,
+          properties: __S(463, __c57, 7),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -20980,7 +17529,7 @@ function __c58(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: MarketplaceSubscriptionPropertiesInput,
+          properties: __S(465, __c58, 1),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -20999,7 +17548,7 @@ function __c58(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: ModelContainerPropertiesInput,
+          properties: __S(31, __c3, 7),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -21019,7 +17568,7 @@ function __c58(j: number): any {
           workspaceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
           version: S.String.pipe(T.Label()),
-          properties: ModelVersionProperties,
+          properties: __S(193, __c24, 1),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -21039,12 +17588,12 @@ function __c58(j: number): any {
           workspaceName: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
           deploymentName: S.String.pipe(T.Label()),
-          tags: S.optional(OnlineDeploymentsCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(0, __c0, 0)),
           location: S.String,
-          properties: OnlineDeploymentProperties,
-          identity: S.optional(BatchDeploymentsCreateOrUpdateRequestIdentity),
+          properties: __S(203, __c25, 3),
+          identity: S.optional(__S(11, __c1, 3)),
           kind: S.optional(S.String),
-          sku: S.optional(BatchDeploymentsCreateOrUpdateRequestSku),
+          sku: S.optional(__S(12, __c1, 4)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -21059,14 +17608,14 @@ function __c58(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          authMode: EndpointAuthMode,
+          authMode: S.String,
           description: S.optional(S.NullOr(S.String)),
-          keys: S.optional(S.NullOr(EndpointAuthKeys)),
-          properties: S.optional(S.NullOr(OnlineEndpointPropertiesInputPropertiesMap)),
+          keys: S.optional(S.NullOr(__S(19, __c2, 3))),
+          properties: S.optional(S.NullOr(__S(2, __c0, 2))),
           compute: S.optional(S.NullOr(S.String)),
-          mirrorTraffic: S.optional(S.NullOr(OnlineEndpointPropertiesInputMirrorTrafficMap)),
-          publicNetworkAccess: S.optional(OnlineEndpointPropertiesInputPublicNetworkAccess),
-          traffic: S.optional(S.NullOr(OnlineEndpointPropertiesInputTrafficMap)),
+          mirrorTraffic: S.optional(S.NullOr(__S(208, __c26, 0))),
+          publicNetworkAccess: S.optional(S.String),
+          traffic: S.optional(S.NullOr(__S(208, __c26, 0))),
         }),
       ).annotate({
         identifier: "OnlineEndpointPropertiesInput",
@@ -21078,12 +17627,12 @@ function __c58(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
-          tags: S.optional(OnlineEndpointsCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(0, __c0, 0)),
           location: S.String,
-          properties: OnlineEndpointPropertiesInput,
-          identity: S.optional(BatchDeploymentsCreateOrUpdateRequestIdentity),
+          properties: __S(470, __c58, 6),
+          identity: S.optional(__S(11, __c1, 3)),
           kind: S.optional(S.String),
-          sku: S.optional(BatchDeploymentsCreateOrUpdateRequestSku),
+          sku: S.optional(__S(12, __c1, 4)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -21102,8 +17651,8 @@ function __c59(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(UserAssignedIdentityInput),
-          privateLinkServiceConnectionState: S.optional(PrivateLinkServiceConnectionState),
+          privateEndpoint: S.optional(__S(9, __c1, 1)),
+          privateLinkServiceConnectionState: S.optional(__S(215, __c26, 7)),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionPropertiesInput",
@@ -21115,11 +17664,11 @@ function __c59(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(PrivateEndpointConnectionPropertiesInput),
-          identity: S.optional(BatchDeploymentsCreateOrUpdateRequestIdentity),
-          sku: S.optional(BatchDeploymentsCreateOrUpdateRequestSku),
+          properties: S.optional(__S(472, __c59, 0)),
+          identity: S.optional(__S(11, __c1, 3)),
+          sku: S.optional(__S(12, __c1, 4)),
           location: S.optional(S.String),
-          tags: S.optional(PrivateEndpointConnectionsCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(0, __c0, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -21270,7 +17819,7 @@ function __c60(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
-          keyType: KeyType,
+          keyType: S.String,
           keyValue: S.optional(S.NullOr(S.String)),
         }).pipe(
           T.Http({
@@ -21290,7 +17839,7 @@ function __c60(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          keyType: KeyType,
+          keyType: S.String,
           keyValue: S.optional(S.NullOr(S.String)),
         }).pipe(
           T.Http({
@@ -21314,13 +17863,9 @@ function __c60(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          groupIds: S.optional(
-            S.NullOr(RegistryPrivateEndpointConnectionPropertiesInputGroupIdsList),
-          ),
-          privateEndpoint: S.optional(S.NullOr(PrivateEndpointResourceInput)),
-          registryPrivateLinkServiceConnectionState: S.optional(
-            S.NullOr(RegistryPrivateLinkServiceConnectionState),
-          ),
+          groupIds: S.optional(S.NullOr(__S(26, __c3, 2))),
+          privateEndpoint: S.optional(S.NullOr(__S(482, __c60, 2))),
+          registryPrivateLinkServiceConnectionState: S.optional(S.NullOr(__S(224, __c28, 0))),
           provisioningState: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -21331,26 +17876,24 @@ function __c60(j: number): any {
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           location: S.optional(S.NullOr(S.String)),
-          properties: S.optional(S.NullOr(RegistryPrivateEndpointConnectionPropertiesInput)),
+          properties: S.optional(S.NullOr(__S(483, __c60, 3))),
         }),
       ).annotate({
         identifier: "RegistryPrivateEndpointConnectionInput",
       });
     case 5:
-      return S.Array(RegistryPrivateEndpointConnectionInput);
+      return S.Array(__S(484, __c60, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           discoveryUrl: S.optional(S.NullOr(S.String)),
           intellectualPropertyPublisher: S.optional(S.NullOr(S.String)),
-          managedResourceGroup: S.optional(S.NullOr(ArmResourceId)),
-          managedResourceGroupSettings: S.optional(S.NullOr(ManagedResourceGroupSettings)),
+          managedResourceGroup: S.optional(S.NullOr(__S(219, __c27, 3))),
+          managedResourceGroupSettings: S.optional(S.NullOr(__S(222, __c27, 6))),
           mlFlowRegistryUri: S.optional(S.NullOr(S.String)),
-          registryPrivateEndpointConnections: S.optional(
-            S.NullOr(RegistryPropertiesInputRegistryPrivateEndpointConnectionsList),
-          ),
+          registryPrivateEndpointConnections: S.optional(S.NullOr(__S(485, __c60, 5))),
           publicNetworkAccess: S.optional(S.NullOr(S.String)),
-          regionDetails: S.optional(S.NullOr(RegistryPropertiesInputRegionDetailsList)),
+          regionDetails: S.optional(S.NullOr(__S(235, __c29, 3))),
         }),
       ).annotate({ identifier: "RegistryPropertiesInput" });
     case 7:
@@ -21359,12 +17902,12 @@ function __c60(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           registryName: S.String.pipe(T.Label()),
-          tags: S.optional(RegistriesCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(0, __c0, 0)),
           location: S.String,
-          properties: RegistryPropertiesInput,
-          identity: S.optional(BatchDeploymentsCreateOrUpdateRequestIdentity),
+          properties: __S(486, __c60, 6),
+          identity: S.optional(__S(11, __c1, 3)),
           kind: S.optional(S.String),
-          sku: S.optional(BatchDeploymentsCreateOrUpdateRequestSku),
+          sku: S.optional(__S(12, __c1, 4)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -21386,13 +17929,13 @@ function __c61(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(RegistriesCreateOrUpdateResponseTagsMap),
+          systemData: S.optional(__S(14, __c1, 6)),
+          tags: S.optional(__S(0, __c0, 0)),
           location: S.String,
-          properties: RegistryProperties,
-          identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
+          properties: __S(236, __c29, 4),
+          identity: S.optional(__S(17, __c2, 1)),
           kind: S.optional(S.String),
-          sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
+          sku: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({
         identifier: "RegistriesCreateOrUpdateResponse",
@@ -21404,7 +17947,7 @@ function __c61(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           registryName: S.String.pipe(T.Label()),
           codeName: S.String.pipe(T.Label()),
-          properties: CodeContainerPropertiesInput,
+          properties: __S(31, __c3, 7),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -21425,9 +17968,7 @@ function __c61(j: number): any {
           codeName: S.String.pipe(T.Label()),
           version: S.String.pipe(T.Label()),
           pendingUploadId: S.optional(S.NullOr(S.String)),
-          pendingUploadType: S.optional(
-            RegistryCodeVersionsCreateOrGetStartPendingUploadRequestPendingUploadType,
-          ),
+          pendingUploadType: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -21447,7 +17988,7 @@ function __c61(j: number): any {
           registryName: S.String.pipe(T.Label()),
           codeName: S.String.pipe(T.Label()),
           version: S.String.pipe(T.Label()),
-          properties: CodeVersionProperties,
+          properties: __S(39, __c4, 7),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -21466,7 +18007,7 @@ function __c61(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           registryName: S.String.pipe(T.Label()),
           componentName: S.String.pipe(T.Label()),
-          properties: ComponentContainerPropertiesInput,
+          properties: __S(31, __c3, 7),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -21486,7 +18027,7 @@ function __c61(j: number): any {
           registryName: S.String.pipe(T.Label()),
           componentName: S.String.pipe(T.Label()),
           version: S.String.pipe(T.Label()),
-          properties: ComponentVersionProperties,
+          properties: __S(45, __c5, 5),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -21505,7 +18046,7 @@ function __c61(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           registryName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: DataContainerPropertiesInput,
+          properties: __S(62, __c7, 6),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -21526,9 +18067,7 @@ function __c61(j: number): any {
           name: S.String.pipe(T.Label()),
           version: S.String.pipe(T.Label()),
           pendingUploadId: S.optional(S.NullOr(S.String)),
-          pendingUploadType: S.optional(
-            RegistryDataVersionsCreateOrGetStartPendingUploadRequestPendingUploadType,
-          ),
+          pendingUploadType: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -21552,7 +18091,7 @@ function __c62(j: number): any {
           registryName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
           version: S.String.pipe(T.Label()),
-          properties: DataVersionBaseProperties,
+          properties: __S(71, __c8, 7),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -21571,7 +18110,7 @@ function __c62(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           registryName: S.String.pipe(T.Label()),
           environmentName: S.String.pipe(T.Label()),
-          properties: EnvironmentContainerPropertiesInput,
+          properties: __S(31, __c3, 7),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -21591,7 +18130,7 @@ function __c62(j: number): any {
           registryName: S.String.pipe(T.Label()),
           environmentName: S.String.pipe(T.Label()),
           version: S.String.pipe(T.Label()),
-          properties: EnvironmentVersionProperties,
+          properties: __S(120, __c15, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -21610,7 +18149,7 @@ function __c62(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           registryName: S.String.pipe(T.Label()),
           modelName: S.String.pipe(T.Label()),
-          properties: ModelContainerPropertiesInput,
+          properties: __S(31, __c3, 7),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -21631,9 +18170,7 @@ function __c62(j: number): any {
           modelName: S.String.pipe(T.Label()),
           version: S.String.pipe(T.Label()),
           pendingUploadId: S.optional(S.NullOr(S.String)),
-          pendingUploadType: S.optional(
-            RegistryModelVersionsCreateOrGetStartPendingUploadRequestPendingUploadType,
-          ),
+          pendingUploadType: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -21653,7 +18190,7 @@ function __c62(j: number): any {
           registryName: S.String.pipe(T.Label()),
           modelName: S.String.pipe(T.Label()),
           version: S.String.pipe(T.Label()),
-          properties: ModelVersionProperties,
+          properties: __S(193, __c24, 1),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -21671,12 +18208,12 @@ function __c62(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           registryName: S.String.pipe(T.Label()),
-          tags: S.optional(RemoveRegistryRegionsRequestTagsMap),
+          tags: S.optional(__S(0, __c0, 0)),
           location: S.String,
-          properties: RegistryPropertiesInput,
-          identity: S.optional(BatchDeploymentsCreateOrUpdateRequestIdentity),
+          properties: __S(486, __c60, 6),
+          identity: S.optional(__S(11, __c1, 3)),
           kind: S.optional(S.String),
-          sku: S.optional(BatchDeploymentsCreateOrUpdateRequestSku),
+          sku: S.optional(__S(12, __c1, 4)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -21715,7 +18252,7 @@ function __c63(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: ScheduleProperties,
+          properties: __S(256, __c32, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -21733,8 +18270,8 @@ function __c63(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: ScheduleProperties,
+          systemData: S.optional(__S(14, __c1, 6)),
+          properties: __S(256, __c32, 0),
         }),
       ).annotate({
         identifier: "SchedulesCreateOrUpdateResponse",
@@ -21742,9 +18279,9 @@ function __c63(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          authMode: ServerlessInferenceEndpointAuthMode,
-          contentSafety: S.optional(S.NullOr(ContentSafety)),
-          modelSettings: S.optional(S.NullOr(ModelSettings)),
+          authMode: S.String,
+          contentSafety: S.optional(S.NullOr(__S(259, __c32, 3))),
+          modelSettings: S.optional(S.NullOr(__S(261, __c32, 5))),
         }),
       ).annotate({
         identifier: "ServerlessEndpointPropertiesInput",
@@ -21756,12 +18293,12 @@ function __c63(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          tags: S.optional(ServerlessEndpointsCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(0, __c0, 0)),
           location: S.String,
-          properties: ServerlessEndpointPropertiesInput,
-          identity: S.optional(BatchDeploymentsCreateOrUpdateRequestIdentity),
+          properties: __S(506, __c63, 2),
+          identity: S.optional(__S(11, __c1, 3)),
           kind: S.optional(S.String),
-          sku: S.optional(BatchDeploymentsCreateOrUpdateRequestSku),
+          sku: S.optional(__S(12, __c1, 4)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -21819,8 +18356,8 @@ function __c63(j: number): any {
           workspaceName: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
           deploymentName: S.String.pipe(T.Label()),
-          properties: S.optional(PartialBatchDeployment),
-          tags: S.optional(UpdateBatchDeploymentRequestTagsMap),
+          properties: S.optional(__S(510, __c63, 6)),
+          tags: S.optional(__S(2, __c0, 2)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -21841,10 +18378,8 @@ function __c64(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(PartialManagedServiceIdentityType),
-          userAssignedIdentities: S.optional(
-            PartialManagedServiceIdentityUserAssignedIdentitiesMap,
-          ),
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(512, __c64, 0)),
         }),
       ).annotate({
         identifier: "PartialManagedServiceIdentity",
@@ -21856,8 +18391,8 @@ function __c64(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateBatchEndpointRequestTagsMap),
-          identity: S.optional(PartialManagedServiceIdentity),
+          tags: S.optional(__S(2, __c0, 2)),
+          identity: S.optional(__S(513, __c64, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -21880,13 +18415,13 @@ function __c64(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          scaleSettings: S.optional(ScaleSettings),
+          scaleSettings: S.optional(__S(515, __c64, 3)),
         }),
       ).annotate({ identifier: "ScaleSettingsInformation" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(ScaleSettingsInformation),
+          properties: S.optional(__S(516, __c64, 4)),
         }),
       ).annotate({ identifier: "ClusterUpdateProperties" });
     case 6:
@@ -21896,7 +18431,7 @@ function __c64(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           computeName: S.String.pipe(T.Label()),
-          properties: S.optional(ClusterUpdateProperties),
+          properties: S.optional(__S(517, __c64, 5)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -21913,7 +18448,7 @@ function __c64(j: number): any {
           family: S.optional(S.String),
           name: S.optional(S.String),
           size: S.optional(S.String),
-          tier: S.optional(PartialSkuTier),
+          tier: S.optional(S.String),
         }),
       ).annotate({ identifier: "PartialSku" });
   }
@@ -21928,8 +18463,8 @@ function __c65(j: number): any {
           workspaceName: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
           deploymentName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateOnlineDeploymentRequestTagsMap),
-          sku: S.optional(PartialSku),
+          tags: S.optional(__S(2, __c0, 2)),
+          sku: S.optional(__S(519, __c64, 7)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -21948,8 +18483,8 @@ function __c65(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateOnlineEndpointRequestTagsMap),
-          identity: S.optional(PartialManagedServiceIdentity),
+          tags: S.optional(__S(2, __c0, 2)),
+          identity: S.optional(__S(513, __c64, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -21967,17 +18502,17 @@ function __c65(j: number): any {
           id: S.optional(S.String),
           type: S.optional(S.String),
           limit: S.optional(S.Number),
-          unit: S.optional(QuotaUnit),
+          unit: S.optional(S.String),
         }),
       ).annotate({ identifier: "QuotaBaseProperties" });
     case 3:
-      return S.Array(QuotaBaseProperties);
+      return S.Array(__S(522, __c65, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
-          value: S.optional(UpdateQuotasRequestValueList),
+          value: S.optional(__S(523, __c65, 3)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -21993,16 +18528,16 @@ function __c65(j: number): any {
           id: S.optional(S.String),
           type: S.optional(S.String),
           limit: S.optional(S.Number),
-          unit: S.optional(QuotaUnit),
-          status: S.optional(Status),
+          unit: S.optional(S.String),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "UpdateWorkspaceQuotas" });
     case 6:
-      return S.Array(UpdateWorkspaceQuotas);
+      return S.Array(__S(525, __c65, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(UpdateWorkspaceQuotasResultValueList),
+          value: S.optional(__S(526, __c65, 6)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -22018,9 +18553,9 @@ function __c66(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           registryName: S.String.pipe(T.Label()),
-          identity: S.optional(BatchDeploymentsCreateOrUpdateRequestIdentity),
-          sku: S.optional(PartialSku),
-          tags: S.optional(UpdateRegistryRequestTagsMap),
+          identity: S.optional(__S(11, __c1, 3)),
+          sku: S.optional(__S(519, __c64, 7)),
+          tags: S.optional(__S(2, __c0, 2)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -22037,9 +18572,9 @@ function __c66(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateServerlessEndpointRequestTagsMap),
-          identity: S.optional(PartialManagedServiceIdentity),
-          sku: S.optional(PartialSku),
+          tags: S.optional(__S(2, __c0, 2)),
+          identity: S.optional(__S(513, __c64, 1)),
+          sku: S.optional(__S(519, __c64, 7)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -22062,22 +18597,22 @@ function __c66(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          keyVaultProperties: EncryptionKeyVaultUpdateProperties,
+          keyVaultProperties: __S(530, __c66, 2),
         }),
       ).annotate({
         identifier: "EncryptionUpdateProperties",
       });
     case 4:
-      return S.Record(S.String, OutboundRuleInput);
+      return S.Record(S.String, __S(463, __c57, 7));
     case 5:
       return S.suspend(() =>
         S.Struct({
           enableNetworkMonitor: S.optional(S.Boolean),
-          isolationMode: S.optional(IsolationMode),
-          outboundRules: S.optional(S.NullOr(ManagedNetworkSettingsInputOutboundRulesMap)),
-          status: S.optional(ManagedNetworkProvisionStatus),
-          firewallSku: S.optional(FirewallSku),
-          managedNetworkKind: S.optional(ManagedNetworkKind),
+          isolationMode: S.optional(S.String),
+          outboundRules: S.optional(S.NullOr(__S(532, __c66, 4))),
+          status: S.optional(__S(271, __c33, 7)),
+          firewallSku: S.optional(S.String),
+          managedNetworkKind: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ManagedNetworkSettingsInput",
@@ -22089,16 +18624,16 @@ function __c66(j: number): any {
           containerRegistry: S.optional(S.String),
           description: S.optional(S.String),
           enableDataIsolation: S.optional(S.Boolean),
-          encryption: S.optional(EncryptionUpdateProperties),
-          featureStoreSettings: S.optional(FeatureStoreSettings),
+          encryption: S.optional(__S(531, __c66, 3)),
+          featureStoreSettings: S.optional(__S(269, __c33, 5)),
           friendlyName: S.optional(S.String),
           imageBuildCompute: S.optional(S.String),
-          managedNetwork: S.optional(ManagedNetworkSettingsInput),
+          managedNetwork: S.optional(__S(533, __c66, 5)),
           primaryUserAssignedIdentity: S.optional(S.String),
-          publicNetworkAccess: S.optional(PublicNetworkAccessType),
-          serverlessComputeSettings: S.optional(ServerlessComputeSettings),
-          serviceManagedResourcesSettings: S.optional(ServiceManagedResourcesSettings),
-          systemDatastoresAuthMode: S.optional(SystemDatastoresAuthMode),
+          publicNetworkAccess: S.optional(S.String),
+          serverlessComputeSettings: S.optional(__S(276, __c34, 4)),
+          serviceManagedResourcesSettings: S.optional(__S(278, __c34, 6)),
+          systemDatastoresAuthMode: S.optional(S.String),
           v1LegacyMode: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -22110,10 +18645,10 @@ function __c66(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
-          identity: S.optional(BatchDeploymentsCreateOrUpdateRequestIdentity),
-          properties: S.optional(WorkspacePropertiesUpdateParametersInput),
-          sku: S.optional(BatchDeploymentsCreateOrUpdateRequestSku),
-          tags: S.optional(UpdateWorkspaceRequestTagsMap),
+          identity: S.optional(__S(11, __c1, 3)),
+          properties: S.optional(__S(534, __c66, 6)),
+          sku: S.optional(__S(12, __c1, 4)),
+          tags: S.optional(__S(0, __c0, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -22134,7 +18669,7 @@ function __c67(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           connectionName: S.String.pipe(T.Label()),
-          properties: S.optional(WorkspaceConnectionPropertiesV2Input),
+          properties: S.optional(__S(58, __c7, 2)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -22151,32 +18686,30 @@ function __c67(j: number): any {
         S.Struct({
           allowPublicAccessWhenBehindVnet: S.optional(S.Boolean),
           applicationInsights: S.optional(S.String),
-          associatedWorkspaces: S.optional(WorkspacePropertiesInputAssociatedWorkspacesList),
+          associatedWorkspaces: S.optional(__S(26, __c3, 2)),
           containerRegistry: S.optional(S.String),
           description: S.optional(S.String),
           discoveryUrl: S.optional(S.String),
           enableDataIsolation: S.optional(S.Boolean),
           enableServiceSideCMKEncryption: S.optional(S.Boolean),
-          encryption: S.optional(EncryptionProperty),
-          featureStoreSettings: S.optional(FeatureStoreSettings),
+          encryption: S.optional(__S(267, __c33, 3)),
+          featureStoreSettings: S.optional(__S(269, __c33, 5)),
           friendlyName: S.optional(S.String),
           hbiWorkspace: S.optional(S.Boolean),
           hubResourceId: S.optional(S.String),
           imageBuildCompute: S.optional(S.String),
           keyVault: S.optional(S.String),
-          managedNetwork: S.optional(ManagedNetworkSettingsInput),
+          managedNetwork: S.optional(__S(533, __c66, 5)),
           primaryUserAssignedIdentity: S.optional(S.String),
           provisionNetworkNow: S.optional(S.Boolean),
-          publicNetworkAccess: S.optional(PublicNetworkAccessType),
-          serverlessComputeSettings: S.optional(ServerlessComputeSettings),
-          serviceManagedResourcesSettings: S.optional(ServiceManagedResourcesSettings),
-          sharedPrivateLinkResources: S.optional(
-            WorkspacePropertiesInputSharedPrivateLinkResourcesList,
-          ),
+          publicNetworkAccess: S.optional(S.String),
+          serverlessComputeSettings: S.optional(__S(276, __c34, 4)),
+          serviceManagedResourcesSettings: S.optional(__S(278, __c34, 6)),
+          sharedPrivateLinkResources: S.optional(__S(281, __c35, 1)),
           storageAccount: S.optional(S.String),
-          systemDatastoresAuthMode: S.optional(SystemDatastoresAuthMode),
+          systemDatastoresAuthMode: S.optional(S.String),
           v1LegacyMode: S.optional(S.Boolean),
-          workspaceHubConfig: S.optional(WorkspaceHubConfig),
+          workspaceHubConfig: S.optional(__S(282, __c35, 2)),
         }),
       ).annotate({ identifier: "WorkspacePropertiesInput" });
     case 2:
@@ -22185,12 +18718,12 @@ function __c67(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
-          properties: WorkspacePropertiesInput,
-          identity: S.optional(BatchDeploymentsCreateOrUpdateRequestIdentity),
+          properties: __S(537, __c67, 1),
+          identity: S.optional(__S(11, __c1, 3)),
           kind: S.optional(S.String),
           location: S.optional(S.String),
-          sku: S.optional(BatchDeploymentsCreateOrUpdateRequestSku),
-          tags: S.optional(WorkspacesCreateOrUpdateRequestTagsMap),
+          sku: S.optional(__S(12, __c1, 4)),
+          tags: S.optional(__S(0, __c0, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -22208,13 +18741,13 @@ function __c67(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: WorkspaceProperties,
-          identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
+          systemData: S.optional(__S(14, __c1, 6)),
+          properties: __S(283, __c35, 3),
+          identity: S.optional(__S(17, __c2, 1)),
           kind: S.optional(S.String),
           location: S.optional(S.String),
-          sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
-          tags: S.optional(WorkspacesCreateOrUpdateResponseTagsMap),
+          sku: S.optional(__S(12, __c1, 4)),
+          tags: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({
         identifier: "WorkspacesCreateOrUpdateResponse",
@@ -22222,18 +18755,16 @@ function __c67(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          applicationInsights: S.optional(DiagnoseRequestPropertiesApplicationInsightsMap),
-          containerRegistry: S.optional(DiagnoseRequestPropertiesContainerRegistryMap),
-          dnsResolution: S.optional(DiagnoseRequestPropertiesDnsResolutionMap),
-          keyVault: S.optional(DiagnoseRequestPropertiesKeyVaultMap),
-          nsg: S.optional(DiagnoseRequestPropertiesNsgMap),
-          others: S.optional(DiagnoseRequestPropertiesOthersMap),
-          requiredResourceProviders: S.optional(
-            DiagnoseRequestPropertiesRequiredResourceProvidersMap,
-          ),
-          resourceLock: S.optional(DiagnoseRequestPropertiesResourceLockMap),
-          storageAccount: S.optional(DiagnoseRequestPropertiesStorageAccountMap),
-          udr: S.optional(DiagnoseRequestPropertiesUdrMap),
+          applicationInsights: S.optional(__S(512, __c64, 0)),
+          containerRegistry: S.optional(__S(512, __c64, 0)),
+          dnsResolution: S.optional(__S(512, __c64, 0)),
+          keyVault: S.optional(__S(512, __c64, 0)),
+          nsg: S.optional(__S(512, __c64, 0)),
+          others: S.optional(__S(512, __c64, 0)),
+          requiredResourceProviders: S.optional(__S(512, __c64, 0)),
+          resourceLock: S.optional(__S(512, __c64, 0)),
+          storageAccount: S.optional(__S(512, __c64, 0)),
+          udr: S.optional(__S(512, __c64, 0)),
         }),
       ).annotate({
         identifier: "DiagnoseRequestProperties",
@@ -22244,7 +18775,7 @@ function __c67(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
-          value: S.optional(DiagnoseRequestProperties),
+          value: S.optional(__S(540, __c67, 4)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -22260,12 +18791,12 @@ function __c67(j: number): any {
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
-          level: S.optional(DiagnoseResultLevel),
+          level: S.optional(S.String),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "DiagnoseResult" });
     case 7:
-      return S.Array(DiagnoseResult);
+      return S.Array(__S(542, __c67, 6));
   }
 }
 function __c68(j: number): any {
@@ -22273,23 +18804,15 @@ function __c68(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          userDefinedRouteResults: S.optional(
-            DiagnoseResponseResultValueUserDefinedRouteResultsList,
-          ),
-          networkSecurityRuleResults: S.optional(
-            DiagnoseResponseResultValueNetworkSecurityRuleResultsList,
-          ),
-          resourceLockResults: S.optional(DiagnoseResponseResultValueResourceLockResultsList),
-          dnsResolutionResults: S.optional(DiagnoseResponseResultValueDnsResolutionResultsList),
-          storageAccountResults: S.optional(DiagnoseResponseResultValueStorageAccountResultsList),
-          keyVaultResults: S.optional(DiagnoseResponseResultValueKeyVaultResultsList),
-          containerRegistryResults: S.optional(
-            DiagnoseResponseResultValueContainerRegistryResultsList,
-          ),
-          applicationInsightsResults: S.optional(
-            DiagnoseResponseResultValueApplicationInsightsResultsList,
-          ),
-          otherResults: S.optional(DiagnoseResponseResultValueOtherResultsList),
+          userDefinedRouteResults: S.optional(__S(543, __c67, 7)),
+          networkSecurityRuleResults: S.optional(__S(543, __c67, 7)),
+          resourceLockResults: S.optional(__S(543, __c67, 7)),
+          dnsResolutionResults: S.optional(__S(543, __c67, 7)),
+          storageAccountResults: S.optional(__S(543, __c67, 7)),
+          keyVaultResults: S.optional(__S(543, __c67, 7)),
+          containerRegistryResults: S.optional(__S(543, __c67, 7)),
+          applicationInsightsResults: S.optional(__S(543, __c67, 7)),
+          otherResults: S.optional(__S(543, __c67, 7)),
         }),
       ).annotate({
         identifier: "DiagnoseResponseResultValue",
@@ -22297,7 +18820,7 @@ function __c68(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(DiagnoseResponseResultValue),
+          value: S.optional(__S(544, __c68, 0)),
         }),
       ).annotate({ identifier: "DiagnoseResponseResult" });
     case 2:
@@ -22335,4 +18858,9 @@ function __c68(j: number): any {
         identifier: "WorkspacesResyncKeysRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

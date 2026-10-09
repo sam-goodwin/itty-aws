@@ -7,6 +7,8 @@ import { UnknownDaytonaError } from "../errors.ts";
 import { DaytonaProtocol, type DaytonaOpError, type DaytonaOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { DaytonaOpError, DaytonaOpContext };
 
@@ -14,8 +16,6 @@ export interface GetPushAccessRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
-const GetPushAccessRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<GetPushAccessRequest>;
-
 export interface StorageAccessDto {
   /** Access key for storage authentication */
   accessKey: string;
@@ -32,8 +32,6 @@ export interface StorageAccessDto {
   /** Region for the storage backend (e.g. "us-east-2") */
   region: string;
 }
-const StorageAccessDto = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<StorageAccessDto>;
-
 export type GetPushAccessError = DaytonaOpError;
 /** Get temporary storage access for pushing objects */
 export const getPushAccess: API.OperationMethod<
@@ -42,8 +40,8 @@ export const getPushAccess: API.OperationMethod<
   GetPushAccessError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPushAccessRequest,
-  output: StorageAccessDto,
+  input: __S(0, __c0, 0) as any as S.Schema<GetPushAccessRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<StorageAccessDto>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -71,4 +69,9 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "StorageAccessDto" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

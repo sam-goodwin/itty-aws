@@ -10,6 +10,8 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "ivschat",
   serviceShapeName: "AmazonInteractiveVideoServiceChat",
@@ -141,7 +143,7 @@ export class ValidationException
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
       reason: /*@__PURE__*/ S.optional(S.String),
       fieldList: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(38, __c4, 6)).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -152,10 +154,8 @@ export type RoomIdentifier = string;
 export type UserID = string | redacted.Redacted<string>;
 export type ChatTokenCapability = string;
 export type ChatTokenCapabilities = string[];
-const ChatTokenCapabilities = /*@__PURE__*/ __L.at(__c0, 0);
 export type SessionDurationInMinutes = number;
 export type ChatTokenAttributes = { [key: string]: string | undefined };
-const ChatTokenAttributes = /*@__PURE__*/ __L.at(__c0, 1);
 export interface CreateChatTokenRequest {
   roomIdentifier: string;
   userId: string | redacted.Redacted<string>;
@@ -163,63 +163,37 @@ export interface CreateChatTokenRequest {
   sessionDurationInMinutes?: number;
   attributes?: { [key: string]: string | undefined };
 }
-const CreateChatTokenRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateChatTokenRequest>;
 export type ChatToken = string | redacted.Redacted<string>;
 export interface CreateChatTokenResponse {
   token?: string | redacted.Redacted<string>;
   tokenExpirationTime?: Date;
   sessionExpirationTime?: Date;
 }
-const CreateChatTokenResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateChatTokenResponse>;
 export type LoggingConfigurationName = string;
 export type BucketName = string;
 export interface S3DestinationConfiguration {
   bucketName: string;
 }
-const S3DestinationConfiguration = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<S3DestinationConfiguration>;
 export type LogGroupName = string;
 export interface CloudWatchLogsDestinationConfiguration {
   logGroupName: string;
 }
-const CloudWatchLogsDestinationConfiguration = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CloudWatchLogsDestinationConfiguration>;
 export type DeliveryStreamName = string;
 export interface FirehoseDestinationConfiguration {
   deliveryStreamName: string;
 }
-const FirehoseDestinationConfiguration = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<FirehoseDestinationConfiguration>;
 export type DestinationConfiguration =
   | { s3: S3DestinationConfiguration; cloudWatchLogs?: never; firehose?: never }
   | { s3?: never; cloudWatchLogs: CloudWatchLogsDestinationConfiguration; firehose?: never }
   | { s3?: never; cloudWatchLogs?: never; firehose: FirehoseDestinationConfiguration };
-const DestinationConfiguration = /*@__PURE__*/ __L.at(__c0, 7);
 export type TagKey = string;
 export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
-const Tags = /*@__PURE__*/ __L.at(__c1, 0);
 export interface CreateLoggingConfigurationRequest {
   name?: string;
   destinationConfiguration: DestinationConfiguration;
   tags?: { [key: string]: string | undefined };
 }
-const CreateLoggingConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateLoggingConfigurationRequest>;
 export type LoggingConfigurationArn = string;
 export type LoggingConfigurationID = string;
 export type CreateLoggingConfigurationState = string;
@@ -233,10 +207,6 @@ export interface CreateLoggingConfigurationResponse {
   state?: string;
   tags?: { [key: string]: string | undefined };
 }
-const CreateLoggingConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateLoggingConfigurationResponse>;
 export type RoomName = string;
 export type RoomMaxMessageRatePerSecond = number;
 export type RoomMaxMessageLength = number;
@@ -246,11 +216,8 @@ export interface MessageReviewHandler {
   uri?: string;
   fallbackResult?: string;
 }
-const MessageReviewHandler = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<MessageReviewHandler>;
 export type LoggingConfigurationIdentifier = string;
 export type LoggingConfigurationIdentifierList = string[];
-const LoggingConfigurationIdentifierList =
-  ChatTokenCapabilities as any as S.Schema<LoggingConfigurationIdentifierList>;
 export interface CreateRoomRequest {
   name?: string;
   maximumMessageRatePerSecond?: number;
@@ -259,7 +226,6 @@ export interface CreateRoomRequest {
   tags?: { [key: string]: string | undefined };
   loggingConfigurationIdentifiers?: string[];
 }
-const CreateRoomRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<CreateRoomRequest>;
 export type RoomArn = string;
 export type RoomID = string;
 export interface CreateRoomResponse {
@@ -274,19 +240,10 @@ export interface CreateRoomResponse {
   tags?: { [key: string]: string | undefined };
   loggingConfigurationIdentifiers?: string[];
 }
-const CreateRoomResponse = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<CreateRoomResponse>;
 export interface DeleteLoggingConfigurationRequest {
   identifier: string;
 }
-const DeleteLoggingConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<DeleteLoggingConfigurationRequest>;
 export interface DeleteLoggingConfigurationResponse {}
-const DeleteLoggingConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<DeleteLoggingConfigurationResponse>;
 export type MessageID = string;
 export type Reason = string;
 export interface DeleteMessageRequest {
@@ -294,39 +251,23 @@ export interface DeleteMessageRequest {
   id: string;
   reason?: string;
 }
-const DeleteMessageRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<DeleteMessageRequest>;
 export type ID = string;
 export interface DeleteMessageResponse {
   id?: string;
 }
-const DeleteMessageResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<DeleteMessageResponse>;
 export interface DeleteRoomRequest {
   identifier: string;
 }
-const DeleteRoomRequest = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<DeleteRoomRequest>;
 export interface DeleteRoomResponse {}
-const DeleteRoomResponse = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<DeleteRoomResponse>;
 export interface DisconnectUserRequest {
   roomIdentifier: string;
   userId: string | redacted.Redacted<string>;
   reason?: string;
 }
-const DisconnectUserRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<DisconnectUserRequest>;
 export interface DisconnectUserResponse {}
-const DisconnectUserResponse = DeleteRoomResponse as any as S.Schema<DisconnectUserResponse>;
 export interface GetLoggingConfigurationRequest {
   identifier: string;
 }
-const GetLoggingConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<GetLoggingConfigurationRequest>;
 export type LoggingConfigurationState = string;
 export interface GetLoggingConfigurationResponse {
   arn?: string;
@@ -338,12 +279,9 @@ export interface GetLoggingConfigurationResponse {
   state?: string;
   tags?: { [key: string]: string | undefined };
 }
-const GetLoggingConfigurationResponse =
-  CreateLoggingConfigurationResponse as any as S.Schema<GetLoggingConfigurationResponse>;
 export interface GetRoomRequest {
   identifier: string;
 }
-const GetRoomRequest = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<GetRoomRequest>;
 export interface GetRoomResponse {
   arn?: string;
   id?: string;
@@ -356,17 +294,12 @@ export interface GetRoomResponse {
   tags?: { [key: string]: string | undefined };
   loggingConfigurationIdentifiers?: string[];
 }
-const GetRoomResponse = CreateRoomResponse as any as S.Schema<GetRoomResponse>;
 export type PaginationToken = string;
 export type MaxLoggingConfigurationResults = number;
 export interface ListLoggingConfigurationsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const ListLoggingConfigurationsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ListLoggingConfigurationsRequest>;
 export interface LoggingConfigurationSummary {
   arn?: string;
   id?: string;
@@ -377,18 +310,11 @@ export interface LoggingConfigurationSummary {
   state?: string;
   tags?: { [key: string]: string | undefined };
 }
-const LoggingConfigurationSummary =
-  CreateLoggingConfigurationResponse as any as S.Schema<LoggingConfigurationSummary>;
 export type LoggingConfigurationList = LoggingConfigurationSummary[];
-const LoggingConfigurationList = /*@__PURE__*/ __L.at(__c3, 0);
 export interface ListLoggingConfigurationsResponse {
   loggingConfigurations: LoggingConfigurationSummary[];
   nextToken?: string;
 }
-const ListLoggingConfigurationsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ListLoggingConfigurationsResponse>;
 export type MaxRoomResults = number;
 export interface ListRoomsRequest {
   name?: string;
@@ -397,7 +323,6 @@ export interface ListRoomsRequest {
   messageReviewHandlerUri?: string;
   loggingConfigurationIdentifier?: string;
 }
-const ListRoomsRequest = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<ListRoomsRequest>;
 export interface RoomSummary {
   arn?: string;
   id?: string;
@@ -408,67 +333,44 @@ export interface RoomSummary {
   tags?: { [key: string]: string | undefined };
   loggingConfigurationIdentifiers?: string[];
 }
-const RoomSummary = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<RoomSummary>;
 export type RoomList = RoomSummary[];
-const RoomList = /*@__PURE__*/ __L.at(__c3, 4);
 export interface ListRoomsResponse {
   rooms: RoomSummary[];
   nextToken?: string;
 }
-const ListRoomsResponse = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<ListRoomsResponse>;
 export type ResourceArn = string;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   tags: { [key: string]: string | undefined };
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<ListTagsForResourceResponse>;
 export type EventName = string;
 export type EventAttributes = { [key: string]: string | undefined };
-const EventAttributes = ChatTokenAttributes as any as S.Schema<EventAttributes>;
 export interface SendEventRequest {
   roomIdentifier: string;
   eventName: string;
   attributes?: { [key: string]: string | undefined };
 }
-const SendEventRequest = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<SendEventRequest>;
 export interface SendEventResponse {
   id?: string;
 }
-const SendEventResponse = DeleteMessageResponse as any as S.Schema<SendEventResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-const TagResourceRequest = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-const TagResourceResponse = DeleteRoomResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-const TagKeyList = ChatTokenCapabilities as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-const UntagResourceResponse = DeleteRoomResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateLoggingConfigurationRequest {
   identifier: string;
   name?: string;
   destinationConfiguration?: DestinationConfiguration;
 }
-const UpdateLoggingConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<UpdateLoggingConfigurationRequest>;
 export type UpdateLoggingConfigurationState = string;
 export interface UpdateLoggingConfigurationResponse {
   arn?: string;
@@ -480,8 +382,6 @@ export interface UpdateLoggingConfigurationResponse {
   state?: string;
   tags?: { [key: string]: string | undefined };
 }
-const UpdateLoggingConfigurationResponse =
-  CreateLoggingConfigurationResponse as any as S.Schema<UpdateLoggingConfigurationResponse>;
 export interface UpdateRoomRequest {
   identifier: string;
   name?: string;
@@ -490,7 +390,6 @@ export interface UpdateRoomRequest {
   messageReviewHandler?: MessageReviewHandler;
   loggingConfigurationIdentifiers?: string[];
 }
-const UpdateRoomRequest = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<UpdateRoomRequest>;
 export interface UpdateRoomResponse {
   arn?: string;
   id?: string;
@@ -503,7 +402,6 @@ export interface UpdateRoomResponse {
   tags?: { [key: string]: string | undefined };
   loggingConfigurationIdentifiers?: string[];
 }
-const UpdateRoomResponse = CreateRoomResponse as any as S.Schema<UpdateRoomResponse>;
 export type ErrorMessage = string;
 export type ResourceId = string;
 export type ResourceType = string;
@@ -513,12 +411,7 @@ export interface ValidationExceptionField {
   name: string;
   message: string;
 }
-const ValidationExceptionField = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-const ValidationExceptionFieldList = /*@__PURE__*/ __L.at(__c4, 6);
 export type Limit = number;
 export type CreateChatTokenError =
   | AccessDeniedException
@@ -549,8 +442,8 @@ export const createChatToken: API.OperationMethod<
   CreateChatTokenError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateChatTokenRequest,
-  output: CreateChatTokenResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<CreateChatTokenRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<CreateChatTokenResponse>,
   errors: [
     AccessDeniedException,
     PendingVerification,
@@ -581,8 +474,8 @@ export const createLoggingConfiguration: API.OperationMethod<
   CreateLoggingConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateLoggingConfigurationRequest,
-  output: CreateLoggingConfigurationResponse,
+  input: __S(9, __c1, 1) as any as S.Schema<CreateLoggingConfigurationRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<CreateLoggingConfigurationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -615,8 +508,8 @@ export const createRoom: API.OperationMethod<
   CreateRoomError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRoomRequest,
-  output: CreateRoomResponse,
+  input: __S(12, __c1, 4) as any as S.Schema<CreateRoomRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<CreateRoomResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -648,8 +541,8 @@ export const deleteLoggingConfiguration: API.OperationMethod<
   DeleteLoggingConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteLoggingConfigurationRequest,
-  output: DeleteLoggingConfigurationResponse,
+  input: __S(14, __c1, 6) as any as S.Schema<DeleteLoggingConfigurationRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<DeleteLoggingConfigurationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -682,8 +575,8 @@ export const deleteMessage: API.OperationMethod<
   DeleteMessageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteMessageRequest,
-  output: DeleteMessageResponse,
+  input: __S(16, __c2, 0) as any as S.Schema<DeleteMessageRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<DeleteMessageResponse>,
   errors: [
     AccessDeniedException,
     PendingVerification,
@@ -712,8 +605,8 @@ export const deleteRoom: API.OperationMethod<
   DeleteRoomError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRoomRequest,
-  output: DeleteRoomResponse,
+  input: __S(18, __c2, 2) as any as S.Schema<DeleteRoomRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<DeleteRoomResponse>,
   errors: [
     AccessDeniedException,
     PendingVerification,
@@ -744,8 +637,8 @@ export const disconnectUser: API.OperationMethod<
   DisconnectUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisconnectUserRequest,
-  output: DisconnectUserResponse,
+  input: __S(20, __c2, 4) as any as S.Schema<DisconnectUserRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<DisconnectUserResponse>,
   errors: [
     AccessDeniedException,
     PendingVerification,
@@ -773,8 +666,8 @@ export const getLoggingConfiguration: API.OperationMethod<
   GetLoggingConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLoggingConfigurationRequest,
-  output: GetLoggingConfigurationResponse,
+  input: __S(21, __c2, 5) as any as S.Schema<GetLoggingConfigurationRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<GetLoggingConfigurationResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -801,8 +694,8 @@ export const getRoom: API.OperationMethod<
   GetRoomError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRoomRequest,
-  output: GetRoomResponse,
+  input: __S(22, __c2, 6) as any as S.Schema<GetRoomRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<GetRoomResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -830,8 +723,8 @@ export const listLoggingConfigurations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListLoggingConfigurationsRequest,
-  output: ListLoggingConfigurationsResponse,
+  input: __S(23, __c2, 7) as any as S.Schema<ListLoggingConfigurationsRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<ListLoggingConfigurationsResponse>,
   errors: [AccessDeniedException, ValidationException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -860,8 +753,8 @@ export const listRooms: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListRoomsRequest,
-  output: ListRoomsResponse,
+  input: __S(26, __c3, 2) as any as S.Schema<ListRoomsRequest>,
+  output: __S(29, __c3, 5) as any as S.Schema<ListRoomsResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -893,8 +786,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
+  input: __S(30, __c3, 6) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(31, __c3, 7) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -924,8 +817,8 @@ export const sendEvent: API.OperationMethod<
   SendEventError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SendEventRequest,
-  output: SendEventResponse,
+  input: __S(32, __c4, 0) as any as S.Schema<SendEventRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<SendEventResponse>,
   errors: [
     AccessDeniedException,
     PendingVerification,
@@ -953,8 +846,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
+  input: __S(33, __c4, 1) as any as S.Schema<TagResourceRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<TagResourceResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -981,8 +874,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
+  input: __S(34, __c4, 2) as any as S.Schema<UntagResourceRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<UntagResourceResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1011,8 +904,8 @@ export const updateLoggingConfiguration: API.OperationMethod<
   UpdateLoggingConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateLoggingConfigurationRequest,
-  output: UpdateLoggingConfigurationResponse,
+  input: __S(35, __c4, 3) as any as S.Schema<UpdateLoggingConfigurationRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<UpdateLoggingConfigurationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1042,8 +935,8 @@ export const updateRoom: API.OperationMethod<
   UpdateRoomError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRoomRequest,
-  output: UpdateRoomResponse,
+  input: __S(36, __c4, 4) as any as S.Schema<UpdateRoomRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<UpdateRoomResponse>,
   errors: [
     AccessDeniedException,
     PendingVerification,
@@ -1068,9 +961,9 @@ function __c0(j: number): any {
         S.Struct({
           roomIdentifier: S.String,
           userId: SensitiveString,
-          capabilities: S.optional(ChatTokenCapabilities),
+          capabilities: S.optional(__S(0, __c0, 0)),
           sessionDurationInMinutes: S.optional(S.Number),
-          attributes: S.optional(ChatTokenAttributes),
+          attributes: S.optional(__S(1, __c0, 1)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/CreateChatToken" }), svc, auth, proto, ver, rules),
         ),
@@ -1097,9 +990,9 @@ function __c0(j: number): any {
       });
     case 7:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ s3: S3DestinationConfiguration }),
-        /*@__PURE__*/ S.Struct({ cloudWatchLogs: CloudWatchLogsDestinationConfiguration }),
-        /*@__PURE__*/ S.Struct({ firehose: FirehoseDestinationConfiguration }),
+        /*@__PURE__*/ S.Struct({ s3: __S(4, __c0, 4) }),
+        /*@__PURE__*/ S.Struct({ cloudWatchLogs: __S(5, __c0, 5) }),
+        /*@__PURE__*/ S.Struct({ firehose: __S(6, __c0, 6) }),
       ]);
   }
 }
@@ -1111,8 +1004,8 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          destinationConfiguration: DestinationConfiguration,
-          tags: S.optional(Tags),
+          destinationConfiguration: __S(7, __c0, 7),
+          tags: S.optional(__S(8, __c1, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/CreateLoggingConfiguration" }),
@@ -1134,9 +1027,9 @@ function __c1(j: number): any {
           createTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           updateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           name: S.optional(S.String),
-          destinationConfiguration: S.optional(DestinationConfiguration),
+          destinationConfiguration: S.optional(__S(7, __c0, 7)),
           state: S.optional(S.String),
-          tags: S.optional(Tags),
+          tags: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({
         identifier: "CreateLoggingConfigurationResponse",
@@ -1151,9 +1044,9 @@ function __c1(j: number): any {
           name: S.optional(S.String),
           maximumMessageRatePerSecond: S.optional(S.Number),
           maximumMessageLength: S.optional(S.Number),
-          messageReviewHandler: S.optional(MessageReviewHandler),
-          tags: S.optional(Tags),
-          loggingConfigurationIdentifiers: S.optional(LoggingConfigurationIdentifierList),
+          messageReviewHandler: S.optional(__S(11, __c1, 3)),
+          tags: S.optional(__S(8, __c1, 0)),
+          loggingConfigurationIdentifiers: S.optional(__S(0, __c0, 0)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/CreateRoom" }), svc, auth, proto, ver, rules),
         ),
@@ -1168,9 +1061,9 @@ function __c1(j: number): any {
           updateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           maximumMessageRatePerSecond: S.optional(S.Number),
           maximumMessageLength: S.optional(S.Number),
-          messageReviewHandler: S.optional(MessageReviewHandler),
-          tags: S.optional(Tags),
-          loggingConfigurationIdentifiers: S.optional(LoggingConfigurationIdentifierList),
+          messageReviewHandler: S.optional(__S(11, __c1, 3)),
+          tags: S.optional(__S(8, __c1, 0)),
+          loggingConfigurationIdentifiers: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({ identifier: "CreateRoomResponse" });
     case 6:
@@ -1267,11 +1160,11 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(LoggingConfigurationSummary);
+      return S.Array(__S(10, __c1, 2));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          loggingConfigurations: LoggingConfigurationList,
+          loggingConfigurations: __S(24, __c3, 0),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1293,18 +1186,18 @@ function __c3(j: number): any {
           arn: S.optional(S.String),
           id: S.optional(S.String),
           name: S.optional(S.String),
-          messageReviewHandler: S.optional(MessageReviewHandler),
+          messageReviewHandler: S.optional(__S(11, __c1, 3)),
           createTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           updateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          tags: S.optional(Tags),
-          loggingConfigurationIdentifiers: S.optional(LoggingConfigurationIdentifierList),
+          tags: S.optional(__S(8, __c1, 0)),
+          loggingConfigurationIdentifiers: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({ identifier: "RoomSummary" });
     case 4:
-      return S.Array(RoomSummary);
+      return S.Array(__S(27, __c3, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({ rooms: RoomList, nextToken: S.optional(S.String) }),
+        S.Struct({ rooms: __S(28, __c3, 4), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListRoomsResponse" });
     case 6:
       return S.suspend(() =>
@@ -1322,7 +1215,7 @@ function __c3(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 7:
-      return S.suspend(() => S.Struct({ tags: Tags })).annotate({
+      return S.suspend(() => S.Struct({ tags: __S(8, __c1, 0) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
@@ -1334,12 +1227,15 @@ function __c4(j: number): any {
         S.Struct({
           roomIdentifier: S.String,
           eventName: S.String,
-          attributes: S.optional(EventAttributes),
+          attributes: S.optional(__S(1, __c0, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/SendEvent" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "SendEventRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: Tags }).pipe(
+        S.Struct({
+          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
+          tags: __S(8, __c1, 0),
+        }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
             svc,
@@ -1354,7 +1250,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(0, __c0, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -1371,7 +1267,7 @@ function __c4(j: number): any {
         S.Struct({
           identifier: S.String,
           name: S.optional(S.String),
-          destinationConfiguration: S.optional(DestinationConfiguration),
+          destinationConfiguration: S.optional(__S(7, __c0, 7)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/UpdateLoggingConfiguration" }),
@@ -1392,8 +1288,8 @@ function __c4(j: number): any {
           name: S.optional(S.String),
           maximumMessageRatePerSecond: S.optional(S.Number),
           maximumMessageLength: S.optional(S.Number),
-          messageReviewHandler: S.optional(MessageReviewHandler),
-          loggingConfigurationIdentifiers: S.optional(LoggingConfigurationIdentifierList),
+          messageReviewHandler: S.optional(__S(11, __c1, 3)),
+          loggingConfigurationIdentifiers: S.optional(__S(0, __c0, 0)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/UpdateRoom" }), svc, auth, proto, ver, rules),
         ),
@@ -1403,6 +1299,11 @@ function __c4(j: number): any {
         identifier: "ValidationExceptionField",
       });
     case 6:
-      return S.Array(ValidationExceptionField);
+      return S.Array(__S(37, __c4, 5));
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

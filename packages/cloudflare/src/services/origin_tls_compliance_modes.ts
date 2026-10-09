@@ -10,6 +10,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -22,14 +24,7 @@ export interface DeleteOriginTlsComplianceModeRequest {
   /** Identifier. */
   zoneId: string;
 }
-const DeleteOriginTlsComplianceModeRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<DeleteOriginTlsComplianceModeRequest>;
-
 export type DeleteResponseId = "origin_tls_compliance_modes";
-const DeleteResponseId = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteOriginTlsComplianceModeResponse {
   /** The identifier of the caching setting. */
@@ -39,26 +34,12 @@ export interface DeleteOriginTlsComplianceModeResponse {
   /** Last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const DeleteOriginTlsComplianceModeResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<DeleteOriginTlsComplianceModeResponse>;
-
 export interface GetOriginTlsComplianceModeRequest {
   /** Identifier. */
   zoneId: string;
 }
-const GetOriginTlsComplianceModeRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<GetOriginTlsComplianceModeRequest>;
-
 export type GetResponseId = "origin_tls_compliance_modes";
-const GetResponseId = S.String;
-
 export type GetResponseValueList = Array<string>;
-const GetResponseValueList = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<GetResponseValueList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetOriginTlsComplianceModeResponse {
   /** The identifier of the caching setting. */
@@ -70,31 +51,15 @@ export interface GetOriginTlsComplianceModeResponse {
   /** Last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const GetOriginTlsComplianceModeResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<GetOriginTlsComplianceModeResponse>;
-
 export type EditRequestValueList = Array<string>;
-const EditRequestValueList = GetResponseValueList as any as S.Schema<EditRequestValueList>;
-
 export interface PatchOriginTlsComplianceModeRequest {
   /** Identifier. */
   zoneId: string;
   /** List of TLS compliance modes that constrain the key-exchange algorithms Cloudflare may use when establishing the TLS connection to the zone's origin. Currently supported values are `fips` (FIPS-approved curves) and `pqh` (post-quantum hybrid). Future modes (e.g. `cnsa2`) may be added; clients should treat unknown values as opaque strings. Multiple modes are combined as the intersection of their permitted algorithm lists; selections whose intersection is empty are rejected. An empty list clears the constraint. */
   value: EditRequestValueList;
 }
-const PatchOriginTlsComplianceModeRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<PatchOriginTlsComplianceModeRequest>;
-
 export type EditResponseId = "origin_tls_compliance_modes";
-const EditResponseId = S.String;
-
 export type EditResponseValueList = Array<string>;
-const EditResponseValueList = GetResponseValueList as any as S.Schema<EditResponseValueList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchOriginTlsComplianceModeResponse {
   /** The identifier of the caching setting. */
@@ -106,31 +71,15 @@ export interface PatchOriginTlsComplianceModeResponse {
   /** Last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const PatchOriginTlsComplianceModeResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<PatchOriginTlsComplianceModeResponse>;
-
 export type UpdateRequestValueList = Array<string>;
-const UpdateRequestValueList = GetResponseValueList as any as S.Schema<UpdateRequestValueList>;
-
 export interface PutOriginTlsComplianceModeRequest {
   /** Identifier. */
   zoneId: string;
   /** List of TLS compliance modes that constrain the key-exchange algorithms Cloudflare may use when establishing the TLS connection to the zone's origin. Currently supported values are `fips` (FIPS-approved curves) and `pqh` (post-quantum hybrid). Future modes (e.g. `cnsa2`) may be added; clients should treat unknown values as opaque strings. Multiple modes are combined as the intersection of their permitted algorithm lists; selections whose intersection is empty are rejected. An empty list clears the constraint. */
   value: UpdateRequestValueList;
 }
-const PutOriginTlsComplianceModeRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<PutOriginTlsComplianceModeRequest>;
-
 export type UpdateResponseId = "origin_tls_compliance_modes";
-const UpdateResponseId = S.String;
-
 export type UpdateResponseValueList = Array<string>;
-const UpdateResponseValueList = GetResponseValueList as any as S.Schema<UpdateResponseValueList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutOriginTlsComplianceModeResponse {
   /** The identifier of the caching setting. */
@@ -142,11 +91,6 @@ export interface PutOriginTlsComplianceModeResponse {
   /** Last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const PutOriginTlsComplianceModeResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<PutOriginTlsComplianceModeResponse>;
-
 export type DeleteOriginTlsComplianceModeError = CloudflareOpError;
 /** Delete the Origin TLS Compliance Modes setting for the zone, removing any configured compliance constraint. After deletion, Cloudflare's default behavior applies (no compliance filtering of the key-exchange algorithm list sent to the origin). */
 export const deleteOriginTlsComplianceMode: API.OperationMethod<
@@ -155,8 +99,8 @@ export const deleteOriginTlsComplianceMode: API.OperationMethod<
   DeleteOriginTlsComplianceModeError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOriginTlsComplianceModeRequest,
-  output: DeleteOriginTlsComplianceModeResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteOriginTlsComplianceModeRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteOriginTlsComplianceModeResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -170,8 +114,8 @@ export const getOriginTlsComplianceMode: API.OperationMethod<
   GetOriginTlsComplianceModeError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOriginTlsComplianceModeRequest,
-  output: GetOriginTlsComplianceModeResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<GetOriginTlsComplianceModeRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<GetOriginTlsComplianceModeResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -185,8 +129,8 @@ export const patchOriginTlsComplianceMode: API.OperationMethod<
   PatchOriginTlsComplianceModeError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchOriginTlsComplianceModeRequest,
-  output: PatchOriginTlsComplianceModeResponse,
+  input: __S(5, __c0, 5) as any as S.Schema<PatchOriginTlsComplianceModeRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<PatchOriginTlsComplianceModeResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -200,8 +144,8 @@ export const putOriginTlsComplianceMode: API.OperationMethod<
   PutOriginTlsComplianceModeError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutOriginTlsComplianceModeRequest,
-  output: PutOriginTlsComplianceModeResponse,
+  input: __S(7, __c0, 7) as any as S.Schema<PutOriginTlsComplianceModeRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutOriginTlsComplianceModeResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -229,7 +173,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          id: DeleteResponseId,
+          id: S.String,
           editable: S.Boolean,
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -257,9 +201,9 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          id: GetResponseId,
+          id: S.String,
           editable: S.Boolean,
-          value: GetResponseValueList,
+          value: __S(3, __c0, 3),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -269,7 +213,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          value: EditRequestValueList,
+          value: __S(3, __c0, 3),
         })
           .pipe(
             T.Http({
@@ -285,9 +229,9 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          id: EditResponseId,
+          id: S.String,
           editable: S.Boolean,
-          value: EditResponseValueList,
+          value: __S(3, __c0, 3),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -297,7 +241,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          value: UpdateRequestValueList,
+          value: __S(3, __c0, 3),
         })
           .pipe(
             T.Http({
@@ -317,13 +261,18 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          id: UpdateResponseId,
+          id: S.String,
           editable: S.Boolean,
-          value: UpdateResponseValueList,
+          value: __S(3, __c0, 3),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "PutOriginTlsComplianceModeResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

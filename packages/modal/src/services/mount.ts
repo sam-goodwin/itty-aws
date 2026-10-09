@@ -6,34 +6,22 @@ import { UnknownModalError } from "../errors.ts";
 import { ModalProtocol, type ModalOpError, type ModalOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { ModalOpError, ModalOpContext };
 
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<StringList>;
-
 export interface MountBatchedCheckExistenceRequest {
   sha256HexHashes?: StringList;
 }
-const MountBatchedCheckExistenceRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<MountBatchedCheckExistenceRequest>;
-
 export interface MountBatchedCheckExistenceResponse {
   missingSha256HexHashes?: StringList;
 }
-const MountBatchedCheckExistenceResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<MountBatchedCheckExistenceResponse>;
-
 export type DeploymentNamespace =
   | "DEPLOYMENT_NAMESPACE_UNSPECIFIED"
   | "DEPLOYMENT_NAMESPACE_WORKSPACE"
   | "DEPLOYMENT_NAMESPACE_GLOBAL";
-const DeploymentNamespace = S.String;
-
 export type ObjectCreationType =
   | "OBJECT_CREATION_TYPE_UNSPECIFIED"
   | "OBJECT_CREATION_TYPE_CREATE_IF_MISSING"
@@ -41,8 +29,6 @@ export type ObjectCreationType =
   | "OBJECT_CREATION_TYPE_CREATE_OVERWRITE_IF_EXISTS"
   | "OBJECT_CREATION_TYPE_ANONYMOUS_OWNED_BY_APP"
   | "OBJECT_CREATION_TYPE_EPHEMERAL";
-const ObjectCreationType = S.String;
-
 export interface MountFile {
   filename?: string;
   sha256Hex?: string;
@@ -51,11 +37,7 @@ export interface MountFile {
   /** Size of the file in bytes -- ignored in MountBuild(). */
   mode?: number;
 }
-const MountFile = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<MountFile>;
-
 export type MountFileList = Array<MountFile>;
-const MountFileList = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<MountFileList>;
-
 export interface MountGetOrCreateRequest {
   deploymentName?: string;
   namespace?: DeploymentNamespace | (string & {});
@@ -64,37 +46,21 @@ export interface MountGetOrCreateRequest {
   files?: MountFileList;
   appId?: string;
 }
-const MountGetOrCreateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<MountGetOrCreateRequest>;
-
 export interface MountHandleMetadata {
   contentChecksumSha256Hex?: string;
 }
-const MountHandleMetadata = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<MountHandleMetadata>;
-
 export interface MountGetOrCreateResponse {
   mountId?: string;
   handleMetadata?: MountHandleMetadata;
 }
-const MountGetOrCreateResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<MountGetOrCreateResponse>;
-
 export interface MountPutFileRequest {
   sha256Hex?: string;
   data?: string;
   dataBlobId?: string;
 }
-const MountPutFileRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<MountPutFileRequest>;
-
 export interface MountPutFileResponse {
   exists?: boolean;
 }
-const MountPutFileResponse = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<MountPutFileResponse>;
-
 export type MountBatchedCheckExistenceError = ModalOpError;
 /** Mounts */
 export const mountBatchedCheckExistence: API.OperationMethod<
@@ -103,8 +69,8 @@ export const mountBatchedCheckExistence: API.OperationMethod<
   MountBatchedCheckExistenceError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MountBatchedCheckExistenceRequest,
-  output: MountBatchedCheckExistenceResponse,
+  input: __S(1, __c0, 1) as any as S.Schema<MountBatchedCheckExistenceRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<MountBatchedCheckExistenceResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -117,8 +83,8 @@ export const mountGetOrCreate: API.OperationMethod<
   MountGetOrCreateError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MountGetOrCreateRequest,
-  output: MountGetOrCreateResponse,
+  input: __S(5, __c0, 5) as any as S.Schema<MountGetOrCreateRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<MountGetOrCreateResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -131,8 +97,8 @@ export const mountPutFile: API.OperationMethod<
   MountPutFileError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MountPutFileRequest,
-  output: MountPutFileResponse,
+  input: __S(8, __c1, 0) as any as S.Schema<MountPutFileRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<MountPutFileResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -146,7 +112,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          sha256HexHashes: S.optional(StringList),
+          sha256HexHashes: S.optional(__S(0, __c0, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -160,7 +126,7 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          missingSha256HexHashes: S.optional(StringList),
+          missingSha256HexHashes: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({
         identifier: "MountBatchedCheckExistenceResponse",
@@ -175,15 +141,15 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "MountFile" });
     case 4:
-      return S.Array(MountFile);
+      return S.Array(__S(3, __c0, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           deploymentName: S.optional(S.String),
-          namespace: S.optional(DeploymentNamespace),
+          namespace: S.optional(S.String),
           environmentName: S.optional(S.String),
-          objectCreationType: S.optional(ObjectCreationType),
-          files: S.optional(MountFileList),
+          objectCreationType: S.optional(S.String),
+          files: S.optional(__S(4, __c0, 4)),
           appId: S.optional(S.String),
         }).pipe(
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/MountGetOrCreate", code: 200 }),
@@ -199,7 +165,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           mountId: S.optional(S.String),
-          handleMetadata: S.optional(MountHandleMetadata),
+          handleMetadata: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({ identifier: "MountGetOrCreateResponse" });
   }
@@ -223,4 +189,9 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "MountPutFileResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

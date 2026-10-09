@@ -7,6 +7,8 @@ import { UnknownStackitError } from "../errors.ts";
 import { StackitProtocol, type StackitOpError, type StackitOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { StackitOpError, StackitOpContext };
 
@@ -38,16 +40,12 @@ export class NotFound
   ) {}
 
 export type GetCostsForProjectRequestDepth = "project" | "service" | "auto";
-const GetCostsForProjectRequestDepth = S.String;
-
 export type GetCostsForProjectRequestGranularity =
   | "daily"
   | "weekly"
   | "monthly"
   | "yearly"
   | "none";
-const GetCostsForProjectRequestGranularity = S.String;
-
 export interface GetCostsForProjectRequest {
   /** ID of a customer account */
   customerAccountId: string;
@@ -64,11 +62,6 @@ export interface GetCostsForProjectRequest {
   /** Whether costs of 0 should be included in the response */
   includeZeroCosts?: boolean;
 }
-const GetCostsForProjectRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GetCostsForProjectRequest>;
-
 /** Summarized costs for a project */
 export interface SummarizedProjectCost {
   customerAccountId: string;
@@ -169,25 +162,14 @@ export type ProjectCost =
   | ProjectCostWithReports
   | ProjectCostWithSummarizedServices
   | ProjectCostWithDetailedServices;
-const ProjectCost = /*@__PURE__*/ S.Unknown as any as S.Schema<ProjectCost>;
-
 export type GetCostsForProjectResponse = ProjectCost;
-const GetCostsForProjectResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<GetCostsForProjectResponse>;
-
 export type ListCostsForCustomerRequestDepth = "project" | "service" | "auto";
-const ListCostsForCustomerRequestDepth = S.String;
-
 export type ListCostsForCustomerRequestGranularity =
   | "daily"
   | "weekly"
   | "monthly"
   | "yearly"
   | "none";
-const ListCostsForCustomerRequestGranularity = S.String;
-
 export interface ListCostsForCustomerRequest {
   /** ID of a customer account */
   customerAccountId: string;
@@ -202,34 +184,15 @@ export interface ListCostsForCustomerRequest {
   /** Whether costs of 0 should be included in the response */
   includeZeroCosts?: boolean;
 }
-const ListCostsForCustomerRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<ListCostsForCustomerRequest>;
-
 export type ListCostsForCustomerResponseBodyList = Array<ProjectCost>;
-const ListCostsForCustomerResponseBodyList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ListCostsForCustomerResponseBodyList>;
-
 export type ListCostsForCustomerResponse = ListCostsForCustomerResponseBodyList;
-const ListCostsForCustomerResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ListCostsForCustomerResponse>;
-
 export type ListCostsForResellerRequestDepth = "project" | "service" | "auto";
-const ListCostsForResellerRequestDepth = S.String;
-
 export type ListCostsForResellerRequestGranularity =
   | "daily"
   | "weekly"
   | "monthly"
   | "yearly"
   | "none";
-const ListCostsForResellerRequestGranularity = S.String;
-
 export interface ListCostsForResellerRequest {
   /** ID of a customer account */
   customerAccountId: string;
@@ -244,16 +207,8 @@ export interface ListCostsForResellerRequest {
   /** Whether costs of 0 should be included in the response */
   includeZeroCosts?: boolean;
 }
-const ListCostsForResellerRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ListCostsForResellerRequest>;
-
 export type ListCostsForResellerResponseBodyList = Array<ProjectCost>;
 export type ListCostsForResellerResponse = ListCostsForResellerResponseBodyList;
-const ListCostsForResellerResponse =
-  ListCostsForCustomerResponse as any as S.Schema<ListCostsForResellerResponse>;
-
 export type GetCostsForProjectError = BadRequest | Forbidden | NotFound | StackitOpError;
 /** V3 Costs for a certain project Get costs for a certain project in a customer account */
 export const getCostsForProject: API.OperationMethod<
@@ -262,8 +217,8 @@ export const getCostsForProject: API.OperationMethod<
   GetCostsForProjectError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCostsForProjectRequest,
-  output: GetCostsForProjectResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<GetCostsForProjectRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<GetCostsForProjectResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -277,8 +232,8 @@ export const listCostsForCustomer: API.OperationMethod<
   ListCostsForCustomerError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCostsForCustomerRequest,
-  output: ListCostsForCustomerResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<ListCostsForCustomerRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<ListCostsForCustomerResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -292,8 +247,8 @@ export const listCostsForReseller: API.OperationMethod<
   ListCostsForResellerError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCostsForResellerRequest,
-  output: ListCostsForResellerResponse,
+  input: __S(5, __c0, 5) as any as S.Schema<ListCostsForResellerRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<ListCostsForResellerResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -309,8 +264,8 @@ function __c0(j: number): any {
           projectId: S.String.pipe(T.Label()),
           from: S.String.pipe(T.Query()),
           to: S.String.pipe(T.Query()),
-          depth: S.optional(GetCostsForProjectRequestDepth.pipe(T.Query())),
-          granularity: S.optional(GetCostsForProjectRequestGranularity.pipe(T.Query())),
+          depth: S.optional(S.String.pipe(T.Query())),
+          granularity: S.optional(S.String.pipe(T.Query())),
           includeZeroCosts: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -324,7 +279,7 @@ function __c0(j: number): any {
         identifier: "GetCostsForProjectRequest",
       });
     case 1:
-      return S.suspend(() => ProjectCost.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetCostsForProjectResponse",
       });
     case 2:
@@ -333,8 +288,8 @@ function __c0(j: number): any {
           customerAccountId: S.String.pipe(T.Label()),
           from: S.String.pipe(T.Query()),
           to: S.String.pipe(T.Query()),
-          depth: S.optional(ListCostsForCustomerRequestDepth.pipe(T.Query())),
-          granularity: S.optional(ListCostsForCustomerRequestGranularity.pipe(T.Query())),
+          depth: S.optional(S.String.pipe(T.Query())),
+          granularity: S.optional(S.String.pipe(T.Query())),
           includeZeroCosts: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -348,11 +303,9 @@ function __c0(j: number): any {
         identifier: "ListCostsForCustomerRequest",
       });
     case 3:
-      return S.Array(ProjectCost);
+      return S.Array(S.Unknown);
     case 4:
-      return S.suspend(() =>
-        ListCostsForCustomerResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(3, __c0, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListCostsForCustomerResponse",
       });
     case 5:
@@ -361,8 +314,8 @@ function __c0(j: number): any {
           customerAccountId: S.String.pipe(T.Label()),
           from: S.String.pipe(T.Query()),
           to: S.String.pipe(T.Query()),
-          depth: S.optional(ListCostsForResellerRequestDepth.pipe(T.Query())),
-          granularity: S.optional(ListCostsForResellerRequestGranularity.pipe(T.Query())),
+          depth: S.optional(S.String.pipe(T.Query())),
+          granularity: S.optional(S.String.pipe(T.Query())),
           includeZeroCosts: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -376,4 +329,9 @@ function __c0(j: number): any {
         identifier: "ListCostsForResellerRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

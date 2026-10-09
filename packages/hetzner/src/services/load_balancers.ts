@@ -7,23 +7,18 @@ import { paginatePageNumber } from "../pagination.ts";
 import { HetznerProtocol, type HetznerOpError, type HetznerOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { HetznerOpError, HetznerOpContext };
 
 /** Type of the algorithm. */
 export type CreateLoadBalancerRequestAlgorithmType = "round_robin" | "least_connections";
-const CreateLoadBalancerRequestAlgorithmType = S.String;
-
 /** Algorithm of the Load Balancer. */
 export interface CreateLoadBalancerRequestAlgorithm {
   /** Type of the algorithm. */
   type: CreateLoadBalancerRequestAlgorithmType | (string & {});
 }
-const CreateLoadBalancerRequestAlgorithm = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateLoadBalancerRequestAlgorithm>;
-
 /** Protocol of the Load Balancer. */
 export type ServiceTCPProtocol = "tcp" | "http" | "https";
 /** Type of the health check. */
@@ -198,20 +193,10 @@ export type CreateLoadBalancerRequestServicesItem =
   | ServiceTCP
   | ServiceHTTPProtocol
   | ServiceHTTPSProtocol;
-const CreateLoadBalancerRequestServicesItem =
-  S.Unknown as any as S.Schema<CreateLoadBalancerRequestServicesItem>;
-
 /** Array of services. */
 export type CreateLoadBalancerRequestServicesList = Array<CreateLoadBalancerRequestServicesItem>;
-const CreateLoadBalancerRequestServicesList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateLoadBalancerRequestServicesList>;
-
 /** Type of the resource. */
 export type CreateLoadBalancerRequestTargetsItemType = "server" | "label_selector" | "ip";
-const CreateLoadBalancerRequestTargetsItemType = S.String;
-
 /** Configuration for type Server, only valid and required if type is `server`. */
 export interface CreateLoadBalancerRequestTargetsItemServer {
   /** ID of the Server. */
@@ -219,31 +204,16 @@ export interface CreateLoadBalancerRequestTargetsItemServer {
   /** Optional public IP of the Server to use as target. Must be the Primary IPv4 of the Server, or an IPv6 host address within IPv6 /64 subnet of the Server. If omitted, the Primary IPv4 of the Server is used. Must not be a private IP and is only valid for public targets. */
   ip?: string;
 }
-const CreateLoadBalancerRequestTargetsItemServer = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateLoadBalancerRequestTargetsItemServer>;
-
 /** Configuration for label selector targets, only valid and required if type is `label_selector`. */
 export interface CreateLoadBalancerRequestTargetsItemLabelSelector {
   /** Label selector. */
   selector: string;
 }
-const CreateLoadBalancerRequestTargetsItemLabelSelector = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateLoadBalancerRequestTargetsItemLabelSelector>;
-
 /** Configuration for an IP target. It is only possible to use the (Public or vSwitch) IPs of Hetzner Online Root Servers belonging to the project owner. IPs belonging to other users are blocked. Additionally IPs belonging to services provided by Hetzner Cloud (Servers, Load Balancers, ...) are blocked as well. Only valid and required if type is `ip`. */
 export interface CreateLoadBalancerRequestTargetsItemIp {
   /** IP of a server that belongs to the same customer (public IPv4/IPv6) or private IP in a subnet type vswitch. */
   ip: string;
 }
-const CreateLoadBalancerRequestTargetsItemIp = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateLoadBalancerRequestTargetsItemIp>;
-
 export interface CreateLoadBalancerRequestTargetsItem {
   /** Type of the resource. */
   type: CreateLoadBalancerRequestTargetsItemType | (string & {});
@@ -256,25 +226,10 @@ export interface CreateLoadBalancerRequestTargetsItem {
   /** Use the private network IP instead of the public IP of the Server, requires the Server and Load Balancer to be in the same network. Only valid for target types `server` and `label_selector`. */
   use_private_ip?: boolean;
 }
-const CreateLoadBalancerRequestTargetsItem = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateLoadBalancerRequestTargetsItem>;
-
 /** Array of targets. */
 export type CreateLoadBalancerRequestTargetsList = Array<CreateLoadBalancerRequestTargetsItem>;
-const CreateLoadBalancerRequestTargetsList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateLoadBalancerRequestTargetsList>;
-
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type CreateLoadBalancerRequestLabelsMap = { [key: string]: string | undefined };
-const CreateLoadBalancerRequestLabelsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateLoadBalancerRequestLabelsMap>;
-
 export interface CreateLoadBalancerRequest {
   /** Name of the Load Balancer. */
   name: string;
@@ -297,11 +252,6 @@ export interface CreateLoadBalancerRequest {
   /** ID or name of Location to create Load Balancer in. */
   location?: string;
 }
-const CreateLoadBalancerRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateLoadBalancerRequest>;
-
 /** IP address (v4). */
 export interface CreateLoadBalancerResponseLoadBalancerPublicNetIpv4 {
   /** IP address (v4) of this Load Balancer. */
@@ -309,11 +259,6 @@ export interface CreateLoadBalancerResponseLoadBalancerPublicNetIpv4 {
   /** Reverse DNS PTR entry for the IPv4 address of this Load Balancer. */
   dns_ptr: string | null;
 }
-const CreateLoadBalancerResponseLoadBalancerPublicNetIpv4 = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateLoadBalancerResponseLoadBalancerPublicNetIpv4>;
-
 /** IP address (v6). */
 export interface CreateLoadBalancerResponseLoadBalancerPublicNetIpv6 {
   /** IP address (v6) of this Load Balancer. */
@@ -321,9 +266,6 @@ export interface CreateLoadBalancerResponseLoadBalancerPublicNetIpv6 {
   /** Reverse DNS PTR entry for the IPv6 address of this Load Balancer. */
   dns_ptr: string | null;
 }
-const CreateLoadBalancerResponseLoadBalancerPublicNetIpv6 =
-  CreateLoadBalancerResponseLoadBalancerPublicNetIpv4 as any as S.Schema<CreateLoadBalancerResponseLoadBalancerPublicNetIpv6>;
-
 /** Public network information. */
 export interface CreateLoadBalancerResponseLoadBalancerPublicNet {
   /** Public Interface enabled or not. */
@@ -333,30 +275,15 @@ export interface CreateLoadBalancerResponseLoadBalancerPublicNet {
   /** IP address (v6). */
   ipv6: CreateLoadBalancerResponseLoadBalancerPublicNetIpv6;
 }
-const CreateLoadBalancerResponseLoadBalancerPublicNet = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateLoadBalancerResponseLoadBalancerPublicNet>;
-
 export interface CreateLoadBalancerResponseLoadBalancerPrivateNetItem {
   /** ID of the Network. */
   network: number;
   /** IP address (v4) of this Load Balancer in this Network. */
   ip: string;
 }
-const CreateLoadBalancerResponseLoadBalancerPrivateNetItem = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateLoadBalancerResponseLoadBalancerPrivateNetItem>;
-
 /** Private networks information. */
 export type CreateLoadBalancerResponseLoadBalancerPrivateNetList =
   Array<CreateLoadBalancerResponseLoadBalancerPrivateNetItem>;
-const CreateLoadBalancerResponseLoadBalancerPrivateNetList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CreateLoadBalancerResponseLoadBalancerPrivateNetList>;
-
 export interface CreateLoadBalancerResponseLoadBalancerLocation {
   /** ID of the [Location](#tag/locations). */
   id: number;
@@ -375,11 +302,6 @@ export interface CreateLoadBalancerResponseLoadBalancerLocation {
   /** Name of the Network Zone this [Location](#tag/locations) resides in. */
   network_zone: string;
 }
-const CreateLoadBalancerResponseLoadBalancerLocation = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CreateLoadBalancerResponseLoadBalancerLocation>;
-
 /** Describes if, when and how the resource is deprecated. If this field is set to `null` the resource is not deprecated. If a value is set, it is considered deprecated. */
 export interface CreateLoadBalancerResponseLoadBalancerLoadBalancerTypeDeprecation {
   /** Date of the deprecated resource removal. Once this date is reached, the resource will not be returned by resource type "list" endpoint, and the resource can not be used to create new resources. For example, if this is an image, you can not create new servers with this image after the mentioned date. */
@@ -387,11 +309,6 @@ export interface CreateLoadBalancerResponseLoadBalancerLoadBalancerTypeDeprecati
   /** Date of the deprecation announcement. */
   announced: string;
 }
-const CreateLoadBalancerResponseLoadBalancerLoadBalancerTypeDeprecation = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateLoadBalancerResponseLoadBalancerLoadBalancerTypeDeprecation>;
-
 /** Hourly price in this [Location](#tag/locations). */
 export interface CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPriceHourly {
   /** Price without VAT. */
@@ -399,12 +316,6 @@ export interface CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesIte
   /** Price with VAT added. */
   gross: string;
 }
-const CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPriceHourly =
-  /*@__PURE__*/ __L.at(
-    __c1,
-    7,
-  ) as any as S.Schema<CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPriceHourly>;
-
 /** Monthly price in this [Location](#tag/locations). */
 export type CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPriceMonthly =
   CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPriceHourly;
@@ -423,19 +334,9 @@ export interface CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesIte
   /** Additional traffic price per TB in this [Location](#tag/locations). */
   price_per_tb_traffic: CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPriceHourly;
 }
-const CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItem = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItem>;
-
 /** Price per [Location](#tag/locations). */
 export type CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesList =
   Array<CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItem>;
-const CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesList = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesList>;
-
 export interface CreateLoadBalancerResponseLoadBalancerLoadBalancerType {
   /** ID of the Load Balancer type. */
   id: number;
@@ -458,41 +359,20 @@ export interface CreateLoadBalancerResponseLoadBalancerLoadBalancerType {
   /** Price per [Location](#tag/locations). */
   prices: CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesList;
 }
-const CreateLoadBalancerResponseLoadBalancerLoadBalancerType = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<CreateLoadBalancerResponseLoadBalancerLoadBalancerType>;
-
 /** Protection configuration for the Resource. */
 export interface CreateLoadBalancerResponseLoadBalancerProtection {
   /** Prevent the Resource from being deleted. */
   delete: boolean;
 }
-const CreateLoadBalancerResponseLoadBalancerProtection = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<CreateLoadBalancerResponseLoadBalancerProtection>;
-
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type CreateLoadBalancerResponseLoadBalancerLabelsMap = { [key: string]: string | undefined };
-const CreateLoadBalancerResponseLoadBalancerLabelsMap =
-  CreateLoadBalancerRequestLabelsMap as any as S.Schema<CreateLoadBalancerResponseLoadBalancerLabelsMap>;
-
 export type CreateLoadBalancerResponseLoadBalancerServicesItem =
   | ServiceTCP
   | ServiceHTTPProtocol
   | ServiceHTTPSProtocol;
-const CreateLoadBalancerResponseLoadBalancerServicesItem =
-  S.Unknown as any as S.Schema<CreateLoadBalancerResponseLoadBalancerServicesItem>;
-
 /** List of services that belong to this Load Balancer. */
 export type CreateLoadBalancerResponseLoadBalancerServicesList =
   Array<CreateLoadBalancerResponseLoadBalancerServicesItem>;
-const CreateLoadBalancerResponseLoadBalancerServicesList = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<CreateLoadBalancerResponseLoadBalancerServicesList>;
-
 /** Type of the resource. */
 export type TargetTypeServerType = "server" | "label_selector" | "ip";
 /** Server where the traffic should be routed to. Only present for target type "server". */
@@ -618,17 +498,9 @@ export type CreateLoadBalancerResponseLoadBalancerTargetsItem =
   | TargetTypeServer
   | TargetTypeLabelSelector
   | TargetTypeIP;
-const CreateLoadBalancerResponseLoadBalancerTargetsItem =
-  S.Unknown as any as S.Schema<CreateLoadBalancerResponseLoadBalancerTargetsItem>;
-
 /** List of targets that belong to this Load Balancer. */
 export type CreateLoadBalancerResponseLoadBalancerTargetsList =
   Array<CreateLoadBalancerResponseLoadBalancerTargetsItem>;
-const CreateLoadBalancerResponseLoadBalancerTargetsList = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<CreateLoadBalancerResponseLoadBalancerTargetsList>;
-
 /** Type of the algorithm. */
 export type CreateLoadBalancerResponseLoadBalancerAlgorithmType =
   | "round_robin"
@@ -638,9 +510,6 @@ export interface CreateLoadBalancerResponseLoadBalancerAlgorithm {
   /** Type of the algorithm. */
   type: CreateLoadBalancerResponseLoadBalancerAlgorithmType;
 }
-const CreateLoadBalancerResponseLoadBalancerAlgorithm =
-  CreateLoadBalancerRequestAlgorithm as any as S.Schema<CreateLoadBalancerResponseLoadBalancerAlgorithm>;
-
 export interface CreateLoadBalancerResponseLoadBalancer {
   /** ID of the [Load Balancer](#tag/load-balancers). */
   id: number;
@@ -671,34 +540,17 @@ export interface CreateLoadBalancerResponseLoadBalancer {
   /** Free Traffic for the current billing period in bytes. */
   included_traffic: number;
 }
-const CreateLoadBalancerResponseLoadBalancer = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<CreateLoadBalancerResponseLoadBalancer>;
-
 /** Status of the Action. */
 export type CreateLoadBalancerResponseActionStatus = "running" | "success" | "error";
-const CreateLoadBalancerResponseActionStatus = S.String;
-
 export interface CreateLoadBalancerResponseActionResourcesItem {
   /** ID of the Resource. */
   id: number;
   /** Type of the Resource. */
   type: string;
 }
-const CreateLoadBalancerResponseActionResourcesItem = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<CreateLoadBalancerResponseActionResourcesItem>;
-
 /** Resources the Action relates to. */
 export type CreateLoadBalancerResponseActionResourcesList =
   Array<CreateLoadBalancerResponseActionResourcesItem>;
-const CreateLoadBalancerResponseActionResourcesList = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<CreateLoadBalancerResponseActionResourcesList>;
-
 /** Error message for the Action if an error occurred, otherwise null. */
 export interface CreateLoadBalancerResponseActionError {
   /** Fixed error code for machines. */
@@ -706,11 +558,6 @@ export interface CreateLoadBalancerResponseActionError {
   /** Error message for humans. */
   message: string;
 }
-const CreateLoadBalancerResponseActionError = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<CreateLoadBalancerResponseActionError>;
-
 export interface CreateLoadBalancerResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -729,44 +576,19 @@ export interface CreateLoadBalancerResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: CreateLoadBalancerResponseActionError | null;
 }
-const CreateLoadBalancerResponseAction = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<CreateLoadBalancerResponseAction>;
-
 export interface CreateLoadBalancerResponse {
   load_balancer: CreateLoadBalancerResponseLoadBalancer;
   action: CreateLoadBalancerResponseAction;
 }
-const CreateLoadBalancerResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<CreateLoadBalancerResponse>;
-
 export interface DeleteLoadBalancerRequest {
   /** ID of the Load Balancer. */
   id: number;
 }
-const DeleteLoadBalancerRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<DeleteLoadBalancerRequest>;
-
 export interface DeleteLoadBalancerResponse {}
-const DeleteLoadBalancerResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<DeleteLoadBalancerResponse>;
-
 export interface GetLoadBalancerRequest {
   /** ID of the Load Balancer. */
   id: number;
 }
-const GetLoadBalancerRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<GetLoadBalancerRequest>;
-
 /** IP address (v4). */
 export type GetLoadBalancerResponseLoadBalancerPublicNetIpv4 =
   CreateLoadBalancerResponseLoadBalancerPublicNetIpv4;
@@ -781,9 +603,6 @@ export type GetLoadBalancerResponseLoadBalancerPrivateNetItem =
 /** Private networks information. */
 export type GetLoadBalancerResponseLoadBalancerPrivateNetList =
   Array<CreateLoadBalancerResponseLoadBalancerPrivateNetItem>;
-const GetLoadBalancerResponseLoadBalancerPrivateNetList =
-  CreateLoadBalancerResponseLoadBalancerPrivateNetList as any as S.Schema<GetLoadBalancerResponseLoadBalancerPrivateNetList>;
-
 export type GetLoadBalancerResponseLoadBalancerLocation =
   CreateLoadBalancerResponseLoadBalancerLocation;
 /** Describes if, when and how the resource is deprecated. If this field is set to `null` the resource is not deprecated. If a value is set, it is considered deprecated. */
@@ -803,11 +622,6 @@ export type GetLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItem =
 /** Price per [Location](#tag/locations). */
 export type GetLoadBalancerResponseLoadBalancerLoadBalancerTypePricesList =
   Array<CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItem>;
-const GetLoadBalancerResponseLoadBalancerLoadBalancerTypePricesList = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<GetLoadBalancerResponseLoadBalancerLoadBalancerTypePricesList>;
-
 export interface GetLoadBalancerResponseLoadBalancerLoadBalancerType {
   /** ID of the Load Balancer type. */
   id: number;
@@ -830,49 +644,25 @@ export interface GetLoadBalancerResponseLoadBalancerLoadBalancerType {
   /** Price per [Location](#tag/locations). */
   prices: GetLoadBalancerResponseLoadBalancerLoadBalancerTypePricesList;
 }
-const GetLoadBalancerResponseLoadBalancerLoadBalancerType = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<GetLoadBalancerResponseLoadBalancerLoadBalancerType>;
-
 /** Protection configuration for the Resource. */
 export type GetLoadBalancerResponseLoadBalancerProtection =
   CreateLoadBalancerResponseLoadBalancerProtection;
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type GetLoadBalancerResponseLoadBalancerLabelsMap = { [key: string]: string | undefined };
-const GetLoadBalancerResponseLoadBalancerLabelsMap =
-  CreateLoadBalancerRequestLabelsMap as any as S.Schema<GetLoadBalancerResponseLoadBalancerLabelsMap>;
-
 export type GetLoadBalancerResponseLoadBalancerServicesItem =
   | ServiceTCP
   | ServiceHTTPProtocol
   | ServiceHTTPSProtocol;
-const GetLoadBalancerResponseLoadBalancerServicesItem =
-  S.Unknown as any as S.Schema<GetLoadBalancerResponseLoadBalancerServicesItem>;
-
 /** List of services that belong to this Load Balancer. */
 export type GetLoadBalancerResponseLoadBalancerServicesList =
   Array<GetLoadBalancerResponseLoadBalancerServicesItem>;
-const GetLoadBalancerResponseLoadBalancerServicesList = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<GetLoadBalancerResponseLoadBalancerServicesList>;
-
 export type GetLoadBalancerResponseLoadBalancerTargetsItem =
   | TargetTypeServer
   | TargetTypeLabelSelector
   | TargetTypeIP;
-const GetLoadBalancerResponseLoadBalancerTargetsItem =
-  S.Unknown as any as S.Schema<GetLoadBalancerResponseLoadBalancerTargetsItem>;
-
 /** List of targets that belong to this Load Balancer. */
 export type GetLoadBalancerResponseLoadBalancerTargetsList =
   Array<GetLoadBalancerResponseLoadBalancerTargetsItem>;
-const GetLoadBalancerResponseLoadBalancerTargetsList = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<GetLoadBalancerResponseLoadBalancerTargetsList>;
-
 /** Type of the algorithm. */
 export type GetLoadBalancerResponseLoadBalancerAlgorithmType = "round_robin" | "least_connections";
 /** Algorithm of the Load Balancer. */
@@ -880,9 +670,6 @@ export interface GetLoadBalancerResponseLoadBalancerAlgorithm {
   /** Type of the algorithm. */
   type: GetLoadBalancerResponseLoadBalancerAlgorithmType;
 }
-const GetLoadBalancerResponseLoadBalancerAlgorithm =
-  CreateLoadBalancerRequestAlgorithm as any as S.Schema<GetLoadBalancerResponseLoadBalancerAlgorithm>;
-
 export interface GetLoadBalancerResponseLoadBalancer {
   /** ID of the [Load Balancer](#tag/load-balancers). */
   id: number;
@@ -913,34 +700,17 @@ export interface GetLoadBalancerResponseLoadBalancer {
   /** Free Traffic for the current billing period in bytes. */
   included_traffic: number;
 }
-const GetLoadBalancerResponseLoadBalancer = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<GetLoadBalancerResponseLoadBalancer>;
-
 export interface GetLoadBalancerResponse {
   load_balancer: GetLoadBalancerResponseLoadBalancer;
 }
-const GetLoadBalancerResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<GetLoadBalancerResponse>;
-
 export type GetLoadBalancerMetricsRequestTypeItem =
   | "open_connections"
   | "connections_per_second"
   | "requests_per_second"
   | "bandwidth";
-const GetLoadBalancerMetricsRequestTypeItem = S.String;
-
 export type GetLoadBalancerMetricsRequestTypeList = Array<
   GetLoadBalancerMetricsRequestTypeItem | (string & {})
 >;
-const GetLoadBalancerMetricsRequestTypeList = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<GetLoadBalancerMetricsRequestTypeList>;
-
 export interface GetLoadBalancerMetricsRequest {
   /** ID of the Load Balancer. */
   id: number;
@@ -953,43 +723,18 @@ export interface GetLoadBalancerMetricsRequest {
   /** Resolution of results in seconds. */
   step?: string;
 }
-const GetLoadBalancerMetricsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<GetLoadBalancerMetricsRequest>;
-
 export type GetLoadBalancerMetricsResponseMetricsTimeSeriesValueValuesItemList = Array<unknown>;
-const GetLoadBalancerMetricsResponseMetricsTimeSeriesValueValuesItemList = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<GetLoadBalancerMetricsResponseMetricsTimeSeriesValueValuesItemList>;
-
 /** Metrics timestamps with values. */
 export type GetLoadBalancerMetricsResponseMetricsTimeSeriesValueValuesList =
   Array<GetLoadBalancerMetricsResponseMetricsTimeSeriesValueValuesItemList>;
-const GetLoadBalancerMetricsResponseMetricsTimeSeriesValueValuesList = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<GetLoadBalancerMetricsResponseMetricsTimeSeriesValueValuesList>;
-
 export interface GetLoadBalancerMetricsResponseMetricsTimeSeriesValue {
   /** Metrics timestamps with values. */
   values: GetLoadBalancerMetricsResponseMetricsTimeSeriesValueValuesList;
 }
-const GetLoadBalancerMetricsResponseMetricsTimeSeriesValue = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<GetLoadBalancerMetricsResponseMetricsTimeSeriesValue>;
-
 /** Hash with timeseries information, containing the name of timeseries as key. */
 export type GetLoadBalancerMetricsResponseMetricsTimeSeriesMap = {
   [key: string]: GetLoadBalancerMetricsResponseMetricsTimeSeriesValue | undefined;
 };
-const GetLoadBalancerMetricsResponseMetricsTimeSeriesMap = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<GetLoadBalancerMetricsResponseMetricsTimeSeriesMap>;
-
 export interface GetLoadBalancerMetricsResponseMetrics {
   /** Start of period of metrics reported (in [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.6) format). */
   start: string;
@@ -1000,19 +745,9 @@ export interface GetLoadBalancerMetricsResponseMetrics {
   /** Hash with timeseries information, containing the name of timeseries as key. */
   time_series: GetLoadBalancerMetricsResponseMetricsTimeSeriesMap;
 }
-const GetLoadBalancerMetricsResponseMetrics = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<GetLoadBalancerMetricsResponseMetrics>;
-
 export interface GetLoadBalancerMetricsResponse {
   metrics: GetLoadBalancerMetricsResponseMetrics;
 }
-const GetLoadBalancerMetricsResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<GetLoadBalancerMetricsResponse>;
-
 export type ListLoadBalancersRequestSortItem =
   | "id"
   | "id:asc"
@@ -1026,9 +761,6 @@ export type ListLoadBalancersRequestSortItem =
 export type ListLoadBalancersRequestSortList = Array<
   ListLoadBalancersRequestSortItem | (string & {})
 >;
-const ListLoadBalancersRequestSortList =
-  GetLoadBalancerMetricsRequestTypeList as any as S.Schema<ListLoadBalancersRequestSortList>;
-
 export interface ListLoadBalancersRequest {
   /** Sort resources by field and direction. May be used multiple times. For more information, see "[Sorting](#description/sorting)". */
   sort?: ListLoadBalancersRequestSortList;
@@ -1041,11 +773,6 @@ export interface ListLoadBalancersRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
-const ListLoadBalancersRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<ListLoadBalancersRequest>;
-
 /** IP address (v4). */
 export type ListLoadBalancersResponseLoadBalancersItemPublicNetIpv4 =
   CreateLoadBalancerResponseLoadBalancerPublicNetIpv4;
@@ -1060,9 +787,6 @@ export type ListLoadBalancersResponseLoadBalancersItemPrivateNetItem =
 /** Private networks information. */
 export type ListLoadBalancersResponseLoadBalancersItemPrivateNetList =
   Array<CreateLoadBalancerResponseLoadBalancerPrivateNetItem>;
-const ListLoadBalancersResponseLoadBalancersItemPrivateNetList =
-  CreateLoadBalancerResponseLoadBalancerPrivateNetList as any as S.Schema<ListLoadBalancersResponseLoadBalancersItemPrivateNetList>;
-
 export type ListLoadBalancersResponseLoadBalancersItemLocation =
   CreateLoadBalancerResponseLoadBalancerLocation;
 /** Describes if, when and how the resource is deprecated. If this field is set to `null` the resource is not deprecated. If a value is set, it is considered deprecated. */
@@ -1082,9 +806,6 @@ export type ListLoadBalancersResponseLoadBalancersItemLoadBalancerTypePricesItem
 /** Price per [Location](#tag/locations). */
 export type ListLoadBalancersResponseLoadBalancersItemLoadBalancerTypePricesList =
   Array<CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItem>;
-const ListLoadBalancersResponseLoadBalancersItemLoadBalancerTypePricesList =
-  CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesList as any as S.Schema<ListLoadBalancersResponseLoadBalancersItemLoadBalancerTypePricesList>;
-
 export interface ListLoadBalancersResponseLoadBalancersItemLoadBalancerType {
   /** ID of the Load Balancer type. */
   id: number;
@@ -1107,11 +828,6 @@ export interface ListLoadBalancersResponseLoadBalancersItemLoadBalancerType {
   /** Price per [Location](#tag/locations). */
   prices: ListLoadBalancersResponseLoadBalancersItemLoadBalancerTypePricesList;
 }
-const ListLoadBalancersResponseLoadBalancersItemLoadBalancerType = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<ListLoadBalancersResponseLoadBalancersItemLoadBalancerType>;
-
 /** Protection configuration for the Resource. */
 export type ListLoadBalancersResponseLoadBalancersItemProtection =
   CreateLoadBalancerResponseLoadBalancerProtection;
@@ -1119,39 +835,20 @@ export type ListLoadBalancersResponseLoadBalancersItemProtection =
 export type ListLoadBalancersResponseLoadBalancersItemLabelsMap = {
   [key: string]: string | undefined;
 };
-const ListLoadBalancersResponseLoadBalancersItemLabelsMap =
-  CreateLoadBalancerRequestLabelsMap as any as S.Schema<ListLoadBalancersResponseLoadBalancersItemLabelsMap>;
-
 export type ListLoadBalancersResponseLoadBalancersItemServicesItem =
   | ServiceTCP
   | ServiceHTTPProtocol
   | ServiceHTTPSProtocol;
-const ListLoadBalancersResponseLoadBalancersItemServicesItem =
-  S.Unknown as any as S.Schema<ListLoadBalancersResponseLoadBalancersItemServicesItem>;
-
 /** List of services that belong to this Load Balancer. */
 export type ListLoadBalancersResponseLoadBalancersItemServicesList =
   Array<ListLoadBalancersResponseLoadBalancersItemServicesItem>;
-const ListLoadBalancersResponseLoadBalancersItemServicesList = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<ListLoadBalancersResponseLoadBalancersItemServicesList>;
-
 export type ListLoadBalancersResponseLoadBalancersItemTargetsItem =
   | TargetTypeServer
   | TargetTypeLabelSelector
   | TargetTypeIP;
-const ListLoadBalancersResponseLoadBalancersItemTargetsItem =
-  S.Unknown as any as S.Schema<ListLoadBalancersResponseLoadBalancersItemTargetsItem>;
-
 /** List of targets that belong to this Load Balancer. */
 export type ListLoadBalancersResponseLoadBalancersItemTargetsList =
   Array<ListLoadBalancersResponseLoadBalancersItemTargetsItem>;
-const ListLoadBalancersResponseLoadBalancersItemTargetsList = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<ListLoadBalancersResponseLoadBalancersItemTargetsList>;
-
 /** Type of the algorithm. */
 export type ListLoadBalancersResponseLoadBalancersItemAlgorithmType =
   | "round_robin"
@@ -1161,9 +858,6 @@ export interface ListLoadBalancersResponseLoadBalancersItemAlgorithm {
   /** Type of the algorithm. */
   type: ListLoadBalancersResponseLoadBalancersItemAlgorithmType;
 }
-const ListLoadBalancersResponseLoadBalancersItemAlgorithm =
-  CreateLoadBalancerRequestAlgorithm as any as S.Schema<ListLoadBalancersResponseLoadBalancersItemAlgorithm>;
-
 export interface ListLoadBalancersResponseLoadBalancersItem {
   /** ID of the [Load Balancer](#tag/load-balancers). */
   id: number;
@@ -1194,18 +888,8 @@ export interface ListLoadBalancersResponseLoadBalancersItem {
   /** Free Traffic for the current billing period in bytes. */
   included_traffic: number;
 }
-const ListLoadBalancersResponseLoadBalancersItem = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<ListLoadBalancersResponseLoadBalancersItem>;
-
 export type ListLoadBalancersResponseLoadBalancersList =
   Array<ListLoadBalancersResponseLoadBalancersItem>;
-const ListLoadBalancersResponseLoadBalancersList = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<ListLoadBalancersResponseLoadBalancersList>;
-
 /** See "[Pagination](#description/pagination)" for more information. */
 export interface ListLoadBalancersResponseMetaPagination {
   /** Current page number. */
@@ -1221,34 +905,16 @@ export interface ListLoadBalancersResponseMetaPagination {
   /** Total number of entries that exist for this query. Can be null if unknown. */
   total_entries: number | null;
 }
-const ListLoadBalancersResponseMetaPagination = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<ListLoadBalancersResponseMetaPagination>;
-
 export interface ListLoadBalancersResponseMeta {
   /** See "[Pagination](#description/pagination)" for more information. */
   pagination: ListLoadBalancersResponseMetaPagination;
 }
-const ListLoadBalancersResponseMeta = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<ListLoadBalancersResponseMeta>;
-
 export interface ListLoadBalancersResponse {
   load_balancers: ListLoadBalancersResponseLoadBalancersList;
   meta: ListLoadBalancersResponseMeta;
 }
-const ListLoadBalancersResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<ListLoadBalancersResponse>;
-
 /** User-defined labels (`key/value` pairs) for the Resource. Note that the set of [Labels](#description/labels) provided in the request will overwrite the existing one. For more information, see "[Labels](#description/labels)". */
 export type UpdateLoadBalancerRequestLabelsMap = { [key: string]: string | undefined };
-const UpdateLoadBalancerRequestLabelsMap =
-  CreateLoadBalancerRequestLabelsMap as any as S.Schema<UpdateLoadBalancerRequestLabelsMap>;
-
 export interface UpdateLoadBalancerRequest {
   /** ID of the Load Balancer. */
   id: number;
@@ -1257,11 +923,6 @@ export interface UpdateLoadBalancerRequest {
   /** User-defined labels (`key/value` pairs) for the Resource. Note that the set of [Labels](#description/labels) provided in the request will overwrite the existing one. For more information, see "[Labels](#description/labels)". */
   labels?: UpdateLoadBalancerRequestLabelsMap;
 }
-const UpdateLoadBalancerRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<UpdateLoadBalancerRequest>;
-
 /** IP address (v4). */
 export type UpdateLoadBalancerResponseLoadBalancerPublicNetIpv4 =
   CreateLoadBalancerResponseLoadBalancerPublicNetIpv4;
@@ -1276,9 +937,6 @@ export type UpdateLoadBalancerResponseLoadBalancerPrivateNetItem =
 /** Private networks information. */
 export type UpdateLoadBalancerResponseLoadBalancerPrivateNetList =
   Array<CreateLoadBalancerResponseLoadBalancerPrivateNetItem>;
-const UpdateLoadBalancerResponseLoadBalancerPrivateNetList =
-  CreateLoadBalancerResponseLoadBalancerPrivateNetList as any as S.Schema<UpdateLoadBalancerResponseLoadBalancerPrivateNetList>;
-
 export type UpdateLoadBalancerResponseLoadBalancerLocation =
   CreateLoadBalancerResponseLoadBalancerLocation;
 /** Describes if, when and how the resource is deprecated. If this field is set to `null` the resource is not deprecated. If a value is set, it is considered deprecated. */
@@ -1320,47 +978,25 @@ export interface UpdateLoadBalancerResponseLoadBalancerLoadBalancerType {
   /** Price per [Location](#tag/locations). */
   prices: UpdateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesList;
 }
-const UpdateLoadBalancerResponseLoadBalancerLoadBalancerType =
-  CreateLoadBalancerResponseLoadBalancerLoadBalancerType as any as S.Schema<UpdateLoadBalancerResponseLoadBalancerLoadBalancerType>;
-
 /** Protection configuration for the Resource. */
 export type UpdateLoadBalancerResponseLoadBalancerProtection =
   CreateLoadBalancerResponseLoadBalancerProtection;
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type UpdateLoadBalancerResponseLoadBalancerLabelsMap = { [key: string]: string | undefined };
-const UpdateLoadBalancerResponseLoadBalancerLabelsMap =
-  CreateLoadBalancerRequestLabelsMap as any as S.Schema<UpdateLoadBalancerResponseLoadBalancerLabelsMap>;
-
 export type UpdateLoadBalancerResponseLoadBalancerServicesItem =
   | ServiceTCP
   | ServiceHTTPProtocol
   | ServiceHTTPSProtocol;
-const UpdateLoadBalancerResponseLoadBalancerServicesItem =
-  S.Unknown as any as S.Schema<UpdateLoadBalancerResponseLoadBalancerServicesItem>;
-
 /** List of services that belong to this Load Balancer. */
 export type UpdateLoadBalancerResponseLoadBalancerServicesList =
   Array<UpdateLoadBalancerResponseLoadBalancerServicesItem>;
-const UpdateLoadBalancerResponseLoadBalancerServicesList = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<UpdateLoadBalancerResponseLoadBalancerServicesList>;
-
 export type UpdateLoadBalancerResponseLoadBalancerTargetsItem =
   | TargetTypeServer
   | TargetTypeLabelSelector
   | TargetTypeIP;
-const UpdateLoadBalancerResponseLoadBalancerTargetsItem =
-  S.Unknown as any as S.Schema<UpdateLoadBalancerResponseLoadBalancerTargetsItem>;
-
 /** List of targets that belong to this Load Balancer. */
 export type UpdateLoadBalancerResponseLoadBalancerTargetsList =
   Array<UpdateLoadBalancerResponseLoadBalancerTargetsItem>;
-const UpdateLoadBalancerResponseLoadBalancerTargetsList = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<UpdateLoadBalancerResponseLoadBalancerTargetsList>;
-
 /** Type of the algorithm. */
 export type UpdateLoadBalancerResponseLoadBalancerAlgorithmType =
   | "round_robin"
@@ -1370,9 +1006,6 @@ export interface UpdateLoadBalancerResponseLoadBalancerAlgorithm {
   /** Type of the algorithm. */
   type: UpdateLoadBalancerResponseLoadBalancerAlgorithmType;
 }
-const UpdateLoadBalancerResponseLoadBalancerAlgorithm =
-  CreateLoadBalancerRequestAlgorithm as any as S.Schema<UpdateLoadBalancerResponseLoadBalancerAlgorithm>;
-
 export interface UpdateLoadBalancerResponseLoadBalancer {
   /** ID of the [Load Balancer](#tag/load-balancers). */
   id: number;
@@ -1403,19 +1036,9 @@ export interface UpdateLoadBalancerResponseLoadBalancer {
   /** Free Traffic for the current billing period in bytes. */
   included_traffic: number;
 }
-const UpdateLoadBalancerResponseLoadBalancer = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<UpdateLoadBalancerResponseLoadBalancer>;
-
 export interface UpdateLoadBalancerResponse {
   load_balancer: UpdateLoadBalancerResponseLoadBalancer;
 }
-const UpdateLoadBalancerResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<UpdateLoadBalancerResponse>;
-
 export type CreateLoadBalancerError = HetznerOpError;
 /** Create a Load Balancer Creates a Load Balancer. #### Operation specific errors */
 export const createLoadBalancer: API.OperationMethod<
@@ -1424,8 +1047,8 @@ export const createLoadBalancer: API.OperationMethod<
   CreateLoadBalancerError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateLoadBalancerRequest,
-  output: CreateLoadBalancerResponse,
+  input: __S(8, __c1, 0) as any as S.Schema<CreateLoadBalancerRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<CreateLoadBalancerResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1439,8 +1062,8 @@ export const deleteLoadBalancer: API.OperationMethod<
   DeleteLoadBalancerError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteLoadBalancerRequest,
-  output: DeleteLoadBalancerResponse,
+  input: __S(28, __c3, 4) as any as S.Schema<DeleteLoadBalancerRequest>,
+  output: __S(29, __c3, 5) as any as S.Schema<DeleteLoadBalancerResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1454,8 +1077,8 @@ export const getLoadBalancer: API.OperationMethod<
   GetLoadBalancerError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLoadBalancerRequest,
-  output: GetLoadBalancerResponse,
+  input: __S(30, __c3, 6) as any as S.Schema<GetLoadBalancerRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<GetLoadBalancerResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1469,8 +1092,8 @@ export const getLoadBalancerMetrics: API.OperationMethod<
   GetLoadBalancerMetricsError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLoadBalancerMetricsRequest,
-  output: GetLoadBalancerMetricsResponse,
+  input: __S(38, __c4, 6) as any as S.Schema<GetLoadBalancerMetricsRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<GetLoadBalancerMetricsResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1486,8 +1109,8 @@ export const listLoadBalancers: API.PaginatedOperationMethod<
   ListLoadBalancersResponseLoadBalancersItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListLoadBalancersRequest,
-    output: ListLoadBalancersResponse,
+    input: __S(45, __c5, 5) as any as S.Schema<ListLoadBalancersRequest>,
+    output: __S(53, __c6, 5) as any as S.Schema<ListLoadBalancersResponse>,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -1510,8 +1133,8 @@ export const updateLoadBalancer: API.OperationMethod<
   UpdateLoadBalancerError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateLoadBalancerRequest,
-  output: UpdateLoadBalancerResponse,
+  input: __S(54, __c6, 6) as any as S.Schema<UpdateLoadBalancerRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<UpdateLoadBalancerResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1523,13 +1146,13 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: CreateLoadBalancerRequestAlgorithmType,
+          type: S.String,
         }),
       ).annotate({
         identifier: "CreateLoadBalancerRequestAlgorithm",
       });
     case 1:
-      return S.Array(CreateLoadBalancerRequestServicesItem);
+      return S.Array(S.Unknown);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1558,17 +1181,17 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: CreateLoadBalancerRequestTargetsItemType,
-          server: S.optional(CreateLoadBalancerRequestTargetsItemServer),
-          label_selector: S.optional(CreateLoadBalancerRequestTargetsItemLabelSelector),
-          ip: S.optional(CreateLoadBalancerRequestTargetsItemIp),
+          type: S.String,
+          server: S.optional(__S(2, __c0, 2)),
+          label_selector: S.optional(__S(3, __c0, 3)),
+          ip: S.optional(__S(4, __c0, 4)),
           use_private_ip: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "CreateLoadBalancerRequestTargetsItem",
       });
     case 6:
-      return S.Array(CreateLoadBalancerRequestTargetsItem);
+      return S.Array(__S(5, __c0, 5));
     case 7:
       return S.Record(S.String, S.String);
   }
@@ -1580,10 +1203,10 @@ function __c1(j: number): any {
         S.Struct({
           name: S.String,
           load_balancer_type: S.String,
-          algorithm: S.optional(CreateLoadBalancerRequestAlgorithm),
-          services: S.optional(CreateLoadBalancerRequestServicesList),
-          targets: S.optional(CreateLoadBalancerRequestTargetsList),
-          labels: S.optional(CreateLoadBalancerRequestLabelsMap),
+          algorithm: S.optional(__S(0, __c0, 0)),
+          services: S.optional(__S(1, __c0, 1)),
+          targets: S.optional(__S(6, __c0, 6)),
+          labels: S.optional(__S(7, __c0, 7)),
           public_interface: S.optional(S.Boolean),
           network: S.optional(S.Number),
           network_zone: S.optional(S.String),
@@ -1605,8 +1228,8 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
-          ipv4: CreateLoadBalancerResponseLoadBalancerPublicNetIpv4,
-          ipv6: CreateLoadBalancerResponseLoadBalancerPublicNetIpv6,
+          ipv4: __S(9, __c1, 1),
+          ipv6: __S(9, __c1, 1),
         }),
       ).annotate({
         identifier: "CreateLoadBalancerResponseLoadBalancerPublicNet",
@@ -1621,7 +1244,7 @@ function __c1(j: number): any {
         identifier: "CreateLoadBalancerResponseLoadBalancerPrivateNetItem",
       });
     case 4:
-      return S.Array(CreateLoadBalancerResponseLoadBalancerPrivateNetItem);
+      return S.Array(__S(11, __c1, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -1663,18 +1286,16 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           location: S.String,
-          price_hourly: CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPriceHourly,
-          price_monthly:
-            CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPriceHourly,
+          price_hourly: __S(15, __c1, 7),
+          price_monthly: __S(15, __c1, 7),
           included_traffic: S.Number,
-          price_per_tb_traffic:
-            CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPriceHourly,
+          price_per_tb_traffic: __S(15, __c1, 7),
         }),
       ).annotate({
         identifier: "CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItem",
       });
     case 1:
-      return S.Array(CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItem);
+      return S.Array(__S(16, __c2, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1686,8 +1307,8 @@ function __c2(j: number): any {
           max_targets: S.Number,
           max_assigned_certificates: S.Number,
           deprecated: S.NullOr(S.String),
-          deprecation: S.NullOr(CreateLoadBalancerResponseLoadBalancerLoadBalancerTypeDeprecation),
-          prices: CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesList,
+          deprecation: S.NullOr(__S(14, __c1, 6)),
+          prices: __S(17, __c2, 1),
         }),
       ).annotate({
         identifier: "CreateLoadBalancerResponseLoadBalancerLoadBalancerType",
@@ -1701,24 +1322,24 @@ function __c2(j: number): any {
         identifier: "CreateLoadBalancerResponseLoadBalancerProtection",
       });
     case 4:
-      return S.Array(CreateLoadBalancerResponseLoadBalancerServicesItem);
+      return S.Array(S.Unknown);
     case 5:
-      return S.Array(CreateLoadBalancerResponseLoadBalancerTargetsItem);
+      return S.Array(S.Unknown);
     case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           name: S.String,
-          public_net: CreateLoadBalancerResponseLoadBalancerPublicNet,
-          private_net: CreateLoadBalancerResponseLoadBalancerPrivateNetList,
-          location: CreateLoadBalancerResponseLoadBalancerLocation,
-          load_balancer_type: CreateLoadBalancerResponseLoadBalancerLoadBalancerType,
-          protection: CreateLoadBalancerResponseLoadBalancerProtection,
-          labels: CreateLoadBalancerResponseLoadBalancerLabelsMap,
+          public_net: __S(10, __c1, 2),
+          private_net: __S(12, __c1, 4),
+          location: __S(13, __c1, 5),
+          load_balancer_type: __S(18, __c2, 2),
+          protection: __S(19, __c2, 3),
+          labels: __S(7, __c0, 7),
           created: S.String,
-          services: CreateLoadBalancerResponseLoadBalancerServicesList,
-          targets: CreateLoadBalancerResponseLoadBalancerTargetsList,
-          algorithm: CreateLoadBalancerResponseLoadBalancerAlgorithm,
+          services: __S(20, __c2, 4),
+          targets: __S(21, __c2, 5),
+          algorithm: __S(0, __c0, 0),
           outgoing_traffic: S.NullOr(S.Number),
           ingoing_traffic: S.NullOr(S.Number),
           included_traffic: S.Number,
@@ -1740,7 +1361,7 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(CreateLoadBalancerResponseActionResourcesItem);
+      return S.Array(__S(23, __c2, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1755,12 +1376,12 @@ function __c3(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: CreateLoadBalancerResponseActionStatus,
+          status: S.String,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: CreateLoadBalancerResponseActionResourcesList,
-          error: S.NullOr(CreateLoadBalancerResponseActionError),
+          resources: __S(24, __c3, 0),
+          error: S.NullOr(__S(25, __c3, 1)),
         }),
       ).annotate({
         identifier: "CreateLoadBalancerResponseAction",
@@ -1768,8 +1389,8 @@ function __c3(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          load_balancer: CreateLoadBalancerResponseLoadBalancer,
-          action: CreateLoadBalancerResponseAction,
+          load_balancer: __S(22, __c2, 6),
+          action: __S(26, __c3, 2),
         }),
       ).annotate({
         identifier: "CreateLoadBalancerResponse",
@@ -1793,7 +1414,7 @@ function __c3(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/load_balancers/{id}", code: 200 })),
       ).annotate({ identifier: "GetLoadBalancerRequest" });
     case 7:
-      return S.Array(CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItem);
+      return S.Array(__S(16, __c2, 0));
   }
 }
 function __c4(j: number): any {
@@ -1809,31 +1430,31 @@ function __c4(j: number): any {
           max_targets: S.Number,
           max_assigned_certificates: S.Number,
           deprecated: S.NullOr(S.String),
-          deprecation: S.NullOr(CreateLoadBalancerResponseLoadBalancerLoadBalancerTypeDeprecation),
-          prices: GetLoadBalancerResponseLoadBalancerLoadBalancerTypePricesList,
+          deprecation: S.NullOr(__S(14, __c1, 6)),
+          prices: __S(31, __c3, 7),
         }),
       ).annotate({
         identifier: "GetLoadBalancerResponseLoadBalancerLoadBalancerType",
       });
     case 1:
-      return S.Array(GetLoadBalancerResponseLoadBalancerServicesItem);
+      return S.Array(S.Unknown);
     case 2:
-      return S.Array(GetLoadBalancerResponseLoadBalancerTargetsItem);
+      return S.Array(S.Unknown);
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           name: S.String,
-          public_net: CreateLoadBalancerResponseLoadBalancerPublicNet,
-          private_net: GetLoadBalancerResponseLoadBalancerPrivateNetList,
-          location: CreateLoadBalancerResponseLoadBalancerLocation,
-          load_balancer_type: GetLoadBalancerResponseLoadBalancerLoadBalancerType,
-          protection: CreateLoadBalancerResponseLoadBalancerProtection,
-          labels: GetLoadBalancerResponseLoadBalancerLabelsMap,
+          public_net: __S(10, __c1, 2),
+          private_net: __S(12, __c1, 4),
+          location: __S(13, __c1, 5),
+          load_balancer_type: __S(32, __c4, 0),
+          protection: __S(19, __c2, 3),
+          labels: __S(7, __c0, 7),
           created: S.String,
-          services: GetLoadBalancerResponseLoadBalancerServicesList,
-          targets: GetLoadBalancerResponseLoadBalancerTargetsList,
-          algorithm: GetLoadBalancerResponseLoadBalancerAlgorithm,
+          services: __S(33, __c4, 1),
+          targets: __S(34, __c4, 2),
+          algorithm: __S(0, __c0, 0),
           outgoing_traffic: S.NullOr(S.Number),
           ingoing_traffic: S.NullOr(S.Number),
           included_traffic: S.Number,
@@ -1844,16 +1465,16 @@ function __c4(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          load_balancer: GetLoadBalancerResponseLoadBalancer,
+          load_balancer: __S(35, __c4, 3),
         }),
       ).annotate({ identifier: "GetLoadBalancerResponse" });
     case 5:
-      return S.Array(GetLoadBalancerMetricsRequestTypeItem);
+      return S.Array(S.String);
     case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          type: GetLoadBalancerMetricsRequestTypeList.pipe(T.Query()),
+          type: __S(37, __c4, 5).pipe(T.Query()),
           start: S.String.pipe(T.Query()),
           end: S.String.pipe(T.Query()),
           step: S.optional(S.String.pipe(T.Query())),
@@ -1868,24 +1489,24 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GetLoadBalancerMetricsResponseMetricsTimeSeriesValueValuesItemList);
+      return S.Array(__S(39, __c4, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          values: GetLoadBalancerMetricsResponseMetricsTimeSeriesValueValuesList,
+          values: __S(40, __c5, 0),
         }),
       ).annotate({
         identifier: "GetLoadBalancerMetricsResponseMetricsTimeSeriesValue",
       });
     case 2:
-      return S.Record(S.String, GetLoadBalancerMetricsResponseMetricsTimeSeriesValue);
+      return S.Record(S.String, __S(41, __c5, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           start: S.String,
           end: S.String,
           step: S.Number,
-          time_series: GetLoadBalancerMetricsResponseMetricsTimeSeriesMap,
+          time_series: __S(42, __c5, 2),
         }),
       ).annotate({
         identifier: "GetLoadBalancerMetricsResponseMetrics",
@@ -1893,7 +1514,7 @@ function __c5(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          metrics: GetLoadBalancerMetricsResponseMetrics,
+          metrics: __S(43, __c5, 3),
         }),
       ).annotate({
         identifier: "GetLoadBalancerMetricsResponse",
@@ -1901,7 +1522,7 @@ function __c5(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          sort: S.optional(ListLoadBalancersRequestSortList.pipe(T.Query())),
+          sort: S.optional(__S(37, __c4, 5).pipe(T.Query())),
           name: S.optional(S.String.pipe(T.Query())),
           label_selector: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
@@ -1919,35 +1540,35 @@ function __c5(j: number): any {
           max_targets: S.Number,
           max_assigned_certificates: S.Number,
           deprecated: S.NullOr(S.String),
-          deprecation: S.NullOr(CreateLoadBalancerResponseLoadBalancerLoadBalancerTypeDeprecation),
-          prices: ListLoadBalancersResponseLoadBalancersItemLoadBalancerTypePricesList,
+          deprecation: S.NullOr(__S(14, __c1, 6)),
+          prices: __S(17, __c2, 1),
         }),
       ).annotate({
         identifier: "ListLoadBalancersResponseLoadBalancersItemLoadBalancerType",
       });
     case 7:
-      return S.Array(ListLoadBalancersResponseLoadBalancersItemServicesItem);
+      return S.Array(S.Unknown);
   }
 }
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ListLoadBalancersResponseLoadBalancersItemTargetsItem);
+      return S.Array(S.Unknown);
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           name: S.String,
-          public_net: CreateLoadBalancerResponseLoadBalancerPublicNet,
-          private_net: ListLoadBalancersResponseLoadBalancersItemPrivateNetList,
-          location: CreateLoadBalancerResponseLoadBalancerLocation,
-          load_balancer_type: ListLoadBalancersResponseLoadBalancersItemLoadBalancerType,
-          protection: CreateLoadBalancerResponseLoadBalancerProtection,
-          labels: ListLoadBalancersResponseLoadBalancersItemLabelsMap,
+          public_net: __S(10, __c1, 2),
+          private_net: __S(12, __c1, 4),
+          location: __S(13, __c1, 5),
+          load_balancer_type: __S(46, __c5, 6),
+          protection: __S(19, __c2, 3),
+          labels: __S(7, __c0, 7),
           created: S.String,
-          services: ListLoadBalancersResponseLoadBalancersItemServicesList,
-          targets: ListLoadBalancersResponseLoadBalancersItemTargetsList,
-          algorithm: ListLoadBalancersResponseLoadBalancersItemAlgorithm,
+          services: __S(47, __c5, 7),
+          targets: __S(48, __c6, 0),
+          algorithm: __S(0, __c0, 0),
           outgoing_traffic: S.NullOr(S.Number),
           ingoing_traffic: S.NullOr(S.Number),
           included_traffic: S.Number,
@@ -1956,7 +1577,7 @@ function __c6(j: number): any {
         identifier: "ListLoadBalancersResponseLoadBalancersItem",
       });
     case 2:
-      return S.Array(ListLoadBalancersResponseLoadBalancersItem);
+      return S.Array(__S(49, __c6, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1973,7 +1594,7 @@ function __c6(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          pagination: ListLoadBalancersResponseMetaPagination,
+          pagination: __S(51, __c6, 3),
         }),
       ).annotate({
         identifier: "ListLoadBalancersResponseMeta",
@@ -1981,8 +1602,8 @@ function __c6(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          load_balancers: ListLoadBalancersResponseLoadBalancersList,
-          meta: ListLoadBalancersResponseMeta,
+          load_balancers: __S(50, __c6, 2),
+          meta: __S(52, __c6, 4),
         }),
       ).annotate({
         identifier: "ListLoadBalancersResponse",
@@ -1992,34 +1613,34 @@ function __c6(j: number): any {
         S.Struct({
           id: S.Number.pipe(T.Label()),
           name: S.optional(S.String),
-          labels: S.optional(UpdateLoadBalancerRequestLabelsMap),
+          labels: S.optional(__S(7, __c0, 7)),
         }).pipe(T.Http({ method: "PUT", uri: "/load_balancers/{id}", code: 200 })),
       ).annotate({
         identifier: "UpdateLoadBalancerRequest",
       });
     case 7:
-      return S.Array(UpdateLoadBalancerResponseLoadBalancerServicesItem);
+      return S.Array(S.Unknown);
   }
 }
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(UpdateLoadBalancerResponseLoadBalancerTargetsItem);
+      return S.Array(S.Unknown);
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           name: S.String,
-          public_net: CreateLoadBalancerResponseLoadBalancerPublicNet,
-          private_net: UpdateLoadBalancerResponseLoadBalancerPrivateNetList,
-          location: CreateLoadBalancerResponseLoadBalancerLocation,
-          load_balancer_type: UpdateLoadBalancerResponseLoadBalancerLoadBalancerType,
-          protection: CreateLoadBalancerResponseLoadBalancerProtection,
-          labels: UpdateLoadBalancerResponseLoadBalancerLabelsMap,
+          public_net: __S(10, __c1, 2),
+          private_net: __S(12, __c1, 4),
+          location: __S(13, __c1, 5),
+          load_balancer_type: __S(18, __c2, 2),
+          protection: __S(19, __c2, 3),
+          labels: __S(7, __c0, 7),
           created: S.String,
-          services: UpdateLoadBalancerResponseLoadBalancerServicesList,
-          targets: UpdateLoadBalancerResponseLoadBalancerTargetsList,
-          algorithm: UpdateLoadBalancerResponseLoadBalancerAlgorithm,
+          services: __S(55, __c6, 7),
+          targets: __S(56, __c7, 0),
+          algorithm: __S(0, __c0, 0),
           outgoing_traffic: S.NullOr(S.Number),
           ingoing_traffic: S.NullOr(S.Number),
           included_traffic: S.Number,
@@ -2030,10 +1651,15 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          load_balancer: UpdateLoadBalancerResponseLoadBalancer,
+          load_balancer: __S(57, __c7, 1),
         }),
       ).annotate({
         identifier: "UpdateLoadBalancerResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

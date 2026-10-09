@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -63,18 +65,11 @@ export class NotFound
   ) {}
 
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<StringList>;
-
 /** The request message for language detection. */
 export interface DetectLanguageRequest {
   /** The input text upon which to perform language detection. Repeat this parameter to perform language detection on multiple text inputs. */
   q?: StringList;
 }
-const DetectLanguageRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<DetectLanguageRequest>;
-
 export interface DetectDetectionsRequest {
   /** Pretty-print response. */
   pp?: boolean;
@@ -83,11 +78,6 @@ export interface DetectDetectionsRequest {
   /** Request body */
   body?: DetectLanguageRequest;
 }
-const DetectDetectionsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<DetectDetectionsRequest>;
-
 export interface DetectionsResourceItem {
   /** The confidence of the detection result of this language. */
   confidence?: number;
@@ -96,30 +86,13 @@ export interface DetectionsResourceItem {
   /** A boolean to indicate is the language detection result reliable. */
   isReliable?: boolean;
 }
-const DetectionsResourceItem = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<DetectionsResourceItem>;
-
 /** An array of languages which we detect for the given text The most likely language list first. */
 export type DetectionsResource = Array<DetectionsResourceItem>;
-const DetectionsResource = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<DetectionsResource>;
-
 export type DetectionsResourceList = Array<DetectionsResource>;
-const DetectionsResourceList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<DetectionsResourceList>;
-
 export interface DetectionsListResponse {
   /** A detections contains detection results of several text */
   detections?: DetectionsResourceList;
 }
-const DetectionsListResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<DetectionsListResponse>;
-
 export interface ListDetectionsRequest {
   /** Pretty-print response. */
   pp?: boolean;
@@ -128,11 +101,6 @@ export interface ListDetectionsRequest {
   /** The input text upon which to perform language detection. Repeat this parameter to perform language detection on multiple text inputs. */
   q: StringList;
 }
-const ListDetectionsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ListDetectionsRequest>;
-
 export interface ListLanguagesRequest {
   /** Pretty-print response. */
   pp?: boolean;
@@ -143,34 +111,18 @@ export interface ListLanguagesRequest {
   /** The language to use to return localized, human readable names of supported languages. */
   target?: string;
 }
-const ListLanguagesRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<ListLanguagesRequest>;
-
 export interface LanguagesResource {
   /** Human readable name of the language localized to the target language. */
   name?: string;
   /** Supported language code, generally consisting of its ISO 639-1 identifier. (E.g. 'en', 'ja'). In certain cases, BCP-47 codes including language + region identifiers are returned (e.g. 'zh-TW' and 'zh-CH') */
   language?: string;
 }
-const LanguagesResource = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<LanguagesResource>;
-
 export type LanguagesResourceList = Array<LanguagesResource>;
-const LanguagesResourceList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<LanguagesResourceList>;
-
 export interface LanguagesListResponse {
   /** List of source/target languages supported by the translation API. If target parameter is unspecified, the list is sorted by the ASCII code point order of the language code. If target parameter is specified, the list is sorted by the collation order of the language name in the target language. */
   languages?: LanguagesResourceList;
 }
-const LanguagesListResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<LanguagesListResponse>;
-
 export type ListTranslationsFormatEnum = "html" | "text";
-const ListTranslationsFormatEnum = S.String;
-
 export interface ListTranslationsRequest {
   /** Pretty-print response. */
   pp?: boolean;
@@ -189,11 +141,6 @@ export interface ListTranslationsRequest {
   /** The language of the source text, set to one of the language codes listed in Language Support. If the source language is not specified, the API will attempt to identify the source language automatically and return it within the response. */
   source?: string;
 }
-const ListTranslationsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ListTranslationsRequest>;
-
 export interface TranslationsResource {
   /** The source language of the initial request, detected automatically, if no source language was passed within the initial request. If the source language was passed, auto-detection of the language will not occur and this field will be empty. */
   detectedSourceLanguage?: string;
@@ -202,24 +149,12 @@ export interface TranslationsResource {
   /** The `model` type used for this translation. Valid values are listed in public documentation. Can be different from requested `model`. Present only if specific model type was explicitly requested. */
   model?: string;
 }
-const TranslationsResource = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<TranslationsResource>;
-
 export type TranslationsResourceList = Array<TranslationsResource>;
-const TranslationsResourceList = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<TranslationsResourceList>;
-
 /** The main language translation response message. */
 export interface TranslationsListResponse {
   /** Translations contains list of translation results of given text */
   translations?: TranslationsResourceList;
 }
-const TranslationsListResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<TranslationsListResponse>;
-
 /** The main translation request message for the Cloud Translation API. */
 export interface TranslateTextRequest {
   /** The input text to translate. Repeat this parameter to perform translation operations on multiple text inputs. */
@@ -233,8 +168,6 @@ export interface TranslateTextRequest {
   /** The language to use for translation of the input text, set to one of the language codes listed in Language Support. */
   target?: string;
 }
-const TranslateTextRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<TranslateTextRequest>;
-
 export interface TranslateTranslationsRequest {
   /** Pretty-print response. */
   pp?: boolean;
@@ -243,11 +176,6 @@ export interface TranslateTranslationsRequest {
   /** Request body */
   body?: TranslateTextRequest;
 }
-const TranslateTranslationsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<TranslateTranslationsRequest>;
-
 export type DetectDetectionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Detects the language of text within a request. */
 export const detectDetections: API.OperationMethod<
@@ -256,8 +184,8 @@ export const detectDetections: API.OperationMethod<
   DetectDetectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DetectDetectionsRequest,
-  output: DetectionsListResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<DetectDetectionsRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<DetectionsListResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -271,8 +199,8 @@ export const listDetections: API.OperationMethod<
   ListDetectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDetectionsRequest,
-  output: DetectionsListResponse,
+  input: __S(7, __c0, 7) as any as S.Schema<ListDetectionsRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<DetectionsListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -286,8 +214,8 @@ export const listLanguages: API.OperationMethod<
   ListLanguagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListLanguagesRequest,
-  output: LanguagesListResponse,
+  input: __S(8, __c1, 0) as any as S.Schema<ListLanguagesRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<LanguagesListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -301,8 +229,8 @@ export const listTranslations: API.OperationMethod<
   ListTranslationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTranslationsRequest,
-  output: TranslationsListResponse,
+  input: __S(12, __c1, 4) as any as S.Schema<ListTranslationsRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<TranslationsListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -316,8 +244,8 @@ export const translateTranslations: API.OperationMethod<
   TranslateTranslationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TranslateTranslationsRequest,
-  output: TranslationsListResponse,
+  input: __S(17, __c2, 1) as any as S.Schema<TranslateTranslationsRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<TranslationsListResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -331,7 +259,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          q: S.optional(StringList),
+          q: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({ identifier: "DetectLanguageRequest" });
     case 2:
@@ -339,7 +267,7 @@ function __c0(j: number): any {
         S.Struct({
           pp: S.optional(S.Boolean.pipe(T.Query())),
           bearer_token: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(DetectLanguageRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -357,13 +285,13 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "DetectionsResourceItem" });
     case 4:
-      return S.Array(DetectionsResourceItem);
+      return S.Array(__S(3, __c0, 3));
     case 5:
-      return S.Array(DetectionsResource);
+      return S.Array(__S(4, __c0, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          detections: S.optional(DetectionsResourceList),
+          detections: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "DetectionsListResponse" });
     case 7:
@@ -371,7 +299,7 @@ function __c0(j: number): any {
         S.Struct({
           pp: S.optional(S.Boolean.pipe(T.Query())),
           bearer_token: S.optional(S.String.pipe(T.Query())),
-          q: StringList.pipe(T.Query()),
+          q: __S(0, __c0, 0).pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -407,11 +335,11 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "LanguagesResource" });
     case 2:
-      return S.Array(LanguagesResource);
+      return S.Array(__S(9, __c1, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          languages: S.optional(LanguagesResourceList),
+          languages: S.optional(__S(10, __c1, 2)),
         }),
       ).annotate({ identifier: "LanguagesListResponse" });
     case 4:
@@ -421,9 +349,9 @@ function __c1(j: number): any {
           bearer_token: S.optional(S.String.pipe(T.Query())),
           target: S.String.pipe(T.Query()),
           model: S.optional(S.String.pipe(T.Query())),
-          cid: S.optional(StringList.pipe(T.Query())),
-          q: StringList.pipe(T.Query()),
-          format: S.optional(ListTranslationsFormatEnum.pipe(T.Query())),
+          cid: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          q: __S(0, __c0, 0).pipe(T.Query()),
+          format: S.optional(S.String.pipe(T.Query())),
           source: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -442,11 +370,11 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "TranslationsResource" });
     case 6:
-      return S.Array(TranslationsResource);
+      return S.Array(__S(13, __c1, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          translations: S.optional(TranslationsResourceList),
+          translations: S.optional(__S(14, __c1, 6)),
         }),
       ).annotate({ identifier: "TranslationsListResponse" });
   }
@@ -456,7 +384,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          q: S.optional(StringList),
+          q: S.optional(__S(0, __c0, 0)),
           model: S.optional(S.String),
           format: S.optional(S.String),
           source: S.optional(S.String),
@@ -468,7 +396,7 @@ function __c2(j: number): any {
         S.Struct({
           pp: S.optional(S.Boolean.pipe(T.Query())),
           bearer_token: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(TranslateTextRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -480,4 +408,9 @@ function __c2(j: number): any {
         identifier: "TranslateTranslationsRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

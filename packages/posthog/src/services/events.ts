@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -37,8 +39,6 @@ export class NotFound
   ) {}
 
 export type GetEventRequestFormat = "csv" | "json";
-const GetEventRequestFormat = S.String;
-
 export interface GetEventRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -47,26 +47,10 @@ export interface GetEventRequest {
   /** Include person details for the event. Default: false. */
   include_person?: boolean;
 }
-const GetEventRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<GetEventRequest>;
-
 export type GetEventResponseBodyMap = { [key: string]: unknown | undefined };
-const GetEventResponseBodyMap = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<GetEventResponseBodyMap>;
-
 export type GetEventResponse = GetEventResponseBodyMap;
-const GetEventResponse = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<GetEventResponse>;
-
 export type GetEventsValueRequestEventNameList = Array<string>;
-const GetEventsValueRequestEventNameList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<GetEventsValueRequestEventNameList>;
-
 export type GetEventsValueRequestFormat = "csv" | "json";
-const GetEventsValueRequestFormat = S.String;
-
 export interface GetEventsValueRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -80,49 +64,26 @@ export interface GetEventsValueRequest {
   /** Only return values that contain this text, ignoring case. */
   value?: string;
 }
-const GetEventsValueRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<GetEventsValueRequest>;
-
 export interface EventPropertyValue {
   /** A value of the property, always as a string. Booleans come back as 'true' or 'false', and objects and lists as JSON. */
   name: string;
   /** How many times the value occurs, when the lookup counts values. */
   count?: number;
 }
-const EventPropertyValue = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<EventPropertyValue>;
-
 /** Values of the property that match the request. */
 export type EventPropertyValuesResponseResultsList = Array<EventPropertyValue>;
-const EventPropertyValuesResponseResultsList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<EventPropertyValuesResponseResultsList>;
-
 export interface EventPropertyValuesResponse {
   /** Values of the property that match the request. */
   results: EventPropertyValuesResponseResultsList;
   /** True when these results come from a stale cache and a refresh runs in the background. */
   refreshing: boolean;
 }
-const EventPropertyValuesResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<EventPropertyValuesResponse>;
-
 export type ListEventsRequestFormat = "csv" | "json";
-const ListEventsRequestFormat = S.String;
-
 export type PropertyGroupOperatorEnum = "AND" | "OR";
-const PropertyGroupOperatorEnum = S.String;
-
 export type PropertyItemValueCase3Item = string | number;
 export type PropertyItemValueCase3List = Array<PropertyItemValueCase3Item>;
 /** Value of your filter. For example `test@example.com` or `https://example.com/test/`. Can be an array for an OR query, like `["test@example.com","ok@example.com"]` */
 export type PropertyItemValue = string | number | boolean | PropertyItemValueCase3List;
-const PropertyItemValue = S.Unknown as any as S.Schema<PropertyItemValue>;
-
 /** * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains * `starts_with` - starts_with * `not_starts_with` - not_starts_with * `ends_with` - ends_with * `not_ends_with` - not_ends_with * `regex` - regex * `not_regex` - not_regex * `gt` - gt * `lt` - lt * `gte` - gte * `lte` - lte * `is_set` - is_set * `is_not_set` - is_not_set * `is_date_exact` - is_date_exact * `is_date_after` - is_date_after * `is_date_before` - is_date_before * `in` - in * `not_in` - not_in */
 export type PropertyItemOperatorEnum =
   | "exact"
@@ -148,8 +109,6 @@ export type PropertyItemOperatorEnum =
   | "not_in";
 export type BlankEnum = "";
 export type PropertyItemOperator = PropertyItemOperatorEnum | BlankEnum;
-const PropertyItemOperator = S.Unknown as any as S.Schema<PropertyItemOperator>;
-
 /** * `event` - event * `event_metadata` - event_metadata * `feature` - feature * `person` - person * `person_metadata` - person_metadata * `cohort` - cohort * `element` - element * `static-cohort` - static-cohort * `dynamic-cohort` - dynamic-cohort * `precalculated-cohort` - precalculated-cohort * `group` - group * `recording` - recording * `log_entry` - log_entry * `behavioral` - behavioral * `session` - session * `hogql` - hogql * `data_warehouse` - data_warehouse * `data_warehouse_person_property` - data_warehouse_person_property * `error_tracking_issue` - error_tracking_issue * `log` - log * `log_attribute` - log_attribute * `log_resource_attribute` - log_resource_attribute * `metric_attribute` - metric_attribute * `span` - span * `span_attribute` - span_attribute * `span_resource_attribute` - span_resource_attribute * `revenue_analytics` - revenue_analytics * `account_custom_property` - account_custom_property * `flag` - flag * `workflow_variable` - workflow_variable */
 export type PropertyFilterTypeEnum =
   | "event"
@@ -183,8 +142,6 @@ export type PropertyFilterTypeEnum =
   | "flag"
   | "workflow_variable";
 export type PropertyItemType = PropertyFilterTypeEnum | BlankEnum;
-const PropertyItemType = S.Unknown as any as S.Schema<PropertyItemType>;
-
 export interface PropertyItem {
   /** Key of the property you're filtering on. For example `email` or `$current_url` */
   key?: string;
@@ -193,32 +150,15 @@ export interface PropertyItem {
   operator?: PropertyItemOperator | null;
   type?: PropertyItemType;
 }
-const PropertyItem = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<PropertyItem>;
-
 export type PropertyValuesList = Array<PropertyItem>;
-const PropertyValuesList = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<PropertyValuesList>;
-
 export interface Property {
   /** You can use a simplified version: ```json { "properties": [ { "key": "email", "value": "x@y.com", "operator": "exact", "type": "event" } ] } ``` Or you can create more complicated queries with AND and OR: ```json { "properties": { "type": "AND", "values": [ { "type": "OR", "values": [ {"key": "email", ...}, {"key": "email", ...} ] }, { "type": "AND", "values": [ {"key": "email", ...}, {"key": "email", ...} ] } ] ] } ``` * `AND` - AND * `OR` - OR */
   type?: PropertyGroupOperatorEnum | (string & {});
   values?: PropertyValuesList;
 }
-const Property = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<Property>;
-
 export type ListEventsRequestPropertiesList = Array<Property>;
-const ListEventsRequestPropertiesList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ListEventsRequestPropertiesList>;
-
 export type ListEventsRequestSelectList = Array<string>;
-const ListEventsRequestSelectList =
-  GetEventsValueRequestEventNameList as any as S.Schema<ListEventsRequestSelectList>;
-
 export type ListEventsRequestWhereList = Array<string>;
-const ListEventsRequestWhereList =
-  GetEventsValueRequestEventNameList as any as S.Schema<ListEventsRequestWhereList>;
-
 export interface ListEventsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -246,20 +186,9 @@ export interface ListEventsRequest {
   /** (Experimental) JSON-serialized array of HogQL expressions that must pass */
   where?: ListEventsRequestWhereList;
 }
-const ListEventsRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<ListEventsRequest>;
-
 export type ClickhouseEventPropertiesMap = { [key: string]: unknown | undefined };
-const ClickhouseEventPropertiesMap =
-  GetEventResponseBodyMap as any as S.Schema<ClickhouseEventPropertiesMap>;
-
 export type ClickhouseEventPersonMap = { [key: string]: unknown | undefined };
-const ClickhouseEventPersonMap =
-  GetEventResponseBodyMap as any as S.Schema<ClickhouseEventPersonMap>;
-
 export type EventElementAttrClassList = Array<string>;
-const EventElementAttrClassList =
-  GetEventsValueRequestEventNameList as any as S.Schema<EventElementAttrClassList>;
-
 export interface EventElement {
   event?: string;
   text?: string | null;
@@ -272,14 +201,7 @@ export interface EventElement {
   attributes?: unknown;
   order?: number | null;
 }
-const EventElement = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<EventElement>;
-
 export type ClickhouseEventElementsList = Array<EventElement>;
-const ClickhouseEventElementsList = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<ClickhouseEventElementsList>;
-
 export interface ClickhouseEvent {
   id?: string;
   distinct_id?: string;
@@ -290,23 +212,11 @@ export interface ClickhouseEvent {
   elements?: ClickhouseEventElementsList;
   elements_chain?: string;
 }
-const ClickhouseEvent = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<ClickhouseEvent>;
-
 export type PaginatedClickhouseEventListResultsList = Array<ClickhouseEvent>;
-const PaginatedClickhouseEventListResultsList = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<PaginatedClickhouseEventListResultsList>;
-
 export interface PaginatedClickhouseEventList {
   next?: string | null;
   results?: PaginatedClickhouseEventListResultsList;
 }
-const PaginatedClickhouseEventList = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<PaginatedClickhouseEventList>;
-
 export type GetEventError = BadRequest | Forbidden | NotFound | PosthogOpError;
 export const getEvent: API.OperationMethod<
   GetEventRequest,
@@ -314,8 +224,8 @@ export const getEvent: API.OperationMethod<
   GetEventError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEventRequest,
-  output: GetEventResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<GetEventRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<GetEventResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -329,8 +239,8 @@ export const getEventsValue: API.OperationMethod<
   GetEventsValueError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEventsValueRequest,
-  output: EventPropertyValuesResponse,
+  input: __S(4, __c0, 4) as any as S.Schema<GetEventsValueRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<EventPropertyValuesResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -344,8 +254,8 @@ export const listEvents: API.OperationMethod<
   ListEventsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEventsRequest,
-  output: PaginatedClickhouseEventList,
+  input: __S(12, __c1, 4) as any as S.Schema<ListEventsRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<PaginatedClickhouseEventList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -359,7 +269,7 @@ function __c0(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          format: S.optional(GetEventRequestFormat.pipe(T.Query())),
+          format: S.optional(S.String.pipe(T.Query())),
           include_person: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/api/projects/{project_id}/events/{id}/", code: 200 }),
@@ -368,7 +278,7 @@ function __c0(j: number): any {
     case 1:
       return S.Record(S.String, S.Unknown);
     case 2:
-      return S.suspend(() => GetEventResponseBodyMap.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(1, __c0, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetEventResponse",
       });
     case 3:
@@ -377,8 +287,8 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          event_name: S.optional(GetEventsValueRequestEventNameList.pipe(T.Query())),
-          format: S.optional(GetEventsValueRequestFormat.pipe(T.Query())),
+          event_name: S.optional(__S(3, __c0, 3).pipe(T.Query())),
+          format: S.optional(S.String.pipe(T.Query())),
           is_column: S.optional(S.Boolean.pipe(T.Query())),
           key: S.String.pipe(T.Query()),
           value: S.optional(S.String.pipe(T.Query())),
@@ -394,11 +304,11 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "EventPropertyValue" });
     case 6:
-      return S.Array(EventPropertyValue);
+      return S.Array(__S(5, __c0, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          results: EventPropertyValuesResponseResultsList,
+          results: __S(6, __c0, 6),
           refreshing: S.Boolean,
         }),
       ).annotate({
@@ -412,22 +322,22 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.String),
-          value: S.optional(PropertyItemValue),
-          operator: S.optional(S.NullOr(PropertyItemOperator)),
-          type: S.optional(PropertyItemType),
+          value: S.optional(S.Unknown),
+          operator: S.optional(S.NullOr(S.Unknown)),
+          type: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "PropertyItem" });
     case 1:
-      return S.Array(PropertyItem);
+      return S.Array(__S(8, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(PropertyGroupOperatorEnum),
-          values: S.optional(PropertyValuesList),
+          type: S.optional(S.String),
+          values: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({ identifier: "Property" });
     case 3:
-      return S.Array(Property);
+      return S.Array(__S(10, __c1, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -436,14 +346,14 @@ function __c1(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
           distinct_id: S.optional(S.Number.pipe(T.Query())),
           event: S.optional(S.String.pipe(T.Query())),
-          format: S.optional(ListEventsRequestFormat.pipe(T.Query())),
+          format: S.optional(S.String.pipe(T.Query())),
           include_person: S.optional(S.Boolean.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
           person_id: S.optional(S.Number.pipe(T.Query())),
-          properties: S.optional(ListEventsRequestPropertiesList.pipe(T.Query())),
-          select: S.optional(ListEventsRequestSelectList.pipe(T.Query())),
-          where: S.optional(ListEventsRequestWhereList.pipe(T.Query())),
+          properties: S.optional(__S(11, __c1, 3).pipe(T.Query())),
+          select: S.optional(__S(3, __c0, 3).pipe(T.Query())),
+          where: S.optional(__S(3, __c0, 3).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/projects/{project_id}/events/", code: 200 })),
       ).annotate({ identifier: "ListEventsRequest" });
     case 5:
@@ -452,7 +362,7 @@ function __c1(j: number): any {
           event: S.optional(S.String),
           text: S.optional(S.NullOr(S.String)),
           tag_name: S.optional(S.NullOr(S.String)),
-          attr_class: S.optional(S.NullOr(EventElementAttrClassList)),
+          attr_class: S.optional(S.NullOr(__S(3, __c0, 3))),
           href: S.optional(S.NullOr(S.String)),
           attr_id: S.optional(S.NullOr(S.String)),
           nth_child: S.optional(S.NullOr(S.Number)),
@@ -462,17 +372,17 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "EventElement" });
     case 6:
-      return S.Array(EventElement);
+      return S.Array(__S(13, __c1, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           distinct_id: S.optional(S.String),
-          properties: S.optional(ClickhouseEventPropertiesMap),
+          properties: S.optional(__S(1, __c0, 1)),
           event: S.optional(S.String),
           timestamp: S.optional(S.String),
-          person: S.optional(S.NullOr(ClickhouseEventPersonMap)),
-          elements: S.optional(ClickhouseEventElementsList),
+          person: S.optional(S.NullOr(__S(1, __c0, 1))),
+          elements: S.optional(__S(14, __c1, 6)),
           elements_chain: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClickhouseEvent" });
@@ -481,15 +391,20 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ClickhouseEvent);
+      return S.Array(__S(15, __c1, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           next: S.optional(S.NullOr(S.String)),
-          results: S.optional(PaginatedClickhouseEventListResultsList),
+          results: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({
         identifier: "PaginatedClickhouseEventList",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

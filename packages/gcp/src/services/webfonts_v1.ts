@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -43,20 +45,9 @@ export type ListWebfontsSortEnum =
   | "POPULARITY"
   | "STYLE"
   | "TRENDING";
-const ListWebfontsSortEnum = S.String;
-
 export type ListWebfontsCapabilityEnum = "CAPABILITY_UNSPECIFIED" | "WOFF2" | "VF" | "FAMILY_TAGS";
-const ListWebfontsCapabilityEnum = S.String;
-
 export type ListWebfontsCapabilityEnumList = Array<ListWebfontsCapabilityEnum | (string & {})>;
-const ListWebfontsCapabilityEnumList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ListWebfontsCapabilityEnumList>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<StringList>;
-
 export interface ListWebfontsRequest {
   /** Filters by Webfont.subset, if subset is found in Webfont.subsets. If not set, returns all families. */
   subset?: string;
@@ -69,8 +60,6 @@ export interface ListWebfontsRequest {
   /** Filters by Webfont.family, using literal match. If not set, returns all families */
   family?: StringList;
 }
-const ListWebfontsRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<ListWebfontsRequest>;
-
 /** Metadata for a variable font axis. */
 export interface Axis {
   /** tag name. */
@@ -80,14 +69,8 @@ export interface Axis {
   /** maximum value */
   end?: number;
 }
-const Axis = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Axis>;
-
 export type AxisList = Array<Axis>;
-const AxisList = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<AxisList>;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<StringMap>;
-
 /** Metadata for a tag. */
 export interface Tag {
   /** The name of the tag. */
@@ -95,11 +78,7 @@ export interface Tag {
   /** The weight of the tag. */
   weight?: number;
 }
-const Tag = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Tag>;
-
 export type TagList = Array<Tag>;
-const TagList = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<TagList>;
-
 /** Metadata describing a family of fonts. */
 export interface Webfont {
   /** Axis for variable fonts. */
@@ -127,11 +106,7 @@ export interface Webfont {
   /** The available variants for the font. */
   variants?: StringList;
 }
-const Webfont = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Webfont>;
-
 export type WebfontList_ = Array<Webfont>;
-const WebfontList_ = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<WebfontList_>;
-
 /** Response containing the list of fonts currently served by the Google Fonts API. */
 export interface WebfontList {
   /** This kind represents a list of webfont objects in the webfonts service. */
@@ -139,8 +114,6 @@ export interface WebfontList {
   /** The list of fonts currently served by the Google Fonts API. */
   items?: WebfontList_;
 }
-const WebfontList = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<WebfontList>;
-
 export type ListWebfontsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the list of fonts currently served by the Google Fonts Developer API. */
 export const listWebfonts: API.OperationMethod<
@@ -149,8 +122,8 @@ export const listWebfonts: API.OperationMethod<
   ListWebfontsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWebfontsRequest,
-  output: WebfontList,
+  input: __S(2, __c0, 2) as any as S.Schema<ListWebfontsRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<WebfontList>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -160,17 +133,17 @@ export const listWebfonts: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ListWebfontsCapabilityEnum);
+      return S.Array(S.String);
     case 1:
       return S.Array(S.String);
     case 2:
       return S.suspend(() =>
         S.Struct({
           subset: S.optional(S.String.pipe(T.Query())),
-          sort: S.optional(ListWebfontsSortEnum.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
           category: S.optional(S.String.pipe(T.Query())),
-          capability: S.optional(ListWebfontsCapabilityEnumList.pipe(T.Query())),
-          family: S.optional(StringList.pipe(T.Query())),
+          capability: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          family: S.optional(__S(1, __c0, 1).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -188,7 +161,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "Axis" });
     case 4:
-      return S.Array(Axis);
+      return S.Array(__S(3, __c0, 3));
     case 5:
       return S.Record(S.String, S.String);
     case 6:
@@ -199,7 +172,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "Tag" });
     case 7:
-      return S.Array(Tag);
+      return S.Array(__S(6, __c0, 6));
   }
 }
 function __c1(j: number): any {
@@ -207,28 +180,33 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          axes: S.optional(AxisList),
-          subsets: S.optional(StringList),
+          axes: S.optional(__S(4, __c0, 4)),
+          subsets: S.optional(__S(1, __c0, 1)),
           version: S.optional(S.String),
           lastModified: S.optional(S.String),
           kind: S.optional(S.String),
           menu: S.optional(S.String),
           family: S.optional(S.String),
-          colorCapabilities: S.optional(StringList),
-          files: S.optional(StringMap),
+          colorCapabilities: S.optional(__S(1, __c0, 1)),
+          files: S.optional(__S(5, __c0, 5)),
           category: S.optional(S.String),
-          tags: S.optional(TagList),
-          variants: S.optional(StringList),
+          tags: S.optional(__S(7, __c0, 7)),
+          variants: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({ identifier: "Webfont" });
     case 1:
-      return S.Array(Webfont);
+      return S.Array(__S(8, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          items: S.optional(WebfontList_),
+          items: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({ identifier: "WebfontList" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

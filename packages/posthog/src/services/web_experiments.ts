@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -44,11 +46,6 @@ export interface CreateWebExperimentRequest {
   /** Variants for the web experiment. Example: { "control": { "transforms": [ { "text": "Here comes Superman!", "html": "", "selector": "#page > #body > .header h1" } ], "conditions": "None", "rollout_percentage": 50 }, } */
   variants?: unknown;
 }
-const CreateWebExperimentRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateWebExperimentRequest>;
-
 /** Serializer for the exposed /api/web_experiments endpoint, to be used in posthog-js and for headless APIs. */
 export interface WebExperimentsAPI {
   id?: number;
@@ -58,19 +55,12 @@ export interface WebExperimentsAPI {
   /** Variants for the web experiment. Example: { "control": { "transforms": [ { "text": "Here comes Superman!", "html": "", "selector": "#page > #body > .header h1" } ], "conditions": "None", "rollout_percentage": 50 }, } */
   variants?: unknown;
 }
-const WebExperimentsAPI = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<WebExperimentsAPI>;
-
 export interface GetWebExperimentRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this web experiment. */
   id: number;
 }
-const GetWebExperimentRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<GetWebExperimentRequest>;
-
 export interface ListWebExperimentsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -79,28 +69,13 @@ export interface ListWebExperimentsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-const ListWebExperimentsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ListWebExperimentsRequest>;
-
 export type PaginatedWebExperimentsAPIListResultsList = Array<WebExperimentsAPI>;
-const PaginatedWebExperimentsAPIListResultsList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<PaginatedWebExperimentsAPIListResultsList>;
-
 export interface PaginatedWebExperimentsAPIList {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedWebExperimentsAPIListResultsList;
 }
-const PaginatedWebExperimentsAPIList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<PaginatedWebExperimentsAPIList>;
-
 export interface UpdateWebExperimentRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -111,11 +86,6 @@ export interface UpdateWebExperimentRequest {
   /** Variants for the web experiment. Example: { "control": { "transforms": [ { "text": "Here comes Superman!", "html": "", "selector": "#page > #body > .header h1" } ], "conditions": "None", "rollout_percentage": 50 }, } */
   variants?: unknown;
 }
-const UpdateWebExperimentRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<UpdateWebExperimentRequest>;
-
 export interface UpdateWebExperimentsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -126,28 +96,13 @@ export interface UpdateWebExperimentsPartialRequest {
   /** Variants for the web experiment. Example: { "control": { "transforms": [ { "text": "Here comes Superman!", "html": "", "selector": "#page > #body > .header h1" } ], "conditions": "None", "rollout_percentage": 50 }, } */
   variants?: unknown;
 }
-const UpdateWebExperimentsPartialRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<UpdateWebExperimentsPartialRequest>;
-
 export interface WebExperimentsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this web experiment. */
   id: number;
 }
-const WebExperimentsDestroyRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<WebExperimentsDestroyRequest>;
-
 export interface WebExperimentsDestroyResponse {}
-const WebExperimentsDestroyResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<WebExperimentsDestroyResponse>;
-
 export type CreateWebExperimentError = BadRequest | Forbidden | NotFound | PosthogOpError;
 export const createWebExperiment: API.OperationMethod<
   CreateWebExperimentRequest,
@@ -155,8 +110,8 @@ export const createWebExperiment: API.OperationMethod<
   CreateWebExperimentError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateWebExperimentRequest,
-  output: WebExperimentsAPI,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateWebExperimentRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<WebExperimentsAPI>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -169,8 +124,8 @@ export const getWebExperiment: API.OperationMethod<
   GetWebExperimentError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWebExperimentRequest,
-  output: WebExperimentsAPI,
+  input: __S(2, __c0, 2) as any as S.Schema<GetWebExperimentRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<WebExperimentsAPI>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -183,8 +138,8 @@ export const listWebExperiments: API.OperationMethod<
   ListWebExperimentsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWebExperimentsRequest,
-  output: PaginatedWebExperimentsAPIList,
+  input: __S(3, __c0, 3) as any as S.Schema<ListWebExperimentsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<PaginatedWebExperimentsAPIList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -197,8 +152,8 @@ export const updateWebExperiment: API.OperationMethod<
   UpdateWebExperimentError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateWebExperimentRequest,
-  output: WebExperimentsAPI,
+  input: __S(6, __c0, 6) as any as S.Schema<UpdateWebExperimentRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<WebExperimentsAPI>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -211,8 +166,8 @@ export const updateWebExperimentsPartial: API.OperationMethod<
   UpdateWebExperimentsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateWebExperimentsPartialRequest,
-  output: WebExperimentsAPI,
+  input: __S(7, __c0, 7) as any as S.Schema<UpdateWebExperimentsPartialRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<WebExperimentsAPI>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -225,8 +180,8 @@ export const webExperimentsDestroy: API.OperationMethod<
   WebExperimentsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WebExperimentsDestroyRequest,
-  output: WebExperimentsDestroyResponse,
+  input: __S(8, __c1, 0) as any as S.Schema<WebExperimentsDestroyRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<WebExperimentsDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -284,14 +239,14 @@ function __c0(j: number): any {
         identifier: "ListWebExperimentsRequest",
       });
     case 4:
-      return S.Array(WebExperimentsAPI);
+      return S.Array(__S(1, __c0, 1));
     case 5:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(PaginatedWebExperimentsAPIListResultsList),
+          results: S.optional(__S(4, __c0, 4)),
         }),
       ).annotate({
         identifier: "PaginatedWebExperimentsAPIList",
@@ -356,4 +311,9 @@ function __c1(j: number): any {
         identifier: "WebExperimentsDestroyResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

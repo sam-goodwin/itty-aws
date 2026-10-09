@@ -6,34 +6,20 @@ import { UnknownDaytonaError } from "../errors.ts";
 import { DaytonaProtocol, type DaytonaOpError, type DaytonaOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { DaytonaOpError, DaytonaOpContext };
 
 export interface InitializeRequest {
   token: string;
 }
-const InitializeRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<InitializeRequest>;
-
 export type InitializeResponseBodyMap = { [key: string]: string | undefined };
-const InitializeResponseBodyMap = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<InitializeResponseBodyMap>;
-
 export type InitializeResponse = InitializeResponseBodyMap;
-const InitializeResponse = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<InitializeResponse>;
-
 /** Set maps env var names to values applied to the daemon's process env, so processes spawned after the call (exec, sessions, PTYs) inherit them. */
 export type UpdateEnvRequestSetMap = { [key: string]: string | undefined };
-const UpdateEnvRequestSetMap = InitializeResponseBodyMap as any as S.Schema<UpdateEnvRequestSetMap>;
-
 /** Unset lists env var names to remove before Set is applied. */
 export type UpdateEnvRequestUnsetList = Array<string>;
-const UpdateEnvRequestUnsetList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<UpdateEnvRequestUnsetList>;
-
 export interface UpdateEnvRequest {
   /** Set maps env var names to values applied to the daemon's process env, so processes spawned after the call (exec, sessions, PTYs) inherit them. */
   set?: UpdateEnvRequestSetMap;
@@ -42,12 +28,8 @@ export interface UpdateEnvRequest {
   /** UnsetValuePrefix removes every env var whose value has this prefix and whose name is not a key of Set, before Set is applied. Used to reconcile secret placeholder vars without the caller knowing the daemon's env. */
   unsetValuePrefix?: string;
 }
-const UpdateEnvRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<UpdateEnvRequest>;
-
 export type UpdateEnvResponseBodyMap = { [key: string]: string | undefined };
 export type UpdateEnvResponse = UpdateEnvResponseBodyMap;
-const UpdateEnvResponse = InitializeResponse as any as S.Schema<UpdateEnvResponse>;
-
 export type InitializeError = DaytonaOpError;
 /** Initialize toolbox server Set the auth token and initialize telemetry for the toolbox server */
 export const initialize: API.OperationMethod<
@@ -56,8 +38,8 @@ export const initialize: API.OperationMethod<
   InitializeError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InitializeRequest,
-  output: InitializeResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<InitializeRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<InitializeResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -71,8 +53,8 @@ export const updateEnv: API.OperationMethod<
   UpdateEnvError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateEnvRequest,
-  output: UpdateEnvResponse,
+  input: __S(4, __c0, 4) as any as S.Schema<UpdateEnvRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<UpdateEnvResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -90,7 +72,7 @@ function __c0(j: number): any {
     case 1:
       return S.Record(S.String, S.String);
     case 2:
-      return S.suspend(() => InitializeResponseBodyMap.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(1, __c0, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "InitializeResponse",
       });
     case 3:
@@ -98,10 +80,15 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          set: S.optional(UpdateEnvRequestSetMap),
-          unset: S.optional(UpdateEnvRequestUnsetList),
+          set: S.optional(__S(1, __c0, 1)),
+          unset: S.optional(__S(3, __c0, 3)),
           unsetValuePrefix: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/env", code: 200 })),
       ).annotate({ identifier: "UpdateEnvRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

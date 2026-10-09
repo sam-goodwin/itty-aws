@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -78,33 +80,19 @@ export class PubSubLiteTurnedDown
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-const CancelOperationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CancelOperationRequest>;
-
 export interface CancelAdminProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-const CancelAdminProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CancelAdminProjectsLocationsOperationsRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = CancelOperationRequest as any as S.Schema<Empty>;
-
 /** A cursor that describes the position of a message within a topic partition. */
 export interface Cursor {
   /** The offset of a message within a topic partition. Must be greater than or equal 0. */
   offset?: string;
 }
-const Cursor = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Cursor>;
-
 /** Request for CommitCursor. */
 export interface CommitCursorRequest {
   /** The new value for the committed cursor. */
@@ -112,54 +100,30 @@ export interface CommitCursorRequest {
   /** The partition for which to update the cursor. Partitions are zero indexed, so `partition` must be in the range [0, topic.num_partitions). */
   partition?: string;
 }
-const CommitCursorRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<CommitCursorRequest>;
-
 export interface CommitCursorCursorProjectsLocationsSubscriptionsRequest {
   /** The subscription for which to update the cursor. */
   subscription: string;
   /** Request body */
   body?: CommitCursorRequest;
 }
-const CommitCursorCursorProjectsLocationsSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CommitCursorCursorProjectsLocationsSubscriptionsRequest>;
-
 /** Response for CommitCursor. */
 export interface CommitCursorResponse {}
-const CommitCursorResponse = CancelOperationRequest as any as S.Schema<CommitCursorResponse>;
-
 /** Compute the current head cursor for a partition. */
 export interface ComputeHeadCursorRequest {
   /** Required. The partition for which we should compute the head cursor. */
   partition?: string;
 }
-const ComputeHeadCursorRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ComputeHeadCursorRequest>;
-
 export interface ComputeHeadCursorTopicStatsProjectsLocationsTopicsRequest {
   /** Required. The topic for which we should compute the head cursor. */
   topic: string;
   /** Request body */
   body?: ComputeHeadCursorRequest;
 }
-const ComputeHeadCursorTopicStatsProjectsLocationsTopicsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ComputeHeadCursorTopicStatsProjectsLocationsTopicsRequest>;
-
 /** Response containing the head cursor for the requested topic and partition. */
 export interface ComputeHeadCursorResponse {
   /** The head cursor. */
   headCursor?: Cursor;
 }
-const ComputeHeadCursorResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ComputeHeadCursorResponse>;
-
 /** Compute statistics about a range of messages in a given topic and partition. */
 export interface ComputeMessageStatsRequest {
   /** The inclusive start of the range. */
@@ -169,22 +133,12 @@ export interface ComputeMessageStatsRequest {
   /** The exclusive end of the range. The range is empty if end_cursor <= start_cursor. Specifying a start_cursor before the first message and an end_cursor after the last message will retrieve all messages. */
   endCursor?: Cursor;
 }
-const ComputeMessageStatsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<ComputeMessageStatsRequest>;
-
 export interface ComputeMessageStatsTopicStatsProjectsLocationsTopicsRequest {
   /** Required. The topic for which we should compute message stats. */
   topic: string;
   /** Request body */
   body?: ComputeMessageStatsRequest;
 }
-const ComputeMessageStatsTopicStatsProjectsLocationsTopicsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<ComputeMessageStatsTopicStatsProjectsLocationsTopicsRequest>;
-
 /** Response containing stats for messages in the requested topic and partition. */
 export interface ComputeMessageStatsResponse {
   /** The minimum publish timestamp across these messages. Note that publish timestamps within a partition are not guaranteed to be non-decreasing. The timestamp will be unset if there are no messages. */
@@ -196,11 +150,6 @@ export interface ComputeMessageStatsResponse {
   /** The number of quota bytes accounted to these messages. */
   messageBytes?: string;
 }
-const ComputeMessageStatsResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ComputeMessageStatsResponse>;
-
 /** A target publish or event time. Can be used for seeking to or retrieving the corresponding cursor. */
 export interface TimeTarget {
   /** Request the cursor of the first message with publish time greater than or equal to `publish_time`. All messages thereafter are guaranteed to have publish times >= `publish_time`. */
@@ -208,8 +157,6 @@ export interface TimeTarget {
   /** Request the cursor of the first message with event time greater than or equal to `event_time`. If messages are missing an event time, the publish time is used as a fallback. As event times are user supplied, subsequent messages may have event times less than `event_time` and should be filtered by the client, if necessary. */
   eventTime?: string;
 }
-const TimeTarget = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<TimeTarget>;
-
 /** Compute the corresponding cursor for a publish or event time in a topic partition. */
 export interface ComputeTimeCursorRequest {
   /** Required. The partition for which we should compute the cursor. */
@@ -217,32 +164,17 @@ export interface ComputeTimeCursorRequest {
   /** Required. The target publish or event time. Specifying a future time will return an unset cursor. */
   target?: TimeTarget;
 }
-const ComputeTimeCursorRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ComputeTimeCursorRequest>;
-
 export interface ComputeTimeCursorTopicStatsProjectsLocationsTopicsRequest {
   /** Required. The topic for which we should compute the cursor. */
   topic: string;
   /** Request body */
   body?: ComputeTimeCursorRequest;
 }
-const ComputeTimeCursorTopicStatsProjectsLocationsTopicsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<ComputeTimeCursorTopicStatsProjectsLocationsTopicsRequest>;
-
 /** Response containing the cursor corresponding to a publish or event time in a topic partition. */
 export interface ComputeTimeCursorResponse {
   /** If present, the cursor references the first message with time greater than or equal to the specified target time. If such a message cannot be found, the cursor will be unset (i.e. `cursor` is not present). */
   cursor?: Cursor;
 }
-const ComputeTimeCursorResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<ComputeTimeCursorResponse>;
-
 /** Metadata about a reservation resource. */
 export interface Reservation {
   /** The name of the reservation. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id} */
@@ -250,8 +182,6 @@ export interface Reservation {
   /** The reserved throughput capacity. Every unit of throughput capacity is equivalent to 1 MiB/s of published messages or 2 MiB/s of subscribed messages. Any topics which are declared as using capacity from a Reservation will consume resources from this reservation instead of being charged individually. */
   throughputCapacity?: string;
 }
-const Reservation = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<Reservation>;
-
 export interface CreateAdminProjectsLocationsReservationsRequest {
   /** Required. The parent location in which to create the reservation. Structured like `projects/{project_number}/locations/{location}`. */
   parent: string;
@@ -260,47 +190,32 @@ export interface CreateAdminProjectsLocationsReservationsRequest {
   /** Request body */
   body?: Reservation;
 }
-const CreateAdminProjectsLocationsReservationsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CreateAdminProjectsLocationsReservationsRequest>;
-
 export type DeliveryConfigDeliveryRequirementEnum =
   | "DELIVERY_REQUIREMENT_UNSPECIFIED"
   | "DELIVER_IMMEDIATELY"
   | "DELIVER_AFTER_STORED";
-const DeliveryConfigDeliveryRequirementEnum = S.String;
-
 /** The settings for a subscription's message delivery. */
 export interface DeliveryConfig {
   /** The DeliveryRequirement for this subscription. */
   deliveryRequirement?: DeliveryConfigDeliveryRequirementEnum | (string & {});
 }
-const DeliveryConfig = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<DeliveryConfig>;
-
 /** Configuration for exporting to a Pub/Sub topic. */
 export interface PubSubConfig {
   /** The name of the Pub/Sub topic. Structured like: projects/{project_number}/topics/{topic_id}. The topic may be changed. */
   topic?: string;
 }
-const PubSubConfig = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<PubSubConfig>;
-
 export type ExportConfigCurrentStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "PAUSED"
   | "PERMISSION_DENIED"
   | "NOT_FOUND";
-const ExportConfigCurrentStateEnum = S.String;
-
 export type ExportConfigDesiredStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "PAUSED"
   | "PERMISSION_DENIED"
   | "NOT_FOUND";
-const ExportConfigDesiredStateEnum = S.String;
-
 /** Configuration for a Pub/Sub Lite subscription that writes messages to a destination. User subscriber clients must not connect to this subscription. */
 export interface ExportConfig {
   /** Messages are automatically written from the Pub/Sub Lite topic associated with this subscription to a Pub/Sub topic. */
@@ -312,8 +227,6 @@ export interface ExportConfig {
   /** The desired state of this export. Setting this to values other than `ACTIVE` and `PAUSED` will result in an error. */
   desiredState?: ExportConfigDesiredStateEnum | (string & {});
 }
-const ExportConfig = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<ExportConfig>;
-
 /** Metadata about a subscription resource. */
 export interface Subscription {
   /** The name of the topic this subscription is attached to. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id} */
@@ -325,8 +238,6 @@ export interface Subscription {
   /** If present, messages are automatically written from the Pub/Sub Lite topic associated with this subscription to a destination. */
   exportConfig?: ExportConfig;
 }
-const Subscription = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<Subscription>;
-
 export interface CreateAdminProjectsLocationsSubscriptionsRequest {
   /** Required. The ID to use for the subscription, which will become the final component of the subscription's name. This value is structured like: `my-sub-name`. */
   subscriptionId?: string;
@@ -337,11 +248,6 @@ export interface CreateAdminProjectsLocationsSubscriptionsRequest {
   /** Request body */
   body?: Subscription;
 }
-const CreateAdminProjectsLocationsSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<CreateAdminProjectsLocationsSubscriptionsRequest>;
-
 /** The settings for a topic's message retention. */
 export interface RetentionConfig {
   /** The provisioned storage, in bytes, per partition. If the number of bytes stored in any of the topic's partitions grows beyond this value, older messages will be dropped to make room for newer ones, regardless of the value of `period`. */
@@ -349,8 +255,6 @@ export interface RetentionConfig {
   /** How long a published message is retained. If unset, messages will be retained as long as the bytes retained for each partition is below `per_partition_bytes`. */
   period?: string;
 }
-const RetentionConfig = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<RetentionConfig>;
-
 /** The throughput capacity configuration for each partition. */
 export interface Capacity {
   /** Subscribe throughput capacity per partition in MiB/s. Must be >= 4 and <= 32. */
@@ -358,8 +262,6 @@ export interface Capacity {
   /** Publish throughput capacity per partition in MiB/s. Must be >= 4 and <= 16. */
   publishMibPerSec?: number;
 }
-const Capacity = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<Capacity>;
-
 /** The settings for a topic's partitions. */
 export interface PartitionConfig {
   /** The number of partitions in the topic. Must be at least 1. Once a topic has been created the number of partitions can be increased but not decreased. Message ordering is not guaranteed across a topic resize. For more information see https://cloud.google.com/pubsub/lite/docs/topics#scaling_capacity */
@@ -369,15 +271,11 @@ export interface PartitionConfig {
   /** The capacity configuration. */
   capacity?: Capacity;
 }
-const PartitionConfig = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<PartitionConfig>;
-
 /** The settings for this topic's Reservation usage. */
 export interface ReservationConfig {
   /** The Reservation to use for this topic's throughput capacity. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id} */
   throughputReservation?: string;
 }
-const ReservationConfig = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<ReservationConfig>;
-
 /** Metadata about a topic resource. */
 export interface Topic {
   /** The settings for this topic's message retention. */
@@ -389,8 +287,6 @@ export interface Topic {
   /** The name of the topic. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id} */
   name?: string;
 }
-const Topic = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<Topic>;
-
 export interface CreateAdminProjectsLocationsTopicsRequest {
   /** Required. The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`. */
   topicId?: string;
@@ -399,62 +295,28 @@ export interface CreateAdminProjectsLocationsTopicsRequest {
   /** Request body */
   body?: Topic;
 }
-const CreateAdminProjectsLocationsTopicsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<CreateAdminProjectsLocationsTopicsRequest>;
-
 export interface DeleteAdminProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-const DeleteAdminProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<DeleteAdminProjectsLocationsOperationsRequest>;
-
 export interface DeleteAdminProjectsLocationsReservationsRequest {
   /** Required. The name of the reservation to delete. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id} */
   name: string;
 }
-const DeleteAdminProjectsLocationsReservationsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<DeleteAdminProjectsLocationsReservationsRequest>;
-
 export interface DeleteAdminProjectsLocationsSubscriptionsRequest {
   /** Required. The name of the subscription to delete. */
   name: string;
 }
-const DeleteAdminProjectsLocationsSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<DeleteAdminProjectsLocationsSubscriptionsRequest>;
-
 export interface DeleteAdminProjectsLocationsTopicsRequest {
   /** Required. The name of the topic to delete. */
   name: string;
 }
-const DeleteAdminProjectsLocationsTopicsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<DeleteAdminProjectsLocationsTopicsRequest>;
-
 export interface GetAdminProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetAdminProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<GetAdminProjectsLocationsOperationsRequest>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -464,8 +326,6 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-const Status = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<Status>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
@@ -479,51 +339,27 @@ export interface Operation {
   /** The error result of the operation in case of failure or cancellation. */
   error?: Status;
 }
-const Operation = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<Operation>;
-
 export interface GetAdminProjectsLocationsReservationsRequest {
   /** Required. The name of the reservation whose configuration to return. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id} */
   name: string;
 }
-const GetAdminProjectsLocationsReservationsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<GetAdminProjectsLocationsReservationsRequest>;
-
 export interface GetAdminProjectsLocationsSubscriptionsRequest {
   /** Required. The name of the subscription whose configuration to return. */
   name: string;
 }
-const GetAdminProjectsLocationsSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<GetAdminProjectsLocationsSubscriptionsRequest>;
-
 export interface GetAdminProjectsLocationsTopicsRequest {
   /** Required. The name of the topic whose configuration to return. */
   name: string;
 }
-const GetAdminProjectsLocationsTopicsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<GetAdminProjectsLocationsTopicsRequest>;
-
 export interface GetPartitionsAdminProjectsLocationsTopicsRequest {
   /** Required. The topic whose partition information to return. */
   name: string;
 }
-const GetPartitionsAdminProjectsLocationsTopicsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<GetPartitionsAdminProjectsLocationsTopicsRequest>;
-
 /** Response for GetTopicPartitions. */
 export interface TopicPartitions {
   /** The number of partitions in the topic. */
   partitionCount?: string;
 }
-const TopicPartitions = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<TopicPartitions>;
-
 export interface ListAdminProjectsLocationsOperationsRequest {
   /** The standard list filter. */
   filter?: string;
@@ -536,17 +372,8 @@ export interface ListAdminProjectsLocationsOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
 }
-const ListAdminProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<ListAdminProjectsLocationsOperationsRequest>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<StringList>;
-
 export type OperationList = Array<Operation>;
-const OperationList = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<OperationList>;
-
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
   /** The standard List next-page token. */
@@ -556,11 +383,6 @@ export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: OperationList;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<ListOperationsResponse>;
-
 export interface ListAdminProjectsLocationsReservationsRequest {
   /** The maximum number of reservations to return. The service may return fewer than this value. If unset or zero, all reservations for the parent will be returned. */
   pageSize?: number;
@@ -569,14 +391,7 @@ export interface ListAdminProjectsLocationsReservationsRequest {
   /** Required. The parent whose reservations are to be listed. Structured like `projects/{project_number}/locations/{location}`. */
   parent: string;
 }
-const ListAdminProjectsLocationsReservationsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<ListAdminProjectsLocationsReservationsRequest>;
-
 export type ReservationList = Array<Reservation>;
-const ReservationList = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<ReservationList>;
-
 /** Response for ListReservations. */
 export interface ListReservationsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted, there are no more results. */
@@ -584,11 +399,6 @@ export interface ListReservationsResponse {
   /** The list of reservation in the requested parent. The order of the reservations is unspecified. */
   reservations?: ReservationList;
 }
-const ListReservationsResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<ListReservationsResponse>;
-
 export interface ListAdminProjectsLocationsReservationsTopicsRequest {
   /** Required. The name of the reservation whose topics to list. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id} */
   name: string;
@@ -597,11 +407,6 @@ export interface ListAdminProjectsLocationsReservationsTopicsRequest {
   /** The maximum number of topics to return. The service may return fewer than this value. If unset or zero, all topics for the given reservation will be returned. */
   pageSize?: number;
 }
-const ListAdminProjectsLocationsReservationsTopicsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<ListAdminProjectsLocationsReservationsTopicsRequest>;
-
 /** Response for ListReservationTopics. */
 export interface ListReservationTopicsResponse {
   /** The names of topics attached to the reservation. The order of the topics is unspecified. */
@@ -609,11 +414,6 @@ export interface ListReservationTopicsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted, there are no more results. */
   nextPageToken?: string;
 }
-const ListReservationTopicsResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<ListReservationTopicsResponse>;
-
 export interface ListAdminProjectsLocationsSubscriptionsRequest {
   /** A page token, received from a previous `ListSubscriptions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSubscriptions` must match the call that provided the page token. */
   pageToken?: string;
@@ -622,14 +422,7 @@ export interface ListAdminProjectsLocationsSubscriptionsRequest {
   /** Required. The parent whose subscriptions are to be listed. Structured like `projects/{project_number}/locations/{location}`. */
   parent: string;
 }
-const ListAdminProjectsLocationsSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<ListAdminProjectsLocationsSubscriptionsRequest>;
-
 export type SubscriptionList = Array<Subscription>;
-const SubscriptionList = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<SubscriptionList>;
-
 /** Response for ListSubscriptions. */
 export interface ListSubscriptionsResponse {
   /** The list of subscriptions in the requested parent. The order of the subscriptions is unspecified. */
@@ -637,11 +430,6 @@ export interface ListSubscriptionsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted, there are no more results. */
   nextPageToken?: string;
 }
-const ListSubscriptionsResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<ListSubscriptionsResponse>;
-
 export interface ListAdminProjectsLocationsTopicsRequest {
   /** Required. The parent whose topics are to be listed. Structured like `projects/{project_number}/locations/{location}`. */
   parent: string;
@@ -650,14 +438,7 @@ export interface ListAdminProjectsLocationsTopicsRequest {
   /** A page token, received from a previous `ListTopics` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListTopics` must match the call that provided the page token. */
   pageToken?: string;
 }
-const ListAdminProjectsLocationsTopicsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<ListAdminProjectsLocationsTopicsRequest>;
-
 export type TopicList = Array<Topic>;
-const TopicList = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<TopicList>;
-
 /** Response for ListTopics. */
 export interface ListTopicsResponse {
   /** The list of topic in the requested parent. The order of the topics is unspecified. */
@@ -665,8 +446,6 @@ export interface ListTopicsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted, there are no more results. */
   nextPageToken?: string;
 }
-const ListTopicsResponse = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<ListTopicsResponse>;
-
 export interface ListAdminProjectsLocationsTopicsSubscriptionsRequest {
   /** The maximum number of subscriptions to return. The service may return fewer than this value. If unset or zero, all subscriptions for the given topic will be returned. */
   pageSize?: number;
@@ -675,11 +454,6 @@ export interface ListAdminProjectsLocationsTopicsSubscriptionsRequest {
   /** Required. The name of the topic whose subscriptions to list. */
   name: string;
 }
-const ListAdminProjectsLocationsTopicsSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<ListAdminProjectsLocationsTopicsSubscriptionsRequest>;
-
 /** Response for ListTopicSubscriptions. */
 export interface ListTopicSubscriptionsResponse {
   /** The names of subscriptions attached to the topic. The order of the subscriptions is unspecified. */
@@ -687,11 +461,6 @@ export interface ListTopicSubscriptionsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted, there are no more results. */
   nextPageToken?: string;
 }
-const ListTopicSubscriptionsResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<ListTopicSubscriptionsResponse>;
-
 export interface ListCursorProjectsLocationsSubscriptionsCursorsRequest {
   /** A page token, received from a previous `ListPartitionCursors` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListPartitionCursors` must match the call that provided the page token. */
   pageToken?: string;
@@ -700,11 +469,6 @@ export interface ListCursorProjectsLocationsSubscriptionsCursorsRequest {
   /** Required. The subscription for which to retrieve cursors. Structured like `projects/{project_number}/locations/{location}/subscriptions/{subscription_id}`. */
   parent: string;
 }
-const ListCursorProjectsLocationsSubscriptionsCursorsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<ListCursorProjectsLocationsSubscriptionsCursorsRequest>;
-
 /** A pair of a Cursor and the partition it is for. */
 export interface PartitionCursor {
   /** The partition this is for. */
@@ -712,11 +476,7 @@ export interface PartitionCursor {
   /** The value of the cursor. */
   cursor?: Cursor;
 }
-const PartitionCursor = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<PartitionCursor>;
-
 export type PartitionCursorList = Array<PartitionCursor>;
-const PartitionCursorList = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<PartitionCursorList>;
-
 /** Response for ListPartitionCursors */
 export interface ListPartitionCursorsResponse {
   /** The partition cursors from this request. */
@@ -724,11 +484,6 @@ export interface ListPartitionCursorsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const ListPartitionCursorsResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<ListPartitionCursorsResponse>;
-
 export interface PatchAdminProjectsLocationsReservationsRequest {
   /** Required. A mask specifying the reservation fields to change. */
   updateMask?: string;
@@ -737,11 +492,6 @@ export interface PatchAdminProjectsLocationsReservationsRequest {
   /** Request body */
   body?: Reservation;
 }
-const PatchAdminProjectsLocationsReservationsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<PatchAdminProjectsLocationsReservationsRequest>;
-
 export interface PatchAdminProjectsLocationsSubscriptionsRequest {
   /** Required. A mask specifying the subscription fields to change. */
   updateMask?: string;
@@ -750,11 +500,6 @@ export interface PatchAdminProjectsLocationsSubscriptionsRequest {
   /** Request body */
   body?: Subscription;
 }
-const PatchAdminProjectsLocationsSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<PatchAdminProjectsLocationsSubscriptionsRequest>;
-
 export interface PatchAdminProjectsLocationsTopicsRequest {
   /** The name of the topic. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id} */
   name: string;
@@ -763,14 +508,7 @@ export interface PatchAdminProjectsLocationsTopicsRequest {
   /** Request body */
   body?: Topic;
 }
-const PatchAdminProjectsLocationsTopicsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<PatchAdminProjectsLocationsTopicsRequest>;
-
 export type SeekSubscriptionRequestNamedTargetEnum = "NAMED_TARGET_UNSPECIFIED" | "TAIL" | "HEAD";
-const SeekSubscriptionRequestNamedTargetEnum = S.String;
-
 /** Request for SeekSubscription. */
 export interface SeekSubscriptionRequest {
   /** Seek to a named position with respect to the message backlog. */
@@ -778,22 +516,12 @@ export interface SeekSubscriptionRequest {
   /** Seek to the first message whose publish or event time is greater than or equal to the specified query time. If no such message can be located, will seek to the end of the message backlog. */
   timeTarget?: TimeTarget;
 }
-const SeekSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<SeekSubscriptionRequest>;
-
 export interface SeekAdminProjectsLocationsSubscriptionsRequest {
   /** Required. The name of the subscription to seek. */
   name: string;
   /** Request body */
   body?: SeekSubscriptionRequest;
 }
-const SeekAdminProjectsLocationsSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<SeekAdminProjectsLocationsSubscriptionsRequest>;
-
 export type CancelAdminProjectsLocationsOperationsError =
   | NotFound
   | Forbidden
@@ -807,8 +535,8 @@ export const cancelAdminProjectsLocationsOperations: API.OperationMethod<
   CancelAdminProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelAdminProjectsLocationsOperationsRequest,
-  output: Empty,
+  input: __S(1, __c0, 1) as any as S.Schema<CancelAdminProjectsLocationsOperationsRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -827,8 +555,12 @@ export const commitCursorCursorProjectsLocationsSubscriptions: API.OperationMeth
   CommitCursorCursorProjectsLocationsSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CommitCursorCursorProjectsLocationsSubscriptionsRequest,
-  output: CommitCursorResponse,
+  input: __S(
+    4,
+    __c0,
+    4,
+  ) as any as S.Schema<CommitCursorCursorProjectsLocationsSubscriptionsRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<CommitCursorResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -847,8 +579,12 @@ export const computeHeadCursorTopicStatsProjectsLocationsTopics: API.OperationMe
   ComputeHeadCursorTopicStatsProjectsLocationsTopicsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ComputeHeadCursorTopicStatsProjectsLocationsTopicsRequest,
-  output: ComputeHeadCursorResponse,
+  input: __S(
+    6,
+    __c0,
+    6,
+  ) as any as S.Schema<ComputeHeadCursorTopicStatsProjectsLocationsTopicsRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<ComputeHeadCursorResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -867,8 +603,12 @@ export const computeMessageStatsTopicStatsProjectsLocationsTopics: API.Operation
   ComputeMessageStatsTopicStatsProjectsLocationsTopicsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ComputeMessageStatsTopicStatsProjectsLocationsTopicsRequest,
-  output: ComputeMessageStatsResponse,
+  input: __S(
+    9,
+    __c1,
+    1,
+  ) as any as S.Schema<ComputeMessageStatsTopicStatsProjectsLocationsTopicsRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<ComputeMessageStatsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -887,8 +627,12 @@ export const computeTimeCursorTopicStatsProjectsLocationsTopics: API.OperationMe
   ComputeTimeCursorTopicStatsProjectsLocationsTopicsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ComputeTimeCursorTopicStatsProjectsLocationsTopicsRequest,
-  output: ComputeTimeCursorResponse,
+  input: __S(
+    13,
+    __c1,
+    5,
+  ) as any as S.Schema<ComputeTimeCursorTopicStatsProjectsLocationsTopicsRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<ComputeTimeCursorResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -908,8 +652,8 @@ export const createAdminProjectsLocationsReservations: API.OperationMethod<
   CreateAdminProjectsLocationsReservationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAdminProjectsLocationsReservationsRequest,
-  output: Reservation,
+  input: __S(16, __c2, 0) as any as S.Schema<CreateAdminProjectsLocationsReservationsRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<Reservation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, PubSubLiteTurnedDown, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -929,8 +673,8 @@ export const createAdminProjectsLocationsSubscriptions: API.OperationMethod<
   CreateAdminProjectsLocationsSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAdminProjectsLocationsSubscriptionsRequest,
-  output: Subscription,
+  input: __S(21, __c2, 5) as any as S.Schema<CreateAdminProjectsLocationsSubscriptionsRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<Subscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, PubSubLiteTurnedDown, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -950,8 +694,8 @@ export const createAdminProjectsLocationsTopics: API.OperationMethod<
   CreateAdminProjectsLocationsTopicsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAdminProjectsLocationsTopicsRequest,
-  output: Topic,
+  input: __S(27, __c3, 3) as any as S.Schema<CreateAdminProjectsLocationsTopicsRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<Topic>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, PubSubLiteTurnedDown, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -970,8 +714,8 @@ export const deleteAdminProjectsLocationsOperations: API.OperationMethod<
   DeleteAdminProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAdminProjectsLocationsOperationsRequest,
-  output: Empty,
+  input: __S(28, __c3, 4) as any as S.Schema<DeleteAdminProjectsLocationsOperationsRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -990,8 +734,8 @@ export const deleteAdminProjectsLocationsReservations: API.OperationMethod<
   DeleteAdminProjectsLocationsReservationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAdminProjectsLocationsReservationsRequest,
-  output: Empty,
+  input: __S(29, __c3, 5) as any as S.Schema<DeleteAdminProjectsLocationsReservationsRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1010,8 +754,8 @@ export const deleteAdminProjectsLocationsSubscriptions: API.OperationMethod<
   DeleteAdminProjectsLocationsSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAdminProjectsLocationsSubscriptionsRequest,
-  output: Empty,
+  input: __S(30, __c3, 6) as any as S.Schema<DeleteAdminProjectsLocationsSubscriptionsRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1030,8 +774,8 @@ export const deleteAdminProjectsLocationsTopics: API.OperationMethod<
   DeleteAdminProjectsLocationsTopicsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAdminProjectsLocationsTopicsRequest,
-  output: Empty,
+  input: __S(31, __c3, 7) as any as S.Schema<DeleteAdminProjectsLocationsTopicsRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1045,8 +789,8 @@ export const getAdminProjectsLocationsOperations: API.OperationMethod<
   GetAdminProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAdminProjectsLocationsOperationsRequest,
-  output: Operation,
+  input: __S(32, __c4, 0) as any as S.Schema<GetAdminProjectsLocationsOperationsRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1060,8 +804,8 @@ export const getAdminProjectsLocationsReservations: API.OperationMethod<
   GetAdminProjectsLocationsReservationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAdminProjectsLocationsReservationsRequest,
-  output: Reservation,
+  input: __S(37, __c4, 5) as any as S.Schema<GetAdminProjectsLocationsReservationsRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<Reservation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1075,8 +819,8 @@ export const getAdminProjectsLocationsSubscriptions: API.OperationMethod<
   GetAdminProjectsLocationsSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAdminProjectsLocationsSubscriptionsRequest,
-  output: Subscription,
+  input: __S(38, __c4, 6) as any as S.Schema<GetAdminProjectsLocationsSubscriptionsRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<Subscription>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1090,8 +834,8 @@ export const getAdminProjectsLocationsTopics: API.OperationMethod<
   GetAdminProjectsLocationsTopicsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAdminProjectsLocationsTopicsRequest,
-  output: Topic,
+  input: __S(39, __c4, 7) as any as S.Schema<GetAdminProjectsLocationsTopicsRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<Topic>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1105,8 +849,8 @@ export const getPartitionsAdminProjectsLocationsTopics: API.OperationMethod<
   GetPartitionsAdminProjectsLocationsTopicsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPartitionsAdminProjectsLocationsTopicsRequest,
-  output: TopicPartitions,
+  input: __S(40, __c5, 0) as any as S.Schema<GetPartitionsAdminProjectsLocationsTopicsRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<TopicPartitions>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1121,8 +865,8 @@ export const listAdminProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAdminProjectsLocationsOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(42, __c5, 2) as any as S.Schema<ListAdminProjectsLocationsOperationsRequest>,
+  output: __S(45, __c5, 5) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1138,8 +882,8 @@ export const listAdminProjectsLocationsReservations: API.PaginatedOperationMetho
   GcpOpContext,
   ListReservationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAdminProjectsLocationsReservationsRequest,
-  output: ListReservationsResponse,
+  input: __S(46, __c5, 6) as any as S.Schema<ListAdminProjectsLocationsReservationsRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<ListReservationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1155,8 +899,8 @@ export const listAdminProjectsLocationsReservationsTopics: API.PaginatedOperatio
   GcpOpContext,
   ListReservationTopicsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAdminProjectsLocationsReservationsTopicsRequest,
-  output: ListReservationTopicsResponse,
+  input: __S(49, __c6, 1) as any as S.Schema<ListAdminProjectsLocationsReservationsTopicsRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<ListReservationTopicsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1172,8 +916,8 @@ export const listAdminProjectsLocationsSubscriptions: API.PaginatedOperationMeth
   GcpOpContext,
   ListSubscriptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAdminProjectsLocationsSubscriptionsRequest,
-  output: ListSubscriptionsResponse,
+  input: __S(51, __c6, 3) as any as S.Schema<ListAdminProjectsLocationsSubscriptionsRequest>,
+  output: __S(53, __c6, 5) as any as S.Schema<ListSubscriptionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1189,8 +933,8 @@ export const listAdminProjectsLocationsTopics: API.PaginatedOperationMethod<
   GcpOpContext,
   ListTopicsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAdminProjectsLocationsTopicsRequest,
-  output: ListTopicsResponse,
+  input: __S(54, __c6, 6) as any as S.Schema<ListAdminProjectsLocationsTopicsRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<ListTopicsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1206,8 +950,8 @@ export const listAdminProjectsLocationsTopicsSubscriptions: API.PaginatedOperati
   GcpOpContext,
   ListTopicSubscriptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAdminProjectsLocationsTopicsSubscriptionsRequest,
-  output: ListTopicSubscriptionsResponse,
+  input: __S(57, __c7, 1) as any as S.Schema<ListAdminProjectsLocationsTopicsSubscriptionsRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<ListTopicSubscriptionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1226,8 +970,12 @@ export const listCursorProjectsLocationsSubscriptionsCursors: API.PaginatedOpera
   GcpOpContext,
   ListPartitionCursorsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCursorProjectsLocationsSubscriptionsCursorsRequest,
-  output: ListPartitionCursorsResponse,
+  input: __S(
+    59,
+    __c7,
+    3,
+  ) as any as S.Schema<ListCursorProjectsLocationsSubscriptionsCursorsRequest>,
+  output: __S(62, __c7, 6) as any as S.Schema<ListPartitionCursorsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1247,8 +995,8 @@ export const patchAdminProjectsLocationsReservations: API.OperationMethod<
   PatchAdminProjectsLocationsReservationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchAdminProjectsLocationsReservationsRequest,
-  output: Reservation,
+  input: __S(63, __c7, 7) as any as S.Schema<PatchAdminProjectsLocationsReservationsRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<Reservation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1267,8 +1015,8 @@ export const patchAdminProjectsLocationsSubscriptions: API.OperationMethod<
   PatchAdminProjectsLocationsSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchAdminProjectsLocationsSubscriptionsRequest,
-  output: Subscription,
+  input: __S(64, __c8, 0) as any as S.Schema<PatchAdminProjectsLocationsSubscriptionsRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<Subscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1287,8 +1035,8 @@ export const patchAdminProjectsLocationsTopics: API.OperationMethod<
   PatchAdminProjectsLocationsTopicsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchAdminProjectsLocationsTopicsRequest,
-  output: Topic,
+  input: __S(65, __c8, 1) as any as S.Schema<PatchAdminProjectsLocationsTopicsRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<Topic>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1307,8 +1055,8 @@ export const seekAdminProjectsLocationsSubscriptions: API.OperationMethod<
   SeekAdminProjectsLocationsSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SeekAdminProjectsLocationsSubscriptionsRequest,
-  output: Operation,
+  input: __S(67, __c8, 3) as any as S.Schema<SeekAdminProjectsLocationsSubscriptionsRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1325,7 +1073,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1345,7 +1093,7 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          cursor: S.optional(Cursor),
+          cursor: S.optional(__S(2, __c0, 2)),
           partition: S.optional(S.String),
         }),
       ).annotate({ identifier: "CommitCursorRequest" });
@@ -1353,7 +1101,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscription: S.String.pipe(T.Label()),
-          body: S.optional(CommitCursorRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1374,7 +1122,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           topic: S.String.pipe(T.Label()),
-          body: S.optional(ComputeHeadCursorRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1388,7 +1136,7 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          headCursor: S.optional(Cursor),
+          headCursor: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({
         identifier: "ComputeHeadCursorResponse",
@@ -1400,9 +1148,9 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          startCursor: S.optional(Cursor),
+          startCursor: S.optional(__S(2, __c0, 2)),
           partition: S.optional(S.String),
-          endCursor: S.optional(Cursor),
+          endCursor: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({
         identifier: "ComputeMessageStatsRequest",
@@ -1411,7 +1159,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           topic: S.String.pipe(T.Label()),
-          body: S.optional(ComputeMessageStatsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1444,14 +1192,14 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           partition: S.optional(S.String),
-          target: S.optional(TimeTarget),
+          target: S.optional(__S(11, __c1, 3)),
         }),
       ).annotate({ identifier: "ComputeTimeCursorRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           topic: S.String.pipe(T.Label()),
-          body: S.optional(ComputeTimeCursorRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(12, __c1, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1465,7 +1213,7 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          cursor: S.optional(Cursor),
+          cursor: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({
         identifier: "ComputeTimeCursorResponse",
@@ -1486,7 +1234,7 @@ function __c2(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           reservationId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Reservation.pipe(T.HttpBody())),
+          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1500,7 +1248,7 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          deliveryRequirement: S.optional(DeliveryConfigDeliveryRequirementEnum),
+          deliveryRequirement: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeliveryConfig" });
     case 2:
@@ -1512,19 +1260,19 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          pubsubConfig: S.optional(PubSubConfig),
+          pubsubConfig: S.optional(__S(18, __c2, 2)),
           deadLetterTopic: S.optional(S.String),
-          currentState: S.optional(ExportConfigCurrentStateEnum),
-          desiredState: S.optional(ExportConfigDesiredStateEnum),
+          currentState: S.optional(S.String),
+          desiredState: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExportConfig" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           topic: S.optional(S.String),
-          deliveryConfig: S.optional(DeliveryConfig),
+          deliveryConfig: S.optional(__S(17, __c2, 1)),
           name: S.optional(S.String),
-          exportConfig: S.optional(ExportConfig),
+          exportConfig: S.optional(__S(19, __c2, 3)),
         }),
       ).annotate({ identifier: "Subscription" });
     case 5:
@@ -1533,7 +1281,7 @@ function __c2(j: number): any {
           subscriptionId: S.optional(S.String.pipe(T.Query())),
           skipBacklog: S.optional(S.Boolean.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Subscription.pipe(T.HttpBody())),
+          body: S.optional(__S(20, __c2, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1567,7 +1315,7 @@ function __c3(j: number): any {
         S.Struct({
           count: S.optional(S.String),
           scale: S.optional(S.Number),
-          capacity: S.optional(Capacity),
+          capacity: S.optional(__S(23, __c2, 7)),
         }),
       ).annotate({ identifier: "PartitionConfig" });
     case 1:
@@ -1579,9 +1327,9 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          retentionConfig: S.optional(RetentionConfig),
-          partitionConfig: S.optional(PartitionConfig),
-          reservationConfig: S.optional(ReservationConfig),
+          retentionConfig: S.optional(__S(22, __c2, 6)),
+          partitionConfig: S.optional(__S(24, __c3, 0)),
+          reservationConfig: S.optional(__S(25, __c3, 1)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Topic" });
@@ -1590,7 +1338,7 @@ function __c3(j: number): any {
         S.Struct({
           topicId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Topic.pipe(T.HttpBody())),
+          body: S.optional(__S(26, __c3, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1678,23 +1426,23 @@ function __c4(j: number): any {
     case 1:
       return S.Record(S.String, S.Unknown);
     case 2:
-      return S.Array(DocumentMap);
+      return S.Array(__S(33, __c4, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
           code: S.optional(S.Number),
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(34, __c4, 2)),
         }),
       ).annotate({ identifier: "Status" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(DocumentMap),
-          response: S.optional(DocumentMap),
+          metadata: S.optional(__S(33, __c4, 1)),
+          response: S.optional(__S(33, __c4, 1)),
           done: S.optional(S.Boolean),
           name: S.optional(S.String),
-          error: S.optional(Status),
+          error: S.optional(__S(35, __c4, 3)),
         }),
       ).annotate({ identifier: "Operation" });
     case 5:
@@ -1784,13 +1532,13 @@ function __c5(j: number): any {
     case 3:
       return S.Array(S.String);
     case 4:
-      return S.Array(Operation);
+      return S.Array(__S(36, __c4, 4));
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(StringList),
-          operations: S.optional(OperationList),
+          unreachable: S.optional(__S(43, __c5, 3)),
+          operations: S.optional(__S(44, __c5, 4)),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
     case 6:
@@ -1810,7 +1558,7 @@ function __c5(j: number): any {
         identifier: "ListAdminProjectsLocationsReservationsRequest",
       });
     case 7:
-      return S.Array(Reservation);
+      return S.Array(__S(15, __c1, 7));
   }
 }
 function __c6(j: number): any {
@@ -1819,7 +1567,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          reservations: S.optional(ReservationList),
+          reservations: S.optional(__S(47, __c5, 7)),
         }),
       ).annotate({ identifier: "ListReservationsResponse" });
     case 1:
@@ -1841,7 +1589,7 @@ function __c6(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          topics: S.optional(StringList),
+          topics: S.optional(__S(43, __c5, 3)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1864,11 +1612,11 @@ function __c6(j: number): any {
         identifier: "ListAdminProjectsLocationsSubscriptionsRequest",
       });
     case 4:
-      return S.Array(Subscription);
+      return S.Array(__S(20, __c2, 4));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          subscriptions: S.optional(SubscriptionList),
+          subscriptions: S.optional(__S(52, __c6, 4)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1891,7 +1639,7 @@ function __c6(j: number): any {
         identifier: "ListAdminProjectsLocationsTopicsRequest",
       });
     case 7:
-      return S.Array(Topic);
+      return S.Array(__S(26, __c3, 2));
   }
 }
 function __c7(j: number): any {
@@ -1899,7 +1647,7 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          topics: S.optional(TopicList),
+          topics: S.optional(__S(55, __c6, 7)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListTopicsResponse" });
@@ -1922,7 +1670,7 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          subscriptions: S.optional(StringList),
+          subscriptions: S.optional(__S(43, __c5, 3)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1948,15 +1696,15 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           partition: S.optional(S.String),
-          cursor: S.optional(Cursor),
+          cursor: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({ identifier: "PartitionCursor" });
     case 5:
-      return S.Array(PartitionCursor);
+      return S.Array(__S(60, __c7, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          partitionCursors: S.optional(PartitionCursorList),
+          partitionCursors: S.optional(__S(61, __c7, 5)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1967,7 +1715,7 @@ function __c7(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(Reservation.pipe(T.HttpBody())),
+          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1987,7 +1735,7 @@ function __c8(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(Subscription.pipe(T.HttpBody())),
+          body: S.optional(__S(20, __c2, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2003,7 +1751,7 @@ function __c8(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Topic.pipe(T.HttpBody())),
+          body: S.optional(__S(26, __c3, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2017,15 +1765,15 @@ function __c8(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          namedTarget: S.optional(SeekSubscriptionRequestNamedTargetEnum),
-          timeTarget: S.optional(TimeTarget),
+          namedTarget: S.optional(S.String),
+          timeTarget: S.optional(__S(11, __c1, 3)),
         }),
       ).annotate({ identifier: "SeekSubscriptionRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(SeekSubscriptionRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(66, __c8, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2037,4 +1785,9 @@ function __c8(j: number): any {
         identifier: "SeekAdminProjectsLocationsSubscriptionsRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

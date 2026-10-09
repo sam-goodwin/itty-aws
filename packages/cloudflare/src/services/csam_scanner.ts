@@ -10,6 +10,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -25,23 +27,9 @@ export interface GetCsamScannerRequest {
   /** Identifier for the zone. */
   zoneId: string;
 }
-const GetCsamScannerRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GetCsamScannerRequest>;
-
 export type GetResponseId = "csam_scanner";
-const GetResponseId = S.String;
-
 export type GetResponseValueEmailState = "valid" | "pending" | "unverified";
-const GetResponseValueEmailState = S.String;
-
 export type GetResponseValueSourcesMap = { [key: string]: boolean | undefined };
-const GetResponseValueSourcesMap = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<GetResponseValueSourcesMap>;
-
 export interface GetResponseValue {
   /** Notification email address for CSAM scan results. Masked in responses unless explicitly unmasked via admin endpoint. */
   email?: string | null;
@@ -54,8 +42,6 @@ export interface GetResponseValue {
   /** The zone's plan level. */
   zonePlan?: string | null;
 }
-const GetResponseValue = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<GetResponseValue>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetCsamScannerResponse {
   /** The feature identifier. */
@@ -67,18 +53,8 @@ export interface GetCsamScannerResponse {
   /** The CSAM Scanner feature configuration values. Contains the notification email and scanning enablement settings. */
   value?: GetResponseValue | null;
 }
-const GetCsamScannerResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<GetCsamScannerResponse>;
-
 export type EditRequestId = "csam_scanner";
-const EditRequestId = S.String;
-
 export type EditRequestValueSourcesMap = { [key: string]: boolean | undefined };
-const EditRequestValueSourcesMap =
-  GetResponseValueSourcesMap as any as S.Schema<EditRequestValueSourcesMap>;
-
 export interface EditRequestValue {
   /** Notification email address for CSAM scan results. When changed, email verification is triggered automatically. */
   email?: string;
@@ -89,8 +65,6 @@ export interface EditRequestValue {
   /** Map of scanning sources and their enabled state. */
   sources?: EditRequestValueSourcesMap;
 }
-const EditRequestValue = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<EditRequestValue>;
-
 export interface PatchCsamScannerRequest {
   /** Identifier for the zone. */
   zoneId: string;
@@ -99,21 +73,9 @@ export interface PatchCsamScannerRequest {
   /** Writable CSAM Scanner feature configuration values. */
   value?: EditRequestValue;
 }
-const PatchCsamScannerRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<PatchCsamScannerRequest>;
-
 export type EditResponseId = "csam_scanner";
-const EditResponseId = S.String;
-
 export type EditResponseValueEmailState = "valid" | "pending" | "unverified";
-const EditResponseValueEmailState = S.String;
-
 export type EditResponseValueSourcesMap = { [key: string]: boolean | undefined };
-const EditResponseValueSourcesMap =
-  GetResponseValueSourcesMap as any as S.Schema<EditResponseValueSourcesMap>;
-
 export interface EditResponseValue {
   /** Notification email address for CSAM scan results. Masked in responses unless explicitly unmasked via admin endpoint. */
   email?: string | null;
@@ -126,8 +88,6 @@ export interface EditResponseValue {
   /** The zone's plan level. */
   zonePlan?: string | null;
 }
-const EditResponseValue = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<EditResponseValue>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchCsamScannerResponse {
   /** The feature identifier. */
@@ -139,11 +99,6 @@ export interface PatchCsamScannerResponse {
   /** The CSAM Scanner feature configuration values. Contains the notification email and scanning enablement settings. */
   value?: EditResponseValue | null;
 }
-const PatchCsamScannerResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<PatchCsamScannerResponse>;
-
 export type GetCsamScannerError = CloudflareOpError;
 /** Retrieve the current CSAM Scanner configuration for a zone. The notification email is masked by default in responses. */
 export const getCsamScanner: API.OperationMethod<
@@ -152,8 +107,8 @@ export const getCsamScanner: API.OperationMethod<
   GetCsamScannerError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCsamScannerRequest,
-  output: GetCsamScannerResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<GetCsamScannerRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<GetCsamScannerResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -167,8 +122,8 @@ export const patchCsamScanner: API.OperationMethod<
   PatchCsamScannerError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchCsamScannerRequest,
-  output: PatchCsamScannerResponse,
+  input: __S(5, __c0, 5) as any as S.Schema<PatchCsamScannerRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<PatchCsamScannerResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -197,19 +152,19 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           email: S.optional(S.NullOr(S.String)),
-          emailState: S.optional(S.NullOr(GetResponseValueEmailState).pipe(T.Body("email_state"))),
+          emailState: S.optional(S.NullOr(S.String).pipe(T.Body("email_state"))),
           enabled: S.optional(S.NullOr(S.Boolean)),
-          sources: S.optional(S.NullOr(GetResponseValueSourcesMap)),
+          sources: S.optional(S.NullOr(__S(1, __c0, 1))),
           zonePlan: S.optional(S.NullOr(S.String).pipe(T.Body("zone_plan"))),
         }),
       ).annotate({ identifier: "GetResponseValue" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.NullOr(GetResponseId)),
+          id: S.optional(S.NullOr(S.String)),
           editable: S.optional(S.NullOr(S.Boolean)),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-          value: S.optional(S.NullOr(GetResponseValue)),
+          value: S.optional(S.NullOr(__S(2, __c0, 2))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetCsamScannerResponse" });
     case 4:
@@ -218,15 +173,15 @@ function __c0(j: number): any {
           email: S.optional(S.String),
           enabled: S.optional(S.Boolean),
           resendEmail: S.optional(S.Boolean.pipe(T.Body("resend_email"))),
-          sources: S.optional(EditRequestValueSourcesMap),
+          sources: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({ identifier: "EditRequestValue" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          id: S.optional(EditRequestId),
-          value: S.optional(EditRequestValue),
+          id: S.optional(S.String),
+          value: S.optional(__S(4, __c0, 4)),
         })
           .pipe(
             T.Http({
@@ -241,20 +196,25 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           email: S.optional(S.NullOr(S.String)),
-          emailState: S.optional(S.NullOr(EditResponseValueEmailState).pipe(T.Body("email_state"))),
+          emailState: S.optional(S.NullOr(S.String).pipe(T.Body("email_state"))),
           enabled: S.optional(S.NullOr(S.Boolean)),
-          sources: S.optional(S.NullOr(EditResponseValueSourcesMap)),
+          sources: S.optional(S.NullOr(__S(1, __c0, 1))),
           zonePlan: S.optional(S.NullOr(S.String).pipe(T.Body("zone_plan"))),
         }),
       ).annotate({ identifier: "EditResponseValue" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.NullOr(EditResponseId)),
+          id: S.optional(S.NullOr(S.String)),
           editable: S.optional(S.NullOr(S.Boolean)),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-          value: S.optional(S.NullOr(EditResponseValue)),
+          value: S.optional(S.NullOr(__S(6, __c0, 6))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchCsamScannerResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

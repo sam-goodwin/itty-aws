@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -82,17 +84,10 @@ export interface AggregateFleetV1betaRequest {
   /** Required. Parent can be a project, a folder, or an organization. The search is limited to the resources within the `scope`. The allowed values are: * projects/{PROJECT_ID} (e.g., "projects/foo-bar") * projects/{PROJECT_NUMBER} (e.g., "projects/12345678") * folders/{FOLDER_NUMBER} (e.g., "folders/1234567") * organizations/{ORGANIZATION_NUMBER} (e.g., "organizations/123456") */
   parent?: string;
 }
-const AggregateFleetV1betaRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AggregateFleetV1betaRequest>;
-
 export type DimensionManagementTypeEnum =
   | "MANAGEMENT_TYPE_UNSPECIFIED"
   | "MANAGEMENT_TYPE_GCP_MANAGED"
   | "MANAGEMENT_TYPE_SELF_MANAGED";
-const DimensionManagementTypeEnum = S.String;
-
 export type DimensionSubResourceTypeEnum =
   | "SUB_RESOURCE_TYPE_UNSPECIFIED"
   | "SUB_RESOURCE_TYPE_PRIMARY"
@@ -103,15 +98,11 @@ export type DimensionSubResourceTypeEnum =
   | "SUB_RESOURCE_TYPE_RESERVATION"
   | "SUB_RESOURCE_TYPE_DATASET"
   | "SUB_RESOURCE_TYPE_OTHER";
-const DimensionSubResourceTypeEnum = S.String;
-
 export type DimensionEditionEnum =
   | "EDITION_UNSPECIFIED"
   | "EDITION_ENTERPRISE"
   | "EDITION_ENTERPRISE_PLUS"
   | "EDITION_STANDARD";
-const DimensionEditionEnum = S.String;
-
 export type DimensionProductTypeEnum =
   | "PRODUCT_TYPE_UNSPECIFIED"
   | "PRODUCT_TYPE_CLOUD_SQL"
@@ -124,8 +115,6 @@ export type DimensionProductTypeEnum =
   | "PRODUCT_TYPE_ORACLE_ON_GCP"
   | "PRODUCT_TYPE_BIGQUERY"
   | "PRODUCT_TYPE_OTHER";
-const DimensionProductTypeEnum = S.String;
-
 export type DimensionResourceCategoryEnum =
   | "RESOURCE_CATEGORY_UNSPECIFIED"
   | "INSTANCE"
@@ -133,8 +122,6 @@ export type DimensionResourceCategoryEnum =
   | "DATABASE"
   | "DATASET"
   | "RESERVATION";
-const DimensionResourceCategoryEnum = S.String;
-
 export type DimensionProductEngineEnum =
   | "ENGINE_UNSPECIFIED"
   | "ENGINE_MYSQL"
@@ -151,8 +138,6 @@ export type DimensionProductEngineEnum =
   | "ENGINE_ADB_SERVERLESS_ORACLE"
   | "ENGINE_FIRESTORE_WITH_MONGODB_COMPATIBILITY_MODE"
   | "ENGINE_OTHER";
-const DimensionProductEngineEnum = S.String;
-
 /** Dimension used to aggregate the fleet. */
 export interface Dimension {
   /** Label key of the resource. */
@@ -194,11 +179,7 @@ export interface Dimension {
   /** Engine refers to underlying database binary running in an instance. */
   productEngine?: DimensionProductEngineEnum;
 }
-const Dimension = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<Dimension>;
-
 export type DimensionList = Array<Dimension>;
-const DimensionList = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DimensionList>;
-
 export type ProductEngineEnum =
   | "ENGINE_UNSPECIFIED"
   | "ENGINE_MYSQL"
@@ -215,8 +196,6 @@ export type ProductEngineEnum =
   | "ENGINE_ADB_SERVERLESS_ORACLE"
   | "ENGINE_FIRESTORE_WITH_MONGODB_COMPATIBILITY_MODE"
   | "ENGINE_OTHER";
-const ProductEngineEnum = S.String;
-
 export type ProductTypeEnum =
   | "PRODUCT_TYPE_UNSPECIFIED"
   | "PRODUCT_TYPE_CLOUD_SQL"
@@ -229,8 +208,6 @@ export type ProductTypeEnum =
   | "PRODUCT_TYPE_ORACLE_ON_GCP"
   | "PRODUCT_TYPE_BIGQUERY"
   | "PRODUCT_TYPE_OTHER";
-const ProductTypeEnum = S.String;
-
 /** Product specification for databasecenter resources. */
 export interface Product {
   /** Optional. The specific engine that the underlying database is running. */
@@ -242,8 +219,6 @@ export interface Product {
   /** Optional. Type of specific database product. It could be CloudSQL, AlloyDB etc.. */
   type?: ProductTypeEnum | (string & {});
 }
-const Product = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Product>;
-
 /** Capture the resource details for resources that are included in the delta counts. */
 export interface ResourceDetails {
   /** Location of the resource. */
@@ -255,11 +230,7 @@ export interface ResourceDetails {
   /** Specifies where the resource is created. For Google Cloud resources, it is the full name of the project. */
   container?: string;
 }
-const ResourceDetails = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<ResourceDetails>;
-
 export type ResourceDetailsList = Array<ResourceDetails>;
-const ResourceDetailsList = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ResourceDetailsList>;
-
 /** Captures the details of items that have increased or decreased in some bucket when compared to some point in history. It is currently used to capture the delta of resources that have been added or removed in the fleet as well as to capture the resources that have a change in Issue/Signal status. */
 export interface DeltaDetails {
   /** Details of resources that have decreased. */
@@ -267,8 +238,6 @@ export interface DeltaDetails {
   /** Details of resources that have increased. */
   increasedResources?: ResourceDetailsList;
 }
-const DeltaDetails = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<DeltaDetails>;
-
 /** Individual row grouped by a particular dimension. */
 export interface AggregateFleetRow {
   /** Number of resources that have a particular dimension. */
@@ -280,17 +249,8 @@ export interface AggregateFleetRow {
   /** Optional. Delta counts and details of resources which were added to/deleted from fleet. */
   deltaDetails?: DeltaDetails;
 }
-const AggregateFleetRow = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<AggregateFleetRow>;
-
 export type AggregateFleetRowList = Array<AggregateFleetRow>;
-const AggregateFleetRowList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<AggregateFleetRowList>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<StringList>;
-
 /** The response message to aggregate a fleet by some group by fields. */
 export interface AggregateFleetResponse {
   /** Output only. The total number of rows in the entire list. */
@@ -306,11 +266,6 @@ export interface AggregateFleetResponse {
   /** Count of all resources in the fleet. This includes counts from all pages. */
   resourceTotalCount?: number;
 }
-const AggregateFleetResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<AggregateFleetResponse>;
-
 export type SignalTypeGroupSignalTypesItemEnum =
   | "SIGNAL_TYPE_UNSPECIFIED"
   | "SIGNAL_TYPE_RESOURCE_FAILOVER_PROTECTED"
@@ -415,16 +370,9 @@ export type SignalTypeGroupSignalTypesItemEnum =
   | "SIGNAL_TYPE_HIGH_MAINTENANCE_DOWNTIME_RISK"
   | "SIGNAL_TYPE_LOW_CACHE_HIT_AND_MAINTENANCE_DOWNTIME"
   | "SIGNAL_TYPE_MISSING_ENHANCED_PROTECTION";
-const SignalTypeGroupSignalTypesItemEnum = S.String;
-
 export type SignalTypeGroupSignalTypesItemEnumList = Array<
   SignalTypeGroupSignalTypesItemEnum | (string & {})
 >;
-const SignalTypeGroupSignalTypesItemEnumList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<SignalTypeGroupSignalTypesItemEnumList>;
-
 /** A group of signal types that specifies what the user is interested in. Used by QueryDatabaseResourceGroups API. Example: signal_type_group { name = "AVAILABILITY" types = [SIGNAL_TYPE_NO_PROMOTABLE_REPLICA] } */
 export interface SignalTypeGroup {
   /** Optional. List of signal types present in the group. */
@@ -432,11 +380,7 @@ export interface SignalTypeGroup {
   /** Required. The display name of a signal group. */
   displayName?: string;
 }
-const SignalTypeGroup = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<SignalTypeGroup>;
-
 export type SignalTypeGroupList = Array<SignalTypeGroup>;
-const SignalTypeGroupList = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<SignalTypeGroupList>;
-
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
 export interface Databasecenter_Date {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
@@ -446,8 +390,6 @@ export interface Databasecenter_Date {
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
   month?: number;
 }
-const Databasecenter_Date = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<Databasecenter_Date>;
-
 /** AggregateIssueStatsRequest represents the input to the AggregateIssueStats method. */
 export interface AggregateIssueStatsRequest {
   /** Optional. Lists of signal types that are issues. */
@@ -459,20 +401,10 @@ export interface AggregateIssueStatsRequest {
   /** Optional. The baseline date w.r.t. which the delta counts are calculated. If not set, delta counts are not included in the response and the response indicates the current state of the fleet. */
   baselineDate?: Databasecenter_Date;
 }
-const AggregateIssueStatsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<AggregateIssueStatsRequest>;
-
 export interface AggregateIssueStatsV1betaRequest {
   /** Request body */
   body?: AggregateIssueStatsRequest;
 }
-const AggregateIssueStatsV1betaRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<AggregateIssueStatsV1betaRequest>;
-
 export type IssueStatsIssueSeverityEnum =
   | "ISSUE_SEVERITY_UNSPECIFIED"
   | "ISSUE_SEVERITY_LOW"
@@ -480,8 +412,6 @@ export type IssueStatsIssueSeverityEnum =
   | "ISSUE_SEVERITY_HIGH"
   | "ISSUE_SEVERITY_CRITICAL"
   | "ISSUE_SEVERITY_IRRELEVANT";
-const IssueStatsIssueSeverityEnum = S.String;
-
 export type IssueStatsSignalTypeEnum =
   | "SIGNAL_TYPE_UNSPECIFIED"
   | "SIGNAL_TYPE_RESOURCE_FAILOVER_PROTECTED"
@@ -586,8 +516,6 @@ export type IssueStatsSignalTypeEnum =
   | "SIGNAL_TYPE_HIGH_MAINTENANCE_DOWNTIME_RISK"
   | "SIGNAL_TYPE_LOW_CACHE_HIT_AND_MAINTENANCE_DOWNTIME"
   | "SIGNAL_TYPE_MISSING_ENHANCED_PROTECTION";
-const IssueStatsSignalTypeEnum = S.String;
-
 /** IssueStats holds stats for a particular signal category. */
 export interface IssueStats {
   /** Severity of the issue. */
@@ -599,11 +527,7 @@ export interface IssueStats {
   /** Optional. Delta counts and details of resources for which issue was raised or fixed. */
   deltaDetails?: DeltaDetails;
 }
-const IssueStats = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<IssueStats>;
-
 export type IssueStatsList = Array<IssueStats>;
-const IssueStatsList = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<IssueStatsList>;
-
 /** IssueGroupStats refers to stats for a particulare combination of relevant health issues of database resources. */
 export interface IssueGroupStats {
   /** Total count of resources returned by the filter for which any of the specified issues are applicable. */
@@ -619,11 +543,7 @@ export interface IssueGroupStats {
   /** The number of resource groups from the total groups as defined above that are healthy with respect to all of the specified issues. */
   healthyResourceGroupsCount?: number;
 }
-const IssueGroupStats = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<IssueGroupStats>;
-
 export type IssueGroupStatsList = Array<IssueGroupStats>;
-const IssueGroupStatsList = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<IssueGroupStatsList>;
-
 /** The response message containing one of more group of relevant health issues for database resources. */
 export interface AggregateIssueStatsResponse {
   /** Total count of the resources filtered in based on the user given filter. */
@@ -635,11 +555,6 @@ export interface AggregateIssueStatsResponse {
   /** List of issue group stats where each group contains stats for resources having a particular combination of relevant issues. */
   issueGroupStats?: IssueGroupStatsList;
 }
-const AggregateIssueStatsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<AggregateIssueStatsResponse>;
-
 /** AggregateQueryStatsRequest represents the input to the AggregateQueryStats method. */
 export interface AggregateQueryStatsRequest {
   /** Optional. If unspecified, at most 100 query stats will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
@@ -651,22 +566,12 @@ export interface AggregateQueryStatsRequest {
   /** Optional. The expression to order the results by. Example: `order_by="execution_count"` Example: `order_by="execution_count desc"` Supported order by fields are `execution_count`, `rows_processed`, `total_cpu_time`, `avg_cpu_time`. */
   orderBy?: string;
 }
-const AggregateQueryStatsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<AggregateQueryStatsRequest>;
-
 export interface AggregateQueryStatsFoldersRequest {
   /** Required. Parent can be a project, a folder, or an organization. The search is limited to the resources within the `parent`. The allowed values are: * projects/{PROJECT_ID} (e.g., "projects/foo-bar") * projects/{PROJECT_NUMBER} (e.g., "projects/12345678") * folders/{FOLDER_NUMBER} (e.g., "folders/1234567") * organizations/{ORGANIZATION_NUMBER} (e.g., "organizations/123456") */
   parent: string;
   /** Request body */
   body?: AggregateQueryStatsRequest;
 }
-const AggregateQueryStatsFoldersRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<AggregateQueryStatsFoldersRequest>;
-
 /** ResourceId contains the identifier for a database resource, including the full resource name, resource type, and product. */
 export interface ResourceId {
   /** The product of the resource, including the type, engine, and version. */
@@ -676,18 +581,12 @@ export interface ResourceId {
   /** The full resource name of the resource. */
   fullResourceName?: string;
 }
-const ResourceId = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ResourceId>;
-
 export type ResourceIdList = Array<ResourceId>;
-const ResourceIdList = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<ResourceIdList>;
-
 export type QueryMetricsMetricsWindowEnum =
   | "METRICS_WINDOW_UNSPECIFIED"
   | "LAST_ONE_DAY"
   | "LAST_ONE_WEEK"
   | "LAST_TWO_WEEKS";
-const QueryMetricsMetricsWindowEnum = S.String;
-
 /** QueryMetrics contains the metrics related to the query execution. */
 export interface QueryMetrics {
   /** The average execution period of the query across all runs. */
@@ -701,8 +600,6 @@ export interface QueryMetrics {
   /** The window over which the metrics are aggregated. */
   metricsWindow?: QueryMetricsMetricsWindowEnum;
 }
-const QueryMetrics = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<QueryMetrics>;
-
 /** Metadata about inefficient query signal info for a database resource. */
 export interface InefficientQueryInfo {
   /** SQL statement of the index. Based on the ddl type, this will be either CREATE INDEX or DROP INDEX. */
@@ -716,8 +613,6 @@ export interface InefficientQueryInfo {
   /** Name of the database where index is required. For example, "db1", which is the name of the database present in the instance. */
   database?: string;
 }
-const InefficientQueryInfo = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<InefficientQueryInfo>;
-
 /** QueryStats contains the stats for a particular combination of query_hash, query_string and resource_type. */
 export interface QueryStats {
   /** The query hash of the query. */
@@ -733,11 +628,7 @@ export interface QueryStats {
   /** The query string is normalized query without any PII data. */
   normalizedQuery?: string;
 }
-const QueryStats = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<QueryStats>;
-
 export type QueryStatsList = Array<QueryStats>;
-const QueryStatsList = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<QueryStatsList>;
-
 /** QueryStatsInfo contains the aggregated and detailed query stats for a particular combination of relevant query stats for queries having same normalized query. */
 export interface QueryStatsInfo {
   /** Aggregated query stats for the resources for same normalized query. */
@@ -745,11 +636,7 @@ export interface QueryStatsInfo {
   /** List of query stats for the resources in the group. This stats is stats at resource level for the resources having same normalized query. */
   queryStats?: QueryStatsList;
 }
-const QueryStatsInfo = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<QueryStatsInfo>;
-
 export type QueryStatsInfoList = Array<QueryStatsInfo>;
-const QueryStatsInfoList = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<QueryStatsInfoList>;
-
 /** The response message containing relevant query stats for database resources. */
 export interface AggregateQueryStatsResponse {
   /** Unordered list. List of unreachable regions from where data could not be retrieved. */
@@ -759,33 +646,18 @@ export interface AggregateQueryStatsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const AggregateQueryStatsResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<AggregateQueryStatsResponse>;
-
 export interface AggregateQueryStatsOrganizationsRequest {
   /** Required. Parent can be a project, a folder, or an organization. The search is limited to the resources within the `parent`. The allowed values are: * projects/{PROJECT_ID} (e.g., "projects/foo-bar") * projects/{PROJECT_NUMBER} (e.g., "projects/12345678") * folders/{FOLDER_NUMBER} (e.g., "folders/1234567") * organizations/{ORGANIZATION_NUMBER} (e.g., "organizations/123456") */
   parent: string;
   /** Request body */
   body?: AggregateQueryStatsRequest;
 }
-const AggregateQueryStatsOrganizationsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<AggregateQueryStatsOrganizationsRequest>;
-
 export interface AggregateQueryStatsProjectsRequest {
   /** Required. Parent can be a project, a folder, or an organization. The search is limited to the resources within the `parent`. The allowed values are: * projects/{PROJECT_ID} (e.g., "projects/foo-bar") * projects/{PROJECT_NUMBER} (e.g., "projects/12345678") * folders/{FOLDER_NUMBER} (e.g., "folders/1234567") * organizations/{ORGANIZATION_NUMBER} (e.g., "organizations/123456") */
   parent: string;
   /** Request body */
   body?: AggregateQueryStatsRequest;
 }
-const AggregateQueryStatsProjectsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<AggregateQueryStatsProjectsRequest>;
-
 export type SignalFilterSignalTypeEnum =
   | "SIGNAL_TYPE_UNSPECIFIED"
   | "SIGNAL_TYPE_RESOURCE_FAILOVER_PROTECTED"
@@ -890,16 +762,12 @@ export type SignalFilterSignalTypeEnum =
   | "SIGNAL_TYPE_HIGH_MAINTENANCE_DOWNTIME_RISK"
   | "SIGNAL_TYPE_LOW_CACHE_HIT_AND_MAINTENANCE_DOWNTIME"
   | "SIGNAL_TYPE_MISSING_ENHANCED_PROTECTION";
-const SignalFilterSignalTypeEnum = S.String;
-
 export type SignalFilterSignalStatusEnum =
   | "SIGNAL_STATUS_UNSPECIFIED"
   | "SIGNAL_STATUS_NOT_APPLICABLE"
   | "SIGNAL_STATUS_OK"
   | "SIGNAL_STATUS_ISSUE"
   | "SIGNAL_STATUS_NOT_ENABLED";
-const SignalFilterSignalStatusEnum = S.String;
-
 /** A filter for Signals. If signal_type is left unset, all signals should be returned. For example, the following filter returns all issues. signal_filter: { signal_status: SIGNAL_STATUS_ISSUE; } Another example, the following filter returns issues of the given type: signal_filter: { type: SIGNAL_TYPE_NO_PROMOTABLE_REPLICA signal_status: ISSUE } If signal_status is left unset or set to SIGNAL_STATE_UNSPECIFIED, an error should be returned. */
 export interface SignalFilter {
   /** Optional. Represents the type of the Signal for which the filter is for. */
@@ -907,11 +775,7 @@ export interface SignalFilter {
   /** Optional. Represents the status of the Signal for which the filter is for. */
   signalStatus?: SignalFilterSignalStatusEnum | (string & {});
 }
-const SignalFilter = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<SignalFilter>;
-
 export type SignalFilterList = Array<SignalFilter>;
-const SignalFilterList = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<SignalFilterList>;
-
 export type SignalProductsFiltersSignalTypeEnum =
   | "SIGNAL_TYPE_UNSPECIFIED"
   | "SIGNAL_TYPE_RESOURCE_FAILOVER_PROTECTED"
@@ -1016,11 +880,7 @@ export type SignalProductsFiltersSignalTypeEnum =
   | "SIGNAL_TYPE_HIGH_MAINTENANCE_DOWNTIME_RISK"
   | "SIGNAL_TYPE_LOW_CACHE_HIT_AND_MAINTENANCE_DOWNTIME"
   | "SIGNAL_TYPE_MISSING_ENHANCED_PROTECTION";
-const SignalProductsFiltersSignalTypeEnum = S.String;
-
 export type ProductList = Array<Product>;
-const ProductList = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<ProductList>;
-
 /** SignalProductsFilters represents a signal and list of supported products. */
 export interface SignalProductsFilters {
   /** Optional. The type of signal. */
@@ -1028,17 +888,7 @@ export interface SignalProductsFilters {
   /** Optional. Product type of the resource. The version of the product will be ignored in filtering. */
   products?: ProductList;
 }
-const SignalProductsFilters = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<SignalProductsFilters>;
-
 export type SignalProductsFiltersList = Array<SignalProductsFilters>;
-const SignalProductsFiltersList = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<SignalProductsFiltersList>;
-
 /** QueryDatabaseResourceGroupsRequest is the request to get a list of database groups. */
 export interface QueryDatabaseResourceGroupsRequest {
   /** Optional. A field that specifies the sort order of the results. The following fields are sortable: * full_resource_name * product.type * product.engine * product.version * container * issue_count * machine_config.vcpu_count * machine_config.memory_size_bytes * machine_config.shard_count * resource_name * issue_severity * signal_type * location * resource_type * instance_type * edition * modes * metrics.p99_cpu_utilization * metrics.p95_cpu_utilization * metrics.current_storage_used_bytes * metrics.node_count * metrics.processing_unit_count * metrics.current_memory_used_bytes * metrics.peak_storage_utilization * metrics.peak_number_connections * metrics.peak_memory_utilization The default order is ascending. Add "DESC" after the field name to indicate descending order. Add "ASC" after the field name to indicate ascending order. It only supports a single field at a time. For example: `order_by = "full_resource_name"` sorts response in ascending order `order_by = "full_resource_name DESC"` sorts response in descending order `order_by = "issue_count DESC"` sorts response in descending order of count of all issues associated with a resource. More explicitly, `order_by = "full_resource_name, product"` is not supported. */
@@ -1058,29 +908,16 @@ export interface QueryDatabaseResourceGroupsRequest {
   /** Optional. Filters based on signal and product. The filter list will be ORed across pairs and ANDed within a signal and products pair. */
   signalProductsFilters?: SignalProductsFiltersList;
 }
-const QueryDatabaseResourceGroupsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<QueryDatabaseResourceGroupsRequest>;
-
 export interface QueryDatabaseResourceGroupsV1betaRequest {
   /** Request body */
   body?: QueryDatabaseResourceGroupsRequest;
 }
-const QueryDatabaseResourceGroupsV1betaRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<QueryDatabaseResourceGroupsV1betaRequest>;
-
 export type MaintenanceInfoPossibleFailureReasonsItemEnum =
   | "POSSIBLE_FAILURE_REASON_UNSPECIFIED"
   | "POSSIBLE_FAILURE_REASON_DENY_POLICY_CONFLICT"
   | "POSSIBLE_FAILURE_REASON_INSTANCE_IN_STOPPED_STATE";
 export type MaintenanceInfoPossibleFailureReasonsItemEnumList =
   Array<MaintenanceInfoPossibleFailureReasonsItemEnum>;
-const MaintenanceInfoPossibleFailureReasonsItemEnumList =
-  SignalTypeGroupSignalTypesItemEnumList as any as S.Schema<MaintenanceInfoPossibleFailureReasonsItemEnumList>;
-
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
 export interface TimeOfDay {
   /** Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59. */
@@ -1092,8 +929,6 @@ export interface TimeOfDay {
   /** Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999. */
   nanos?: number;
 }
-const TimeOfDay = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<TimeOfDay>;
-
 export type ResourceMaintenanceScheduleDayEnum =
   | "DAY_OF_WEEK_UNSPECIFIED"
   | "MONDAY"
@@ -1103,16 +938,12 @@ export type ResourceMaintenanceScheduleDayEnum =
   | "FRIDAY"
   | "SATURDAY"
   | "SUNDAY";
-const ResourceMaintenanceScheduleDayEnum = S.String;
-
 export type ResourceMaintenanceSchedulePhaseEnum =
   | "PHASE_UNSPECIFIED"
   | "PHASE_WEEK1"
   | "PHASE_WEEK2"
   | "PHASE_WEEK5"
   | "PHASE_ANY";
-const ResourceMaintenanceSchedulePhaseEnum = S.String;
-
 /** Maintenance window for the database resource. It specifies preferred time and day of the week and phase in some cases, when the maintenance can start. */
 export interface ResourceMaintenanceSchedule {
   /** Optional. Preferred time to start the maintenance operation on the specified day. */
@@ -1122,11 +953,6 @@ export interface ResourceMaintenanceSchedule {
   /** Optional. Phase of the maintenance window. This is to capture order of maintenance. For example, for Cloud SQL resources, this can be used to capture if the maintenance window is in Week1, Week2, Week5, etc. Non production resources are usually part of early phase. For more details, refer to Cloud SQL resources - https://cloud.google.com/sql/docs/mysql/maintenance */
   phase?: ResourceMaintenanceSchedulePhaseEnum;
 }
-const ResourceMaintenanceSchedule = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<ResourceMaintenanceSchedule>;
-
 /** Deny maintenance period for the database resource. It specifies the time range during which the maintenance cannot start. This is configured by the customer. */
 export interface ResourceMaintenanceDenySchedule {
   /** Optional. Time in UTC when the deny period starts on start_date and ends on end_date. */
@@ -1136,25 +962,13 @@ export interface ResourceMaintenanceDenySchedule {
   /** Optional. The start date of the deny maintenance period. */
   startDate?: Databasecenter_Date;
 }
-const ResourceMaintenanceDenySchedule = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<ResourceMaintenanceDenySchedule>;
-
 export type ResourceMaintenanceDenyScheduleList = Array<ResourceMaintenanceDenySchedule>;
-const ResourceMaintenanceDenyScheduleList = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<ResourceMaintenanceDenyScheduleList>;
-
 export type MaintenanceInfoStateEnum =
   | "MAINTENANCE_STATE_UNSPECIFIED"
   | "MAINTENANCE_STATE_SCHEDULED"
   | "MAINTENANCE_STATE_IN_PROGRESS"
   | "MAINTENANCE_STATE_COMPLETED"
   | "MAINTENANCE_STATE_FAILED";
-const MaintenanceInfoStateEnum = S.String;
-
 /** Upcoming maintenance window for the database resource. */
 export interface UpcomingMaintenance {
   /** Output only. Start time of the upcoming maintenance. Start time is always populated when an upcoming maintenance is scheduled. */
@@ -1162,8 +976,6 @@ export interface UpcomingMaintenance {
   /** Output only. End time of the upcoming maintenance. This is only populated for an engine, if end time is public for the engine. */
   endTime?: string;
 }
-const UpcomingMaintenance = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<UpcomingMaintenance>;
-
 /** MaintenanceInfo to capture the maintenance details of database resource. */
 export interface MaintenanceInfo {
   /** Output only. List of possible reasons why the maintenance is not completed. This is an optional field and is only populated if there are any reasons for failures recorded for the maintenance by DB Center. FAILURE maintenance status may not always have a failure reason. */
@@ -1183,8 +995,6 @@ export interface MaintenanceInfo {
   /** Output only. The date when the maintenance version was released. */
   currentVersionReleaseDate?: Databasecenter_Date;
 }
-const MaintenanceInfo = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<MaintenanceInfo>;
-
 /** Tag is a key value pair attached to a resource. */
 export interface Tag {
   /** Indicates the inheritance status of a tag value attached to the given resource. If the tag value is inherited from one of the resource's ancestors, inherited will be true. If false, then the tag value is directly attached to the resource. */
@@ -1195,18 +1005,12 @@ export interface Tag {
   source?: string;
   key?: string;
 }
-const Tag = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<Tag>;
-
 export type TagList = Array<Tag>;
-const TagList = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<TagList>;
-
 /** BackupDRConfig to capture the backup and disaster recovery details of database resource. */
 export interface BackupDRConfig {
   /** Indicates if the resource is managed by BackupDR. */
   backupdrManaged?: boolean;
 }
-const BackupDRConfig = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<BackupDRConfig>;
-
 /** TypedValue represents the value of the metric based on data type. */
 export interface TypedValue {
   /** The value of the metric as int. */
@@ -1214,8 +1018,6 @@ export interface TypedValue {
   /** The value of the metric as double. */
   doubleValue?: number;
 }
-const TypedValue = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<TypedValue>;
-
 /** MetricData represents the metric data for a database resource. */
 export interface MetricData {
   /** The value associated with the metric. */
@@ -1223,8 +1025,6 @@ export interface MetricData {
   /** The time the metric was observed in the metric source service. */
   observationTime?: string;
 }
-const MetricData = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<MetricData>;
-
 /** Metrics represents the metrics for a database resource. */
 export interface Metrics {
   /** Number of nodes in instance for spanner or bigtable. */
@@ -1246,8 +1046,6 @@ export interface Metrics {
   /** Peak memory utilization observed for the resource. The value is a fraction between 0.0 and 1.0 (may momentarily exceed 1.0 in some cases). */
   peakMemoryUtilization?: MetricData;
 }
-const Metrics = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<Metrics>;
-
 /** MachineConfig describes the configuration of a machine specific to a Database Resource. */
 export interface MachineConfig {
   /** Optional. Max slots for BigQuery Reservations. Max slots are in increments of 50. */
@@ -1261,8 +1059,6 @@ export interface MachineConfig {
   /** Optional. The number of Shards (if applicable). */
   shardCount?: number;
 }
-const MachineConfig = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<MachineConfig>;
-
 export type DatabaseResourceResourceCategoryEnum =
   | "RESOURCE_CATEGORY_UNSPECIFIED"
   | "INSTANCE"
@@ -1270,8 +1066,6 @@ export type DatabaseResourceResourceCategoryEnum =
   | "DATABASE"
   | "DATASET"
   | "RESERVATION";
-const DatabaseResourceResourceCategoryEnum = S.String;
-
 export type DatabaseResourceSubResourceTypeEnum =
   | "SUB_RESOURCE_TYPE_UNSPECIFIED"
   | "SUB_RESOURCE_TYPE_PRIMARY"
@@ -1282,8 +1076,6 @@ export type DatabaseResourceSubResourceTypeEnum =
   | "SUB_RESOURCE_TYPE_RESERVATION"
   | "SUB_RESOURCE_TYPE_DATASET"
   | "SUB_RESOURCE_TYPE_OTHER";
-const DatabaseResourceSubResourceTypeEnum = S.String;
-
 /** Label is a key value pair applied to a resource. */
 export interface Label {
   /** The source of the Label. Source is empty if the label is directly attached to the resource and not inherited. */
@@ -1293,19 +1085,13 @@ export interface Label {
   /** The value part of the label. */
   value?: string;
 }
-const Label = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<Label>;
-
 export type LabelList = Array<Label>;
-const LabelList = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<LabelList>;
-
 export type SignalSignalStatusEnum =
   | "SIGNAL_STATUS_UNSPECIFIED"
   | "SIGNAL_STATUS_NOT_APPLICABLE"
   | "SIGNAL_STATUS_OK"
   | "SIGNAL_STATUS_ISSUE"
   | "SIGNAL_STATUS_NOT_ENABLED";
-const SignalSignalStatusEnum = S.String;
-
 export type SignalIssueSeverityEnum =
   | "ISSUE_SEVERITY_UNSPECIFIED"
   | "ISSUE_SEVERITY_LOW"
@@ -1313,8 +1099,6 @@ export type SignalIssueSeverityEnum =
   | "ISSUE_SEVERITY_HIGH"
   | "ISSUE_SEVERITY_CRITICAL"
   | "ISSUE_SEVERITY_IRRELEVANT";
-const SignalIssueSeverityEnum = S.String;
-
 export type SignalSignalTypeEnum =
   | "SIGNAL_TYPE_UNSPECIFIED"
   | "SIGNAL_TYPE_RESOURCE_FAILOVER_PROTECTED"
@@ -1419,8 +1203,6 @@ export type SignalSignalTypeEnum =
   | "SIGNAL_TYPE_HIGH_MAINTENANCE_DOWNTIME_RISK"
   | "SIGNAL_TYPE_LOW_CACHE_HIT_AND_MAINTENANCE_DOWNTIME"
   | "SIGNAL_TYPE_MISSING_ENHANCED_PROTECTION";
-const SignalSignalTypeEnum = S.String;
-
 /** Compliances associated with signals. */
 export interface RegulatoryStandard {
   /** Name of industry compliance standards, such as such as CIS, PCI, and OWASP. */
@@ -1428,14 +1210,7 @@ export interface RegulatoryStandard {
   /** Version of the standard or benchmark, for example, 1.1. */
   version?: string;
 }
-const RegulatoryStandard = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<RegulatoryStandard>;
-
 export type RegulatoryStandardList = Array<RegulatoryStandard>;
-const RegulatoryStandardList = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<RegulatoryStandardList>;
-
 /** Info associated with SCC signals. */
 export interface SCCInfo {
   /** External URI which points to a SCC page associated with the signal. */
@@ -1447,8 +1222,6 @@ export interface SCCInfo {
   /** Name of the signal. */
   signal?: string;
 }
-const SCCInfo = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<SCCInfo>;
-
 /** Sub resource details For Spanner/Bigtable instance certain data protection settings are at sub resource level like database/table. This message is used to capture such sub resource details. */
 export interface SubResource {
   /** Specifies where the resource is created. For Google Cloud resources, it is the full name of the project. */
@@ -1460,8 +1233,6 @@ export interface SubResource {
   /** Optional. Resource type associated with the sub resource where backup settings are configured. E.g. "spanner.googleapis.com/Database" for Spanner where backup retention is configured on database within an instance OPTIONAL */
   resourceType?: string;
 }
-const SubResource = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<SubResource>;
-
 /** Metadata about backup retention settings for a database resource. */
 export interface RetentionSettingsInfo {
   /** Number of backups that will be retained. */
@@ -1473,11 +1244,6 @@ export interface RetentionSettingsInfo {
   /** Optional. Sub resource details associated with the backup configuration. */
   subResource?: SubResource;
 }
-const RetentionSettingsInfo = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<RetentionSettingsInfo>;
-
 /** Deletion protection signal info for a database resource. */
 export interface DeletionProtectionInfo {
   /** Is deletion protection enabled. */
@@ -1485,11 +1251,6 @@ export interface DeletionProtectionInfo {
   /** Optional. Sub resource details associated with the signal. */
   subResource?: SubResource;
 }
-const DeletionProtectionInfo = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<DeletionProtectionInfo>;
-
 export type AdditionalDetailSignalTypeEnum =
   | "SIGNAL_TYPE_UNSPECIFIED"
   | "SIGNAL_TYPE_RESOURCE_FAILOVER_PROTECTED"
@@ -1594,32 +1355,18 @@ export type AdditionalDetailSignalTypeEnum =
   | "SIGNAL_TYPE_HIGH_MAINTENANCE_DOWNTIME_RISK"
   | "SIGNAL_TYPE_LOW_CACHE_HIT_AND_MAINTENANCE_DOWNTIME"
   | "SIGNAL_TYPE_MISSING_ENHANCED_PROTECTION";
-const AdditionalDetailSignalTypeEnum = S.String;
-
 export type AdditionalDetailSignalSourceEnum =
   | "SIGNAL_SOURCE_UNSPECIFIED"
   | "SIGNAL_SOURCE_RESOURCE_METADATA"
   | "SIGNAL_SOURCE_SECURITY_FINDINGS"
   | "SIGNAL_SOURCE_RECOMMENDER"
   | "SIGNAL_SOURCE_MODERN_OBSERVABILITY";
-const AdditionalDetailSignalSourceEnum = S.String;
-
 export type ResourceMaintenanceScheduleList = Array<ResourceMaintenanceSchedule>;
-const ResourceMaintenanceScheduleList = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<ResourceMaintenanceScheduleList>;
-
 /** Info associated with maintenance recommendation. */
 export interface MaintenanceRecommendationInfo {
   /** Optional. List of recommended maintenance schedules for the database resource. */
   resourceMaintenanceSchedules?: ResourceMaintenanceScheduleList;
 }
-const MaintenanceRecommendationInfo = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<MaintenanceRecommendationInfo>;
-
 export type ResourceSuspensionInfoSuspensionReasonEnum =
   | "SUSPENSION_REASON_UNSPECIFIED"
   | "WIPEOUT_HIDE_EVENT"
@@ -1628,8 +1375,6 @@ export type ResourceSuspensionInfoSuspensionReasonEnum =
   | "ABUSER_DETECTED"
   | "ENCRYPTION_KEY_INACCESSIBLE"
   | "REPLICATED_CLUSTER_ENCRYPTION_KEY_INACCESSIBLE";
-const ResourceSuspensionInfoSuspensionReasonEnum = S.String;
-
 /** Resource suspension info for a database resource. */
 export interface ResourceSuspensionInfo {
   /** Is resource suspended. */
@@ -1637,11 +1382,6 @@ export interface ResourceSuspensionInfo {
   /** Suspension reason for the resource. */
   suspensionReason?: ResourceSuspensionInfoSuspensionReasonEnum;
 }
-const ResourceSuspensionInfo = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<ResourceSuspensionInfo>;
-
 export type BackupRunInfoOperationErrorTypeEnum =
   | "OPERATION_ERROR_TYPE_UNSPECIFIED"
   | "KMS_KEY_ERROR"
@@ -1650,11 +1390,7 @@ export type BackupRunInfoOperationErrorTypeEnum =
   | "CANCELLATION_ERROR"
   | "SQLSERVER_ERROR"
   | "INTERNAL_ERROR";
-const BackupRunInfoOperationErrorTypeEnum = S.String;
-
 export type BackupRunInfoStateEnum = "STATE_UNSPECIFIED" | "SUCCEEDED" | "FAILED";
-const BackupRunInfoStateEnum = S.String;
-
 /** Metadata about latest backup run state for a database resource. */
 export interface BackupRunInfo {
   /** The time the backup operation started. */
@@ -1670,8 +1406,6 @@ export interface BackupRunInfo {
   /** The time the backup operation completed. */
   endTime?: string;
 }
-const BackupRunInfo = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<BackupRunInfo>;
-
 /** Info associated with recommendation. */
 export interface RecommendationInfo {
   /** Name of recommendation. Examples: organizations/1234/locations/us-central1/recommenders/google.cloudsql.instance.PerformanceRecommender/recommendations/9876 */
@@ -1681,18 +1415,11 @@ export interface RecommendationInfo {
   /** ID of recommender. Examples: "google.cloudsql.instance.PerformanceRecommender" */
   recommenderId?: string;
 }
-const RecommendationInfo = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<RecommendationInfo>;
-
 /** Info associated with outdated minor version. */
 export interface OutdatedMinorVersionInfo {
   /** Recommended minor version of the underlying database engine. Example values: For MySQL, it could be "8.0.35", "5.7.25" etc. For PostgreSQL, it could be "14.4", "15.5" etc. */
   recommendedMinorVersion?: string;
 }
-const OutdatedMinorVersionInfo = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<OutdatedMinorVersionInfo>;
-
 /** Automated backup policy signal info */
 export interface AutomatedBackupPolicyInfo {
   /** Optional. Sub resource details associated with the signal. */
@@ -1700,11 +1427,6 @@ export interface AutomatedBackupPolicyInfo {
   /** Is automated policy enabled. */
   isEnabled?: boolean;
 }
-const AutomatedBackupPolicyInfo = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<AutomatedBackupPolicyInfo>;
-
 /** Details related to signal. */
 export interface AdditionalDetail {
   /** Inefficient query information applies to signals with type SIGNAL_TYPE_INEFFICIENT_QUERY. */
@@ -1734,11 +1456,7 @@ export interface AdditionalDetail {
   /** Automated backup policy information applies to signals with type SIGNAL_TYPE_NO_AUTOMATED_BACKUP_POLICY. */
   automatedBackupPolicyInfo?: AutomatedBackupPolicyInfo;
 }
-const AdditionalDetail = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<AdditionalDetail>;
-
 export type AdditionalDetailList = Array<AdditionalDetail>;
-const AdditionalDetailList = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<AdditionalDetailList>;
-
 /** Represents a signal. */
 export interface Signal {
   /** Status of the signal. */
@@ -1752,11 +1470,7 @@ export interface Signal {
   /** Timestamp when the issue was created (when signal status is ISSUE). */
   issueCreateTime?: string;
 }
-const Signal = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<Signal>;
-
 export type SignalList = Array<Signal>;
-const SignalList = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<SignalList>;
-
 /** A group of signals and their counts. */
 export interface SignalGroup {
   /** Title of a signal group corresponding to the request. */
@@ -1766,18 +1480,12 @@ export interface SignalGroup {
   /** List of signals present in the group and associated with the resource. Only applies to a DatabaseResource. */
   signals?: SignalList;
 }
-const SignalGroup = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<SignalGroup>;
-
 export type SignalGroupList = Array<SignalGroup>;
-const SignalGroupList = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<SignalGroupList>;
-
 export type DatabaseResourceEditionEnum =
   | "EDITION_UNSPECIFIED"
   | "EDITION_ENTERPRISE"
   | "EDITION_ENTERPRISE_PLUS"
   | "EDITION_STANDARD";
-const DatabaseResourceEditionEnum = S.String;
-
 export type LineageProcessTypeEnum =
   | "PROCESS_TYPE_UNSPECIFIED"
   | "COMPOSER"
@@ -1786,8 +1494,6 @@ export type LineageProcessTypeEnum =
   | "BIGQUERY"
   | "DATA_FUSION"
   | "DATAPROC";
-const LineageProcessTypeEnum = S.String;
-
 /** lineage information of the affiliated resources This captures source, target and process which created the lineage. */
 export interface Lineage {
   /** Optional. FQN of process which created the lineage i.e. dataplex, datastream etc. */
@@ -1799,11 +1505,7 @@ export interface Lineage {
   /** Optional. Type of process which created the lineage. */
   processType?: LineageProcessTypeEnum;
 }
-const Lineage = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<Lineage>;
-
 export type LineageList = Array<Lineage>;
-const LineageList = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<LineageList>;
-
 /** Affiliation information of a resource */
 export interface Affiliation {
   /** Optional. Multiple lineages can be created from a resource. For example, a resource can be replicated to multiple target resources. In this case, there will be multiple lineages for the resource, one for each target resource. */
@@ -1813,11 +1515,7 @@ export interface Affiliation {
   /** Optional. resource id of affiliated resource */
   resourceId?: string;
 }
-const Affiliation = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<Affiliation>;
-
 export type AffiliationList = Array<Affiliation>;
-const AffiliationList = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<AffiliationList>;
-
 /** DatabaseResource represents every individually configured database unit representing compute and/or storage. */
 export interface DatabaseResource {
   /** Optional. The maintenance information of the resource. */
@@ -1857,14 +1555,7 @@ export interface DatabaseResource {
   /** Optional. Affiliation details of the resource. */
   affiliations?: AffiliationList;
 }
-const DatabaseResource = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<DatabaseResource>;
-
 export type DatabaseResourceList = Array<DatabaseResource>;
-const DatabaseResourceList = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<DatabaseResourceList>;
-
 /** Count of issues for a group of signals. */
 export interface IssueCount {
   /** Title of a signal group corresponding to the request. */
@@ -1872,11 +1563,7 @@ export interface IssueCount {
   /** The count of the number of issues associated with those resources that are explicitly filtered in by the filters present in the request. A signal is an issue when its SignalStatus field is set to SIGNAL_STATUS_ISSUE. */
   issueCount?: number;
 }
-const IssueCount = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<IssueCount>;
-
 export type IssueCountList = Array<IssueCount>;
-const IssueCountList = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<IssueCountList>;
-
 /** DatabaseResourceGroup represents all resources that serve a common data set. It is considered notionally as a single entity, powered by any number of units of compute and storage. */
 export interface DatabaseResourceGroup {
   /** A database resource that serves as a root of the group of database resources. It is repeated just in case we have the concept of multiple roots in the future, however, it will only be populated with a single value for now. */
@@ -1884,17 +1571,7 @@ export interface DatabaseResourceGroup {
   /** The filtered signal groups and the count of issues associated with the resources that have been filtered in. */
   signalGroups?: IssueCountList;
 }
-const DatabaseResourceGroup = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<DatabaseResourceGroup>;
-
 export type DatabaseResourceGroupList = Array<DatabaseResourceGroup>;
-const DatabaseResourceGroupList = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<DatabaseResourceGroupList>;
-
 /** QueryDatabaseResourceGroupsResponse represents the response message containing a list of resource groups. */
 export interface QueryDatabaseResourceGroupsResponse {
   /** Output only. The total number of resource groups in the entire list. */
@@ -1906,11 +1583,6 @@ export interface QueryDatabaseResourceGroupsResponse {
   /** Unordered list. List of unreachable regions from where data could not be retrieved. */
   unreachable?: StringList;
 }
-const QueryDatabaseResourceGroupsResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<QueryDatabaseResourceGroupsResponse>;
-
 /** QueryIssuesRequest is the request to get a list of issues. */
 export interface QueryIssuesRequest {
   /** Optional. Following fields are sortable: SignalType Product Location IssueSeverity The default order is ascending. Add "DESC" after the field name to indicate descending order. Add "ASC" after the field name to indicate ascending order. It only supports a single field at a time. */
@@ -1926,17 +1598,10 @@ export interface QueryIssuesRequest {
   /** Optional. Filters based on signal and product. The filter list will be ORed across pairs and ANDed within a signal and products pair. */
   signalProductsFilters?: SignalProductsFiltersList;
 }
-const QueryIssuesRequest = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<QueryIssuesRequest>;
-
 export interface QueryIssuesV1betaRequest {
   /** Request body */
   body?: QueryIssuesRequest;
 }
-const QueryIssuesV1betaRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<QueryIssuesV1betaRequest>;
-
 /** DatabaseResource and Issue associated with it. */
 export interface DatabaseResourceIssue {
   /** Signal associated with the issue. */
@@ -1944,17 +1609,7 @@ export interface DatabaseResourceIssue {
   /** Resource associated with the issue. */
   resource?: DatabaseResource;
 }
-const DatabaseResourceIssue = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<DatabaseResourceIssue>;
-
 export type DatabaseResourceIssueList = Array<DatabaseResourceIssue>;
-const DatabaseResourceIssueList = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<DatabaseResourceIssueList>;
-
 /** QueryIssuesResponse is the response containing a list of issues. */
 export interface QueryIssuesResponse {
   /** List of issues and resource details. */
@@ -1964,8 +1619,6 @@ export interface QueryIssuesResponse {
   /** Unordered list. List of unreachable regions from where data could not be retrieved. */
   unreachable?: StringList;
 }
-const QueryIssuesResponse = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<QueryIssuesResponse>;
-
 export interface QueryProductsV1betaRequest {
   /** Optional. If unspecified, at most 50 products will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
@@ -1974,11 +1627,6 @@ export interface QueryProductsV1betaRequest {
   /** Optional. A page token, received from a previous `ListLocations` call. Provide this to retrieve the subsequent page. All other parameters except page size should match the call that provided the page page token. */
   pageToken?: string;
 }
-const QueryProductsV1betaRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<QueryProductsV1betaRequest>;
-
 /** QueryProductsResponse represents the response containing a list of products. */
 export interface QueryProductsResponse {
   /** List of database products returned. */
@@ -1988,11 +1636,6 @@ export interface QueryProductsResponse {
   /** Unordered list. List of unreachable regions from where data could not be retrieved. */
   unreachable?: StringList;
 }
-const QueryProductsResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<QueryProductsResponse>;
-
 export type AggregateFleetV1betaError = NotFound | Forbidden | GcpOpError;
 /** AggregateFleet provides statistics about the fleet grouped by various fields. */
 export const aggregateFleetV1beta: API.PaginatedOperationMethod<
@@ -2002,8 +1645,8 @@ export const aggregateFleetV1beta: API.PaginatedOperationMethod<
   GcpOpContext,
   AggregateFleetResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: AggregateFleetV1betaRequest,
-  output: AggregateFleetResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<AggregateFleetV1betaRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<AggregateFleetResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2023,8 +1666,8 @@ export const aggregateIssueStatsV1beta: API.OperationMethod<
   AggregateIssueStatsV1betaError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AggregateIssueStatsV1betaRequest,
-  output: AggregateIssueStatsResponse,
+  input: __S(16, __c2, 0) as any as S.Schema<AggregateIssueStatsV1betaRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<AggregateIssueStatsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2043,8 +1686,8 @@ export const aggregateQueryStatsFolders: API.OperationMethod<
   AggregateQueryStatsFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AggregateQueryStatsFoldersRequest,
-  output: AggregateQueryStatsResponse,
+  input: __S(23, __c2, 7) as any as S.Schema<AggregateQueryStatsFoldersRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<AggregateQueryStatsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2063,8 +1706,8 @@ export const aggregateQueryStatsOrganizations: API.OperationMethod<
   AggregateQueryStatsOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AggregateQueryStatsOrganizationsRequest,
-  output: AggregateQueryStatsResponse,
+  input: __S(33, __c4, 1) as any as S.Schema<AggregateQueryStatsOrganizationsRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<AggregateQueryStatsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2083,8 +1726,8 @@ export const aggregateQueryStatsProjects: API.OperationMethod<
   AggregateQueryStatsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AggregateQueryStatsProjectsRequest,
-  output: AggregateQueryStatsResponse,
+  input: __S(34, __c4, 2) as any as S.Schema<AggregateQueryStatsProjectsRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<AggregateQueryStatsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2103,8 +1746,8 @@ export const queryDatabaseResourceGroupsV1beta: API.OperationMethod<
   QueryDatabaseResourceGroupsV1betaError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: QueryDatabaseResourceGroupsV1betaRequest,
-  output: QueryDatabaseResourceGroupsResponse,
+  input: __S(41, __c5, 1) as any as S.Schema<QueryDatabaseResourceGroupsV1betaRequest>,
+  output: __S(86, __c10, 6) as any as S.Schema<QueryDatabaseResourceGroupsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2118,8 +1761,8 @@ export const queryIssuesV1beta: API.OperationMethod<
   QueryIssuesV1betaError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: QueryIssuesV1betaRequest,
-  output: QueryIssuesResponse,
+  input: __S(88, __c11, 0) as any as S.Schema<QueryIssuesV1betaRequest>,
+  output: __S(91, __c11, 3) as any as S.Schema<QueryIssuesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2134,8 +1777,8 @@ export const queryProductsV1beta: API.PaginatedOperationMethod<
   GcpOpContext,
   QueryProductsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: QueryProductsV1betaRequest,
-  output: QueryProductsResponse,
+  input: __S(92, __c11, 4) as any as S.Schema<QueryProductsV1betaRequest>,
+  output: __S(93, __c11, 5) as any as S.Schema<QueryProductsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2177,56 +1820,56 @@ function __c0(j: number): any {
           location: S.optional(S.String),
           tagInherited: S.optional(S.Boolean),
           tagKey: S.optional(S.String),
-          managementType: S.optional(DimensionManagementTypeEnum),
+          managementType: S.optional(S.String),
           labelSource: S.optional(S.String),
           hasDenyMaintenanceSchedules: S.optional(S.Boolean),
-          subResourceType: S.optional(DimensionSubResourceTypeEnum),
+          subResourceType: S.optional(S.String),
           tagValue: S.optional(S.String),
-          edition: S.optional(DimensionEditionEnum),
+          edition: S.optional(S.String),
           hasMaintenanceSchedule: S.optional(S.Boolean),
           tagSource: S.optional(S.String),
-          productType: S.optional(DimensionProductTypeEnum),
+          productType: S.optional(S.String),
           productVersion: S.optional(S.String),
-          resourceCategory: S.optional(DimensionResourceCategoryEnum),
-          productEngine: S.optional(DimensionProductEngineEnum),
+          resourceCategory: S.optional(S.String),
+          productEngine: S.optional(S.String),
         }),
       ).annotate({ identifier: "Dimension" });
     case 2:
-      return S.Array(Dimension);
+      return S.Array(__S(1, __c0, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          engine: S.optional(ProductEngineEnum),
+          engine: S.optional(S.String),
           minorVersion: S.optional(S.String),
           version: S.optional(S.String),
-          type: S.optional(ProductTypeEnum),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "Product" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           location: S.optional(S.String),
-          product: S.optional(Product),
+          product: S.optional(__S(3, __c0, 3)),
           fullResourceName: S.optional(S.String),
           container: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceDetails" });
     case 5:
-      return S.Array(ResourceDetails);
+      return S.Array(__S(4, __c0, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          decreasedResources: S.optional(ResourceDetailsList),
-          increasedResources: S.optional(ResourceDetailsList),
+          decreasedResources: S.optional(__S(5, __c0, 5)),
+          increasedResources: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "DeltaDetails" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           resourcesCount: S.optional(S.Number),
-          dimension: S.optional(DimensionList),
+          dimension: S.optional(__S(2, __c0, 2)),
           resourceGroupsCount: S.optional(S.Number),
-          deltaDetails: S.optional(DeltaDetails),
+          deltaDetails: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({ identifier: "AggregateFleetRow" });
   }
@@ -2234,7 +1877,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AggregateFleetRow);
+      return S.Array(__S(7, __c0, 7));
     case 1:
       return S.Array(S.String);
     case 2:
@@ -2242,23 +1885,23 @@ function __c1(j: number): any {
         S.Struct({
           totalSize: S.optional(S.String),
           nextPageToken: S.optional(S.String),
-          rows: S.optional(AggregateFleetRowList),
+          rows: S.optional(__S(8, __c1, 0)),
           resourceGroupsTotalCount: S.optional(S.Number),
-          unreachable: S.optional(StringList),
+          unreachable: S.optional(__S(9, __c1, 1)),
           resourceTotalCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "AggregateFleetResponse" });
     case 3:
-      return S.Array(SignalTypeGroupSignalTypesItemEnum);
+      return S.Array(S.String);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          signalTypes: S.optional(SignalTypeGroupSignalTypesItemEnumList),
+          signalTypes: S.optional(__S(11, __c1, 3)),
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "SignalTypeGroup" });
     case 5:
-      return S.Array(SignalTypeGroup);
+      return S.Array(__S(12, __c1, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -2270,10 +1913,10 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          signalTypeGroups: S.optional(SignalTypeGroupList),
+          signalTypeGroups: S.optional(__S(13, __c1, 5)),
           parent: S.optional(S.String),
           filter: S.optional(S.String),
-          baselineDate: S.optional(Databasecenter_Date),
+          baselineDate: S.optional(__S(14, __c1, 6)),
         }),
       ).annotate({
         identifier: "AggregateIssueStatsRequest",
@@ -2285,7 +1928,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(AggregateIssueStatsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2299,34 +1942,34 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          issueSeverity: S.optional(IssueStatsIssueSeverityEnum),
-          signalType: S.optional(IssueStatsSignalTypeEnum),
+          issueSeverity: S.optional(S.String),
+          signalType: S.optional(S.String),
           resourceCount: S.optional(S.Number),
-          deltaDetails: S.optional(DeltaDetails),
+          deltaDetails: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({ identifier: "IssueStats" });
     case 2:
-      return S.Array(IssueStats);
+      return S.Array(__S(17, __c2, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           resourcesCount: S.optional(S.Number),
           displayName: S.optional(S.String),
-          issueStats: S.optional(IssueStatsList),
+          issueStats: S.optional(__S(18, __c2, 2)),
           healthyResourcesCount: S.optional(S.Number),
           resourceGroupsCount: S.optional(S.Number),
           healthyResourceGroupsCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "IssueGroupStats" });
     case 4:
-      return S.Array(IssueGroupStats);
+      return S.Array(__S(19, __c2, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           totalResourcesCount: S.optional(S.Number),
           totalResourceGroupsCount: S.optional(S.Number),
-          unreachable: S.optional(StringList),
-          issueGroupStats: S.optional(IssueGroupStatsList),
+          unreachable: S.optional(__S(9, __c1, 1)),
+          issueGroupStats: S.optional(__S(20, __c2, 4)),
         }),
       ).annotate({
         identifier: "AggregateIssueStatsResponse",
@@ -2346,7 +1989,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(AggregateQueryStatsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2364,13 +2007,13 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          product: S.optional(Product),
+          product: S.optional(__S(3, __c0, 3)),
           resourceType: S.optional(S.String),
           fullResourceName: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceId" });
     case 1:
-      return S.Array(ResourceId);
+      return S.Array(__S(24, __c3, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2378,7 +2021,7 @@ function __c3(j: number): any {
           executionCount: S.optional(S.String),
           totalCpuTime: S.optional(S.String),
           rowsProcessed: S.optional(S.String),
-          metricsWindow: S.optional(QueryMetricsMetricsWindowEnum),
+          metricsWindow: S.optional(S.String),
         }),
       ).annotate({ identifier: "QueryMetrics" });
     case 3:
@@ -2396,23 +2039,23 @@ function __c3(j: number): any {
         S.Struct({
           queryHash: S.optional(S.String),
           resourceType: S.optional(S.String),
-          resourceIds: S.optional(ResourceIdList),
-          queryMetrics: S.optional(QueryMetrics),
-          inefficientQueryInfo: S.optional(InefficientQueryInfo),
+          resourceIds: S.optional(__S(25, __c3, 1)),
+          queryMetrics: S.optional(__S(26, __c3, 2)),
+          inefficientQueryInfo: S.optional(__S(27, __c3, 3)),
           normalizedQuery: S.optional(S.String),
         }),
       ).annotate({ identifier: "QueryStats" });
     case 5:
-      return S.Array(QueryStats);
+      return S.Array(__S(28, __c3, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          aggregatedQueryStats: S.optional(QueryStats),
-          queryStats: S.optional(QueryStatsList),
+          aggregatedQueryStats: S.optional(__S(28, __c3, 4)),
+          queryStats: S.optional(__S(29, __c3, 5)),
         }),
       ).annotate({ identifier: "QueryStatsInfo" });
     case 7:
-      return S.Array(QueryStatsInfo);
+      return S.Array(__S(30, __c3, 6));
   }
 }
 function __c4(j: number): any {
@@ -2420,8 +2063,8 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
-          queryStats: S.optional(QueryStatsInfoList),
+          unreachable: S.optional(__S(9, __c1, 1)),
+          queryStats: S.optional(__S(31, __c3, 7)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2431,7 +2074,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(AggregateQueryStatsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2446,7 +2089,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(AggregateQueryStatsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2460,23 +2103,23 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          signalType: S.optional(SignalFilterSignalTypeEnum),
-          signalStatus: S.optional(SignalFilterSignalStatusEnum),
+          signalType: S.optional(S.String),
+          signalStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "SignalFilter" });
     case 4:
-      return S.Array(SignalFilter);
+      return S.Array(__S(35, __c4, 3));
     case 5:
-      return S.Array(Product);
+      return S.Array(__S(3, __c0, 3));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          signalType: S.optional(SignalProductsFiltersSignalTypeEnum),
-          products: S.optional(ProductList),
+          signalType: S.optional(S.String),
+          products: S.optional(__S(37, __c4, 5)),
         }),
       ).annotate({ identifier: "SignalProductsFilters" });
     case 7:
-      return S.Array(SignalProductsFilters);
+      return S.Array(__S(38, __c4, 6));
   }
 }
 function __c5(j: number): any {
@@ -2489,9 +2132,9 @@ function __c5(j: number): any {
           filter: S.optional(S.String),
           pageToken: S.optional(S.String),
           pageSize: S.optional(S.Number),
-          signalFilters: S.optional(SignalFilterList),
-          signalTypeGroups: S.optional(SignalTypeGroupList),
-          signalProductsFilters: S.optional(SignalProductsFiltersList),
+          signalFilters: S.optional(__S(36, __c4, 4)),
+          signalTypeGroups: S.optional(__S(13, __c1, 5)),
+          signalProductsFilters: S.optional(__S(39, __c4, 7)),
         }),
       ).annotate({
         identifier: "QueryDatabaseResourceGroupsRequest",
@@ -2499,7 +2142,7 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(QueryDatabaseResourceGroupsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(40, __c5, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2522,9 +2165,9 @@ function __c5(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          startTime: S.optional(TimeOfDay),
-          day: S.optional(ResourceMaintenanceScheduleDayEnum),
-          phase: S.optional(ResourceMaintenanceSchedulePhaseEnum),
+          startTime: S.optional(__S(42, __c5, 2)),
+          day: S.optional(S.String),
+          phase: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ResourceMaintenanceSchedule",
@@ -2532,15 +2175,15 @@ function __c5(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          time: S.optional(TimeOfDay),
-          endDate: S.optional(Databasecenter_Date),
-          startDate: S.optional(Databasecenter_Date),
+          time: S.optional(__S(42, __c5, 2)),
+          endDate: S.optional(__S(14, __c1, 6)),
+          startDate: S.optional(__S(14, __c1, 6)),
         }),
       ).annotate({
         identifier: "ResourceMaintenanceDenySchedule",
       });
     case 5:
-      return S.Array(ResourceMaintenanceDenySchedule);
+      return S.Array(__S(44, __c5, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -2551,14 +2194,14 @@ function __c5(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          possibleFailureReasons: S.optional(MaintenanceInfoPossibleFailureReasonsItemEnumList),
-          maintenanceSchedule: S.optional(ResourceMaintenanceSchedule),
-          denyMaintenanceSchedules: S.optional(ResourceMaintenanceDenyScheduleList),
+          possibleFailureReasons: S.optional(__S(11, __c1, 3)),
+          maintenanceSchedule: S.optional(__S(43, __c5, 3)),
+          denyMaintenanceSchedules: S.optional(__S(45, __c5, 5)),
           previousMaintenanceVersion: S.optional(S.String),
-          state: S.optional(MaintenanceInfoStateEnum),
-          upcomingMaintenance: S.optional(UpcomingMaintenance),
+          state: S.optional(S.String),
+          upcomingMaintenance: S.optional(__S(46, __c5, 6)),
           maintenanceVersion: S.optional(S.String),
-          currentVersionReleaseDate: S.optional(Databasecenter_Date),
+          currentVersionReleaseDate: S.optional(__S(14, __c1, 6)),
         }),
       ).annotate({ identifier: "MaintenanceInfo" });
   }
@@ -2575,7 +2218,7 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "Tag" });
     case 1:
-      return S.Array(Tag);
+      return S.Array(__S(48, __c6, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2592,22 +2235,22 @@ function __c6(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(TypedValue),
+          value: S.optional(__S(51, __c6, 3)),
           observationTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "MetricData" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          nodeCount: S.optional(MetricData),
-          peakStorageUtilization: S.optional(MetricData),
-          processingUnitCount: S.optional(MetricData),
-          p95CpuUtilization: S.optional(MetricData),
-          peakNumberConnections: S.optional(MetricData),
-          p99CpuUtilization: S.optional(MetricData),
-          currentStorageUsedBytes: S.optional(MetricData),
-          currentMemoryUsedBytes: S.optional(MetricData),
-          peakMemoryUtilization: S.optional(MetricData),
+          nodeCount: S.optional(__S(52, __c6, 4)),
+          peakStorageUtilization: S.optional(__S(52, __c6, 4)),
+          processingUnitCount: S.optional(__S(52, __c6, 4)),
+          p95CpuUtilization: S.optional(__S(52, __c6, 4)),
+          peakNumberConnections: S.optional(__S(52, __c6, 4)),
+          p99CpuUtilization: S.optional(__S(52, __c6, 4)),
+          currentStorageUsedBytes: S.optional(__S(52, __c6, 4)),
+          currentMemoryUsedBytes: S.optional(__S(52, __c6, 4)),
+          peakMemoryUtilization: S.optional(__S(52, __c6, 4)),
         }),
       ).annotate({ identifier: "Metrics" });
     case 6:
@@ -2633,7 +2276,7 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Label);
+      return S.Array(__S(55, __c6, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2642,12 +2285,12 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "RegulatoryStandard" });
     case 2:
-      return S.Array(RegulatoryStandard);
+      return S.Array(__S(57, __c7, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           externalUri: S.optional(S.String),
-          regulatoryStandards: S.optional(RegulatoryStandardList),
+          regulatoryStandards: S.optional(__S(58, __c7, 2)),
           category: S.optional(S.String),
           signal: S.optional(S.String),
         }),
@@ -2656,7 +2299,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           container: S.optional(S.String),
-          product: S.optional(Product),
+          product: S.optional(__S(3, __c0, 3)),
           fullResourceName: S.optional(S.String),
           resourceType: S.optional(S.String),
         }),
@@ -2667,18 +2310,18 @@ function __c7(j: number): any {
           quantityBasedRetention: S.optional(S.Number),
           durationBasedRetention: S.optional(S.String),
           timestampBasedRetentionTime: S.optional(S.String),
-          subResource: S.optional(SubResource),
+          subResource: S.optional(__S(60, __c7, 4)),
         }),
       ).annotate({ identifier: "RetentionSettingsInfo" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           deletionProtectionEnabled: S.optional(S.Boolean),
-          subResource: S.optional(SubResource),
+          subResource: S.optional(__S(60, __c7, 4)),
         }),
       ).annotate({ identifier: "DeletionProtectionInfo" });
     case 7:
-      return S.Array(ResourceMaintenanceSchedule);
+      return S.Array(__S(43, __c5, 3));
   }
 }
 function __c8(j: number): any {
@@ -2686,7 +2329,7 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          resourceMaintenanceSchedules: S.optional(ResourceMaintenanceScheduleList),
+          resourceMaintenanceSchedules: S.optional(__S(63, __c7, 7)),
         }),
       ).annotate({
         identifier: "MaintenanceRecommendationInfo",
@@ -2695,17 +2338,17 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceSuspended: S.optional(S.Boolean),
-          suspensionReason: S.optional(ResourceSuspensionInfoSuspensionReasonEnum),
+          suspensionReason: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceSuspensionInfo" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           startTime: S.optional(S.String),
-          operationErrorType: S.optional(BackupRunInfoOperationErrorTypeEnum),
+          operationErrorType: S.optional(S.String),
           errorMessage: S.optional(S.String),
-          subResource: S.optional(SubResource),
-          state: S.optional(BackupRunInfoStateEnum),
+          subResource: S.optional(__S(60, __c7, 4)),
+          state: S.optional(S.String),
           endTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "BackupRunInfo" });
@@ -2726,7 +2369,7 @@ function __c8(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          subResource: S.optional(SubResource),
+          subResource: S.optional(__S(60, __c7, 4)),
           isEnabled: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -2735,23 +2378,23 @@ function __c8(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          inefficientQueryInfo: S.optional(InefficientQueryInfo),
-          sccInfo: S.optional(SCCInfo),
+          inefficientQueryInfo: S.optional(__S(27, __c3, 3)),
+          sccInfo: S.optional(__S(59, __c7, 3)),
           signalEventTime: S.optional(S.String),
-          shortBackupRetentionInfo: S.optional(RetentionSettingsInfo),
-          deletionProtectionInfo: S.optional(DeletionProtectionInfo),
-          signalType: S.optional(AdditionalDetailSignalTypeEnum),
-          signalSource: S.optional(AdditionalDetailSignalSourceEnum),
-          maintenanceRecommendationInfo: S.optional(MaintenanceRecommendationInfo),
-          resourceSuspensionInfo: S.optional(ResourceSuspensionInfo),
-          backupRunInfo: S.optional(BackupRunInfo),
-          recommendationInfo: S.optional(RecommendationInfo),
-          outdatedMinorVersionInfo: S.optional(OutdatedMinorVersionInfo),
-          automatedBackupPolicyInfo: S.optional(AutomatedBackupPolicyInfo),
+          shortBackupRetentionInfo: S.optional(__S(61, __c7, 5)),
+          deletionProtectionInfo: S.optional(__S(62, __c7, 6)),
+          signalType: S.optional(S.String),
+          signalSource: S.optional(S.String),
+          maintenanceRecommendationInfo: S.optional(__S(64, __c8, 0)),
+          resourceSuspensionInfo: S.optional(__S(65, __c8, 1)),
+          backupRunInfo: S.optional(__S(66, __c8, 2)),
+          recommendationInfo: S.optional(__S(67, __c8, 3)),
+          outdatedMinorVersionInfo: S.optional(__S(68, __c8, 4)),
+          automatedBackupPolicyInfo: S.optional(__S(69, __c8, 5)),
         }),
       ).annotate({ identifier: "AdditionalDetail" });
     case 7:
-      return S.Array(AdditionalDetail);
+      return S.Array(__S(70, __c8, 6));
   }
 }
 function __c9(j: number): any {
@@ -2759,46 +2402,46 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          signalStatus: S.optional(SignalSignalStatusEnum),
-          issueSeverity: S.optional(SignalIssueSeverityEnum),
-          signalType: S.optional(SignalSignalTypeEnum),
-          additionalDetails: S.optional(AdditionalDetailList),
+          signalStatus: S.optional(S.String),
+          issueSeverity: S.optional(S.String),
+          signalType: S.optional(S.String),
+          additionalDetails: S.optional(__S(71, __c8, 7)),
           issueCreateTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "Signal" });
     case 1:
-      return S.Array(Signal);
+      return S.Array(__S(72, __c9, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
           issueCount: S.optional(S.Number),
-          signals: S.optional(SignalList),
+          signals: S.optional(__S(73, __c9, 1)),
         }),
       ).annotate({ identifier: "SignalGroup" });
     case 3:
-      return S.Array(SignalGroup);
+      return S.Array(__S(74, __c9, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           processFqn: S.optional(S.String),
           sourceFqn: S.optional(S.String),
           targetFqn: S.optional(S.String),
-          processType: S.optional(LineageProcessTypeEnum),
+          processType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Lineage" });
     case 5:
-      return S.Array(Lineage);
+      return S.Array(__S(76, __c9, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          lineages: S.optional(LineageList),
+          lineages: S.optional(__S(77, __c9, 5)),
           fullResourceName: S.optional(S.String),
           resourceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Affiliation" });
     case 7:
-      return S.Array(Affiliation);
+      return S.Array(__S(78, __c9, 6));
   }
 }
 function __c10(j: number): any {
@@ -2806,28 +2449,28 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          maintenanceInfo: S.optional(MaintenanceInfo),
-          product: S.optional(Product),
-          tags: S.optional(TagList),
-          backupdrConfig: S.optional(BackupDRConfig),
+          maintenanceInfo: S.optional(__S(47, __c5, 7)),
+          product: S.optional(__S(3, __c0, 3)),
+          tags: S.optional(__S(49, __c6, 1)),
+          backupdrConfig: S.optional(__S(50, __c6, 2)),
           container: S.optional(S.String),
-          metrics: S.optional(Metrics),
+          metrics: S.optional(__S(53, __c6, 5)),
           location: S.optional(S.String),
-          machineConfig: S.optional(MachineConfig),
+          machineConfig: S.optional(__S(54, __c6, 6)),
           resourceName: S.optional(S.String),
-          resourceCategory: S.optional(DatabaseResourceResourceCategoryEnum),
-          subResourceType: S.optional(DatabaseResourceSubResourceTypeEnum),
+          resourceCategory: S.optional(S.String),
+          subResourceType: S.optional(S.String),
           fullResourceName: S.optional(S.String),
-          childResources: S.optional(S.suspend(() => DatabaseResourceList)),
-          labels: S.optional(LabelList),
-          signalGroups: S.optional(SignalGroupList),
+          childResources: S.optional(S.suspend(() => __S(81, __c10, 1))),
+          labels: S.optional(__S(56, __c7, 0)),
+          signalGroups: S.optional(__S(75, __c9, 3)),
           resourceType: S.optional(S.String),
-          edition: S.optional(DatabaseResourceEditionEnum),
-          affiliations: S.optional(AffiliationList),
+          edition: S.optional(S.String),
+          affiliations: S.optional(__S(79, __c9, 7)),
         }),
       ).annotate({ identifier: "DatabaseResource" });
     case 1:
-      return S.Array(DatabaseResource);
+      return S.Array(__S(80, __c10, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2836,23 +2479,23 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "IssueCount" });
     case 3:
-      return S.Array(IssueCount);
+      return S.Array(__S(82, __c10, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          rootResources: S.optional(DatabaseResourceList),
-          signalGroups: S.optional(IssueCountList),
+          rootResources: S.optional(__S(81, __c10, 1)),
+          signalGroups: S.optional(__S(83, __c10, 3)),
         }),
       ).annotate({ identifier: "DatabaseResourceGroup" });
     case 5:
-      return S.Array(DatabaseResourceGroup);
+      return S.Array(__S(84, __c10, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           totalSize: S.optional(S.String),
-          resourceGroups: S.optional(DatabaseResourceGroupList),
+          resourceGroups: S.optional(__S(85, __c10, 5)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(StringList),
+          unreachable: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({
         identifier: "QueryDatabaseResourceGroupsResponse",
@@ -2865,7 +2508,7 @@ function __c10(j: number): any {
           filter: S.optional(S.String),
           pageSize: S.optional(S.Number),
           pageToken: S.optional(S.String),
-          signalProductsFilters: S.optional(SignalProductsFiltersList),
+          signalProductsFilters: S.optional(__S(39, __c4, 7)),
         }),
       ).annotate({ identifier: "QueryIssuesRequest" });
   }
@@ -2875,7 +2518,7 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(QueryIssuesRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(87, __c10, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2887,18 +2530,18 @@ function __c11(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          signal: S.optional(Signal),
-          resource: S.optional(DatabaseResource),
+          signal: S.optional(__S(72, __c9, 0)),
+          resource: S.optional(__S(80, __c10, 0)),
         }),
       ).annotate({ identifier: "DatabaseResourceIssue" });
     case 2:
-      return S.Array(DatabaseResourceIssue);
+      return S.Array(__S(89, __c11, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          resourceIssues: S.optional(DatabaseResourceIssueList),
+          resourceIssues: S.optional(__S(90, __c11, 2)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(StringList),
+          unreachable: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({ identifier: "QueryIssuesResponse" });
     case 4:
@@ -2920,10 +2563,15 @@ function __c11(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          products: S.optional(ProductList),
+          products: S.optional(__S(37, __c4, 5)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(StringList),
+          unreachable: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({ identifier: "QueryProductsResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

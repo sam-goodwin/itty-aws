@@ -7,20 +7,15 @@ import { paginatePageNumber } from "../pagination.ts";
 import { HetznerProtocol, type HetznerOpError, type HetznerOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { HetznerOpError, HetznerOpContext };
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type CreatePlacementGroupRequestLabelsMap = { [key: string]: string | undefined };
-const CreatePlacementGroupRequestLabelsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreatePlacementGroupRequestLabelsMap>;
-
 /** Define the Placement Group Type. */
 export type CreatePlacementGroupRequestType = "spread";
-const CreatePlacementGroupRequestType = S.String;
-
 export interface CreatePlacementGroupRequest {
   /** Name of the Placement Group. */
   name: string;
@@ -29,29 +24,14 @@ export interface CreatePlacementGroupRequest {
   /** Define the Placement Group Type. */
   type: CreatePlacementGroupRequestType | (string & {});
 }
-const CreatePlacementGroupRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreatePlacementGroupRequest>;
-
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type CreatePlacementGroupResponsePlacementGroupLabelsMap = {
   [key: string]: string | undefined;
 };
-const CreatePlacementGroupResponsePlacementGroupLabelsMap =
-  CreatePlacementGroupRequestLabelsMap as any as S.Schema<CreatePlacementGroupResponsePlacementGroupLabelsMap>;
-
 /** Type of Placement Group. */
 export type CreatePlacementGroupResponsePlacementGroupType = "spread";
-const CreatePlacementGroupResponsePlacementGroupType = S.String;
-
 /** Array of IDs of Servers that are part of this Placement Group. */
 export type CreatePlacementGroupResponsePlacementGroupServersList = Array<number>;
-const CreatePlacementGroupResponsePlacementGroupServersList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreatePlacementGroupResponsePlacementGroupServersList>;
-
 export interface CreatePlacementGroupResponsePlacementGroup {
   /** ID of the [Placement Group](#tag/placement-groups). */
   id: number;
@@ -66,34 +46,17 @@ export interface CreatePlacementGroupResponsePlacementGroup {
   /** Array of IDs of Servers that are part of this Placement Group. */
   servers: CreatePlacementGroupResponsePlacementGroupServersList;
 }
-const CreatePlacementGroupResponsePlacementGroup = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreatePlacementGroupResponsePlacementGroup>;
-
 /** Status of the Action. */
 export type CreatePlacementGroupResponseActionStatus = "running" | "success" | "error";
-const CreatePlacementGroupResponseActionStatus = S.String;
-
 export interface CreatePlacementGroupResponseActionResourcesItem {
   /** ID of the Resource. */
   id: number;
   /** Type of the Resource. */
   type: string;
 }
-const CreatePlacementGroupResponseActionResourcesItem = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreatePlacementGroupResponseActionResourcesItem>;
-
 /** Resources the Action relates to. */
 export type CreatePlacementGroupResponseActionResourcesList =
   Array<CreatePlacementGroupResponseActionResourcesItem>;
-const CreatePlacementGroupResponseActionResourcesList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreatePlacementGroupResponseActionResourcesList>;
-
 /** Error message for the Action if an error occurred, otherwise null. */
 export interface CreatePlacementGroupResponseActionError {
   /** Fixed error code for machines. */
@@ -101,11 +64,6 @@ export interface CreatePlacementGroupResponseActionError {
   /** Error message for humans. */
   message: string;
 }
-const CreatePlacementGroupResponseActionError = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreatePlacementGroupResponseActionError>;
-
 export interface CreatePlacementGroupResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -124,60 +82,27 @@ export interface CreatePlacementGroupResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: CreatePlacementGroupResponseActionError | null;
 }
-const CreatePlacementGroupResponseAction = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreatePlacementGroupResponseAction>;
-
 export interface CreatePlacementGroupResponse {
   placement_group: CreatePlacementGroupResponsePlacementGroup;
   action?: CreatePlacementGroupResponseAction | null;
 }
-const CreatePlacementGroupResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreatePlacementGroupResponse>;
-
 export interface DeletePlacementGroupRequest {
   /** ID of the Placement Group. */
   id: number;
 }
-const DeletePlacementGroupRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<DeletePlacementGroupRequest>;
-
 export interface DeletePlacementGroupResponse {}
-const DeletePlacementGroupResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<DeletePlacementGroupResponse>;
-
 export interface GetPlacementGroupRequest {
   /** ID of the Placement Group. */
   id: number;
 }
-const GetPlacementGroupRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<GetPlacementGroupRequest>;
-
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type GetPlacementGroupResponsePlacementGroupLabelsMap = {
   [key: string]: string | undefined;
 };
-const GetPlacementGroupResponsePlacementGroupLabelsMap =
-  CreatePlacementGroupRequestLabelsMap as any as S.Schema<GetPlacementGroupResponsePlacementGroupLabelsMap>;
-
 /** Type of Placement Group. */
 export type GetPlacementGroupResponsePlacementGroupType = "spread";
-const GetPlacementGroupResponsePlacementGroupType = S.String;
-
 /** Array of IDs of Servers that are part of this Placement Group. */
 export type GetPlacementGroupResponsePlacementGroupServersList = Array<number>;
-const GetPlacementGroupResponsePlacementGroupServersList =
-  CreatePlacementGroupResponsePlacementGroupServersList as any as S.Schema<GetPlacementGroupResponsePlacementGroupServersList>;
-
 export interface GetPlacementGroupResponsePlacementGroup {
   /** ID of the [Placement Group](#tag/placement-groups). */
   id: number;
@@ -192,19 +117,9 @@ export interface GetPlacementGroupResponsePlacementGroup {
   /** Array of IDs of Servers that are part of this Placement Group. */
   servers: GetPlacementGroupResponsePlacementGroupServersList;
 }
-const GetPlacementGroupResponsePlacementGroup = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<GetPlacementGroupResponsePlacementGroup>;
-
 export interface GetPlacementGroupResponse {
   placement_group: GetPlacementGroupResponsePlacementGroup;
 }
-const GetPlacementGroupResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<GetPlacementGroupResponse>;
-
 export type ListPlacementGroupsRequestSortItem =
   | "id"
   | "id:asc"
@@ -215,24 +130,14 @@ export type ListPlacementGroupsRequestSortItem =
   | "created"
   | "created:asc"
   | "created:desc";
-const ListPlacementGroupsRequestSortItem = S.String;
-
 export type ListPlacementGroupsRequestSortList = Array<
   ListPlacementGroupsRequestSortItem | (string & {})
 >;
-const ListPlacementGroupsRequestSortList = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<ListPlacementGroupsRequestSortList>;
-
 /** Type of Placement Group. */
 export type ListPlacementGroupsRequestTypeItem = "spread";
 export type ListPlacementGroupsRequestTypeList = Array<
   ListPlacementGroupsRequestTypeItem | (string & {})
 >;
-const ListPlacementGroupsRequestTypeList =
-  ListPlacementGroupsRequestSortList as any as S.Schema<ListPlacementGroupsRequestTypeList>;
-
 export interface ListPlacementGroupsRequest {
   /** Sort resources by field and direction. May be used multiple times. For more information, see "[Sorting](#description/sorting)". */
   sort?: ListPlacementGroupsRequestSortList;
@@ -247,27 +152,14 @@ export interface ListPlacementGroupsRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
-const ListPlacementGroupsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ListPlacementGroupsRequest>;
-
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type ListPlacementGroupsResponsePlacementGroupsItemLabelsMap = {
   [key: string]: string | undefined;
 };
-const ListPlacementGroupsResponsePlacementGroupsItemLabelsMap =
-  CreatePlacementGroupRequestLabelsMap as any as S.Schema<ListPlacementGroupsResponsePlacementGroupsItemLabelsMap>;
-
 /** Type of Placement Group. */
 export type ListPlacementGroupsResponsePlacementGroupsItemType = "spread";
-const ListPlacementGroupsResponsePlacementGroupsItemType = S.String;
-
 /** Array of IDs of Servers that are part of this Placement Group. */
 export type ListPlacementGroupsResponsePlacementGroupsItemServersList = Array<number>;
-const ListPlacementGroupsResponsePlacementGroupsItemServersList =
-  CreatePlacementGroupResponsePlacementGroupServersList as any as S.Schema<ListPlacementGroupsResponsePlacementGroupsItemServersList>;
-
 export interface ListPlacementGroupsResponsePlacementGroupsItem {
   /** ID of the [Placement Group](#tag/placement-groups). */
   id: number;
@@ -282,18 +174,8 @@ export interface ListPlacementGroupsResponsePlacementGroupsItem {
   /** Array of IDs of Servers that are part of this Placement Group. */
   servers: ListPlacementGroupsResponsePlacementGroupsItemServersList;
 }
-const ListPlacementGroupsResponsePlacementGroupsItem = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ListPlacementGroupsResponsePlacementGroupsItem>;
-
 export type ListPlacementGroupsResponsePlacementGroupsList =
   Array<ListPlacementGroupsResponsePlacementGroupsItem>;
-const ListPlacementGroupsResponsePlacementGroupsList = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ListPlacementGroupsResponsePlacementGroupsList>;
-
 /** See "[Pagination](#description/pagination)" for more information. */
 export interface ListPlacementGroupsResponseMetaPagination {
   /** Current page number. */
@@ -309,34 +191,16 @@ export interface ListPlacementGroupsResponseMetaPagination {
   /** Total number of entries that exist for this query. Can be null if unknown. */
   total_entries: number | null;
 }
-const ListPlacementGroupsResponseMetaPagination = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ListPlacementGroupsResponseMetaPagination>;
-
 export interface ListPlacementGroupsResponseMeta {
   /** See "[Pagination](#description/pagination)" for more information. */
   pagination: ListPlacementGroupsResponseMetaPagination;
 }
-const ListPlacementGroupsResponseMeta = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<ListPlacementGroupsResponseMeta>;
-
 export interface ListPlacementGroupsResponse {
   placement_groups: ListPlacementGroupsResponsePlacementGroupsList;
   meta: ListPlacementGroupsResponseMeta;
 }
-const ListPlacementGroupsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<ListPlacementGroupsResponse>;
-
 /** User-defined labels (`key/value` pairs) for the Resource. Note that the set of [Labels](#description/labels) provided in the request will overwrite the existing one. For more information, see "[Labels](#description/labels)". */
 export type UpdatePlacementGroupRequestLabelsMap = { [key: string]: string | undefined };
-const UpdatePlacementGroupRequestLabelsMap =
-  CreatePlacementGroupRequestLabelsMap as any as S.Schema<UpdatePlacementGroupRequestLabelsMap>;
-
 export interface UpdatePlacementGroupRequest {
   /** ID of the Placement Group. */
   id: number;
@@ -345,27 +209,14 @@ export interface UpdatePlacementGroupRequest {
   /** User-defined labels (`key/value` pairs) for the Resource. Note that the set of [Labels](#description/labels) provided in the request will overwrite the existing one. For more information, see "[Labels](#description/labels)". */
   labels?: UpdatePlacementGroupRequestLabelsMap;
 }
-const UpdatePlacementGroupRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<UpdatePlacementGroupRequest>;
-
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type UpdatePlacementGroupResponsePlacementGroupLabelsMap = {
   [key: string]: string | undefined;
 };
-const UpdatePlacementGroupResponsePlacementGroupLabelsMap =
-  CreatePlacementGroupRequestLabelsMap as any as S.Schema<UpdatePlacementGroupResponsePlacementGroupLabelsMap>;
-
 /** Type of Placement Group. */
 export type UpdatePlacementGroupResponsePlacementGroupType = "spread";
-const UpdatePlacementGroupResponsePlacementGroupType = S.String;
-
 /** Array of IDs of Servers that are part of this Placement Group. */
 export type UpdatePlacementGroupResponsePlacementGroupServersList = Array<number>;
-const UpdatePlacementGroupResponsePlacementGroupServersList =
-  CreatePlacementGroupResponsePlacementGroupServersList as any as S.Schema<UpdatePlacementGroupResponsePlacementGroupServersList>;
-
 export interface UpdatePlacementGroupResponsePlacementGroup {
   /** ID of the [Placement Group](#tag/placement-groups). */
   id: number;
@@ -380,19 +231,9 @@ export interface UpdatePlacementGroupResponsePlacementGroup {
   /** Array of IDs of Servers that are part of this Placement Group. */
   servers: UpdatePlacementGroupResponsePlacementGroupServersList;
 }
-const UpdatePlacementGroupResponsePlacementGroup = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<UpdatePlacementGroupResponsePlacementGroup>;
-
 export interface UpdatePlacementGroupResponse {
   placement_group: UpdatePlacementGroupResponsePlacementGroup;
 }
-const UpdatePlacementGroupResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<UpdatePlacementGroupResponse>;
-
 export type CreatePlacementGroupError = HetznerOpError;
 /** Create a PlacementGroup Creates a new Placement Group. */
 export const createPlacementGroup: API.OperationMethod<
@@ -401,8 +242,8 @@ export const createPlacementGroup: API.OperationMethod<
   CreatePlacementGroupError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePlacementGroupRequest,
-  output: CreatePlacementGroupResponse,
+  input: __S(1, __c0, 1) as any as S.Schema<CreatePlacementGroupRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreatePlacementGroupResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -416,8 +257,8 @@ export const deletePlacementGroup: API.OperationMethod<
   DeletePlacementGroupError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePlacementGroupRequest,
-  output: DeletePlacementGroupResponse,
+  input: __S(9, __c1, 1) as any as S.Schema<DeletePlacementGroupRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<DeletePlacementGroupResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -431,8 +272,8 @@ export const getPlacementGroup: API.OperationMethod<
   GetPlacementGroupError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPlacementGroupRequest,
-  output: GetPlacementGroupResponse,
+  input: __S(11, __c1, 3) as any as S.Schema<GetPlacementGroupRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<GetPlacementGroupResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -448,8 +289,8 @@ export const listPlacementGroups: API.PaginatedOperationMethod<
   ListPlacementGroupsResponsePlacementGroupsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListPlacementGroupsRequest,
-    output: ListPlacementGroupsResponse,
+    input: __S(15, __c1, 7) as any as S.Schema<ListPlacementGroupsRequest>,
+    output: __S(20, __c2, 4) as any as S.Schema<ListPlacementGroupsResponse>,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -472,8 +313,8 @@ export const updatePlacementGroup: API.OperationMethod<
   UpdatePlacementGroupError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePlacementGroupRequest,
-  output: UpdatePlacementGroupResponse,
+  input: __S(21, __c2, 5) as any as S.Schema<UpdatePlacementGroupRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<UpdatePlacementGroupResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -488,8 +329,8 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          labels: S.optional(CreatePlacementGroupRequestLabelsMap),
-          type: CreatePlacementGroupRequestType,
+          labels: S.optional(__S(0, __c0, 0)),
+          type: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/placement_groups", code: 200 })),
       ).annotate({
         identifier: "CreatePlacementGroupRequest",
@@ -501,10 +342,10 @@ function __c0(j: number): any {
         S.Struct({
           id: S.Number,
           name: S.String,
-          labels: CreatePlacementGroupResponsePlacementGroupLabelsMap,
-          type: CreatePlacementGroupResponsePlacementGroupType,
+          labels: __S(0, __c0, 0),
+          type: S.String,
           created: S.String,
-          servers: CreatePlacementGroupResponsePlacementGroupServersList,
+          servers: __S(2, __c0, 2),
         }),
       ).annotate({
         identifier: "CreatePlacementGroupResponsePlacementGroup",
@@ -519,7 +360,7 @@ function __c0(j: number): any {
         identifier: "CreatePlacementGroupResponseActionResourcesItem",
       });
     case 5:
-      return S.Array(CreatePlacementGroupResponseActionResourcesItem);
+      return S.Array(__S(4, __c0, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -534,12 +375,12 @@ function __c0(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: CreatePlacementGroupResponseActionStatus,
+          status: S.String,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: CreatePlacementGroupResponseActionResourcesList,
-          error: S.NullOr(CreatePlacementGroupResponseActionError),
+          resources: __S(5, __c0, 5),
+          error: S.NullOr(__S(6, __c0, 6)),
         }),
       ).annotate({
         identifier: "CreatePlacementGroupResponseAction",
@@ -551,8 +392,8 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          placement_group: CreatePlacementGroupResponsePlacementGroup,
-          action: S.optional(S.NullOr(CreatePlacementGroupResponseAction)),
+          placement_group: __S(3, __c0, 3),
+          action: S.optional(S.NullOr(__S(7, __c0, 7))),
         }),
       ).annotate({
         identifier: "CreatePlacementGroupResponse",
@@ -580,10 +421,10 @@ function __c1(j: number): any {
         S.Struct({
           id: S.Number,
           name: S.String,
-          labels: GetPlacementGroupResponsePlacementGroupLabelsMap,
-          type: GetPlacementGroupResponsePlacementGroupType,
+          labels: __S(0, __c0, 0),
+          type: S.String,
           created: S.String,
-          servers: GetPlacementGroupResponsePlacementGroupServersList,
+          servers: __S(2, __c0, 2),
         }),
       ).annotate({
         identifier: "GetPlacementGroupResponsePlacementGroup",
@@ -591,20 +432,20 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          placement_group: GetPlacementGroupResponsePlacementGroup,
+          placement_group: __S(12, __c1, 4),
         }),
       ).annotate({
         identifier: "GetPlacementGroupResponse",
       });
     case 6:
-      return S.Array(ListPlacementGroupsRequestSortItem);
+      return S.Array(S.String);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          sort: S.optional(ListPlacementGroupsRequestSortList.pipe(T.Query())),
+          sort: S.optional(__S(14, __c1, 6).pipe(T.Query())),
           name: S.optional(S.String.pipe(T.Query())),
           label_selector: S.optional(S.String.pipe(T.Query())),
-          type: S.optional(ListPlacementGroupsRequestTypeList.pipe(T.Query())),
+          type: S.optional(__S(14, __c1, 6).pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/placement_groups", code: 200 })),
@@ -620,16 +461,16 @@ function __c2(j: number): any {
         S.Struct({
           id: S.Number,
           name: S.String,
-          labels: ListPlacementGroupsResponsePlacementGroupsItemLabelsMap,
-          type: ListPlacementGroupsResponsePlacementGroupsItemType,
+          labels: __S(0, __c0, 0),
+          type: S.String,
           created: S.String,
-          servers: ListPlacementGroupsResponsePlacementGroupsItemServersList,
+          servers: __S(2, __c0, 2),
         }),
       ).annotate({
         identifier: "ListPlacementGroupsResponsePlacementGroupsItem",
       });
     case 1:
-      return S.Array(ListPlacementGroupsResponsePlacementGroupsItem);
+      return S.Array(__S(16, __c2, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -646,7 +487,7 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          pagination: ListPlacementGroupsResponseMetaPagination,
+          pagination: __S(18, __c2, 2),
         }),
       ).annotate({
         identifier: "ListPlacementGroupsResponseMeta",
@@ -654,8 +495,8 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          placement_groups: ListPlacementGroupsResponsePlacementGroupsList,
-          meta: ListPlacementGroupsResponseMeta,
+          placement_groups: __S(17, __c2, 1),
+          meta: __S(19, __c2, 3),
         }),
       ).annotate({
         identifier: "ListPlacementGroupsResponse",
@@ -665,7 +506,7 @@ function __c2(j: number): any {
         S.Struct({
           id: S.Number.pipe(T.Label()),
           name: S.optional(S.String),
-          labels: S.optional(UpdatePlacementGroupRequestLabelsMap),
+          labels: S.optional(__S(0, __c0, 0)),
         }).pipe(T.Http({ method: "PUT", uri: "/placement_groups/{id}", code: 200 })),
       ).annotate({
         identifier: "UpdatePlacementGroupRequest",
@@ -675,10 +516,10 @@ function __c2(j: number): any {
         S.Struct({
           id: S.Number,
           name: S.String,
-          labels: UpdatePlacementGroupResponsePlacementGroupLabelsMap,
-          type: UpdatePlacementGroupResponsePlacementGroupType,
+          labels: __S(0, __c0, 0),
+          type: S.String,
           created: S.String,
-          servers: UpdatePlacementGroupResponsePlacementGroupServersList,
+          servers: __S(2, __c0, 2),
         }),
       ).annotate({
         identifier: "UpdatePlacementGroupResponsePlacementGroup",
@@ -686,10 +527,15 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          placement_group: UpdatePlacementGroupResponsePlacementGroup,
+          placement_group: __S(22, __c2, 6),
         }),
       ).annotate({
         identifier: "UpdatePlacementGroupResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

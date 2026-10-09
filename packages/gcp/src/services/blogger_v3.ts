@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -67,32 +69,19 @@ export interface ApproveCommentsRequest {
   postId: string;
   commentId: string;
 }
-const ApproveCommentsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ApproveCommentsRequest>;
-
 export interface CommentPost {
   /** The identifier of the post containing this comment. */
   id?: string;
 }
-const CommentPost = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CommentPost>;
-
 export interface CommentInReplyTo {
   /** The identified of the parent of this comment. */
   id?: string;
 }
-const CommentInReplyTo = CommentPost as any as S.Schema<CommentInReplyTo>;
-
 export type CommentStatusEnum = "LIVE" | "EMPTIED" | "PENDING" | "SPAM";
-const CommentStatusEnum = S.String;
-
 export interface CommentAuthorImage {
   /** The creator's avatar URL. */
   url?: string;
 }
-const CommentAuthorImage = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<CommentAuthorImage>;
-
 export interface CommentAuthor {
   /** The creator's avatar. */
   image?: CommentAuthorImage;
@@ -103,14 +92,10 @@ export interface CommentAuthor {
   /** The URL of the creator's Profile page. */
   url?: string;
 }
-const CommentAuthor = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<CommentAuthor>;
-
 export interface CommentBlog {
   /** The identifier of the blog containing this comment. */
   id?: string;
 }
-const CommentBlog = CommentPost as any as S.Schema<CommentBlog>;
-
 export interface Comment {
   /** RFC 3339 date-time when this comment was published. */
   published?: string;
@@ -135,77 +120,43 @@ export interface Comment {
   /** Data about the blog containing this comment. */
   blog?: CommentBlog;
 }
-const Comment = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Comment>;
-
 export interface DeleteCommentsRequest {
   blogId: string;
   commentId: string;
   postId: string;
 }
-const DeleteCommentsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<DeleteCommentsRequest>;
-
 export interface DeleteCommentsResponse {}
-const DeleteCommentsResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<DeleteCommentsResponse>;
-
 export interface DeletePagesRequest {
   pageId: string;
   blogId: string;
   /** Move to Trash if possible */
   useTrash?: boolean;
 }
-const DeletePagesRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<DeletePagesRequest>;
-
 export interface DeletePagesResponse {}
-const DeletePagesResponse = DeleteCommentsResponse as any as S.Schema<DeletePagesResponse>;
-
 export interface DeletePostsRequest {
   blogId: string;
   /** Move to Trash if possible */
   useTrash?: boolean;
   postId: string;
 }
-const DeletePostsRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<DeletePostsRequest>;
-
 export interface DeletePostsResponse {}
-const DeletePostsResponse = DeleteCommentsResponse as any as S.Schema<DeletePostsResponse>;
-
 export type GetBlogsViewEnum = "VIEW_TYPE_UNSPECIFIED" | "READER" | "AUTHOR" | "ADMIN";
-const GetBlogsViewEnum = S.String;
-
 export interface GetBlogsRequest {
   maxPosts?: number;
   blogId: string;
   /** Unspecified is interpreted as READER. */
   view?: GetBlogsViewEnum | (string & {});
 }
-const GetBlogsRequest = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<GetBlogsRequest>;
-
 export type PostReaderCommentsEnum =
   | "ALLOW"
   | "DONT_ALLOW_SHOW_EXISTING"
   | "DONT_ALLOW_HIDE_EXISTING";
-const PostReaderCommentsEnum = S.String;
-
 export interface PostImagesItem {
   url?: string;
 }
-const PostImagesItem = CommentAuthorImage as any as S.Schema<PostImagesItem>;
-
 export type PostImagesItemList = Array<PostImagesItem>;
-const PostImagesItemList = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<PostImagesItemList>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<StringList>;
-
 export type CommentList_ = Array<Comment>;
-const CommentList_ = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<CommentList_>;
-
 export interface PostReplies {
   /** The count of comments on this post. */
   totalItems?: string;
@@ -214,11 +165,7 @@ export interface PostReplies {
   /** The List of Comments for this Post. */
   items?: CommentList_;
 }
-const PostReplies = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<PostReplies>;
-
 export type PostStatusEnum = "LIVE" | "DRAFT" | "SCHEDULED" | "SOFT_TRASHED";
-const PostStatusEnum = S.String;
-
 export type PostAuthorImage = CommentAuthorImage;
 export interface PostAuthor {
   /** The creator's avatar. */
@@ -230,14 +177,10 @@ export interface PostAuthor {
   /** The display name. */
   displayName?: string;
 }
-const PostAuthor = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<PostAuthor>;
-
 export interface PostBlog {
   /** The identifier of the Blog that contains this Post. */
   id?: string;
 }
-const PostBlog = CommentPost as any as S.Schema<PostBlog>;
-
 export interface PostLocation {
   /** Location's latitude. */
   lat?: number;
@@ -248,8 +191,6 @@ export interface PostLocation {
   /** Location's viewport span. Can be used when rendering a map preview. */
   span?: string;
 }
-const PostLocation = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<PostLocation>;
-
 export interface Post {
   /** Comment control and display setting for readers of this post. */
   readerComments?: PostReaderCommentsEnum | (string & {});
@@ -292,11 +233,7 @@ export interface Post {
   /** The identifier of this Post. */
   id?: string;
 }
-const Post = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Post>;
-
 export type PostList_ = Array<Post>;
-const PostList_ = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<PostList_>;
-
 export interface BlogPosts {
   /** The List of Posts for this Blog. */
   items?: PostList_;
@@ -305,16 +242,12 @@ export interface BlogPosts {
   /** The count of posts in this blog. */
   totalItems?: number;
 }
-const BlogPosts = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<BlogPosts>;
-
 export interface BlogPages {
   /** The count of pages in this blog. */
   totalItems?: number;
   /** The URL of the container for pages in this blog. */
   selfLink?: string;
 }
-const BlogPages = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<BlogPages>;
-
 export interface BlogLocale {
   /** The language this blog is authored in. */
   language?: string;
@@ -323,11 +256,7 @@ export interface BlogLocale {
   /** The language variant this blog is authored in. */
   variant?: string;
 }
-const BlogLocale = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<BlogLocale>;
-
 export type BlogStatusEnum = "LIVE" | "DELETED";
-const BlogStatusEnum = S.String;
-
 export interface Blog {
   /** The JSON custom meta-data for the Blog. */
   customMetaData?: string;
@@ -356,21 +285,12 @@ export interface Blog {
   /** The identifier for this resource. */
   id?: string;
 }
-const Blog = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<Blog>;
-
 export interface GetBlogUserInfosRequest {
   blogId: string;
   userId: string;
   maxPosts?: number;
 }
-const GetBlogUserInfosRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<GetBlogUserInfosRequest>;
-
 export type BlogPerUserInfoRoleEnum = "VIEW_TYPE_UNSPECIFIED" | "READER" | "AUTHOR" | "ADMIN";
-const BlogPerUserInfoRoleEnum = S.String;
-
 export interface BlogPerUserInfo {
   /** ID of the Blog resource. */
   blogId?: string;
@@ -385,8 +305,6 @@ export interface BlogPerUserInfo {
   /** Access permissions that the user has for the blog (ADMIN, AUTHOR, or READER). */
   role?: BlogPerUserInfoRoleEnum;
 }
-const BlogPerUserInfo = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<BlogPerUserInfo>;
-
 export interface BlogUserInfo {
   /** The Blog resource. */
   blog?: Blog;
@@ -395,62 +313,37 @@ export interface BlogUserInfo {
   /** Information about a User for the Blog. */
   blog_user_info?: BlogPerUserInfo;
 }
-const BlogUserInfo = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<BlogUserInfo>;
-
 export type GetByPathPostsViewEnum = "VIEW_TYPE_UNSPECIFIED" | "READER" | "AUTHOR" | "ADMIN";
-const GetByPathPostsViewEnum = S.String;
-
 export interface GetByPathPostsRequest {
   maxComments?: number;
   path: string;
   view?: GetByPathPostsViewEnum | (string & {});
   blogId: string;
 }
-const GetByPathPostsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<GetByPathPostsRequest>;
-
 export type GetByUrlBlogsViewEnum = "VIEW_TYPE_UNSPECIFIED" | "READER" | "AUTHOR" | "ADMIN";
-const GetByUrlBlogsViewEnum = S.String;
-
 export interface GetByUrlBlogsRequest {
   url: string;
   /** Unspecified is interpreted as READER. */
   view?: GetByUrlBlogsViewEnum | (string & {});
 }
-const GetByUrlBlogsRequest = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<GetByUrlBlogsRequest>;
-
 export type GetCommentsViewEnum = "VIEW_TYPE_UNSPECIFIED" | "READER" | "AUTHOR" | "ADMIN";
-const GetCommentsViewEnum = S.String;
-
 export interface GetCommentsRequest {
   view?: GetCommentsViewEnum | (string & {});
   blogId: string;
   commentId: string;
   postId: string;
 }
-const GetCommentsRequest = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<GetCommentsRequest>;
-
 export type GetPagesViewEnum = "VIEW_TYPE_UNSPECIFIED" | "READER" | "AUTHOR" | "ADMIN";
-const GetPagesViewEnum = S.String;
-
 export interface GetPagesRequest {
   pageId: string;
   blogId: string;
   view?: GetPagesViewEnum | (string & {});
 }
-const GetPagesRequest = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<GetPagesRequest>;
-
 export interface PageBlog {
   /** The identifier of the blog containing this page. */
   id?: string;
 }
-const PageBlog = CommentPost as any as S.Schema<PageBlog>;
-
 export type PageStatusEnum = "LIVE" | "DRAFT" | "SOFT_TRASHED";
-const PageStatusEnum = S.String;
-
 export type PageAuthorImage = CommentAuthorImage;
 export interface PageAuthor {
   /** The display name. */
@@ -462,8 +355,6 @@ export interface PageAuthor {
   /** The identifier of the creator. */
   id?: string;
 }
-const PageAuthor = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<PageAuthor>;
-
 export interface Page {
   /** The title of this entity. This is the name displayed in the Admin user interface. */
   title?: string;
@@ -492,40 +383,20 @@ export interface Page {
   /** The API REST URL to fetch this resource from. */
   selfLink?: string;
 }
-const Page = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<Page>;
-
 export type GetPageViewsRangeEnum = "all" | "30DAYS" | "7DAYS";
-const GetPageViewsRangeEnum = S.String;
-
 export type GetPageViewsRangeEnumList = Array<GetPageViewsRangeEnum | (string & {})>;
-const GetPageViewsRangeEnumList = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<GetPageViewsRangeEnumList>;
-
 export interface GetPageViewsRequest {
   range?: GetPageViewsRangeEnumList;
   blogId: string;
 }
-const GetPageViewsRequest = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<GetPageViewsRequest>;
-
 export type PageviewsCountsItemTimeRangeEnum = "ALL_TIME" | "THIRTY_DAYS" | "SEVEN_DAYS";
-const PageviewsCountsItemTimeRangeEnum = S.String;
-
 export interface PageviewsCountsItem {
   /** Time range the given count applies to. */
   timeRange?: PageviewsCountsItemTimeRangeEnum;
   /** Count of page views for the given time range. */
   count?: string;
 }
-const PageviewsCountsItem = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<PageviewsCountsItem>;
-
 export type PageviewsCountsItemList = Array<PageviewsCountsItem>;
-const PageviewsCountsItemList = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<PageviewsCountsItemList>;
-
 export interface Pageviews {
   /** Blog Id. */
   blogId?: string;
@@ -534,11 +405,7 @@ export interface Pageviews {
   /** The kind of this entry. Always blogger#page_views. */
   kind?: string;
 }
-const Pageviews = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<Pageviews>;
-
 export type GetPostsViewEnum = "VIEW_TYPE_UNSPECIFIED" | "READER" | "AUTHOR" | "ADMIN";
-const GetPostsViewEnum = S.String;
-
 export interface GetPostsRequest {
   fetchBody?: boolean;
   view?: GetPostsViewEnum | (string & {});
@@ -547,19 +414,12 @@ export interface GetPostsRequest {
   blogId: string;
   fetchImages?: boolean;
 }
-const GetPostsRequest = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<GetPostsRequest>;
-
 export interface GetPostUserInfosRequest {
   blogId: string;
   postId: string;
   maxComments?: number;
   userId: string;
 }
-const GetPostUserInfosRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<GetPostUserInfosRequest>;
-
 export interface PostPerUserInfo {
   /** ID of the Post resource. */
   postId?: string;
@@ -572,8 +432,6 @@ export interface PostPerUserInfo {
   /** ID of the User. */
   userId?: string;
 }
-const PostPerUserInfo = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<PostPerUserInfo>;
-
 export interface PostUserInfo {
   /** Information about a User for the Post. */
   post_user_info?: PostPerUserInfo;
@@ -582,19 +440,13 @@ export interface PostUserInfo {
   /** The kind of this entity. Always blogger#postUserInfo. */
   kind?: string;
 }
-const PostUserInfo = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<PostUserInfo>;
-
 export interface GetUsersRequest {
   userId: string;
 }
-const GetUsersRequest = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<GetUsersRequest>;
-
 export interface UserBlogs {
   /** The URL of the Blogs for this user. */
   selfLink?: string;
 }
-const UserBlogs = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<UserBlogs>;
-
 export interface UserLocale {
   /** The country this blog's locale is set to. */
   country?: string;
@@ -603,8 +455,6 @@ export interface UserLocale {
   /** The language variant this blog is authored in. */
   variant?: string;
 }
-const UserLocale = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<UserLocale>;
-
 export interface User {
   /** The API REST URL to fetch this resource from. */
   selfLink?: string;
@@ -625,16 +475,12 @@ export interface User {
   /** The timestamp of when this profile was created, in seconds since epoch. */
   created?: string;
 }
-const User = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<User>;
-
 export interface InsertPagesRequest {
   isDraft?: boolean;
   blogId: string;
   /** Request body */
   body?: Page;
 }
-const InsertPagesRequest = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<InsertPagesRequest>;
-
 export interface InsertPostsRequest {
   isDraft?: boolean;
   blogId: string;
@@ -643,13 +489,8 @@ export interface InsertPostsRequest {
   /** Request body */
   body?: Post;
 }
-const InsertPostsRequest = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<InsertPostsRequest>;
-
 export type ListByBlogCommentsStatusEnum = "LIVE" | "EMPTIED" | "PENDING" | "SPAM";
 export type ListByBlogCommentsStatusEnumList = Array<ListByBlogCommentsStatusEnum | (string & {})>;
-const ListByBlogCommentsStatusEnumList =
-  GetPageViewsRangeEnumList as any as S.Schema<ListByBlogCommentsStatusEnumList>;
-
 export interface ListByBlogCommentsRequest {
   fetchBodies?: boolean;
   maxResults?: number;
@@ -659,11 +500,6 @@ export interface ListByBlogCommentsRequest {
   endDate?: string;
   pageToken?: string;
 }
-const ListByBlogCommentsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<ListByBlogCommentsRequest>;
-
 export interface CommentList {
   /** The List of Comments for a Post. */
   items: CommentList_;
@@ -676,21 +512,11 @@ export interface CommentList {
   /** Pagination token to fetch the previous page, if one exists. */
   prevPageToken?: string;
 }
-const CommentList = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<CommentList>;
-
 export type ListByUserBlogsRoleEnum = "VIEW_TYPE_UNSPECIFIED" | "READER" | "AUTHOR" | "ADMIN";
 export type ListByUserBlogsRoleEnumList = Array<ListByUserBlogsRoleEnum | (string & {})>;
-const ListByUserBlogsRoleEnumList =
-  GetPageViewsRangeEnumList as any as S.Schema<ListByUserBlogsRoleEnumList>;
-
 export type ListByUserBlogsStatusEnum = "LIVE" | "DELETED";
 export type ListByUserBlogsStatusEnumList = Array<ListByUserBlogsStatusEnum | (string & {})>;
-const ListByUserBlogsStatusEnumList =
-  GetPageViewsRangeEnumList as any as S.Schema<ListByUserBlogsStatusEnumList>;
-
 export type ListByUserBlogsViewEnum = "VIEW_TYPE_UNSPECIFIED" | "READER" | "AUTHOR" | "ADMIN";
-const ListByUserBlogsViewEnum = S.String;
-
 export interface ListByUserBlogsRequest {
   role?: ListByUserBlogsRoleEnumList;
   userId: string;
@@ -700,17 +526,8 @@ export interface ListByUserBlogsRequest {
   /** Unspecified is interpreted as the user's role on the blog. */
   view?: ListByUserBlogsViewEnum | (string & {});
 }
-const ListByUserBlogsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<ListByUserBlogsRequest>;
-
 export type BlogUserInfoList = Array<BlogUserInfo>;
-const BlogUserInfoList = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<BlogUserInfoList>;
-
 export type BlogList_ = Array<Blog>;
-const BlogList_ = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<BlogList_>;
-
 export interface BlogList {
   /** Admin level list of blog per-user information. */
   blogUserInfos?: BlogUserInfoList;
@@ -719,14 +536,8 @@ export interface BlogList {
   /** The list of Blogs this user has Authorship or Admin rights over. */
   items?: BlogList_;
 }
-const BlogList = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<BlogList>;
-
 export type ListCommentsViewEnum = "VIEW_TYPE_UNSPECIFIED" | "READER" | "AUTHOR" | "ADMIN";
-const ListCommentsViewEnum = S.String;
-
 export type ListCommentsStatusEnum = "LIVE" | "EMPTIED" | "PENDING" | "SPAM";
-const ListCommentsStatusEnum = S.String;
-
 export interface ListCommentsRequest {
   postId: string;
   view?: ListCommentsViewEnum | (string & {});
@@ -738,16 +549,9 @@ export interface ListCommentsRequest {
   maxResults?: number;
   fetchBodies?: boolean;
 }
-const ListCommentsRequest = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<ListCommentsRequest>;
-
 export type ListPagesStatusEnum = "LIVE" | "DRAFT" | "SOFT_TRASHED";
 export type ListPagesStatusEnumList = Array<ListPagesStatusEnum | (string & {})>;
-const ListPagesStatusEnumList =
-  GetPageViewsRangeEnumList as any as S.Schema<ListPagesStatusEnumList>;
-
 export type ListPagesViewEnum = "VIEW_TYPE_UNSPECIFIED" | "READER" | "AUTHOR" | "ADMIN";
-const ListPagesViewEnum = S.String;
-
 export interface ListPagesRequest {
   pageToken?: string;
   status?: ListPagesStatusEnumList;
@@ -756,11 +560,7 @@ export interface ListPagesRequest {
   fetchBodies?: boolean;
   blogId: string;
 }
-const ListPagesRequest = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<ListPagesRequest>;
-
 export type PageList_ = Array<Page>;
-const PageList_ = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<PageList_>;
-
 export interface PageList {
   /** Pagination token to fetch the next page, if one exists. */
   nextPageToken?: string;
@@ -771,22 +571,11 @@ export interface PageList {
   /** Etag of the response. */
   etag?: string;
 }
-const PageList = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<PageList>;
-
 export type ListPostsViewEnum = "VIEW_TYPE_UNSPECIFIED" | "READER" | "AUTHOR" | "ADMIN";
-const ListPostsViewEnum = S.String;
-
 export type ListPostsOrderByEnum = "ORDER_BY_UNSPECIFIED" | "PUBLISHED" | "UPDATED";
-const ListPostsOrderByEnum = S.String;
-
 export type ListPostsSortOptionEnum = "SORT_OPTION_UNSPECIFIED" | "DESCENDING" | "ASCENDING";
-const ListPostsSortOptionEnum = S.String;
-
 export type ListPostsStatusEnum = "LIVE" | "DRAFT" | "SCHEDULED" | "SOFT_TRASHED";
 export type ListPostsStatusEnumList = Array<ListPostsStatusEnum | (string & {})>;
-const ListPostsStatusEnumList =
-  GetPageViewsRangeEnumList as any as S.Schema<ListPostsStatusEnumList>;
-
 export interface ListPostsRequest {
   view?: ListPostsViewEnum | (string & {});
   labels?: string;
@@ -802,8 +591,6 @@ export interface ListPostsRequest {
   pageToken?: string;
   blogId: string;
 }
-const ListPostsRequest = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<ListPostsRequest>;
-
 export interface PostList {
   /** The list of Posts for this Blog. */
   items: PostList_;
@@ -816,19 +603,10 @@ export interface PostList {
   /** Pagination token to fetch the previous page, if one exists. */
   prevPageToken?: string;
 }
-const PostList = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<PostList>;
-
 export type ListPostUserInfosViewEnum = "VIEW_TYPE_UNSPECIFIED" | "READER" | "AUTHOR" | "ADMIN";
-const ListPostUserInfosViewEnum = S.String;
-
 export type ListPostUserInfosOrderByEnum = "ORDER_BY_UNSPECIFIED" | "PUBLISHED" | "UPDATED";
-const ListPostUserInfosOrderByEnum = S.String;
-
 export type ListPostUserInfosStatusEnum = "LIVE" | "DRAFT" | "SCHEDULED" | "SOFT_TRASHED";
 export type ListPostUserInfosStatusEnumList = Array<ListPostUserInfosStatusEnum | (string & {})>;
-const ListPostUserInfosStatusEnumList =
-  GetPageViewsRangeEnumList as any as S.Schema<ListPostUserInfosStatusEnumList>;
-
 export interface ListPostUserInfosRequest {
   startDate?: string;
   maxResults?: number;
@@ -842,14 +620,7 @@ export interface ListPostUserInfosRequest {
   status?: ListPostUserInfosStatusEnumList;
   userId: string;
 }
-const ListPostUserInfosRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<ListPostUserInfosRequest>;
-
 export type PostUserInfoList = Array<PostUserInfo>;
-const PostUserInfoList = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<PostUserInfoList>;
-
 export interface PostUserInfosList {
   /** The list of Posts with User information for the post, for this Blog. */
   items: PostUserInfoList;
@@ -858,18 +629,11 @@ export interface PostUserInfosList {
   /** Pagination token to fetch the next page, if one exists. */
   nextPageToken?: string;
 }
-const PostUserInfosList = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<PostUserInfosList>;
-
 export interface MarkAsSpamCommentsRequest {
   postId: string;
   blogId: string;
   commentId: string;
 }
-const MarkAsSpamCommentsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<MarkAsSpamCommentsRequest>;
-
 export interface PatchPagesRequest {
   blogId: string;
   revert?: boolean;
@@ -878,8 +642,6 @@ export interface PatchPagesRequest {
   /** Request body */
   body?: Page;
 }
-const PatchPagesRequest = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<PatchPagesRequest>;
-
 export interface PatchPostsRequest {
   fetchImages?: boolean;
   blogId: string;
@@ -891,54 +653,35 @@ export interface PatchPostsRequest {
   /** Request body */
   body?: Post;
 }
-const PatchPostsRequest = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<PatchPostsRequest>;
-
 export interface PublishPagesRequest {
   blogId: string;
   pageId: string;
 }
-const PublishPagesRequest = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<PublishPagesRequest>;
-
 export interface PublishPostsRequest {
   blogId: string;
   publishDate?: string;
   postId: string;
 }
-const PublishPostsRequest = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<PublishPostsRequest>;
-
 export interface RemoveContentCommentsRequest {
   commentId: string;
   blogId: string;
   postId: string;
 }
-const RemoveContentCommentsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<RemoveContentCommentsRequest>;
-
 export interface RevertPagesRequest {
   pageId: string;
   blogId: string;
 }
-const RevertPagesRequest = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<RevertPagesRequest>;
-
 export interface RevertPostsRequest {
   postId: string;
   blogId: string;
 }
-const RevertPostsRequest = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<RevertPostsRequest>;
-
 export type SearchPostsOrderByEnum = "ORDER_BY_UNSPECIFIED" | "PUBLISHED" | "UPDATED";
-const SearchPostsOrderByEnum = S.String;
-
 export interface SearchPostsRequest {
   q: string;
   blogId: string;
   orderBy?: SearchPostsOrderByEnum | (string & {});
   fetchBodies?: boolean;
 }
-const SearchPostsRequest = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<SearchPostsRequest>;
-
 export interface UpdatePagesRequest {
   blogId: string;
   publish?: boolean;
@@ -947,8 +690,6 @@ export interface UpdatePagesRequest {
   /** Request body */
   body?: Page;
 }
-const UpdatePagesRequest = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<UpdatePagesRequest>;
-
 export interface UpdatePostsRequest {
   blogId: string;
   postId: string;
@@ -960,8 +701,6 @@ export interface UpdatePostsRequest {
   /** Request body */
   body?: Post;
 }
-const UpdatePostsRequest = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<UpdatePostsRequest>;
-
 export type ApproveCommentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Marks a comment as not spam by blog id, post id and comment id. */
 export const approveComments: API.OperationMethod<
@@ -970,8 +709,8 @@ export const approveComments: API.OperationMethod<
   ApproveCommentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ApproveCommentsRequest,
-  output: Comment,
+  input: __S(0, __c0, 0) as any as S.Schema<ApproveCommentsRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<Comment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -985,8 +724,8 @@ export const deleteComments: API.OperationMethod<
   DeleteCommentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCommentsRequest,
-  output: DeleteCommentsResponse,
+  input: __S(5, __c0, 5) as any as S.Schema<DeleteCommentsRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<DeleteCommentsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1000,8 +739,8 @@ export const deletePages: API.OperationMethod<
   DeletePagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePagesRequest,
-  output: DeletePagesResponse,
+  input: __S(7, __c0, 7) as any as S.Schema<DeletePagesRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<DeletePagesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1015,8 +754,8 @@ export const deletePosts: API.OperationMethod<
   DeletePostsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePostsRequest,
-  output: DeletePostsResponse,
+  input: __S(8, __c1, 0) as any as S.Schema<DeletePostsRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<DeletePostsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1026,8 +765,8 @@ export type GetBlogsError = NotFound | Forbidden | GcpOpError;
 /** Gets a blog by id. */
 export const getBlogs: API.OperationMethod<GetBlogsRequest, Blog, GetBlogsError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: GetBlogsRequest,
-    output: Blog,
+    input: __S(9, __c1, 1) as any as S.Schema<GetBlogsRequest>,
+    output: __S(21, __c2, 5) as any as S.Schema<Blog>,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -1041,8 +780,8 @@ export const getBlogUserInfos: API.OperationMethod<
   GetBlogUserInfosError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBlogUserInfosRequest,
-  output: BlogUserInfo,
+  input: __S(22, __c2, 6) as any as S.Schema<GetBlogUserInfosRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<BlogUserInfo>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1056,8 +795,8 @@ export const getByPathPosts: API.OperationMethod<
   GetByPathPostsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetByPathPostsRequest,
-  output: Post,
+  input: __S(25, __c3, 1) as any as S.Schema<GetByPathPostsRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<Post>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1071,8 +810,8 @@ export const getByUrlBlogs: API.OperationMethod<
   GetByUrlBlogsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetByUrlBlogsRequest,
-  output: Blog,
+  input: __S(26, __c3, 2) as any as S.Schema<GetByUrlBlogsRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<Blog>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1086,8 +825,8 @@ export const getComments: API.OperationMethod<
   GetCommentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCommentsRequest,
-  output: Comment,
+  input: __S(27, __c3, 3) as any as S.Schema<GetCommentsRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<Comment>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1097,8 +836,8 @@ export type GetPagesError = NotFound | Forbidden | GcpOpError;
 /** Gets a page by blog id and page id. */
 export const getPages: API.OperationMethod<GetPagesRequest, Page, GetPagesError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: GetPagesRequest,
-    output: Page,
+    input: __S(28, __c3, 4) as any as S.Schema<GetPagesRequest>,
+    output: __S(30, __c3, 6) as any as S.Schema<Page>,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -1112,8 +851,8 @@ export const getPageViews: API.OperationMethod<
   GetPageViewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPageViewsRequest,
-  output: Pageviews,
+  input: __S(32, __c4, 0) as any as S.Schema<GetPageViewsRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<Pageviews>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1123,8 +862,8 @@ export type GetPostsError = NotFound | Forbidden | GcpOpError;
 /** Gets a post by blog id and post id */
 export const getPosts: API.OperationMethod<GetPostsRequest, Post, GetPostsError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: GetPostsRequest,
-    output: Post,
+    input: __S(36, __c4, 4) as any as S.Schema<GetPostsRequest>,
+    output: __S(16, __c2, 0) as any as S.Schema<Post>,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -1138,8 +877,8 @@ export const getPostUserInfos: API.OperationMethod<
   GetPostUserInfosError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPostUserInfosRequest,
-  output: PostUserInfo,
+  input: __S(37, __c4, 5) as any as S.Schema<GetPostUserInfosRequest>,
+  output: __S(39, __c4, 7) as any as S.Schema<PostUserInfo>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1149,8 +888,8 @@ export type GetUsersError = NotFound | Forbidden | GcpOpError;
 /** Gets one user by user_id. */
 export const getUsers: API.OperationMethod<GetUsersRequest, User, GetUsersError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: GetUsersRequest,
-    output: User,
+    input: __S(40, __c5, 0) as any as S.Schema<GetUsersRequest>,
+    output: __S(43, __c5, 3) as any as S.Schema<User>,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -1164,8 +903,8 @@ export const insertPages: API.OperationMethod<
   InsertPagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InsertPagesRequest,
-  output: Page,
+  input: __S(44, __c5, 4) as any as S.Schema<InsertPagesRequest>,
+  output: __S(30, __c3, 6) as any as S.Schema<Page>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1179,8 +918,8 @@ export const insertPosts: API.OperationMethod<
   InsertPostsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InsertPostsRequest,
-  output: Post,
+  input: __S(45, __c5, 5) as any as S.Schema<InsertPostsRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<Post>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1195,8 +934,8 @@ export const listByBlogComments: API.PaginatedOperationMethod<
   GcpOpContext,
   Comment
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListByBlogCommentsRequest,
-  output: CommentList,
+  input: __S(46, __c5, 6) as any as S.Schema<ListByBlogCommentsRequest>,
+  output: __S(47, __c5, 7) as any as S.Schema<CommentList>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1211,8 +950,8 @@ export const listByUserBlogs: API.OperationMethod<
   ListByUserBlogsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListByUserBlogsRequest,
-  output: BlogList,
+  input: __S(48, __c6, 0) as any as S.Schema<ListByUserBlogsRequest>,
+  output: __S(51, __c6, 3) as any as S.Schema<BlogList>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1227,8 +966,8 @@ export const listComments: API.PaginatedOperationMethod<
   GcpOpContext,
   Comment
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCommentsRequest,
-  output: CommentList,
+  input: __S(52, __c6, 4) as any as S.Schema<ListCommentsRequest>,
+  output: __S(47, __c5, 7) as any as S.Schema<CommentList>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1244,8 +983,8 @@ export const listPages: API.PaginatedOperationMethod<
   GcpOpContext,
   Page
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListPagesRequest,
-  output: PageList,
+  input: __S(53, __c6, 5) as any as S.Schema<ListPagesRequest>,
+  output: __S(55, __c6, 7) as any as S.Schema<PageList>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1261,8 +1000,8 @@ export const listPosts: API.PaginatedOperationMethod<
   GcpOpContext,
   Post
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListPostsRequest,
-  output: PostList,
+  input: __S(56, __c7, 0) as any as S.Schema<ListPostsRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<PostList>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1278,8 +1017,8 @@ export const listPostUserInfos: API.PaginatedOperationMethod<
   GcpOpContext,
   PostUserInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListPostUserInfosRequest,
-  output: PostUserInfosList,
+  input: __S(58, __c7, 2) as any as S.Schema<ListPostUserInfosRequest>,
+  output: __S(60, __c7, 4) as any as S.Schema<PostUserInfosList>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1294,8 +1033,8 @@ export const markAsSpamComments: API.OperationMethod<
   MarkAsSpamCommentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MarkAsSpamCommentsRequest,
-  output: Comment,
+  input: __S(61, __c7, 5) as any as S.Schema<MarkAsSpamCommentsRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<Comment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1309,8 +1048,8 @@ export const patchPages: API.OperationMethod<
   PatchPagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchPagesRequest,
-  output: Page,
+  input: __S(62, __c7, 6) as any as S.Schema<PatchPagesRequest>,
+  output: __S(30, __c3, 6) as any as S.Schema<Page>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1324,8 +1063,8 @@ export const patchPosts: API.OperationMethod<
   PatchPostsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchPostsRequest,
-  output: Post,
+  input: __S(63, __c7, 7) as any as S.Schema<PatchPostsRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<Post>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1339,8 +1078,8 @@ export const publishPages: API.OperationMethod<
   PublishPagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PublishPagesRequest,
-  output: Page,
+  input: __S(64, __c8, 0) as any as S.Schema<PublishPagesRequest>,
+  output: __S(30, __c3, 6) as any as S.Schema<Page>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1354,8 +1093,8 @@ export const publishPosts: API.OperationMethod<
   PublishPostsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PublishPostsRequest,
-  output: Post,
+  input: __S(65, __c8, 1) as any as S.Schema<PublishPostsRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<Post>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1369,8 +1108,8 @@ export const removeContentComments: API.OperationMethod<
   RemoveContentCommentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveContentCommentsRequest,
-  output: Comment,
+  input: __S(66, __c8, 2) as any as S.Schema<RemoveContentCommentsRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<Comment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1384,8 +1123,8 @@ export const revertPages: API.OperationMethod<
   RevertPagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevertPagesRequest,
-  output: Page,
+  input: __S(67, __c8, 3) as any as S.Schema<RevertPagesRequest>,
+  output: __S(30, __c3, 6) as any as S.Schema<Page>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1399,8 +1138,8 @@ export const revertPosts: API.OperationMethod<
   RevertPostsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevertPostsRequest,
-  output: Post,
+  input: __S(68, __c8, 4) as any as S.Schema<RevertPostsRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<Post>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1414,8 +1153,8 @@ export const searchPosts: API.OperationMethod<
   SearchPostsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SearchPostsRequest,
-  output: PostList,
+  input: __S(69, __c8, 5) as any as S.Schema<SearchPostsRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<PostList>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1429,8 +1168,8 @@ export const updatePages: API.OperationMethod<
   UpdatePagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePagesRequest,
-  output: Page,
+  input: __S(70, __c8, 6) as any as S.Schema<UpdatePagesRequest>,
+  output: __S(30, __c3, 6) as any as S.Schema<Page>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1444,8 +1183,8 @@ export const updatePosts: API.OperationMethod<
   UpdatePostsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePostsRequest,
-  output: Post,
+  input: __S(71, __c8, 7) as any as S.Schema<UpdatePostsRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<Post>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1483,7 +1222,7 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          image: S.optional(CommentAuthorImage),
+          image: S.optional(__S(2, __c0, 2)),
           displayName: S.optional(S.String),
           id: S.optional(S.String),
           url: S.optional(S.String),
@@ -1493,16 +1232,16 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           published: S.optional(S.String),
-          post: S.optional(CommentPost),
+          post: S.optional(__S(1, __c0, 1)),
           id: S.optional(S.String),
           kind: S.optional(S.String),
-          inReplyTo: S.optional(CommentInReplyTo),
-          status: S.optional(CommentStatusEnum),
+          inReplyTo: S.optional(__S(1, __c0, 1)),
+          status: S.optional(S.String),
           selfLink: S.optional(S.String),
           updated: S.optional(S.String),
-          author: S.optional(CommentAuthor),
+          author: S.optional(__S(3, __c0, 3)),
           content: S.optional(S.String),
-          blog: S.optional(CommentBlog),
+          blog: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({ identifier: "Comment" });
     case 5:
@@ -1560,7 +1299,7 @@ function __c1(j: number): any {
         S.Struct({
           maxPosts: S.optional(S.Number.pipe(T.Query())),
           blogId: S.String.pipe(T.Label()),
-          view: S.optional(GetBlogsViewEnum.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1570,23 +1309,23 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "GetBlogsRequest" });
     case 2:
-      return S.Array(PostImagesItem);
+      return S.Array(__S(2, __c0, 2));
     case 3:
       return S.Array(S.String);
     case 4:
-      return S.Array(Comment);
+      return S.Array(__S(4, __c0, 4));
     case 5:
       return S.suspend(() =>
         S.Struct({
           totalItems: S.optional(S.String),
           selfLink: S.optional(S.String),
-          items: S.optional(CommentList_),
+          items: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({ identifier: "PostReplies" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          image: S.optional(CommentAuthorImage),
+          image: S.optional(__S(2, __c0, 2)),
           id: S.optional(S.String),
           url: S.optional(S.String),
           displayName: S.optional(S.String),
@@ -1608,20 +1347,20 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          readerComments: S.optional(PostReaderCommentsEnum),
+          readerComments: S.optional(S.String),
           url: S.optional(S.String),
-          images: S.optional(PostImagesItemList),
+          images: S.optional(__S(10, __c1, 2)),
           trashed: S.optional(S.String),
-          labels: S.optional(StringList),
+          labels: S.optional(__S(11, __c1, 3)),
           kind: S.optional(S.String),
-          replies: S.optional(PostReplies),
+          replies: S.optional(__S(13, __c1, 5)),
           updated: S.optional(S.String),
-          status: S.optional(PostStatusEnum),
+          status: S.optional(S.String),
           title: S.optional(S.String),
-          author: S.optional(PostAuthor),
+          author: S.optional(__S(14, __c1, 6)),
           titleLink: S.optional(S.String),
-          blog: S.optional(PostBlog),
-          location: S.optional(PostLocation),
+          blog: S.optional(__S(1, __c0, 1)),
+          location: S.optional(__S(15, __c1, 7)),
           published: S.optional(S.String),
           etag: S.optional(S.String),
           selfLink: S.optional(S.String),
@@ -1631,11 +1370,11 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "Post" });
     case 1:
-      return S.Array(Post);
+      return S.Array(__S(16, __c2, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(PostList_),
+          items: S.optional(__S(17, __c2, 1)),
           selfLink: S.optional(S.String),
           totalItems: S.optional(S.Number),
         }),
@@ -1662,13 +1401,13 @@ function __c2(j: number): any {
           kind: S.optional(S.String),
           published: S.optional(S.String),
           name: S.optional(S.String),
-          posts: S.optional(BlogPosts),
+          posts: S.optional(__S(18, __c2, 2)),
           url: S.optional(S.String),
           updated: S.optional(S.String),
           selfLink: S.optional(S.String),
-          pages: S.optional(BlogPages),
-          locale: S.optional(BlogLocale),
-          status: S.optional(BlogStatusEnum),
+          pages: S.optional(__S(19, __c2, 3)),
+          locale: S.optional(__S(20, __c2, 4)),
+          status: S.optional(S.String),
           description: S.optional(S.String),
           id: S.optional(S.String),
         }),
@@ -1695,7 +1434,7 @@ function __c2(j: number): any {
           photosAlbumKey: S.optional(S.String),
           kind: S.optional(S.String),
           userId: S.optional(S.String),
-          role: S.optional(BlogPerUserInfoRoleEnum),
+          role: S.optional(S.String),
         }),
       ).annotate({ identifier: "BlogPerUserInfo" });
   }
@@ -1705,9 +1444,9 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          blog: S.optional(Blog),
+          blog: S.optional(__S(21, __c2, 5)),
           kind: S.optional(S.String),
-          blog_user_info: S.optional(BlogPerUserInfo),
+          blog_user_info: S.optional(__S(23, __c2, 7)),
         }),
       ).annotate({ identifier: "BlogUserInfo" });
     case 1:
@@ -1715,7 +1454,7 @@ function __c3(j: number): any {
         S.Struct({
           maxComments: S.optional(S.Number.pipe(T.Query())),
           path: S.String.pipe(T.Query()),
-          view: S.optional(GetByPathPostsViewEnum.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
           blogId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -1729,7 +1468,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           url: S.String.pipe(T.Query()),
-          view: S.optional(GetByUrlBlogsViewEnum.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1741,7 +1480,7 @@ function __c3(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          view: S.optional(GetCommentsViewEnum.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
           blogId: S.String.pipe(T.Label()),
           commentId: S.String.pipe(T.Label()),
           postId: S.String.pipe(T.Label()),
@@ -1758,7 +1497,7 @@ function __c3(j: number): any {
         S.Struct({
           pageId: S.String.pipe(T.Label()),
           blogId: S.String.pipe(T.Label()),
-          view: S.optional(GetPagesViewEnum.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1771,7 +1510,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          image: S.optional(CommentAuthorImage),
+          image: S.optional(__S(2, __c0, 2)),
           url: S.optional(S.String),
           id: S.optional(S.String),
         }),
@@ -1783,19 +1522,19 @@ function __c3(j: number): any {
           etag: S.optional(S.String),
           id: S.optional(S.String),
           updated: S.optional(S.String),
-          blog: S.optional(PageBlog),
-          status: S.optional(PageStatusEnum),
+          blog: S.optional(__S(1, __c0, 1)),
+          status: S.optional(S.String),
           published: S.optional(S.String),
           trashed: S.optional(S.String),
           url: S.optional(S.String),
-          author: S.optional(PageAuthor),
+          author: S.optional(__S(29, __c3, 5)),
           kind: S.optional(S.String),
           content: S.optional(S.String),
           selfLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "Page" });
     case 7:
-      return S.Array(GetPageViewsRangeEnum);
+      return S.Array(S.String);
   }
 }
 function __c4(j: number): any {
@@ -1803,7 +1542,7 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          range: S.optional(GetPageViewsRangeEnumList.pipe(T.Query())),
+          range: S.optional(__S(31, __c3, 7).pipe(T.Query())),
           blogId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -1816,17 +1555,17 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          timeRange: S.optional(PageviewsCountsItemTimeRangeEnum),
+          timeRange: S.optional(S.String),
           count: S.optional(S.String),
         }),
       ).annotate({ identifier: "PageviewsCountsItem" });
     case 2:
-      return S.Array(PageviewsCountsItem);
+      return S.Array(__S(33, __c4, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           blogId: S.optional(S.String),
-          counts: S.optional(PageviewsCountsItemList),
+          counts: S.optional(__S(34, __c4, 2)),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "Pageviews" });
@@ -1834,7 +1573,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           fetchBody: S.optional(S.Boolean.pipe(T.Query())),
-          view: S.optional(GetPostsViewEnum.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
           maxComments: S.optional(S.Number.pipe(T.Query())),
           postId: S.String.pipe(T.Label()),
           blogId: S.String.pipe(T.Label()),
@@ -1875,8 +1614,8 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          post_user_info: S.optional(PostPerUserInfo),
-          post: S.optional(Post),
+          post_user_info: S.optional(__S(38, __c4, 6)),
+          post: S.optional(__S(16, __c2, 0)),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "PostUserInfo" });
@@ -1914,8 +1653,8 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           selfLink: S.optional(S.String),
-          blogs: S.optional(UserBlogs),
-          locale: S.optional(UserLocale),
+          blogs: S.optional(__S(41, __c5, 1)),
+          locale: S.optional(__S(42, __c5, 2)),
           about: S.optional(S.String),
           url: S.optional(S.String),
           kind: S.optional(S.String),
@@ -1929,7 +1668,7 @@ function __c5(j: number): any {
         S.Struct({
           isDraft: S.optional(S.Boolean.pipe(T.Query())),
           blogId: S.String.pipe(T.Label()),
-          body: S.optional(Page.pipe(T.HttpBody())),
+          body: S.optional(__S(30, __c3, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1945,7 +1684,7 @@ function __c5(j: number): any {
           blogId: S.String.pipe(T.Label()),
           fetchImages: S.optional(S.Boolean.pipe(T.Query())),
           fetchBody: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(Post.pipe(T.HttpBody())),
+          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1961,7 +1700,7 @@ function __c5(j: number): any {
           maxResults: S.optional(S.Number.pipe(T.Query())),
           blogId: S.String.pipe(T.Label()),
           startDate: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(ListByBlogCommentsStatusEnumList.pipe(T.Query())),
+          status: S.optional(__S(31, __c3, 7).pipe(T.Query())),
           endDate: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -1977,7 +1716,7 @@ function __c5(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          items: CommentList_,
+          items: __S(12, __c1, 4),
           etag: S.optional(S.String),
           nextPageToken: S.optional(S.String),
           kind: S.optional(S.String),
@@ -1991,11 +1730,11 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          role: S.optional(ListByUserBlogsRoleEnumList.pipe(T.Query())),
+          role: S.optional(__S(31, __c3, 7).pipe(T.Query())),
           userId: S.String.pipe(T.Label()),
           fetchUserInfo: S.optional(S.Boolean.pipe(T.Query())),
-          status: S.optional(ListByUserBlogsStatusEnumList.pipe(T.Query())),
-          view: S.optional(ListByUserBlogsViewEnum.pipe(T.Query())),
+          status: S.optional(__S(31, __c3, 7).pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -2005,26 +1744,26 @@ function __c6(j: number): any {
         ),
       ).annotate({ identifier: "ListByUserBlogsRequest" });
     case 1:
-      return S.Array(BlogUserInfo);
+      return S.Array(__S(24, __c3, 0));
     case 2:
-      return S.Array(Blog);
+      return S.Array(__S(21, __c2, 5));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          blogUserInfos: S.optional(BlogUserInfoList),
+          blogUserInfos: S.optional(__S(49, __c6, 1)),
           kind: S.optional(S.String),
-          items: S.optional(BlogList_),
+          items: S.optional(__S(50, __c6, 2)),
         }),
       ).annotate({ identifier: "BlogList" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           postId: S.String.pipe(T.Label()),
-          view: S.optional(ListCommentsViewEnum.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
           startDate: S.optional(S.String.pipe(T.Query())),
           blogId: S.String.pipe(T.Label()),
           endDate: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(ListCommentsStatusEnum.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
           fetchBodies: S.optional(S.Boolean.pipe(T.Query())),
@@ -2040,8 +1779,8 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(ListPagesStatusEnumList.pipe(T.Query())),
-          view: S.optional(ListPagesViewEnum.pipe(T.Query())),
+          status: S.optional(__S(31, __c3, 7).pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
           fetchBodies: S.optional(S.Boolean.pipe(T.Query())),
           blogId: S.String.pipe(T.Label()),
@@ -2054,12 +1793,12 @@ function __c6(j: number): any {
         ),
       ).annotate({ identifier: "ListPagesRequest" });
     case 6:
-      return S.Array(Page);
+      return S.Array(__S(30, __c3, 6));
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          items: PageList_,
+          items: __S(54, __c6, 6),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
         }),
@@ -2071,16 +1810,16 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          view: S.optional(ListPostsViewEnum.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
           labels: S.optional(S.String.pipe(T.Query())),
-          orderBy: S.optional(ListPostsOrderByEnum.pipe(T.Query())),
+          orderBy: S.optional(S.String.pipe(T.Query())),
           fetchBodies: S.optional(S.Boolean.pipe(T.Query())),
           endDate: S.optional(S.String.pipe(T.Query())),
           startDate: S.optional(S.String.pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
-          sortOption: S.optional(ListPostsSortOptionEnum.pipe(T.Query())),
+          sortOption: S.optional(S.String.pipe(T.Query())),
           fetchImages: S.optional(S.Boolean.pipe(T.Query())),
-          status: S.optional(ListPostsStatusEnumList.pipe(T.Query())),
+          status: S.optional(__S(31, __c3, 7).pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           blogId: S.String.pipe(T.Label()),
         }).pipe(
@@ -2094,7 +1833,7 @@ function __c7(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          items: PostList_,
+          items: __S(17, __c2, 1),
           etag: S.optional(S.String),
           nextPageToken: S.optional(S.String),
           kind: S.optional(S.String),
@@ -2106,14 +1845,14 @@ function __c7(j: number): any {
         S.Struct({
           startDate: S.optional(S.String.pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
-          view: S.optional(ListPostUserInfosViewEnum.pipe(T.Query())),
-          orderBy: S.optional(ListPostUserInfosOrderByEnum.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
+          orderBy: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           labels: S.optional(S.String.pipe(T.Query())),
           blogId: S.String.pipe(T.Label()),
           endDate: S.optional(S.String.pipe(T.Query())),
           fetchBodies: S.optional(S.Boolean.pipe(T.Query())),
-          status: S.optional(ListPostUserInfosStatusEnumList.pipe(T.Query())),
+          status: S.optional(__S(31, __c3, 7).pipe(T.Query())),
           userId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -2124,11 +1863,11 @@ function __c7(j: number): any {
         ),
       ).annotate({ identifier: "ListPostUserInfosRequest" });
     case 3:
-      return S.Array(PostUserInfo);
+      return S.Array(__S(39, __c4, 7));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          items: PostUserInfoList,
+          items: __S(59, __c7, 3),
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
         }),
@@ -2156,7 +1895,7 @@ function __c7(j: number): any {
           revert: S.optional(S.Boolean.pipe(T.Query())),
           pageId: S.String.pipe(T.Label()),
           publish: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(Page.pipe(T.HttpBody())),
+          body: S.optional(__S(30, __c3, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2175,7 +1914,7 @@ function __c7(j: number): any {
           maxComments: S.optional(S.Number.pipe(T.Query())),
           revert: S.optional(S.Boolean.pipe(T.Query())),
           fetchBody: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(Post.pipe(T.HttpBody())),
+          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2262,7 +2001,7 @@ function __c8(j: number): any {
         S.Struct({
           q: S.String.pipe(T.Query()),
           blogId: S.String.pipe(T.Label()),
-          orderBy: S.optional(SearchPostsOrderByEnum.pipe(T.Query())),
+          orderBy: S.optional(S.String.pipe(T.Query())),
           fetchBodies: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -2279,7 +2018,7 @@ function __c8(j: number): any {
           publish: S.optional(S.Boolean.pipe(T.Query())),
           revert: S.optional(S.Boolean.pipe(T.Query())),
           pageId: S.String.pipe(T.Label()),
-          body: S.optional(Page.pipe(T.HttpBody())),
+          body: S.optional(__S(30, __c3, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2298,7 +2037,7 @@ function __c8(j: number): any {
           publish: S.optional(S.Boolean.pipe(T.Query())),
           fetchImages: S.optional(S.Boolean.pipe(T.Query())),
           fetchBody: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(Post.pipe(T.HttpBody())),
+          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2308,4 +2047,9 @@ function __c8(j: number): any {
         ),
       ).annotate({ identifier: "UpdatePostsRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

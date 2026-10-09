@@ -12,6 +12,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -68,27 +70,15 @@ export interface CreateClientCertificateRequest {
   /** The number of days the Client Certificate will be valid after the issued_on date. */
   validityDays: number;
 }
-const CreateClientCertificateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateClientCertificateRequest>;
-
 export interface CreateResponseCertificateAuthority {
   id?: string | null;
   name?: string | null;
 }
-const CreateResponseCertificateAuthority = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateResponseCertificateAuthority>;
-
 export type CreateResponseStatus =
   | "active"
   | "pending_reactivation"
   | "pending_revocation"
   | "revoked";
-const CreateResponseStatus = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateClientCertificateResponse {
   /** Client Certificate Tag */
@@ -128,22 +118,12 @@ export interface CreateClientCertificateResponse {
   /** The number of days the Client Certificate will be valid after the issued_on date. */
   validityDays?: number | null;
 }
-const CreateClientCertificateResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateClientCertificateResponse>;
-
 export interface DeleteClientCertificateRequest {
   /** Identifier. */
   zoneId: string;
   /** Client Certificate Tag */
   clientCertificateId: string;
 }
-const DeleteClientCertificateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<DeleteClientCertificateRequest>;
-
 export type DeleteResponseCertificateAuthority = CreateResponseCertificateAuthority;
 export type DeleteResponseStatus =
   | "active"
@@ -189,20 +169,12 @@ export interface DeleteClientCertificateResponse {
   /** The number of days the Client Certificate will be valid after the issued_on date. */
   validityDays?: number | null;
 }
-const DeleteClientCertificateResponse =
-  CreateClientCertificateResponse as any as S.Schema<DeleteClientCertificateResponse>;
-
 export interface GetClientCertificateRequest {
   /** Identifier. */
   zoneId: string;
   /** Client Certificate Tag */
   clientCertificateId: string;
 }
-const GetClientCertificateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<GetClientCertificateRequest>;
-
 export type GetResponseCertificateAuthority = CreateResponseCertificateAuthority;
 export type GetResponseStatus =
   | "active"
@@ -248,17 +220,12 @@ export interface GetClientCertificateResponse {
   /** The number of days the Client Certificate will be valid after the issued_on date. */
   validityDays?: number | null;
 }
-const GetClientCertificateResponse =
-  CreateClientCertificateResponse as any as S.Schema<GetClientCertificateResponse>;
-
 export type ListRequestStatus =
   | "all"
   | "active"
   | "pending_reactivation"
   | "pending_revocation"
   | "revoked";
-const ListRequestStatus = S.String;
-
 export interface ListClientCertificatesRequest {
   /** Identifier. */
   zoneId: string;
@@ -273,19 +240,12 @@ export interface ListClientCertificatesRequest {
   /** Client Certitifcate Status to filter results by. */
   status?: ListRequestStatus | (string & {});
 }
-const ListClientCertificatesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ListClientCertificatesRequest>;
-
 export type ListResultItemCertificateAuthority = CreateResponseCertificateAuthority;
 export type ListResultItemStatus =
   | "active"
   | "pending_reactivation"
   | "pending_revocation"
   | "revoked";
-const ListResultItemStatus = S.String;
-
 export interface ListResultItem {
   /** Client Certificate Tag */
   id?: string | null;
@@ -324,22 +284,13 @@ export interface ListResultItem {
   /** The number of days the Client Certificate will be valid after the issued_on date. */
   validityDays?: number | null;
 }
-const ListResultItem = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<ListResultItem>;
-
 export type ListResultList = Array<ListResultItem>;
-const ListResultList = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ListResultList>;
-
 export interface ListClientCertificatesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: ListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListClientCertificatesResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<ListClientCertificatesResponse>;
-
 export interface PatchClientCertificateRequest {
   /** Identifier. */
   zoneId: string;
@@ -347,11 +298,6 @@ export interface PatchClientCertificateRequest {
   clientCertificateId: string;
   reactivate?: boolean;
 }
-const PatchClientCertificateRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<PatchClientCertificateRequest>;
-
 export type EditResponseCertificateAuthority = CreateResponseCertificateAuthority;
 export type EditResponseStatus =
   | "active"
@@ -397,9 +343,6 @@ export interface PatchClientCertificateResponse {
   /** The number of days the Client Certificate will be valid after the issued_on date. */
   validityDays?: number | null;
 }
-const PatchClientCertificateResponse =
-  CreateClientCertificateResponse as any as S.Schema<PatchClientCertificateResponse>;
-
 export type CreateClientCertificateError = Forbidden | CloudflareOpError;
 /** Create a new API Shield mTLS Client Certificate. */
 export const createClientCertificate: API.OperationMethod<
@@ -408,8 +351,8 @@ export const createClientCertificate: API.OperationMethod<
   CreateClientCertificateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateClientCertificateRequest,
-  output: CreateClientCertificateResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateClientCertificateRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<CreateClientCertificateResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -427,8 +370,8 @@ export const deleteClientCertificate: API.OperationMethod<
   DeleteClientCertificateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteClientCertificateRequest,
-  output: DeleteClientCertificateResponse,
+  input: __S(3, __c0, 3) as any as S.Schema<DeleteClientCertificateRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<DeleteClientCertificateResponse>,
   errors: [
     ClientCertificateNotFound,
     ClientCertificateAlreadyRevoked,
@@ -448,8 +391,8 @@ export const getClientCertificate: API.OperationMethod<
   GetClientCertificateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetClientCertificateRequest,
-  output: GetClientCertificateResponse,
+  input: __S(4, __c0, 4) as any as S.Schema<GetClientCertificateRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<GetClientCertificateResponse>,
   errors: [ClientCertificateNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -465,8 +408,8 @@ export const listClientCertificates: API.PaginatedOperationMethod<
   ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListClientCertificatesRequest,
-    output: ListClientCertificatesResponse,
+    input: __S(5, __c0, 5) as any as S.Schema<ListClientCertificatesRequest>,
+    output: __S(8, __c1, 0) as any as S.Schema<ListClientCertificatesResponse>,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -489,8 +432,8 @@ export const patchClientCertificate: API.OperationMethod<
   PatchClientCertificateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchClientCertificateRequest,
-  output: PatchClientCertificateResponse,
+  input: __S(9, __c1, 1) as any as S.Schema<PatchClientCertificateRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<PatchClientCertificateResponse>,
   errors: [ClientCertificateNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -526,7 +469,7 @@ function __c0(j: number): any {
           id: S.optional(S.NullOr(S.String)),
           certificate: S.optional(S.NullOr(S.String)),
           certificateAuthority: S.optional(
-            S.NullOr(CreateResponseCertificateAuthority).pipe(T.Body("certificate_authority")),
+            S.NullOr(__S(1, __c0, 1)).pipe(T.Body("certificate_authority")),
           ),
           commonName: S.optional(S.NullOr(S.String).pipe(T.Body("common_name"))),
           country: S.optional(S.NullOr(S.String)),
@@ -541,7 +484,7 @@ function __c0(j: number): any {
           signature: S.optional(S.NullOr(S.String)),
           ski: S.optional(S.NullOr(S.String)),
           state: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.NullOr(CreateResponseStatus)),
+          status: S.optional(S.NullOr(S.String)),
           validityDays: S.optional(S.NullOr(S.Number).pipe(T.Body("validity_days"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -589,7 +532,7 @@ function __c0(j: number): any {
           offset: S.optional(S.Number.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-          status: S.optional(ListRequestStatus.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
         })
           .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/client_certificates", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -602,7 +545,7 @@ function __c0(j: number): any {
           id: S.optional(S.NullOr(S.String)),
           certificate: S.optional(S.NullOr(S.String)),
           certificateAuthority: S.optional(
-            S.NullOr(CreateResponseCertificateAuthority).pipe(T.Body("certificate_authority")),
+            S.NullOr(__S(1, __c0, 1)).pipe(T.Body("certificate_authority")),
           ),
           commonName: S.optional(S.NullOr(S.String).pipe(T.Body("common_name"))),
           country: S.optional(S.NullOr(S.String)),
@@ -617,12 +560,12 @@ function __c0(j: number): any {
           signature: S.optional(S.NullOr(S.String)),
           ski: S.optional(S.NullOr(S.String)),
           state: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.NullOr(ListResultItemStatus)),
+          status: S.optional(S.NullOr(S.String)),
           validityDays: S.optional(S.NullOr(S.Number).pipe(T.Body("validity_days"))),
         }),
       ).annotate({ identifier: "ListResultItem" });
     case 7:
-      return S.Array(ListResultItem);
+      return S.Array(__S(6, __c0, 6));
   }
 }
 function __c1(j: number): any {
@@ -630,7 +573,7 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          result: ListResultList.pipe(T.EnvelopePayload()),
+          result: __S(7, __c0, 7).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -655,4 +598,9 @@ function __c1(j: number): any {
         identifier: "PatchClientCertificateRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

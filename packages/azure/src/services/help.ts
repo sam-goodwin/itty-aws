@@ -6,6 +6,8 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -17,11 +19,6 @@ export interface CheckDiagnosticNameAvailabilityRequest {
   /** The resource type. */
   type?: string;
 }
-const CheckDiagnosticNameAvailabilityRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CheckDiagnosticNameAvailabilityRequest>;
-
 /** Response for whether the requested resource name is available or not. */
 export interface CheckNameAvailabilityResponse {
   /** Returns true or false depending on the availability of the name */
@@ -31,25 +28,12 @@ export interface CheckNameAvailabilityResponse {
   /** Gets an error message explaining the 'reason' value with more details. This field is returned iif nameAvailable is false. */
   message?: string;
 }
-const CheckNameAvailabilityResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CheckNameAvailabilityResponse>;
-
 /** Global parameters that can be passed to all solutionIds. */
 export type DiagnosticResourcePropertiesInputGlobalParametersMap = {
   [key: string]: string | undefined;
 };
-const DiagnosticResourcePropertiesInputGlobalParametersMap = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<DiagnosticResourcePropertiesInputGlobalParametersMap>;
-
 /** Additional parameters required to invoke the solutionId. */
 export type DiagnosticInvocationAdditionalParametersMap = { [key: string]: string | undefined };
-const DiagnosticInvocationAdditionalParametersMap =
-  DiagnosticResourcePropertiesInputGlobalParametersMap as any as S.Schema<DiagnosticInvocationAdditionalParametersMap>;
-
 /** Solution Invocation with additional params needed for invocation. */
 export interface DiagnosticInvocation {
   /** Solution Id to invoke. */
@@ -57,15 +41,8 @@ export interface DiagnosticInvocation {
   /** Additional parameters required to invoke the solutionId. */
   additionalParameters?: DiagnosticInvocationAdditionalParametersMap;
 }
-const DiagnosticInvocation = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DiagnosticInvocation>;
-
 /** SolutionIds that are needed to be invoked. */
 export type DiagnosticResourcePropertiesInputInsightsList = Array<DiagnosticInvocation>;
-const DiagnosticResourcePropertiesInputInsightsList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<DiagnosticResourcePropertiesInputInsightsList>;
-
 /** Diagnostic resource properties. */
 export interface DiagnosticResourcePropertiesInput {
   /** Global parameters that can be passed to all solutionIds. */
@@ -73,11 +50,6 @@ export interface DiagnosticResourcePropertiesInput {
   /** SolutionIds that are needed to be invoked. */
   insights?: DiagnosticResourcePropertiesInputInsightsList;
 }
-const DiagnosticResourcePropertiesInput = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<DiagnosticResourcePropertiesInput>;
-
 export interface CreateDiagnosticRequest {
   /** This is an extension resource provider and only resource level extension is supported at the moment. */
   scope: string;
@@ -86,19 +58,10 @@ export interface CreateDiagnosticRequest {
   /** Diagnostic Resource properties. */
   properties?: DiagnosticResourcePropertiesInput;
 }
-const CreateDiagnosticRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateDiagnosticRequest>;
-
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -114,34 +77,20 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const SystemData = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<SystemData>;
-
 /** Global parameters that can be passed to all solutionIds. */
 export type DiagnosticResourcePropertiesGlobalParametersMap = { [key: string]: string | undefined };
-const DiagnosticResourcePropertiesGlobalParametersMap =
-  DiagnosticResourcePropertiesInputGlobalParametersMap as any as S.Schema<DiagnosticResourcePropertiesGlobalParametersMap>;
-
 /** SolutionIds that are needed to be invoked. */
 export type DiagnosticResourcePropertiesInsightsList = Array<DiagnosticInvocation>;
-const DiagnosticResourcePropertiesInsightsList =
-  DiagnosticResourcePropertiesInputInsightsList as any as S.Schema<DiagnosticResourcePropertiesInsightsList>;
-
 /** Status of diagnostic provisioning. */
 export type DiagnosticResourcePropertiesProvisioningState =
   | "Succeeded"
   | "PartialComplete"
   | "Failed"
   | "Canceled";
-const DiagnosticResourcePropertiesProvisioningState = S.String;
-
 /** Denotes the status of the diagnostic resource. */
 export type DiagnosticStatus = "Failed" | "MissingInputs" | "Running" | "Succeeded" | "Timeout";
-const DiagnosticStatus = S.String;
-
 /** Importance level of the insight. */
 export type InsightImportanceLevel = "Critical" | "Warning" | "Information";
-const InsightImportanceLevel = S.String;
-
 /** Detailed insights(s) obtained via the invocation of an insight diagnostic troubleshooter. */
 export interface Insight {
   /** Article id. */
@@ -153,19 +102,10 @@ export interface Insight {
   /** Importance level of the insight. */
   importanceLevel?: InsightImportanceLevel;
 }
-const Insight = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Insight>;
-
 /** The problems (if any) detected by this insight. */
 export type DiagnosticInsightsList = Array<Insight>;
-const DiagnosticInsightsList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<DiagnosticInsightsList>;
-
 /** An array of additional nested error response info objects, as described by this contract. */
 export type ErrorDetailsList = Array<Error>;
-const ErrorDetailsList = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<ErrorDetailsList>;
-
 /** Error definition. */
 export interface Error {
   /** Service specific error code which serves as the substatus for the HTTP error code. */
@@ -177,8 +117,6 @@ export interface Error {
   /** An array of additional nested error response info objects, as described by this contract. */
   details?: ErrorDetailsList;
 }
-const Error = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<Error>;
-
 /** Properties returned with in an insight. */
 export interface Diagnostic {
   /** Solution Id */
@@ -188,15 +126,8 @@ export interface Diagnostic {
   insights?: DiagnosticInsightsList;
   error?: Error;
 }
-const Diagnostic = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<Diagnostic>;
-
 /** Array of Diagnostics. */
 export type DiagnosticResourcePropertiesDiagnosticsList = Array<Diagnostic>;
-const DiagnosticResourcePropertiesDiagnosticsList = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<DiagnosticResourcePropertiesDiagnosticsList>;
-
 /** Diagnostic resource properties. */
 export interface DiagnosticResourceProperties {
   /** Global parameters that can be passed to all solutionIds. */
@@ -210,11 +141,6 @@ export interface DiagnosticResourceProperties {
   /** Array of Diagnostics. */
   diagnostics?: DiagnosticResourcePropertiesDiagnosticsList;
 }
-const DiagnosticResourceProperties = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<DiagnosticResourceProperties>;
-
 export interface CreateDiagnosticResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -227,19 +153,12 @@ export interface CreateDiagnosticResponse {
   /** Diagnostic Resource properties. */
   properties?: DiagnosticResourceProperties;
 }
-const CreateDiagnosticResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<CreateDiagnosticResponse>;
-
 export interface GetDiagnosticRequest {
   /** This is an extension resource provider and only resource level extension is supported at the moment. */
   scope: string;
   /** Unique resource name for insight resources */
   diagnosticsResourceName: string;
 }
-const GetDiagnosticRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<GetDiagnosticRequest>;
-
 export interface GetDiagnosticResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -252,8 +171,6 @@ export interface GetDiagnosticResponse {
   /** Diagnostic Resource properties. */
   properties?: DiagnosticResourceProperties;
 }
-const GetDiagnosticResponse = CreateDiagnosticResponse as any as S.Schema<GetDiagnosticResponse>;
-
 export interface ListDiscoverySolutionRequest {
   /** This is an extension resource provider and only resource level extension is supported at the moment. */
   scope: string;
@@ -262,25 +179,10 @@ export interface ListDiscoverySolutionRequest {
   /** Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. */
   _skiptoken?: string;
 }
-const ListDiscoverySolutionRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ListDiscoverySolutionRequest>;
-
 export type SolutionMetadataPropertiesRequiredParameterSetsItemList = Array<string>;
-const SolutionMetadataPropertiesRequiredParameterSetsItemList = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<SolutionMetadataPropertiesRequiredParameterSetsItemList>;
-
 /** Required parameters for invoking this particular solution. */
 export type SolutionMetadataPropertiesRequiredParameterSetsList =
   Array<SolutionMetadataPropertiesRequiredParameterSetsItemList>;
-const SolutionMetadataPropertiesRequiredParameterSetsList = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<SolutionMetadataPropertiesRequiredParameterSetsList>;
-
 /** Diagnostic solution metadata. */
 export interface SolutionMetadataProperties {
   /** Solution Id. */
@@ -292,11 +194,6 @@ export interface SolutionMetadataProperties {
   /** Required parameters for invoking this particular solution. */
   requiredParameterSets?: SolutionMetadataPropertiesRequiredParameterSetsList;
 }
-const SolutionMetadataProperties = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<SolutionMetadataProperties>;
-
 /** Solution Metadata resource */
 export interface SolutionMetadataResource {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -310,18 +207,8 @@ export interface SolutionMetadataResource {
   /** Solution metadata Resource properties. */
   properties?: SolutionMetadataProperties;
 }
-const SolutionMetadataResource = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<SolutionMetadataResource>;
-
 /** The list of solution metadata. */
 export type DiscoveryResponseValueList = Array<SolutionMetadataResource>;
-const DiscoveryResponseValueList = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<DiscoveryResponseValueList>;
-
 /** Discovery response. */
 export interface DiscoveryResponse {
   /** The list of solution metadata. */
@@ -329,14 +216,7 @@ export interface DiscoveryResponse {
   /** The link used to get the next page of solution metadata. */
   nextLink?: string;
 }
-const DiscoveryResponse = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<DiscoveryResponse>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -348,16 +228,10 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-const OperationDisplay = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<OperationDisplay>;
-
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-const OperationOrigin = S.String;
-
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-const OperationActionType = S.String;
-
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -371,26 +245,14 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-const Operation = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<Operation>;
-
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<ListOperationsResponseValueList>;
-
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<ListOperationsResponse>;
-
 export type CheckDiagnosticNameAvailabilityError = AzureOpError;
 /** This API is used to check the uniqueness of a resource name used for a diagnostic check. */
 export const CheckDiagnosticNameAvailability: API.OperationMethod<
@@ -399,8 +261,8 @@ export const CheckDiagnosticNameAvailability: API.OperationMethod<
   CheckDiagnosticNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckDiagnosticNameAvailabilityRequest,
-  output: CheckNameAvailabilityResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<CheckDiagnosticNameAvailabilityRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CheckNameAvailabilityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -414,8 +276,8 @@ export const CreateDiagnostic: API.OperationMethod<
   CreateDiagnosticError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDiagnosticRequest,
-  output: CreateDiagnosticResponse,
+  input: __S(6, __c0, 6) as any as S.Schema<CreateDiagnosticRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<CreateDiagnosticResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -429,8 +291,8 @@ export const GetDiagnostic: API.OperationMethod<
   GetDiagnosticError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDiagnosticRequest,
-  output: GetDiagnosticResponse,
+  input: __S(16, __c2, 0) as any as S.Schema<GetDiagnosticRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<GetDiagnosticResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -444,8 +306,8 @@ export const ListDiscoverySolution: API.OperationMethod<
   ListDiscoverySolutionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDiscoverySolutionRequest,
-  output: DiscoveryResponse,
+  input: __S(17, __c2, 1) as any as S.Schema<ListDiscoverySolutionRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<DiscoveryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -459,8 +321,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(24, __c3, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -502,16 +364,16 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           solutionId: S.optional(S.String),
-          additionalParameters: S.optional(DiagnosticInvocationAdditionalParametersMap),
+          additionalParameters: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({ identifier: "DiagnosticInvocation" });
     case 4:
-      return S.Array(DiagnosticInvocation);
+      return S.Array(__S(3, __c0, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          globalParameters: S.optional(DiagnosticResourcePropertiesInputGlobalParametersMap),
-          insights: S.optional(DiagnosticResourcePropertiesInputInsightsList),
+          globalParameters: S.optional(__S(2, __c0, 2)),
+          insights: S.optional(__S(4, __c0, 4)),
         }),
       ).annotate({
         identifier: "DiagnosticResourcePropertiesInput",
@@ -521,7 +383,7 @@ function __c0(j: number): any {
         S.Struct({
           scope: S.String.pipe(T.Label()),
           diagnosticsResourceName: S.String.pipe(T.Label()),
-          properties: S.optional(DiagnosticResourcePropertiesInput),
+          properties: S.optional(__S(5, __c0, 5)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -535,10 +397,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(SystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -552,41 +414,41 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           title: S.optional(S.String),
           results: S.optional(S.String),
-          importanceLevel: S.optional(InsightImportanceLevel),
+          importanceLevel: S.optional(S.String),
         }),
       ).annotate({ identifier: "Insight" });
     case 1:
-      return S.Array(Insight);
+      return S.Array(__S(8, __c1, 0));
     case 2:
-      return S.Array(/*@__PURE__*/ S.suspend(() => Error));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(11, __c1, 3)));
     case 3:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           type: S.optional(S.String),
           message: S.optional(S.String),
-          details: S.optional(ErrorDetailsList),
+          details: S.optional(__S(10, __c1, 2)),
         }),
       ).annotate({ identifier: "Error" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           solutionId: S.optional(S.String),
-          status: S.optional(DiagnosticStatus),
-          insights: S.optional(DiagnosticInsightsList),
-          error: S.optional(Error),
+          status: S.optional(S.String),
+          insights: S.optional(__S(9, __c1, 1)),
+          error: S.optional(__S(11, __c1, 3)),
         }),
       ).annotate({ identifier: "Diagnostic" });
     case 5:
-      return S.Array(Diagnostic);
+      return S.Array(__S(12, __c1, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          globalParameters: S.optional(DiagnosticResourcePropertiesGlobalParametersMap),
-          insights: S.optional(DiagnosticResourcePropertiesInsightsList),
+          globalParameters: S.optional(__S(2, __c0, 2)),
+          insights: S.optional(__S(4, __c0, 4)),
           acceptedAt: S.optional(S.String),
-          provisioningState: S.optional(DiagnosticResourcePropertiesProvisioningState),
-          diagnostics: S.optional(DiagnosticResourcePropertiesDiagnosticsList),
+          provisioningState: S.optional(S.String),
+          diagnostics: S.optional(__S(13, __c1, 5)),
         }),
       ).annotate({
         identifier: "DiagnosticResourceProperties",
@@ -597,8 +459,8 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(DiagnosticResourceProperties),
+          systemData: S.optional(__S(7, __c0, 7)),
+          properties: S.optional(__S(14, __c1, 6)),
         }),
       ).annotate({ identifier: "CreateDiagnosticResponse" });
   }
@@ -639,14 +501,14 @@ function __c2(j: number): any {
     case 2:
       return S.Array(S.String);
     case 3:
-      return S.Array(SolutionMetadataPropertiesRequiredParameterSetsItemList);
+      return S.Array(__S(18, __c2, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           solutionId: S.optional(S.String),
           solutionType: S.optional(S.String),
           description: S.optional(S.String),
-          requiredParameterSets: S.optional(SolutionMetadataPropertiesRequiredParameterSetsList),
+          requiredParameterSets: S.optional(__S(19, __c2, 3)),
         }),
       ).annotate({
         identifier: "SolutionMetadataProperties",
@@ -657,16 +519,16 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(SolutionMetadataProperties),
+          systemData: S.optional(__S(7, __c0, 7)),
+          properties: S.optional(__S(20, __c2, 4)),
         }),
       ).annotate({ identifier: "SolutionMetadataResource" });
     case 6:
-      return S.Array(SolutionMetadataResource);
+      return S.Array(__S(21, __c2, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(DiscoveryResponseValueList),
+          value: S.optional(__S(22, __c2, 6)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DiscoveryResponse" });
@@ -699,19 +561,24 @@ function __c3(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(OperationDisplay),
-          origin: S.optional(OperationOrigin),
-          actionType: S.optional(OperationActionType),
+          display: S.optional(__S(25, __c3, 1)),
+          origin: S.optional(S.String),
+          actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(Operation);
+      return S.Array(__S(26, __c3, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ListOperationsResponseValueList),
+          value: S.optional(__S(27, __c3, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

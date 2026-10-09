@@ -6,15 +6,13 @@ import { UnknownModalError } from "../errors.ts";
 import { ModalProtocol, type ModalOpError, type ModalOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { ModalOpError, ModalOpContext };
 
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<StringList>;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<StringMap>;
-
 export interface VolumeMount {
   volumeId?: string;
   mountPath?: string;
@@ -22,24 +20,14 @@ export interface VolumeMount {
   readOnly?: boolean;
   subPath?: string;
 }
-const VolumeMount = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<VolumeMount>;
-
 export type VolumeMountList = Array<VolumeMount>;
-const VolumeMountList = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<VolumeMountList>;
-
 export type NetworkAccessNetworkAccessType = "UNSPECIFIED" | "OPEN" | "BLOCKED" | "ALLOWLIST";
-const NetworkAccessNetworkAccessType = S.String;
-
 export interface NetworkAccess {
   networkAccessType?: NetworkAccessNetworkAccessType | (string & {});
   allowedCidrs?: StringList;
   allowedDomains?: StringList;
 }
-const NetworkAccess = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<NetworkAccess>;
-
 export type PTYInfoPTYType = "PTY_TYPE_UNSPECIFIED" | "PTY_TYPE_FUNCTION" | "PTY_TYPE_SHELL";
-const PTYInfoPTYType = S.String;
-
 export interface PTYInfo {
   enabled?: boolean;
   /** Soon deprecated */
@@ -52,13 +40,9 @@ export interface PTYInfo {
   ptyType?: PTYInfoPTYType | (string & {});
   noTerminateOnIdleStdin?: boolean;
 }
-const PTYInfo = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<PTYInfo>;
-
 export interface StringMap2 {
   contents?: StringMap;
 }
-const StringMap2 = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<StringMap2>;
-
 /** One source of environment variables for a Sandbox container or exec. */
 export interface SecretSource {
   /** Server-side Secret, resolved on the worker. */
@@ -66,11 +50,7 @@ export interface SecretSource {
   /** Plaintext values sent directly to the worker. Must not be persisted. */
   env?: StringMap2;
 }
-const SecretSource = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<SecretSource>;
-
 export type SecretSourceList = Array<SecretSource>;
-const SecretSourceList = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<SecretSourceList>;
-
 export interface CreateTaskContainerRequest {
   taskId?: string;
   /** Logical container name. */
@@ -92,33 +72,18 @@ export interface CreateTaskContainerRequest {
   /** Applied in order. Cannot be combined with secret_ids or env. */
   secretSources?: SecretSourceList;
 }
-const CreateTaskContainerRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateTaskContainerRequest>;
-
 export interface CreateTaskContainerResponse {
   /** Fully qualified container ID (for example, ctr-<ulid>). */
   containerId?: string;
   /** Logical container name associated with this container. */
   containerName?: string;
 }
-const CreateTaskContainerResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateTaskContainerResponse>;
-
 export interface GetTaskContainerRequest {
   taskId?: string;
   containerName?: string;
   /** Include the latest terminated container if the name is no longer active. */
   includeTerminated?: boolean;
 }
-const GetTaskContainerRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<GetTaskContainerRequest>;
-
 /** Used for both tasks and function outputs */
 export type GenericResultGenericStatus =
   | "GENERIC_STATUS_UNSPECIFIED"
@@ -130,8 +95,6 @@ export type GenericResultGenericStatus =
   | "GENERIC_STATUS_INTERNAL_FAILURE"
   | "GENERIC_STATUS_IDLE_TIMEOUT"
   | "GENERIC_STATUS_MEMORY_MANAGER_EVICTION";
-const GenericResultGenericStatus = S.String;
-
 /** sub-type for generic types like lists */
 export interface GenericResult {
   status?: GenericResultGenericStatus;
@@ -152,109 +115,57 @@ export interface GenericResult {
   /** Blob ID for large data. */
   propagationReason?: string;
 }
-const GenericResult = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<GenericResult>;
-
 export interface TaskContainerInfo {
   containerId?: string;
   containerName?: string;
   status?: string;
   result?: GenericResult;
 }
-const TaskContainerInfo = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<TaskContainerInfo>;
-
 export interface GetTaskContainerResponse {
   container?: TaskContainerInfo;
 }
-const GetTaskContainerResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<GetTaskContainerResponse>;
-
 export interface ListTaskContainerRequest {
   taskId?: string;
   /** Include all tracked terminated containers in addition to active ones. */
   includeTerminated?: boolean;
 }
-const ListTaskContainerRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ListTaskContainerRequest>;
-
 export type TaskContainerInfoList = Array<TaskContainerInfo>;
-const TaskContainerInfoList = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<TaskContainerInfoList>;
-
 export interface ListTaskContainerResponse {
   containers?: TaskContainerInfoList;
 }
-const ListTaskContainerResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ListTaskContainerResponse>;
-
 export interface SandboxStdinWriteV2Request {
   taskId?: string;
   offset?: string;
   data?: string;
   eof?: boolean;
 }
-const SandboxStdinWriteV2Request = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<SandboxStdinWriteV2Request>;
-
 export interface SandboxStdinWriteV2Response {}
-const SandboxStdinWriteV2Response = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<SandboxStdinWriteV2Response>;
-
 export interface SandboxWaitUntilReadyRequest {
   taskId?: string;
   timeout?: number;
 }
-const SandboxWaitUntilReadyRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<SandboxWaitUntilReadyRequest>;
-
 export interface SandboxWaitUntilReadyResponse {
   readyAt?: number;
 }
-const SandboxWaitUntilReadyResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<SandboxWaitUntilReadyResponse>;
-
 export interface TaskExecPollRequest {
   /** The ID of the task running the exec'd command. */
   taskId?: string;
   /** The execution ID of the command to wait on. */
   execId?: string;
 }
-const TaskExecPollRequest = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<TaskExecPollRequest>;
-
 export interface TaskExecPollResponse {
   /** The exit code of the command. */
   code?: number;
   /** The signal that terminated the command. */
   signal?: number;
 }
-const TaskExecPollResponse = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<TaskExecPollResponse>;
-
 export type TaskExecStdoutConfig =
   | "TASK_EXEC_STDOUT_CONFIG_DEVNULL"
   | "TASK_EXEC_STDOUT_CONFIG_PIPE";
-const TaskExecStdoutConfig = S.String;
-
 export type TaskExecStderrConfig =
   | "TASK_EXEC_STDERR_CONFIG_DEVNULL"
   | "TASK_EXEC_STDERR_CONFIG_PIPE"
   | "TASK_EXEC_STDERR_CONFIG_STDOUT";
-const TaskExecStderrConfig = S.String;
-
 export interface TaskExecStartRequest {
   /** The ID of the task to execute the command in. */
   taskId?: string;
@@ -283,33 +194,19 @@ export interface TaskExecStartRequest {
   /** Applied in order. Cannot be combined with secret_ids or env. */
   secretSources?: SecretSourceList;
 }
-const TaskExecStartRequest = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<TaskExecStartRequest>;
-
 export interface TaskExecStartResponse {}
-const TaskExecStartResponse = SandboxStdinWriteV2Response as any as S.Schema<TaskExecStartResponse>;
-
 export interface TaskExecStdinStatusRequest {
   /** The ID of the task running the exec'd command. */
   taskId?: string;
   /** The execution ID of the command to query. */
   execId?: string;
 }
-const TaskExecStdinStatusRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<TaskExecStdinStatusRequest>;
-
 export interface TaskExecStdinStatusResponse {
   /** Number of bytes the server has accepted for this exec so far. A streaming client that lost its connection should resume sending at this offset. */
   numBytesWritten?: string;
   /** True if stdin has already been closed (EOF sent) for this exec. */
   closed?: boolean;
 }
-const TaskExecStdinStatusResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<TaskExecStdinStatusResponse>;
-
 export interface TaskExecStdinWriteRequest {
   /** The ID of the task running the exec'd command. */
   taskId?: string;
@@ -321,31 +218,19 @@ export interface TaskExecStdinWriteRequest {
   /** If true, close the stdin stream after writing any provided data. This signals EOF to the exec'd process. */
   eof?: boolean;
 }
-const TaskExecStdinWriteRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<TaskExecStdinWriteRequest>;
-
 export interface TaskExecStdinWriteResponse {}
-const TaskExecStdinWriteResponse =
-  SandboxStdinWriteV2Response as any as S.Schema<TaskExecStdinWriteResponse>;
-
 export interface TaskExecWaitRequest {
   /** The ID of the task running the exec'd command. */
   taskId?: string;
   /** The execution ID of the command to wait on. */
   execId?: string;
 }
-const TaskExecWaitRequest = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<TaskExecWaitRequest>;
-
 export interface TaskExecWaitResponse {
   /** The exit code of the command. */
   code?: number;
   /** The signal that terminated the command. */
   signal?: number;
 }
-const TaskExecWaitResponse = TaskExecPollResponse as any as S.Schema<TaskExecWaitResponse>;
-
 export interface TaskMountDirectoryRequest {
   taskId?: string;
   path?: string;
@@ -355,43 +240,19 @@ export interface TaskMountDirectoryRequest {
   /** Fully qualified target container ID. Empty targets the main container. */
   containerId?: string;
 }
-const TaskMountDirectoryRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<TaskMountDirectoryRequest>;
-
 export interface TaskMountDirectoryResponse {}
-const TaskMountDirectoryResponse =
-  SandboxStdinWriteV2Response as any as S.Schema<TaskMountDirectoryResponse>;
-
 export interface TaskReloadVolumesRequest {
   taskId?: string;
   /** Fully qualified target container ID. Empty targets the main container. */
   containerId?: string;
 }
-const TaskReloadVolumesRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<TaskReloadVolumesRequest>;
-
 export interface TaskReloadVolumesResponse {}
-const TaskReloadVolumesResponse =
-  SandboxStdinWriteV2Response as any as S.Schema<TaskReloadVolumesResponse>;
-
 export interface TaskSetNetworkAccessRequest {
   taskId?: string;
   /** Replaces the task's network access policy. Only ALLOWLIST is currently supported; open access is expressed as an allow-all allowlist. */
   networkAccess?: NetworkAccess;
 }
-const TaskSetNetworkAccessRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<TaskSetNetworkAccessRequest>;
-
 export interface TaskSetNetworkAccessResponse {}
-const TaskSetNetworkAccessResponse =
-  SandboxStdinWriteV2Response as any as S.Schema<TaskSetNetworkAccessResponse>;
-
 export interface OutboundPolicyHeaderReplacement {
   /** Domain that the header replacements are scoped to. Supports wildcards in subdomain positions. */
   domain?: string;
@@ -400,38 +261,18 @@ export interface OutboundPolicyHeaderReplacement {
   /** Header name -> header value. Values support templating with keys in the stanza's secret_id: a $-prefixed key name in the secret will be replaced with the secret value. Literal $ characters can be represented by two dollars: `$$`. */
   headers?: StringMap;
 }
-const OutboundPolicyHeaderReplacement = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<OutboundPolicyHeaderReplacement>;
-
 export type OutboundPolicyHeaderReplacementList = Array<OutboundPolicyHeaderReplacement>;
-const OutboundPolicyHeaderReplacementList = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<OutboundPolicyHeaderReplacementList>;
-
 /** Policy for outbound traffic from a sandbox. */
 export interface OutboundPolicy {
   /** Replace headers in outbound HTTPS requests, potentially with secret values. */
   headerReplacements?: OutboundPolicyHeaderReplacementList;
 }
-const OutboundPolicy = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<OutboundPolicy>;
-
 export interface TaskSetOutboundPolicyRequest {
   taskId?: string;
   /** Replaces the task's outbound policy. */
   outboundPolicy?: OutboundPolicy;
 }
-const TaskSetOutboundPolicyRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<TaskSetOutboundPolicyRequest>;
-
 export interface TaskSetOutboundPolicyResponse {}
-const TaskSetOutboundPolicyResponse =
-  SandboxStdinWriteV2Response as any as S.Schema<TaskSetOutboundPolicyResponse>;
-
 export interface TaskSnapshotDirectoryRequest {
   taskId?: string;
   path?: string;
@@ -444,19 +285,9 @@ export interface TaskSnapshotDirectoryRequest {
   /** Fully qualified target container ID. Empty targets the main container. */
   containerId?: string;
 }
-const TaskSnapshotDirectoryRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<TaskSnapshotDirectoryRequest>;
-
 export interface TaskSnapshotDirectoryResponse {
   imageId?: string;
 }
-const TaskSnapshotDirectoryResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<TaskSnapshotDirectoryResponse>;
-
 export interface TaskSnapshotFilesystemRequest {
   taskId?: string;
   /** A unique ID to ensure idempotency of filesystem snapshot requests. */
@@ -468,80 +299,36 @@ export interface TaskSnapshotFilesystemRequest {
   /** Fully qualified target container ID. Empty targets the main container. */
   containerId?: string;
 }
-const TaskSnapshotFilesystemRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<TaskSnapshotFilesystemRequest>;
-
 export interface TaskSnapshotFilesystemResponse {
   imageId?: string;
 }
-const TaskSnapshotFilesystemResponse =
-  TaskSnapshotDirectoryResponse as any as S.Schema<TaskSnapshotFilesystemResponse>;
-
 export interface TaskSnapshotMemoryRequest {
   taskId?: string;
   idempotencyKey?: string;
 }
-const TaskSnapshotMemoryRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<TaskSnapshotMemoryRequest>;
-
 export interface TaskSnapshotMemoryResponse {
   snapshotId?: string;
 }
-const TaskSnapshotMemoryResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<TaskSnapshotMemoryResponse>;
-
 export interface TaskUnmountDirectoryRequest {
   taskId?: string;
   path?: string;
   /** Fully qualified target container ID. Empty targets the main container. */
   containerId?: string;
 }
-const TaskUnmountDirectoryRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<TaskUnmountDirectoryRequest>;
-
 export interface TaskUnmountDirectoryResponse {}
-const TaskUnmountDirectoryResponse =
-  SandboxStdinWriteV2Response as any as S.Schema<TaskUnmountDirectoryResponse>;
-
 export interface TerminateTaskContainerRequest {
   taskId?: string;
   containerId?: string;
 }
-const TerminateTaskContainerRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<TerminateTaskContainerRequest>;
-
 export interface TerminateTaskContainerResponse {}
-const TerminateTaskContainerResponse =
-  SandboxStdinWriteV2Response as any as S.Schema<TerminateTaskContainerResponse>;
-
 export interface WaitTaskContainerRequest {
   taskId?: string;
   containerId?: string;
   timeout?: number;
 }
-const WaitTaskContainerRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<WaitTaskContainerRequest>;
-
 export interface WaitTaskContainerResponse {
   result?: GenericResult;
 }
-const WaitTaskContainerResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<WaitTaskContainerResponse>;
-
 export type CreateTaskContainerError = ModalOpError;
 /** Create an additional container for a task. */
 export const createTaskContainer: API.OperationMethod<
@@ -550,8 +337,8 @@ export const createTaskContainer: API.OperationMethod<
   CreateTaskContainerError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTaskContainerRequest,
-  output: CreateTaskContainerResponse,
+  input: __S(9, __c1, 1) as any as S.Schema<CreateTaskContainerRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<CreateTaskContainerResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -565,8 +352,8 @@ export const getTaskContainer: API.OperationMethod<
   GetTaskContainerError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTaskContainerRequest,
-  output: GetTaskContainerResponse,
+  input: __S(11, __c1, 3) as any as S.Schema<GetTaskContainerRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<GetTaskContainerResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -580,8 +367,8 @@ export const listTaskContainer: API.OperationMethod<
   ListTaskContainerError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTaskContainerRequest,
-  output: ListTaskContainerResponse,
+  input: __S(15, __c1, 7) as any as S.Schema<ListTaskContainerRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<ListTaskContainerResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -594,8 +381,8 @@ export const sandboxStdinWriteV2: API.OperationMethod<
   SandboxStdinWriteV2Error,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SandboxStdinWriteV2Request,
-  output: SandboxStdinWriteV2Response,
+  input: __S(18, __c2, 2) as any as S.Schema<SandboxStdinWriteV2Request>,
+  output: __S(19, __c2, 3) as any as S.Schema<SandboxStdinWriteV2Response>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -608,8 +395,8 @@ export const sandboxWaitUntilReady: API.OperationMethod<
   SandboxWaitUntilReadyError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SandboxWaitUntilReadyRequest,
-  output: SandboxWaitUntilReadyResponse,
+  input: __S(20, __c2, 4) as any as S.Schema<SandboxWaitUntilReadyRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<SandboxWaitUntilReadyResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -623,8 +410,8 @@ export const taskExecPoll: API.OperationMethod<
   TaskExecPollError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TaskExecPollRequest,
-  output: TaskExecPollResponse,
+  input: __S(22, __c2, 6) as any as S.Schema<TaskExecPollRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<TaskExecPollResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -638,8 +425,8 @@ export const taskExecStart: API.OperationMethod<
   TaskExecStartError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TaskExecStartRequest,
-  output: TaskExecStartResponse,
+  input: __S(24, __c3, 0) as any as S.Schema<TaskExecStartRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<TaskExecStartResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -653,8 +440,8 @@ export const taskExecStdinStatus: API.OperationMethod<
   TaskExecStdinStatusError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TaskExecStdinStatusRequest,
-  output: TaskExecStdinStatusResponse,
+  input: __S(25, __c3, 1) as any as S.Schema<TaskExecStdinStatusRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<TaskExecStdinStatusResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -668,8 +455,8 @@ export const taskExecStdinWrite: API.OperationMethod<
   TaskExecStdinWriteError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TaskExecStdinWriteRequest,
-  output: TaskExecStdinWriteResponse,
+  input: __S(27, __c3, 3) as any as S.Schema<TaskExecStdinWriteRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<TaskExecStdinWriteResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -683,8 +470,8 @@ export const taskExecWait: API.OperationMethod<
   TaskExecWaitError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TaskExecWaitRequest,
-  output: TaskExecWaitResponse,
+  input: __S(28, __c3, 4) as any as S.Schema<TaskExecWaitRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<TaskExecWaitResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -698,8 +485,8 @@ export const taskMountDirectory: API.OperationMethod<
   TaskMountDirectoryError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TaskMountDirectoryRequest,
-  output: TaskMountDirectoryResponse,
+  input: __S(29, __c3, 5) as any as S.Schema<TaskMountDirectoryRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<TaskMountDirectoryResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -713,8 +500,8 @@ export const taskReloadVolumes: API.OperationMethod<
   TaskReloadVolumesError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TaskReloadVolumesRequest,
-  output: TaskReloadVolumesResponse,
+  input: __S(30, __c3, 6) as any as S.Schema<TaskReloadVolumesRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<TaskReloadVolumesResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -728,8 +515,8 @@ export const taskSetNetworkAccess: API.OperationMethod<
   TaskSetNetworkAccessError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TaskSetNetworkAccessRequest,
-  output: TaskSetNetworkAccessResponse,
+  input: __S(31, __c3, 7) as any as S.Schema<TaskSetNetworkAccessRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<TaskSetNetworkAccessResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -743,8 +530,8 @@ export const taskSetOutboundPolicy: API.OperationMethod<
   TaskSetOutboundPolicyError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TaskSetOutboundPolicyRequest,
-  output: TaskSetOutboundPolicyResponse,
+  input: __S(35, __c4, 3) as any as S.Schema<TaskSetOutboundPolicyRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<TaskSetOutboundPolicyResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -758,8 +545,8 @@ export const taskSnapshotDirectory: API.OperationMethod<
   TaskSnapshotDirectoryError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TaskSnapshotDirectoryRequest,
-  output: TaskSnapshotDirectoryResponse,
+  input: __S(36, __c4, 4) as any as S.Schema<TaskSnapshotDirectoryRequest>,
+  output: __S(37, __c4, 5) as any as S.Schema<TaskSnapshotDirectoryResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -773,8 +560,8 @@ export const taskSnapshotFilesystem: API.OperationMethod<
   TaskSnapshotFilesystemError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TaskSnapshotFilesystemRequest,
-  output: TaskSnapshotFilesystemResponse,
+  input: __S(38, __c4, 6) as any as S.Schema<TaskSnapshotFilesystemRequest>,
+  output: __S(37, __c4, 5) as any as S.Schema<TaskSnapshotFilesystemResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -788,8 +575,8 @@ export const taskSnapshotMemory: API.OperationMethod<
   TaskSnapshotMemoryError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TaskSnapshotMemoryRequest,
-  output: TaskSnapshotMemoryResponse,
+  input: __S(39, __c4, 7) as any as S.Schema<TaskSnapshotMemoryRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<TaskSnapshotMemoryResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -803,8 +590,8 @@ export const taskUnmountDirectory: API.OperationMethod<
   TaskUnmountDirectoryError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TaskUnmountDirectoryRequest,
-  output: TaskUnmountDirectoryResponse,
+  input: __S(41, __c5, 1) as any as S.Schema<TaskUnmountDirectoryRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<TaskUnmountDirectoryResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -818,8 +605,8 @@ export const terminateTaskContainer: API.OperationMethod<
   TerminateTaskContainerError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TerminateTaskContainerRequest,
-  output: TerminateTaskContainerResponse,
+  input: __S(42, __c5, 2) as any as S.Schema<TerminateTaskContainerRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<TerminateTaskContainerResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -833,8 +620,8 @@ export const waitTaskContainer: API.OperationMethod<
   WaitTaskContainerError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WaitTaskContainerRequest,
-  output: WaitTaskContainerResponse,
+  input: __S(43, __c5, 3) as any as S.Schema<WaitTaskContainerRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<WaitTaskContainerResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -858,13 +645,13 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "VolumeMount" });
     case 3:
-      return S.Array(VolumeMount);
+      return S.Array(__S(2, __c0, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          networkAccessType: S.optional(NetworkAccessNetworkAccessType),
-          allowedCidrs: S.optional(StringList),
-          allowedDomains: S.optional(StringList),
+          networkAccessType: S.optional(S.String),
+          allowedCidrs: S.optional(__S(0, __c0, 0)),
+          allowedDomains: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({ identifier: "NetworkAccess" });
     case 5:
@@ -876,21 +663,21 @@ function __c0(j: number): any {
           envTerm: S.optional(S.String),
           envColorterm: S.optional(S.String),
           envTermProgram: S.optional(S.String),
-          ptyType: S.optional(PTYInfoPTYType),
+          ptyType: S.optional(S.String),
           noTerminateOnIdleStdin: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "PTYInfo" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          contents: S.optional(StringMap),
+          contents: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({ identifier: "StringMap2" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           secretId: S.optional(S.String),
-          env: S.optional(StringMap2),
+          env: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({ identifier: "SecretSource" });
   }
@@ -898,22 +685,22 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SecretSource);
+      return S.Array(__S(7, __c0, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           taskId: S.optional(S.String),
           containerName: S.optional(S.String),
           imageId: S.optional(S.String),
-          args: S.optional(StringList),
-          env: S.optional(StringMap),
+          args: S.optional(__S(0, __c0, 0)),
+          env: S.optional(__S(1, __c0, 1)),
           workdir: S.optional(S.String),
-          secretIds: S.optional(StringList),
-          volumeMounts: S.optional(VolumeMountList),
-          networkAccess: S.optional(NetworkAccess),
-          ptyInfo: S.optional(PTYInfo),
+          secretIds: S.optional(__S(0, __c0, 0)),
+          volumeMounts: S.optional(__S(3, __c0, 3)),
+          networkAccess: S.optional(__S(4, __c0, 4)),
+          ptyInfo: S.optional(__S(5, __c0, 5)),
           memoryReserveConsumeMib: S.optional(S.Number),
-          secretSources: S.optional(SecretSourceList),
+          secretSources: S.optional(__S(8, __c1, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -950,7 +737,7 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(GenericResultGenericStatus),
+          status: S.optional(S.String),
           exception: S.optional(S.String),
           exitcode: S.optional(S.Number),
           traceback: S.optional(S.String),
@@ -967,13 +754,13 @@ function __c1(j: number): any {
           containerId: S.optional(S.String),
           containerName: S.optional(S.String),
           status: S.optional(S.String),
-          result: S.optional(GenericResult),
+          result: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({ identifier: "TaskContainerInfo" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          container: S.optional(TaskContainerInfo),
+          container: S.optional(__S(13, __c1, 5)),
         }),
       ).annotate({ identifier: "GetTaskContainerResponse" });
     case 7:
@@ -994,11 +781,11 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(TaskContainerInfo);
+      return S.Array(__S(13, __c1, 5));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          containers: S.optional(TaskContainerInfoList),
+          containers: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({
         identifier: "ListTaskContainerResponse",
@@ -1076,17 +863,17 @@ function __c3(j: number): any {
         S.Struct({
           taskId: S.optional(S.String),
           execId: S.optional(S.String),
-          commandArgs: S.optional(StringList),
-          stdoutConfig: S.optional(TaskExecStdoutConfig),
-          stderrConfig: S.optional(TaskExecStderrConfig),
+          commandArgs: S.optional(__S(0, __c0, 0)),
+          stdoutConfig: S.optional(S.String),
+          stderrConfig: S.optional(S.String),
           timeoutSecs: S.optional(S.Number),
           workdir: S.optional(S.String),
-          secretIds: S.optional(StringList),
-          ptyInfo: S.optional(PTYInfo),
+          secretIds: S.optional(__S(0, __c0, 0)),
+          ptyInfo: S.optional(__S(5, __c0, 5)),
           runtimeDebug: S.optional(S.Boolean),
           containerId: S.optional(S.String),
-          env: S.optional(StringMap),
-          secretSources: S.optional(SecretSourceList),
+          env: S.optional(__S(1, __c0, 1)),
+          secretSources: S.optional(__S(8, __c1, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1185,7 +972,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           taskId: S.optional(S.String),
-          networkAccess: S.optional(NetworkAccess),
+          networkAccess: S.optional(__S(4, __c0, 4)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1205,24 +992,24 @@ function __c4(j: number): any {
         S.Struct({
           domain: S.optional(S.String),
           secretId: S.optional(S.String),
-          headers: S.optional(StringMap),
+          headers: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({
         identifier: "OutboundPolicyHeaderReplacement",
       });
     case 1:
-      return S.Array(OutboundPolicyHeaderReplacement);
+      return S.Array(__S(32, __c4, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          headerReplacements: S.optional(OutboundPolicyHeaderReplacementList),
+          headerReplacements: S.optional(__S(33, __c4, 1)),
         }),
       ).annotate({ identifier: "OutboundPolicy" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           taskId: S.optional(S.String),
-          outboundPolicy: S.optional(OutboundPolicy),
+          outboundPolicy: S.optional(__S(34, __c4, 2)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1353,10 +1140,15 @@ function __c5(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(GenericResult),
+          result: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({
         identifier: "WaitTaskContainerResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

@@ -6,6 +6,8 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -17,15 +19,8 @@ export interface CheckCodeSigningAccountNameAvailabilityRequest {
   /** Artifact signing account name. */
   name: string;
 }
-const CheckCodeSigningAccountNameAvailabilityRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CheckCodeSigningAccountNameAvailabilityRequest>;
-
 /** The reason that an artifact signing account name could not be used. The Reason element is only returned if nameAvailable is false. */
 export type NameUnavailabilityReason = "AccountNameInvalid" | "AlreadyExists";
-const NameUnavailabilityReason = S.String;
-
 /** The CheckNameAvailability operation response. */
 export interface CheckNameAvailabilityResult {
   /** A boolean value that indicates whether the name is available for you to use. If true, the name is available. If false, the name has already been taken or is invalid and cannot be used. */
@@ -35,11 +30,6 @@ export interface CheckNameAvailabilityResult {
   /** An error message explaining the Reason value in more detail. */
   message?: string;
 }
-const CheckNameAvailabilityResult = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CheckNameAvailabilityResult>;
-
 /** Type of the certificate */
 export type ProfileType =
   | "PublicTrust"
@@ -47,8 +37,6 @@ export type ProfileType =
   | "PrivateTrustCIPolicy"
   | "VBSEnclave"
   | "PublicTrustTest";
-const ProfileType = S.String;
-
 /** Properties of the certificate profile. */
 export interface CertificateProfilePropertiesInput {
   /** Profile type of the certificate. */
@@ -66,11 +54,6 @@ export interface CertificateProfilePropertiesInput {
   /** Identity validation id used for the certificate subject name. */
   identityValidationId: string;
 }
-const CertificateProfilePropertiesInput = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CertificateProfilePropertiesInput>;
-
 export interface CreateCertificateProfileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -83,19 +66,10 @@ export interface CreateCertificateProfileRequest {
   /** The resource-specific properties for this resource. */
   properties?: CertificateProfilePropertiesInput;
 }
-const CreateCertificateProfileRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateCertificateProfileRequest>;
-
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -111,8 +85,6 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const SystemData = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<SystemData>;
-
 /** The status of the current operation. */
 export type ProvisioningState =
   | "Succeeded"
@@ -121,20 +93,12 @@ export type ProvisioningState =
   | "Updating"
   | "Deleting"
   | "Accepted";
-const ProvisioningState = S.String;
-
 /** Status of the certificate profiles. */
 export type CertificateProfileStatus = "Active" | "Disabled" | "Suspended";
-const CertificateProfileStatus = S.String;
-
 /** Status of the certificate */
 export type CertificateStatus = "Active" | "Expired" | "Revoked";
-const CertificateStatus = S.String;
-
 /** Revocation status of the certificate. */
 export type RevocationStatus = "Succeeded" | "InProgress" | "Failed";
-const RevocationStatus = S.String;
-
 /** Revocation details of the certificate. */
 export interface Revocation {
   /** The timestamp when the revocation is requested. */
@@ -150,8 +114,6 @@ export interface Revocation {
   /** Reason for the revocation failure. */
   failureReason?: string;
 }
-const Revocation = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Revocation>;
-
 /** Properties of the certificate. */
 export interface Certificate {
   /** Serial number of the certificate. */
@@ -171,15 +133,8 @@ export interface Certificate {
   /** Revocations history of a certificate. */
   revocation?: Revocation;
 }
-const Certificate = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Certificate>;
-
 /** List of renewed certificates. */
 export type CertificateProfilePropertiesCertificatesList = Array<Certificate>;
-const CertificateProfilePropertiesCertificatesList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CertificateProfilePropertiesCertificatesList>;
-
 /** Properties of the certificate profile. */
 export interface CertificateProfileProperties {
   /** Profile type of the certificate. */
@@ -203,11 +158,6 @@ export interface CertificateProfileProperties {
   /** List of renewed certificates. */
   certificates?: CertificateProfilePropertiesCertificatesList;
 }
-const CertificateProfileProperties = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CertificateProfileProperties>;
-
 export interface CreateCertificateProfileResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -220,39 +170,20 @@ export interface CreateCertificateProfileResponse {
   /** The resource-specific properties for this resource. */
   properties?: CertificateProfileProperties;
 }
-const CreateCertificateProfileResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateCertificateProfileResponse>;
-
 /** Resource tags. */
 export type CreateCodeSigningAccountRequestTagsMap = { [key: string]: string | undefined };
-const CreateCodeSigningAccountRequestTagsMap = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateCodeSigningAccountRequestTagsMap>;
-
 /** Name of the sku. */
 export type SkuName = "Basic" | "Premium";
-const SkuName = S.String;
-
 /** SKU of the artifact signing account. */
 export interface AccountSku {
   /** Name of the SKU. */
   name: SkuName | (string & {});
 }
-const AccountSku = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<AccountSku>;
-
 /** Properties of the artifact signing account. */
 export interface CodeSigningAccountPropertiesInput {
   /** SKU of the artifact signing account. */
   sku?: AccountSku;
 }
-const CodeSigningAccountPropertiesInput = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CodeSigningAccountPropertiesInput>;
-
 export interface CreateCodeSigningAccountRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -267,16 +198,8 @@ export interface CreateCodeSigningAccountRequest {
   /** The resource-specific properties for this resource. */
   properties?: CodeSigningAccountPropertiesInput;
 }
-const CreateCodeSigningAccountRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CreateCodeSigningAccountRequest>;
-
 /** Resource tags. */
 export type CreateCodeSigningAccountResponseTagsMap = { [key: string]: string | undefined };
-const CreateCodeSigningAccountResponseTagsMap =
-  CreateCodeSigningAccountRequestTagsMap as any as S.Schema<CreateCodeSigningAccountResponseTagsMap>;
-
 /** Properties of the artifact signing account. */
 export interface CodeSigningAccountProperties {
   /** The URI of the artifact signing account which is used during signing files. */
@@ -286,11 +209,6 @@ export interface CodeSigningAccountProperties {
   /** Status of the current operation on artifact signing account. */
   provisioningState?: ProvisioningState;
 }
-const CodeSigningAccountProperties = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CodeSigningAccountProperties>;
-
 export interface CreateCodeSigningAccountResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -307,11 +225,6 @@ export interface CreateCodeSigningAccountResponse {
   /** The resource-specific properties for this resource. */
   properties?: CodeSigningAccountProperties;
 }
-const CreateCodeSigningAccountResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<CreateCodeSigningAccountResponse>;
-
 export interface DeleteCertificateProfileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -322,17 +235,7 @@ export interface DeleteCertificateProfileRequest {
   /** Certificate profile name. */
   profileName: string;
 }
-const DeleteCertificateProfileRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<DeleteCertificateProfileRequest>;
-
 export interface DeleteCertificateProfileResponse {}
-const DeleteCertificateProfileResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<DeleteCertificateProfileResponse>;
-
 export interface DeleteCodeSigningAccountRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -341,15 +244,7 @@ export interface DeleteCodeSigningAccountRequest {
   /** Artifact Signing account name. */
   accountName: string;
 }
-const DeleteCodeSigningAccountRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<DeleteCodeSigningAccountRequest>;
-
 export interface DeleteCodeSigningAccountResponse {}
-const DeleteCodeSigningAccountResponse =
-  DeleteCertificateProfileResponse as any as S.Schema<DeleteCodeSigningAccountResponse>;
-
 export interface GetCertificateProfileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -360,11 +255,6 @@ export interface GetCertificateProfileRequest {
   /** Certificate profile name. */
   profileName: string;
 }
-const GetCertificateProfileRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<GetCertificateProfileRequest>;
-
 export interface GetCertificateProfileResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -377,9 +267,6 @@ export interface GetCertificateProfileResponse {
   /** The resource-specific properties for this resource. */
   properties?: CertificateProfileProperties;
 }
-const GetCertificateProfileResponse =
-  CreateCertificateProfileResponse as any as S.Schema<GetCertificateProfileResponse>;
-
 export interface GetCodeSigningAccountRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -388,11 +275,6 @@ export interface GetCodeSigningAccountRequest {
   /** Artifact Signing account name. */
   accountName: string;
 }
-const GetCodeSigningAccountRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<GetCodeSigningAccountRequest>;
-
 /** Resource tags. */
 export type GetCodeSigningAccountResponseTagsMap = { [key: string]: string | undefined };
 export interface GetCodeSigningAccountResponse {
@@ -411,9 +293,6 @@ export interface GetCodeSigningAccountResponse {
   /** The resource-specific properties for this resource. */
   properties?: CodeSigningAccountProperties;
 }
-const GetCodeSigningAccountResponse =
-  CreateCodeSigningAccountResponse as any as S.Schema<GetCodeSigningAccountResponse>;
-
 export interface ListCertificateProfileByCodeSigningAccountRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -422,11 +301,6 @@ export interface ListCertificateProfileByCodeSigningAccountRequest {
   /** Artifact Signing account name. */
   accountName: string;
 }
-const ListCertificateProfileByCodeSigningAccountRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ListCertificateProfileByCodeSigningAccountRequest>;
-
 /** Certificate profile resource. */
 export interface CertificateProfile {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -440,15 +314,8 @@ export interface CertificateProfile {
   /** The resource-specific properties for this resource. */
   properties?: CertificateProfileProperties;
 }
-const CertificateProfile = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<CertificateProfile>;
-
 /** The CertificateProfile items on this page */
 export type CertificateProfileListResultValueList = Array<CertificateProfile>;
-const CertificateProfileListResultValueList = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<CertificateProfileListResultValueList>;
-
 /** The response of a CertificateProfile list operation. */
 export interface CertificateProfileListResult {
   /** The CertificateProfile items on this page */
@@ -456,27 +323,14 @@ export interface CertificateProfileListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const CertificateProfileListResult = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<CertificateProfileListResult>;
-
 export interface ListCodeSigningAccountByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListCodeSigningAccountByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ListCodeSigningAccountByResourceGroupRequest>;
-
 /** Resource tags. */
 export type CodeSigningAccountTagsMap = { [key: string]: string | undefined };
-const CodeSigningAccountTagsMap =
-  CreateCodeSigningAccountRequestTagsMap as any as S.Schema<CodeSigningAccountTagsMap>;
-
 /** Artifact signing account resource. */
 export interface CodeSigningAccount {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -494,15 +348,8 @@ export interface CodeSigningAccount {
   /** The resource-specific properties for this resource. */
   properties?: CodeSigningAccountProperties;
 }
-const CodeSigningAccount = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<CodeSigningAccount>;
-
 /** The CodeSigningAccount items on this page */
 export type CodeSigningAccountListResultValueList = Array<CodeSigningAccount>;
-const CodeSigningAccountListResultValueList = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<CodeSigningAccountListResultValueList>;
-
 /** The response of a CodeSigningAccount list operation. */
 export interface CodeSigningAccountListResult {
   /** The CodeSigningAccount items on this page */
@@ -510,26 +357,11 @@ export interface CodeSigningAccountListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const CodeSigningAccountListResult = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<CodeSigningAccountListResult>;
-
 export interface ListCodeSigningAccountBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListCodeSigningAccountBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ListCodeSigningAccountBySubscriptionRequest>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -541,16 +373,10 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-const OperationDisplay = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<OperationDisplay>;
-
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-const OperationOrigin = S.String;
-
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-const OperationActionType = S.String;
-
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -564,26 +390,14 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-const Operation = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<Operation>;
-
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<ListOperationsResponseValueList>;
-
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<ListOperationsResponse>;
-
 export interface RevokeCertificateProfileCertificateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -604,37 +418,19 @@ export interface RevokeCertificateProfileCertificateRequest {
   /** Remarks for the revocation. */
   remarks?: string;
 }
-const RevokeCertificateProfileCertificateRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<RevokeCertificateProfileCertificateRequest>;
-
 export interface RevokeCertificateProfileCertificateResponse {}
-const RevokeCertificateProfileCertificateResponse =
-  DeleteCertificateProfileResponse as any as S.Schema<RevokeCertificateProfileCertificateResponse>;
-
 /** Resource tags. */
 export type UpdateCodeSigningAccountRequestTagsMap = { [key: string]: string | undefined };
-const UpdateCodeSigningAccountRequestTagsMap =
-  CreateCodeSigningAccountRequestTagsMap as any as S.Schema<UpdateCodeSigningAccountRequestTagsMap>;
-
 /** SKU of the artifact signing account. */
 export interface AccountSkuPatch {
   /** Name of the SKU. */
   name?: SkuName | (string & {});
 }
-const AccountSkuPatch = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<AccountSkuPatch>;
-
 /** Properties of the artifact signing account. */
 export interface CodeSigningAccountPatchProperties {
   /** SKU of the artifact signing account. */
   sku?: AccountSkuPatch;
 }
-const CodeSigningAccountPatchProperties = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<CodeSigningAccountPatchProperties>;
-
 export interface UpdateCodeSigningAccountRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -647,11 +443,6 @@ export interface UpdateCodeSigningAccountRequest {
   /** Properties of the artifact signing account. */
   properties?: CodeSigningAccountPatchProperties;
 }
-const UpdateCodeSigningAccountRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<UpdateCodeSigningAccountRequest>;
-
 /** Resource tags. */
 export type UpdateCodeSigningAccountResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateCodeSigningAccountResponse {
@@ -670,9 +461,6 @@ export interface UpdateCodeSigningAccountResponse {
   /** The resource-specific properties for this resource. */
   properties?: CodeSigningAccountProperties;
 }
-const UpdateCodeSigningAccountResponse =
-  CreateCodeSigningAccountResponse as any as S.Schema<UpdateCodeSigningAccountResponse>;
-
 export type CheckCodeSigningAccountNameAvailabilityError = AzureOpError;
 /** Checks if the artifact signing account name is valid and is not already in use. */
 export const CheckCodeSigningAccountNameAvailability: API.OperationMethod<
@@ -681,8 +469,8 @@ export const CheckCodeSigningAccountNameAvailability: API.OperationMethod<
   CheckCodeSigningAccountNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckCodeSigningAccountNameAvailabilityRequest,
-  output: CheckNameAvailabilityResult,
+  input: __S(0, __c0, 0) as any as S.Schema<CheckCodeSigningAccountNameAvailabilityRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CheckNameAvailabilityResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -696,8 +484,8 @@ export const CreateCertificateProfile: API.OperationMethod<
   CreateCertificateProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCertificateProfileRequest,
-  output: CreateCertificateProfileResponse,
+  input: __S(3, __c0, 3) as any as S.Schema<CreateCertificateProfileRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<CreateCertificateProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -711,8 +499,8 @@ export const CreateCodeSigningAccount: API.OperationMethod<
   CreateCodeSigningAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCodeSigningAccountRequest,
-  output: CreateCodeSigningAccountResponse,
+  input: __S(13, __c1, 5) as any as S.Schema<CreateCodeSigningAccountRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<CreateCodeSigningAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -726,8 +514,8 @@ export const DeleteCertificateProfile: API.OperationMethod<
   DeleteCertificateProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCertificateProfileRequest,
-  output: DeleteCertificateProfileResponse,
+  input: __S(16, __c2, 0) as any as S.Schema<DeleteCertificateProfileRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<DeleteCertificateProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -741,8 +529,8 @@ export const DeleteCodeSigningAccount: API.OperationMethod<
   DeleteCodeSigningAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCodeSigningAccountRequest,
-  output: DeleteCodeSigningAccountResponse,
+  input: __S(18, __c2, 2) as any as S.Schema<DeleteCodeSigningAccountRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<DeleteCodeSigningAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -756,8 +544,8 @@ export const GetCertificateProfile: API.OperationMethod<
   GetCertificateProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCertificateProfileRequest,
-  output: GetCertificateProfileResponse,
+  input: __S(19, __c2, 3) as any as S.Schema<GetCertificateProfileRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<GetCertificateProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -771,8 +559,8 @@ export const GetCodeSigningAccount: API.OperationMethod<
   GetCodeSigningAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCodeSigningAccountRequest,
-  output: GetCodeSigningAccountResponse,
+  input: __S(20, __c2, 4) as any as S.Schema<GetCodeSigningAccountRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<GetCodeSigningAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -786,8 +574,8 @@ export const ListCertificateProfileByCodeSigningAccount: API.OperationMethod<
   ListCertificateProfileByCodeSigningAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCertificateProfileByCodeSigningAccountRequest,
-  output: CertificateProfileListResult,
+  input: __S(21, __c2, 5) as any as S.Schema<ListCertificateProfileByCodeSigningAccountRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<CertificateProfileListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -801,8 +589,8 @@ export const ListCodeSigningAccountByResourceGroup: API.OperationMethod<
   ListCodeSigningAccountByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCodeSigningAccountByResourceGroupRequest,
-  output: CodeSigningAccountListResult,
+  input: __S(25, __c3, 1) as any as S.Schema<ListCodeSigningAccountByResourceGroupRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<CodeSigningAccountListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -816,8 +604,8 @@ export const ListCodeSigningAccountBySubscription: API.OperationMethod<
   ListCodeSigningAccountBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCodeSigningAccountBySubscriptionRequest,
-  output: CodeSigningAccountListResult,
+  input: __S(29, __c3, 5) as any as S.Schema<ListCodeSigningAccountBySubscriptionRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<CodeSigningAccountListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -831,8 +619,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(30, __c3, 6) as any as S.Schema<ListOperationsRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -846,8 +634,8 @@ export const RevokeCertificateProfileCertificate: API.OperationMethod<
   RevokeCertificateProfileCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevokeCertificateProfileCertificateRequest,
-  output: RevokeCertificateProfileCertificateResponse,
+  input: __S(35, __c4, 3) as any as S.Schema<RevokeCertificateProfileCertificateRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<RevokeCertificateProfileCertificateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -861,8 +649,8 @@ export const UpdateCodeSigningAccount: API.OperationMethod<
   UpdateCodeSigningAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCodeSigningAccountRequest,
-  output: UpdateCodeSigningAccountResponse,
+  input: __S(38, __c4, 6) as any as S.Schema<UpdateCodeSigningAccountRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<UpdateCodeSigningAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -892,7 +680,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nameAvailable: S.optional(S.Boolean),
-          reason: S.optional(NameUnavailabilityReason),
+          reason: S.optional(S.String),
           message: S.optional(S.String),
         }),
       ).annotate({
@@ -901,7 +689,7 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          profileType: ProfileType,
+          profileType: S.String,
           includeStreetAddress: S.optional(S.Boolean),
           includeCity: S.optional(S.Boolean),
           includeState: S.optional(S.Boolean),
@@ -919,7 +707,7 @@ function __c0(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
-          properties: S.optional(CertificateProfilePropertiesInput),
+          properties: S.optional(__S(2, __c0, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -935,10 +723,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(SystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -949,7 +737,7 @@ function __c0(j: number): any {
           effectiveAt: S.optional(S.String),
           reason: S.optional(S.String),
           remarks: S.optional(S.String),
-          status: S.optional(RevocationStatus),
+          status: S.optional(S.String),
           failureReason: S.optional(S.String),
         }),
       ).annotate({ identifier: "Revocation" });
@@ -962,12 +750,12 @@ function __c0(j: number): any {
           thumbprint: S.optional(S.String),
           createdDate: S.optional(S.String),
           expiryDate: S.optional(S.String),
-          status: S.optional(CertificateStatus),
-          revocation: S.optional(Revocation),
+          status: S.optional(S.String),
+          revocation: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "Certificate" });
     case 7:
-      return S.Array(Certificate);
+      return S.Array(__S(6, __c0, 6));
   }
 }
 function __c1(j: number): any {
@@ -975,16 +763,16 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          profileType: ProfileType,
+          profileType: S.String,
           includeStreetAddress: S.optional(S.Boolean),
           includeCity: S.optional(S.Boolean),
           includeState: S.optional(S.Boolean),
           includeCountry: S.optional(S.Boolean),
           includePostalCode: S.optional(S.Boolean),
           identityValidationId: S.String,
-          provisioningState: S.optional(ProvisioningState),
-          status: S.optional(CertificateProfileStatus),
-          certificates: S.optional(CertificateProfilePropertiesCertificatesList),
+          provisioningState: S.optional(S.String),
+          status: S.optional(S.String),
+          certificates: S.optional(__S(7, __c0, 7)),
         }),
       ).annotate({
         identifier: "CertificateProfileProperties",
@@ -995,8 +783,8 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(CertificateProfileProperties),
+          systemData: S.optional(__S(4, __c0, 4)),
+          properties: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({
         identifier: "CreateCertificateProfileResponse",
@@ -1006,13 +794,13 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          name: SkuName,
+          name: S.String,
         }),
       ).annotate({ identifier: "AccountSku" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          sku: S.optional(AccountSku),
+          sku: S.optional(__S(11, __c1, 3)),
         }),
       ).annotate({
         identifier: "CodeSigningAccountPropertiesInput",
@@ -1023,9 +811,9 @@ function __c1(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          tags: S.optional(CreateCodeSigningAccountRequestTagsMap),
+          tags: S.optional(__S(10, __c1, 2)),
           location: S.String,
-          properties: S.optional(CodeSigningAccountPropertiesInput),
+          properties: S.optional(__S(12, __c1, 4)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1041,8 +829,8 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountUri: S.optional(S.String),
-          sku: S.optional(AccountSku),
-          provisioningState: S.optional(ProvisioningState),
+          sku: S.optional(__S(11, __c1, 3)),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CodeSigningAccountProperties",
@@ -1053,10 +841,10 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(CreateCodeSigningAccountResponseTagsMap),
+          systemData: S.optional(__S(4, __c0, 4)),
+          tags: S.optional(__S(10, __c1, 2)),
           location: S.String,
-          properties: S.optional(CodeSigningAccountProperties),
+          properties: S.optional(__S(14, __c1, 6)),
         }),
       ).annotate({
         identifier: "CreateCodeSigningAccountResponse",
@@ -1162,12 +950,12 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(CertificateProfileProperties),
+          systemData: S.optional(__S(4, __c0, 4)),
+          properties: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({ identifier: "CertificateProfile" });
     case 7:
-      return S.Array(CertificateProfile);
+      return S.Array(__S(22, __c2, 6));
   }
 }
 function __c3(j: number): any {
@@ -1175,7 +963,7 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: CertificateProfileListResultValueList,
+          value: __S(23, __c2, 7),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -1203,18 +991,18 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(CodeSigningAccountTagsMap),
+          systemData: S.optional(__S(4, __c0, 4)),
+          tags: S.optional(__S(10, __c1, 2)),
           location: S.String,
-          properties: S.optional(CodeSigningAccountProperties),
+          properties: S.optional(__S(14, __c1, 6)),
         }),
       ).annotate({ identifier: "CodeSigningAccount" });
     case 3:
-      return S.Array(CodeSigningAccount);
+      return S.Array(__S(26, __c3, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: CodeSigningAccountListResultValueList,
+          value: __S(27, __c3, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -1264,17 +1052,17 @@ function __c4(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(OperationDisplay),
-          origin: S.optional(OperationOrigin),
-          actionType: S.optional(OperationActionType),
+          display: S.optional(__S(31, __c3, 7)),
+          origin: S.optional(S.String),
+          actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 1:
-      return S.Array(Operation);
+      return S.Array(__S(32, __c4, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ListOperationsResponseValueList),
+          value: S.optional(__S(33, __c4, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -1304,13 +1092,13 @@ function __c4(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(SkuName),
+          name: S.optional(S.String),
         }),
       ).annotate({ identifier: "AccountSkuPatch" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          sku: S.optional(AccountSkuPatch),
+          sku: S.optional(__S(36, __c4, 4)),
         }),
       ).annotate({
         identifier: "CodeSigningAccountPatchProperties",
@@ -1321,8 +1109,8 @@ function __c4(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateCodeSigningAccountRequestTagsMap),
-          properties: S.optional(CodeSigningAccountPatchProperties),
+          tags: S.optional(__S(10, __c1, 2)),
+          properties: S.optional(__S(37, __c4, 5)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1335,4 +1123,9 @@ function __c4(j: number): any {
         identifier: "UpdateCodeSigningAccountRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

@@ -7,6 +7,8 @@ import { UnknownStackitError } from "../errors.ts";
 import { StackitProtocol, type StackitOpError, type StackitOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { StackitOpError, StackitOpContext };
 
@@ -56,17 +58,7 @@ export interface AddNetworkToServerRequest {
   /** The identifier (ID) of a STACKIT Network. */
   networkId: string;
 }
-const AddNetworkToServerRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AddNetworkToServerRequest>;
-
 export interface AddNetworkToServerResponse {}
-const AddNetworkToServerResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AddNetworkToServerResponse>;
-
 export interface AddNicToServerRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -77,15 +69,7 @@ export interface AddNicToServerRequest {
   /** The identifier (ID) of a network interface. */
   nicId: string;
 }
-const AddNicToServerRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AddNicToServerRequest>;
-
 export interface AddNicToServerResponse {}
-const AddNicToServerResponse =
-  AddNetworkToServerResponse as any as S.Schema<AddNicToServerResponse>;
-
 export interface AddPublicIpToServerRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -96,15 +80,7 @@ export interface AddPublicIpToServerRequest {
   /** The identifier (ID) of a Public IP. */
   publicIpId: string;
 }
-const AddPublicIpToServerRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<AddPublicIpToServerRequest>;
-
 export interface AddPublicIpToServerResponse {}
-const AddPublicIpToServerResponse =
-  AddNetworkToServerResponse as any as S.Schema<AddPublicIpToServerResponse>;
-
 export type DestinationCIDRv4Type = "cidrv4";
 /** IPv4 Classless Inter-Domain Routing (CIDR) Object. */
 export interface DestinationCIDRv4 {
@@ -120,8 +96,6 @@ export interface DestinationCIDRv6 {
   value: string;
 }
 export type RouteInputDestination = DestinationCIDRv4 | DestinationCIDRv6;
-const RouteInputDestination = /*@__PURE__*/ S.Unknown as any as S.Schema<RouteInputDestination>;
-
 export type NexthopIPv4Type = "ipv4";
 /** Object that represents an IPv4 address. */
 export interface NexthopIPv4 {
@@ -147,20 +121,14 @@ export interface NexthopBlackhole {
   type: NexthopBlackholeType;
 }
 export type RouteInputNexthop = NexthopIPv4 | NexthopIPv6 | NexthopInternet | NexthopBlackhole;
-const RouteInputNexthop = /*@__PURE__*/ S.Unknown as any as S.Schema<RouteInputNexthop>;
-
 /** Object represents a network route. */
 export interface RouteInput {
   destination: RouteInputDestination;
   labels?: unknown;
   nexthop: RouteInputNexthop;
 }
-const RouteInput = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<RouteInput>;
-
 /** A list of routes. */
 export type RouteListInput = Array<RouteInput>;
-const RouteListInput = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<RouteListInput>;
-
 export interface AddRoutesToRoutingTableRequest {
   /** The identifier (ID) of a STACKIT Organization. */
   organizationId: string;
@@ -172,17 +140,8 @@ export interface AddRoutesToRoutingTableRequest {
   routingTableId: string;
   items: RouteListInput;
 }
-const AddRoutesToRoutingTableRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<AddRoutesToRoutingTableRequest>;
-
 export type RouteDestination = DestinationCIDRv4 | DestinationCIDRv6;
-const RouteDestination = /*@__PURE__*/ S.Unknown as any as S.Schema<RouteDestination>;
-
 export type RouteNexthop = NexthopIPv4 | NexthopIPv6 | NexthopInternet | NexthopBlackhole;
-const RouteNexthop = /*@__PURE__*/ S.Unknown as any as S.Schema<RouteNexthop>;
-
 /** Object represents a network route. */
 export interface Route {
   createdAt?: string;
@@ -192,18 +151,12 @@ export interface Route {
   nexthop: RouteNexthop;
   updatedAt?: string;
 }
-const Route = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Route>;
-
 /** A list of routes. */
 export type RouteList = Array<Route>;
-const RouteList = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<RouteList>;
-
 /** Route list response. */
 export interface RouteListResponse {
   items: RouteList;
 }
-const RouteListResponse = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<RouteListResponse>;
-
 export interface AddRoutingTableToAreaRequest {
   /** The identifier (ID) of a STACKIT Organization. */
   organizationId: string;
@@ -217,11 +170,6 @@ export interface AddRoutingTableToAreaRequest {
   name: string;
   systemRoutes?: boolean;
 }
-const AddRoutingTableToAreaRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<AddRoutingTableToAreaRequest>;
-
 /** An object representing a routing table. Filterable Fields: `dynamicRoutes`, `systemRoutes`. */
 export interface RoutingTable {
   createdAt?: string;
@@ -235,8 +183,6 @@ export interface RoutingTable {
   systemRoutes?: boolean;
   updatedAt?: string;
 }
-const RoutingTable = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<RoutingTable>;
-
 export interface AddSecurityGroupToServerRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -247,17 +193,7 @@ export interface AddSecurityGroupToServerRequest {
   /** The identifier (ID) of a STACKIT Security Group. */
   securityGroupId: string;
 }
-const AddSecurityGroupToServerRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<AddSecurityGroupToServerRequest>;
-
 export interface AddSecurityGroupToServerResponse {}
-const AddSecurityGroupToServerResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<AddSecurityGroupToServerResponse>;
-
 export interface AddServiceAccountToServerRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -268,27 +204,12 @@ export interface AddServiceAccountToServerRequest {
   /** The e-mail address of a service account. */
   serviceAccountMail: string;
 }
-const AddServiceAccountToServerRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<AddServiceAccountToServerRequest>;
-
 /** A list of service account mails. */
 export type ServiceAccountMailList = Array<string>;
-const ServiceAccountMailList = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ServiceAccountMailList>;
-
 /** Service account mail list response. */
 export interface ServiceAccountMailListResponse {
   items: ServiceAccountMailList;
 }
-const ServiceAccountMailListResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ServiceAccountMailListResponse>;
-
 export interface AddVolumeToServerRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -300,19 +221,12 @@ export interface AddVolumeToServerRequest {
   volumeId: string;
   deleteOnTermination?: boolean;
 }
-const AddVolumeToServerRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<AddVolumeToServerRequest>;
-
 /** Object that represents a Volume attachment to a server. */
 export interface VolumeAttachment {
   deleteOnTermination?: boolean;
   serverId?: string;
   volumeId?: string;
 }
-const VolumeAttachment = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<VolumeAttachment>;
-
 export interface CreateAffinityGroupRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -321,16 +235,8 @@ export interface CreateAffinityGroupRequest {
   name: string;
   policy: string;
 }
-const CreateAffinityGroupRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<CreateAffinityGroupRequest>;
-
 /** The servers that are part of the affinity group. */
 export type AffinityGroupMembersList = Array<string>;
-const AffinityGroupMembersList =
-  ServiceAccountMailList as any as S.Schema<AffinityGroupMembersList>;
-
 /** Definition of an affinity group. */
 export interface AffinityGroup {
   id?: string;
@@ -339,15 +245,11 @@ export interface AffinityGroup {
   name: string;
   policy: string;
 }
-const AffinityGroup = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<AffinityGroup>;
-
 /** The source object of a backup. */
 export interface BackupSource {
   id: string;
   type: string;
 }
-const BackupSource = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<BackupSource>;
-
 export interface CreateBackupRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -358,8 +260,6 @@ export interface CreateBackupRequest {
   name?: string;
   source: BackupSource;
 }
-const CreateBackupRequest = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<CreateBackupRequest>;
-
 /** Object that represents a backup. */
 export interface Backup {
   availabilityZone?: string;
@@ -375,8 +275,6 @@ export interface Backup {
   updatedAt?: string;
   volumeId?: string;
 }
-const Backup = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<Backup>;
-
 /** Support status and default provioning setting for the STACKIT server agent. */
 export interface ImageAgent {
   /** Default provioning of the STACKIT server agent for new servers. The default for new images is false. Can only be enabled when supported is also true. */
@@ -384,8 +282,6 @@ export interface ImageAgent {
   /** Indicates the STACKIT server agent for the image. The default for new images is false. */
   supported?: boolean;
 }
-const ImageAgent = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ImageAgent>;
-
 /** Properties to set hardware and scheduling settings for an Image. */
 export interface ImageConfig {
   /** Represents CPU architecture. The default for new images is x86. Possible values: `arm64`, `x86`. */
@@ -417,8 +313,6 @@ export interface ImageConfig {
   /** Enables the use of VirtIO SCSI to provide block device access. By default servers use VirtIO Block. */
   virtioScsi?: boolean;
 }
-const ImageConfig = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<ImageConfig>;
-
 export interface CreateImageRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -433,19 +327,13 @@ export interface CreateImageRequest {
   name: string;
   protected?: boolean;
 }
-const CreateImageRequest = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<CreateImageRequest>;
-
 /** Image creation response. */
 export interface ImageCreateResponse {
   id: string;
   uploadUrl: string;
 }
-const ImageCreateResponse = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<ImageCreateResponse>;
-
 /** A list containing DNS Servers/Nameservers for IPv4. */
 export type NameserversIPv4 = Array<string>;
-const NameserversIPv4 = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<NameserversIPv4>;
-
 /** The create request for an IPv4 network with a specified prefix. */
 export interface CreateNetworkIPv4WithPrefix {
   gateway?: string | null;
@@ -461,8 +349,6 @@ export interface CreateNetworkIPv4WithPrefixLength {
 }
 /** The create request for an IPv4 network. */
 export type CreateNetworkIPv4 = CreateNetworkIPv4WithPrefix | CreateNetworkIPv4WithPrefixLength;
-const CreateNetworkIPv4 = /*@__PURE__*/ S.Unknown as any as S.Schema<CreateNetworkIPv4>;
-
 export interface CreateIsolatedNetworkRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -473,14 +359,7 @@ export interface CreateIsolatedNetworkRequest {
   labels?: unknown;
   name: string;
 }
-const CreateIsolatedNetworkRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<CreateIsolatedNetworkRequest>;
-
 export type NetworkIPv4PrefixesList = Array<string>;
-const NetworkIPv4PrefixesList = ServiceAccountMailList as any as S.Schema<NetworkIPv4PrefixesList>;
-
 /** Object that represents the IPv4 part of a network. */
 export interface NetworkIPv4 {
   gateway?: string | null;
@@ -489,15 +368,9 @@ export interface NetworkIPv4 {
   publicIp?: string;
   vpcNetworkRangeId?: string;
 }
-const NetworkIPv4 = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<NetworkIPv4>;
-
 /** A list containing DNS Servers/Nameservers for IPv6. */
 export type NameserversIPv6 = Array<string>;
-const NameserversIPv6 = NameserversIPv4 as any as S.Schema<NameserversIPv6>;
-
 export type NetworkIPv6PrefixesList = Array<string>;
-const NetworkIPv6PrefixesList = ServiceAccountMailList as any as S.Schema<NetworkIPv6PrefixesList>;
-
 /** Object that represents the IPv6 part of a network. */
 export interface NetworkIPv6 {
   gateway?: string | null;
@@ -505,8 +378,6 @@ export interface NetworkIPv6 {
   prefixes: NetworkIPv6PrefixesList;
   vpcNetworkRangeId?: string;
 }
-const NetworkIPv6 = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<NetworkIPv6>;
-
 /** Object that represents a network. If no routing table is specified, the default routing table is used. */
 export interface Network {
   createdAt?: string;
@@ -524,15 +395,11 @@ export interface Network {
   /** The identifier (ID) of a STACKIT VPC. */
   vpcId?: string;
 }
-const Network = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<Network>;
-
 export interface CreateKeyPairRequest {
   labels?: unknown;
   name?: string;
   publicKey: string;
 }
-const CreateKeyPairRequest = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<CreateKeyPairRequest>;
-
 /** Object that represents the public key of an SSH keypair and its name. */
 export interface Keypair {
   createdAt?: string;
@@ -542,8 +409,6 @@ export interface Keypair {
   publicKey: string;
   updatedAt?: string;
 }
-const Keypair = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<Keypair>;
-
 /** The create request for an IPv6 network with a specified prefix. */
 export interface CreateNetworkIPv6WithPrefix {
   gateway?: string | null;
@@ -559,8 +424,6 @@ export interface CreateNetworkIPv6WithPrefixLength {
 }
 /** The create request for an IPv6 network. */
 export type CreateNetworkIPv6 = CreateNetworkIPv6WithPrefix | CreateNetworkIPv6WithPrefixLength;
-const CreateNetworkIPv6 = /*@__PURE__*/ S.Unknown as any as S.Schema<CreateNetworkIPv6>;
-
 export interface CreateNetworkRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -577,19 +440,12 @@ export interface CreateNetworkRequest {
   /** The identifier (ID) of a STACKIT VPC. */
   vpcId?: string;
 }
-const CreateNetworkRequest = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<CreateNetworkRequest>;
-
 export interface CreateNetworkAreaRequest {
   /** The identifier (ID) of a STACKIT Organization. */
   organizationId: string;
   labels?: unknown;
   name: string;
 }
-const CreateNetworkAreaRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<CreateNetworkAreaRequest>;
-
 /** Object that represents a network area. */
 export interface NetworkArea {
   createdAt?: string;
@@ -599,21 +455,12 @@ export interface NetworkArea {
   projectCount?: number;
   updatedAt?: string;
 }
-const NetworkArea = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<NetworkArea>;
-
 /** Object that represents a network range of a network area. */
 export interface NetworkRangeInput {
   prefix: string;
 }
-const NetworkRangeInput = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<NetworkRangeInput>;
-
 /** A list of network area network ranges. */
 export type NetworkRangeListInput = Array<NetworkRangeInput>;
-const NetworkRangeListInput = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<NetworkRangeListInput>;
-
 export interface CreateNetworkAreaRangeRequest {
   /** The identifier (ID) of a STACKIT Organization. */
   organizationId: string;
@@ -623,11 +470,6 @@ export interface CreateNetworkAreaRangeRequest {
   region: string;
   ipv4?: NetworkRangeListInput;
 }
-const CreateNetworkAreaRangeRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<CreateNetworkAreaRangeRequest>;
-
 /** Object that represents a network range of a network area. */
 export interface NetworkRange {
   createdAt?: string;
@@ -635,25 +477,13 @@ export interface NetworkRange {
   prefix: string;
   updatedAt?: string;
 }
-const NetworkRange = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<NetworkRange>;
-
 /** A list of network area network ranges. */
 export type NetworkRangeList = Array<NetworkRange>;
-const NetworkRangeList = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<NetworkRangeList>;
-
 /** Network Range list response of a network area. */
 export interface NetworkRangeListResponse {
   items: NetworkRangeList;
 }
-const NetworkRangeListResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<NetworkRangeListResponse>;
-
 export type RegionalAreaIPv4InputDefaultNameserversList = Array<string>;
-const RegionalAreaIPv4InputDefaultNameserversList =
-  ServiceAccountMailList as any as S.Schema<RegionalAreaIPv4InputDefaultNameserversList>;
-
 /** The regional IPv4 config of a network area. */
 export interface RegionalAreaIPv4Input {
   defaultNameservers?: RegionalAreaIPv4InputDefaultNameserversList;
@@ -663,11 +493,6 @@ export interface RegionalAreaIPv4Input {
   networkRanges: NetworkRangeListInput;
   transferNetwork: string;
 }
-const RegionalAreaIPv4Input = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<RegionalAreaIPv4Input>;
-
 export interface CreateNetworkAreaRegionRequest {
   /** The identifier (ID) of a STACKIT Organization. */
   organizationId: string;
@@ -677,15 +502,7 @@ export interface CreateNetworkAreaRegionRequest {
   region: string;
   ipv4?: RegionalAreaIPv4Input;
 }
-const CreateNetworkAreaRegionRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<CreateNetworkAreaRegionRequest>;
-
 export type RegionalAreaIPv4DefaultNameserversList = Array<string>;
-const RegionalAreaIPv4DefaultNameserversList =
-  ServiceAccountMailList as any as S.Schema<RegionalAreaIPv4DefaultNameserversList>;
-
 /** The regional IPv4 config of a network area. */
 export interface RegionalAreaIPv4 {
   defaultNameservers?: RegionalAreaIPv4DefaultNameserversList;
@@ -695,15 +512,11 @@ export interface RegionalAreaIPv4 {
   networkRanges: NetworkRangeList;
   transferNetwork: string;
 }
-const RegionalAreaIPv4 = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<RegionalAreaIPv4>;
-
 /** The basic properties of a regional network area. */
 export interface RegionalArea {
   ipv4?: RegionalAreaIPv4;
   status?: string;
 }
-const RegionalArea = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<RegionalArea>;
-
 export interface CreateNetworkAreaRouteRequest {
   /** The identifier (ID) of a STACKIT Organization. */
   organizationId: string;
@@ -713,19 +526,10 @@ export interface CreateNetworkAreaRouteRequest {
   region: string;
   items: RouteListInput;
 }
-const CreateNetworkAreaRouteRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<CreateNetworkAreaRouteRequest>;
-
 /** A list of IPs or CIDR notations. */
 export type AllowedAddresses = Array<string>;
-const AllowedAddresses = ServiceAccountMailList as any as S.Schema<AllowedAddresses>;
-
 /** A list of UUIDs. */
 export type UUIDList = Array<string>;
-const UUIDList = NameserversIPv4 as any as S.Schema<UUIDList>;
-
 export interface CreateNicRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -742,8 +546,6 @@ export interface CreateNicRequest {
   nicSecurity?: boolean;
   securityGroups?: UUIDList;
 }
-const CreateNicRequest = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<CreateNicRequest>;
-
 /** Object that represents a network interface. */
 export interface NIC {
   allowedAddresses?: AllowedAddresses;
@@ -763,8 +565,6 @@ export interface NIC {
   /** Possible values: `server`, `metadata`, `gateway`, `none`. */
   type?: string;
 }
-const NIC = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<NIC>;
-
 export interface CreatePublicIPRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -774,11 +574,6 @@ export interface CreatePublicIPRequest {
   /** Associate the public IP with a network interface (ID). */
   networkInterface?: string | null;
 }
-const CreatePublicIPRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<CreatePublicIPRequest>;
-
 /** Object that represents a public IP. */
 export interface PublicIp {
   id?: string;
@@ -787,8 +582,6 @@ export interface PublicIp {
   /** Associate the public IP with a network interface (ID). */
   networkInterface?: string | null;
 }
-const PublicIp = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<PublicIp>;
-
 export interface CreateSecurityGroupRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -799,11 +592,6 @@ export interface CreateSecurityGroupRequest {
   name: string;
   stateful?: boolean;
 }
-const CreateSecurityGroupRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<CreateSecurityGroupRequest>;
-
 /** Object that represents ICMP parameters. */
 export interface ICMPParameters {
   /** ICMP code. Can be set if the protocol is ICMP. */
@@ -811,8 +599,6 @@ export interface ICMPParameters {
   /** ICMP type. Can be set if the protocol is ICMP. */
   type: number;
 }
-const ICMPParameters = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<ICMPParameters>;
-
 /** Object that represents a range of ports (this will be omitted if it covers the full default range 0/1-65535). */
 export interface PortRange {
   /** The maximum port number. Should be greater or equal to the minimum. */
@@ -820,15 +606,11 @@ export interface PortRange {
   /** The minimum port number. Should be less or equal to the maximum. */
   min: number;
 }
-const PortRange = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<PortRange>;
-
 /** The schema for a protocol of a security group rule. */
 export interface Protocol {
   name?: string;
   number?: number;
 }
-const Protocol = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<Protocol>;
-
 /** Object that represents a security group rule. */
 export interface SecurityGroupRule {
   createdAt?: string;
@@ -848,15 +630,8 @@ export interface SecurityGroupRule {
   updatedAt?: string;
   protocol?: Protocol;
 }
-const SecurityGroupRule = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<SecurityGroupRule>;
-
 /** A list containing security group rule objects. */
 export type SecurityGroupRuleList = Array<SecurityGroupRule>;
-const SecurityGroupRuleList = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<SecurityGroupRuleList>;
-
 /** Object that represents a security group. */
 export interface SecurityGroup {
   createdAt?: string;
@@ -868,12 +643,8 @@ export interface SecurityGroup {
   stateful?: boolean;
   updatedAt?: string;
 }
-const SecurityGroup = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<SecurityGroup>;
-
 /** The schema for a protocol when creating a security group rule. */
 export type CreateProtocol = number | string;
-const CreateProtocol = /*@__PURE__*/ S.Unknown as any as S.Schema<CreateProtocol>;
-
 export interface CreateSecurityGroupRuleRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -894,11 +665,6 @@ export interface CreateSecurityGroupRuleRequest {
   remoteSecurityGroupId?: string;
   protocol?: CreateProtocol;
 }
-const CreateSecurityGroupRuleRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<CreateSecurityGroupRuleRequest>;
-
 export interface CreateSecurityGroupRuleResponse {
   createdAt?: string;
   description?: string;
@@ -917,18 +683,11 @@ export interface CreateSecurityGroupRuleResponse {
   updatedAt?: string;
   protocol?: Protocol;
 }
-const CreateSecurityGroupRuleResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<CreateSecurityGroupRuleResponse>;
-
 /** STACKIT server agent options for a server. */
 export interface ServerAgent {
   /** Configure the STACKIT server agent provisioning during the first boot of the server. Only works when booting from an images that supports the STACKIT server agent. When `false` the agent IS NOT installed. When `true` the agent IS installed. When its not set the result depend on the used image and its default provisioning setting. */
   provisioned?: boolean;
 }
-const ServerAgent = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<ServerAgent>;
-
 /** The source object of a boot volume. */
 export type BootVolumeSource = BackupSource;
 /** The boot device for the server. */
@@ -938,8 +697,6 @@ export interface BootVolumeInput {
   size?: number;
   source?: BackupSource;
 }
-const BootVolumeInput = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<BootVolumeInput>;
-
 /** The initial networking setup for the server creation with a network. */
 export interface CreateServerNetworking {
   networkId?: string;
@@ -950,13 +707,8 @@ export interface CreateServerNetworkingWithNics {
 }
 /** The initial networking setup for the server creation. A network, a nic or nothing can be given. */
 export type CreateServerRequestNetworking = CreateServerNetworking | CreateServerNetworkingWithNics;
-const CreateServerRequestNetworking =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<CreateServerRequestNetworking>;
-
 /** A list of General Objects. */
 export type GenericNameList = Array<string>;
-const GenericNameList = NameserversIPv4 as any as S.Schema<GenericNameList>;
-
 export interface CreateServerRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -988,15 +740,11 @@ export interface CreateServerRequest {
   /** The list of volumes attached to the server. */
   volumes?: UUIDList;
 }
-const CreateServerRequest = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<CreateServerRequest>;
-
 /** The boot device for the server. */
 export interface BootVolumeOutput {
   deleteOnTermination?: boolean;
   id?: string;
 }
-const BootVolumeOutput = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<BootVolumeOutput>;
-
 /** Object that represents the information about the next planned server maintenance window. */
 export interface ServerMaintenance {
   details?: string;
@@ -1007,12 +755,8 @@ export interface ServerMaintenance {
   /** Possible values: `PLANNED`, `ONGOING`. */
   status: string;
 }
-const ServerMaintenance = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<ServerMaintenance>;
-
 /** The initial networking setup for the server creation. A network, a nic or nothing can be given. */
 export type ServerOutputNetworking = CreateServerNetworking | CreateServerNetworkingWithNics;
-const ServerOutputNetworking = /*@__PURE__*/ S.Unknown as any as S.Schema<ServerOutputNetworking>;
-
 /** Describes the object that matches servers to its networks. */
 export interface ServerNetwork {
   allowedAddresses?: AllowedAddresses;
@@ -1027,12 +771,8 @@ export interface ServerNetwork {
   publicIp?: string;
   securityGroups?: UUIDList;
 }
-const ServerNetwork = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<ServerNetwork>;
-
 /** A list of networks attached to a server. */
 export type ServerNICList = Array<ServerNetwork>;
-const ServerNICList = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<ServerNICList>;
-
 /** Representation of a single server object. */
 export interface ServerOutput {
   /** The affinity group the server is assigned to. */
@@ -1069,8 +809,6 @@ export interface ServerOutput {
   /** The list of volumes attached to the server. */
   volumes?: UUIDList;
 }
-const ServerOutput = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<ServerOutput>;
-
 export interface CreateSnapshotRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -1081,11 +819,6 @@ export interface CreateSnapshotRequest {
   name?: string;
   volumeId: string;
 }
-const CreateSnapshotRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<CreateSnapshotRequest>;
-
 /** Object that represents a snapshot. */
 export interface Snapshot {
   availabilityZone?: string;
@@ -1099,8 +832,6 @@ export interface Snapshot {
   updatedAt?: string;
   volumeId: string;
 }
-const Snapshot = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<Snapshot>;
-
 /** Parameter to connect to a key-encryption-key within the STACKIT-KMS to create encrypted volumes. If no key_payload is set, a random passphrase is generated, which will be encrypted against the STACKIT-KMS. These parameter never leave the backend again. So these parameters are not in the responses. */
 export interface VolumeEncryptionParameter {
   /** UUID of the Key within the STACKIT-KMS to use for the encryption. */
@@ -1116,11 +847,6 @@ export interface VolumeEncryptionParameter {
   /** Service-Account linked to the Key within the STACKIT-KMS. */
   serviceAccount: string;
 }
-const VolumeEncryptionParameter = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<VolumeEncryptionParameter>;
-
 /** The source object of a volume. */
 export type VolumeSource = BackupSource;
 export interface CreateVolumeRequest {
@@ -1138,8 +864,6 @@ export interface CreateVolumeRequest {
   size?: number;
   source?: BackupSource;
 }
-const CreateVolumeRequest = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<CreateVolumeRequest>;
-
 /** Object that represents a volume and its parameters. Volumes sized up to 16000GB are supported. */
 export interface Volume {
   availabilityZone: string;
@@ -1159,8 +883,6 @@ export interface Volume {
   status?: string;
   updatedAt?: string;
 }
-const Volume = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<Volume>;
-
 export interface DeallocateServerRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -1169,15 +891,7 @@ export interface DeallocateServerRequest {
   /** The identifier (ID) of a STACKIT Server. */
   serverId: string;
 }
-const DeallocateServerRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<DeallocateServerRequest>;
-
 export interface DeallocateServerResponse {}
-const DeallocateServerResponse =
-  AddNetworkToServerResponse as any as S.Schema<DeallocateServerResponse>;
-
 export interface DeleteAffinityGroupRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -1186,15 +900,7 @@ export interface DeleteAffinityGroupRequest {
   /** The identifier (ID) of a STACKIT Affinity Group. */
   affinityGroupId: string;
 }
-const DeleteAffinityGroupRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<DeleteAffinityGroupRequest>;
-
 export interface DeleteAffinityGroupResponse {}
-const DeleteAffinityGroupResponse =
-  AddNetworkToServerResponse as any as S.Schema<DeleteAffinityGroupResponse>;
-
 export interface DeleteBackupRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -1205,11 +911,7 @@ export interface DeleteBackupRequest {
   /** Force action. */
   force?: boolean;
 }
-const DeleteBackupRequest = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<DeleteBackupRequest>;
-
 export interface DeleteBackupResponse {}
-const DeleteBackupResponse = AddNetworkToServerResponse as any as S.Schema<DeleteBackupResponse>;
-
 export interface DeleteImageRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -1218,11 +920,7 @@ export interface DeleteImageRequest {
   /** The identifier (ID) of a STACKIT Image. */
   imageId: string;
 }
-const DeleteImageRequest = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<DeleteImageRequest>;
-
 export interface DeleteImageResponse {}
-const DeleteImageResponse = AddNetworkToServerResponse as any as S.Schema<DeleteImageResponse>;
-
 export interface DeleteImageShareRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -1231,15 +929,7 @@ export interface DeleteImageShareRequest {
   /** The identifier (ID) of a STACKIT Image. */
   imageId: string;
 }
-const DeleteImageShareRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<DeleteImageShareRequest>;
-
 export interface DeleteImageShareResponse {}
-const DeleteImageShareResponse =
-  AddNetworkToServerResponse as any as S.Schema<DeleteImageShareResponse>;
-
 export interface DeleteImageShareConsumerRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -1250,27 +940,12 @@ export interface DeleteImageShareConsumerRequest {
   /** The identifier (ID) of a STACKIT Project that consumes an image share. */
   consumerProjectId: string;
 }
-const DeleteImageShareConsumerRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<DeleteImageShareConsumerRequest>;
-
 export interface DeleteImageShareConsumerResponse {}
-const DeleteImageShareConsumerResponse =
-  AddSecurityGroupToServerResponse as any as S.Schema<DeleteImageShareConsumerResponse>;
-
 export interface DeleteKeyPairRequest {
   /** The name of an SSH keypair. */
   keypairName: string;
 }
-const DeleteKeyPairRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<DeleteKeyPairRequest>;
-
 export interface DeleteKeyPairResponse {}
-const DeleteKeyPairResponse = AddNetworkToServerResponse as any as S.Schema<DeleteKeyPairResponse>;
-
 export interface DeleteNetworkRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -1279,29 +954,14 @@ export interface DeleteNetworkRequest {
   /** The identifier (ID) of a STACKIT Network. */
   networkId: string;
 }
-const DeleteNetworkRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<DeleteNetworkRequest>;
-
 export interface DeleteNetworkResponse {}
-const DeleteNetworkResponse = AddNetworkToServerResponse as any as S.Schema<DeleteNetworkResponse>;
-
 export interface DeleteNetworkAreaRequest {
   /** The identifier (ID) of a STACKIT Organization. */
   organizationId: string;
   /** The identifier (ID) of a STACKIT Network Area. */
   areaId: string;
 }
-const DeleteNetworkAreaRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<DeleteNetworkAreaRequest>;
-
 export interface DeleteNetworkAreaResponse {}
-const DeleteNetworkAreaResponse =
-  AddNetworkToServerResponse as any as S.Schema<DeleteNetworkAreaResponse>;
-
 export interface DeleteNetworkAreaRangeRequest {
   /** The identifier (ID) of a STACKIT Organization. */
   organizationId: string;
@@ -1312,15 +972,7 @@ export interface DeleteNetworkAreaRangeRequest {
   /** The identifier (ID) of a STACKIT Network Range. */
   networkRangeId: string;
 }
-const DeleteNetworkAreaRangeRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<DeleteNetworkAreaRangeRequest>;
-
 export interface DeleteNetworkAreaRangeResponse {}
-const DeleteNetworkAreaRangeResponse =
-  AddNetworkToServerResponse as any as S.Schema<DeleteNetworkAreaRangeResponse>;
-
 export interface DeleteNetworkAreaRegionRequest {
   /** The identifier (ID) of a STACKIT Organization. */
   organizationId: string;
@@ -1329,17 +981,7 @@ export interface DeleteNetworkAreaRegionRequest {
   /** The STACKIT Region of the resources. */
   region: string;
 }
-const DeleteNetworkAreaRegionRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<DeleteNetworkAreaRegionRequest>;
-
 export interface DeleteNetworkAreaRegionResponse {}
-const DeleteNetworkAreaRegionResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<DeleteNetworkAreaRegionResponse>;
-
 export interface DeleteNetworkAreaRouteRequest {
   /** The identifier (ID) of a STACKIT Organization. */
   organizationId: string;
@@ -1350,15 +992,7 @@ export interface DeleteNetworkAreaRouteRequest {
   /** The identifier (ID) of a STACKIT Route. */
   routeId: string;
 }
-const DeleteNetworkAreaRouteRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<DeleteNetworkAreaRouteRequest>;
-
 export interface DeleteNetworkAreaRouteResponse {}
-const DeleteNetworkAreaRouteResponse =
-  AddNetworkToServerResponse as any as S.Schema<DeleteNetworkAreaRouteResponse>;
-
 export interface DeleteNicRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -1369,11 +1003,7 @@ export interface DeleteNicRequest {
   /** The identifier (ID) of a network interface. */
   nicId: string;
 }
-const DeleteNicRequest = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<DeleteNicRequest>;
-
 export interface DeleteNicResponse {}
-const DeleteNicResponse = AddNetworkToServerResponse as any as S.Schema<DeleteNicResponse>;
-
 export interface DeletePublicIPRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -1382,15 +1012,7 @@ export interface DeletePublicIPRequest {
   /** The identifier (ID) of a Public IP. */
   publicIpId: string;
 }
-const DeletePublicIPRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<DeletePublicIPRequest>;
-
 export interface DeletePublicIPResponse {}
-const DeletePublicIPResponse =
-  AddNetworkToServerResponse as any as S.Schema<DeletePublicIPResponse>;
-
 export interface DeleteRouteFromRoutingTableRequest {
   /** The identifier (ID) of a STACKIT Organization. */
   organizationId: string;
@@ -1403,15 +1025,7 @@ export interface DeleteRouteFromRoutingTableRequest {
   /** The identifier (ID) of a STACKIT Route. */
   routeId: string;
 }
-const DeleteRouteFromRoutingTableRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<DeleteRouteFromRoutingTableRequest>;
-
 export interface DeleteRouteFromRoutingTableResponse {}
-const DeleteRouteFromRoutingTableResponse =
-  AddSecurityGroupToServerResponse as any as S.Schema<DeleteRouteFromRoutingTableResponse>;
-
 export interface DeleteRoutingTableFromAreaRequest {
   /** The identifier (ID) of a STACKIT Organization. */
   organizationId: string;
@@ -1422,15 +1036,7 @@ export interface DeleteRoutingTableFromAreaRequest {
   /** The identifier (ID) of a STACKIT Routing Table. */
   routingTableId: string;
 }
-const DeleteRoutingTableFromAreaRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<DeleteRoutingTableFromAreaRequest>;
-
 export interface DeleteRoutingTableFromAreaResponse {}
-const DeleteRoutingTableFromAreaResponse =
-  AddSecurityGroupToServerResponse as any as S.Schema<DeleteRoutingTableFromAreaResponse>;
-
 export interface DeleteSecurityGroupRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -1439,15 +1045,7 @@ export interface DeleteSecurityGroupRequest {
   /** The identifier (ID) of a STACKIT Security Group. */
   securityGroupId: string;
 }
-const DeleteSecurityGroupRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<DeleteSecurityGroupRequest>;
-
 export interface DeleteSecurityGroupResponse {}
-const DeleteSecurityGroupResponse =
-  AddNetworkToServerResponse as any as S.Schema<DeleteSecurityGroupResponse>;
-
 export interface DeleteSecurityGroupRuleRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -1458,15 +1056,7 @@ export interface DeleteSecurityGroupRuleRequest {
   /** The identifier (ID) of a STACKIT Security Group Rule. */
   securityGroupRuleId: string;
 }
-const DeleteSecurityGroupRuleRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<DeleteSecurityGroupRuleRequest>;
-
 export interface DeleteSecurityGroupRuleResponse {}
-const DeleteSecurityGroupRuleResponse =
-  DeleteNetworkAreaRegionResponse as any as S.Schema<DeleteSecurityGroupRuleResponse>;
-
 export interface DeleteServerRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -1475,11 +1065,7 @@ export interface DeleteServerRequest {
   /** The identifier (ID) of a STACKIT Server. */
   serverId: string;
 }
-const DeleteServerRequest = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<DeleteServerRequest>;
-
 export interface DeleteServerResponse {}
-const DeleteServerResponse = AddNetworkToServerResponse as any as S.Schema<DeleteServerResponse>;
-
 export interface DeleteSnapshotRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -1488,15 +1074,7 @@ export interface DeleteSnapshotRequest {
   /** The identifier (ID) of a STACKIT Snapshot. */
   snapshotId: string;
 }
-const DeleteSnapshotRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<DeleteSnapshotRequest>;
-
 export interface DeleteSnapshotResponse {}
-const DeleteSnapshotResponse =
-  AddNetworkToServerResponse as any as S.Schema<DeleteSnapshotResponse>;
-
 export interface DeleteVolumeRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -1507,11 +1085,7 @@ export interface DeleteVolumeRequest {
   /** Cascade action. */
   cascade?: boolean;
 }
-const DeleteVolumeRequest = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<DeleteVolumeRequest>;
-
 export interface DeleteVolumeResponse {}
-const DeleteVolumeResponse = AddNetworkToServerResponse as any as S.Schema<DeleteVolumeResponse>;
-
 export interface GetAffinityGroupRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -1520,11 +1094,6 @@ export interface GetAffinityGroupRequest {
   /** The identifier (ID) of a STACKIT Affinity Group. */
   affinityGroupId: string;
 }
-const GetAffinityGroupRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<GetAffinityGroupRequest>;
-
 export interface GetAttachedVolumeRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -1535,11 +1104,6 @@ export interface GetAttachedVolumeRequest {
   /** The identifier (ID) of a STACKIT Volume. */
   volumeId: string;
 }
-const GetAttachedVolumeRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<GetAttachedVolumeRequest>;
-
 export interface GetBackupRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -1548,8 +1112,6 @@ export interface GetBackupRequest {
   /** The identifier (ID) of a STACKIT Backup. */
   backupId: string;
 }
-const GetBackupRequest = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<GetBackupRequest>;
-
 export interface GetImageRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -1558,8 +1120,6 @@ export interface GetImageRequest {
   /** The identifier (ID) of a STACKIT Image. */
   imageId: string;
 }
-const GetImageRequest = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<GetImageRequest>;
-
 /** Representation of an image checksum. */
 export interface ImageChecksum {
   /** Algorithm for the checksum of the image data. Possible values: `md5`, `sha512`. */
@@ -1567,8 +1127,6 @@ export interface ImageChecksum {
   /** Hexdigest of the checksum of the image data. */
   digest: string;
 }
-const ImageChecksum = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<ImageChecksum>;
-
 /** Object that represents an Image and its parameters. Used for Creating and returning (get/list). */
 export interface Image {
   agent?: ImageAgent;
@@ -1589,8 +1147,6 @@ export interface Image {
   status?: string;
   updatedAt?: string;
 }
-const Image = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<Image>;
-
 export interface GetImageShareRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -1599,15 +1155,8 @@ export interface GetImageShareRequest {
   /** The identifier (ID) of a STACKIT Image. */
   imageId: string;
 }
-const GetImageShareRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<GetImageShareRequest>;
-
 /** List of all projects the Image is shared with. */
 export type ImageShareProjectsList = Array<string>;
-const ImageShareProjectsList = ServiceAccountMailList as any as S.Schema<ImageShareProjectsList>;
-
 /** Share details of an Image. For requests ParentOrganization and Projects are mutually exclusive. */
 export interface ImageShare {
   /** Image is shared with all projects inside the image owners organization. */
@@ -1615,8 +1164,6 @@ export interface ImageShare {
   /** List of all projects the Image is shared with. */
   projects?: ImageShareProjectsList;
 }
-const ImageShare = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<ImageShare>;
-
 export interface GetImageShareConsumerRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -1627,11 +1174,6 @@ export interface GetImageShareConsumerRequest {
   /** The identifier (ID) of a STACKIT Project that consumes an image share. */
   consumerProjectId: string;
 }
-const GetImageShareConsumerRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<GetImageShareConsumerRequest>;
-
 /** The details of an Image share consumer. */
 export interface ImageShareConsumer {
   consumerProjectId?: string;
@@ -1639,14 +1181,10 @@ export interface ImageShareConsumer {
   imageId?: string;
   updatedAt?: string;
 }
-const ImageShareConsumer = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<ImageShareConsumer>;
-
 export interface GetKeyPairRequest {
   /** The name of an SSH keypair. */
   keypairName: string;
 }
-const GetKeyPairRequest = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<GetKeyPairRequest>;
-
 export interface GetMachineTypeRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -1655,11 +1193,6 @@ export interface GetMachineTypeRequest {
   /** STACKIT machine type Name. */
   machineType: string;
 }
-const GetMachineTypeRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<GetMachineTypeRequest>;
-
 /** Machine Type. Filterable Fields: `disk`, `extraSpecs`, `name`, `ram`, `vcpus`. */
 export interface MachineType {
   description?: string;
@@ -1669,8 +1202,6 @@ export interface MachineType {
   ram: number;
   vcpus: number;
 }
-const MachineType = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<MachineType>;
-
 export interface GetNetworkRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -1679,19 +1210,12 @@ export interface GetNetworkRequest {
   /** The identifier (ID) of a STACKIT Network. */
   networkId: string;
 }
-const GetNetworkRequest = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<GetNetworkRequest>;
-
 export interface GetNetworkAreaRequest {
   /** The identifier (ID) of a STACKIT Organization. */
   organizationId: string;
   /** The identifier (ID) of a STACKIT Network Area. */
   areaId: string;
 }
-const GetNetworkAreaRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<GetNetworkAreaRequest>;
-
 export interface GetNetworkAreaRangeRequest {
   /** The identifier (ID) of a STACKIT Organization. */
   organizationId: string;
@@ -1702,11 +1226,6 @@ export interface GetNetworkAreaRangeRequest {
   /** The identifier (ID) of a STACKIT Network Range. */
   networkRangeId: string;
 }
-const GetNetworkAreaRangeRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<GetNetworkAreaRangeRequest>;
-
 export interface GetNetworkAreaRegionRequest {
   /** The identifier (ID) of a STACKIT Organization. */
   organizationId: string;
@@ -1715,11 +1234,6 @@ export interface GetNetworkAreaRegionRequest {
   /** The STACKIT Region of the resources. */
   region: string;
 }
-const GetNetworkAreaRegionRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<GetNetworkAreaRegionRequest>;
-
 export interface GetNetworkAreaRouteRequest {
   /** The identifier (ID) of a STACKIT Organization. */
   organizationId: string;
@@ -1730,11 +1244,6 @@ export interface GetNetworkAreaRouteRequest {
   /** The identifier (ID) of a STACKIT Route. */
   routeId: string;
 }
-const GetNetworkAreaRouteRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<GetNetworkAreaRouteRequest>;
-
 export interface GetNicRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -1745,33 +1254,19 @@ export interface GetNicRequest {
   /** The identifier (ID) of a network interface. */
   nicId: string;
 }
-const GetNicRequest = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<GetNicRequest>;
-
 export interface GetOrganizationRequestRequest {
   /** The identifier (ID) of a STACKIT Organization. */
   organizationId: string;
   /** The identifier (ID) of a STACKIT Request. */
   requestId: string;
 }
-const GetOrganizationRequestRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<GetOrganizationRequestRequest>;
-
 /** Object that represents a resource as part of a request. */
 export interface RequestResource {
   id: string;
   status: string;
   type: string;
 }
-const RequestResource = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<RequestResource>;
-
 export type RequestResourcesList = Array<RequestResource>;
-const RequestResourcesList = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<RequestResourcesList>;
-
 /** Object that represents a request. */
 export interface Request {
   details?: string;
@@ -1781,23 +1276,14 @@ export interface Request {
   resources: RequestResourcesList;
   status: string;
 }
-const Request = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<Request>;
-
 export interface GetProjectDetailsRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
 }
-const GetProjectDetailsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<GetProjectDetailsRequest>;
-
 /** The identifier (ID) of a static area. */
 export type StaticAreaID = "PUBLIC" | "SCHWARZ";
 /** The identifier (ID) of an area. */
 export type AreaId = string | StaticAreaID;
-const AreaId = /*@__PURE__*/ S.Unknown as any as S.Schema<AreaId>;
-
 /** Object that represents a STACKIT project. */
 export interface Project {
   areaId: AreaId;
@@ -1810,8 +1296,6 @@ export interface Project {
   updatedAt?: string;
   vpcId?: string;
 }
-const Project = /*@__PURE__*/ __L.at(__c15, 1) as any as S.Schema<Project>;
-
 export interface GetProjectNICRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -1820,11 +1304,6 @@ export interface GetProjectNICRequest {
   /** The identifier (ID) of a network interface. */
   nicId: string;
 }
-const GetProjectNICRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<GetProjectNICRequest>;
-
 export interface GetProjectRequestRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -1833,11 +1312,6 @@ export interface GetProjectRequestRequest {
   /** The identifier (ID) of a STACKIT Request. */
   requestId: string;
 }
-const GetProjectRequestRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<GetProjectRequestRequest>;
-
 export interface GetPublicIPRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -1846,8 +1320,6 @@ export interface GetPublicIPRequest {
   /** The identifier (ID) of a Public IP. */
   publicIpId: string;
 }
-const GetPublicIPRequest = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<GetPublicIPRequest>;
-
 export interface GetRouteOfRoutingTableRequest {
   /** The identifier (ID) of a STACKIT Organization. */
   organizationId: string;
@@ -1860,11 +1332,6 @@ export interface GetRouteOfRoutingTableRequest {
   /** The identifier (ID) of a STACKIT Route. */
   routeId: string;
 }
-const GetRouteOfRoutingTableRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<GetRouteOfRoutingTableRequest>;
-
 export interface GetRoutingTableOfAreaRequest {
   /** The identifier (ID) of a STACKIT Organization. */
   organizationId: string;
@@ -1875,11 +1342,6 @@ export interface GetRoutingTableOfAreaRequest {
   /** The identifier (ID) of a STACKIT Routing Table. */
   routingTableId: string;
 }
-const GetRoutingTableOfAreaRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<GetRoutingTableOfAreaRequest>;
-
 export interface GetSecurityGroupRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -1888,11 +1350,6 @@ export interface GetSecurityGroupRequest {
   /** The identifier (ID) of a STACKIT Security Group. */
   securityGroupId: string;
 }
-const GetSecurityGroupRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<GetSecurityGroupRequest>;
-
 export interface GetSecurityGroupRuleRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -1903,11 +1360,6 @@ export interface GetSecurityGroupRuleRequest {
   /** The identifier (ID) of a STACKIT Security Group Rule. */
   securityGroupRuleId: string;
 }
-const GetSecurityGroupRuleRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<GetSecurityGroupRuleRequest>;
-
 export interface GetSecurityGroupRuleResponse {
   createdAt?: string;
   description?: string;
@@ -1926,9 +1378,6 @@ export interface GetSecurityGroupRuleResponse {
   updatedAt?: string;
   protocol?: Protocol;
 }
-const GetSecurityGroupRuleResponse =
-  CreateSecurityGroupRuleResponse as any as S.Schema<GetSecurityGroupRuleResponse>;
-
 export interface GetServerRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -1939,8 +1388,6 @@ export interface GetServerRequest {
   /** Show detailed information about server. */
   details?: boolean;
 }
-const GetServerRequest = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<GetServerRequest>;
-
 export interface GetServerConsoleRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -1949,17 +1396,10 @@ export interface GetServerConsoleRequest {
   /** The identifier (ID) of a STACKIT Server. */
   serverId: string;
 }
-const GetServerConsoleRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<GetServerConsoleRequest>;
-
 /** Object that represents a server console URL. */
 export interface ServerConsoleUrl {
   url: string;
 }
-const ServerConsoleUrl = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<ServerConsoleUrl>;
-
 export interface GetServerLogRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -1970,16 +1410,9 @@ export interface GetServerLogRequest {
   /** Request the server log. By default the length is limited to 2000 lines. Set to 0 to retrieve the complete log. */
   length?: number;
 }
-const GetServerLogRequest = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<GetServerLogRequest>;
-
 export interface GetServerLogResponse {
   output?: string;
 }
-const GetServerLogResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<GetServerLogResponse>;
-
 export interface GetSnapshotRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -1988,8 +1421,6 @@ export interface GetSnapshotRequest {
   /** The identifier (ID) of a STACKIT Snapshot. */
   snapshotId: string;
 }
-const GetSnapshotRequest = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<GetSnapshotRequest>;
-
 export interface GetVolumeRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -1998,8 +1429,6 @@ export interface GetVolumeRequest {
   /** The identifier (ID) of a STACKIT Volume. */
   volumeId: string;
 }
-const GetVolumeRequest = /*@__PURE__*/ __L.at(__c16, 7) as any as S.Schema<GetVolumeRequest>;
-
 export interface GetVolumePerformanceClassRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -2008,11 +1437,6 @@ export interface GetVolumePerformanceClassRequest {
   /** The name of a STACKIT Volume performance class. */
   volumePerformanceClass: string;
 }
-const GetVolumePerformanceClassRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<GetVolumePerformanceClassRequest>;
-
 /** Object that represents a Volume performance class. */
 export interface VolumePerformanceClass {
   description?: string;
@@ -2021,11 +1445,6 @@ export interface VolumePerformanceClass {
   name: string;
   throughput?: number;
 }
-const VolumePerformanceClass = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<VolumePerformanceClass>;
-
 export interface ImageFromVolumeRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -2038,35 +1457,18 @@ export interface ImageFromVolumeRequest {
   name: string;
   protected?: boolean;
 }
-const ImageFromVolumeRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<ImageFromVolumeRequest>;
-
 export interface ListAffinityGroupsRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
   /** The STACKIT Region of the resources. */
   region: string;
 }
-const ListAffinityGroupsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<ListAffinityGroupsRequest>;
-
 /** A list of affinity groups. */
 export type AffinityGroupList = Array<AffinityGroup>;
-const AffinityGroupList = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<AffinityGroupList>;
-
 /** Response object for affinity group list request. */
 export interface AffinityGroupListResponse {
   items: AffinityGroupList;
 }
-const AffinityGroupListResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<AffinityGroupListResponse>;
-
 export interface ListAttachedVolumesRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -2075,45 +1477,22 @@ export interface ListAttachedVolumesRequest {
   /** The identifier (ID) of a STACKIT Server. */
   serverId: string;
 }
-const ListAttachedVolumesRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<ListAttachedVolumesRequest>;
-
 /** A list containing Volume attachments of a server. */
 export type VolumeAttachmentList = Array<VolumeAttachment>;
-const VolumeAttachmentList = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<VolumeAttachmentList>;
-
 /** Volume attachment list response. */
 export interface VolumeAttachmentListResponse {
   items: VolumeAttachmentList;
 }
-const VolumeAttachmentListResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<VolumeAttachmentListResponse>;
-
 export interface ListAvailabilityZonesRequest {
   /** The STACKIT Region of the resources. */
   region: string;
 }
-const ListAvailabilityZonesRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<ListAvailabilityZonesRequest>;
-
 /** A list of availability zones. */
 export type AvailabilityZoneList = Array<string>;
 /** Availability Zone list response. */
 export interface AvailabilityZoneListResponse {
   items: AvailabilityZoneList;
 }
-const AvailabilityZoneListResponse =
-  ServiceAccountMailListResponse as any as S.Schema<AvailabilityZoneListResponse>;
-
 export interface ListBackupsRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -2122,18 +1501,12 @@ export interface ListBackupsRequest {
   /** Filter resources by labels. */
   label_selector?: string;
 }
-const ListBackupsRequest = /*@__PURE__*/ __L.at(__c18, 2) as any as S.Schema<ListBackupsRequest>;
-
 /** A list containing backup objects. */
 export type BackupList = Array<Backup>;
-const BackupList = /*@__PURE__*/ __L.at(__c18, 3) as any as S.Schema<BackupList>;
-
 /** Backup list response. */
 export interface BackupListResponse {
   items: BackupList;
 }
-const BackupListResponse = /*@__PURE__*/ __L.at(__c18, 4) as any as S.Schema<BackupListResponse>;
-
 export interface ListImagesRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -2144,34 +1517,22 @@ export interface ListImagesRequest {
   /** Filter resources by labels. */
   label_selector?: string;
 }
-const ListImagesRequest = /*@__PURE__*/ __L.at(__c18, 5) as any as S.Schema<ListImagesRequest>;
-
 /** A list containing image objects. */
 export type ImageList = Array<Image>;
-const ImageList = /*@__PURE__*/ __L.at(__c18, 6) as any as S.Schema<ImageList>;
-
 /** Image list response. */
 export interface ImageListResponse {
   items: ImageList;
 }
-const ImageListResponse = /*@__PURE__*/ __L.at(__c18, 7) as any as S.Schema<ImageListResponse>;
-
 export interface ListKeyPairsRequest {
   /** Filter resources by labels. */
   label_selector?: string;
 }
-const ListKeyPairsRequest = /*@__PURE__*/ __L.at(__c19, 0) as any as S.Schema<ListKeyPairsRequest>;
-
 /** A list of SSH keypairs. */
 export type KeyPairList = Array<Keypair>;
-const KeyPairList = /*@__PURE__*/ __L.at(__c19, 1) as any as S.Schema<KeyPairList>;
-
 /** SSH keypair list response. */
 export interface KeyPairListResponse {
   items: KeyPairList;
 }
-const KeyPairListResponse = /*@__PURE__*/ __L.at(__c19, 2) as any as S.Schema<KeyPairListResponse>;
-
 export interface ListMachineTypesRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -2180,45 +1541,24 @@ export interface ListMachineTypesRequest {
   /** Filter resources by fields. A subset of expr-lang is supported. See https://expr-lang.org/docs/language-definition for usage details. */
   filter?: string;
 }
-const ListMachineTypesRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<ListMachineTypesRequest>;
-
 /** Machine type list. */
 export type MachineTypeList = Array<MachineType>;
-const MachineTypeList = /*@__PURE__*/ __L.at(__c19, 4) as any as S.Schema<MachineTypeList>;
-
 /** Machine type list response. */
 export interface MachineTypeListResponse {
   items: MachineTypeList;
 }
-const MachineTypeListResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<MachineTypeListResponse>;
-
 export interface ListNetworkAreaProjectsRequest {
   /** The identifier (ID) of a STACKIT Organization. */
   organizationId: string;
   /** The identifier (ID) of a STACKIT Network Area. */
   areaId: string;
 }
-const ListNetworkAreaProjectsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<ListNetworkAreaProjectsRequest>;
-
 /** A list of STACKIT projects. */
 export type ProjectList = Array<string>;
-const ProjectList = NameserversIPv4 as any as S.Schema<ProjectList>;
-
 /** Project list response. */
 export interface ProjectListResponse {
   items: ProjectList;
 }
-const ProjectListResponse = /*@__PURE__*/ __L.at(__c19, 7) as any as S.Schema<ProjectListResponse>;
-
 export interface ListNetworkAreaRangesRequest {
   /** The identifier (ID) of a STACKIT Organization. */
   organizationId: string;
@@ -2227,37 +1567,17 @@ export interface ListNetworkAreaRangesRequest {
   /** The STACKIT Region of the resources. */
   region: string;
 }
-const ListNetworkAreaRangesRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<ListNetworkAreaRangesRequest>;
-
 export interface ListNetworkAreaRegionsRequest {
   /** The identifier (ID) of a STACKIT Organization. */
   organizationId: string;
   /** The identifier (ID) of a STACKIT Network Area. */
   areaId: string;
 }
-const ListNetworkAreaRegionsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<ListNetworkAreaRegionsRequest>;
-
 export type RegionalAreaListResponseRegionsMap = { [key: string]: RegionalArea | undefined };
-const RegionalAreaListResponseRegionsMap = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<RegionalAreaListResponseRegionsMap>;
-
 /** Regional area list response. */
 export interface RegionalAreaListResponse {
   regions: RegionalAreaListResponseRegionsMap;
 }
-const RegionalAreaListResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<RegionalAreaListResponse>;
-
 export interface ListNetworkAreaRoutesRequest {
   /** The identifier (ID) of a STACKIT Organization. */
   organizationId: string;
@@ -2268,35 +1588,18 @@ export interface ListNetworkAreaRoutesRequest {
   /** Filter resources by labels. */
   label_selector?: string;
 }
-const ListNetworkAreaRoutesRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<ListNetworkAreaRoutesRequest>;
-
 export interface ListNetworkAreasRequest {
   /** The identifier (ID) of a STACKIT Organization. */
   organizationId: string;
   /** Filter resources by labels. */
   label_selector?: string;
 }
-const ListNetworkAreasRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<ListNetworkAreasRequest>;
-
 /** A list of network areas. */
 export type NetworkAreaList = Array<NetworkArea>;
-const NetworkAreaList = /*@__PURE__*/ __L.at(__c20, 6) as any as S.Schema<NetworkAreaList>;
-
 /** Network area list response. */
 export interface NetworkAreaListResponse {
   items: NetworkAreaList;
 }
-const NetworkAreaListResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<NetworkAreaListResponse>;
-
 export interface ListNetworksRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -2305,18 +1608,12 @@ export interface ListNetworksRequest {
   /** Filter resources by labels. */
   label_selector?: string;
 }
-const ListNetworksRequest = /*@__PURE__*/ __L.at(__c21, 0) as any as S.Schema<ListNetworksRequest>;
-
 /** A list of networks. */
 export type NetworkList = Array<Network>;
-const NetworkList = /*@__PURE__*/ __L.at(__c21, 1) as any as S.Schema<NetworkList>;
-
 /** Network list response. */
 export interface NetworkListResponse {
   items: NetworkList;
 }
-const NetworkListResponse = /*@__PURE__*/ __L.at(__c21, 2) as any as S.Schema<NetworkListResponse>;
-
 export interface ListNicsRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -2327,18 +1624,12 @@ export interface ListNicsRequest {
   /** Filter resources by labels. */
   label_selector?: string;
 }
-const ListNicsRequest = /*@__PURE__*/ __L.at(__c21, 3) as any as S.Schema<ListNicsRequest>;
-
 /** A list of network interfaces. */
 export type NICList = Array<NIC>;
-const NICList = /*@__PURE__*/ __L.at(__c21, 4) as any as S.Schema<NICList>;
-
 /** NIC list response. */
 export interface NICListResponse {
   items: NICList;
 }
-const NICListResponse = /*@__PURE__*/ __L.at(__c21, 5) as any as S.Schema<NICListResponse>;
-
 export interface ListProjectNICsRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -2347,37 +1638,18 @@ export interface ListProjectNICsRequest {
   /** Filter resources by labels. */
   label_selector?: string;
 }
-const ListProjectNICsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<ListProjectNICsRequest>;
-
 export interface ListPublicIPRangesRequest {}
-const ListPublicIPRangesRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<ListPublicIPRangesRequest>;
-
 /** Public network. */
 export interface PublicNetwork {
   cidr: string;
   region: string;
 }
-const PublicNetwork = /*@__PURE__*/ __L.at(__c22, 0) as any as S.Schema<PublicNetwork>;
-
 /** A list of public networks. */
 export type PublicNetworkList = Array<PublicNetwork>;
-const PublicNetworkList = /*@__PURE__*/ __L.at(__c22, 1) as any as S.Schema<PublicNetworkList>;
-
 /** Public network list response. */
 export interface PublicNetworkListResponse {
   items: PublicNetworkList;
 }
-const PublicNetworkListResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<PublicNetworkListResponse>;
-
 export interface ListPublicIPsRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -2386,39 +1658,23 @@ export interface ListPublicIPsRequest {
   /** Filter resources by labels. */
   label_selector?: string;
 }
-const ListPublicIPsRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<ListPublicIPsRequest>;
-
 /** A list of public IPs. */
 export type PublicIpList = Array<PublicIp>;
-const PublicIpList = /*@__PURE__*/ __L.at(__c22, 4) as any as S.Schema<PublicIpList>;
-
 /** Public IP list response. */
 export interface PublicIpListResponse {
   items: PublicIpList;
 }
-const PublicIpListResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<PublicIpListResponse>;
-
 export interface ListQuotasRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
   /** The STACKIT Region of the resources. */
   region: string;
 }
-const ListQuotasRequest = /*@__PURE__*/ __L.at(__c22, 6) as any as S.Schema<ListQuotasRequest>;
-
 /** Object that represents a single resource quota. */
 export interface Quota {
   limit: number;
   usage: number;
 }
-const Quota = /*@__PURE__*/ __L.at(__c22, 7) as any as S.Schema<Quota>;
-
 /** Object that represents the quotas for a project. */
 export interface QuotaList {
   /** Total size in GiB of backups. */
@@ -2446,14 +1702,10 @@ export interface QuotaList {
   /** Number of volumes. */
   volumes: Quota;
 }
-const QuotaList = /*@__PURE__*/ __L.at(__c23, 0) as any as S.Schema<QuotaList>;
-
 /** Quotas list response. */
 export interface QuotaListResponse {
   quotas: QuotaList;
 }
-const QuotaListResponse = /*@__PURE__*/ __L.at(__c23, 1) as any as S.Schema<QuotaListResponse>;
-
 export interface ListRoutesOfRoutingTableRequest {
   /** The identifier (ID) of a STACKIT Organization. */
   organizationId: string;
@@ -2466,11 +1718,6 @@ export interface ListRoutesOfRoutingTableRequest {
   /** Filter resources by labels. */
   label_selector?: string;
 }
-const ListRoutesOfRoutingTableRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<ListRoutesOfRoutingTableRequest>;
-
 export interface ListRoutingTablesOfAreaRequest {
   /** The identifier (ID) of a STACKIT Organization. */
   organizationId: string;
@@ -2481,24 +1728,12 @@ export interface ListRoutingTablesOfAreaRequest {
   /** Filter resources by labels. */
   label_selector?: string;
 }
-const ListRoutingTablesOfAreaRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<ListRoutingTablesOfAreaRequest>;
-
 /** A list of routing tables. */
 export type RoutingTablesList = Array<RoutingTable>;
-const RoutingTablesList = /*@__PURE__*/ __L.at(__c23, 4) as any as S.Schema<RoutingTablesList>;
-
 /** Routing table response. */
 export interface RoutingTableListResponse {
   items: RoutingTablesList;
 }
-const RoutingTableListResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<RoutingTableListResponse>;
-
 export interface ListSecurityGroupRulesRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -2507,20 +1742,10 @@ export interface ListSecurityGroupRulesRequest {
   /** The identifier (ID) of a STACKIT Security Group. */
   securityGroupId: string;
 }
-const ListSecurityGroupRulesRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<ListSecurityGroupRulesRequest>;
-
 /** Security group rule list response. */
 export interface SecurityGroupRuleListResponse {
   items: SecurityGroupRuleList;
 }
-const SecurityGroupRuleListResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<SecurityGroupRuleListResponse>;
-
 export interface ListSecurityGroupsRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -2529,24 +1754,12 @@ export interface ListSecurityGroupsRequest {
   /** Filter resources by labels. */
   label_selector?: string;
 }
-const ListSecurityGroupsRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<ListSecurityGroupsRequest>;
-
 /** A list containing security group objects. */
 export type SecurityGroupList = Array<SecurityGroup>;
-const SecurityGroupList = /*@__PURE__*/ __L.at(__c24, 1) as any as S.Schema<SecurityGroupList>;
-
 /** Security group list response. */
 export interface SecurityGroupListResponse {
   items: SecurityGroupList;
 }
-const SecurityGroupListResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<SecurityGroupListResponse>;
-
 export interface ListServerNICsRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -2555,11 +1768,6 @@ export interface ListServerNICsRequest {
   /** The identifier (ID) of a STACKIT Server. */
   serverId: string;
 }
-const ListServerNICsRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<ListServerNICsRequest>;
-
 export interface ListServersRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -2570,21 +1778,12 @@ export interface ListServersRequest {
   /** Filter resources by labels. */
   label_selector?: string;
 }
-const ListServersRequest = /*@__PURE__*/ __L.at(__c24, 4) as any as S.Schema<ListServersRequest>;
-
 /** A list of servers. */
 export type ServerListOutput = Array<ServerOutput>;
-const ServerListOutput = /*@__PURE__*/ __L.at(__c24, 5) as any as S.Schema<ServerListOutput>;
-
 /** Response object for server list request. */
 export interface ServerListResponseOutput {
   items: ServerListOutput;
 }
-const ServerListResponseOutput = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<ServerListResponseOutput>;
-
 export interface ListServerServiceAccountsRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -2593,11 +1792,6 @@ export interface ListServerServiceAccountsRequest {
   /** The identifier (ID) of a STACKIT Server. */
   serverId: string;
 }
-const ListServerServiceAccountsRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<ListServerServiceAccountsRequest>;
-
 export interface ListSnapshotsInProjectRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -2606,24 +1800,12 @@ export interface ListSnapshotsInProjectRequest {
   /** Filter resources by labels. */
   label_selector?: string;
 }
-const ListSnapshotsInProjectRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<ListSnapshotsInProjectRequest>;
-
 /** A list containing snapshot objects. */
 export type SnapshotList = Array<Snapshot>;
-const SnapshotList = /*@__PURE__*/ __L.at(__c25, 1) as any as S.Schema<SnapshotList>;
-
 /** Snapshot list response. */
 export interface SnapshotListResponse {
   items: SnapshotList;
 }
-const SnapshotListResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<SnapshotListResponse>;
-
 export interface ListVolumePerformanceClassesRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -2632,27 +1814,12 @@ export interface ListVolumePerformanceClassesRequest {
   /** Filter resources by labels. */
   label_selector?: string;
 }
-const ListVolumePerformanceClassesRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  3,
-) as any as S.Schema<ListVolumePerformanceClassesRequest>;
-
 /** A list containing Volume performance classes. */
 export type VolumePerformanceClassList = Array<VolumePerformanceClass>;
-const VolumePerformanceClassList = /*@__PURE__*/ __L.at(
-  __c25,
-  4,
-) as any as S.Schema<VolumePerformanceClassList>;
-
 /** Volume performance class list response. */
 export interface VolumePerformanceClassListResponse {
   items: VolumePerformanceClassList;
 }
-const VolumePerformanceClassListResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<VolumePerformanceClassListResponse>;
-
 export interface ListVolumesRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -2661,35 +1828,22 @@ export interface ListVolumesRequest {
   /** Filter resources by labels. */
   label_selector?: string;
 }
-const ListVolumesRequest = /*@__PURE__*/ __L.at(__c25, 6) as any as S.Schema<ListVolumesRequest>;
-
 /** A list containing volume objects. */
 export type VolumeList = Array<Volume>;
-const VolumeList = /*@__PURE__*/ __L.at(__c25, 7) as any as S.Schema<VolumeList>;
-
 /** Volume list response. */
 export interface VolumeListResponse {
   items: VolumeList;
 }
-const VolumeListResponse = /*@__PURE__*/ __L.at(__c26, 0) as any as S.Schema<VolumeListResponse>;
-
 /** The config object for a IPv4 network update. */
 export interface UpdateNetworkIPv4Body {
   gateway?: string | null;
   nameservers?: NameserversIPv4;
 }
-const UpdateNetworkIPv4Body = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<UpdateNetworkIPv4Body>;
-
 /** The config object for a IPv6 network update. */
 export interface UpdateNetworkIPv6Body {
   gateway?: string | null;
   nameservers?: NameserversIPv6;
 }
-const UpdateNetworkIPv6Body = UpdateNetworkIPv4Body as any as S.Schema<UpdateNetworkIPv6Body>;
-
 export interface PartialUpdateNetworkRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -2706,15 +1860,7 @@ export interface PartialUpdateNetworkRequest {
   routed?: boolean;
   routingTableId?: string;
 }
-const PartialUpdateNetworkRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<PartialUpdateNetworkRequest>;
-
 export interface PartialUpdateNetworkResponse {}
-const PartialUpdateNetworkResponse =
-  AddNetworkToServerResponse as any as S.Schema<PartialUpdateNetworkResponse>;
-
 export interface PartialUpdateNetworkAreaRequest {
   /** The identifier (ID) of a STACKIT Organization. */
   organizationId: string;
@@ -2723,11 +1869,6 @@ export interface PartialUpdateNetworkAreaRequest {
   labels?: unknown;
   name?: string;
 }
-const PartialUpdateNetworkAreaRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  3,
-) as any as S.Schema<PartialUpdateNetworkAreaRequest>;
-
 export interface RebootServerRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -2738,11 +1879,7 @@ export interface RebootServerRequest {
   /** Defines if it is a soft or a hard reboot. */
   action?: string;
 }
-const RebootServerRequest = /*@__PURE__*/ __L.at(__c26, 4) as any as S.Schema<RebootServerRequest>;
-
 export interface RebootServerResponse {}
-const RebootServerResponse = AddNetworkToServerResponse as any as S.Schema<RebootServerResponse>;
-
 export interface RemoveNetworkFromServerRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -2753,15 +1890,7 @@ export interface RemoveNetworkFromServerRequest {
   /** The identifier (ID) of a STACKIT Network. */
   networkId: string;
 }
-const RemoveNetworkFromServerRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<RemoveNetworkFromServerRequest>;
-
 export interface RemoveNetworkFromServerResponse {}
-const RemoveNetworkFromServerResponse =
-  DeleteNetworkAreaRegionResponse as any as S.Schema<RemoveNetworkFromServerResponse>;
-
 export interface RemoveNicFromServerRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -2772,15 +1901,7 @@ export interface RemoveNicFromServerRequest {
   /** The identifier (ID) of a network interface. */
   nicId: string;
 }
-const RemoveNicFromServerRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<RemoveNicFromServerRequest>;
-
 export interface RemoveNicFromServerResponse {}
-const RemoveNicFromServerResponse =
-  AddNetworkToServerResponse as any as S.Schema<RemoveNicFromServerResponse>;
-
 export interface RemovePublicIpFromServerRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -2791,15 +1912,7 @@ export interface RemovePublicIpFromServerRequest {
   /** The identifier (ID) of a Public IP. */
   publicIpId: string;
 }
-const RemovePublicIpFromServerRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  7,
-) as any as S.Schema<RemovePublicIpFromServerRequest>;
-
 export interface RemovePublicIpFromServerResponse {}
-const RemovePublicIpFromServerResponse =
-  AddSecurityGroupToServerResponse as any as S.Schema<RemovePublicIpFromServerResponse>;
-
 export interface RemoveSecurityGroupFromServerRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -2810,15 +1923,7 @@ export interface RemoveSecurityGroupFromServerRequest {
   /** The identifier (ID) of a STACKIT Security Group. */
   securityGroupId: string;
 }
-const RemoveSecurityGroupFromServerRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  0,
-) as any as S.Schema<RemoveSecurityGroupFromServerRequest>;
-
 export interface RemoveSecurityGroupFromServerResponse {}
-const RemoveSecurityGroupFromServerResponse =
-  AddSecurityGroupToServerResponse as any as S.Schema<RemoveSecurityGroupFromServerResponse>;
-
 export interface RemoveServiceAccountFromServerRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -2829,11 +1934,6 @@ export interface RemoveServiceAccountFromServerRequest {
   /** The e-mail address of a service account. */
   serviceAccountMail: string;
 }
-const RemoveServiceAccountFromServerRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  1,
-) as any as S.Schema<RemoveServiceAccountFromServerRequest>;
-
 export interface RemoveVolumeFromServerRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -2844,15 +1944,7 @@ export interface RemoveVolumeFromServerRequest {
   /** The identifier (ID) of a STACKIT Volume. */
   volumeId: string;
 }
-const RemoveVolumeFromServerRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  2,
-) as any as S.Schema<RemoveVolumeFromServerRequest>;
-
 export interface RemoveVolumeFromServerResponse {}
-const RemoveVolumeFromServerResponse =
-  AddNetworkToServerResponse as any as S.Schema<RemoveVolumeFromServerResponse>;
-
 export interface RescueServerRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -2862,11 +1954,7 @@ export interface RescueServerRequest {
   serverId: string;
   image: string;
 }
-const RescueServerRequest = /*@__PURE__*/ __L.at(__c27, 3) as any as S.Schema<RescueServerRequest>;
-
 export interface RescueServerResponse {}
-const RescueServerResponse = AddNetworkToServerResponse as any as S.Schema<RescueServerResponse>;
-
 export interface ResizeServerRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -2876,11 +1964,7 @@ export interface ResizeServerRequest {
   serverId: string;
   machineType: string;
 }
-const ResizeServerRequest = /*@__PURE__*/ __L.at(__c27, 4) as any as S.Schema<ResizeServerRequest>;
-
 export interface ResizeServerResponse {}
-const ResizeServerResponse = AddNetworkToServerResponse as any as S.Schema<ResizeServerResponse>;
-
 export interface ResizeVolumeRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -2890,11 +1974,7 @@ export interface ResizeVolumeRequest {
   volumeId: string;
   size: number;
 }
-const ResizeVolumeRequest = /*@__PURE__*/ __L.at(__c27, 5) as any as S.Schema<ResizeVolumeRequest>;
-
 export interface ResizeVolumeResponse {}
-const ResizeVolumeResponse = AddNetworkToServerResponse as any as S.Schema<ResizeVolumeResponse>;
-
 export interface RestoreBackupRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -2903,19 +1983,9 @@ export interface RestoreBackupRequest {
   /** The identifier (ID) of a STACKIT Backup. */
   backupId: string;
 }
-const RestoreBackupRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  6,
-) as any as S.Schema<RestoreBackupRequest>;
-
 export interface RestoreBackupResponse {}
-const RestoreBackupResponse = AddNetworkToServerResponse as any as S.Schema<RestoreBackupResponse>;
-
 /** List of all projects the Image is shared with. */
 export type SetImageShareRequestProjectsList = Array<string>;
-const SetImageShareRequestProjectsList =
-  ServiceAccountMailList as any as S.Schema<SetImageShareRequestProjectsList>;
-
 export interface SetImageShareRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -2928,11 +1998,6 @@ export interface SetImageShareRequest {
   /** List of all projects the Image is shared with. */
   projects?: SetImageShareRequestProjectsList;
 }
-const SetImageShareRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  7,
-) as any as S.Schema<SetImageShareRequest>;
-
 export interface StartServerRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -2941,11 +2006,7 @@ export interface StartServerRequest {
   /** The identifier (ID) of a STACKIT Server. */
   serverId: string;
 }
-const StartServerRequest = /*@__PURE__*/ __L.at(__c28, 0) as any as S.Schema<StartServerRequest>;
-
 export interface StartServerResponse {}
-const StartServerResponse = AddNetworkToServerResponse as any as S.Schema<StartServerResponse>;
-
 export interface StopServerRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -2954,11 +2015,7 @@ export interface StopServerRequest {
   /** The identifier (ID) of a STACKIT Server. */
   serverId: string;
 }
-const StopServerRequest = /*@__PURE__*/ __L.at(__c28, 1) as any as S.Schema<StopServerRequest>;
-
 export interface StopServerResponse {}
-const StopServerResponse = AddNetworkToServerResponse as any as S.Schema<StopServerResponse>;
-
 export interface UnrescueServerRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -2967,15 +2024,7 @@ export interface UnrescueServerRequest {
   /** The identifier (ID) of a STACKIT Server. */
   serverId: string;
 }
-const UnrescueServerRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<UnrescueServerRequest>;
-
 export interface UnrescueServerResponse {}
-const UnrescueServerResponse =
-  AddNetworkToServerResponse as any as S.Schema<UnrescueServerResponse>;
-
 export interface UpdateAttachedVolumeRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -2987,11 +2036,6 @@ export interface UpdateAttachedVolumeRequest {
   volumeId: string;
   deleteOnTermination?: boolean;
 }
-const UpdateAttachedVolumeRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  3,
-) as any as S.Schema<UpdateAttachedVolumeRequest>;
-
 export interface UpdateBackupRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -3003,8 +2047,6 @@ export interface UpdateBackupRequest {
   labels?: unknown;
   name?: string;
 }
-const UpdateBackupRequest = /*@__PURE__*/ __L.at(__c28, 4) as any as S.Schema<UpdateBackupRequest>;
-
 export interface UpdateImageRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -3021,13 +2063,8 @@ export interface UpdateImageRequest {
   name?: string;
   protected?: boolean;
 }
-const UpdateImageRequest = /*@__PURE__*/ __L.at(__c28, 5) as any as S.Schema<UpdateImageRequest>;
-
 /** List of all projects the Image is shared with. */
 export type UpdateImageShareRequestProjectsList = Array<string>;
-const UpdateImageShareRequestProjectsList =
-  ServiceAccountMailList as any as S.Schema<UpdateImageShareRequestProjectsList>;
-
 export interface UpdateImageShareRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -3040,25 +2077,12 @@ export interface UpdateImageShareRequest {
   /** List of all projects the Image is shared with. */
   projects?: UpdateImageShareRequestProjectsList;
 }
-const UpdateImageShareRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  6,
-) as any as S.Schema<UpdateImageShareRequest>;
-
 export interface UpdateKeyPairRequest {
   /** The name of an SSH keypair. */
   keypairName: string;
   labels?: unknown;
 }
-const UpdateKeyPairRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  7,
-) as any as S.Schema<UpdateKeyPairRequest>;
-
 export type UpdateRegionalAreaIPv4DefaultNameserversList = Array<string>;
-const UpdateRegionalAreaIPv4DefaultNameserversList =
-  ServiceAccountMailList as any as S.Schema<UpdateRegionalAreaIPv4DefaultNameserversList>;
-
 /** Object that represents the request body for a regional network area IPv4 configuration update. */
 export interface UpdateRegionalAreaIPv4 {
   defaultNameservers?: UpdateRegionalAreaIPv4DefaultNameserversList;
@@ -3066,11 +2090,6 @@ export interface UpdateRegionalAreaIPv4 {
   maxPrefixLen?: number;
   minPrefixLen?: number;
 }
-const UpdateRegionalAreaIPv4 = /*@__PURE__*/ __L.at(
-  __c29,
-  0,
-) as any as S.Schema<UpdateRegionalAreaIPv4>;
-
 export interface UpdateNetworkAreaRegionRequest {
   /** The identifier (ID) of a STACKIT Organization. */
   organizationId: string;
@@ -3080,11 +2099,6 @@ export interface UpdateNetworkAreaRegionRequest {
   region: string;
   ipv4?: UpdateRegionalAreaIPv4;
 }
-const UpdateNetworkAreaRegionRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  1,
-) as any as S.Schema<UpdateNetworkAreaRegionRequest>;
-
 export interface UpdateNetworkAreaRouteRequest {
   /** The identifier (ID) of a STACKIT Organization. */
   organizationId: string;
@@ -3096,11 +2110,6 @@ export interface UpdateNetworkAreaRouteRequest {
   routeId: string;
   labels?: unknown;
 }
-const UpdateNetworkAreaRouteRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  2,
-) as any as S.Schema<UpdateNetworkAreaRouteRequest>;
-
 export interface UpdateNicRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -3117,8 +2126,6 @@ export interface UpdateNicRequest {
   nicSecurity?: boolean;
   securityGroups?: UUIDList;
 }
-const UpdateNicRequest = /*@__PURE__*/ __L.at(__c29, 3) as any as S.Schema<UpdateNicRequest>;
-
 export interface UpdatePublicIPRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -3130,11 +2137,6 @@ export interface UpdatePublicIPRequest {
   /** Associate the public IP with a network interface (ID). */
   networkInterface?: string | null;
 }
-const UpdatePublicIPRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  4,
-) as any as S.Schema<UpdatePublicIPRequest>;
-
 export interface UpdateRouteOfRoutingTableRequest {
   /** The identifier (ID) of a STACKIT Organization. */
   organizationId: string;
@@ -3148,11 +2150,6 @@ export interface UpdateRouteOfRoutingTableRequest {
   routeId: string;
   labels?: unknown;
 }
-const UpdateRouteOfRoutingTableRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  5,
-) as any as S.Schema<UpdateRouteOfRoutingTableRequest>;
-
 export interface UpdateRoutingTableOfAreaRequest {
   /** The identifier (ID) of a STACKIT Organization. */
   organizationId: string;
@@ -3168,11 +2165,6 @@ export interface UpdateRoutingTableOfAreaRequest {
   name?: string;
   systemRoutes?: boolean;
 }
-const UpdateRoutingTableOfAreaRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  6,
-) as any as S.Schema<UpdateRoutingTableOfAreaRequest>;
-
 export interface UpdateSecurityGroupRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -3184,11 +2176,6 @@ export interface UpdateSecurityGroupRequest {
   labels?: unknown;
   name?: string;
 }
-const UpdateSecurityGroupRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  7,
-) as any as S.Schema<UpdateSecurityGroupRequest>;
-
 export interface UpdateServerRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -3200,8 +2187,6 @@ export interface UpdateServerRequest {
   metadata?: unknown;
   name?: string;
 }
-const UpdateServerRequest = /*@__PURE__*/ __L.at(__c30, 0) as any as S.Schema<UpdateServerRequest>;
-
 export interface UpdateSnapshotRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -3213,11 +2198,6 @@ export interface UpdateSnapshotRequest {
   labels?: unknown;
   name?: string;
 }
-const UpdateSnapshotRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  1,
-) as any as S.Schema<UpdateSnapshotRequest>;
-
 export interface UpdateVolumeRequest {
   /** The identifier (ID) of a STACKIT Project. */
   projectId: string;
@@ -3231,8 +2211,6 @@ export interface UpdateVolumeRequest {
   labels?: unknown;
   name?: string;
 }
-const UpdateVolumeRequest = /*@__PURE__*/ __L.at(__c30, 2) as any as S.Schema<UpdateVolumeRequest>;
-
 export type AddNetworkToServerError = BadRequest | Forbidden | NotFound | StackitOpError;
 /** Create and attach a network interface from the specified network. Create and attach a network interface from the specified network to the server. */
 export const addNetworkToServer: API.OperationMethod<
@@ -3241,8 +2219,8 @@ export const addNetworkToServer: API.OperationMethod<
   AddNetworkToServerError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddNetworkToServerRequest,
-  output: AddNetworkToServerResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<AddNetworkToServerRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<AddNetworkToServerResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3256,8 +2234,8 @@ export const addNicToServer: API.OperationMethod<
   AddNicToServerError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddNicToServerRequest,
-  output: AddNicToServerResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<AddNicToServerRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<AddNicToServerResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3276,8 +2254,8 @@ export const addPublicIpToServer: API.OperationMethod<
   AddPublicIpToServerError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddPublicIpToServerRequest,
-  output: AddPublicIpToServerResponse,
+  input: __S(3, __c0, 3) as any as S.Schema<AddPublicIpToServerRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<AddPublicIpToServerResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3296,8 +2274,8 @@ export const addRoutesToRoutingTable: API.OperationMethod<
   AddRoutesToRoutingTableError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddRoutesToRoutingTableRequest,
-  output: RouteListResponse,
+  input: __S(6, __c0, 6) as any as S.Schema<AddRoutesToRoutingTableRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<RouteListResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3316,8 +2294,8 @@ export const addRoutingTableToArea: API.OperationMethod<
   AddRoutingTableToAreaError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddRoutingTableToAreaRequest,
-  output: RoutingTable,
+  input: __S(10, __c1, 2) as any as S.Schema<AddRoutingTableToAreaRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<RoutingTable>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3336,8 +2314,8 @@ export const addSecurityGroupToServer: API.OperationMethod<
   AddSecurityGroupToServerError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddSecurityGroupToServerRequest,
-  output: AddSecurityGroupToServerResponse,
+  input: __S(12, __c1, 4) as any as S.Schema<AddSecurityGroupToServerRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<AddSecurityGroupToServerResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3356,8 +2334,8 @@ export const addServiceAccountToServer: API.OperationMethod<
   AddServiceAccountToServerError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddServiceAccountToServerRequest,
-  output: ServiceAccountMailListResponse,
+  input: __S(14, __c1, 6) as any as S.Schema<AddServiceAccountToServerRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<ServiceAccountMailListResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3371,8 +2349,8 @@ export const addVolumeToServer: API.OperationMethod<
   AddVolumeToServerError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddVolumeToServerRequest,
-  output: VolumeAttachment,
+  input: __S(17, __c2, 1) as any as S.Schema<AddVolumeToServerRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<VolumeAttachment>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3386,8 +2364,8 @@ export const createAffinityGroup: API.OperationMethod<
   CreateAffinityGroupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAffinityGroupRequest,
-  output: AffinityGroup,
+  input: __S(19, __c2, 3) as any as S.Schema<CreateAffinityGroupRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<AffinityGroup>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3401,8 +2379,8 @@ export const createBackup: API.OperationMethod<
   CreateBackupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateBackupRequest,
-  output: Backup,
+  input: __S(22, __c2, 6) as any as S.Schema<CreateBackupRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<Backup>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3416,8 +2394,8 @@ export const createImage: API.OperationMethod<
   CreateImageError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateImageRequest,
-  output: ImageCreateResponse,
+  input: __S(26, __c3, 2) as any as S.Schema<CreateImageRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<ImageCreateResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3436,8 +2414,8 @@ export const createIsolatedNetwork: API.OperationMethod<
   CreateIsolatedNetworkError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateIsolatedNetworkRequest,
-  output: Network,
+  input: __S(29, __c3, 5) as any as S.Schema<CreateIsolatedNetworkRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<Network>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3451,8 +2429,8 @@ export const createKeyPair: API.OperationMethod<
   CreateKeyPairError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateKeyPairRequest,
-  output: Keypair,
+  input: __S(33, __c4, 1) as any as S.Schema<CreateKeyPairRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<Keypair>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3466,8 +2444,8 @@ export const createNetwork: API.OperationMethod<
   CreateNetworkError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNetworkRequest,
-  output: Network,
+  input: __S(35, __c4, 3) as any as S.Schema<CreateNetworkRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<Network>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3481,8 +2459,8 @@ export const createNetworkArea: API.OperationMethod<
   CreateNetworkAreaError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNetworkAreaRequest,
-  output: NetworkArea,
+  input: __S(36, __c4, 4) as any as S.Schema<CreateNetworkAreaRequest>,
+  output: __S(37, __c4, 5) as any as S.Schema<NetworkArea>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3501,8 +2479,8 @@ export const createNetworkAreaRange: API.OperationMethod<
   CreateNetworkAreaRangeError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNetworkAreaRangeRequest,
-  output: NetworkRangeListResponse,
+  input: __S(40, __c5, 0) as any as S.Schema<CreateNetworkAreaRangeRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<NetworkRangeListResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3521,8 +2499,8 @@ export const createNetworkAreaRegion: API.OperationMethod<
   CreateNetworkAreaRegionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNetworkAreaRegionRequest,
-  output: RegionalArea,
+  input: __S(45, __c5, 5) as any as S.Schema<CreateNetworkAreaRegionRequest>,
+  output: __S(47, __c5, 7) as any as S.Schema<RegionalArea>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3541,8 +2519,8 @@ export const createNetworkAreaRoute: API.OperationMethod<
   CreateNetworkAreaRouteError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNetworkAreaRouteRequest,
-  output: RouteListResponse,
+  input: __S(48, __c6, 0) as any as S.Schema<CreateNetworkAreaRouteRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<RouteListResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3556,8 +2534,8 @@ export const createNic: API.OperationMethod<
   CreateNicError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNicRequest,
-  output: NIC,
+  input: __S(49, __c6, 1) as any as S.Schema<CreateNicRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<NIC>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3571,8 +2549,8 @@ export const createPublicIP: API.OperationMethod<
   CreatePublicIPError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePublicIPRequest,
-  output: PublicIp,
+  input: __S(51, __c6, 3) as any as S.Schema<CreatePublicIPRequest>,
+  output: __S(52, __c6, 4) as any as S.Schema<PublicIp>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3586,8 +2564,8 @@ export const createSecurityGroup: API.OperationMethod<
   CreateSecurityGroupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSecurityGroupRequest,
-  output: SecurityGroup,
+  input: __S(53, __c6, 5) as any as S.Schema<CreateSecurityGroupRequest>,
+  output: __S(59, __c7, 3) as any as S.Schema<SecurityGroup>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3601,8 +2579,8 @@ export const createSecurityGroupRule: API.OperationMethod<
   CreateSecurityGroupRuleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSecurityGroupRuleRequest,
-  output: CreateSecurityGroupRuleResponse,
+  input: __S(60, __c7, 4) as any as S.Schema<CreateSecurityGroupRuleRequest>,
+  output: __S(61, __c7, 5) as any as S.Schema<CreateSecurityGroupRuleResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3616,8 +2594,8 @@ export const createServer: API.OperationMethod<
   CreateServerError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateServerRequest,
-  output: ServerOutput,
+  input: __S(64, __c8, 0) as any as S.Schema<CreateServerRequest>,
+  output: __S(69, __c8, 5) as any as S.Schema<ServerOutput>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3631,8 +2609,8 @@ export const createSnapshot: API.OperationMethod<
   CreateSnapshotError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSnapshotRequest,
-  output: Snapshot,
+  input: __S(70, __c8, 6) as any as S.Schema<CreateSnapshotRequest>,
+  output: __S(71, __c8, 7) as any as S.Schema<Snapshot>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3646,8 +2624,8 @@ export const createVolume: API.OperationMethod<
   CreateVolumeError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateVolumeRequest,
-  output: Volume,
+  input: __S(73, __c9, 1) as any as S.Schema<CreateVolumeRequest>,
+  output: __S(74, __c9, 2) as any as S.Schema<Volume>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3661,8 +2639,8 @@ export const deallocateServer: API.OperationMethod<
   DeallocateServerError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeallocateServerRequest,
-  output: DeallocateServerResponse,
+  input: __S(75, __c9, 3) as any as S.Schema<DeallocateServerRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeallocateServerResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3676,8 +2654,8 @@ export const deleteAffinityGroup: API.OperationMethod<
   DeleteAffinityGroupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAffinityGroupRequest,
-  output: DeleteAffinityGroupResponse,
+  input: __S(76, __c9, 4) as any as S.Schema<DeleteAffinityGroupRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteAffinityGroupResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3691,8 +2669,8 @@ export const deleteBackup: API.OperationMethod<
   DeleteBackupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBackupRequest,
-  output: DeleteBackupResponse,
+  input: __S(77, __c9, 5) as any as S.Schema<DeleteBackupRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteBackupResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3706,8 +2684,8 @@ export const deleteImage: API.OperationMethod<
   DeleteImageError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteImageRequest,
-  output: DeleteImageResponse,
+  input: __S(78, __c9, 6) as any as S.Schema<DeleteImageRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteImageResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3721,8 +2699,8 @@ export const deleteImageShare: API.OperationMethod<
   DeleteImageShareError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteImageShareRequest,
-  output: DeleteImageShareResponse,
+  input: __S(79, __c9, 7) as any as S.Schema<DeleteImageShareRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteImageShareResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3736,8 +2714,8 @@ export const deleteImageShareConsumer: API.OperationMethod<
   DeleteImageShareConsumerError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteImageShareConsumerRequest,
-  output: DeleteImageShareConsumerResponse,
+  input: __S(80, __c10, 0) as any as S.Schema<DeleteImageShareConsumerRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<DeleteImageShareConsumerResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3751,8 +2729,8 @@ export const deleteKeyPair: API.OperationMethod<
   DeleteKeyPairError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteKeyPairRequest,
-  output: DeleteKeyPairResponse,
+  input: __S(81, __c10, 1) as any as S.Schema<DeleteKeyPairRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteKeyPairResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3766,8 +2744,8 @@ export const deleteNetwork: API.OperationMethod<
   DeleteNetworkError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteNetworkRequest,
-  output: DeleteNetworkResponse,
+  input: __S(82, __c10, 2) as any as S.Schema<DeleteNetworkRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteNetworkResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3781,8 +2759,8 @@ export const deleteNetworkArea: API.OperationMethod<
   DeleteNetworkAreaError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteNetworkAreaRequest,
-  output: DeleteNetworkAreaResponse,
+  input: __S(83, __c10, 3) as any as S.Schema<DeleteNetworkAreaRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteNetworkAreaResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3801,8 +2779,8 @@ export const deleteNetworkAreaRange: API.OperationMethod<
   DeleteNetworkAreaRangeError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteNetworkAreaRangeRequest,
-  output: DeleteNetworkAreaRangeResponse,
+  input: __S(84, __c10, 4) as any as S.Schema<DeleteNetworkAreaRangeRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteNetworkAreaRangeResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3821,8 +2799,8 @@ export const deleteNetworkAreaRegion: API.OperationMethod<
   DeleteNetworkAreaRegionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteNetworkAreaRegionRequest,
-  output: DeleteNetworkAreaRegionResponse,
+  input: __S(85, __c10, 5) as any as S.Schema<DeleteNetworkAreaRegionRequest>,
+  output: __S(86, __c10, 6) as any as S.Schema<DeleteNetworkAreaRegionResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3836,8 +2814,8 @@ export const deleteNetworkAreaRoute: API.OperationMethod<
   DeleteNetworkAreaRouteError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteNetworkAreaRouteRequest,
-  output: DeleteNetworkAreaRouteResponse,
+  input: __S(87, __c10, 7) as any as S.Schema<DeleteNetworkAreaRouteRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteNetworkAreaRouteResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3851,8 +2829,8 @@ export const deleteNic: API.OperationMethod<
   DeleteNicError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteNicRequest,
-  output: DeleteNicResponse,
+  input: __S(88, __c11, 0) as any as S.Schema<DeleteNicRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteNicResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3866,8 +2844,8 @@ export const deletePublicIP: API.OperationMethod<
   DeletePublicIPError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePublicIPRequest,
-  output: DeletePublicIPResponse,
+  input: __S(89, __c11, 1) as any as S.Schema<DeletePublicIPRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeletePublicIPResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3881,8 +2859,8 @@ export const deleteRouteFromRoutingTable: API.OperationMethod<
   DeleteRouteFromRoutingTableError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRouteFromRoutingTableRequest,
-  output: DeleteRouteFromRoutingTableResponse,
+  input: __S(90, __c11, 2) as any as S.Schema<DeleteRouteFromRoutingTableRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<DeleteRouteFromRoutingTableResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3896,8 +2874,8 @@ export const deleteRoutingTableFromArea: API.OperationMethod<
   DeleteRoutingTableFromAreaError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRoutingTableFromAreaRequest,
-  output: DeleteRoutingTableFromAreaResponse,
+  input: __S(91, __c11, 3) as any as S.Schema<DeleteRoutingTableFromAreaRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<DeleteRoutingTableFromAreaResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3916,8 +2894,8 @@ export const deleteSecurityGroup: API.OperationMethod<
   DeleteSecurityGroupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSecurityGroupRequest,
-  output: DeleteSecurityGroupResponse,
+  input: __S(92, __c11, 4) as any as S.Schema<DeleteSecurityGroupRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteSecurityGroupResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3931,8 +2909,8 @@ export const deleteSecurityGroupRule: API.OperationMethod<
   DeleteSecurityGroupRuleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSecurityGroupRuleRequest,
-  output: DeleteSecurityGroupRuleResponse,
+  input: __S(93, __c11, 5) as any as S.Schema<DeleteSecurityGroupRuleRequest>,
+  output: __S(86, __c10, 6) as any as S.Schema<DeleteSecurityGroupRuleResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3946,8 +2924,8 @@ export const deleteServer: API.OperationMethod<
   DeleteServerError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteServerRequest,
-  output: DeleteServerResponse,
+  input: __S(94, __c11, 6) as any as S.Schema<DeleteServerRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteServerResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3961,8 +2939,8 @@ export const deleteSnapshot: API.OperationMethod<
   DeleteSnapshotError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSnapshotRequest,
-  output: DeleteSnapshotResponse,
+  input: __S(95, __c11, 7) as any as S.Schema<DeleteSnapshotRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteSnapshotResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3976,8 +2954,8 @@ export const deleteVolume: API.OperationMethod<
   DeleteVolumeError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteVolumeRequest,
-  output: DeleteVolumeResponse,
+  input: __S(96, __c12, 0) as any as S.Schema<DeleteVolumeRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteVolumeResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3991,8 +2969,8 @@ export const getAffinityGroup: API.OperationMethod<
   GetAffinityGroupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAffinityGroupRequest,
-  output: AffinityGroup,
+  input: __S(97, __c12, 1) as any as S.Schema<GetAffinityGroupRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<AffinityGroup>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4006,8 +2984,8 @@ export const getAttachedVolume: API.OperationMethod<
   GetAttachedVolumeError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAttachedVolumeRequest,
-  output: VolumeAttachment,
+  input: __S(98, __c12, 2) as any as S.Schema<GetAttachedVolumeRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<VolumeAttachment>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4021,8 +2999,8 @@ export const getBackup: API.OperationMethod<
   GetBackupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBackupRequest,
-  output: Backup,
+  input: __S(99, __c12, 3) as any as S.Schema<GetBackupRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<Backup>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4036,8 +3014,8 @@ export const getImage: API.OperationMethod<
   GetImageError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetImageRequest,
-  output: Image,
+  input: __S(100, __c12, 4) as any as S.Schema<GetImageRequest>,
+  output: __S(102, __c12, 6) as any as S.Schema<Image>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4051,8 +3029,8 @@ export const getImageShare: API.OperationMethod<
   GetImageShareError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetImageShareRequest,
-  output: ImageShare,
+  input: __S(103, __c12, 7) as any as S.Schema<GetImageShareRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<ImageShare>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4066,8 +3044,8 @@ export const getImageShareConsumer: API.OperationMethod<
   GetImageShareConsumerError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetImageShareConsumerRequest,
-  output: ImageShareConsumer,
+  input: __S(105, __c13, 1) as any as S.Schema<GetImageShareConsumerRequest>,
+  output: __S(106, __c13, 2) as any as S.Schema<ImageShareConsumer>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4081,8 +3059,8 @@ export const getKeyPair: API.OperationMethod<
   GetKeyPairError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetKeyPairRequest,
-  output: Keypair,
+  input: __S(107, __c13, 3) as any as S.Schema<GetKeyPairRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<Keypair>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4096,8 +3074,8 @@ export const getMachineType: API.OperationMethod<
   GetMachineTypeError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMachineTypeRequest,
-  output: MachineType,
+  input: __S(108, __c13, 4) as any as S.Schema<GetMachineTypeRequest>,
+  output: __S(109, __c13, 5) as any as S.Schema<MachineType>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4111,8 +3089,8 @@ export const getNetwork: API.OperationMethod<
   GetNetworkError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNetworkRequest,
-  output: Network,
+  input: __S(110, __c13, 6) as any as S.Schema<GetNetworkRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<Network>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4126,8 +3104,8 @@ export const getNetworkArea: API.OperationMethod<
   GetNetworkAreaError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNetworkAreaRequest,
-  output: NetworkArea,
+  input: __S(111, __c13, 7) as any as S.Schema<GetNetworkAreaRequest>,
+  output: __S(37, __c4, 5) as any as S.Schema<NetworkArea>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4141,8 +3119,8 @@ export const getNetworkAreaRange: API.OperationMethod<
   GetNetworkAreaRangeError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNetworkAreaRangeRequest,
-  output: NetworkRange,
+  input: __S(112, __c14, 0) as any as S.Schema<GetNetworkAreaRangeRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<NetworkRange>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4156,8 +3134,8 @@ export const getNetworkAreaRegion: API.OperationMethod<
   GetNetworkAreaRegionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNetworkAreaRegionRequest,
-  output: RegionalArea,
+  input: __S(113, __c14, 1) as any as S.Schema<GetNetworkAreaRegionRequest>,
+  output: __S(47, __c5, 7) as any as S.Schema<RegionalArea>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4171,8 +3149,8 @@ export const getNetworkAreaRoute: API.OperationMethod<
   GetNetworkAreaRouteError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNetworkAreaRouteRequest,
-  output: Route,
+  input: __S(114, __c14, 2) as any as S.Schema<GetNetworkAreaRouteRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<Route>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4182,8 +3160,8 @@ export type GetNicError = BadRequest | Forbidden | NotFound | StackitOpError;
 /** Get details about a network interface. Get details about a network interface inside a network. */
 export const getNic: API.OperationMethod<GetNicRequest, NIC, GetNicError, StackitOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: GetNicRequest,
-    output: NIC,
+    input: __S(115, __c14, 3) as any as S.Schema<GetNicRequest>,
+    output: __S(50, __c6, 2) as any as S.Schema<NIC>,
     errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
     protocol: StackitProtocol,
     retry: Retry.Retry,
@@ -4197,8 +3175,8 @@ export const getOrganizationRequest: API.OperationMethod<
   GetOrganizationRequestError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrganizationRequestRequest,
-  output: Request,
+  input: __S(116, __c14, 4) as any as S.Schema<GetOrganizationRequestRequest>,
+  output: __S(119, __c14, 7) as any as S.Schema<Request>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4212,8 +3190,8 @@ export const getProjectDetails: API.OperationMethod<
   GetProjectDetailsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectDetailsRequest,
-  output: Project,
+  input: __S(120, __c15, 0) as any as S.Schema<GetProjectDetailsRequest>,
+  output: __S(121, __c15, 1) as any as S.Schema<Project>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4227,8 +3205,8 @@ export const getProjectNIC: API.OperationMethod<
   GetProjectNICError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectNICRequest,
-  output: NIC,
+  input: __S(122, __c15, 2) as any as S.Schema<GetProjectNICRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<NIC>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4242,8 +3220,8 @@ export const getProjectRequest: API.OperationMethod<
   GetProjectRequestError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectRequestRequest,
-  output: Request,
+  input: __S(123, __c15, 3) as any as S.Schema<GetProjectRequestRequest>,
+  output: __S(119, __c14, 7) as any as S.Schema<Request>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4257,8 +3235,8 @@ export const getPublicIP: API.OperationMethod<
   GetPublicIPError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPublicIPRequest,
-  output: PublicIp,
+  input: __S(124, __c15, 4) as any as S.Schema<GetPublicIPRequest>,
+  output: __S(52, __c6, 4) as any as S.Schema<PublicIp>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4272,8 +3250,8 @@ export const getRouteOfRoutingTable: API.OperationMethod<
   GetRouteOfRoutingTableError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRouteOfRoutingTableRequest,
-  output: Route,
+  input: __S(125, __c15, 5) as any as S.Schema<GetRouteOfRoutingTableRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<Route>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4287,8 +3265,8 @@ export const getRoutingTableOfArea: API.OperationMethod<
   GetRoutingTableOfAreaError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRoutingTableOfAreaRequest,
-  output: RoutingTable,
+  input: __S(126, __c15, 6) as any as S.Schema<GetRoutingTableOfAreaRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<RoutingTable>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4302,8 +3280,8 @@ export const getSecurityGroup: API.OperationMethod<
   GetSecurityGroupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSecurityGroupRequest,
-  output: SecurityGroup,
+  input: __S(127, __c15, 7) as any as S.Schema<GetSecurityGroupRequest>,
+  output: __S(59, __c7, 3) as any as S.Schema<SecurityGroup>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4317,8 +3295,8 @@ export const getSecurityGroupRule: API.OperationMethod<
   GetSecurityGroupRuleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSecurityGroupRuleRequest,
-  output: GetSecurityGroupRuleResponse,
+  input: __S(128, __c16, 0) as any as S.Schema<GetSecurityGroupRuleRequest>,
+  output: __S(61, __c7, 5) as any as S.Schema<GetSecurityGroupRuleResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4332,8 +3310,8 @@ export const getServer: API.OperationMethod<
   GetServerError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetServerRequest,
-  output: ServerOutput,
+  input: __S(129, __c16, 1) as any as S.Schema<GetServerRequest>,
+  output: __S(69, __c8, 5) as any as S.Schema<ServerOutput>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4347,8 +3325,8 @@ export const getServerConsole: API.OperationMethod<
   GetServerConsoleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetServerConsoleRequest,
-  output: ServerConsoleUrl,
+  input: __S(130, __c16, 2) as any as S.Schema<GetServerConsoleRequest>,
+  output: __S(131, __c16, 3) as any as S.Schema<ServerConsoleUrl>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4362,8 +3340,8 @@ export const getServerLog: API.OperationMethod<
   GetServerLogError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetServerLogRequest,
-  output: GetServerLogResponse,
+  input: __S(132, __c16, 4) as any as S.Schema<GetServerLogRequest>,
+  output: __S(133, __c16, 5) as any as S.Schema<GetServerLogResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4377,8 +3355,8 @@ export const getSnapshot: API.OperationMethod<
   GetSnapshotError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSnapshotRequest,
-  output: Snapshot,
+  input: __S(134, __c16, 6) as any as S.Schema<GetSnapshotRequest>,
+  output: __S(71, __c8, 7) as any as S.Schema<Snapshot>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4392,8 +3370,8 @@ export const getVolume: API.OperationMethod<
   GetVolumeError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVolumeRequest,
-  output: Volume,
+  input: __S(135, __c16, 7) as any as S.Schema<GetVolumeRequest>,
+  output: __S(74, __c9, 2) as any as S.Schema<Volume>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4407,8 +3385,8 @@ export const getVolumePerformanceClass: API.OperationMethod<
   GetVolumePerformanceClassError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVolumePerformanceClassRequest,
-  output: VolumePerformanceClass,
+  input: __S(136, __c17, 0) as any as S.Schema<GetVolumePerformanceClassRequest>,
+  output: __S(137, __c17, 1) as any as S.Schema<VolumePerformanceClass>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4422,8 +3400,8 @@ export const imageFromVolume: API.OperationMethod<
   ImageFromVolumeError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImageFromVolumeRequest,
-  output: Image,
+  input: __S(138, __c17, 2) as any as S.Schema<ImageFromVolumeRequest>,
+  output: __S(102, __c12, 6) as any as S.Schema<Image>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4437,8 +3415,8 @@ export const listAffinityGroups: API.OperationMethod<
   ListAffinityGroupsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAffinityGroupsRequest,
-  output: AffinityGroupListResponse,
+  input: __S(139, __c17, 3) as any as S.Schema<ListAffinityGroupsRequest>,
+  output: __S(141, __c17, 5) as any as S.Schema<AffinityGroupListResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4452,8 +3430,8 @@ export const listAttachedVolumes: API.OperationMethod<
   ListAttachedVolumesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAttachedVolumesRequest,
-  output: VolumeAttachmentListResponse,
+  input: __S(142, __c17, 6) as any as S.Schema<ListAttachedVolumesRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<VolumeAttachmentListResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4467,8 +3445,8 @@ export const listAvailabilityZones: API.OperationMethod<
   ListAvailabilityZonesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAvailabilityZonesRequest,
-  output: AvailabilityZoneListResponse,
+  input: __S(145, __c18, 1) as any as S.Schema<ListAvailabilityZonesRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<AvailabilityZoneListResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4482,8 +3460,8 @@ export const listBackups: API.OperationMethod<
   ListBackupsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListBackupsRequest,
-  output: BackupListResponse,
+  input: __S(146, __c18, 2) as any as S.Schema<ListBackupsRequest>,
+  output: __S(148, __c18, 4) as any as S.Schema<BackupListResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4497,8 +3475,8 @@ export const listImages: API.OperationMethod<
   ListImagesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListImagesRequest,
-  output: ImageListResponse,
+  input: __S(149, __c18, 5) as any as S.Schema<ListImagesRequest>,
+  output: __S(151, __c18, 7) as any as S.Schema<ImageListResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4512,8 +3490,8 @@ export const listKeyPairs: API.OperationMethod<
   ListKeyPairsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListKeyPairsRequest,
-  output: KeyPairListResponse,
+  input: __S(152, __c19, 0) as any as S.Schema<ListKeyPairsRequest>,
+  output: __S(154, __c19, 2) as any as S.Schema<KeyPairListResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4527,8 +3505,8 @@ export const listMachineTypes: API.OperationMethod<
   ListMachineTypesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListMachineTypesRequest,
-  output: MachineTypeListResponse,
+  input: __S(155, __c19, 3) as any as S.Schema<ListMachineTypesRequest>,
+  output: __S(157, __c19, 5) as any as S.Schema<MachineTypeListResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4542,8 +3520,8 @@ export const listNetworkAreaProjects: API.OperationMethod<
   ListNetworkAreaProjectsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNetworkAreaProjectsRequest,
-  output: ProjectListResponse,
+  input: __S(158, __c19, 6) as any as S.Schema<ListNetworkAreaProjectsRequest>,
+  output: __S(159, __c19, 7) as any as S.Schema<ProjectListResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4557,8 +3535,8 @@ export const listNetworkAreaRanges: API.OperationMethod<
   ListNetworkAreaRangesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNetworkAreaRangesRequest,
-  output: NetworkRangeListResponse,
+  input: __S(160, __c20, 0) as any as S.Schema<ListNetworkAreaRangesRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<NetworkRangeListResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4572,8 +3550,8 @@ export const listNetworkAreaRegions: API.OperationMethod<
   ListNetworkAreaRegionsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNetworkAreaRegionsRequest,
-  output: RegionalAreaListResponse,
+  input: __S(161, __c20, 1) as any as S.Schema<ListNetworkAreaRegionsRequest>,
+  output: __S(163, __c20, 3) as any as S.Schema<RegionalAreaListResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4587,8 +3565,8 @@ export const listNetworkAreaRoutes: API.OperationMethod<
   ListNetworkAreaRoutesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNetworkAreaRoutesRequest,
-  output: RouteListResponse,
+  input: __S(164, __c20, 4) as any as S.Schema<ListNetworkAreaRoutesRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<RouteListResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4602,8 +3580,8 @@ export const listNetworkAreas: API.OperationMethod<
   ListNetworkAreasError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNetworkAreasRequest,
-  output: NetworkAreaListResponse,
+  input: __S(165, __c20, 5) as any as S.Schema<ListNetworkAreasRequest>,
+  output: __S(167, __c20, 7) as any as S.Schema<NetworkAreaListResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4617,8 +3595,8 @@ export const listNetworks: API.OperationMethod<
   ListNetworksError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNetworksRequest,
-  output: NetworkListResponse,
+  input: __S(168, __c21, 0) as any as S.Schema<ListNetworksRequest>,
+  output: __S(170, __c21, 2) as any as S.Schema<NetworkListResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4632,8 +3610,8 @@ export const listNics: API.OperationMethod<
   ListNicsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNicsRequest,
-  output: NICListResponse,
+  input: __S(171, __c21, 3) as any as S.Schema<ListNicsRequest>,
+  output: __S(173, __c21, 5) as any as S.Schema<NICListResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4647,8 +3625,8 @@ export const listProjectNICs: API.OperationMethod<
   ListProjectNICsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProjectNICsRequest,
-  output: NICListResponse,
+  input: __S(174, __c21, 6) as any as S.Schema<ListProjectNICsRequest>,
+  output: __S(173, __c21, 5) as any as S.Schema<NICListResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4662,8 +3640,8 @@ export const listPublicIPRanges: API.OperationMethod<
   ListPublicIPRangesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPublicIPRangesRequest,
-  output: PublicNetworkListResponse,
+  input: __S(175, __c21, 7) as any as S.Schema<ListPublicIPRangesRequest>,
+  output: __S(178, __c22, 2) as any as S.Schema<PublicNetworkListResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4677,8 +3655,8 @@ export const listPublicIPs: API.OperationMethod<
   ListPublicIPsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPublicIPsRequest,
-  output: PublicIpListResponse,
+  input: __S(179, __c22, 3) as any as S.Schema<ListPublicIPsRequest>,
+  output: __S(181, __c22, 5) as any as S.Schema<PublicIpListResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4692,8 +3670,8 @@ export const listQuotas: API.OperationMethod<
   ListQuotasError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListQuotasRequest,
-  output: QuotaListResponse,
+  input: __S(182, __c22, 6) as any as S.Schema<ListQuotasRequest>,
+  output: __S(185, __c23, 1) as any as S.Schema<QuotaListResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4707,8 +3685,8 @@ export const listRoutesOfRoutingTable: API.OperationMethod<
   ListRoutesOfRoutingTableError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRoutesOfRoutingTableRequest,
-  output: RouteListResponse,
+  input: __S(186, __c23, 2) as any as S.Schema<ListRoutesOfRoutingTableRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<RouteListResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4722,8 +3700,8 @@ export const listRoutingTablesOfArea: API.OperationMethod<
   ListRoutingTablesOfAreaError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRoutingTablesOfAreaRequest,
-  output: RoutingTableListResponse,
+  input: __S(187, __c23, 3) as any as S.Schema<ListRoutingTablesOfAreaRequest>,
+  output: __S(189, __c23, 5) as any as S.Schema<RoutingTableListResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4737,8 +3715,8 @@ export const listSecurityGroupRules: API.OperationMethod<
   ListSecurityGroupRulesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSecurityGroupRulesRequest,
-  output: SecurityGroupRuleListResponse,
+  input: __S(190, __c23, 6) as any as S.Schema<ListSecurityGroupRulesRequest>,
+  output: __S(191, __c23, 7) as any as S.Schema<SecurityGroupRuleListResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4752,8 +3730,8 @@ export const listSecurityGroups: API.OperationMethod<
   ListSecurityGroupsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSecurityGroupsRequest,
-  output: SecurityGroupListResponse,
+  input: __S(192, __c24, 0) as any as S.Schema<ListSecurityGroupsRequest>,
+  output: __S(194, __c24, 2) as any as S.Schema<SecurityGroupListResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4767,8 +3745,8 @@ export const listServerNICs: API.OperationMethod<
   ListServerNICsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListServerNICsRequest,
-  output: NICListResponse,
+  input: __S(195, __c24, 3) as any as S.Schema<ListServerNICsRequest>,
+  output: __S(173, __c21, 5) as any as S.Schema<NICListResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4782,8 +3760,8 @@ export const listServers: API.OperationMethod<
   ListServersError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListServersRequest,
-  output: ServerListResponseOutput,
+  input: __S(196, __c24, 4) as any as S.Schema<ListServersRequest>,
+  output: __S(198, __c24, 6) as any as S.Schema<ServerListResponseOutput>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4797,8 +3775,8 @@ export const listServerServiceAccounts: API.OperationMethod<
   ListServerServiceAccountsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListServerServiceAccountsRequest,
-  output: ServiceAccountMailListResponse,
+  input: __S(199, __c24, 7) as any as S.Schema<ListServerServiceAccountsRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<ServiceAccountMailListResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4812,8 +3790,8 @@ export const listSnapshotsInProject: API.OperationMethod<
   ListSnapshotsInProjectError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSnapshotsInProjectRequest,
-  output: SnapshotListResponse,
+  input: __S(200, __c25, 0) as any as S.Schema<ListSnapshotsInProjectRequest>,
+  output: __S(202, __c25, 2) as any as S.Schema<SnapshotListResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4827,8 +3805,8 @@ export const listVolumePerformanceClasses: API.OperationMethod<
   ListVolumePerformanceClassesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVolumePerformanceClassesRequest,
-  output: VolumePerformanceClassListResponse,
+  input: __S(203, __c25, 3) as any as S.Schema<ListVolumePerformanceClassesRequest>,
+  output: __S(205, __c25, 5) as any as S.Schema<VolumePerformanceClassListResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4842,8 +3820,8 @@ export const listVolumes: API.OperationMethod<
   ListVolumesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVolumesRequest,
-  output: VolumeListResponse,
+  input: __S(206, __c25, 6) as any as S.Schema<ListVolumesRequest>,
+  output: __S(208, __c26, 0) as any as S.Schema<VolumeListResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4857,8 +3835,8 @@ export const partialUpdateNetwork: API.OperationMethod<
   PartialUpdateNetworkError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PartialUpdateNetworkRequest,
-  output: PartialUpdateNetworkResponse,
+  input: __S(210, __c26, 2) as any as S.Schema<PartialUpdateNetworkRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<PartialUpdateNetworkResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4872,8 +3850,8 @@ export const partialUpdateNetworkArea: API.OperationMethod<
   PartialUpdateNetworkAreaError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PartialUpdateNetworkAreaRequest,
-  output: NetworkArea,
+  input: __S(211, __c26, 3) as any as S.Schema<PartialUpdateNetworkAreaRequest>,
+  output: __S(37, __c4, 5) as any as S.Schema<NetworkArea>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4887,8 +3865,8 @@ export const rebootServer: API.OperationMethod<
   RebootServerError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RebootServerRequest,
-  output: RebootServerResponse,
+  input: __S(212, __c26, 4) as any as S.Schema<RebootServerRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<RebootServerResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4902,8 +3880,8 @@ export const removeNetworkFromServer: API.OperationMethod<
   RemoveNetworkFromServerError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveNetworkFromServerRequest,
-  output: RemoveNetworkFromServerResponse,
+  input: __S(213, __c26, 5) as any as S.Schema<RemoveNetworkFromServerRequest>,
+  output: __S(86, __c10, 6) as any as S.Schema<RemoveNetworkFromServerResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4917,8 +3895,8 @@ export const removeNicFromServer: API.OperationMethod<
   RemoveNicFromServerError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveNicFromServerRequest,
-  output: RemoveNicFromServerResponse,
+  input: __S(214, __c26, 6) as any as S.Schema<RemoveNicFromServerRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<RemoveNicFromServerResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4937,8 +3915,8 @@ export const removePublicIpFromServer: API.OperationMethod<
   RemovePublicIpFromServerError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemovePublicIpFromServerRequest,
-  output: RemovePublicIpFromServerResponse,
+  input: __S(215, __c26, 7) as any as S.Schema<RemovePublicIpFromServerRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<RemovePublicIpFromServerResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4957,8 +3935,8 @@ export const removeSecurityGroupFromServer: API.OperationMethod<
   RemoveSecurityGroupFromServerError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveSecurityGroupFromServerRequest,
-  output: RemoveSecurityGroupFromServerResponse,
+  input: __S(216, __c27, 0) as any as S.Schema<RemoveSecurityGroupFromServerRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<RemoveSecurityGroupFromServerResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4977,8 +3955,8 @@ export const removeServiceAccountFromServer: API.OperationMethod<
   RemoveServiceAccountFromServerError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveServiceAccountFromServerRequest,
-  output: ServiceAccountMailListResponse,
+  input: __S(217, __c27, 1) as any as S.Schema<RemoveServiceAccountFromServerRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<ServiceAccountMailListResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -4997,8 +3975,8 @@ export const removeVolumeFromServer: API.OperationMethod<
   RemoveVolumeFromServerError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveVolumeFromServerRequest,
-  output: RemoveVolumeFromServerResponse,
+  input: __S(218, __c27, 2) as any as S.Schema<RemoveVolumeFromServerRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<RemoveVolumeFromServerResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -5012,8 +3990,8 @@ export const rescueServer: API.OperationMethod<
   RescueServerError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RescueServerRequest,
-  output: RescueServerResponse,
+  input: __S(219, __c27, 3) as any as S.Schema<RescueServerRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<RescueServerResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -5027,8 +4005,8 @@ export const resizeServer: API.OperationMethod<
   ResizeServerError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResizeServerRequest,
-  output: ResizeServerResponse,
+  input: __S(220, __c27, 4) as any as S.Schema<ResizeServerRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<ResizeServerResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -5042,8 +4020,8 @@ export const resizeVolume: API.OperationMethod<
   ResizeVolumeError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResizeVolumeRequest,
-  output: ResizeVolumeResponse,
+  input: __S(221, __c27, 5) as any as S.Schema<ResizeVolumeRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<ResizeVolumeResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -5057,8 +4035,8 @@ export const restoreBackup: API.OperationMethod<
   RestoreBackupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RestoreBackupRequest,
-  output: RestoreBackupResponse,
+  input: __S(222, __c27, 6) as any as S.Schema<RestoreBackupRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<RestoreBackupResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -5072,8 +4050,8 @@ export const setImageShare: API.OperationMethod<
   SetImageShareError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetImageShareRequest,
-  output: ImageShare,
+  input: __S(223, __c27, 7) as any as S.Schema<SetImageShareRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<ImageShare>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -5087,8 +4065,8 @@ export const startServer: API.OperationMethod<
   StartServerError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartServerRequest,
-  output: StartServerResponse,
+  input: __S(224, __c28, 0) as any as S.Schema<StartServerRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<StartServerResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -5102,8 +4080,8 @@ export const stopServer: API.OperationMethod<
   StopServerError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopServerRequest,
-  output: StopServerResponse,
+  input: __S(225, __c28, 1) as any as S.Schema<StopServerRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<StopServerResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -5117,8 +4095,8 @@ export const unrescueServer: API.OperationMethod<
   UnrescueServerError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UnrescueServerRequest,
-  output: UnrescueServerResponse,
+  input: __S(226, __c28, 2) as any as S.Schema<UnrescueServerRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<UnrescueServerResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -5132,8 +4110,8 @@ export const updateAttachedVolume: API.OperationMethod<
   UpdateAttachedVolumeError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAttachedVolumeRequest,
-  output: VolumeAttachment,
+  input: __S(227, __c28, 3) as any as S.Schema<UpdateAttachedVolumeRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<VolumeAttachment>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -5147,8 +4125,8 @@ export const updateBackup: API.OperationMethod<
   UpdateBackupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateBackupRequest,
-  output: Backup,
+  input: __S(228, __c28, 4) as any as S.Schema<UpdateBackupRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<Backup>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -5162,8 +4140,8 @@ export const updateImage: API.OperationMethod<
   UpdateImageError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateImageRequest,
-  output: Image,
+  input: __S(229, __c28, 5) as any as S.Schema<UpdateImageRequest>,
+  output: __S(102, __c12, 6) as any as S.Schema<Image>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -5177,8 +4155,8 @@ export const updateImageShare: API.OperationMethod<
   UpdateImageShareError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateImageShareRequest,
-  output: ImageShare,
+  input: __S(230, __c28, 6) as any as S.Schema<UpdateImageShareRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<ImageShare>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -5192,8 +4170,8 @@ export const updateKeyPair: API.OperationMethod<
   UpdateKeyPairError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateKeyPairRequest,
-  output: Keypair,
+  input: __S(231, __c28, 7) as any as S.Schema<UpdateKeyPairRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<Keypair>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -5212,8 +4190,8 @@ export const updateNetworkAreaRegion: API.OperationMethod<
   UpdateNetworkAreaRegionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNetworkAreaRegionRequest,
-  output: RegionalArea,
+  input: __S(233, __c29, 1) as any as S.Schema<UpdateNetworkAreaRegionRequest>,
+  output: __S(47, __c5, 7) as any as S.Schema<RegionalArea>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -5227,8 +4205,8 @@ export const updateNetworkAreaRoute: API.OperationMethod<
   UpdateNetworkAreaRouteError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNetworkAreaRouteRequest,
-  output: Route,
+  input: __S(234, __c29, 2) as any as S.Schema<UpdateNetworkAreaRouteRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<Route>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -5242,8 +4220,8 @@ export const updateNic: API.OperationMethod<
   UpdateNicError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNicRequest,
-  output: NIC,
+  input: __S(235, __c29, 3) as any as S.Schema<UpdateNicRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<NIC>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -5257,8 +4235,8 @@ export const updatePublicIP: API.OperationMethod<
   UpdatePublicIPError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePublicIPRequest,
-  output: PublicIp,
+  input: __S(236, __c29, 4) as any as S.Schema<UpdatePublicIPRequest>,
+  output: __S(52, __c6, 4) as any as S.Schema<PublicIp>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -5272,8 +4250,8 @@ export const updateRouteOfRoutingTable: API.OperationMethod<
   UpdateRouteOfRoutingTableError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRouteOfRoutingTableRequest,
-  output: Route,
+  input: __S(237, __c29, 5) as any as S.Schema<UpdateRouteOfRoutingTableRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<Route>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -5287,8 +4265,8 @@ export const updateRoutingTableOfArea: API.OperationMethod<
   UpdateRoutingTableOfAreaError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRoutingTableOfAreaRequest,
-  output: RoutingTable,
+  input: __S(238, __c29, 6) as any as S.Schema<UpdateRoutingTableOfAreaRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<RoutingTable>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -5302,8 +4280,8 @@ export const updateSecurityGroup: API.OperationMethod<
   UpdateSecurityGroupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSecurityGroupRequest,
-  output: SecurityGroup,
+  input: __S(239, __c29, 7) as any as S.Schema<UpdateSecurityGroupRequest>,
+  output: __S(59, __c7, 3) as any as S.Schema<SecurityGroup>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -5317,8 +4295,8 @@ export const updateServer: API.OperationMethod<
   UpdateServerError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateServerRequest,
-  output: ServerOutput,
+  input: __S(240, __c30, 0) as any as S.Schema<UpdateServerRequest>,
+  output: __S(69, __c8, 5) as any as S.Schema<ServerOutput>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -5332,8 +4310,8 @@ export const updateSnapshot: API.OperationMethod<
   UpdateSnapshotError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSnapshotRequest,
-  output: Snapshot,
+  input: __S(241, __c30, 1) as any as S.Schema<UpdateSnapshotRequest>,
+  output: __S(71, __c8, 7) as any as S.Schema<Snapshot>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -5347,8 +4325,8 @@ export const updateVolume: API.OperationMethod<
   UpdateVolumeError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateVolumeRequest,
-  output: Volume,
+  input: __S(242, __c30, 2) as any as S.Schema<UpdateVolumeRequest>,
+  output: __S(74, __c9, 2) as any as S.Schema<Volume>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -5416,13 +4394,13 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          destination: RouteInputDestination,
+          destination: S.Unknown,
           labels: S.optional(S.Unknown),
-          nexthop: RouteInputNexthop,
+          nexthop: S.Unknown,
         }),
       ).annotate({ identifier: "RouteInput" });
     case 5:
-      return S.Array(RouteInput);
+      return S.Array(__S(4, __c0, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -5430,7 +4408,7 @@ function __c0(j: number): any {
           areaId: S.String.pipe(T.Label()),
           region: S.String.pipe(T.Label()),
           routingTableId: S.String.pipe(T.Label()),
-          items: RouteListInput,
+          items: __S(5, __c0, 5),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5446,10 +4424,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdAt: S.optional(S.String),
-          destination: RouteDestination,
+          destination: S.Unknown,
           id: S.optional(S.String),
           labels: S.optional(S.Unknown),
-          nexthop: RouteNexthop,
+          nexthop: S.Unknown,
           updatedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "Route" });
@@ -5458,11 +4436,11 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Route);
+      return S.Array(__S(7, __c0, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          items: RouteList,
+          items: __S(8, __c1, 0),
         }),
       ).annotate({ identifier: "RouteListResponse" });
     case 2:
@@ -5550,7 +4528,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          items: ServiceAccountMailList,
+          items: __S(15, __c1, 7),
         }),
       ).annotate({
         identifier: "ServiceAccountMailListResponse",
@@ -5602,7 +4580,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          members: S.optional(AffinityGroupMembersList),
+          members: S.optional(__S(15, __c1, 7)),
           name: S.String,
           policy: S.String,
         }),
@@ -5622,7 +4600,7 @@ function __c2(j: number): any {
           description: S.optional(S.String),
           labels: S.optional(S.Unknown),
           name: S.optional(S.String),
-          source: BackupSource,
+          source: __S(21, __c2, 5),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5684,8 +4662,8 @@ function __c3(j: number): any {
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           region: S.String.pipe(T.Label()),
-          agent: S.optional(ImageAgent),
-          config: S.optional(ImageConfig),
+          agent: S.optional(__S(24, __c3, 0)),
+          config: S.optional(__S(25, __c3, 1)),
           diskFormat: S.String,
           labels: S.optional(S.Unknown),
           minDiskSize: S.optional(S.Number),
@@ -5716,7 +4694,7 @@ function __c3(j: number): any {
           projectId: S.String.pipe(T.Label()),
           region: S.String.pipe(T.Label()),
           dhcp: S.optional(S.Boolean),
-          ipv4: S.optional(CreateNetworkIPv4),
+          ipv4: S.optional(S.Unknown),
           labels: S.optional(S.Unknown),
           name: S.String,
         }).pipe(
@@ -5734,8 +4712,8 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           gateway: S.optional(S.NullOr(S.String)),
-          nameservers: S.optional(NameserversIPv4),
-          prefixes: NetworkIPv4PrefixesList,
+          nameservers: S.optional(__S(28, __c3, 4)),
+          prefixes: __S(15, __c1, 7),
           publicIp: S.optional(S.String),
           vpcNetworkRangeId: S.optional(S.String),
         }),
@@ -5744,8 +4722,8 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           gateway: S.optional(S.NullOr(S.String)),
-          nameservers: S.optional(NameserversIPv6),
-          prefixes: NetworkIPv6PrefixesList,
+          nameservers: S.optional(__S(28, __c3, 4)),
+          prefixes: __S(15, __c1, 7),
           vpcNetworkRangeId: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkIPv6" });
@@ -5760,8 +4738,8 @@ function __c4(j: number): any {
           description: S.optional(S.String),
           dhcp: S.optional(S.Boolean),
           id: S.String,
-          ipv4: S.optional(NetworkIPv4),
-          ipv6: S.optional(NetworkIPv6),
+          ipv4: S.optional(__S(30, __c3, 6)),
+          ipv6: S.optional(__S(31, __c3, 7)),
           labels: S.optional(S.Unknown),
           name: S.String,
           routed: S.optional(S.Boolean),
@@ -5804,8 +4782,8 @@ function __c4(j: number): any {
           region: S.String.pipe(T.Label()),
           description: S.optional(S.String),
           dhcp: S.optional(S.Boolean),
-          ipv4: S.optional(CreateNetworkIPv4),
-          ipv6: S.optional(CreateNetworkIPv6),
+          ipv4: S.optional(S.Unknown),
+          ipv6: S.optional(S.Unknown),
           labels: S.optional(S.Unknown),
           name: S.String,
           routed: S.optional(S.Boolean),
@@ -5853,7 +4831,7 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "NetworkRangeInput" });
     case 7:
-      return S.Array(NetworkRangeInput);
+      return S.Array(__S(38, __c4, 6));
   }
 }
 function __c5(j: number): any {
@@ -5864,7 +4842,7 @@ function __c5(j: number): any {
           organizationId: S.String.pipe(T.Label()),
           areaId: S.String.pipe(T.Label()),
           region: S.String.pipe(T.Label()),
-          ipv4: S.optional(NetworkRangeListInput),
+          ipv4: S.optional(__S(39, __c4, 7)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5886,21 +4864,21 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "NetworkRange" });
     case 2:
-      return S.Array(NetworkRange);
+      return S.Array(__S(41, __c5, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          items: NetworkRangeList,
+          items: __S(42, __c5, 2),
         }),
       ).annotate({ identifier: "NetworkRangeListResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          defaultNameservers: S.optional(RegionalAreaIPv4InputDefaultNameserversList),
+          defaultNameservers: S.optional(__S(15, __c1, 7)),
           defaultPrefixLen: S.Number,
           maxPrefixLen: S.Number,
           minPrefixLen: S.Number,
-          networkRanges: NetworkRangeListInput,
+          networkRanges: __S(39, __c4, 7),
           transferNetwork: S.String,
         }),
       ).annotate({ identifier: "RegionalAreaIPv4Input" });
@@ -5910,7 +4888,7 @@ function __c5(j: number): any {
           organizationId: S.String.pipe(T.Label()),
           areaId: S.String.pipe(T.Label()),
           region: S.String.pipe(T.Label()),
-          ipv4: S.optional(RegionalAreaIPv4Input),
+          ipv4: S.optional(__S(44, __c5, 4)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5925,18 +4903,18 @@ function __c5(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          defaultNameservers: S.optional(RegionalAreaIPv4DefaultNameserversList),
+          defaultNameservers: S.optional(__S(15, __c1, 7)),
           defaultPrefixLen: S.Number,
           maxPrefixLen: S.Number,
           minPrefixLen: S.Number,
-          networkRanges: NetworkRangeList,
+          networkRanges: __S(42, __c5, 2),
           transferNetwork: S.String,
         }),
       ).annotate({ identifier: "RegionalAreaIPv4" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          ipv4: S.optional(RegionalAreaIPv4),
+          ipv4: S.optional(__S(46, __c5, 6)),
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "RegionalArea" });
@@ -5950,7 +4928,7 @@ function __c6(j: number): any {
           organizationId: S.String.pipe(T.Label()),
           areaId: S.String.pipe(T.Label()),
           region: S.String.pipe(T.Label()),
-          items: RouteListInput,
+          items: __S(5, __c0, 5),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5968,14 +4946,14 @@ function __c6(j: number): any {
           projectId: S.String.pipe(T.Label()),
           region: S.String.pipe(T.Label()),
           networkId: S.String.pipe(T.Label()),
-          allowedAddresses: S.optional(AllowedAddresses),
+          allowedAddresses: S.optional(__S(15, __c1, 7)),
           description: S.optional(S.String),
           ipv4: S.optional(S.String),
           ipv6: S.optional(S.String),
           labels: S.optional(S.Unknown),
           name: S.optional(S.String),
           nicSecurity: S.optional(S.Boolean),
-          securityGroups: S.optional(UUIDList),
+          securityGroups: S.optional(__S(28, __c3, 4)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5988,7 +4966,7 @@ function __c6(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          allowedAddresses: S.optional(AllowedAddresses),
+          allowedAddresses: S.optional(__S(15, __c1, 7)),
           description: S.optional(S.String),
           device: S.optional(S.String),
           id: S.optional(S.String),
@@ -5999,7 +4977,7 @@ function __c6(j: number): any {
           name: S.optional(S.String),
           networkId: S.optional(S.String),
           nicSecurity: S.optional(S.Boolean),
-          securityGroups: S.optional(UUIDList),
+          securityGroups: S.optional(__S(28, __c3, 4)),
           status: S.optional(S.String),
           type: S.optional(S.String),
         }),
@@ -6081,18 +5059,18 @@ function __c7(j: number): any {
           description: S.optional(S.String),
           direction: S.String,
           ethertype: S.optional(S.String),
-          icmpParameters: S.optional(ICMPParameters),
+          icmpParameters: S.optional(__S(54, __c6, 6)),
           id: S.optional(S.String),
           ipRange: S.optional(S.String),
-          portRange: S.optional(PortRange),
+          portRange: S.optional(__S(55, __c6, 7)),
           remoteSecurityGroupId: S.optional(S.String),
           securityGroupId: S.optional(S.String),
           updatedAt: S.optional(S.String),
-          protocol: S.optional(Protocol),
+          protocol: S.optional(__S(56, __c7, 0)),
         }),
       ).annotate({ identifier: "SecurityGroupRule" });
     case 2:
-      return S.Array(SecurityGroupRule);
+      return S.Array(__S(57, __c7, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -6101,7 +5079,7 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           labels: S.optional(S.Unknown),
           name: S.String,
-          rules: S.optional(SecurityGroupRuleList),
+          rules: S.optional(__S(58, __c7, 2)),
           stateful: S.optional(S.Boolean),
           updatedAt: S.optional(S.String),
         }),
@@ -6115,11 +5093,11 @@ function __c7(j: number): any {
           description: S.optional(S.String),
           direction: S.String,
           ethertype: S.optional(S.String),
-          icmpParameters: S.optional(ICMPParameters),
+          icmpParameters: S.optional(__S(54, __c6, 6)),
           ipRange: S.optional(S.String),
-          portRange: S.optional(PortRange),
+          portRange: S.optional(__S(55, __c6, 7)),
           remoteSecurityGroupId: S.optional(S.String),
-          protocol: S.optional(CreateProtocol),
+          protocol: S.optional(S.Unknown),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6138,14 +5116,14 @@ function __c7(j: number): any {
           description: S.optional(S.String),
           direction: S.String,
           ethertype: S.optional(S.String),
-          icmpParameters: S.optional(ICMPParameters),
+          icmpParameters: S.optional(__S(54, __c6, 6)),
           id: S.optional(S.String),
           ipRange: S.optional(S.String),
-          portRange: S.optional(PortRange),
+          portRange: S.optional(__S(55, __c6, 7)),
           remoteSecurityGroupId: S.optional(S.String),
           securityGroupId: S.optional(S.String),
           updatedAt: S.optional(S.String),
-          protocol: S.optional(Protocol),
+          protocol: S.optional(__S(56, __c7, 0)),
         }),
       ).annotate({
         identifier: "CreateSecurityGroupRuleResponse",
@@ -6162,7 +5140,7 @@ function __c7(j: number): any {
           deleteOnTermination: S.optional(S.Boolean),
           performanceClass: S.optional(S.String),
           size: S.optional(S.Number),
-          source: S.optional(BackupSource),
+          source: S.optional(__S(21, __c2, 5)),
         }),
       ).annotate({ identifier: "BootVolumeInput" });
   }
@@ -6175,9 +5153,9 @@ function __c8(j: number): any {
           projectId: S.String.pipe(T.Label()),
           region: S.String.pipe(T.Label()),
           affinityGroup: S.optional(S.String),
-          agent: S.optional(ServerAgent),
+          agent: S.optional(__S(62, __c7, 6)),
           availabilityZone: S.optional(S.String),
-          bootVolume: S.optional(BootVolumeInput),
+          bootVolume: S.optional(__S(63, __c7, 7)),
           configDrive: S.optional(S.Boolean),
           imageId: S.optional(S.String),
           keypairName: S.optional(S.String),
@@ -6185,11 +5163,11 @@ function __c8(j: number): any {
           machineType: S.String,
           metadata: S.optional(S.Unknown),
           name: S.String,
-          networking: CreateServerRequestNetworking,
-          securityGroups: S.optional(GenericNameList),
-          serviceAccountMails: S.optional(ServiceAccountMailList),
+          networking: S.Unknown,
+          securityGroups: S.optional(__S(28, __c3, 4)),
+          serviceAccountMails: S.optional(__S(15, __c1, 7)),
           userData: S.optional(S.String),
-          volumes: S.optional(UUIDList),
+          volumes: S.optional(__S(28, __c3, 4)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6218,7 +5196,7 @@ function __c8(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          allowedAddresses: S.optional(AllowedAddresses),
+          allowedAddresses: S.optional(__S(15, __c1, 7)),
           ipv4: S.optional(S.String),
           ipv6: S.optional(S.String),
           mac: S.String,
@@ -6227,18 +5205,18 @@ function __c8(j: number): any {
           nicId: S.String,
           nicSecurity: S.Boolean,
           publicIp: S.optional(S.String),
-          securityGroups: S.optional(UUIDList),
+          securityGroups: S.optional(__S(28, __c3, 4)),
         }),
       ).annotate({ identifier: "ServerNetwork" });
     case 4:
-      return S.Array(ServerNetwork);
+      return S.Array(__S(67, __c8, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           affinityGroup: S.optional(S.String),
-          agent: S.optional(ServerAgent),
+          agent: S.optional(__S(62, __c7, 6)),
           availabilityZone: S.optional(S.String),
-          bootVolume: S.optional(BootVolumeOutput),
+          bootVolume: S.optional(__S(65, __c8, 1)),
           configDrive: S.optional(S.Boolean),
           createdAt: S.optional(S.String),
           errorMessage: S.optional(S.String),
@@ -6248,17 +5226,17 @@ function __c8(j: number): any {
           labels: S.optional(S.Unknown),
           launchedAt: S.optional(S.String),
           machineType: S.String,
-          maintenanceWindow: S.optional(ServerMaintenance),
+          maintenanceWindow: S.optional(__S(66, __c8, 2)),
           metadata: S.optional(S.Unknown),
           name: S.String,
-          networking: S.optional(ServerOutputNetworking),
-          nics: S.optional(ServerNICList),
+          networking: S.optional(S.Unknown),
+          nics: S.optional(__S(68, __c8, 4)),
           powerStatus: S.optional(S.String),
-          serviceAccountMails: S.optional(ServiceAccountMailList),
+          serviceAccountMails: S.optional(__S(15, __c1, 7)),
           status: S.optional(S.String),
           updatedAt: S.optional(S.String),
           userData: S.optional(S.String),
-          volumes: S.optional(UUIDList),
+          volumes: S.optional(__S(28, __c3, 4)),
         }),
       ).annotate({ identifier: "ServerOutput" });
     case 6:
@@ -6319,12 +5297,12 @@ function __c9(j: number): any {
           availabilityZone: S.String,
           bootable: S.optional(S.Boolean),
           description: S.optional(S.String),
-          encryptionParameters: S.optional(VolumeEncryptionParameter),
+          encryptionParameters: S.optional(__S(72, __c9, 0)),
           labels: S.optional(S.Unknown),
           name: S.optional(S.String),
           performanceClass: S.optional(S.String),
           size: S.optional(S.Number),
-          source: S.optional(BackupSource),
+          source: S.optional(__S(21, __c2, 5)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6342,15 +5320,15 @@ function __c9(j: number): any {
           createdAt: S.optional(S.String),
           description: S.optional(S.String),
           encrypted: S.optional(S.Boolean),
-          encryptionParameters: S.optional(VolumeEncryptionParameter),
+          encryptionParameters: S.optional(__S(72, __c9, 0)),
           id: S.optional(S.String),
-          imageConfig: S.optional(ImageConfig),
+          imageConfig: S.optional(__S(25, __c3, 1)),
           labels: S.optional(S.Unknown),
           name: S.optional(S.String),
           performanceClass: S.optional(S.String),
           serverId: S.optional(S.String),
           size: S.optional(S.Number),
-          source: S.optional(BackupSource),
+          source: S.optional(__S(21, __c2, 5)),
           status: S.optional(S.String),
           updatedAt: S.optional(S.String),
         }),
@@ -6782,9 +5760,9 @@ function __c12(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          agent: S.optional(ImageAgent),
-          checksum: S.optional(ImageChecksum),
-          config: S.optional(ImageConfig),
+          agent: S.optional(__S(24, __c3, 0)),
+          checksum: S.optional(__S(101, __c12, 5)),
+          config: S.optional(__S(25, __c3, 1)),
           createdAt: S.optional(S.String),
           diskFormat: S.String,
           id: S.optional(S.String),
@@ -6824,7 +5802,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parentOrganization: S.optional(S.Boolean),
-          projects: S.optional(ImageShareProjectsList),
+          projects: S.optional(__S(15, __c1, 7)),
         }),
       ).annotate({ identifier: "ImageShare" });
     case 1:
@@ -7020,7 +5998,7 @@ function __c14(j: number): any {
         }),
       ).annotate({ identifier: "RequestResource" });
     case 6:
-      return S.Array(RequestResource);
+      return S.Array(__S(117, __c14, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -7028,7 +6006,7 @@ function __c14(j: number): any {
           requestAction: S.String,
           requestId: S.String,
           requestType: S.String,
-          resources: RequestResourcesList,
+          resources: __S(118, __c14, 6),
           status: S.String,
         }),
       ).annotate({ identifier: "Request" });
@@ -7052,7 +6030,7 @@ function __c15(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          areaId: AreaId,
+          areaId: S.Unknown,
           createdAt: S.optional(S.String),
           id: S.String,
           internetAccess: S.optional(S.Boolean),
@@ -7337,11 +6315,11 @@ function __c17(j: number): any {
         identifier: "ListAffinityGroupsRequest",
       });
     case 4:
-      return S.Array(AffinityGroup);
+      return S.Array(__S(20, __c2, 4));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          items: AffinityGroupList,
+          items: __S(140, __c17, 4),
         }),
       ).annotate({
         identifier: "AffinityGroupListResponse",
@@ -7364,7 +6342,7 @@ function __c17(j: number): any {
         identifier: "ListAttachedVolumesRequest",
       });
     case 7:
-      return S.Array(VolumeAttachment);
+      return S.Array(__S(18, __c2, 2));
   }
 }
 function __c18(j: number): any {
@@ -7372,7 +6350,7 @@ function __c18(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          items: VolumeAttachmentList,
+          items: __S(143, __c17, 7),
         }),
       ).annotate({
         identifier: "VolumeAttachmentListResponse",
@@ -7408,11 +6386,11 @@ function __c18(j: number): any {
         ),
       ).annotate({ identifier: "ListBackupsRequest" });
     case 3:
-      return S.Array(Backup);
+      return S.Array(__S(23, __c2, 7));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          items: BackupList,
+          items: __S(147, __c18, 3),
         }),
       ).annotate({ identifier: "BackupListResponse" });
     case 5:
@@ -7432,11 +6410,11 @@ function __c18(j: number): any {
         ),
       ).annotate({ identifier: "ListImagesRequest" });
     case 6:
-      return S.Array(Image);
+      return S.Array(__S(102, __c12, 6));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          items: ImageList,
+          items: __S(150, __c18, 6),
         }),
       ).annotate({ identifier: "ImageListResponse" });
   }
@@ -7457,11 +6435,11 @@ function __c19(j: number): any {
         ),
       ).annotate({ identifier: "ListKeyPairsRequest" });
     case 1:
-      return S.Array(Keypair);
+      return S.Array(__S(34, __c4, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          items: KeyPairList,
+          items: __S(153, __c19, 1),
         }),
       ).annotate({ identifier: "KeyPairListResponse" });
     case 3:
@@ -7480,11 +6458,11 @@ function __c19(j: number): any {
         ),
       ).annotate({ identifier: "ListMachineTypesRequest" });
     case 4:
-      return S.Array(MachineType);
+      return S.Array(__S(109, __c13, 5));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          items: MachineTypeList,
+          items: __S(156, __c19, 4),
         }),
       ).annotate({ identifier: "MachineTypeListResponse" });
     case 6:
@@ -7506,7 +6484,7 @@ function __c19(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          items: ProjectList,
+          items: __S(28, __c3, 4),
         }),
       ).annotate({ identifier: "ProjectListResponse" });
   }
@@ -7547,11 +6525,11 @@ function __c20(j: number): any {
         identifier: "ListNetworkAreaRegionsRequest",
       });
     case 2:
-      return S.Record(S.String, RegionalArea);
+      return S.Record(S.String, __S(47, __c5, 7));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          regions: RegionalAreaListResponseRegionsMap,
+          regions: __S(162, __c20, 2),
         }),
       ).annotate({ identifier: "RegionalAreaListResponse" });
     case 4:
@@ -7587,11 +6565,11 @@ function __c20(j: number): any {
         ),
       ).annotate({ identifier: "ListNetworkAreasRequest" });
     case 6:
-      return S.Array(NetworkArea);
+      return S.Array(__S(37, __c4, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          items: NetworkAreaList,
+          items: __S(166, __c20, 6),
         }),
       ).annotate({ identifier: "NetworkAreaListResponse" });
   }
@@ -7614,11 +6592,11 @@ function __c21(j: number): any {
         ),
       ).annotate({ identifier: "ListNetworksRequest" });
     case 1:
-      return S.Array(Network);
+      return S.Array(__S(32, __c4, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          items: NetworkList,
+          items: __S(169, __c21, 1),
         }),
       ).annotate({ identifier: "NetworkListResponse" });
     case 3:
@@ -7638,11 +6616,11 @@ function __c21(j: number): any {
         ),
       ).annotate({ identifier: "ListNicsRequest" });
     case 4:
-      return S.Array(NIC);
+      return S.Array(__S(50, __c6, 2));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          items: NICList,
+          items: __S(172, __c21, 4),
         }),
       ).annotate({ identifier: "NICListResponse" });
     case 6:
@@ -7685,11 +6663,11 @@ function __c22(j: number): any {
         }),
       ).annotate({ identifier: "PublicNetwork" });
     case 1:
-      return S.Array(PublicNetwork);
+      return S.Array(__S(176, __c22, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          items: PublicNetworkList,
+          items: __S(177, __c22, 1),
         }),
       ).annotate({
         identifier: "PublicNetworkListResponse",
@@ -7710,11 +6688,11 @@ function __c22(j: number): any {
         ),
       ).annotate({ identifier: "ListPublicIPsRequest" });
     case 4:
-      return S.Array(PublicIp);
+      return S.Array(__S(52, __c6, 4));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          items: PublicIpList,
+          items: __S(180, __c22, 4),
         }),
       ).annotate({ identifier: "PublicIpListResponse" });
     case 6:
@@ -7745,24 +6723,24 @@ function __c23(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          backupGigabytes: Quota,
-          backups: Quota,
-          gigabytes: Quota,
-          networks: Quota,
-          nics: Quota,
-          publicIps: Quota,
-          ram: Quota,
-          securityGroupRules: Quota,
-          securityGroups: Quota,
-          snapshots: Quota,
-          vcpu: Quota,
-          volumes: Quota,
+          backupGigabytes: __S(183, __c22, 7),
+          backups: __S(183, __c22, 7),
+          gigabytes: __S(183, __c22, 7),
+          networks: __S(183, __c22, 7),
+          nics: __S(183, __c22, 7),
+          publicIps: __S(183, __c22, 7),
+          ram: __S(183, __c22, 7),
+          securityGroupRules: __S(183, __c22, 7),
+          securityGroups: __S(183, __c22, 7),
+          snapshots: __S(183, __c22, 7),
+          vcpu: __S(183, __c22, 7),
+          volumes: __S(183, __c22, 7),
         }),
       ).annotate({ identifier: "QuotaList" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          quotas: QuotaList,
+          quotas: __S(184, __c23, 0),
         }),
       ).annotate({ identifier: "QuotaListResponse" });
     case 2:
@@ -7803,11 +6781,11 @@ function __c23(j: number): any {
         identifier: "ListRoutingTablesOfAreaRequest",
       });
     case 4:
-      return S.Array(RoutingTable);
+      return S.Array(__S(11, __c1, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          items: RoutingTablesList,
+          items: __S(188, __c23, 4),
         }),
       ).annotate({ identifier: "RoutingTableListResponse" });
     case 6:
@@ -7830,7 +6808,7 @@ function __c23(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          items: SecurityGroupRuleList,
+          items: __S(58, __c7, 2),
         }),
       ).annotate({
         identifier: "SecurityGroupRuleListResponse",
@@ -7857,11 +6835,11 @@ function __c24(j: number): any {
         identifier: "ListSecurityGroupsRequest",
       });
     case 1:
-      return S.Array(SecurityGroup);
+      return S.Array(__S(59, __c7, 3));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          items: SecurityGroupList,
+          items: __S(193, __c24, 1),
         }),
       ).annotate({
         identifier: "SecurityGroupListResponse",
@@ -7898,11 +6876,11 @@ function __c24(j: number): any {
         ),
       ).annotate({ identifier: "ListServersRequest" });
     case 5:
-      return S.Array(ServerOutput);
+      return S.Array(__S(69, __c8, 5));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          items: ServerListOutput,
+          items: __S(197, __c24, 5),
         }),
       ).annotate({ identifier: "ServerListResponseOutput" });
     case 7:
@@ -7944,11 +6922,11 @@ function __c25(j: number): any {
         identifier: "ListSnapshotsInProjectRequest",
       });
     case 1:
-      return S.Array(Snapshot);
+      return S.Array(__S(71, __c8, 7));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          items: SnapshotList,
+          items: __S(201, __c25, 1),
         }),
       ).annotate({ identifier: "SnapshotListResponse" });
     case 3:
@@ -7969,11 +6947,11 @@ function __c25(j: number): any {
         identifier: "ListVolumePerformanceClassesRequest",
       });
     case 4:
-      return S.Array(VolumePerformanceClass);
+      return S.Array(__S(137, __c17, 1));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          items: VolumePerformanceClassList,
+          items: __S(204, __c25, 4),
         }),
       ).annotate({
         identifier: "VolumePerformanceClassListResponse",
@@ -7994,7 +6972,7 @@ function __c25(j: number): any {
         ),
       ).annotate({ identifier: "ListVolumesRequest" });
     case 7:
-      return S.Array(Volume);
+      return S.Array(__S(74, __c9, 2));
   }
 }
 function __c26(j: number): any {
@@ -8002,14 +6980,14 @@ function __c26(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          items: VolumeList,
+          items: __S(207, __c25, 7),
         }),
       ).annotate({ identifier: "VolumeListResponse" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           gateway: S.optional(S.NullOr(S.String)),
-          nameservers: S.optional(NameserversIPv4),
+          nameservers: S.optional(__S(28, __c3, 4)),
         }),
       ).annotate({ identifier: "UpdateNetworkIPv4Body" });
     case 2:
@@ -8020,8 +6998,8 @@ function __c26(j: number): any {
           networkId: S.String.pipe(T.Label()),
           description: S.optional(S.String),
           dhcp: S.optional(S.Boolean),
-          ipv4: S.optional(UpdateNetworkIPv4Body),
-          ipv6: S.optional(UpdateNetworkIPv6Body),
+          ipv4: S.optional(__S(209, __c26, 1)),
+          ipv6: S.optional(__S(209, __c26, 1)),
           labels: S.optional(S.Unknown),
           name: S.optional(S.String),
           routed: S.optional(S.Boolean),
@@ -8253,7 +7231,7 @@ function __c27(j: number): any {
           region: S.String.pipe(T.Label()),
           imageId: S.String.pipe(T.Label()),
           parentOrganization: S.optional(S.Boolean),
-          projects: S.optional(SetImageShareRequestProjectsList),
+          projects: S.optional(__S(15, __c1, 7)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8355,8 +7333,8 @@ function __c28(j: number): any {
           projectId: S.String.pipe(T.Label()),
           region: S.String.pipe(T.Label()),
           imageId: S.String.pipe(T.Label()),
-          agent: S.optional(ImageAgent),
-          config: S.optional(ImageConfig),
+          agent: S.optional(__S(24, __c3, 0)),
+          config: S.optional(__S(25, __c3, 1)),
           diskFormat: S.optional(S.String),
           labels: S.optional(S.Unknown),
           minDiskSize: S.optional(S.Number),
@@ -8379,7 +7357,7 @@ function __c28(j: number): any {
           region: S.String.pipe(T.Label()),
           imageId: S.String.pipe(T.Label()),
           parentOrganization: S.optional(S.Boolean),
-          projects: S.optional(UpdateImageShareRequestProjectsList),
+          projects: S.optional(__S(15, __c1, 7)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8410,7 +7388,7 @@ function __c29(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          defaultNameservers: S.optional(UpdateRegionalAreaIPv4DefaultNameserversList),
+          defaultNameservers: S.optional(__S(15, __c1, 7)),
           defaultPrefixLen: S.optional(S.Number),
           maxPrefixLen: S.optional(S.Number),
           minPrefixLen: S.optional(S.Number),
@@ -8422,7 +7400,7 @@ function __c29(j: number): any {
           organizationId: S.String.pipe(T.Label()),
           areaId: S.String.pipe(T.Label()),
           region: S.String.pipe(T.Label()),
-          ipv4: S.optional(UpdateRegionalAreaIPv4),
+          ipv4: S.optional(__S(232, __c29, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8460,12 +7438,12 @@ function __c29(j: number): any {
           region: S.String.pipe(T.Label()),
           networkId: S.String.pipe(T.Label()),
           nicId: S.String.pipe(T.Label()),
-          allowedAddresses: S.optional(AllowedAddresses),
+          allowedAddresses: S.optional(__S(15, __c1, 7)),
           description: S.optional(S.String),
           labels: S.optional(S.Unknown),
           name: S.optional(S.String),
           nicSecurity: S.optional(S.Boolean),
-          securityGroups: S.optional(UUIDList),
+          securityGroups: S.optional(__S(28, __c3, 4)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8603,7 +7581,7 @@ function __c30(j: number): any {
           volumeId: S.String.pipe(T.Label()),
           bootable: S.optional(S.Boolean),
           description: S.optional(S.String),
-          imageConfig: S.optional(ImageConfig),
+          imageConfig: S.optional(__S(25, __c3, 1)),
           labels: S.optional(S.Unknown),
           name: S.optional(S.String),
         }).pipe(
@@ -8616,4 +7594,9 @@ function __c30(j: number): any {
         ),
       ).annotate({ identifier: "UpdateVolumeRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

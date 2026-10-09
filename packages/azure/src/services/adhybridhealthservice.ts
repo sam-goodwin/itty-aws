@@ -6,21 +6,15 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 /** The list of additional emails that are configured to receive notifications about the service. */
 export type AddAddsServiceRequestCustomNotificationEmailsList = Array<string>;
-const AddAddsServiceRequestCustomNotificationEmailsList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AddAddsServiceRequestCustomNotificationEmailsList>;
-
 /** The list of emails to whom service notifications will be sent. */
 export type AddAddsServiceRequestNotificationEmailsList = Array<string>;
-const AddAddsServiceRequestNotificationEmailsList =
-  AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<AddAddsServiceRequestNotificationEmailsList>;
-
 export interface AddAddsServiceRequest {
   /** The id of the service. */
   id?: string;
@@ -71,21 +65,10 @@ export interface AddAddsServiceRequest {
   /** The service type for the services onboarded to Azure Active Directory Connect Health. Depending on whether the service is monitoring, ADFS, Sync or ADDS roles, the service type can either be AdFederationService or AadSyncService or AdDomainService. */
   type?: string;
 }
-const AddAddsServiceRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AddAddsServiceRequest>;
-
 /** The list of additional emails that are configured to receive notifications about the service. */
 export type ServicePropertiesCustomNotificationEmailsList = Array<string>;
-const ServicePropertiesCustomNotificationEmailsList =
-  AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<ServicePropertiesCustomNotificationEmailsList>;
-
 /** The list of emails to whom service notifications will be sent. */
 export type ServicePropertiesNotificationEmailsList = Array<string>;
-const ServicePropertiesNotificationEmailsList =
-  AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<ServicePropertiesNotificationEmailsList>;
-
 /** The service properties for a given service. */
 export interface ServiceProperties {
   /** The id of the service. */
@@ -137,15 +120,11 @@ export interface ServiceProperties {
   /** The service type for the services onboarded to Azure Active Directory Connect Health. Depending on whether the service is monitoring, ADFS, Sync or ADDS roles, the service type can either be AdFederationService or AadSyncService or AdDomainService. */
   type?: string;
 }
-const ServiceProperties = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<ServiceProperties>;
-
 /** The monitoring level reported by the server. */
 export type AddAddsServicesServiceMemberRequestServerReportedMonitoringLevel =
   | "Partial"
   | "Full"
   | "Off";
-const AddAddsServicesServiceMemberRequestServerReportedMonitoringLevel = S.String;
-
 export interface AddAddsServicesServiceMemberRequest {
   /** The name of the service under which the server is to be onboarded. */
   serviceName: string;
@@ -204,15 +183,8 @@ export interface AddAddsServicesServiceMemberRequest {
   /** The health status of the server. */
   status?: string;
 }
-const AddAddsServicesServiceMemberRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<AddAddsServicesServiceMemberRequest>;
-
 /** The monitoring level reported by the server. */
 export type ServiceMemberServerReportedMonitoringLevel = "Partial" | "Full" | "Off";
-const ServiceMemberServerReportedMonitoringLevel = S.String;
-
 /** The server properties for a given service. */
 export interface ServiceMember {
   /** The id of the server. */
@@ -268,13 +240,8 @@ export interface ServiceMember {
   /** The health status of the server. */
   status?: string;
 }
-const ServiceMember = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<ServiceMember>;
-
 /** The name of the metric. */
 export type AddAddsServicesUserPreferenceRequestMetricNamesList = Array<string>;
-const AddAddsServicesUserPreferenceRequestMetricNamesList =
-  AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<AddAddsServicesUserPreferenceRequestMetricNamesList>;
-
 export interface AddAddsServicesUserPreferenceRequest {
   /** The name of the service. */
   serviceName: string;
@@ -283,28 +250,10 @@ export interface AddAddsServicesUserPreferenceRequest {
   /** The name of the metric. */
   metricNames?: AddAddsServicesUserPreferenceRequestMetricNamesList;
 }
-const AddAddsServicesUserPreferenceRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<AddAddsServicesUserPreferenceRequest>;
-
 export interface AddAddsServicesUserPreferenceResponse {}
-const AddAddsServicesUserPreferenceResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<AddAddsServicesUserPreferenceResponse>;
-
 export interface AddConfigurationRequest {}
-const AddConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<AddConfigurationRequest>;
-
 /** The list of global administrators for the tenant. */
 export type TenantGlobalAdminsEmailList = Array<string>;
-const TenantGlobalAdminsEmailList =
-  AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<TenantGlobalAdminsEmailList>;
-
 /** The details of the onboarded tenant. */
 export interface Tenant {
   /** The Id of the tenant. */
@@ -350,18 +299,10 @@ export interface Tenant {
   /** The name of the tenant. */
   tenantName?: string;
 }
-const Tenant = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Tenant>;
-
 /** The list of additional emails that are configured to receive notifications about the service. */
 export type AddServiceRequestCustomNotificationEmailsList = Array<string>;
-const AddServiceRequestCustomNotificationEmailsList =
-  AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<AddServiceRequestCustomNotificationEmailsList>;
-
 /** The list of emails to whom service notifications will be sent. */
 export type AddServiceRequestNotificationEmailsList = Array<string>;
-const AddServiceRequestNotificationEmailsList =
-  AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<AddServiceRequestNotificationEmailsList>;
-
 export interface AddServiceRequest {
   /** The id of the service. */
   id?: string;
@@ -412,8 +353,6 @@ export interface AddServiceRequest {
   /** The service type for the services onboarded to Azure Active Directory Connect Health. Depending on whether the service is monitoring, ADFS, Sync or ADDS roles, the service type can either be AdFederationService or AadSyncService or AdDomainService. */
   type?: string;
 }
-const AddServiceRequest = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<AddServiceRequest>;
-
 export interface AddServiceAlertFeedbackRequest {
   /** The name of the service. */
   serviceName: string;
@@ -434,11 +373,6 @@ export interface AddServiceAlertFeedbackRequest {
   /** The date and time,in UTC,when the alert was created. */
   createdDate?: string;
 }
-const AddServiceAlertFeedbackRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<AddServiceAlertFeedbackRequest>;
-
 /** The alert feedback details. */
 export interface AlertFeedback {
   /** The alert level which indicates the severity of the alert. */
@@ -458,12 +392,8 @@ export interface AlertFeedback {
   /** The date and time,in UTC,when the alert was created. */
   createdDate?: string;
 }
-const AlertFeedback = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<AlertFeedback>;
-
 /** The monitoring level reported by the server. */
 export type AddServiceMemberRequestServerReportedMonitoringLevel = "Partial" | "Full" | "Off";
-const AddServiceMemberRequestServerReportedMonitoringLevel = S.String;
-
 export interface AddServiceMemberRequest {
   /** The name of the service under which the server is to be onboarded. */
   serviceName: string;
@@ -522,28 +452,13 @@ export interface AddServiceMemberRequest {
   /** The health status of the server. */
   status?: string;
 }
-const AddServiceMemberRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<AddServiceMemberRequest>;
-
 export interface DeleteAddsServiceRequest {
   /** The name of the service which needs to be deleted. */
   serviceName: string;
   /** Indicates if the service will be permanently deleted or disabled. True indicates that the service will be permanently deleted and False indicates that the service will be marked disabled and then deleted after 30 days, if it is not re-registered. */
   confirm?: boolean;
 }
-const DeleteAddsServiceRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<DeleteAddsServiceRequest>;
-
 export interface DeleteAddsServiceResponse {}
-const DeleteAddsServiceResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<DeleteAddsServiceResponse>;
-
 export interface DeleteAddsServiceMemberRequest {
   /** The name of the service. */
   serviceName: string;
@@ -552,43 +467,21 @@ export interface DeleteAddsServiceMemberRequest {
   /** Indicates if the server will be permanently deleted or disabled. True indicates that the server will be permanently deleted and False indicates that the server will be marked disabled and then deleted after 30 days, if it is not re-registered. */
   confirm?: boolean;
 }
-const DeleteAddsServiceMemberRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<DeleteAddsServiceMemberRequest>;
-
 export interface DeleteAddsServiceMemberResponse {}
-const DeleteAddsServiceMemberResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<DeleteAddsServiceMemberResponse>;
-
 export interface DeleteAddsServicesUserPreferenceRequest {
   /** The name of the service. */
   serviceName: string;
   /** The name of the feature. */
   featureName: string;
 }
-const DeleteAddsServicesUserPreferenceRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<DeleteAddsServicesUserPreferenceRequest>;
-
 export interface DeleteAddsServicesUserPreferenceResponse {}
-const DeleteAddsServicesUserPreferenceResponse =
-  AddAddsServicesUserPreferenceResponse as any as S.Schema<DeleteAddsServicesUserPreferenceResponse>;
-
 export interface DeleteServiceRequest {
   /** The name of the service which needs to be deleted. */
   serviceName: string;
   /** Indicates if the service will be permanently deleted or disabled. True indicates that the service will be permanently deleted and False indicates that the service will be marked disabled and then deleted after 30 days, if it is not re-registered. */
   confirm?: boolean;
 }
-const DeleteServiceRequest = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<DeleteServiceRequest>;
-
 export interface DeleteServiceResponse {}
-const DeleteServiceResponse = DeleteAddsServiceResponse as any as S.Schema<DeleteServiceResponse>;
-
 export interface DeleteServiceMemberRequest {
   /** The name of the service. */
   serviceName: string;
@@ -597,58 +490,26 @@ export interface DeleteServiceMemberRequest {
   /** Indicates if the server will be permanently deleted or disabled. True indicates that the server will be permanently deleted and False indicates that the server will be marked disabled and then deleted after 30 days, if it is not re-registered. */
   confirm?: boolean;
 }
-const DeleteServiceMemberRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<DeleteServiceMemberRequest>;
-
 export interface DeleteServiceMemberResponse {}
-const DeleteServiceMemberResponse =
-  DeleteAddsServiceResponse as any as S.Schema<DeleteServiceMemberResponse>;
-
 export interface DeleteServiceMemberDataRequest {
   /** The name of the service. */
   serviceName: string;
   /** The server Id. */
   serviceMemberId: string;
 }
-const DeleteServiceMemberDataRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<DeleteServiceMemberDataRequest>;
-
 export interface DeleteServiceMemberDataResponse {}
-const DeleteServiceMemberDataResponse =
-  DeleteAddsServiceMemberResponse as any as S.Schema<DeleteServiceMemberDataResponse>;
-
 export interface GetAddsServiceRequest {
   /** The name of the service. */
   serviceName: string;
 }
-const GetAddsServiceRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<GetAddsServiceRequest>;
-
 export interface GetAddsServiceForestSummaryRequest {
   /** The name of the service. */
   serviceName: string;
 }
-const GetAddsServiceForestSummaryRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<GetAddsServiceForestSummaryRequest>;
-
 /** The list of domain controller names. */
 export type ForestSummaryDomainsList = Array<string>;
-const ForestSummaryDomainsList =
-  AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<ForestSummaryDomainsList>;
-
 /** The list of site names. */
 export type ForestSummarySitesList = Array<string>;
-const ForestSummarySitesList =
-  AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<ForestSummarySitesList>;
-
 /** The forest summary for an ADDS domain. */
 export interface ForestSummary {
   /** The forest name. */
@@ -666,30 +527,18 @@ export interface ForestSummary {
   /** The list of site names. */
   sites?: ForestSummarySitesList;
 }
-const ForestSummary = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<ForestSummary>;
-
 export interface GetAddsServiceMemberRequest {
   /** The name of the service. */
   serviceName: string;
   /** The server Id. */
   serviceMemberId: string;
 }
-const GetAddsServiceMemberRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<GetAddsServiceMemberRequest>;
-
 export interface GetAddsServiceMetricMetadataRequest {
   /** The name of the service. */
   serviceName: string;
   /** The metric name */
   metricName: string;
 }
-const GetAddsServiceMetricMetadataRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<GetAddsServiceMetricMetadataRequest>;
-
 /** The metric group details. */
 export interface MetricGroup {
   /** The key for the group. */
@@ -699,15 +548,8 @@ export interface MetricGroup {
   /** indicates if the metric group is displayed in Azure Active Directory Connect Health UI. */
   invisibleForUi?: boolean;
 }
-const MetricGroup = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<MetricGroup>;
-
 /** The groupings for the metrics. */
 export type MetricMetadataGroupingsList = Array<MetricGroup>;
-const MetricMetadataGroupingsList = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<MetricMetadataGroupingsList>;
-
 /** The metric meta data */
 export interface MetricMetadata {
   /** The name of the class which retrieve and process the metric. */
@@ -733,8 +575,6 @@ export interface MetricMetadata {
   /** Indicates if the metric is visible to DevOps or not. */
   isDevOps?: boolean;
 }
-const MetricMetadata = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<MetricMetadata>;
-
 export interface GetAddsServiceMetricMetadataForGroupRequest {
   /** The name of the service. */
   serviceName: string;
@@ -749,15 +589,8 @@ export interface GetAddsServiceMetricMetadataForGroupRequest {
   /** The end date. */
   toDate?: string;
 }
-const GetAddsServiceMetricMetadataForGroupRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<GetAddsServiceMetricMetadataForGroupRequest>;
-
 /** The list of the metric values. */
 export type MetricSetValuesList = Array<number>;
-const MetricSetValuesList = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<MetricSetValuesList>;
-
 /** The set of metric values. Example of a MetricSet are Values of token requests for a Server1 or RelyingParty1. */
 export interface MetricSet {
   /** The name of the set. */
@@ -765,17 +598,10 @@ export interface MetricSet {
   /** The list of the metric values. */
   values?: MetricSetValuesList;
 }
-const MetricSet = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<MetricSet>;
-
 /** The list of metric set. */
 export type MetricSetsSetsList = Array<MetricSet>;
-const MetricSetsSetsList = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<MetricSetsSetsList>;
-
 /** The list of timestamps for each metric in the metric set. */
 export type MetricSetsTimeStampsList = Array<string>;
-const MetricSetsTimeStampsList =
-  AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<MetricSetsTimeStampsList>;
-
 /** The metrics data represented set. */
 export interface MetricSets {
   /** The list of metric set. */
@@ -783,8 +609,6 @@ export interface MetricSets {
   /** The list of timestamps for each metric in the metric set. */
   timeStamps?: MetricSetsTimeStampsList;
 }
-const MetricSets = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<MetricSets>;
-
 export interface GetAddsServiceMetricsRequest {
   /** The name of the service. */
   serviceName: string;
@@ -799,20 +623,10 @@ export interface GetAddsServiceMetricsRequest {
   /** The end date. */
   toDate?: string;
 }
-const GetAddsServiceMetricsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<GetAddsServiceMetricsRequest>;
-
 export interface GetAddsServicesReplicationStatusRequest {
   /** The name of the service. */
   serviceName: string;
 }
-const GetAddsServicesReplicationStatusRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<GetAddsServicesReplicationStatusRequest>;
-
 /** Replication summary for a domain controller. */
 export interface ReplicationStatus {
   /** The forest name. */
@@ -822,78 +636,42 @@ export interface ReplicationStatus {
   /** The total number of domain controllers with error in a given forest. */
   errorDcCount?: number;
 }
-const ReplicationStatus = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<ReplicationStatus>;
-
 export interface GetAddsServicesUserPreferenceRequest {
   /** The name of the service. */
   serviceName: string;
   /** The name of the feature. */
   featureName: string;
 }
-const GetAddsServicesUserPreferenceRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<GetAddsServicesUserPreferenceRequest>;
-
 /** The name of the metric. */
 export type UserPreferenceMetricNamesList = Array<string>;
-const UserPreferenceMetricNamesList =
-  AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<UserPreferenceMetricNamesList>;
-
 /** The user preference for a given feature. */
 export interface UserPreference {
   /** The name of the metric. */
   metricNames?: UserPreferenceMetricNamesList;
 }
-const UserPreference = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<UserPreference>;
-
 export interface GetConfigurationRequest {}
-const GetConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<GetConfigurationRequest>;
-
 export interface GetReportDevOpsRequest {}
-const GetReportDevOpsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<GetReportDevOpsRequest>;
-
 /** The result for an operation. */
 export interface Result {
   /** The value. */
   value?: boolean;
 }
-const Result = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<Result>;
-
 export interface GetServiceRequest {
   /** The name of the service. */
   serviceName: string;
 }
-const GetServiceRequest = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<GetServiceRequest>;
-
 export interface GetServiceFeatureAvailibilityRequest {
   /** The name of the service. */
   serviceName: string;
   /** The name of the feature. */
   featureName: string;
 }
-const GetServiceFeatureAvailibilityRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<GetServiceFeatureAvailibilityRequest>;
-
 export interface GetServiceMemberRequest {
   /** The name of the service. */
   serviceName: string;
   /** The server Id. */
   serviceMemberId: string;
 }
-const GetServiceMemberRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<GetServiceMemberRequest>;
-
 export interface GetServiceMemberConnectorMetadataRequest {
   /** The name of the service. */
   serviceName: string;
@@ -902,11 +680,6 @@ export interface GetServiceMemberConnectorMetadataRequest {
   /** The name of the metric. */
   metricName: string;
 }
-const GetServiceMemberConnectorMetadataRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<GetServiceMemberConnectorMetadataRequest>;
-
 /** Details of the connector. */
 export interface ConnectorMetadataDetails {
   /** The Connector Id. */
@@ -914,23 +687,10 @@ export interface ConnectorMetadataDetails {
   /** The Connector Display Name */
   connectorDisplayName?: string;
 }
-const ConnectorMetadataDetails = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<ConnectorMetadataDetails>;
-
 /** The list of connectors. */
 export type ConnectorMetadataConnectorsList = Array<ConnectorMetadataDetails>;
-const ConnectorMetadataConnectorsList = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<ConnectorMetadataConnectorsList>;
-
 /** The list of run profile names. */
 export type ConnectorMetadataRunProfileNamesList = Array<string>;
-const ConnectorMetadataRunProfileNamesList =
-  AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<ConnectorMetadataRunProfileNamesList>;
-
 /** Gets the list of connectors and run profile names. */
 export interface ConnectorMetadata {
   /** The list of connectors. */
@@ -938,8 +698,6 @@ export interface ConnectorMetadata {
   /** The list of run profile names. */
   runProfileNames?: ConnectorMetadataRunProfileNamesList;
 }
-const ConnectorMetadata = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<ConnectorMetadata>;
-
 export interface GetServiceMemberMetricsRequest {
   /** The name of the service. */
   serviceName: string;
@@ -956,22 +714,12 @@ export interface GetServiceMemberMetricsRequest {
   /** The end date. */
   toDate?: string;
 }
-const GetServiceMemberMetricsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<GetServiceMemberMetricsRequest>;
-
 export interface GetServiceMemberServiceConfigurationRequest {
   /** The name of the service. */
   serviceName: string;
   /** The server Id. */
   serviceMemberId: string;
 }
-const GetServiceMemberServiceConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<GetServiceMemberServiceConfigurationRequest>;
-
 /** The service configuration */
 export interface ServiceConfiguration {
   /** The version of the sync service. */
@@ -993,19 +741,12 @@ export interface ServiceConfiguration {
   /** The SQL database size. */
   sqlDatabaseSize?: number;
 }
-const ServiceConfiguration = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<ServiceConfiguration>;
-
 export interface GetServiceMetricMetadataRequest {
   /** The name of the service. */
   serviceName: string;
   /** The metric name */
   metricName: string;
 }
-const GetServiceMetricMetadataRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<GetServiceMetricMetadataRequest>;
-
 export interface GetServiceMetricMetadataForGroupRequest {
   /** The name of the service. */
   serviceName: string;
@@ -1020,11 +761,6 @@ export interface GetServiceMetricMetadataForGroupRequest {
   /** The end date. */
   toDate?: string;
 }
-const GetServiceMetricMetadataForGroupRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<GetServiceMetricMetadataForGroupRequest>;
-
 export interface GetServiceMetricsRequest {
   /** The name of the service. */
   serviceName: string;
@@ -1039,28 +775,14 @@ export interface GetServiceMetricsRequest {
   /** The end date. */
   toDate?: string;
 }
-const GetServiceMetricsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<GetServiceMetricsRequest>;
-
 export interface GetServiceTenantWhitelistingRequest {
   /** The name of the service. */
   serviceName: string;
   /** The name of the feature. */
   featureName: string;
 }
-const GetServiceTenantWhitelistingRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<GetServiceTenantWhitelistingRequest>;
-
 export type ListAdDomainServiceMembersRequestNextPartitionKey = " ";
-const ListAdDomainServiceMembersRequestNextPartitionKey = S.String;
-
 export type ListAdDomainServiceMembersRequestNextRowKey = " ";
-const ListAdDomainServiceMembersRequestNextRowKey = S.String;
-
 export interface ListAdDomainServiceMembersRequest {
   /** The name of the service. */
   serviceName: string;
@@ -1077,21 +799,10 @@ export interface ListAdDomainServiceMembersRequest {
   /** The take count , which specifies the number of elements that can be returned from a sequence. */
   takeCount?: number;
 }
-const ListAdDomainServiceMembersRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<ListAdDomainServiceMembersRequest>;
-
 /** The list of ADDS roles. */
 export type AddsServiceMemberAddsRolesList = Array<string>;
-const AddsServiceMemberAddsRolesList =
-  AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<AddsServiceMemberAddsRolesList>;
-
 /** The list of domain controller types. */
 export type AddsServiceMemberDcTypesList = Array<string>;
-const AddsServiceMemberDcTypesList =
-  AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<AddsServiceMemberDcTypesList>;
-
 /** The key value pair for properties. */
 export interface Item {
   /** The key for the property. */
@@ -1099,15 +810,8 @@ export interface Item {
   /** The value for the key. */
   value?: string;
 }
-const Item = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<Item>;
-
 /** The server specific configuration related dimensions. */
 export type AddsServiceMemberDimensionsList = Array<Item>;
-const AddsServiceMemberDimensionsList = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<AddsServiceMemberDimensionsList>;
-
 /** The details of the hotfix installed in the server. */
 export interface Hotfix {
   /** The name of the hotfix KB. */
@@ -1117,39 +821,18 @@ export interface Hotfix {
   /** The date and time, in UTC, when the KB was installed in the server. */
   installedDate?: string;
 }
-const Hotfix = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<Hotfix>;
-
 /** The list of installed QFEs for the server. */
 export type AddsServiceMemberInstalledQfesList = Array<Hotfix>;
-const AddsServiceMemberInstalledQfesList = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<AddsServiceMemberInstalledQfesList>;
-
 /** The monitoring configuration of the server which determines what activities are monitored by Azure Active Directory Connect Health. */
 export type AddsServiceMemberMonitoringConfigurationsComputedList = Array<Item>;
-const AddsServiceMemberMonitoringConfigurationsComputedList =
-  AddsServiceMemberDimensionsList as any as S.Schema<AddsServiceMemberMonitoringConfigurationsComputedList>;
-
 /** The customized monitoring configuration of the server which determines what activities are monitored by Azure Active Directory Connect Health. */
 export type AddsServiceMemberMonitoringConfigurationsCustomizedList = Array<Item>;
-const AddsServiceMemberMonitoringConfigurationsCustomizedList =
-  AddsServiceMemberDimensionsList as any as S.Schema<AddsServiceMemberMonitoringConfigurationsCustomizedList>;
-
 /** Server specific properties. */
 export type AddsServiceMemberPropertiesList = Array<Item>;
-const AddsServiceMemberPropertiesList =
-  AddsServiceMemberDimensionsList as any as S.Schema<AddsServiceMemberPropertiesList>;
-
 /** The list of recommended hotfixes for the server. */
 export type AddsServiceMemberRecommendedQfesList = Array<Hotfix>;
-const AddsServiceMemberRecommendedQfesList =
-  AddsServiceMemberInstalledQfesList as any as S.Schema<AddsServiceMemberRecommendedQfesList>;
-
 /** The monitoring level reported by the server. */
 export type AddsServiceMemberServerReportedMonitoringLevel = "Partial" | "Full" | "Off";
-const AddsServiceMemberServerReportedMonitoringLevel = S.String;
-
 /** The server details for ADDS service. */
 export interface AddsServiceMember {
   /** The domain name. */
@@ -1221,15 +904,8 @@ export interface AddsServiceMember {
   /** The health status of the server. */
   status?: string;
 }
-const AddsServiceMember = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<AddsServiceMember>;
-
 /** The value returned by the operation. */
 export type AddsServiceMembersValueList = Array<AddsServiceMember>;
-const AddsServiceMembersValueList = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<AddsServiceMembersValueList>;
-
 /** The list of ADDS service members. */
 export interface AddsServiceMembers {
   /** The link used to get the next page of operations. */
@@ -1241,8 +917,6 @@ export interface AddsServiceMembers {
   /** The continuation token for paginated calls. */
   continuationToken?: string;
 }
-const AddsServiceMembers = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<AddsServiceMembers>;
-
 export interface ListAddsServiceMemberCredentialsRequest {
   /** The name of the service. */
   serviceName: string;
@@ -1251,16 +925,8 @@ export interface ListAddsServiceMemberCredentialsRequest {
   /** The property filter to apply. */
   _filter?: string;
 }
-const ListAddsServiceMemberCredentialsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<ListAddsServiceMemberCredentialsRequest>;
-
 /** The credential data. */
 export type CredentialCredentialDataList = Array<string>;
-const CredentialCredentialDataList =
-  AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<CredentialCredentialDataList>;
-
 /** The credential for a given server. */
 export interface Credential {
   /** The credential identifier. */
@@ -1270,30 +936,19 @@ export interface Credential {
   /** The credential data. */
   credentialData?: CredentialCredentialDataList;
 }
-const Credential = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<Credential>;
-
 /** The value returned by the operation. */
 export type CredentialsValueList = Array<Credential>;
-const CredentialsValueList = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<CredentialsValueList>;
-
 /** The list of agent credentials. */
 export interface Credentials {
   /** The value returned by the operation. */
   value?: CredentialsValueList;
 }
-const Credentials = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<Credentials>;
-
 export interface ListAddsServiceMembersRequest {
   /** The name of the service. */
   serviceName: string;
   /** The server property filter to apply. */
   _filter?: string;
 }
-const ListAddsServiceMembersRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<ListAddsServiceMembersRequest>;
-
 export interface ListAddsServiceMetricMetadataRequest {
   /** The name of the service. */
   serviceName: string;
@@ -1302,18 +957,8 @@ export interface ListAddsServiceMetricMetadataRequest {
   /** Indicates if only performance counter metrics are requested. */
   perfCounter?: boolean;
 }
-const ListAddsServiceMetricMetadataRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<ListAddsServiceMetricMetadataRequest>;
-
 /** The value returned by the operation. */
 export type MetricMetadataListValueList = Array<MetricMetadata>;
-const MetricMetadataListValueList = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<MetricMetadataListValueList>;
-
 /** The list of metric metadata. */
 export interface MetricMetadataList {
   /** The link used to get the next page of operations. */
@@ -1325,8 +970,6 @@ export interface MetricMetadataList {
   /** The continuation token for paginated calls. */
   continuationToken?: string;
 }
-const MetricMetadataList = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<MetricMetadataList>;
-
 export interface ListAddsServiceMetricsAverageRequest {
   /** The name of the service. */
   serviceName: string;
@@ -1335,15 +978,8 @@ export interface ListAddsServiceMetricsAverageRequest {
   /** The group name */
   groupName: string;
 }
-const ListAddsServiceMetricsAverageRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<ListAddsServiceMetricsAverageRequest>;
-
 /** The value returned by the operation. */
 export type MetricsValueList = Array<Item>;
-const MetricsValueList = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<MetricsValueList>;
-
 /** The list of metric items. */
 export interface Metrics {
   /** The link used to get the next page of operations. */
@@ -1355,8 +991,6 @@ export interface Metrics {
   /** The continuation token for paginated calls. */
   continuationToken?: string;
 }
-const Metrics = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<Metrics>;
-
 export interface ListAddsServiceMetricsSumRequest {
   /** The name of the service. */
   serviceName: string;
@@ -1365,11 +999,6 @@ export interface ListAddsServiceMetricsSumRequest {
   /** The group name */
   groupName: string;
 }
-const ListAddsServiceMetricsSumRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<ListAddsServiceMetricsSumRequest>;
-
 export interface ListAddsServicePremiumServicesRequest {
   /** The service property filter to apply. */
   _filter?: string;
@@ -1380,15 +1009,8 @@ export interface ListAddsServicePremiumServicesRequest {
   /** The take count , which specifies the number of elements that can be returned from a sequence. */
   takeCount?: number;
 }
-const ListAddsServicePremiumServicesRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<ListAddsServicePremiumServicesRequest>;
-
 /** The value returned by the operation. */
 export type ServicesValueList = Array<ServiceProperties>;
-const ServicesValueList = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<ServicesValueList>;
-
 /** The list of services for a given onboarded tenant. */
 export interface Services {
   /** The link used to get the next page of operations. */
@@ -1400,8 +1022,6 @@ export interface Services {
   /** The continuation token for paginated calls. */
   continuationToken?: string;
 }
-const Services = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<Services>;
-
 export interface ListAddsServiceReplicationDetailsRequest {
   /** The name of the service. */
   serviceName: string;
@@ -1410,11 +1030,6 @@ export interface ListAddsServiceReplicationDetailsRequest {
   /** Indicates if InboundReplicationNeighbor details are required or not. */
   withDetails?: boolean;
 }
-const ListAddsServiceReplicationDetailsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<ListAddsServiceReplicationDetailsRequest>;
-
 /** The replication summary for the domain controller inbound neighbor. */
 export interface InboundReplicationNeighbor {
   /** The name of the source domain controller. */
@@ -1444,18 +1059,8 @@ export interface InboundReplicationNeighbor {
   /** The additional details. */
   additionalInfo?: string;
 }
-const InboundReplicationNeighbor = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<InboundReplicationNeighbor>;
-
 /** List of individual domain controller neighbor's inbound replication status. */
 export type ReplicationSummaryInboundNeighborCollectionList = Array<InboundReplicationNeighbor>;
-const ReplicationSummaryInboundNeighborCollectionList = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<ReplicationSummaryInboundNeighborCollectionList>;
-
 /** The replication summary for a domain controller. */
 export interface ReplicationSummary {
   /** The domain controller name. */
@@ -1473,15 +1078,8 @@ export interface ReplicationSummary {
   /** List of individual domain controller neighbor's inbound replication status. */
   inboundNeighborCollection?: ReplicationSummaryInboundNeighborCollectionList;
 }
-const ReplicationSummary = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<ReplicationSummary>;
-
 /** The value returned by the operation. */
 export type ReplicationDetailsListValueList = Array<ReplicationSummary>;
-const ReplicationDetailsListValueList = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<ReplicationDetailsListValueList>;
-
 /** The list of replication details. */
 export interface ReplicationDetailsList {
   /** The value returned by the operation. */
@@ -1493,17 +1091,8 @@ export interface ReplicationDetailsList {
   /** The link used to get the next page of operations. */
   nextLink?: string;
 }
-const ReplicationDetailsList = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<ReplicationDetailsList>;
-
 export type ListAddsServiceReplicationSummaryRequestNextPartitionKey = " ";
-const ListAddsServiceReplicationSummaryRequestNextPartitionKey = S.String;
-
 export type ListAddsServiceReplicationSummaryRequestNextRowKey = " ";
-const ListAddsServiceReplicationSummaryRequestNextRowKey = S.String;
-
 export interface ListAddsServiceReplicationSummaryRequest {
   /** The name of the service. */
   serviceName: string;
@@ -1520,26 +1109,13 @@ export interface ListAddsServiceReplicationSummaryRequest {
   /** The take count , which specifies the number of elements that can be returned from a sequence. */
   takeCount?: number;
 }
-const ListAddsServiceReplicationSummaryRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<ListAddsServiceReplicationSummaryRequest>;
-
 /** The value returned by the operation. */
 export type ReplicationSummaryListValueList = Array<ReplicationSummary>;
-const ReplicationSummaryListValueList =
-  ReplicationDetailsListValueList as any as S.Schema<ReplicationSummaryListValueList>;
-
 /** The list of replication summary details. */
 export interface ReplicationSummaryList {
   /** The value returned by the operation. */
   value?: ReplicationSummaryListValueList;
 }
-const ReplicationSummaryList = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<ReplicationSummaryList>;
-
 export interface ListAddsServicesRequest {
   /** The service property filter to apply. */
   _filter?: string;
@@ -1550,11 +1126,6 @@ export interface ListAddsServicesRequest {
   /** The take count , which specifies the number of elements that can be returned from a sequence. */
   takeCount?: number;
 }
-const ListAddsServicesRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<ListAddsServicesRequest>;
-
 export interface ListAddsServiceServerAlertsRequest {
   /** The name of the service. */
   serviceName: string;
@@ -1569,15 +1140,8 @@ export interface ListAddsServiceServerAlertsRequest {
   /** The end date till when to query for. */
   to?: string;
 }
-const ListAddsServiceServerAlertsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<ListAddsServiceServerAlertsRequest>;
-
 /** The alert level which indicates the severity of the alert. */
 export type AlertLevel = "Warning" | "Error" | "PreWarning";
-const AlertLevel = S.String;
-
 /** The alert state which can be either active or resolved with multiple resolution types. */
 export type AlertState =
   | "Active"
@@ -1585,8 +1149,6 @@ export type AlertState =
   | "ResolvedManually"
   | "ResolvedByTimer"
   | "ResolvedByStateChange";
-const AlertState = S.String;
-
 /** The help link which contains more information related to an alert. */
 export interface HelpLink {
   /** The title for the link. */
@@ -1594,15 +1156,8 @@ export interface HelpLink {
   /** The url for the help document. */
   url?: string;
 }
-const HelpLink = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<HelpLink>;
-
 /** The help links to get more information related to the alert. */
 export type AlertRelatedLinksList = Array<HelpLink>;
-const AlertRelatedLinksList = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<AlertRelatedLinksList>;
-
 /** The additional information for a property. */
 export interface AdditionalInformation {
   /** The title name for the property. */
@@ -1614,28 +1169,12 @@ export interface AdditionalInformation {
   /** Indicates if properties are present or not. */
   hasProperties?: boolean;
 }
-const AdditionalInformation = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<AdditionalInformation>;
-
 /** Additional information related to the alert. */
 export type AlertAdditionalInformationList = Array<AdditionalInformation>;
-const AlertAdditionalInformationList = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<AlertAdditionalInformationList>;
-
 /** The active alert properties. */
 export type AlertActiveAlertPropertiesList = Array<Item>;
-const AlertActiveAlertPropertiesList =
-  AddsServiceMemberDimensionsList as any as S.Schema<AlertActiveAlertPropertiesList>;
-
 /** The resolved alert properties. */
 export type AlertResolvedAlertPropertiesList = Array<Item>;
-const AlertResolvedAlertPropertiesList =
-  AddsServiceMemberDimensionsList as any as S.Schema<AlertResolvedAlertPropertiesList>;
-
 /** The alert details indicating an issue with service or server. */
 export interface Alert {
   /** The alert Id. */
@@ -1677,12 +1216,8 @@ export interface Alert {
   /** The server Id. */
   serviceMemberId?: string;
 }
-const Alert = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<Alert>;
-
 /** The value returned by the operation. */
 export type AlertsValueList = Array<Alert>;
-const AlertsValueList = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<AlertsValueList>;
-
 /** The list of alerts for a service. */
 export interface Alerts {
   /** The value returned by the operation. */
@@ -1694,8 +1229,6 @@ export interface Alerts {
   /** The continuation token for paginated calls. */
   continuationToken?: string;
 }
-const Alerts = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<Alerts>;
-
 export interface ListAddsServicesServiceMembersRequest {
   /** The name of the service. */
   serviceName: string;
@@ -1706,18 +1239,8 @@ export interface ListAddsServicesServiceMembersRequest {
   /** The value of the dimension. */
   dimensionSignature?: string;
 }
-const ListAddsServicesServiceMembersRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<ListAddsServicesServiceMembersRequest>;
-
 /** The value returned by the operation. */
 export type ServiceMembersValueList = Array<ServiceMember>;
-const ServiceMembersValueList = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<ServiceMembersValueList>;
-
 /** The list of servers that are onboarded for a given service. */
 export interface ServiceMembers {
   /** The link used to get the next page of operations. */
@@ -1729,8 +1252,6 @@ export interface ServiceMembers {
   /** The continuation token for paginated calls. */
   continuationToken?: string;
 }
-const ServiceMembers = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<ServiceMembers>;
-
 export interface ListAlertAddsAlertsRequest {
   /** The name of the service. */
   serviceName: string;
@@ -1743,27 +1264,14 @@ export interface ListAlertAddsAlertsRequest {
   /** The end date till when to query for. */
   to?: string;
 }
-const ListAlertAddsAlertsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<ListAlertAddsAlertsRequest>;
-
 export interface ListConfigurationAddsConfigurationsRequest {
   /** The name of the service. */
   serviceName: string;
   /** The grouping for configurations. */
   grouping?: string;
 }
-const ListConfigurationAddsConfigurationsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<ListConfigurationAddsConfigurationsRequest>;
-
 /** The value returned by the operation. */
 export type AddsConfigurationValueList = Array<Item>;
-const AddsConfigurationValueList =
-  AddsServiceMemberDimensionsList as any as S.Schema<AddsConfigurationValueList>;
-
 /** The list of key value properties. */
 export interface AddsConfiguration {
   /** The link used to get the next page of operations. */
@@ -1775,23 +1283,14 @@ export interface AddsConfiguration {
   /** The continuation token for paginated calls. */
   continuationToken?: string;
 }
-const AddsConfiguration = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<AddsConfiguration>;
-
 export interface ListDimensionAddsDimensionsRequest {
   /** The name of the service. */
   serviceName: string;
   /** The dimension type. */
   dimension: string;
 }
-const ListDimensionAddsDimensionsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<ListDimensionAddsDimensionsRequest>;
-
 /** The health status for the domain controller. */
 export type DimensionHealth = "Healthy" | "Warning" | "Error" | "NotMonitored" | "Missing";
-const DimensionHealth = S.String;
-
 /** The connector object error. */
 export interface Dimension {
   /** The health status for the domain controller. */
@@ -1813,12 +1312,8 @@ export interface Dimension {
   /** The service type for the services onboarded to Azure Active Directory Connect Health. Depending on whether the service is monitoring, ADFS, Sync or ADDS roles, the service type can either be AdFederationService or AadSyncService or AdDomainService. */
   type?: string;
 }
-const Dimension = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<Dimension>;
-
 /** The value returned by the operation. */
 export type DimensionsValueList = Array<Dimension>;
-const DimensionsValueList = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<DimensionsValueList>;
-
 /** The list of dimensions. */
 export interface Dimensions {
   /** The link used to get the next page of operations. */
@@ -1830,19 +1325,12 @@ export interface Dimensions {
   /** The continuation token for paginated calls. */
   continuationToken?: string;
 }
-const Dimensions = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<Dimensions>;
-
 export interface ListIPAddressAggregatesByServiceRequest {
   /** The name of the service. */
   serviceName: string;
   /** A continuationtoken value returned in paginated result to load different pages. */
   skiptoken?: string;
 }
-const ListIPAddressAggregatesByServiceRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<ListIPAddressAggregatesByServiceRequest>;
-
 /** The key value pair for properties. */
 export interface IPAddressAggregate {
   /** Unique ID for the entree */
@@ -1880,15 +1368,8 @@ export interface IPAddressAggregate {
   /** The geographic location. */
   geographicLocation?: string;
 }
-const IPAddressAggregate = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<IPAddressAggregate>;
-
 /** The value returned by the operation. */
 export type IPAddressAggregatesValueList = Array<IPAddressAggregate>;
-const IPAddressAggregatesValueList = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<IPAddressAggregatesValueList>;
-
 /** IP address aggregates. */
 export interface IPAddressAggregates {
   /** The value returned by the operation. */
@@ -1900,17 +1381,10 @@ export interface IPAddressAggregates {
   /** The continuation token for paginated calls. */
   continuationToken?: string;
 }
-const IPAddressAggregates = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<IPAddressAggregates>;
-
 export interface ListIPAddressAggregateSettingsRequest {
   /** The name of the service. */
   serviceName: string;
 }
-const ListIPAddressAggregateSettingsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<ListIPAddressAggregateSettingsRequest>;
-
 /** The key value pair for IP aggregate thresholds. */
 export interface IPAddressAggregateSetting {
   /** Unique ID for the entree */
@@ -1926,17 +1400,7 @@ export interface IPAddressAggregateSetting {
   /** A value indicating whether email notification has been enabled. */
   emailNotificationEnabled?: boolean;
 }
-const IPAddressAggregateSetting = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<IPAddressAggregateSetting>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** The details of the operation. */
 export interface Operation {
   /** The name of the operation. */
@@ -1944,15 +1408,8 @@ export interface Operation {
   /** The display details for the operation. */
   display?: unknown;
 }
-const Operation = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<Operation>;
-
 /** List of operations supported by the Microsoft.ADHybridHealthService resource provider. */
 export type OperationListResponseValueList = Array<Operation>;
-const OperationListResponseValueList = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<OperationListResponseValueList>;
-
 /** Lists all of the available REST API operations for Azure Active Directory Connect Health. */
 export interface OperationListResponse {
   /** URL to get the next set of operation list results if there are any. */
@@ -1964,36 +1421,19 @@ export interface OperationListResponse {
   /** The continuation token to get next set of operations. */
   continuationToken?: string;
 }
-const OperationListResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<OperationListResponse>;
-
 export interface ListServiceAlertFeedbackRequest {
   /** The name of the service. */
   serviceName: string;
   /** The name of the alert. */
   shortName: string;
 }
-const ListServiceAlertFeedbackRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<ListServiceAlertFeedbackRequest>;
-
 /** The value returned by the operation. */
 export type AlertFeedbacksValueList = Array<AlertFeedback>;
-const AlertFeedbacksValueList = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<AlertFeedbacksValueList>;
-
 /** The list of alert feedback. */
 export interface AlertFeedbacks {
   /** The value returned by the operation. */
   value?: AlertFeedbacksValueList;
 }
-const AlertFeedbacks = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<AlertFeedbacks>;
-
 export interface ListServiceAlertsRequest {
   /** The name of the service. */
   serviceName: string;
@@ -2006,11 +1446,6 @@ export interface ListServiceAlertsRequest {
   /** The end date till when to query for. */
   to?: string;
 }
-const ListServiceAlertsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<ListServiceAlertsRequest>;
-
 export interface ListServiceMemberAlertsRequest {
   /** The name of the service. */
   serviceName: string;
@@ -2025,37 +1460,18 @@ export interface ListServiceMemberAlertsRequest {
   /** The end date till when to query for. */
   to?: string;
 }
-const ListServiceMemberAlertsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<ListServiceMemberAlertsRequest>;
-
 export interface ListServiceMemberConnectorsRequest {
   /** The name of the service. */
   serviceName: string;
   /** The server Id. */
   serviceMemberId: string;
 }
-const ListServiceMemberConnectorsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<ListServiceMemberConnectorsRequest>;
-
 /** The in-scope object classes. */
 export type PartitionScopeObjectClassesList = Array<string>;
-const PartitionScopeObjectClassesList =
-  AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<PartitionScopeObjectClassesList>;
-
 /** The list of containers included. */
 export type PartitionScopeContainersIncludedList = Array<string>;
-const PartitionScopeContainersIncludedList =
-  AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<PartitionScopeContainersIncludedList>;
-
 /** The list of containers excluded. */
 export type PartitionScopeContainersExcludedList = Array<string>;
-const PartitionScopeContainersExcludedList =
-  AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<PartitionScopeContainersExcludedList>;
-
 /** The connector partition scope. */
 export interface PartitionScope {
   /** Indicates if the partition scope is default or not. */
@@ -2067,8 +1483,6 @@ export interface PartitionScope {
   /** The list of containers excluded. */
   containersExcluded?: PartitionScopeContainersExcludedList;
 }
-const PartitionScope = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<PartitionScope>;
-
 /** Describes the partition in Synchronization service. */
 export interface Partition {
   /** The partition Id. */
@@ -2090,15 +1504,8 @@ export interface Partition {
   /** The partition type. */
   type?: string;
 }
-const Partition = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<Partition>;
-
 /** The partitions of the connector. */
 export type ConnectorPartitionsList = Array<Partition>;
-const ConnectorPartitionsList = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<ConnectorPartitionsList>;
-
 /** The run step for a run profile. */
 export interface RunStep {
   /** The batch size used by the run step. */
@@ -2116,15 +1523,8 @@ export interface RunStep {
   /** The operation timeout. */
   timeout?: number;
 }
-const RunStep = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<RunStep>;
-
 /** The run steps of the run profile. */
 export type RunProfileRunStepsList = Array<RunStep>;
-const RunProfileRunStepsList = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<RunProfileRunStepsList>;
-
 /** Describes the run profile. */
 export interface RunProfile {
   /** The run profile Id. */
@@ -2134,25 +1534,12 @@ export interface RunProfile {
   /** The run steps of the run profile. */
   runSteps?: RunProfileRunStepsList;
 }
-const RunProfile = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<RunProfile>;
-
 /** The run profiles of the connector. */
 export type ConnectorRunProfilesList = Array<RunProfile>;
-const ConnectorRunProfilesList = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<ConnectorRunProfilesList>;
-
 /** The class inclusion list of the connector. */
 export type ConnectorClassesIncludedList = Array<string>;
-const ConnectorClassesIncludedList =
-  AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<ConnectorClassesIncludedList>;
-
 /** The attribute inclusion list of the connector. */
 export type ConnectorAttributesIncludedList = Array<string>;
-const ConnectorAttributesIncludedList =
-  AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<ConnectorAttributesIncludedList>;
-
 /** The connect details. */
 export interface Connector {
   /** The connector Id. */
@@ -2186,19 +1573,13 @@ export interface Connector {
   /** The attribute inclusion list of the connector. */
   attributesIncluded?: ConnectorAttributesIncludedList;
 }
-const Connector = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<Connector>;
-
 /** The value returned by the operation. */
 export type ConnectorsValueList = Array<Connector>;
-const ConnectorsValueList = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<ConnectorsValueList>;
-
 /** The list of connects for a service. */
 export interface Connectors {
   /** The value returned by the operation. */
   value?: ConnectorsValueList;
 }
-const Connectors = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<Connectors>;
-
 export interface ListServiceMemberCredentialsRequest {
   /** The name of the service. */
   serviceName: string;
@@ -2207,53 +1588,27 @@ export interface ListServiceMemberCredentialsRequest {
   /** The property filter to apply. */
   _filter?: string;
 }
-const ListServiceMemberCredentialsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<ListServiceMemberCredentialsRequest>;
-
 export interface ListServiceMemberDataFreshnessRequest {
   /** The name of the service. */
   serviceName: string;
   /** The server Id. */
   serviceMemberId: string;
 }
-const ListServiceMemberDataFreshnessRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<ListServiceMemberDataFreshnessRequest>;
-
 /** The value returned by the operation. */
 export type DataFreshnessDetailsValueList = Array<Item>;
-const DataFreshnessDetailsValueList =
-  AddsServiceMemberDimensionsList as any as S.Schema<DataFreshnessDetailsValueList>;
-
 /** The data freshness details for the server. */
 export interface DataFreshnessDetails {
   /** The value returned by the operation. */
   value?: DataFreshnessDetailsValueList;
 }
-const DataFreshnessDetails = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<DataFreshnessDetails>;
-
 export interface ListServiceMemberGlobalConfigurationRequest {
   /** The name of the service. */
   serviceName: string;
   /** The server id. */
   serviceMemberId: string;
 }
-const ListServiceMemberGlobalConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<ListServiceMemberGlobalConfigurationRequest>;
-
 /** The list of additional feature sets. */
 export type GlobalConfigurationFeatureSetList = Array<Item>;
-const GlobalConfigurationFeatureSetList =
-  AddsServiceMemberDimensionsList as any as S.Schema<GlobalConfigurationFeatureSetList>;
-
 /** The global configuration settings. */
 export interface GlobalConfiguration {
   /** The version for the global configuration. */
@@ -2267,25 +1622,13 @@ export interface GlobalConfiguration {
   /** The list of additional feature sets. */
   featureSet?: GlobalConfigurationFeatureSetList;
 }
-const GlobalConfiguration = /*@__PURE__*/ __L.at(__c17, 0) as any as S.Schema<GlobalConfiguration>;
-
 /** The value returned by the operation. */
 export type GlobalConfigurationsValueList = Array<GlobalConfiguration>;
-const GlobalConfigurationsValueList = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<GlobalConfigurationsValueList>;
-
 /** The list of global configurations. */
 export interface GlobalConfigurations {
   /** The value returned by the operation. */
   value?: GlobalConfigurationsValueList;
 }
-const GlobalConfigurations = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<GlobalConfigurations>;
-
 export interface ListServiceMembersRequest {
   /** The name of the service. */
   serviceName: string;
@@ -2296,11 +1639,6 @@ export interface ListServiceMembersRequest {
   /** The value of the dimension. */
   dimensionSignature?: string;
 }
-const ListServiceMembersRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<ListServiceMembersRequest>;
-
 export interface ListServiceMetricMetadataRequest {
   /** The name of the service. */
   serviceName: string;
@@ -2309,11 +1647,6 @@ export interface ListServiceMetricMetadataRequest {
   /** Indicates if only performance counter metrics are requested. */
   perfCounter?: boolean;
 }
-const ListServiceMetricMetadataRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<ListServiceMetricMetadataRequest>;
-
 export interface ListServiceMetricsAverageRequest {
   /** The name of the service. */
   serviceName: string;
@@ -2322,11 +1655,6 @@ export interface ListServiceMetricsAverageRequest {
   /** The group name */
   groupName: string;
 }
-const ListServiceMetricsAverageRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<ListServiceMetricsAverageRequest>;
-
 export interface ListServiceMetricsSumRequest {
   /** The name of the service. */
   serviceName: string;
@@ -2335,31 +1663,17 @@ export interface ListServiceMetricsSumRequest {
   /** The group name */
   groupName: string;
 }
-const ListServiceMetricsSumRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<ListServiceMetricsSumRequest>;
-
 export interface ListServiceMonitoringConfigurationsRequest {
   /** The name of the service. */
   serviceName: string;
 }
-const ListServiceMonitoringConfigurationsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<ListServiceMonitoringConfigurationsRequest>;
-
 /** The value returned by the operation. */
 export type ItemsValueList = Array<Item>;
-const ItemsValueList = MetricsValueList as any as S.Schema<ItemsValueList>;
-
 /** The list of key value properties. */
 export interface Items {
   /** The value returned by the operation. */
   value?: ItemsValueList;
 }
-const Items = /*@__PURE__*/ __L.at(__c18, 0) as any as S.Schema<Items>;
-
 export interface ListServicePremiumRequest {
   /** The service property filter to apply. */
   _filter?: string;
@@ -2370,11 +1684,6 @@ export interface ListServicePremiumRequest {
   /** The take count , which specifies the number of elements that can be returned from a sequence. */
   takeCount?: number;
 }
-const ListServicePremiumRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<ListServicePremiumRequest>;
-
 export interface ListServicesRequest {
   /** The service property filter to apply. */
   _filter?: string;
@@ -2385,19 +1694,12 @@ export interface ListServicesRequest {
   /** The take count , which specifies the number of elements that can be returned from a sequence. */
   takeCount?: number;
 }
-const ListServicesRequest = /*@__PURE__*/ __L.at(__c18, 2) as any as S.Schema<ListServicesRequest>;
-
 export interface ListServiceUserBadPasswordReportRequest {
   /** The name of the service. */
   serviceName: string;
   /** The source of data, if its test data or customer data. */
   dataSource?: string;
 }
-const ListServiceUserBadPasswordReportRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<ListServiceUserBadPasswordReportRequest>;
-
 /** The bad password login attempt details. */
 export interface ErrorReportUsersEntry {
   /** The user ID value. */
@@ -2411,39 +1713,19 @@ export interface ErrorReportUsersEntry {
   /** The total count of specific error events. */
   totalErrorAttempts?: number;
 }
-const ErrorReportUsersEntry = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<ErrorReportUsersEntry>;
-
 /** The value returned by the operation. */
 export type ErrorReportUsersEntriesValueList = Array<ErrorReportUsersEntry>;
-const ErrorReportUsersEntriesValueList = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<ErrorReportUsersEntriesValueList>;
-
 /** The list of bad password log in attempt entries. */
 export interface ErrorReportUsersEntries {
   /** The value returned by the operation. */
   value?: ErrorReportUsersEntriesValueList;
 }
-const ErrorReportUsersEntries = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<ErrorReportUsersEntries>;
-
 export interface ServiceMembersListExportStatusRequest {
   /** The name of the service. */
   serviceName: string;
   /** The server Id. */
   serviceMemberId: string;
 }
-const ServiceMembersListExportStatusRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<ServiceMembersListExportStatusRequest>;
-
 /** The details of the export status. */
 export interface ExportStatus {
   /** The id of the service for whom the export status is being reported. */
@@ -2455,15 +1737,8 @@ export interface ExportStatus {
   /** The run step result Id. */
   runStepResultId?: string;
 }
-const ExportStatus = /*@__PURE__*/ __L.at(__c19, 0) as any as S.Schema<ExportStatus>;
-
 /** The value returned by the operation. */
 export type ExportStatusesValueList = Array<ExportStatus>;
-const ExportStatusesValueList = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<ExportStatusesValueList>;
-
 /** The list of export statuses. */
 export interface ExportStatuses {
   /** The link used to get the next page of operations. */
@@ -2475,17 +1750,10 @@ export interface ExportStatuses {
   /** The continuation token for paginated calls. */
   continuationToken?: string;
 }
-const ExportStatuses = /*@__PURE__*/ __L.at(__c19, 2) as any as S.Schema<ExportStatuses>;
-
 export interface ServicesListAllRiskyIpDownloadReportRequest {
   /** The name of the service. */
   serviceName: string;
 }
-const ServicesListAllRiskyIpDownloadReportRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<ServicesListAllRiskyIpDownloadReportRequest>;
-
 /** The blob uri pointing to Risky IP Report. */
 export interface RiskyIPBlobUri {
   /** The tenant id for whom the report belongs to. */
@@ -2501,40 +1769,21 @@ export interface RiskyIPBlobUri {
   /** Status of the Risky IP report generation. */
   status?: string;
 }
-const RiskyIPBlobUri = /*@__PURE__*/ __L.at(__c19, 4) as any as S.Schema<RiskyIPBlobUri>;
-
 /** The list of blob uris. */
 export type RiskyIPBlobUrisValueList = Array<RiskyIPBlobUri>;
-const RiskyIPBlobUrisValueList = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<RiskyIPBlobUrisValueList>;
-
 /** The list containing blob uris. */
 export interface RiskyIPBlobUris {
   /** The list of blob uris. */
   value?: RiskyIPBlobUrisValueList;
 }
-const RiskyIPBlobUris = /*@__PURE__*/ __L.at(__c19, 6) as any as S.Schema<RiskyIPBlobUris>;
-
 export interface ServicesListCurrentRiskyIpDownloadReportRequest {
   /** The name of the service. */
   serviceName: string;
 }
-const ServicesListCurrentRiskyIpDownloadReportRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<ServicesListCurrentRiskyIpDownloadReportRequest>;
-
 export interface ServicesListExportErrorsRequest {
   /** The name of the service. */
   serviceName: string;
 }
-const ServicesListExportErrorsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<ServicesListExportErrorsRequest>;
-
 /** The error count details. */
 export interface ErrorCount {
   /** The error bucket. */
@@ -2544,33 +1793,19 @@ export interface ErrorCount {
   /** Indicates if the error count is truncated or not. */
   truncated?: boolean;
 }
-const ErrorCount = /*@__PURE__*/ __L.at(__c20, 1) as any as S.Schema<ErrorCount>;
-
 /** The value returned by the operation. */
 export type ErrorCountsValueList = Array<ErrorCount>;
-const ErrorCountsValueList = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<ErrorCountsValueList>;
-
 /** The list of error counts. */
 export interface ErrorCounts {
   /** The value returned by the operation. */
   value?: ErrorCountsValueList;
 }
-const ErrorCounts = /*@__PURE__*/ __L.at(__c20, 3) as any as S.Schema<ErrorCounts>;
-
 export interface ServicesListExportErrorsV2Request {
   /** The name of the service. */
   serviceName: string;
   /** The error category to query for. */
   errorBucket: string;
 }
-const ServicesListExportErrorsV2Request = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<ServicesListExportErrorsV2Request>;
-
 /** Object that hold sync object details. */
 export interface AssociatedObject {
   /** The display name of the object. */
@@ -2598,8 +1833,6 @@ export interface AssociatedObject {
   /** The UPN. */
   userPrincipalName?: string;
 }
-const AssociatedObject = /*@__PURE__*/ __L.at(__c20, 5) as any as S.Schema<AssociatedObject>;
-
 /** The merged export error. */
 export interface MergedExportError {
   /** The error Id. */
@@ -2647,41 +1880,21 @@ export interface MergedExportError {
   /** The export error status. */
   exportErrorStatus?: number;
 }
-const MergedExportError = /*@__PURE__*/ __L.at(__c20, 6) as any as S.Schema<MergedExportError>;
-
 /** The value returned by the operation. */
 export type MergedExportErrorsValueList = Array<MergedExportError>;
-const MergedExportErrorsValueList = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<MergedExportErrorsValueList>;
-
 /** The list of export errors. */
 export interface MergedExportErrors {
   /** The value returned by the operation. */
   value?: MergedExportErrorsValueList;
 }
-const MergedExportErrors = /*@__PURE__*/ __L.at(__c21, 0) as any as S.Schema<MergedExportErrors>;
-
 export interface ServicesListExportStatusRequest {
   /** The name of the service. */
   serviceName: string;
 }
-const ServicesListExportStatusRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<ServicesListExportStatusRequest>;
-
 /** The list of additional emails that are configured to receive notifications about the service. */
 export type UpdateAddsServiceRequestCustomNotificationEmailsList = Array<string>;
-const UpdateAddsServiceRequestCustomNotificationEmailsList =
-  AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<UpdateAddsServiceRequestCustomNotificationEmailsList>;
-
 /** The list of emails to whom service notifications will be sent. */
 export type UpdateAddsServiceRequestNotificationEmailsList = Array<string>;
-const UpdateAddsServiceRequestNotificationEmailsList =
-  AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<UpdateAddsServiceRequestNotificationEmailsList>;
-
 export interface UpdateAddsServiceRequest {
   /** The name of the service which needs to be deleted. */
   serviceName: string;
@@ -2732,16 +1945,8 @@ export interface UpdateAddsServiceRequest {
   /** The service type for the services onboarded to Azure Active Directory Connect Health. Depending on whether the service is monitoring, ADFS, Sync or ADDS roles, the service type can either be AdFederationService or AadSyncService or AdDomainService. */
   type?: string;
 }
-const UpdateAddsServiceRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<UpdateAddsServiceRequest>;
-
 /** The list of global administrators for the tenant. */
 export type UpdateConfigurationRequestGlobalAdminsEmailList = Array<string>;
-const UpdateConfigurationRequestGlobalAdminsEmailList =
-  AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<UpdateConfigurationRequestGlobalAdminsEmailList>;
-
 export interface UpdateConfigurationRequest {
   /** The Id of the tenant. */
   tenantId?: string;
@@ -2786,11 +1991,6 @@ export interface UpdateConfigurationRequest {
   /** The name of the tenant. */
   tenantName?: string;
 }
-const UpdateConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<UpdateConfigurationRequest>;
-
 export interface UpdateIPAddressAggregateSettingsRequest {
   /** The name of the service. */
   serviceName: string;
@@ -2807,21 +2007,10 @@ export interface UpdateIPAddressAggregateSettingsRequest {
   /** A value indicating whether email notification has been enabled. */
   emailNotificationEnabled?: boolean;
 }
-const UpdateIPAddressAggregateSettingsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<UpdateIPAddressAggregateSettingsRequest>;
-
 /** The list of additional emails that are configured to receive notifications about the service. */
 export type UpdateServiceRequestCustomNotificationEmailsList = Array<string>;
-const UpdateServiceRequestCustomNotificationEmailsList =
-  AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<UpdateServiceRequestCustomNotificationEmailsList>;
-
 /** The list of emails to whom service notifications will be sent. */
 export type UpdateServiceRequestNotificationEmailsList = Array<string>;
-const UpdateServiceRequestNotificationEmailsList =
-  AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<UpdateServiceRequestNotificationEmailsList>;
-
 export interface UpdateServiceRequest {
   /** The name of the service which needs to be deleted. */
   serviceName: string;
@@ -2872,11 +2061,6 @@ export interface UpdateServiceRequest {
   /** The service type for the services onboarded to Azure Active Directory Connect Health. Depending on whether the service is monitoring, ADFS, Sync or ADDS roles, the service type can either be AdFederationService or AadSyncService or AdDomainService. */
   type?: string;
 }
-const UpdateServiceRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<UpdateServiceRequest>;
-
 export interface UpdateServiceMonitoringConfigurationRequest {
   /** The name of the service. */
   serviceName: string;
@@ -2885,15 +2069,7 @@ export interface UpdateServiceMonitoringConfigurationRequest {
   /** The value for the key. */
   value?: string;
 }
-const UpdateServiceMonitoringConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<UpdateServiceMonitoringConfigurationRequest>;
-
 export interface UpdateServiceMonitoringConfigurationResponse {}
-const UpdateServiceMonitoringConfigurationResponse =
-  AddAddsServicesUserPreferenceResponse as any as S.Schema<UpdateServiceMonitoringConfigurationResponse>;
-
 export type AddAddsServiceError = AzureOpError;
 /** Onboards a service for a given tenant in Azure Active Directory Connect Health. */
 export const AddAddsService: API.OperationMethod<
@@ -2902,8 +2078,8 @@ export const AddAddsService: API.OperationMethod<
   AddAddsServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddAddsServiceRequest,
-  output: ServiceProperties,
+  input: __S(1, __c0, 1) as any as S.Schema<AddAddsServiceRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<ServiceProperties>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2917,8 +2093,8 @@ export const AddAddsServicesServiceMember: API.OperationMethod<
   AddAddsServicesServiceMemberError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddAddsServicesServiceMemberRequest,
-  output: ServiceMember,
+  input: __S(3, __c0, 3) as any as S.Schema<AddAddsServicesServiceMemberRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<ServiceMember>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2932,8 +2108,8 @@ export const AddAddsServicesUserPreference: API.OperationMethod<
   AddAddsServicesUserPreferenceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddAddsServicesUserPreferenceRequest,
-  output: AddAddsServicesUserPreferenceResponse,
+  input: __S(5, __c0, 5) as any as S.Schema<AddAddsServicesUserPreferenceRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<AddAddsServicesUserPreferenceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2947,8 +2123,8 @@ export const AddConfiguration: API.OperationMethod<
   AddConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddConfigurationRequest,
-  output: Tenant,
+  input: __S(7, __c0, 7) as any as S.Schema<AddConfigurationRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<Tenant>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2962,8 +2138,8 @@ export const AddService: API.OperationMethod<
   AddServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddServiceRequest,
-  output: ServiceProperties,
+  input: __S(9, __c1, 1) as any as S.Schema<AddServiceRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<ServiceProperties>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2977,8 +2153,8 @@ export const AddServiceAlertFeedback: API.OperationMethod<
   AddServiceAlertFeedbackError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddServiceAlertFeedbackRequest,
-  output: AlertFeedback,
+  input: __S(10, __c1, 2) as any as S.Schema<AddServiceAlertFeedbackRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<AlertFeedback>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2992,8 +2168,8 @@ export const AddServiceMember: API.OperationMethod<
   AddServiceMemberError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddServiceMemberRequest,
-  output: ServiceMember,
+  input: __S(12, __c1, 4) as any as S.Schema<AddServiceMemberRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<ServiceMember>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3007,8 +2183,8 @@ export const DeleteAddsService: API.OperationMethod<
   DeleteAddsServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAddsServiceRequest,
-  output: DeleteAddsServiceResponse,
+  input: __S(13, __c1, 5) as any as S.Schema<DeleteAddsServiceRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<DeleteAddsServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3022,8 +2198,8 @@ export const DeleteAddsServiceMember: API.OperationMethod<
   DeleteAddsServiceMemberError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAddsServiceMemberRequest,
-  output: DeleteAddsServiceMemberResponse,
+  input: __S(15, __c1, 7) as any as S.Schema<DeleteAddsServiceMemberRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<DeleteAddsServiceMemberResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3037,8 +2213,8 @@ export const DeleteAddsServicesUserPreference: API.OperationMethod<
   DeleteAddsServicesUserPreferenceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAddsServicesUserPreferenceRequest,
-  output: DeleteAddsServicesUserPreferenceResponse,
+  input: __S(17, __c2, 1) as any as S.Schema<DeleteAddsServicesUserPreferenceRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<DeleteAddsServicesUserPreferenceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3052,8 +2228,8 @@ export const DeleteService: API.OperationMethod<
   DeleteServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteServiceRequest,
-  output: DeleteServiceResponse,
+  input: __S(18, __c2, 2) as any as S.Schema<DeleteServiceRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<DeleteServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3067,8 +2243,8 @@ export const DeleteServiceMember: API.OperationMethod<
   DeleteServiceMemberError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteServiceMemberRequest,
-  output: DeleteServiceMemberResponse,
+  input: __S(19, __c2, 3) as any as S.Schema<DeleteServiceMemberRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<DeleteServiceMemberResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3082,8 +2258,8 @@ export const DeleteServiceMemberData: API.OperationMethod<
   DeleteServiceMemberDataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteServiceMemberDataRequest,
-  output: DeleteServiceMemberDataResponse,
+  input: __S(20, __c2, 4) as any as S.Schema<DeleteServiceMemberDataRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<DeleteServiceMemberDataResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3097,8 +2273,8 @@ export const GetAddsService: API.OperationMethod<
   GetAddsServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAddsServiceRequest,
-  output: ServiceProperties,
+  input: __S(21, __c2, 5) as any as S.Schema<GetAddsServiceRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<ServiceProperties>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3112,8 +2288,8 @@ export const GetAddsServiceForestSummary: API.OperationMethod<
   GetAddsServiceForestSummaryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAddsServiceForestSummaryRequest,
-  output: ForestSummary,
+  input: __S(22, __c2, 6) as any as S.Schema<GetAddsServiceForestSummaryRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<ForestSummary>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3127,8 +2303,8 @@ export const GetAddsServiceMember: API.OperationMethod<
   GetAddsServiceMemberError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAddsServiceMemberRequest,
-  output: ServiceMember,
+  input: __S(24, __c3, 0) as any as S.Schema<GetAddsServiceMemberRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<ServiceMember>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3142,8 +2318,8 @@ export const GetAddsServiceMetricMetadata: API.OperationMethod<
   GetAddsServiceMetricMetadataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAddsServiceMetricMetadataRequest,
-  output: MetricMetadata,
+  input: __S(25, __c3, 1) as any as S.Schema<GetAddsServiceMetricMetadataRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<MetricMetadata>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3157,8 +2333,8 @@ export const GetAddsServiceMetricMetadataForGroup: API.OperationMethod<
   GetAddsServiceMetricMetadataForGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAddsServiceMetricMetadataForGroupRequest,
-  output: MetricSets,
+  input: __S(29, __c3, 5) as any as S.Schema<GetAddsServiceMetricMetadataForGroupRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<MetricSets>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3172,8 +2348,8 @@ export const GetAddsServiceMetrics: API.OperationMethod<
   GetAddsServiceMetricsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAddsServiceMetricsRequest,
-  output: MetricSets,
+  input: __S(34, __c4, 2) as any as S.Schema<GetAddsServiceMetricsRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<MetricSets>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3187,8 +2363,8 @@ export const GetAddsServicesReplicationStatus: API.OperationMethod<
   GetAddsServicesReplicationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAddsServicesReplicationStatusRequest,
-  output: ReplicationStatus,
+  input: __S(35, __c4, 3) as any as S.Schema<GetAddsServicesReplicationStatusRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<ReplicationStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3202,8 +2378,8 @@ export const GetAddsServicesUserPreference: API.OperationMethod<
   GetAddsServicesUserPreferenceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAddsServicesUserPreferenceRequest,
-  output: UserPreference,
+  input: __S(37, __c4, 5) as any as S.Schema<GetAddsServicesUserPreferenceRequest>,
+  output: __S(38, __c4, 6) as any as S.Schema<UserPreference>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3217,8 +2393,8 @@ export const GetConfiguration: API.OperationMethod<
   GetConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConfigurationRequest,
-  output: Tenant,
+  input: __S(39, __c4, 7) as any as S.Schema<GetConfigurationRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<Tenant>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3232,8 +2408,8 @@ export const GetReportDevOps: API.OperationMethod<
   GetReportDevOpsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetReportDevOpsRequest,
-  output: Result,
+  input: __S(40, __c5, 0) as any as S.Schema<GetReportDevOpsRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<Result>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3247,8 +2423,8 @@ export const GetService: API.OperationMethod<
   GetServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetServiceRequest,
-  output: ServiceProperties,
+  input: __S(42, __c5, 2) as any as S.Schema<GetServiceRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<ServiceProperties>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3262,8 +2438,8 @@ export const GetServiceFeatureAvailibility: API.OperationMethod<
   GetServiceFeatureAvailibilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetServiceFeatureAvailibilityRequest,
-  output: Result,
+  input: __S(43, __c5, 3) as any as S.Schema<GetServiceFeatureAvailibilityRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<Result>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3277,8 +2453,8 @@ export const GetServiceMember: API.OperationMethod<
   GetServiceMemberError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetServiceMemberRequest,
-  output: ServiceMember,
+  input: __S(44, __c5, 4) as any as S.Schema<GetServiceMemberRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<ServiceMember>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3292,8 +2468,8 @@ export const GetServiceMemberConnectorMetadata: API.OperationMethod<
   GetServiceMemberConnectorMetadataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetServiceMemberConnectorMetadataRequest,
-  output: ConnectorMetadata,
+  input: __S(45, __c5, 5) as any as S.Schema<GetServiceMemberConnectorMetadataRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<ConnectorMetadata>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3307,8 +2483,8 @@ export const GetServiceMemberMetrics: API.OperationMethod<
   GetServiceMemberMetricsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetServiceMemberMetricsRequest,
-  output: MetricSets,
+  input: __S(49, __c6, 1) as any as S.Schema<GetServiceMemberMetricsRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<MetricSets>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3322,8 +2498,8 @@ export const GetServiceMemberServiceConfiguration: API.OperationMethod<
   GetServiceMemberServiceConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetServiceMemberServiceConfigurationRequest,
-  output: ServiceConfiguration,
+  input: __S(50, __c6, 2) as any as S.Schema<GetServiceMemberServiceConfigurationRequest>,
+  output: __S(51, __c6, 3) as any as S.Schema<ServiceConfiguration>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3337,8 +2513,8 @@ export const GetServiceMetricMetadata: API.OperationMethod<
   GetServiceMetricMetadataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetServiceMetricMetadataRequest,
-  output: MetricMetadata,
+  input: __S(52, __c6, 4) as any as S.Schema<GetServiceMetricMetadataRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<MetricMetadata>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3352,8 +2528,8 @@ export const GetServiceMetricMetadataForGroup: API.OperationMethod<
   GetServiceMetricMetadataForGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetServiceMetricMetadataForGroupRequest,
-  output: MetricSets,
+  input: __S(53, __c6, 5) as any as S.Schema<GetServiceMetricMetadataForGroupRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<MetricSets>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3367,8 +2543,8 @@ export const GetServiceMetrics: API.OperationMethod<
   GetServiceMetricsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetServiceMetricsRequest,
-  output: MetricSets,
+  input: __S(54, __c6, 6) as any as S.Schema<GetServiceMetricsRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<MetricSets>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3382,8 +2558,8 @@ export const GetServiceTenantWhitelisting: API.OperationMethod<
   GetServiceTenantWhitelistingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetServiceTenantWhitelistingRequest,
-  output: Result,
+  input: __S(55, __c6, 7) as any as S.Schema<GetServiceTenantWhitelistingRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<Result>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3397,8 +2573,8 @@ export const ListAdDomainServiceMembers: API.OperationMethod<
   ListAdDomainServiceMembersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAdDomainServiceMembersRequest,
-  output: AddsServiceMembers,
+  input: __S(56, __c7, 0) as any as S.Schema<ListAdDomainServiceMembersRequest>,
+  output: __S(63, __c7, 7) as any as S.Schema<AddsServiceMembers>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3412,8 +2588,8 @@ export const ListAddsServiceMemberCredentials: API.OperationMethod<
   ListAddsServiceMemberCredentialsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAddsServiceMemberCredentialsRequest,
-  output: Credentials,
+  input: __S(64, __c8, 0) as any as S.Schema<ListAddsServiceMemberCredentialsRequest>,
+  output: __S(67, __c8, 3) as any as S.Schema<Credentials>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3427,8 +2603,8 @@ export const ListAddsServiceMembers: API.OperationMethod<
   ListAddsServiceMembersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAddsServiceMembersRequest,
-  output: AddsServiceMembers,
+  input: __S(68, __c8, 4) as any as S.Schema<ListAddsServiceMembersRequest>,
+  output: __S(63, __c7, 7) as any as S.Schema<AddsServiceMembers>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3442,8 +2618,8 @@ export const ListAddsServiceMetricMetadata: API.OperationMethod<
   ListAddsServiceMetricMetadataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAddsServiceMetricMetadataRequest,
-  output: MetricMetadataList,
+  input: __S(69, __c8, 5) as any as S.Schema<ListAddsServiceMetricMetadataRequest>,
+  output: __S(71, __c8, 7) as any as S.Schema<MetricMetadataList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3457,8 +2633,8 @@ export const ListAddsServiceMetricsAverage: API.OperationMethod<
   ListAddsServiceMetricsAverageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAddsServiceMetricsAverageRequest,
-  output: Metrics,
+  input: __S(72, __c9, 0) as any as S.Schema<ListAddsServiceMetricsAverageRequest>,
+  output: __S(74, __c9, 2) as any as S.Schema<Metrics>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3472,8 +2648,8 @@ export const ListAddsServiceMetricsSum: API.OperationMethod<
   ListAddsServiceMetricsSumError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAddsServiceMetricsSumRequest,
-  output: Metrics,
+  input: __S(75, __c9, 3) as any as S.Schema<ListAddsServiceMetricsSumRequest>,
+  output: __S(74, __c9, 2) as any as S.Schema<Metrics>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3487,8 +2663,8 @@ export const ListAddsServicePremiumServices: API.OperationMethod<
   ListAddsServicePremiumServicesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAddsServicePremiumServicesRequest,
-  output: Services,
+  input: __S(76, __c9, 4) as any as S.Schema<ListAddsServicePremiumServicesRequest>,
+  output: __S(78, __c9, 6) as any as S.Schema<Services>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3502,8 +2678,8 @@ export const ListAddsServiceReplicationDetails: API.OperationMethod<
   ListAddsServiceReplicationDetailsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAddsServiceReplicationDetailsRequest,
-  output: ReplicationDetailsList,
+  input: __S(79, __c9, 7) as any as S.Schema<ListAddsServiceReplicationDetailsRequest>,
+  output: __S(84, __c10, 4) as any as S.Schema<ReplicationDetailsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3517,8 +2693,8 @@ export const ListAddsServiceReplicationSummary: API.OperationMethod<
   ListAddsServiceReplicationSummaryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAddsServiceReplicationSummaryRequest,
-  output: ReplicationSummaryList,
+  input: __S(85, __c10, 5) as any as S.Schema<ListAddsServiceReplicationSummaryRequest>,
+  output: __S(86, __c10, 6) as any as S.Schema<ReplicationSummaryList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3532,8 +2708,8 @@ export const ListAddsServices: API.OperationMethod<
   ListAddsServicesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAddsServicesRequest,
-  output: Services,
+  input: __S(87, __c10, 7) as any as S.Schema<ListAddsServicesRequest>,
+  output: __S(78, __c9, 6) as any as S.Schema<Services>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3547,8 +2723,8 @@ export const ListAddsServiceServerAlerts: API.OperationMethod<
   ListAddsServiceServerAlertsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAddsServiceServerAlertsRequest,
-  output: Alerts,
+  input: __S(88, __c11, 0) as any as S.Schema<ListAddsServiceServerAlertsRequest>,
+  output: __S(95, __c11, 7) as any as S.Schema<Alerts>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3562,8 +2738,8 @@ export const ListAddsServicesServiceMembers: API.OperationMethod<
   ListAddsServicesServiceMembersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAddsServicesServiceMembersRequest,
-  output: ServiceMembers,
+  input: __S(96, __c12, 0) as any as S.Schema<ListAddsServicesServiceMembersRequest>,
+  output: __S(98, __c12, 2) as any as S.Schema<ServiceMembers>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3577,8 +2753,8 @@ export const ListAlertAddsAlerts: API.OperationMethod<
   ListAlertAddsAlertsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAlertAddsAlertsRequest,
-  output: Alerts,
+  input: __S(99, __c12, 3) as any as S.Schema<ListAlertAddsAlertsRequest>,
+  output: __S(95, __c11, 7) as any as S.Schema<Alerts>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3592,8 +2768,8 @@ export const ListConfigurationAddsConfigurations: API.OperationMethod<
   ListConfigurationAddsConfigurationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListConfigurationAddsConfigurationsRequest,
-  output: AddsConfiguration,
+  input: __S(100, __c12, 4) as any as S.Schema<ListConfigurationAddsConfigurationsRequest>,
+  output: __S(101, __c12, 5) as any as S.Schema<AddsConfiguration>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3607,8 +2783,8 @@ export const ListDimensionAddsDimensions: API.OperationMethod<
   ListDimensionAddsDimensionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDimensionAddsDimensionsRequest,
-  output: Dimensions,
+  input: __S(102, __c12, 6) as any as S.Schema<ListDimensionAddsDimensionsRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<Dimensions>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3622,8 +2798,8 @@ export const ListIPAddressAggregatesByService: API.OperationMethod<
   ListIPAddressAggregatesByServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIPAddressAggregatesByServiceRequest,
-  output: IPAddressAggregates,
+  input: __S(106, __c13, 2) as any as S.Schema<ListIPAddressAggregatesByServiceRequest>,
+  output: __S(109, __c13, 5) as any as S.Schema<IPAddressAggregates>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3637,8 +2813,8 @@ export const ListIPAddressAggregateSettings: API.OperationMethod<
   ListIPAddressAggregateSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIPAddressAggregateSettingsRequest,
-  output: IPAddressAggregateSetting,
+  input: __S(110, __c13, 6) as any as S.Schema<ListIPAddressAggregateSettingsRequest>,
+  output: __S(111, __c13, 7) as any as S.Schema<IPAddressAggregateSetting>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3652,8 +2828,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: OperationListResponse,
+  input: __S(112, __c14, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(115, __c14, 3) as any as S.Schema<OperationListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3667,8 +2843,8 @@ export const ListServiceAlertFeedback: API.OperationMethod<
   ListServiceAlertFeedbackError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListServiceAlertFeedbackRequest,
-  output: AlertFeedbacks,
+  input: __S(116, __c14, 4) as any as S.Schema<ListServiceAlertFeedbackRequest>,
+  output: __S(118, __c14, 6) as any as S.Schema<AlertFeedbacks>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3682,8 +2858,8 @@ export const ListServiceAlerts: API.OperationMethod<
   ListServiceAlertsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListServiceAlertsRequest,
-  output: Alerts,
+  input: __S(119, __c14, 7) as any as S.Schema<ListServiceAlertsRequest>,
+  output: __S(95, __c11, 7) as any as S.Schema<Alerts>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3697,8 +2873,8 @@ export const ListServiceMemberAlerts: API.OperationMethod<
   ListServiceMemberAlertsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListServiceMemberAlertsRequest,
-  output: Alerts,
+  input: __S(120, __c15, 0) as any as S.Schema<ListServiceMemberAlertsRequest>,
+  output: __S(95, __c11, 7) as any as S.Schema<Alerts>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3712,8 +2888,8 @@ export const ListServiceMemberConnectors: API.OperationMethod<
   ListServiceMemberConnectorsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListServiceMemberConnectorsRequest,
-  output: Connectors,
+  input: __S(121, __c15, 1) as any as S.Schema<ListServiceMemberConnectorsRequest>,
+  output: __S(131, __c16, 3) as any as S.Schema<Connectors>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3727,8 +2903,8 @@ export const ListServiceMemberCredentials: API.OperationMethod<
   ListServiceMemberCredentialsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListServiceMemberCredentialsRequest,
-  output: Credentials,
+  input: __S(132, __c16, 4) as any as S.Schema<ListServiceMemberCredentialsRequest>,
+  output: __S(67, __c8, 3) as any as S.Schema<Credentials>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3742,8 +2918,8 @@ export const ListServiceMemberDataFreshness: API.OperationMethod<
   ListServiceMemberDataFreshnessError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListServiceMemberDataFreshnessRequest,
-  output: DataFreshnessDetails,
+  input: __S(133, __c16, 5) as any as S.Schema<ListServiceMemberDataFreshnessRequest>,
+  output: __S(134, __c16, 6) as any as S.Schema<DataFreshnessDetails>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3757,8 +2933,8 @@ export const ListServiceMemberGlobalConfiguration: API.OperationMethod<
   ListServiceMemberGlobalConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListServiceMemberGlobalConfigurationRequest,
-  output: GlobalConfigurations,
+  input: __S(135, __c16, 7) as any as S.Schema<ListServiceMemberGlobalConfigurationRequest>,
+  output: __S(138, __c17, 2) as any as S.Schema<GlobalConfigurations>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3772,8 +2948,8 @@ export const ListServiceMembers: API.OperationMethod<
   ListServiceMembersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListServiceMembersRequest,
-  output: ServiceMembers,
+  input: __S(139, __c17, 3) as any as S.Schema<ListServiceMembersRequest>,
+  output: __S(98, __c12, 2) as any as S.Schema<ServiceMembers>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3787,8 +2963,8 @@ export const ListServiceMetricMetadata: API.OperationMethod<
   ListServiceMetricMetadataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListServiceMetricMetadataRequest,
-  output: MetricMetadataList,
+  input: __S(140, __c17, 4) as any as S.Schema<ListServiceMetricMetadataRequest>,
+  output: __S(71, __c8, 7) as any as S.Schema<MetricMetadataList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3802,8 +2978,8 @@ export const ListServiceMetricsAverage: API.OperationMethod<
   ListServiceMetricsAverageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListServiceMetricsAverageRequest,
-  output: Metrics,
+  input: __S(141, __c17, 5) as any as S.Schema<ListServiceMetricsAverageRequest>,
+  output: __S(74, __c9, 2) as any as S.Schema<Metrics>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3817,8 +2993,8 @@ export const ListServiceMetricsSum: API.OperationMethod<
   ListServiceMetricsSumError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListServiceMetricsSumRequest,
-  output: Metrics,
+  input: __S(142, __c17, 6) as any as S.Schema<ListServiceMetricsSumRequest>,
+  output: __S(74, __c9, 2) as any as S.Schema<Metrics>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3832,8 +3008,8 @@ export const ListServiceMonitoringConfigurations: API.OperationMethod<
   ListServiceMonitoringConfigurationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListServiceMonitoringConfigurationsRequest,
-  output: Items,
+  input: __S(143, __c17, 7) as any as S.Schema<ListServiceMonitoringConfigurationsRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<Items>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3847,8 +3023,8 @@ export const ListServicePremium: API.OperationMethod<
   ListServicePremiumError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListServicePremiumRequest,
-  output: Services,
+  input: __S(145, __c18, 1) as any as S.Schema<ListServicePremiumRequest>,
+  output: __S(78, __c9, 6) as any as S.Schema<Services>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3862,8 +3038,8 @@ export const ListServices: API.OperationMethod<
   ListServicesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListServicesRequest,
-  output: Services,
+  input: __S(146, __c18, 2) as any as S.Schema<ListServicesRequest>,
+  output: __S(78, __c9, 6) as any as S.Schema<Services>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3877,8 +3053,8 @@ export const ListServiceUserBadPasswordReport: API.OperationMethod<
   ListServiceUserBadPasswordReportError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListServiceUserBadPasswordReportRequest,
-  output: ErrorReportUsersEntries,
+  input: __S(147, __c18, 3) as any as S.Schema<ListServiceUserBadPasswordReportRequest>,
+  output: __S(150, __c18, 6) as any as S.Schema<ErrorReportUsersEntries>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3892,8 +3068,8 @@ export const ServiceMembersListExportStatus: API.OperationMethod<
   ServiceMembersListExportStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ServiceMembersListExportStatusRequest,
-  output: ExportStatuses,
+  input: __S(151, __c18, 7) as any as S.Schema<ServiceMembersListExportStatusRequest>,
+  output: __S(154, __c19, 2) as any as S.Schema<ExportStatuses>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3907,8 +3083,8 @@ export const ServicesListAllRiskyIpDownloadReport: API.OperationMethod<
   ServicesListAllRiskyIpDownloadReportError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ServicesListAllRiskyIpDownloadReportRequest,
-  output: RiskyIPBlobUris,
+  input: __S(155, __c19, 3) as any as S.Schema<ServicesListAllRiskyIpDownloadReportRequest>,
+  output: __S(158, __c19, 6) as any as S.Schema<RiskyIPBlobUris>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3922,8 +3098,8 @@ export const ServicesListCurrentRiskyIpDownloadReport: API.OperationMethod<
   ServicesListCurrentRiskyIpDownloadReportError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ServicesListCurrentRiskyIpDownloadReportRequest,
-  output: RiskyIPBlobUris,
+  input: __S(159, __c19, 7) as any as S.Schema<ServicesListCurrentRiskyIpDownloadReportRequest>,
+  output: __S(158, __c19, 6) as any as S.Schema<RiskyIPBlobUris>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3937,8 +3113,8 @@ export const ServicesListExportErrors: API.OperationMethod<
   ServicesListExportErrorsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ServicesListExportErrorsRequest,
-  output: ErrorCounts,
+  input: __S(160, __c20, 0) as any as S.Schema<ServicesListExportErrorsRequest>,
+  output: __S(163, __c20, 3) as any as S.Schema<ErrorCounts>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3952,8 +3128,8 @@ export const ServicesListExportErrorsV2: API.OperationMethod<
   ServicesListExportErrorsV2Error,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ServicesListExportErrorsV2Request,
-  output: MergedExportErrors,
+  input: __S(164, __c20, 4) as any as S.Schema<ServicesListExportErrorsV2Request>,
+  output: __S(168, __c21, 0) as any as S.Schema<MergedExportErrors>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3967,8 +3143,8 @@ export const ServicesListExportStatus: API.OperationMethod<
   ServicesListExportStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ServicesListExportStatusRequest,
-  output: ExportStatuses,
+  input: __S(169, __c21, 1) as any as S.Schema<ServicesListExportStatusRequest>,
+  output: __S(154, __c19, 2) as any as S.Schema<ExportStatuses>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3982,8 +3158,8 @@ export const UpdateAddsService: API.OperationMethod<
   UpdateAddsServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAddsServiceRequest,
-  output: ServiceProperties,
+  input: __S(170, __c21, 2) as any as S.Schema<UpdateAddsServiceRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<ServiceProperties>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3997,8 +3173,8 @@ export const UpdateConfiguration: API.OperationMethod<
   UpdateConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateConfigurationRequest,
-  output: Tenant,
+  input: __S(171, __c21, 3) as any as S.Schema<UpdateConfigurationRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<Tenant>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4012,8 +3188,8 @@ export const UpdateIPAddressAggregateSettings: API.OperationMethod<
   UpdateIPAddressAggregateSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateIPAddressAggregateSettingsRequest,
-  output: IPAddressAggregateSetting,
+  input: __S(172, __c21, 4) as any as S.Schema<UpdateIPAddressAggregateSettingsRequest>,
+  output: __S(111, __c13, 7) as any as S.Schema<IPAddressAggregateSetting>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4027,8 +3203,8 @@ export const UpdateService: API.OperationMethod<
   UpdateServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateServiceRequest,
-  output: ServiceProperties,
+  input: __S(173, __c21, 5) as any as S.Schema<UpdateServiceRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<ServiceProperties>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4042,8 +3218,8 @@ export const UpdateServiceMonitoringConfiguration: API.OperationMethod<
   UpdateServiceMonitoringConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateServiceMonitoringConfigurationRequest,
-  output: UpdateServiceMonitoringConfigurationResponse,
+  input: __S(174, __c21, 6) as any as S.Schema<UpdateServiceMonitoringConfigurationRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<UpdateServiceMonitoringConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4061,7 +3237,7 @@ function __c0(j: number): any {
           activeAlerts: S.optional(S.Number),
           additionalInformation: S.optional(S.String),
           createdDate: S.optional(S.String),
-          customNotificationEmails: S.optional(AddAddsServiceRequestCustomNotificationEmailsList),
+          customNotificationEmails: S.optional(__S(0, __c0, 0)),
           disabled: S.optional(S.Boolean),
           displayName: S.optional(S.String),
           health: S.optional(S.String),
@@ -4072,7 +3248,7 @@ function __c0(j: number): any {
           notificationEmailEnabled: S.optional(S.Boolean),
           notificationEmailEnabledForGlobalAdmins: S.optional(S.Boolean),
           notificationEmailsEnabledForGlobalAdmins: S.optional(S.Boolean),
-          notificationEmails: S.optional(AddAddsServiceRequestNotificationEmailsList),
+          notificationEmails: S.optional(__S(0, __c0, 0)),
           originalDisabledState: S.optional(S.Boolean),
           resolvedAlerts: S.optional(S.Number),
           serviceId: S.optional(S.String),
@@ -4097,7 +3273,7 @@ function __c0(j: number): any {
           activeAlerts: S.optional(S.Number),
           additionalInformation: S.optional(S.String),
           createdDate: S.optional(S.String),
-          customNotificationEmails: S.optional(ServicePropertiesCustomNotificationEmailsList),
+          customNotificationEmails: S.optional(__S(0, __c0, 0)),
           disabled: S.optional(S.Boolean),
           displayName: S.optional(S.String),
           health: S.optional(S.String),
@@ -4108,7 +3284,7 @@ function __c0(j: number): any {
           notificationEmailEnabled: S.optional(S.Boolean),
           notificationEmailEnabledForGlobalAdmins: S.optional(S.Boolean),
           notificationEmailsEnabledForGlobalAdmins: S.optional(S.Boolean),
-          notificationEmails: S.optional(ServicePropertiesNotificationEmailsList),
+          notificationEmails: S.optional(__S(0, __c0, 0)),
           originalDisabledState: S.optional(S.Boolean),
           resolvedAlerts: S.optional(S.Number),
           serviceId: S.optional(S.String),
@@ -4147,9 +3323,7 @@ function __c0(j: number): any {
           recommendedQfes: S.optional(S.Unknown),
           resolvedAlerts: S.optional(S.Number),
           role: S.optional(S.String),
-          serverReportedMonitoringLevel: S.optional(
-            AddAddsServicesServiceMemberRequestServerReportedMonitoringLevel,
-          ),
+          serverReportedMonitoringLevel: S.optional(S.String),
           status: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -4189,7 +3363,7 @@ function __c0(j: number): any {
           recommendedQfes: S.optional(S.Unknown),
           resolvedAlerts: S.optional(S.Number),
           role: S.optional(S.String),
-          serverReportedMonitoringLevel: S.optional(ServiceMemberServerReportedMonitoringLevel),
+          serverReportedMonitoringLevel: S.optional(S.String),
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServiceMember" });
@@ -4198,7 +3372,7 @@ function __c0(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           featureName: S.String.pipe(T.Label()),
-          metricNames: S.optional(AddAddsServicesUserPreferenceRequestMetricNamesList),
+          metricNames: S.optional(__S(0, __c0, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4243,7 +3417,7 @@ function __c1(j: number): any {
           devOpsTtl: S.optional(S.String),
           disabled: S.optional(S.Boolean),
           disabledReason: S.optional(S.Number),
-          globalAdminsEmail: S.optional(TenantGlobalAdminsEmailList),
+          globalAdminsEmail: S.optional(__S(0, __c0, 0)),
           initialDomain: S.optional(S.String),
           lastDisabled: S.optional(S.String),
           lastVerified: S.optional(S.String),
@@ -4262,7 +3436,7 @@ function __c1(j: number): any {
           activeAlerts: S.optional(S.Number),
           additionalInformation: S.optional(S.String),
           createdDate: S.optional(S.String),
-          customNotificationEmails: S.optional(AddServiceRequestCustomNotificationEmailsList),
+          customNotificationEmails: S.optional(__S(0, __c0, 0)),
           disabled: S.optional(S.Boolean),
           displayName: S.optional(S.String),
           health: S.optional(S.String),
@@ -4273,7 +3447,7 @@ function __c1(j: number): any {
           notificationEmailEnabled: S.optional(S.Boolean),
           notificationEmailEnabledForGlobalAdmins: S.optional(S.Boolean),
           notificationEmailsEnabledForGlobalAdmins: S.optional(S.Boolean),
-          notificationEmails: S.optional(AddServiceRequestNotificationEmailsList),
+          notificationEmails: S.optional(__S(0, __c0, 0)),
           originalDisabledState: S.optional(S.Boolean),
           resolvedAlerts: S.optional(S.Number),
           serviceId: S.optional(S.String),
@@ -4355,9 +3529,7 @@ function __c1(j: number): any {
           recommendedQfes: S.optional(S.Unknown),
           resolvedAlerts: S.optional(S.Number),
           role: S.optional(S.String),
-          serverReportedMonitoringLevel: S.optional(
-            AddServiceMemberRequestServerReportedMonitoringLevel,
-          ),
+          serverReportedMonitoringLevel: S.optional(S.String),
           status: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -4510,8 +3682,8 @@ function __c2(j: number): any {
           siteCount: S.optional(S.Number),
           monitoredDcCount: S.optional(S.Number),
           totalDcCount: S.optional(S.Number),
-          domains: S.optional(ForestSummaryDomainsList),
-          sites: S.optional(ForestSummarySitesList),
+          domains: S.optional(__S(0, __c0, 0)),
+          sites: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({ identifier: "ForestSummary" });
   }
@@ -4559,13 +3731,13 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "MetricGroup" });
     case 3:
-      return S.Array(MetricGroup);
+      return S.Array(__S(26, __c3, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           metricsProcessorClassName: S.optional(S.String),
           metricName: S.optional(S.String),
-          groupings: S.optional(MetricMetadataGroupingsList),
+          groupings: S.optional(__S(27, __c3, 3)),
           displayName: S.optional(S.String),
           valueKind: S.optional(S.String),
           minValue: S.optional(S.Number),
@@ -4602,7 +3774,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           setName: S.optional(S.String),
-          values: S.optional(MetricSetValuesList),
+          values: S.optional(__S(30, __c3, 6)),
         }),
       ).annotate({ identifier: "MetricSet" });
   }
@@ -4610,12 +3782,12 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(MetricSet);
+      return S.Array(__S(31, __c3, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          sets: S.optional(MetricSetsSetsList),
-          timeStamps: S.optional(MetricSetsTimeStampsList),
+          sets: S.optional(__S(32, __c4, 0)),
+          timeStamps: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({ identifier: "MetricSets" });
     case 2:
@@ -4680,7 +3852,7 @@ function __c4(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          metricNames: S.optional(UserPreferenceMetricNamesList),
+          metricNames: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({ identifier: "UserPreference" });
     case 7:
@@ -4783,7 +3955,7 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "ConnectorMetadataDetails" });
     case 7:
-      return S.Array(ConnectorMetadataDetails);
+      return S.Array(__S(46, __c5, 6));
   }
 }
 function __c6(j: number): any {
@@ -4791,8 +3963,8 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          connectors: S.optional(ConnectorMetadataConnectorsList),
-          runProfileNames: S.optional(ConnectorMetadataRunProfileNamesList),
+          connectors: S.optional(__S(47, __c5, 7)),
+          runProfileNames: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({ identifier: "ConnectorMetadata" });
     case 1:
@@ -4927,8 +4099,8 @@ function __c7(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           isGroupbySite: S.Boolean.pipe(T.Query()),
           query: S.optional(S.String.pipe(T.Query())),
-          nextPartitionKey: ListAdDomainServiceMembersRequestNextPartitionKey.pipe(T.Query()),
-          nextRowKey: ListAdDomainServiceMembersRequestNextRowKey.pipe(T.Query()),
+          nextPartitionKey: S.String.pipe(T.Query()),
+          nextRowKey: S.String.pipe(T.Query()),
           takeCount: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -4949,7 +4121,7 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "Item" });
     case 2:
-      return S.Array(Item);
+      return S.Array(__S(57, __c7, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -4959,57 +4131,53 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "Hotfix" });
     case 4:
-      return S.Array(Hotfix);
+      return S.Array(__S(59, __c7, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           domainName: S.optional(S.String),
           siteName: S.optional(S.String),
-          addsRoles: S.optional(AddsServiceMemberAddsRolesList),
+          addsRoles: S.optional(__S(0, __c0, 0)),
           gcReachable: S.optional(S.Boolean),
           isAdvertising: S.optional(S.Boolean),
           pdcReachable: S.optional(S.Boolean),
           sysvolState: S.optional(S.Boolean),
-          dcTypes: S.optional(AddsServiceMemberDcTypesList),
+          dcTypes: S.optional(__S(0, __c0, 0)),
           serviceMemberId: S.optional(S.String),
           serviceId: S.optional(S.String),
           tenantId: S.optional(S.String),
           activeAlerts: S.optional(S.Number),
           additionalInformation: S.optional(S.String),
           createdDate: S.optional(S.String),
-          dimensions: S.optional(AddsServiceMemberDimensionsList),
+          dimensions: S.optional(__S(58, __c7, 2)),
           disabled: S.optional(S.Boolean),
           disabledReason: S.optional(S.Number),
-          installedQfes: S.optional(AddsServiceMemberInstalledQfesList),
+          installedQfes: S.optional(__S(60, __c7, 4)),
           lastDisabled: S.optional(S.String),
           lastReboot: S.optional(S.String),
           lastServerReportedMonitoringLevelChange: S.optional(S.String),
           lastUpdated: S.optional(S.String),
           machineId: S.optional(S.String),
           machineName: S.optional(S.String),
-          monitoringConfigurationsComputed: S.optional(
-            AddsServiceMemberMonitoringConfigurationsComputedList,
-          ),
-          monitoringConfigurationsCustomized: S.optional(
-            AddsServiceMemberMonitoringConfigurationsCustomizedList,
-          ),
+          monitoringConfigurationsComputed: S.optional(__S(58, __c7, 2)),
+          monitoringConfigurationsCustomized: S.optional(__S(58, __c7, 2)),
           osName: S.optional(S.String),
           osVersion: S.optional(S.String),
-          properties: S.optional(AddsServiceMemberPropertiesList),
-          recommendedQfes: S.optional(AddsServiceMemberRecommendedQfesList),
+          properties: S.optional(__S(58, __c7, 2)),
+          recommendedQfes: S.optional(__S(60, __c7, 4)),
           resolvedAlerts: S.optional(S.Number),
           role: S.optional(S.String),
-          serverReportedMonitoringLevel: S.optional(AddsServiceMemberServerReportedMonitoringLevel),
+          serverReportedMonitoringLevel: S.optional(S.String),
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "AddsServiceMember" });
     case 6:
-      return S.Array(AddsServiceMember);
+      return S.Array(__S(61, __c7, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(AddsServiceMembersValueList),
+          value: S.optional(__S(62, __c7, 6)),
           totalCount: S.optional(S.Number),
           continuationToken: S.optional(S.String),
         }),
@@ -5040,15 +4208,15 @@ function __c8(j: number): any {
         S.Struct({
           identifier: S.optional(S.String),
           type: S.optional(S.String),
-          credentialData: S.optional(CredentialCredentialDataList),
+          credentialData: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({ identifier: "Credential" });
     case 2:
-      return S.Array(Credential);
+      return S.Array(__S(65, __c8, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(CredentialsValueList),
+          value: S.optional(__S(66, __c8, 2)),
         }),
       ).annotate({ identifier: "Credentials" });
     case 4:
@@ -5085,12 +4253,12 @@ function __c8(j: number): any {
         identifier: "ListAddsServiceMetricMetadataRequest",
       });
     case 6:
-      return S.Array(MetricMetadata);
+      return S.Array(__S(28, __c3, 4));
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(MetricMetadataListValueList),
+          value: S.optional(__S(70, __c8, 6)),
           totalCount: S.optional(S.Number),
           continuationToken: S.optional(S.String),
         }),
@@ -5117,12 +4285,12 @@ function __c9(j: number): any {
         identifier: "ListAddsServiceMetricsAverageRequest",
       });
     case 1:
-      return S.Array(Item);
+      return S.Array(__S(57, __c7, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(MetricsValueList),
+          value: S.optional(__S(73, __c9, 1)),
           totalCount: S.optional(S.Number),
           continuationToken: S.optional(S.String),
         }),
@@ -5163,12 +4331,12 @@ function __c9(j: number): any {
         identifier: "ListAddsServicePremiumServicesRequest",
       });
     case 5:
-      return S.Array(ServiceProperties);
+      return S.Array(__S(2, __c0, 2));
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(ServicesValueList),
+          value: S.optional(__S(77, __c9, 5)),
           totalCount: S.optional(S.Number),
           continuationToken: S.optional(S.String),
         }),
@@ -5215,7 +4383,7 @@ function __c10(j: number): any {
         identifier: "InboundReplicationNeighbor",
       });
     case 1:
-      return S.Array(InboundReplicationNeighbor);
+      return S.Array(__S(80, __c10, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -5225,15 +4393,15 @@ function __c10(j: number): any {
           status: S.optional(S.Number),
           lastAttemptedSync: S.optional(S.String),
           lastSuccessfulSync: S.optional(S.String),
-          inboundNeighborCollection: S.optional(ReplicationSummaryInboundNeighborCollectionList),
+          inboundNeighborCollection: S.optional(__S(81, __c10, 1)),
         }),
       ).annotate({ identifier: "ReplicationSummary" });
     case 3:
-      return S.Array(ReplicationSummary);
+      return S.Array(__S(82, __c10, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ReplicationDetailsListValueList),
+          value: S.optional(__S(83, __c10, 3)),
           totalCount: S.optional(S.Number),
           continuationToken: S.optional(S.String),
           nextLink: S.optional(S.String),
@@ -5246,10 +4414,8 @@ function __c10(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           isGroupbySite: S.Boolean.pipe(T.Query()),
           query: S.String.pipe(T.Query()),
-          nextPartitionKey: ListAddsServiceReplicationSummaryRequestNextPartitionKey.pipe(
-            T.Query(),
-          ),
-          nextRowKey: ListAddsServiceReplicationSummaryRequestNextRowKey.pipe(T.Query()),
+          nextPartitionKey: S.String.pipe(T.Query()),
+          nextRowKey: S.String.pipe(T.Query()),
           takeCount: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -5265,7 +4431,7 @@ function __c10(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ReplicationSummaryListValueList),
+          value: S.optional(__S(83, __c10, 3)),
         }),
       ).annotate({ identifier: "ReplicationSummaryList" });
     case 7:
@@ -5316,7 +4482,7 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "HelpLink" });
     case 2:
-      return S.Array(HelpLink);
+      return S.Array(__S(89, __c11, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -5327,37 +4493,37 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "AdditionalInformation" });
     case 4:
-      return S.Array(AdditionalInformation);
+      return S.Array(__S(91, __c11, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           alertId: S.optional(S.String),
-          level: S.optional(AlertLevel),
-          state: S.optional(AlertState),
+          level: S.optional(S.String),
+          state: S.optional(S.String),
           shortName: S.optional(S.String),
           displayName: S.optional(S.String),
           description: S.optional(S.String),
           remediation: S.optional(S.String),
-          relatedLinks: S.optional(AlertRelatedLinksList),
+          relatedLinks: S.optional(__S(90, __c11, 2)),
           scope: S.optional(S.String),
-          additionalInformation: S.optional(AlertAdditionalInformationList),
+          additionalInformation: S.optional(__S(92, __c11, 4)),
           createdDate: S.optional(S.String),
           resolvedDate: S.optional(S.String),
           lastUpdated: S.optional(S.String),
           monitorRoleType: S.optional(S.String),
-          activeAlertProperties: S.optional(AlertActiveAlertPropertiesList),
-          resolvedAlertProperties: S.optional(AlertResolvedAlertPropertiesList),
+          activeAlertProperties: S.optional(__S(58, __c7, 2)),
+          resolvedAlertProperties: S.optional(__S(58, __c7, 2)),
           tenantId: S.optional(S.String),
           serviceId: S.optional(S.String),
           serviceMemberId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Alert" });
     case 6:
-      return S.Array(Alert);
+      return S.Array(__S(93, __c11, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(AlertsValueList),
+          value: S.optional(__S(94, __c11, 6)),
           nextLink: S.optional(S.String),
           totalCount: S.optional(S.Number),
           continuationToken: S.optional(S.String),
@@ -5386,12 +4552,12 @@ function __c12(j: number): any {
         identifier: "ListAddsServicesServiceMembersRequest",
       });
     case 1:
-      return S.Array(ServiceMember);
+      return S.Array(__S(4, __c0, 4));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(ServiceMembersValueList),
+          value: S.optional(__S(97, __c12, 1)),
           totalCount: S.optional(S.Number),
           continuationToken: S.optional(S.String),
         }),
@@ -5435,7 +4601,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(AddsConfigurationValueList),
+          value: S.optional(__S(58, __c7, 2)),
           totalCount: S.optional(S.Number),
           continuationToken: S.optional(S.String),
         }),
@@ -5459,7 +4625,7 @@ function __c12(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          health: S.optional(DimensionHealth),
+          health: S.optional(S.String),
           simpleProperties: S.optional(S.Unknown),
           activeAlerts: S.optional(S.Number),
           additionalInformation: S.optional(S.String),
@@ -5475,12 +4641,12 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Dimension);
+      return S.Array(__S(103, __c12, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(DimensionsValueList),
+          value: S.optional(__S(104, __c13, 0)),
           totalCount: S.optional(S.Number),
           continuationToken: S.optional(S.String),
         }),
@@ -5524,11 +4690,11 @@ function __c13(j: number): any {
         }),
       ).annotate({ identifier: "IPAddressAggregate" });
     case 4:
-      return S.Array(IPAddressAggregate);
+      return S.Array(__S(107, __c13, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(IPAddressAggregatesValueList),
+          value: S.optional(__S(108, __c13, 4)),
           nextLink: S.optional(S.String),
           totalCount: S.optional(S.Number),
           continuationToken: S.optional(S.String),
@@ -5585,12 +4751,12 @@ function __c14(j: number): any {
         }),
       ).annotate({ identifier: "Operation" });
     case 2:
-      return S.Array(Operation);
+      return S.Array(__S(113, __c14, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(OperationListResponseValueList),
+          value: S.optional(__S(114, __c14, 2)),
           totalCount: S.optional(S.Number),
           continuationToken: S.optional(S.String),
         }),
@@ -5612,11 +4778,11 @@ function __c14(j: number): any {
         identifier: "ListServiceAlertFeedbackRequest",
       });
     case 5:
-      return S.Array(AlertFeedback);
+      return S.Array(__S(11, __c1, 3));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(AlertFeedbacksValueList),
+          value: S.optional(__S(117, __c14, 5)),
         }),
       ).annotate({ identifier: "AlertFeedbacks" });
     case 7:
@@ -5680,9 +4846,9 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           isDefault: S.optional(S.Boolean),
-          objectClasses: S.optional(PartitionScopeObjectClassesList),
-          containersIncluded: S.optional(PartitionScopeContainersIncludedList),
-          containersExcluded: S.optional(PartitionScopeContainersExcludedList),
+          objectClasses: S.optional(__S(0, __c0, 0)),
+          containersIncluded: S.optional(__S(0, __c0, 0)),
+          containersExcluded: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({ identifier: "PartitionScope" });
     case 3:
@@ -5693,14 +4859,14 @@ function __c15(j: number): any {
           enabled: S.optional(S.Boolean),
           timeCreated: S.optional(S.String),
           timeLastModified: S.optional(S.String),
-          partitionScope: S.optional(PartitionScope),
+          partitionScope: S.optional(__S(122, __c15, 2)),
           name: S.optional(S.String),
           isDomain: S.optional(S.Boolean),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "Partition" });
     case 4:
-      return S.Array(Partition);
+      return S.Array(__S(123, __c15, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -5714,13 +4880,13 @@ function __c15(j: number): any {
         }),
       ).annotate({ identifier: "RunStep" });
     case 6:
-      return S.Array(RunStep);
+      return S.Array(__S(125, __c15, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          runSteps: S.optional(RunProfileRunStepsList),
+          runSteps: S.optional(__S(126, __c15, 6)),
         }),
       ).annotate({ identifier: "RunProfile" });
   }
@@ -5728,7 +4894,7 @@ function __c15(j: number): any {
 function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(RunProfile);
+      return S.Array(__S(127, __c15, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5743,18 +4909,18 @@ function __c16(j: number): any {
           passwordHashSyncConfiguration: S.optional(S.Unknown),
           timeCreated: S.optional(S.String),
           timeLastModified: S.optional(S.String),
-          partitions: S.optional(ConnectorPartitionsList),
-          runProfiles: S.optional(ConnectorRunProfilesList),
-          classesIncluded: S.optional(ConnectorClassesIncludedList),
-          attributesIncluded: S.optional(ConnectorAttributesIncludedList),
+          partitions: S.optional(__S(124, __c15, 4)),
+          runProfiles: S.optional(__S(128, __c16, 0)),
+          classesIncluded: S.optional(__S(0, __c0, 0)),
+          attributesIncluded: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({ identifier: "Connector" });
     case 2:
-      return S.Array(Connector);
+      return S.Array(__S(129, __c16, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ConnectorsValueList),
+          value: S.optional(__S(130, __c16, 2)),
         }),
       ).annotate({ identifier: "Connectors" });
     case 4:
@@ -5793,7 +4959,7 @@ function __c16(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(DataFreshnessDetailsValueList),
+          value: S.optional(__S(58, __c7, 2)),
         }),
       ).annotate({ identifier: "DataFreshnessDetails" });
     case 7:
@@ -5823,15 +4989,15 @@ function __c17(j: number): any {
           schemaXml: S.optional(S.String),
           passwordSyncEnabled: S.optional(S.Boolean),
           numSavedPwdEvent: S.optional(S.Number),
-          featureSet: S.optional(GlobalConfigurationFeatureSetList),
+          featureSet: S.optional(__S(58, __c7, 2)),
         }),
       ).annotate({ identifier: "GlobalConfiguration" });
     case 1:
-      return S.Array(GlobalConfiguration);
+      return S.Array(__S(136, __c17, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(GlobalConfigurationsValueList),
+          value: S.optional(__S(137, __c17, 1)),
         }),
       ).annotate({ identifier: "GlobalConfigurations" });
     case 3:
@@ -5925,7 +5091,7 @@ function __c18(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ItemsValueList),
+          value: S.optional(__S(73, __c9, 1)),
         }),
       ).annotate({ identifier: "Items" });
     case 1:
@@ -5989,11 +5155,11 @@ function __c18(j: number): any {
         }),
       ).annotate({ identifier: "ErrorReportUsersEntry" });
     case 5:
-      return S.Array(ErrorReportUsersEntry);
+      return S.Array(__S(148, __c18, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ErrorReportUsersEntriesValueList),
+          value: S.optional(__S(149, __c18, 5)),
         }),
       ).annotate({ identifier: "ErrorReportUsersEntries" });
     case 7:
@@ -6026,12 +5192,12 @@ function __c19(j: number): any {
         }),
       ).annotate({ identifier: "ExportStatus" });
     case 1:
-      return S.Array(ExportStatus);
+      return S.Array(__S(152, __c19, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(ExportStatusesValueList),
+          value: S.optional(__S(153, __c19, 1)),
           totalCount: S.optional(S.Number),
           continuationToken: S.optional(S.String),
         }),
@@ -6063,11 +5229,11 @@ function __c19(j: number): any {
         }),
       ).annotate({ identifier: "RiskyIPBlobUri" });
     case 5:
-      return S.Array(RiskyIPBlobUri);
+      return S.Array(__S(156, __c19, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(RiskyIPBlobUrisValueList),
+          value: S.optional(__S(157, __c19, 5)),
         }),
       ).annotate({ identifier: "RiskyIPBlobUris" });
     case 7:
@@ -6113,11 +5279,11 @@ function __c20(j: number): any {
         }),
       ).annotate({ identifier: "ErrorCount" });
     case 2:
-      return S.Array(ErrorCount);
+      return S.Array(__S(161, __c20, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ErrorCountsValueList),
+          value: S.optional(__S(162, __c20, 2)),
         }),
       ).annotate({ identifier: "ErrorCounts" });
     case 4:
@@ -6167,8 +5333,8 @@ function __c20(j: number): any {
           timeFirstOccurred: S.optional(S.String),
           csObjectId: S.optional(S.String),
           dn: S.optional(S.String),
-          incomingObject: S.optional(AssociatedObject),
-          existingObject: S.optional(AssociatedObject),
+          incomingObject: S.optional(__S(165, __c20, 5)),
+          existingObject: S.optional(__S(165, __c20, 5)),
           modifiedOrRemovedAttributeValue: S.optional(S.String),
           runStepResultId: S.optional(S.String),
           samAccountName: S.optional(S.String),
@@ -6181,7 +5347,7 @@ function __c20(j: number): any {
         }),
       ).annotate({ identifier: "MergedExportError" });
     case 7:
-      return S.Array(MergedExportError);
+      return S.Array(__S(166, __c20, 6));
   }
 }
 function __c21(j: number): any {
@@ -6189,7 +5355,7 @@ function __c21(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(MergedExportErrorsValueList),
+          value: S.optional(__S(167, __c20, 7)),
         }),
       ).annotate({ identifier: "MergedExportErrors" });
     case 1:
@@ -6215,9 +5381,7 @@ function __c21(j: number): any {
           activeAlerts: S.optional(S.Number),
           additionalInformation: S.optional(S.String),
           createdDate: S.optional(S.String),
-          customNotificationEmails: S.optional(
-            UpdateAddsServiceRequestCustomNotificationEmailsList,
-          ),
+          customNotificationEmails: S.optional(__S(0, __c0, 0)),
           disabled: S.optional(S.Boolean),
           displayName: S.optional(S.String),
           health: S.optional(S.String),
@@ -6228,7 +5392,7 @@ function __c21(j: number): any {
           notificationEmailEnabled: S.optional(S.Boolean),
           notificationEmailEnabledForGlobalAdmins: S.optional(S.Boolean),
           notificationEmailsEnabledForGlobalAdmins: S.optional(S.Boolean),
-          notificationEmails: S.optional(UpdateAddsServiceRequestNotificationEmailsList),
+          notificationEmails: S.optional(__S(0, __c0, 0)),
           originalDisabledState: S.optional(S.Boolean),
           resolvedAlerts: S.optional(S.Number),
           serviceId: S.optional(S.String),
@@ -6259,7 +5423,7 @@ function __c21(j: number): any {
           devOpsTtl: S.optional(S.String),
           disabled: S.optional(S.Boolean),
           disabledReason: S.optional(S.Number),
-          globalAdminsEmail: S.optional(UpdateConfigurationRequestGlobalAdminsEmailList),
+          globalAdminsEmail: S.optional(__S(0, __c0, 0)),
           initialDomain: S.optional(S.String),
           lastDisabled: S.optional(S.String),
           lastVerified: S.optional(S.String),
@@ -6309,7 +5473,7 @@ function __c21(j: number): any {
           activeAlerts: S.optional(S.Number),
           additionalInformation: S.optional(S.String),
           createdDate: S.optional(S.String),
-          customNotificationEmails: S.optional(UpdateServiceRequestCustomNotificationEmailsList),
+          customNotificationEmails: S.optional(__S(0, __c0, 0)),
           disabled: S.optional(S.Boolean),
           displayName: S.optional(S.String),
           health: S.optional(S.String),
@@ -6320,7 +5484,7 @@ function __c21(j: number): any {
           notificationEmailEnabled: S.optional(S.Boolean),
           notificationEmailEnabledForGlobalAdmins: S.optional(S.Boolean),
           notificationEmailsEnabledForGlobalAdmins: S.optional(S.Boolean),
-          notificationEmails: S.optional(UpdateServiceRequestNotificationEmailsList),
+          notificationEmails: S.optional(__S(0, __c0, 0)),
           originalDisabledState: S.optional(S.Boolean),
           resolvedAlerts: S.optional(S.Number),
           serviceId: S.optional(S.String),
@@ -6355,4 +5519,9 @@ function __c21(j: number): any {
         identifier: "UpdateServiceMonitoringConfigurationRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

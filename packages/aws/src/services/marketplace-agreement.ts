@@ -10,6 +10,8 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Marketplace Agreement",
   serviceShapeName: "AWSMPCommerceService_v20200301",
@@ -85,7 +87,7 @@ export class AccessDeniedException
       requestId: /*@__PURE__*/ S.optional(S.String),
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       reason: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => AccessDeniedExceptionReason).annotate({
+        /*@__PURE__*/ S.suspend(() => S.String).annotate({
           identifier: "AccessDeniedExceptionReason",
         }),
       ),
@@ -100,7 +102,7 @@ export class ConflictException
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       resourceId: /*@__PURE__*/ S.optional(S.String),
       resourceType: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => ResourceType).annotate({ identifier: "ResourceType" }),
+        /*@__PURE__*/ S.suspend(() => S.String).annotate({ identifier: "ResourceType" }),
       ),
     },
     /*@__PURE__*/ T.HttpError(409),
@@ -122,7 +124,7 @@ export class ResourceNotFoundException
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       resourceId: /*@__PURE__*/ S.optional(S.String),
       resourceType: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => ResourceType).annotate({ identifier: "ResourceType" }),
+        /*@__PURE__*/ S.suspend(() => S.String).annotate({ identifier: "ResourceType" }),
       ),
     },
     /*@__PURE__*/ T.HttpError(404),
@@ -156,12 +158,12 @@ export class ValidationException
       requestId: /*@__PURE__*/ S.optional(S.String),
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       reason: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
+        /*@__PURE__*/ S.suspend(() => S.String).annotate({
           identifier: "ValidationExceptionReason",
         }),
       ),
       fields: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(139, __c17, 3)).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -174,10 +176,6 @@ export interface AcceptAgreementCancellationRequestInput {
   agreementId: string;
   agreementCancellationRequestId: string;
 }
-const AcceptAgreementCancellationRequestInput = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AcceptAgreementCancellationRequestInput>;
 export type AgreementCancellationRequestStatus =
   | "PENDING_APPROVAL"
   | "APPROVED"
@@ -185,8 +183,6 @@ export type AgreementCancellationRequestStatus =
   | "CANCELLED"
   | "VALIDATION_FAILED"
   | (string & {});
-const AgreementCancellationRequestStatus = S.String;
-
 export type AgreementCancellationRequestReasonCode =
   | "INCORRECT_TERMS_ACCEPTED"
   | "REPLACING_AGREEMENT"
@@ -197,8 +193,6 @@ export type AgreementCancellationRequestReasonCode =
   | "BUYER_DISSATISFACTION"
   | "OTHER"
   | (string & {});
-const AgreementCancellationRequestReasonCode = S.String;
-
 export type AgreementCancellationRequestDescription = string | redacted.Redacted<string>;
 export interface AcceptAgreementCancellationRequestOutput {
   agreementId?: string;
@@ -209,10 +203,6 @@ export interface AcceptAgreementCancellationRequestOutput {
   createdAt?: Date;
   updatedAt?: Date;
 }
-const AcceptAgreementCancellationRequestOutput = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AcceptAgreementCancellationRequestOutput>;
 export type PaymentRequestId = string;
 export type PurchaseOrderReference = string;
 export interface AcceptAgreementPaymentRequestInput {
@@ -220,10 +210,6 @@ export interface AcceptAgreementPaymentRequestInput {
   agreementId: string;
   purchaseOrderReference?: string;
 }
-const AcceptAgreementPaymentRequestInput = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AcceptAgreementPaymentRequestInput>;
 export type PaymentRequestStatus =
   | "VALIDATING"
   | "VALIDATION_FAILED"
@@ -232,8 +218,6 @@ export type PaymentRequestStatus =
   | "REJECTED"
   | "CANCELLED"
   | (string & {});
-const PaymentRequestStatus = S.String;
-
 export type PaymentRequestName = string;
 export type PaymentRequestDescription = string | redacted.Redacted<string>;
 export type PositiveAmountUpto8Decimals = string;
@@ -249,10 +233,6 @@ export interface AcceptAgreementPaymentRequestOutput {
   createdAt?: Date;
   updatedAt?: Date;
 }
-const AcceptAgreementPaymentRequestOutput = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<AcceptAgreementPaymentRequestOutput>;
 export type AgreementRequestId = string;
 export type ResourceId = string;
 export type ChargeRevision = number;
@@ -262,24 +242,14 @@ export interface PurchaseOrder {
   agreementId?: string;
   purchaseOrderReference?: string;
 }
-const PurchaseOrder = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<PurchaseOrder>;
 export type PurchaseOrders = PurchaseOrder[];
-const PurchaseOrders = /*@__PURE__*/ __L.at(__c0, 5);
 export interface AcceptAgreementRequestInput {
   agreementRequestId: string;
   purchaseOrders?: PurchaseOrder[];
 }
-const AcceptAgreementRequestInput = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<AcceptAgreementRequestInput>;
 export interface AcceptAgreementRequestOutput {
   agreementId?: string;
 }
-const AcceptAgreementRequestOutput = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<AcceptAgreementRequestOutput>;
 export type InvoiceId = string;
 export type BillingAdjustmentReasonCode =
   | "INCORRECT_TERMS_ACCEPTED"
@@ -290,8 +260,6 @@ export type BillingAdjustmentReasonCode =
   | "BUYER_DISSATISFACTION"
   | "OTHER"
   | (string & {});
-const BillingAdjustmentReasonCode = S.String;
-
 export type BillingAdjustmentDescription = string | redacted.Redacted<string>;
 export type ClientToken = string;
 export interface BatchCreateBillingAdjustmentRequestEntry {
@@ -303,77 +271,43 @@ export interface BatchCreateBillingAdjustmentRequestEntry {
   description?: string | redacted.Redacted<string>;
   clientToken: string;
 }
-const BatchCreateBillingAdjustmentRequestEntry = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<BatchCreateBillingAdjustmentRequestEntry>;
 export type BatchCreateBillingAdjustmentRequestEntryList =
   BatchCreateBillingAdjustmentRequestEntry[];
-const BatchCreateBillingAdjustmentRequestEntryList = /*@__PURE__*/ __L.at(__c1, 1);
 export interface BatchCreateBillingAdjustmentRequestInput {
   billingAdjustmentRequestEntries: BatchCreateBillingAdjustmentRequestEntry[];
 }
-const BatchCreateBillingAdjustmentRequestInput = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<BatchCreateBillingAdjustmentRequestInput>;
 export type BillingAdjustmentRequestId = string;
 export interface BatchCreateBillingAdjustmentItem {
   billingAdjustmentRequestId: string;
   clientToken: string;
 }
-const BatchCreateBillingAdjustmentItem = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<BatchCreateBillingAdjustmentItem>;
 export type BatchCreateBillingAdjustmentItemList = BatchCreateBillingAdjustmentItem[];
-const BatchCreateBillingAdjustmentItemList = /*@__PURE__*/ __L.at(__c1, 4);
 export type BillingAdjustmentErrorCode =
   | "CONFLICT_EXCEPTION"
   | "VALIDATION_EXCEPTION"
   | "RESOURCE_NOT_FOUND_EXCEPTION"
   | "INTERNAL_FAILURE"
   | (string & {});
-const BillingAdjustmentErrorCode = S.String;
-
 export interface BatchCreateBillingAdjustmentError {
   code: BillingAdjustmentErrorCode;
   message: string;
   clientToken: string;
 }
-const BatchCreateBillingAdjustmentError = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<BatchCreateBillingAdjustmentError>;
 export type BatchCreateBillingAdjustmentErrorList = BatchCreateBillingAdjustmentError[];
-const BatchCreateBillingAdjustmentErrorList = /*@__PURE__*/ __L.at(__c1, 6);
 export interface BatchCreateBillingAdjustmentRequestOutput {
   items: BatchCreateBillingAdjustmentItem[];
   errors: BatchCreateBillingAdjustmentError[];
 }
-const BatchCreateBillingAdjustmentRequestOutput = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<BatchCreateBillingAdjustmentRequestOutput>;
 export interface CancelAgreementInput {
   agreementId: string;
 }
-const CancelAgreementInput = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<CancelAgreementInput>;
 export interface CancelAgreementOutput {}
-const CancelAgreementOutput = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CancelAgreementOutput>;
 export type AgreementCancellationRequestCancellationReason = string | redacted.Redacted<string>;
 export interface CancelAgreementCancellationRequestInput {
   agreementId: string;
   agreementCancellationRequestId: string;
   cancellationReason: string | redacted.Redacted<string>;
 }
-const CancelAgreementCancellationRequestInput = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<CancelAgreementCancellationRequestInput>;
 export type AgreementCancellationRequestStatusMessage = string;
 export interface CancelAgreementCancellationRequestOutput {
   agreementCancellationRequestId?: string;
@@ -385,18 +319,10 @@ export interface CancelAgreementCancellationRequestOutput {
   createdAt?: Date;
   updatedAt?: Date;
 }
-const CancelAgreementCancellationRequestOutput = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<CancelAgreementCancellationRequestOutput>;
 export interface CancelAgreementPaymentRequestInput {
   paymentRequestId: string;
   agreementId: string;
 }
-const CancelAgreementPaymentRequestInput = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<CancelAgreementPaymentRequestInput>;
 export interface CancelAgreementPaymentRequestOutput {
   paymentRequestId?: string;
   agreementId?: string;
@@ -408,11 +334,7 @@ export interface CancelAgreementPaymentRequestOutput {
   createdAt?: Date;
   updatedAt?: Date;
 }
-const CancelAgreementPaymentRequestOutput =
-  AcceptAgreementPaymentRequestOutput as any as S.Schema<CancelAgreementPaymentRequestOutput>;
 export type Intent = "NEW" | "AMEND" | "REPLACE" | (string & {});
-const Intent = S.String;
-
 export type TermId = string;
 export type BoundedString = string;
 export type ZeroValueInteger = number;
@@ -420,39 +342,23 @@ export interface Dimension {
   dimensionKey: string;
   dimensionValue: number;
 }
-const Dimension = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<Dimension>;
 export type DimensionList = Dimension[];
-const DimensionList = /*@__PURE__*/ __L.at(__c2, 6);
 export interface ConfigurableUpfrontPricingTermConfiguration {
   selectorValue: string;
   dimensions: Dimension[];
 }
-const ConfigurableUpfrontPricingTermConfiguration = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ConfigurableUpfrontPricingTermConfiguration>;
 export interface RenewalTermConfiguration {
   enableAutoRenew: boolean;
 }
-const RenewalTermConfiguration = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<RenewalTermConfiguration>;
 export type PaymentRequestApprovalStrategy =
   | "AUTO_APPROVE_ON_EXPIRATION"
   | "WAIT_FOR_APPROVAL"
   | (string & {});
-const PaymentRequestApprovalStrategy = S.String;
-
 export type ISO8601Duration = string;
 export interface VariablePaymentTermConfiguration {
   paymentRequestApprovalStrategy: PaymentRequestApprovalStrategy;
   expirationDuration?: string;
 }
-const VariablePaymentTermConfiguration = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<VariablePaymentTermConfiguration>;
 export type RequestedTermConfiguration =
   | {
       configurableUpfrontPricingTermConfiguration: ConfigurableUpfrontPricingTermConfiguration;
@@ -469,22 +375,16 @@ export type RequestedTermConfiguration =
       renewalTermConfiguration?: never;
       variablePaymentTermConfiguration: VariablePaymentTermConfiguration;
     };
-const RequestedTermConfiguration = /*@__PURE__*/ __L.at(__c3, 2);
 export interface RequestedTerm {
   id: string;
   configuration?: RequestedTermConfiguration;
 }
-const RequestedTerm = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<RequestedTerm>;
 export type RequestedTermList = RequestedTerm[];
-const RequestedTermList = /*@__PURE__*/ __L.at(__c3, 4);
 export type AgreementProposalId = string;
 export type TaxEstimation = "DISABLED" | "ENABLED" | (string & {});
-const TaxEstimation = S.String;
-
 export interface TaxConfiguration {
   taxEstimation?: TaxEstimation;
 }
-const TaxConfiguration = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<TaxConfiguration>;
 export interface CreateAgreementRequestInput {
   clientToken?: string;
   intent: Intent;
@@ -493,26 +393,17 @@ export interface CreateAgreementRequestInput {
   agreementProposalIdentifier?: string;
   taxConfiguration?: TaxConfiguration;
 }
-const CreateAgreementRequestInput = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<CreateAgreementRequestInput>;
 export type Timing = "ON_ACCEPTANCE" | "SCHEDULED" | "BILLING_PERIOD" | (string & {});
-const Timing = S.String;
-
 export interface TaxBreakdownItem {
   amount?: string;
   rate?: string;
   type?: string;
 }
-const TaxBreakdownItem = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<TaxBreakdownItem>;
 export type TaxBreakdown = TaxBreakdownItem[];
-const TaxBreakdown = /*@__PURE__*/ __L.at(__c4, 0);
 export interface EstimatedTaxes {
   breakdown?: TaxBreakdownItem[];
   totalAmount?: string;
 }
-const EstimatedTaxes = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<EstimatedTaxes>;
 export interface ExpectedCharge {
   id?: string;
   time?: Date;
@@ -521,9 +412,7 @@ export interface ExpectedCharge {
   timing?: Timing;
   estimatedTaxes?: EstimatedTaxes;
 }
-const ExpectedCharge = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<ExpectedCharge>;
 export type ExpectedChargeList = ExpectedCharge[];
-const ExpectedChargeList = /*@__PURE__*/ __L.at(__c4, 3);
 export interface ItemizedCharge {
   dimensionKey?: string;
   newQuantity?: number;
@@ -531,14 +420,11 @@ export interface ItemizedCharge {
   chargeReference?: string;
   incrementalChargeAmount?: string;
 }
-const ItemizedCharge = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<ItemizedCharge>;
 export type ItemizedChargeList = ItemizedCharge[];
-const ItemizedChargeList = /*@__PURE__*/ __L.at(__c4, 5);
 export interface InvoicingEntity {
   legalName?: string;
   branchName?: string;
 }
-const InvoicingEntity = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<InvoicingEntity>;
 export interface ChargeSummary {
   currencyCode?: string;
   newAgreementValue?: string;
@@ -548,45 +434,31 @@ export interface ChargeSummary {
   itemizedCharges?: ItemizedCharge[];
   invoicingEntity?: InvoicingEntity;
 }
-const ChargeSummary = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<ChargeSummary>;
 export interface CreateAgreementRequestOutput {
   agreementRequestId?: string;
   chargeSummary?: ChargeSummary;
 }
-const CreateAgreementRequestOutput = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<CreateAgreementRequestOutput>;
 export interface DescribeAgreementInput {
   agreementId: string;
 }
-const DescribeAgreementInput = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<DescribeAgreementInput>;
 export type AWSAccountId = string;
 export interface Acceptor {
   accountId?: string;
 }
-const Acceptor = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<Acceptor>;
 export interface Proposer {
   accountId?: string;
 }
-const Proposer = Acceptor as any as S.Schema<Proposer>;
 export type AgreementType = string;
 export interface EstimatedCharges {
   currencyCode?: string;
   agreementValue?: string;
 }
-const EstimatedCharges = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<EstimatedCharges>;
 export type AgreementResourceType = string;
 export interface Resource {
   id?: string;
   type?: string;
 }
-const Resource = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<Resource>;
 export type Resources = Resource[];
-const Resources = /*@__PURE__*/ __L.at(__c5, 5);
 export type OfferId = string;
 export type OfferSetId = string;
 export interface ProposalSummary {
@@ -594,7 +466,6 @@ export interface ProposalSummary {
   offerId?: string;
   offerSetId?: string;
 }
-const ProposalSummary = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<ProposalSummary>;
 export type AgreementStatus =
   | "ACTIVE"
   | "ARCHIVED"
@@ -606,29 +477,21 @@ export type AgreementStatus =
   | "SUPERSEDED"
   | "TERMINATED"
   | (string & {});
-const AgreementStatus = S.String;
-
 export type EndTimeBehaviorType = "RENEW" | "REPLACE" | "EXPIRE" | (string & {});
-const EndTimeBehaviorType = S.String;
-
 export type EndTimeBehaviorReasonCode =
   | "PROPOSER_RENEW_OPTED_OUT"
   | "ACCEPTOR_RENEW_OPTED_OUT"
   | "NO_RENEWAL_TERM"
   | "RENEWAL_LIMIT_EXHAUSTED"
   | (string & {});
-const EndTimeBehaviorReasonCode = S.String;
-
 export interface RenewalSummary {
   offerId?: string;
 }
-const RenewalSummary = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<RenewalSummary>;
 export interface EndTimeBehavior {
   type: EndTimeBehaviorType;
   reasonCode?: EndTimeBehaviorReasonCode;
   renewalSummary?: RenewalSummary;
 }
-const EndTimeBehavior = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<EndTimeBehavior>;
 export interface DescribeAgreementOutput {
   agreementId?: string;
   acceptor?: Acceptor;
@@ -643,18 +506,10 @@ export interface DescribeAgreementOutput {
   initialAgreementId?: string;
   endTimeBehavior?: EndTimeBehavior;
 }
-const DescribeAgreementOutput = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<DescribeAgreementOutput>;
 export interface GetAgreementCancellationRequestInput {
   agreementCancellationRequestId: string;
   agreementId: string;
 }
-const GetAgreementCancellationRequestInput = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<GetAgreementCancellationRequestInput>;
 export interface GetAgreementCancellationRequestOutput {
   agreementCancellationRequestId?: string;
   agreementId?: string;
@@ -665,8 +520,6 @@ export interface GetAgreementCancellationRequestOutput {
   createdAt?: Date;
   updatedAt?: Date;
 }
-const GetAgreementCancellationRequestOutput =
-  CancelAgreementCancellationRequestOutput as any as S.Schema<GetAgreementCancellationRequestOutput>;
 export type MaxResults = number;
 export type NextToken = string;
 export interface GetAgreementEntitlementsInput {
@@ -674,10 +527,6 @@ export interface GetAgreementEntitlementsInput {
   maxResults?: number;
   nextToken?: string;
 }
-const GetAgreementEntitlementsInput = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<GetAgreementEntitlementsInput>;
 export type EntitlementType = string;
 export type RegistrationToken = string;
 export type AgreementEntitlementStatus =
@@ -687,8 +536,6 @@ export type AgreementEntitlementStatus =
   | "FAILED"
   | "DEPROVISIONED"
   | (string & {});
-const AgreementEntitlementStatus = S.String;
-
 export type AgreementEntitlementStatusReasonCode =
   | "PROVISIONING_IN_PROGRESS"
   | "FUTURE_START_DATE"
@@ -700,8 +547,6 @@ export type AgreementEntitlementStatusReasonCode =
   | "AGREEMENT_ACTIVE"
   | "PRODUCT_RESTRICTED"
   | (string & {});
-const AgreementEntitlementStatusReasonCode = S.String;
-
 export type AwsArn = string;
 export interface AgreementEntitlement {
   resource?: Resource;
@@ -711,25 +556,15 @@ export interface AgreementEntitlement {
   statusReasonCode?: AgreementEntitlementStatusReasonCode;
   licenseArn?: string;
 }
-const AgreementEntitlement = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<AgreementEntitlement>;
 export type AgreementEntitlementList = AgreementEntitlement[];
-const AgreementEntitlementList = /*@__PURE__*/ __L.at(__c6, 5);
 export interface GetAgreementEntitlementsOutput {
   agreementEntitlements?: AgreementEntitlement[];
   nextToken?: string;
 }
-const GetAgreementEntitlementsOutput = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<GetAgreementEntitlementsOutput>;
 export interface GetAgreementPaymentRequestInput {
   paymentRequestId: string;
   agreementId: string;
 }
-const GetAgreementPaymentRequestInput = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<GetAgreementPaymentRequestInput>;
 export type PaymentRequestStatusMessage = string;
 export type ChargeId = string;
 export interface GetAgreementPaymentRequestOutput {
@@ -745,56 +580,41 @@ export interface GetAgreementPaymentRequestOutput {
   createdAt?: Date;
   updatedAt?: Date;
 }
-const GetAgreementPaymentRequestOutput = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<GetAgreementPaymentRequestOutput>;
 export interface GetAgreementTermsInput {
   agreementId: string;
   maxResults?: number;
   nextToken?: string;
 }
-const GetAgreementTermsInput = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<GetAgreementTermsInput>;
 export type UnversionedTermType = string;
 export interface DocumentItem {
   type?: string;
   url?: string;
   version?: string;
 }
-const DocumentItem = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<DocumentItem>;
 export type DocumentList = DocumentItem[];
-const DocumentList = /*@__PURE__*/ __L.at(__c7, 3);
 export interface LegalTerm {
   type?: string;
   id?: string;
   documents?: DocumentItem[];
 }
-const LegalTerm = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<LegalTerm>;
 export interface SupportTerm {
   type?: string;
   id?: string;
   refundPolicy?: string;
 }
-const SupportTerm = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<SupportTerm>;
 export type DayDuration = string;
 export type PriceIncreasePercentage = string;
 export interface FixedPercentage {
   value?: string;
 }
-const FixedPercentage = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<FixedPercentage>;
 export interface PercentageRange {
   minValue?: string;
   maxValue?: string;
   defaultValue?: string;
 }
-const PercentageRange = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<PercentageRange>;
 export type PriceIncrease =
   | { fixedPercentage: FixedPercentage; percentageRange?: never }
   | { fixedPercentage?: never; percentageRange: PercentageRange };
-const PriceIncrease = /*@__PURE__*/ __L.at(__c8, 0);
 export type OffsetDuration = string;
 export type ChargePercentage = string;
 export interface PaymentScheduleEntry {
@@ -802,20 +622,12 @@ export interface PaymentScheduleEntry {
   chargePercentage?: string;
   dayOfMonth?: number;
 }
-const PaymentScheduleEntry = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<PaymentScheduleEntry>;
 export type PaymentScheduleEntryList = PaymentScheduleEntry[];
-const PaymentScheduleEntryList = /*@__PURE__*/ __L.at(__c8, 2);
 export interface PaymentScheduleTermTemplate {
   schedule?: PaymentScheduleEntry[];
 }
-const PaymentScheduleTermTemplate = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<PaymentScheduleTermTemplate>;
 export type TermTemplate = { paymentScheduleTermTemplate: PaymentScheduleTermTemplate };
-const TermTemplate = /*@__PURE__*/ __L.at(__c8, 4);
 export type TermTemplateList = TermTemplate[];
-const TermTemplateList = /*@__PURE__*/ __L.at(__c8, 5);
 export interface RenewalTerm {
   type?: string;
   id?: string;
@@ -826,54 +638,35 @@ export interface RenewalTerm {
   priceIncrease?: PriceIncrease;
   termTemplates?: TermTemplate[];
 }
-const RenewalTerm = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<RenewalTerm>;
 export interface RateCardItem {
   dimensionKey?: string;
   price?: string;
 }
-const RateCardItem = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<RateCardItem>;
 export type RateCardList = RateCardItem[];
-const RateCardList = /*@__PURE__*/ __L.at(__c9, 0);
 export interface UsageBasedRateCardItem {
   rateCard?: RateCardItem[];
 }
-const UsageBasedRateCardItem = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<UsageBasedRateCardItem>;
 export type UsageBasedRateCardList = UsageBasedRateCardItem[];
-const UsageBasedRateCardList = /*@__PURE__*/ __L.at(__c9, 2);
 export interface UsageBasedPricingTerm {
   type?: string;
   id?: string;
   currencyCode?: string;
   rateCards?: UsageBasedRateCardItem[];
 }
-const UsageBasedPricingTerm = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<UsageBasedPricingTerm>;
 export interface Selector {
   type?: string;
   value?: string;
 }
-const Selector = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<Selector>;
 export interface Constraints {
   multipleDimensionSelection?: string;
   quantityConfiguration?: string;
 }
-const Constraints = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<Constraints>;
 export interface ConfigurableUpfrontRateCardItem {
   selector?: Selector;
   constraints?: Constraints;
   rateCard?: RateCardItem[];
 }
-const ConfigurableUpfrontRateCardItem = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<ConfigurableUpfrontRateCardItem>;
 export type ConfigurableUpfrontRateCardList = ConfigurableUpfrontRateCardItem[];
-const ConfigurableUpfrontRateCardList = /*@__PURE__*/ __L.at(__c9, 7);
 export interface ConfigurableUpfrontPricingTerm {
   type?: string;
   id?: string;
@@ -881,15 +674,10 @@ export interface ConfigurableUpfrontPricingTerm {
   rateCards?: ConfigurableUpfrontRateCardItem[];
   configuration?: ConfigurableUpfrontPricingTermConfiguration;
 }
-const ConfigurableUpfrontPricingTerm = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<ConfigurableUpfrontPricingTerm>;
 export interface ByolPricingTerm {
   type?: string;
   id?: string;
 }
-const ByolPricingTerm = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<ByolPricingTerm>;
 export interface RecurringPaymentTerm {
   type?: string;
   id?: string;
@@ -897,10 +685,6 @@ export interface RecurringPaymentTerm {
   billingPeriod?: string;
   price?: string;
 }
-const RecurringPaymentTerm = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<RecurringPaymentTerm>;
 export interface ValidityTerm {
   type?: string;
   id?: string;
@@ -908,39 +692,29 @@ export interface ValidityTerm {
   agreementStartDate?: Date;
   agreementEndDate?: Date;
 }
-const ValidityTerm = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<ValidityTerm>;
 export interface ScheduleItem {
   chargeDate?: Date;
   chargeAmount?: string;
 }
-const ScheduleItem = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<ScheduleItem>;
 export type ScheduleList = ScheduleItem[];
-const ScheduleList = /*@__PURE__*/ __L.at(__c10, 5);
 export interface PaymentScheduleTerm {
   type?: string;
   id?: string;
   currencyCode?: string;
   schedule?: ScheduleItem[];
 }
-const PaymentScheduleTerm = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<PaymentScheduleTerm>;
 export type PositiveIntegerWithDefaultValueOne = number;
 export interface GrantItem {
   dimensionKey?: string;
   maxQuantity?: number;
 }
-const GrantItem = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<GrantItem>;
 export type GrantList = GrantItem[];
-const GrantList = /*@__PURE__*/ __L.at(__c11, 0);
 export interface FreeTrialPricingTerm {
   type?: string;
   id?: string;
   duration?: string;
   grants?: GrantItem[];
 }
-const FreeTrialPricingTerm = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<FreeTrialPricingTerm>;
 export interface FixedUpfrontPricingTerm {
   type?: string;
   id?: string;
@@ -949,10 +723,6 @@ export interface FixedUpfrontPricingTerm {
   price?: string;
   grants?: GrantItem[];
 }
-const FixedUpfrontPricingTerm = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<FixedUpfrontPricingTerm>;
 export interface VariablePaymentTerm {
   type?: string;
   id?: string;
@@ -960,13 +730,11 @@ export interface VariablePaymentTerm {
   maxTotalChargeAmount?: string;
   configuration?: VariablePaymentTermConfiguration;
 }
-const VariablePaymentTerm = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<VariablePaymentTerm>;
 export interface NetPaymentTerm {
   type?: string;
   id?: string;
   paymentDuePeriod?: string;
 }
-const NetPaymentTerm = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<NetPaymentTerm>;
 export type AcceptedTerm =
   | {
       legalTerm: LegalTerm;
@@ -1163,28 +931,16 @@ export type AcceptedTerm =
       variablePaymentTerm?: never;
       netPaymentTerm: NetPaymentTerm;
     };
-const AcceptedTerm = /*@__PURE__*/ __L.at(__c11, 5);
 export type AcceptedTermList = AcceptedTerm[];
-const AcceptedTermList = /*@__PURE__*/ __L.at(__c11, 6);
 export interface GetAgreementTermsOutput {
   acceptedTerms?: AcceptedTerm[];
   nextToken?: string;
 }
-const GetAgreementTermsOutput = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<GetAgreementTermsOutput>;
 export interface GetBillingAdjustmentRequestInput {
   agreementId: string;
   billingAdjustmentRequestId: string;
 }
-const GetBillingAdjustmentRequestInput = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<GetBillingAdjustmentRequestInput>;
 export type BillingAdjustmentStatus = "PENDING" | "VALIDATION_FAILED" | "COMPLETED" | (string & {});
-const BillingAdjustmentStatus = S.String;
-
 export type BillingAdjustmentStatusMessage = string;
 export interface GetBillingAdjustmentRequestOutput {
   billingAdjustmentRequestId: string;
@@ -1199,10 +955,6 @@ export interface GetBillingAdjustmentRequestOutput {
   createdAt: Date;
   updatedAt: Date;
 }
-const GetBillingAdjustmentRequestOutput = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<GetBillingAdjustmentRequestOutput>;
 export type PartyType = string;
 export type Catalog = string;
 export interface ListAgreementCancellationRequestsInput {
@@ -1214,10 +966,6 @@ export interface ListAgreementCancellationRequestsInput {
   maxResults?: number;
   nextToken?: string;
 }
-const ListAgreementCancellationRequestsInput = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<ListAgreementCancellationRequestsInput>;
 export interface AgreementCancellationRequestSummary {
   agreementCancellationRequestId?: string;
   agreementId?: string;
@@ -1228,20 +976,11 @@ export interface AgreementCancellationRequestSummary {
   createdAt?: Date;
   updatedAt?: Date;
 }
-const AgreementCancellationRequestSummary = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<AgreementCancellationRequestSummary>;
 export type AgreementCancellationRequestSummaryList = AgreementCancellationRequestSummary[];
-const AgreementCancellationRequestSummaryList = /*@__PURE__*/ __L.at(__c12, 4);
 export interface ListAgreementCancellationRequestsOutput {
   nextToken?: string;
   items?: AgreementCancellationRequestSummary[];
 }
-const ListAgreementCancellationRequestsOutput = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<ListAgreementCancellationRequestsOutput>;
 export interface ListAgreementChargesInput {
   catalog?: string;
   agreementId?: string;
@@ -1249,10 +988,6 @@ export interface ListAgreementChargesInput {
   maxResults?: number;
   nextToken?: string;
 }
-const ListAgreementChargesInput = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<ListAgreementChargesInput>;
 export interface Charge {
   id?: string;
   revision?: number;
@@ -1263,31 +998,17 @@ export interface Charge {
   amount?: string;
   time?: Date;
 }
-const Charge = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<Charge>;
 export type Charges = Charge[];
-const Charges = /*@__PURE__*/ __L.at(__c13, 0);
 export interface ListAgreementChargesOutput {
   items?: Charge[];
   nextToken?: string;
 }
-const ListAgreementChargesOutput = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<ListAgreementChargesOutput>;
 export type LineItemGroupBy = "INVOICE_ID" | (string & {});
-const LineItemGroupBy = S.String;
-
 export type InvoiceType = "INVOICE" | "CREDIT_MEMO" | (string & {});
-const InvoiceType = S.String;
-
 export interface InvoiceBillingPeriod {
   month: number;
   year: number;
 }
-const InvoiceBillingPeriod = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<InvoiceBillingPeriod>;
 export interface ListAgreementInvoiceLineItemsInput {
   agreementId: string;
   groupBy: LineItemGroupBy;
@@ -1299,19 +1020,11 @@ export interface ListAgreementInvoiceLineItemsInput {
   maxResults?: number;
   nextToken?: string;
 }
-const ListAgreementInvoiceLineItemsInput = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<ListAgreementInvoiceLineItemsInput>;
 export interface PricingCurrencyAmount {
   amount?: string;
   maxAdjustmentAmount?: string;
   currencyCode?: string;
 }
-const PricingCurrencyAmount = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<PricingCurrencyAmount>;
 export interface AgreementInvoiceLineItemGroupSummary {
   agreementId?: string;
   invoiceId?: string;
@@ -1321,20 +1034,11 @@ export interface AgreementInvoiceLineItemGroupSummary {
   invoiceType?: InvoiceType;
   invoicingEntity?: InvoicingEntity;
 }
-const AgreementInvoiceLineItemGroupSummary = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<AgreementInvoiceLineItemGroupSummary>;
 export type AgreementInvoiceLineItemGroupSummaries = AgreementInvoiceLineItemGroupSummary[];
-const AgreementInvoiceLineItemGroupSummaries = /*@__PURE__*/ __L.at(__c13, 6);
 export interface ListAgreementInvoiceLineItemsOutput {
   agreementInvoiceLineItemGroupSummaries?: AgreementInvoiceLineItemGroupSummary[];
   nextToken?: string;
 }
-const ListAgreementInvoiceLineItemsOutput = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<ListAgreementInvoiceLineItemsOutput>;
 export interface ListAgreementPaymentRequestsInput {
   partyType: string;
   agreementType?: string;
@@ -1344,10 +1048,6 @@ export interface ListAgreementPaymentRequestsInput {
   maxResults?: number;
   nextToken?: string;
 }
-const ListAgreementPaymentRequestsInput = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<ListAgreementPaymentRequestsInput>;
 export interface PaymentRequestSummary {
   paymentRequestId?: string;
   agreementId?: string;
@@ -1359,20 +1059,11 @@ export interface PaymentRequestSummary {
   createdAt?: Date;
   updatedAt?: Date;
 }
-const PaymentRequestSummary = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<PaymentRequestSummary>;
 export type PaymentRequestSummaryList = PaymentRequestSummary[];
-const PaymentRequestSummaryList = /*@__PURE__*/ __L.at(__c14, 2);
 export interface ListAgreementPaymentRequestsOutput {
   nextToken?: string;
   items: PaymentRequestSummary[];
 }
-const ListAgreementPaymentRequestsOutput = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<ListAgreementPaymentRequestsOutput>;
 export interface ListBillingAdjustmentRequestsInput {
   agreementId?: string;
   status?: BillingAdjustmentStatus;
@@ -1383,10 +1074,6 @@ export interface ListBillingAdjustmentRequestsInput {
   agreementType?: string;
   nextToken?: string;
 }
-const ListBillingAdjustmentRequestsInput = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<ListBillingAdjustmentRequestsInput>;
 export interface BillingAdjustmentSummary {
   billingAdjustmentRequestId: string;
   originalInvoiceId: string;
@@ -1399,30 +1086,17 @@ export interface BillingAdjustmentSummary {
   agreementType: string;
   catalog: string;
 }
-const BillingAdjustmentSummary = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<BillingAdjustmentSummary>;
 export type BillingAdjustmentSummaryList = BillingAdjustmentSummary[];
-const BillingAdjustmentSummaryList = /*@__PURE__*/ __L.at(__c14, 6);
 export interface ListBillingAdjustmentRequestsOutput {
   nextToken?: string;
   items: BillingAdjustmentSummary[];
 }
-const ListBillingAdjustmentRequestsOutput = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<ListBillingAdjustmentRequestsOutput>;
 export type AgreementCancellationRequestRejectionReason = string | redacted.Redacted<string>;
 export interface RejectAgreementCancellationRequestInput {
   agreementId: string;
   agreementCancellationRequestId: string;
   rejectionReason: string | redacted.Redacted<string>;
 }
-const RejectAgreementCancellationRequestInput = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<RejectAgreementCancellationRequestInput>;
 export interface RejectAgreementCancellationRequestOutput {
   agreementId?: string;
   agreementCancellationRequestId?: string;
@@ -1433,20 +1107,12 @@ export interface RejectAgreementCancellationRequestOutput {
   createdAt?: Date;
   updatedAt?: Date;
 }
-const RejectAgreementCancellationRequestOutput = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<RejectAgreementCancellationRequestOutput>;
 export type PaymentRequestRejectionReason = string;
 export interface RejectAgreementPaymentRequestInput {
   paymentRequestId: string;
   agreementId: string;
   rejectionReason?: string;
 }
-const RejectAgreementPaymentRequestInput = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<RejectAgreementPaymentRequestInput>;
 export interface RejectAgreementPaymentRequestOutput {
   paymentRequestId?: string;
   agreementId?: string;
@@ -1459,30 +1125,20 @@ export interface RejectAgreementPaymentRequestOutput {
   createdAt?: Date;
   updatedAt?: Date;
 }
-const RejectAgreementPaymentRequestOutput = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<RejectAgreementPaymentRequestOutput>;
 export type FilterName = string;
 export type FilterValue = string;
 export type FilterValueList = string[];
-const FilterValueList = /*@__PURE__*/ __L.at(__c15, 4);
 export interface Filter {
   name?: string;
   values?: string[];
 }
-const Filter = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<Filter>;
 export type FilterList = Filter[];
-const FilterList = /*@__PURE__*/ __L.at(__c15, 6);
 export type SortBy = string;
 export type SortOrder = "ASCENDING" | "DESCENDING" | (string & {});
-const SortOrder = S.String;
-
 export interface Sort {
   sortBy?: string;
   sortOrder?: SortOrder;
 }
-const Sort = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<Sort>;
 export interface SearchAgreementsInput {
   catalog?: string;
   filters?: Filter[];
@@ -1490,16 +1146,10 @@ export interface SearchAgreementsInput {
   maxResults?: number;
   nextToken?: string;
 }
-const SearchAgreementsInput = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<SearchAgreementsInput>;
 export interface Entitlement {
   licenseArn?: string;
 }
-const Entitlement = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<Entitlement>;
 export type EntitlementList = Entitlement[];
-const EntitlementList = /*@__PURE__*/ __L.at(__c16, 2);
 export interface AgreementViewSummary {
   agreementId?: string;
   acceptanceTime?: Date;
@@ -1516,30 +1166,17 @@ export interface AgreementViewSummary {
   endTimeBehaviorType?: EndTimeBehaviorType;
   endTimeBehaviorReasonCode?: EndTimeBehaviorReasonCode;
 }
-const AgreementViewSummary = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<AgreementViewSummary>;
 export type AgreementViewSummaryList = AgreementViewSummary[];
-const AgreementViewSummaryList = /*@__PURE__*/ __L.at(__c16, 4);
 export interface SearchAgreementsOutput {
   agreementViewSummaries?: AgreementViewSummary[];
   nextToken?: string;
 }
-const SearchAgreementsOutput = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<SearchAgreementsOutput>;
 export interface SendAgreementCancellationRequestInput {
   agreementId: string;
   reasonCode: AgreementCancellationRequestReasonCode;
   clientToken?: string;
   description?: string | redacted.Redacted<string>;
 }
-const SendAgreementCancellationRequestInput = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<SendAgreementCancellationRequestInput>;
 export interface SendAgreementCancellationRequestOutput {
   agreementId?: string;
   agreementCancellationRequestId?: string;
@@ -1549,8 +1186,6 @@ export interface SendAgreementCancellationRequestOutput {
   createdAt?: Date;
   updatedAt?: Date;
 }
-const SendAgreementCancellationRequestOutput =
-  AcceptAgreementCancellationRequestOutput as any as S.Schema<SendAgreementCancellationRequestOutput>;
 export interface SendAgreementPaymentRequestInput {
   clientToken?: string;
   agreementId: string;
@@ -1559,10 +1194,6 @@ export interface SendAgreementPaymentRequestInput {
   chargeAmount: string;
   description?: string | redacted.Redacted<string>;
 }
-const SendAgreementPaymentRequestInput = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<SendAgreementPaymentRequestInput>;
 export interface SendAgreementPaymentRequestOutput {
   paymentRequestId?: string;
   agreementId?: string;
@@ -1573,20 +1204,10 @@ export interface SendAgreementPaymentRequestOutput {
   currencyCode?: string;
   createdAt?: Date;
 }
-const SendAgreementPaymentRequestOutput = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<SendAgreementPaymentRequestOutput>;
 export interface UpdatePurchaseOrdersInput {
   purchaseOrders: PurchaseOrder[];
 }
-const UpdatePurchaseOrdersInput = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<UpdatePurchaseOrdersInput>;
 export interface UpdatePurchaseOrdersOutput {}
-const UpdatePurchaseOrdersOutput =
-  CancelAgreementOutput as any as S.Schema<UpdatePurchaseOrdersOutput>;
 export type RequestId = string;
 export type ExceptionMessage = string;
 export type AccessDeniedExceptionReason =
@@ -1596,8 +1217,6 @@ export type AccessDeniedExceptionReason =
   | "MISSING_MFA"
   | "INVALID_ACCESS"
   | (string & {});
-const AccessDeniedExceptionReason = S.String;
-
 export type ResourceType =
   | "Agreement"
   | "AgreementRequest"
@@ -1608,8 +1227,6 @@ export type ResourceType =
   | "AgreementCancellationRequest"
   | "BillingAdjustmentRequest"
   | (string & {});
-const ResourceType = S.String;
-
 export type ValidationExceptionReason =
   | "MISSING_BILLING_ADJUSTMENTS"
   | "BILLING_ADJUSTMENTS_LIMIT_EXCEEDED"
@@ -1694,18 +1311,11 @@ export type ValidationExceptionReason =
   | "DUPLICATE_AGREEMENT_IN_ORGANIZATION"
   | "MISSING_PURCHASE_ORDER_REFERENCE"
   | (string & {});
-const ValidationExceptionReason = S.String;
-
 export interface ValidationExceptionField {
   name: string;
   message: string;
 }
-const ValidationExceptionField = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-const ValidationExceptionFieldList = /*@__PURE__*/ __L.at(__c17, 3);
 export type AcceptAgreementCancellationRequestError =
   | AccessDeniedException
   | ConflictException
@@ -1725,8 +1335,8 @@ export const acceptAgreementCancellationRequest: API.OperationMethod<
   AcceptAgreementCancellationRequestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AcceptAgreementCancellationRequestInput,
-  output: AcceptAgreementCancellationRequestOutput,
+  input: __S(0, __c0, 0) as any as S.Schema<AcceptAgreementCancellationRequestInput>,
+  output: __S(1, __c0, 1) as any as S.Schema<AcceptAgreementCancellationRequestOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1759,8 +1369,8 @@ export const acceptAgreementPaymentRequest: API.OperationMethod<
   AcceptAgreementPaymentRequestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AcceptAgreementPaymentRequestInput,
-  output: AcceptAgreementPaymentRequestOutput,
+  input: __S(2, __c0, 2) as any as S.Schema<AcceptAgreementPaymentRequestInput>,
+  output: __S(3, __c0, 3) as any as S.Schema<AcceptAgreementPaymentRequestOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1791,8 +1401,8 @@ export const acceptAgreementRequest: API.OperationMethod<
   AcceptAgreementRequestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AcceptAgreementRequestInput,
-  output: AcceptAgreementRequestOutput,
+  input: __S(6, __c0, 6) as any as S.Schema<AcceptAgreementRequestInput>,
+  output: __S(7, __c0, 7) as any as S.Schema<AcceptAgreementRequestOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1824,8 +1434,8 @@ export const batchCreateBillingAdjustmentRequest: API.OperationMethod<
   BatchCreateBillingAdjustmentRequestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchCreateBillingAdjustmentRequestInput,
-  output: BatchCreateBillingAdjustmentRequestOutput,
+  input: __S(10, __c1, 2) as any as S.Schema<BatchCreateBillingAdjustmentRequestInput>,
+  output: __S(15, __c1, 7) as any as S.Schema<BatchCreateBillingAdjustmentRequestOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1855,8 +1465,8 @@ export const cancelAgreement: API.OperationMethod<
   CancelAgreementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelAgreementInput,
-  output: CancelAgreementOutput,
+  input: __S(16, __c2, 0) as any as S.Schema<CancelAgreementInput>,
+  output: __S(17, __c2, 1) as any as S.Schema<CancelAgreementOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1889,8 +1499,8 @@ export const cancelAgreementCancellationRequest: API.OperationMethod<
   CancelAgreementCancellationRequestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelAgreementCancellationRequestInput,
-  output: CancelAgreementCancellationRequestOutput,
+  input: __S(18, __c2, 2) as any as S.Schema<CancelAgreementCancellationRequestInput>,
+  output: __S(19, __c2, 3) as any as S.Schema<CancelAgreementCancellationRequestOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1923,8 +1533,8 @@ export const cancelAgreementPaymentRequest: API.OperationMethod<
   CancelAgreementPaymentRequestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelAgreementPaymentRequestInput,
-  output: CancelAgreementPaymentRequestOutput,
+  input: __S(20, __c2, 4) as any as S.Schema<CancelAgreementPaymentRequestInput>,
+  output: __S(3, __c0, 3) as any as S.Schema<CancelAgreementPaymentRequestOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1956,8 +1566,8 @@ export const createAgreementRequest: API.OperationMethod<
   CreateAgreementRequestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAgreementRequestInput,
-  output: CreateAgreementRequestOutput,
+  input: __S(30, __c3, 6) as any as S.Schema<CreateAgreementRequestInput>,
+  output: __S(40, __c5, 0) as any as S.Schema<CreateAgreementRequestOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1988,8 +1598,8 @@ export const describeAgreement: API.OperationMethod<
   DescribeAgreementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeAgreementInput,
-  output: DescribeAgreementOutput,
+  input: __S(41, __c5, 1) as any as S.Schema<DescribeAgreementInput>,
+  output: __S(49, __c6, 1) as any as S.Schema<DescribeAgreementOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2018,8 +1628,8 @@ export const getAgreementCancellationRequest: API.OperationMethod<
   GetAgreementCancellationRequestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAgreementCancellationRequestInput,
-  output: GetAgreementCancellationRequestOutput,
+  input: __S(50, __c6, 2) as any as S.Schema<GetAgreementCancellationRequestInput>,
+  output: __S(19, __c2, 3) as any as S.Schema<GetAgreementCancellationRequestOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2049,8 +1659,8 @@ export const getAgreementEntitlements: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AgreementEntitlement
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetAgreementEntitlementsInput,
-  output: GetAgreementEntitlementsOutput,
+  input: __S(51, __c6, 3) as any as S.Schema<GetAgreementEntitlementsInput>,
+  output: __S(54, __c6, 6) as any as S.Schema<GetAgreementEntitlementsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2087,8 +1697,8 @@ export const getAgreementPaymentRequest: API.OperationMethod<
   GetAgreementPaymentRequestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAgreementPaymentRequestInput,
-  output: GetAgreementPaymentRequestOutput,
+  input: __S(55, __c6, 7) as any as S.Schema<GetAgreementPaymentRequestInput>,
+  output: __S(56, __c7, 0) as any as S.Schema<GetAgreementPaymentRequestOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2128,8 +1738,8 @@ export const getAgreementTerms: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AcceptedTerm
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetAgreementTermsInput,
-  output: GetAgreementTermsOutput,
+  input: __S(57, __c7, 1) as any as S.Schema<GetAgreementTermsInput>,
+  output: __S(95, __c11, 7) as any as S.Schema<GetAgreementTermsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2164,8 +1774,8 @@ export const getBillingAdjustmentRequest: API.OperationMethod<
   GetBillingAdjustmentRequestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBillingAdjustmentRequestInput,
-  output: GetBillingAdjustmentRequestOutput,
+  input: __S(96, __c12, 0) as any as S.Schema<GetBillingAdjustmentRequestInput>,
+  output: __S(97, __c12, 1) as any as S.Schema<GetBillingAdjustmentRequestOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2196,8 +1806,8 @@ export const listAgreementCancellationRequests: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AgreementCancellationRequestSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAgreementCancellationRequestsInput,
-  output: ListAgreementCancellationRequestsOutput,
+  input: __S(98, __c12, 2) as any as S.Schema<ListAgreementCancellationRequestsInput>,
+  output: __S(101, __c12, 5) as any as S.Schema<ListAgreementCancellationRequestsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2231,8 +1841,8 @@ export const listAgreementCharges: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Charge
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAgreementChargesInput,
-  output: ListAgreementChargesOutput,
+  input: __S(102, __c12, 6) as any as S.Schema<ListAgreementChargesInput>,
+  output: __S(105, __c13, 1) as any as S.Schema<ListAgreementChargesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2269,8 +1879,8 @@ export const listAgreementInvoiceLineItems: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AgreementInvoiceLineItemGroupSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAgreementInvoiceLineItemsInput,
-  output: ListAgreementInvoiceLineItemsOutput,
+  input: __S(107, __c13, 3) as any as S.Schema<ListAgreementInvoiceLineItemsInput>,
+  output: __S(111, __c13, 7) as any as S.Schema<ListAgreementInvoiceLineItemsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2307,8 +1917,8 @@ export const listAgreementPaymentRequests: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PaymentRequestSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAgreementPaymentRequestsInput,
-  output: ListAgreementPaymentRequestsOutput,
+  input: __S(112, __c14, 0) as any as S.Schema<ListAgreementPaymentRequestsInput>,
+  output: __S(115, __c14, 3) as any as S.Schema<ListAgreementPaymentRequestsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2342,8 +1952,8 @@ export const listBillingAdjustmentRequests: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   BillingAdjustmentSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListBillingAdjustmentRequestsInput,
-  output: ListBillingAdjustmentRequestsOutput,
+  input: __S(116, __c14, 4) as any as S.Schema<ListBillingAdjustmentRequestsInput>,
+  output: __S(119, __c14, 7) as any as S.Schema<ListBillingAdjustmentRequestsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2380,8 +1990,8 @@ export const rejectAgreementCancellationRequest: API.OperationMethod<
   RejectAgreementCancellationRequestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RejectAgreementCancellationRequestInput,
-  output: RejectAgreementCancellationRequestOutput,
+  input: __S(120, __c15, 0) as any as S.Schema<RejectAgreementCancellationRequestInput>,
+  output: __S(121, __c15, 1) as any as S.Schema<RejectAgreementCancellationRequestOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2414,8 +2024,8 @@ export const rejectAgreementPaymentRequest: API.OperationMethod<
   RejectAgreementPaymentRequestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RejectAgreementPaymentRequestInput,
-  output: RejectAgreementPaymentRequestOutput,
+  input: __S(122, __c15, 2) as any as S.Schema<RejectAgreementPaymentRequestInput>,
+  output: __S(123, __c15, 3) as any as S.Schema<RejectAgreementPaymentRequestOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2445,8 +2055,8 @@ export const searchAgreements: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AgreementViewSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: SearchAgreementsInput,
-  output: SearchAgreementsOutput,
+  input: __S(128, __c16, 0) as any as S.Schema<SearchAgreementsInput>,
+  output: __S(133, __c16, 5) as any as S.Schema<SearchAgreementsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2481,8 +2091,8 @@ export const sendAgreementCancellationRequest: API.OperationMethod<
   SendAgreementCancellationRequestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SendAgreementCancellationRequestInput,
-  output: SendAgreementCancellationRequestOutput,
+  input: __S(134, __c16, 6) as any as S.Schema<SendAgreementCancellationRequestInput>,
+  output: __S(1, __c0, 1) as any as S.Schema<SendAgreementCancellationRequestOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2515,8 +2125,8 @@ export const sendAgreementPaymentRequest: API.OperationMethod<
   SendAgreementPaymentRequestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SendAgreementPaymentRequestInput,
-  output: SendAgreementPaymentRequestOutput,
+  input: __S(135, __c16, 7) as any as S.Schema<SendAgreementPaymentRequestInput>,
+  output: __S(136, __c17, 0) as any as S.Schema<SendAgreementPaymentRequestOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2547,8 +2157,8 @@ export const updatePurchaseOrders: API.OperationMethod<
   UpdatePurchaseOrdersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePurchaseOrdersInput,
-  output: UpdatePurchaseOrdersOutput,
+  input: __S(137, __c17, 1) as any as S.Schema<UpdatePurchaseOrdersInput>,
+  output: __S(17, __c2, 1) as any as S.Schema<UpdatePurchaseOrdersOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2578,8 +2188,8 @@ function __c0(j: number): any {
         S.Struct({
           agreementId: S.optional(S.String),
           agreementCancellationRequestId: S.optional(S.String),
-          status: S.optional(AgreementCancellationRequestStatus),
-          reasonCode: S.optional(AgreementCancellationRequestReasonCode),
+          status: S.optional(S.String),
+          reasonCode: S.optional(S.String),
           description: S.optional(SensitiveString),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -2602,7 +2212,7 @@ function __c0(j: number): any {
         S.Struct({
           paymentRequestId: S.optional(S.String),
           agreementId: S.optional(S.String),
-          status: S.optional(PaymentRequestStatus),
+          status: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(SensitiveString),
           chargeAmount: S.optional(S.String),
@@ -2623,12 +2233,13 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "PurchaseOrder" });
     case 5:
-      return S.Array(PurchaseOrder);
+      return S.Array(__S(4, __c0, 4));
     case 6:
       return S.suspend(() =>
-        S.Struct({ agreementRequestId: S.String, purchaseOrders: S.optional(PurchaseOrders) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
+        S.Struct({
+          agreementRequestId: S.String,
+          purchaseOrders: S.optional(__S(5, __c0, 5)),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "AcceptAgreementRequestInput",
       });
@@ -2647,7 +2258,7 @@ function __c1(j: number): any {
           originalInvoiceId: S.String,
           adjustmentAmount: S.String,
           currencyCode: S.String,
-          adjustmentReasonCode: BillingAdjustmentReasonCode,
+          adjustmentReasonCode: S.String,
           description: S.optional(SensitiveString),
           clientToken: S.String,
         }),
@@ -2655,11 +2266,11 @@ function __c1(j: number): any {
         identifier: "BatchCreateBillingAdjustmentRequestEntry",
       });
     case 1:
-      return S.Array(BatchCreateBillingAdjustmentRequestEntry);
+      return S.Array(__S(8, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          billingAdjustmentRequestEntries: BatchCreateBillingAdjustmentRequestEntryList,
+          billingAdjustmentRequestEntries: __S(9, __c1, 1),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "BatchCreateBillingAdjustmentRequestInput",
@@ -2671,20 +2282,20 @@ function __c1(j: number): any {
         identifier: "BatchCreateBillingAdjustmentItem",
       });
     case 4:
-      return S.Array(BatchCreateBillingAdjustmentItem);
+      return S.Array(__S(11, __c1, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({ code: BillingAdjustmentErrorCode, message: S.String, clientToken: S.String }),
+        S.Struct({ code: S.String, message: S.String, clientToken: S.String }),
       ).annotate({
         identifier: "BatchCreateBillingAdjustmentError",
       });
     case 6:
-      return S.Array(BatchCreateBillingAdjustmentError);
+      return S.Array(__S(13, __c1, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          items: BatchCreateBillingAdjustmentItemList,
-          errors: BatchCreateBillingAdjustmentErrorList,
+          items: __S(12, __c1, 4),
+          errors: __S(14, __c1, 6),
         }),
       ).annotate({
         identifier: "BatchCreateBillingAdjustmentRequestOutput",
@@ -2718,9 +2329,9 @@ function __c2(j: number): any {
         S.Struct({
           agreementCancellationRequestId: S.optional(S.String),
           agreementId: S.optional(S.String),
-          reasonCode: S.optional(AgreementCancellationRequestReasonCode),
+          reasonCode: S.optional(S.String),
           description: S.optional(SensitiveString),
-          status: S.optional(AgreementCancellationRequestStatus),
+          status: S.optional(S.String),
           statusMessage: S.optional(S.String),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -2741,10 +2352,10 @@ function __c2(j: number): any {
         S.Struct({ dimensionKey: S.String, dimensionValue: S.Number }),
       ).annotate({ identifier: "Dimension" });
     case 6:
-      return S.Array(Dimension);
+      return S.Array(__S(21, __c2, 5));
     case 7:
       return S.suspend(() =>
-        S.Struct({ selectorValue: S.String, dimensions: DimensionList }),
+        S.Struct({ selectorValue: S.String, dimensions: __S(22, __c2, 6) }),
       ).annotate({
         identifier: "ConfigurableUpfrontPricingTermConfiguration",
       });
@@ -2759,7 +2370,7 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          paymentRequestApprovalStrategy: PaymentRequestApprovalStrategy,
+          paymentRequestApprovalStrategy: S.String,
           expirationDuration: S.optional(S.String),
         }),
       ).annotate({
@@ -2768,32 +2379,32 @@ function __c3(j: number): any {
     case 2:
       return S.Union([
         /*@__PURE__*/ S.Struct({
-          configurableUpfrontPricingTermConfiguration: ConfigurableUpfrontPricingTermConfiguration,
+          configurableUpfrontPricingTermConfiguration: __S(23, __c2, 7),
         }),
-        /*@__PURE__*/ S.Struct({ renewalTermConfiguration: RenewalTermConfiguration }),
+        /*@__PURE__*/ S.Struct({ renewalTermConfiguration: __S(24, __c3, 0) }),
         /*@__PURE__*/ S.Struct({
-          variablePaymentTermConfiguration: VariablePaymentTermConfiguration,
+          variablePaymentTermConfiguration: __S(25, __c3, 1),
         }),
       ]);
     case 3:
       return S.suspend(() =>
-        S.Struct({ id: S.String, configuration: S.optional(RequestedTermConfiguration) }),
+        S.Struct({ id: S.String, configuration: S.optional(__S(26, __c3, 2)) }),
       ).annotate({ identifier: "RequestedTerm" });
     case 4:
-      return S.Array(RequestedTerm);
+      return S.Array(__S(27, __c3, 3));
     case 5:
-      return S.suspend(() => S.Struct({ taxEstimation: S.optional(TaxEstimation) })).annotate({
+      return S.suspend(() => S.Struct({ taxEstimation: S.optional(S.String) })).annotate({
         identifier: "TaxConfiguration",
       });
     case 6:
       return S.suspend(() =>
         S.Struct({
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          intent: Intent,
-          requestedTerms: RequestedTermList,
+          intent: S.String,
+          requestedTerms: __S(28, __c3, 4),
           sourceAgreementIdentifier: S.optional(S.String),
           agreementProposalIdentifier: S.optional(S.String),
-          taxConfiguration: S.optional(TaxConfiguration),
+          taxConfiguration: S.optional(__S(29, __c3, 5)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateAgreementRequestInput",
@@ -2811,10 +2422,10 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(TaxBreakdownItem);
+      return S.Array(__S(31, __c3, 7));
     case 1:
       return S.suspend(() =>
-        S.Struct({ breakdown: S.optional(TaxBreakdown), totalAmount: S.optional(S.String) }),
+        S.Struct({ breakdown: S.optional(__S(32, __c4, 0)), totalAmount: S.optional(S.String) }),
       ).annotate({ identifier: "EstimatedTaxes" });
     case 2:
       return S.suspend(() =>
@@ -2823,12 +2434,12 @@ function __c4(j: number): any {
           time: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           amount: S.optional(S.String),
           amountAfterTax: S.optional(S.String),
-          timing: S.optional(Timing),
-          estimatedTaxes: S.optional(EstimatedTaxes),
+          timing: S.optional(S.String),
+          estimatedTaxes: S.optional(__S(33, __c4, 1)),
         }),
       ).annotate({ identifier: "ExpectedCharge" });
     case 3:
-      return S.Array(ExpectedCharge);
+      return S.Array(__S(34, __c4, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2840,7 +2451,7 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "ItemizedCharge" });
     case 5:
-      return S.Array(ItemizedCharge);
+      return S.Array(__S(36, __c4, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({ legalName: S.optional(S.String), branchName: S.optional(S.String) }),
@@ -2851,10 +2462,10 @@ function __c4(j: number): any {
           currencyCode: S.optional(S.String),
           newAgreementValue: S.optional(S.String),
           newAgreementValueAfterTax: S.optional(S.String),
-          expectedCharges: S.optional(ExpectedChargeList),
-          estimatedTaxes: S.optional(EstimatedTaxes),
-          itemizedCharges: S.optional(ItemizedChargeList),
-          invoicingEntity: S.optional(InvoicingEntity),
+          expectedCharges: S.optional(__S(35, __c4, 3)),
+          estimatedTaxes: S.optional(__S(33, __c4, 1)),
+          itemizedCharges: S.optional(__S(37, __c4, 5)),
+          invoicingEntity: S.optional(__S(38, __c4, 6)),
         }),
       ).annotate({ identifier: "ChargeSummary" });
   }
@@ -2865,7 +2476,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           agreementRequestId: S.optional(S.String),
-          chargeSummary: S.optional(ChargeSummary),
+          chargeSummary: S.optional(__S(39, __c4, 7)),
         }),
       ).annotate({
         identifier: "CreateAgreementRequestOutput",
@@ -2889,11 +2500,11 @@ function __c5(j: number): any {
         S.Struct({ id: S.optional(S.String), type: S.optional(S.String) }),
       ).annotate({ identifier: "Resource" });
     case 5:
-      return S.Array(Resource);
+      return S.Array(__S(44, __c5, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          resources: S.optional(Resources),
+          resources: S.optional(__S(45, __c5, 5)),
           offerId: S.optional(S.String),
           offerSetId: S.optional(S.String),
         }),
@@ -2909,26 +2520,26 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: EndTimeBehaviorType,
-          reasonCode: S.optional(EndTimeBehaviorReasonCode),
-          renewalSummary: S.optional(RenewalSummary),
+          type: S.String,
+          reasonCode: S.optional(S.String),
+          renewalSummary: S.optional(__S(47, __c5, 7)),
         }),
       ).annotate({ identifier: "EndTimeBehavior" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           agreementId: S.optional(S.String),
-          acceptor: S.optional(Acceptor),
-          proposer: S.optional(Proposer),
+          acceptor: S.optional(__S(42, __c5, 2)),
+          proposer: S.optional(__S(42, __c5, 2)),
           startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           acceptanceTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           agreementType: S.optional(S.String),
-          estimatedCharges: S.optional(EstimatedCharges),
-          proposalSummary: S.optional(ProposalSummary),
-          status: S.optional(AgreementStatus),
+          estimatedCharges: S.optional(__S(43, __c5, 3)),
+          proposalSummary: S.optional(__S(46, __c5, 6)),
+          status: S.optional(S.String),
           initialAgreementId: S.optional(S.String),
-          endTimeBehavior: S.optional(EndTimeBehavior),
+          endTimeBehavior: S.optional(__S(48, __c6, 0)),
         }),
       ).annotate({ identifier: "DescribeAgreementOutput" });
     case 2:
@@ -2952,20 +2563,20 @@ function __c6(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          resource: S.optional(Resource),
+          resource: S.optional(__S(44, __c5, 4)),
           type: S.optional(S.String),
           registrationToken: S.optional(S.String),
-          status: S.optional(AgreementEntitlementStatus),
-          statusReasonCode: S.optional(AgreementEntitlementStatusReasonCode),
+          status: S.optional(S.String),
+          statusReasonCode: S.optional(S.String),
           licenseArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "AgreementEntitlement" });
     case 5:
-      return S.Array(AgreementEntitlement);
+      return S.Array(__S(52, __c6, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          agreementEntitlements: S.optional(AgreementEntitlementList),
+          agreementEntitlements: S.optional(__S(53, __c6, 5)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2988,7 +2599,7 @@ function __c7(j: number): any {
         S.Struct({
           paymentRequestId: S.optional(S.String),
           agreementId: S.optional(S.String),
-          status: S.optional(PaymentRequestStatus),
+          status: S.optional(S.String),
           statusMessage: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(SensitiveString),
@@ -3018,13 +2629,13 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "DocumentItem" });
     case 3:
-      return S.Array(DocumentItem);
+      return S.Array(__S(58, __c7, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           id: S.optional(S.String),
-          documents: S.optional(DocumentList),
+          documents: S.optional(__S(59, __c7, 3)),
         }),
       ).annotate({ identifier: "LegalTerm" });
     case 5:
@@ -3053,8 +2664,8 @@ function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ fixedPercentage: FixedPercentage }),
-        /*@__PURE__*/ S.Struct({ percentageRange: PercentageRange }),
+        /*@__PURE__*/ S.Struct({ fixedPercentage: __S(62, __c7, 6) }),
+        /*@__PURE__*/ S.Struct({ percentageRange: __S(63, __c7, 7) }),
       ]);
     case 1:
       return S.suspend(() =>
@@ -3065,30 +2676,26 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "PaymentScheduleEntry" });
     case 2:
-      return S.Array(PaymentScheduleEntry);
+      return S.Array(__S(65, __c8, 1));
     case 3:
-      return S.suspend(() => S.Struct({ schedule: S.optional(PaymentScheduleEntryList) })).annotate(
-        {
-          identifier: "PaymentScheduleTermTemplate",
-        },
-      );
+      return S.suspend(() => S.Struct({ schedule: S.optional(__S(66, __c8, 2)) })).annotate({
+        identifier: "PaymentScheduleTermTemplate",
+      });
     case 4:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ paymentScheduleTermTemplate: PaymentScheduleTermTemplate }),
-      ]);
+      return S.Union([/*@__PURE__*/ S.Struct({ paymentScheduleTermTemplate: __S(67, __c8, 3) })]);
     case 5:
-      return S.Array(TermTemplate);
+      return S.Array(__S(68, __c8, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           id: S.optional(S.String),
-          configuration: S.optional(RenewalTermConfiguration),
+          configuration: S.optional(__S(24, __c3, 0)),
           lockoutPeriod: S.optional(S.String),
           maxRenewals: S.optional(S.Number),
           adjustmentDeadline: S.optional(S.String),
-          priceIncrease: S.optional(PriceIncrease),
-          termTemplates: S.optional(TermTemplateList),
+          priceIncrease: S.optional(__S(64, __c8, 0)),
+          termTemplates: S.optional(__S(69, __c8, 5)),
         }),
       ).annotate({ identifier: "RenewalTerm" });
     case 7:
@@ -3100,20 +2707,20 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(RateCardItem);
+      return S.Array(__S(71, __c8, 7));
     case 1:
-      return S.suspend(() => S.Struct({ rateCard: S.optional(RateCardList) })).annotate({
+      return S.suspend(() => S.Struct({ rateCard: S.optional(__S(72, __c9, 0)) })).annotate({
         identifier: "UsageBasedRateCardItem",
       });
     case 2:
-      return S.Array(UsageBasedRateCardItem);
+      return S.Array(__S(73, __c9, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           id: S.optional(S.String),
           currencyCode: S.optional(S.String),
-          rateCards: S.optional(UsageBasedRateCardList),
+          rateCards: S.optional(__S(74, __c9, 2)),
         }),
       ).annotate({ identifier: "UsageBasedPricingTerm" });
     case 4:
@@ -3130,15 +2737,15 @@ function __c9(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          selector: S.optional(Selector),
-          constraints: S.optional(Constraints),
-          rateCard: S.optional(RateCardList),
+          selector: S.optional(__S(76, __c9, 4)),
+          constraints: S.optional(__S(77, __c9, 5)),
+          rateCard: S.optional(__S(72, __c9, 0)),
         }),
       ).annotate({
         identifier: "ConfigurableUpfrontRateCardItem",
       });
     case 7:
-      return S.Array(ConfigurableUpfrontRateCardItem);
+      return S.Array(__S(78, __c9, 6));
   }
 }
 function __c10(j: number): any {
@@ -3149,8 +2756,8 @@ function __c10(j: number): any {
           type: S.optional(S.String),
           id: S.optional(S.String),
           currencyCode: S.optional(S.String),
-          rateCards: S.optional(ConfigurableUpfrontRateCardList),
-          configuration: S.optional(ConfigurableUpfrontPricingTermConfiguration),
+          rateCards: S.optional(__S(79, __c9, 7)),
+          configuration: S.optional(__S(23, __c2, 7)),
         }),
       ).annotate({
         identifier: "ConfigurableUpfrontPricingTerm",
@@ -3187,14 +2794,14 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "ScheduleItem" });
     case 5:
-      return S.Array(ScheduleItem);
+      return S.Array(__S(84, __c10, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           id: S.optional(S.String),
           currencyCode: S.optional(S.String),
-          schedule: S.optional(ScheduleList),
+          schedule: S.optional(__S(85, __c10, 5)),
         }),
       ).annotate({ identifier: "PaymentScheduleTerm" });
     case 7:
@@ -3206,14 +2813,14 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GrantItem);
+      return S.Array(__S(87, __c10, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           id: S.optional(S.String),
           duration: S.optional(S.String),
-          grants: S.optional(GrantList),
+          grants: S.optional(__S(88, __c11, 0)),
         }),
       ).annotate({ identifier: "FreeTrialPricingTerm" });
     case 2:
@@ -3224,7 +2831,7 @@ function __c11(j: number): any {
           currencyCode: S.optional(S.String),
           duration: S.optional(S.String),
           price: S.optional(S.String),
-          grants: S.optional(GrantList),
+          grants: S.optional(__S(88, __c11, 0)),
         }),
       ).annotate({ identifier: "FixedUpfrontPricingTerm" });
     case 3:
@@ -3234,7 +2841,7 @@ function __c11(j: number): any {
           id: S.optional(S.String),
           currencyCode: S.optional(S.String),
           maxTotalChargeAmount: S.optional(S.String),
-          configuration: S.optional(VariablePaymentTermConfiguration),
+          configuration: S.optional(__S(25, __c3, 1)),
         }),
       ).annotate({ identifier: "VariablePaymentTerm" });
     case 4:
@@ -3247,25 +2854,25 @@ function __c11(j: number): any {
       ).annotate({ identifier: "NetPaymentTerm" });
     case 5:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ legalTerm: LegalTerm }),
-        /*@__PURE__*/ S.Struct({ supportTerm: SupportTerm }),
-        /*@__PURE__*/ S.Struct({ renewalTerm: RenewalTerm }),
-        /*@__PURE__*/ S.Struct({ usageBasedPricingTerm: UsageBasedPricingTerm }),
-        /*@__PURE__*/ S.Struct({ configurableUpfrontPricingTerm: ConfigurableUpfrontPricingTerm }),
-        /*@__PURE__*/ S.Struct({ byolPricingTerm: ByolPricingTerm }),
-        /*@__PURE__*/ S.Struct({ recurringPaymentTerm: RecurringPaymentTerm }),
-        /*@__PURE__*/ S.Struct({ validityTerm: ValidityTerm }),
-        /*@__PURE__*/ S.Struct({ paymentScheduleTerm: PaymentScheduleTerm }),
-        /*@__PURE__*/ S.Struct({ freeTrialPricingTerm: FreeTrialPricingTerm }),
-        /*@__PURE__*/ S.Struct({ fixedUpfrontPricingTerm: FixedUpfrontPricingTerm }),
-        /*@__PURE__*/ S.Struct({ variablePaymentTerm: VariablePaymentTerm }),
-        /*@__PURE__*/ S.Struct({ netPaymentTerm: NetPaymentTerm }),
+        /*@__PURE__*/ S.Struct({ legalTerm: __S(60, __c7, 4) }),
+        /*@__PURE__*/ S.Struct({ supportTerm: __S(61, __c7, 5) }),
+        /*@__PURE__*/ S.Struct({ renewalTerm: __S(70, __c8, 6) }),
+        /*@__PURE__*/ S.Struct({ usageBasedPricingTerm: __S(75, __c9, 3) }),
+        /*@__PURE__*/ S.Struct({ configurableUpfrontPricingTerm: __S(80, __c10, 0) }),
+        /*@__PURE__*/ S.Struct({ byolPricingTerm: __S(81, __c10, 1) }),
+        /*@__PURE__*/ S.Struct({ recurringPaymentTerm: __S(82, __c10, 2) }),
+        /*@__PURE__*/ S.Struct({ validityTerm: __S(83, __c10, 3) }),
+        /*@__PURE__*/ S.Struct({ paymentScheduleTerm: __S(86, __c10, 6) }),
+        /*@__PURE__*/ S.Struct({ freeTrialPricingTerm: __S(89, __c11, 1) }),
+        /*@__PURE__*/ S.Struct({ fixedUpfrontPricingTerm: __S(90, __c11, 2) }),
+        /*@__PURE__*/ S.Struct({ variablePaymentTerm: __S(91, __c11, 3) }),
+        /*@__PURE__*/ S.Struct({ netPaymentTerm: __S(92, __c11, 4) }),
       ]);
     case 6:
-      return S.Array(AcceptedTerm);
+      return S.Array(__S(93, __c11, 5));
     case 7:
       return S.suspend(() =>
-        S.Struct({ acceptedTerms: S.optional(AcceptedTermList), nextToken: S.optional(S.String) }),
+        S.Struct({ acceptedTerms: S.optional(__S(94, __c11, 6)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "GetAgreementTermsOutput" });
   }
 }
@@ -3284,12 +2891,12 @@ function __c12(j: number): any {
         S.Struct({
           billingAdjustmentRequestId: S.String,
           agreementId: S.String,
-          adjustmentReasonCode: BillingAdjustmentReasonCode,
+          adjustmentReasonCode: S.String,
           description: S.optional(S.String),
           originalInvoiceId: S.String,
           adjustmentAmount: S.String,
           currencyCode: S.String,
-          status: BillingAdjustmentStatus,
+          status: S.String,
           statusMessage: S.optional(S.String),
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -3302,7 +2909,7 @@ function __c12(j: number): any {
         S.Struct({
           partyType: S.String,
           agreementId: S.optional(S.String),
-          status: S.optional(AgreementCancellationRequestStatus),
+          status: S.optional(S.String),
           agreementType: S.optional(S.String),
           catalog: S.optional(S.String),
           maxResults: S.optional(S.Number),
@@ -3316,8 +2923,8 @@ function __c12(j: number): any {
         S.Struct({
           agreementCancellationRequestId: S.optional(S.String),
           agreementId: S.optional(S.String),
-          status: S.optional(AgreementCancellationRequestStatus),
-          reasonCode: S.optional(AgreementCancellationRequestReasonCode),
+          status: S.optional(S.String),
+          reasonCode: S.optional(S.String),
           agreementType: S.optional(S.String),
           catalog: S.optional(S.String),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -3327,12 +2934,12 @@ function __c12(j: number): any {
         identifier: "AgreementCancellationRequestSummary",
       });
     case 4:
-      return S.Array(AgreementCancellationRequestSummary);
+      return S.Array(__S(99, __c12, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          items: S.optional(AgreementCancellationRequestSummaryList),
+          items: S.optional(__S(100, __c12, 4)),
         }),
       ).annotate({
         identifier: "ListAgreementCancellationRequestsOutput",
@@ -3367,10 +2974,10 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Charge);
+      return S.Array(__S(103, __c12, 7));
     case 1:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(Charges), nextToken: S.optional(S.String) }),
+        S.Struct({ items: S.optional(__S(104, __c13, 0)), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListAgreementChargesOutput",
       });
@@ -3382,10 +2989,10 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           agreementId: S.String,
-          groupBy: LineItemGroupBy,
+          groupBy: S.String,
           invoiceId: S.optional(S.String),
-          invoiceType: S.optional(InvoiceType),
-          invoiceBillingPeriod: S.optional(InvoiceBillingPeriod),
+          invoiceType: S.optional(S.String),
+          invoiceBillingPeriod: S.optional(__S(106, __c13, 2)),
           beforeIssuedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           afterIssuedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           maxResults: S.optional(S.Number),
@@ -3407,23 +3014,21 @@ function __c13(j: number): any {
         S.Struct({
           agreementId: S.optional(S.String),
           invoiceId: S.optional(S.String),
-          pricingCurrencyAmount: S.optional(PricingCurrencyAmount),
-          invoiceBillingPeriod: S.optional(InvoiceBillingPeriod),
+          pricingCurrencyAmount: S.optional(__S(108, __c13, 4)),
+          invoiceBillingPeriod: S.optional(__S(106, __c13, 2)),
           issuedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          invoiceType: S.optional(InvoiceType),
-          invoicingEntity: S.optional(InvoicingEntity),
+          invoiceType: S.optional(S.String),
+          invoicingEntity: S.optional(__S(38, __c4, 6)),
         }),
       ).annotate({
         identifier: "AgreementInvoiceLineItemGroupSummary",
       });
     case 6:
-      return S.Array(AgreementInvoiceLineItemGroupSummary);
+      return S.Array(__S(109, __c13, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          agreementInvoiceLineItemGroupSummaries: S.optional(
-            AgreementInvoiceLineItemGroupSummaries,
-          ),
+          agreementInvoiceLineItemGroupSummaries: S.optional(__S(110, __c13, 6)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3440,7 +3045,7 @@ function __c14(j: number): any {
           agreementType: S.optional(S.String),
           catalog: S.optional(S.String),
           agreementId: S.optional(S.String),
-          status: S.optional(PaymentRequestStatus),
+          status: S.optional(S.String),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -3452,7 +3057,7 @@ function __c14(j: number): any {
         S.Struct({
           paymentRequestId: S.optional(S.String),
           agreementId: S.optional(S.String),
-          status: S.optional(PaymentRequestStatus),
+          status: S.optional(S.String),
           name: S.optional(S.String),
           chargeId: S.optional(S.String),
           chargeAmount: S.optional(S.String),
@@ -3462,10 +3067,10 @@ function __c14(j: number): any {
         }),
       ).annotate({ identifier: "PaymentRequestSummary" });
     case 2:
-      return S.Array(PaymentRequestSummary);
+      return S.Array(__S(113, __c14, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), items: PaymentRequestSummaryList }),
+        S.Struct({ nextToken: S.optional(S.String), items: __S(114, __c14, 2) }),
       ).annotate({
         identifier: "ListAgreementPaymentRequestsOutput",
       });
@@ -3473,7 +3078,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           agreementId: S.optional(S.String),
-          status: S.optional(BillingAdjustmentStatus),
+          status: S.optional(S.String),
           createdAfter: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           createdBefore: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           maxResults: S.optional(S.Number),
@@ -3491,7 +3096,7 @@ function __c14(j: number): any {
           originalInvoiceId: S.String,
           adjustmentAmount: S.String,
           currencyCode: S.String,
-          status: BillingAdjustmentStatus,
+          status: S.String,
           agreementId: S.String,
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -3500,10 +3105,10 @@ function __c14(j: number): any {
         }),
       ).annotate({ identifier: "BillingAdjustmentSummary" });
     case 6:
-      return S.Array(BillingAdjustmentSummary);
+      return S.Array(__S(117, __c14, 5));
     case 7:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), items: BillingAdjustmentSummaryList }),
+        S.Struct({ nextToken: S.optional(S.String), items: __S(118, __c14, 6) }),
       ).annotate({
         identifier: "ListBillingAdjustmentRequestsOutput",
       });
@@ -3526,9 +3131,9 @@ function __c15(j: number): any {
         S.Struct({
           agreementId: S.optional(S.String),
           agreementCancellationRequestId: S.optional(S.String),
-          status: S.optional(AgreementCancellationRequestStatus),
+          status: S.optional(S.String),
           statusMessage: S.optional(S.String),
-          reasonCode: S.optional(AgreementCancellationRequestReasonCode),
+          reasonCode: S.optional(S.String),
           description: S.optional(SensitiveString),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -3551,7 +3156,7 @@ function __c15(j: number): any {
         S.Struct({
           paymentRequestId: S.optional(S.String),
           agreementId: S.optional(S.String),
-          status: S.optional(PaymentRequestStatus),
+          status: S.optional(S.String),
           statusMessage: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(SensitiveString),
@@ -3567,13 +3172,13 @@ function __c15(j: number): any {
       return S.Array(S.String);
     case 5:
       return S.suspend(() =>
-        S.Struct({ name: S.optional(S.String), values: S.optional(FilterValueList) }),
+        S.Struct({ name: S.optional(S.String), values: S.optional(__S(124, __c15, 4)) }),
       ).annotate({ identifier: "Filter" });
     case 6:
-      return S.Array(Filter);
+      return S.Array(__S(125, __c15, 5));
     case 7:
       return S.suspend(() =>
-        S.Struct({ sortBy: S.optional(S.String), sortOrder: S.optional(SortOrder) }),
+        S.Struct({ sortBy: S.optional(S.String), sortOrder: S.optional(S.String) }),
       ).annotate({ identifier: "Sort" });
   }
 }
@@ -3583,8 +3188,8 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           catalog: S.optional(S.String),
-          filters: S.optional(FilterList),
-          sort: S.optional(Sort),
+          filters: S.optional(__S(126, __c15, 6)),
+          sort: S.optional(__S(127, __c15, 7)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -3594,7 +3199,7 @@ function __c16(j: number): any {
         identifier: "Entitlement",
       });
     case 2:
-      return S.Array(Entitlement);
+      return S.Array(__S(129, __c16, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -3604,22 +3209,22 @@ function __c16(j: number): any {
           endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           agreementType: S.optional(S.String),
-          acceptor: S.optional(Acceptor),
-          proposer: S.optional(Proposer),
-          proposalSummary: S.optional(ProposalSummary),
-          status: S.optional(AgreementStatus),
-          entitlements: S.optional(EntitlementList),
+          acceptor: S.optional(__S(42, __c5, 2)),
+          proposer: S.optional(__S(42, __c5, 2)),
+          proposalSummary: S.optional(__S(46, __c5, 6)),
+          status: S.optional(S.String),
+          entitlements: S.optional(__S(130, __c16, 2)),
           initialAgreementId: S.optional(S.String),
-          endTimeBehaviorType: S.optional(EndTimeBehaviorType),
-          endTimeBehaviorReasonCode: S.optional(EndTimeBehaviorReasonCode),
+          endTimeBehaviorType: S.optional(S.String),
+          endTimeBehaviorReasonCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "AgreementViewSummary" });
     case 4:
-      return S.Array(AgreementViewSummary);
+      return S.Array(__S(131, __c16, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          agreementViewSummaries: S.optional(AgreementViewSummaryList),
+          agreementViewSummaries: S.optional(__S(132, __c16, 4)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "SearchAgreementsOutput" });
@@ -3627,7 +3232,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           agreementId: S.String,
-          reasonCode: AgreementCancellationRequestReasonCode,
+          reasonCode: S.String,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           description: S.optional(SensitiveString),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -3656,7 +3261,7 @@ function __c17(j: number): any {
         S.Struct({
           paymentRequestId: S.optional(S.String),
           agreementId: S.optional(S.String),
-          status: S.optional(PaymentRequestStatus),
+          status: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(SensitiveString),
           chargeAmount: S.optional(S.String),
@@ -3668,7 +3273,7 @@ function __c17(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ purchaseOrders: PurchaseOrders }).pipe(
+        S.Struct({ purchaseOrders: __S(5, __c0, 5) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -3679,6 +3284,11 @@ function __c17(j: number): any {
         identifier: "ValidationExceptionField",
       });
     case 3:
-      return S.Array(ValidationExceptionField);
+      return S.Array(__S(138, __c17, 2));
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

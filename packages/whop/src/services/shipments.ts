@@ -7,6 +7,8 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -56,11 +58,6 @@ export interface CreateShipmentRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const CreateShipmentRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateShipmentRequest>;
-
 /** Delivery status this carrier scan maps to. */
 export type ShipmentCheckpointStatus =
   | "unknown"
@@ -73,8 +70,6 @@ export type ShipmentCheckpointStatus =
   | "failure"
   | "cancelled"
   | "error";
-const ShipmentCheckpointStatus = S.String;
-
 export interface ShipmentCheckpoint {
   /** Where the carrier recorded the scan, such as `PHILADELPHIA, PA`. Null when the carrier sent none. */
   location: string | null;
@@ -85,14 +80,7 @@ export interface ShipmentCheckpoint {
   /** When the carrier recorded the scan, as an ISO 8601 timestamp. Null when the carrier sent no scan time. */
   timestamp: string | null;
 }
-const ShipmentCheckpoint = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<ShipmentCheckpoint>;
-
 export type ShipmentCheckpointsList = Array<ShipmentCheckpoint>;
-const ShipmentCheckpointsList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<ShipmentCheckpointsList>;
-
 /** The current delivery status of this shipment. */
 export type ShipmentStatus =
   | "unknown"
@@ -105,8 +93,6 @@ export type ShipmentStatus =
   | "failure"
   | "cancelled"
   | "error";
-const ShipmentStatus = S.String;
-
 export interface Shipment {
   /** The account that owns this shipment, prefixed `biz_`. */
   account_id: string;
@@ -128,14 +114,10 @@ export interface Shipment {
   /** The datetime the shipment was last updated (ISO 8601). */
   updated_at: string;
 }
-const Shipment = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Shipment>;
-
 export interface GetShipmentRequest {
   /** The shipment id (`ship_`), or the payment id (`pay_`) it fulfills. */
   id: string;
 }
-const GetShipmentRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<GetShipmentRequest>;
-
 export type ListShipmentsRequestStatus =
   | "unknown"
   | "pre_transit"
@@ -147,20 +129,9 @@ export type ListShipmentsRequestStatus =
   | "failure"
   | "cancelled"
   | "error";
-const ListShipmentsRequestStatus = S.String;
-
 export type ListShipmentsRequestPaymentIdList = Array<string>;
-const ListShipmentsRequestPaymentIdList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ListShipmentsRequestPaymentIdList>;
-
 export type ListShipmentsRequestOrder = "created_at";
-const ListShipmentsRequestOrder = S.String;
-
 export type ListShipmentsRequestDirection = "asc" | "desc";
-const ListShipmentsRequestDirection = S.String;
-
 export interface ListShipmentsRequest {
   /** The account to list shipments for. Defaults to the acting account. */
   account_id?: string;
@@ -185,45 +156,23 @@ export interface ListShipmentsRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
-const ListShipmentsRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<ListShipmentsRequest>;
-
 export type ListShipmentsResponseDataList = Array<Shipment>;
-const ListShipmentsResponseDataList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ListShipmentsResponseDataList>;
-
 export interface ListShipmentsResponsePageInfo {
   end_cursor: string | null;
   has_next_page: boolean;
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-const ListShipmentsResponsePageInfo = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<ListShipmentsResponsePageInfo>;
-
 export interface ListShipmentsResponse {
   data: ListShipmentsResponseDataList;
   page_info: ListShipmentsResponsePageInfo;
 }
-const ListShipmentsResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<ListShipmentsResponse>;
-
 export interface UpdateShipmentRequest {
   /** The shipment id (`ship_`), or the payment id (`pay_`) it fulfills. */
   id: string;
   /** The new carrier-assigned tracking number. */
   tracking_number: string;
 }
-const UpdateShipmentRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<UpdateShipmentRequest>;
-
 export type CreateShipmentError = BadRequest | Forbidden | Conflict | WhopOpError;
 /** Create Shipment Attaches a carrier tracking number to a payment and begins tracking it. */
 export const createShipment: API.OperationMethod<
@@ -232,8 +181,8 @@ export const createShipment: API.OperationMethod<
   CreateShipmentError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateShipmentRequest,
-  output: Shipment,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateShipmentRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<Shipment>,
   errors: [BadRequest, Forbidden, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -247,8 +196,8 @@ export const getShipment: API.OperationMethod<
   GetShipmentError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetShipmentRequest,
-  output: Shipment,
+  input: __S(4, __c0, 4) as any as S.Schema<GetShipmentRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<Shipment>,
   errors: [Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -264,8 +213,8 @@ export const listShipments: API.PaginatedOperationMethod<
   Shipment
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListShipmentsRequest,
-    output: ListShipmentsResponse,
+    input: __S(6, __c0, 6) as any as S.Schema<ListShipmentsRequest>,
+    output: __S(9, __c1, 1) as any as S.Schema<ListShipmentsResponse>,
     errors: [BadRequest, Forbidden, NotFound],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -289,8 +238,8 @@ export const updateShipment: API.OperationMethod<
   UpdateShipmentError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateShipmentRequest,
-  output: Shipment,
+  input: __S(10, __c1, 2) as any as S.Schema<UpdateShipmentRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<Shipment>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -313,22 +262,22 @@ function __c0(j: number): any {
         S.Struct({
           location: S.NullOr(S.String),
           message: S.NullOr(S.String),
-          status: ShipmentCheckpointStatus,
+          status: S.String,
           timestamp: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "ShipmentCheckpoint" });
     case 2:
-      return S.Array(ShipmentCheckpoint);
+      return S.Array(__S(1, __c0, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           account_id: S.String,
           carrier: S.NullOr(S.String),
-          checkpoints: ShipmentCheckpointsList,
+          checkpoints: __S(2, __c0, 2),
           created_at: S.String,
           id: S.String,
           payment_id: S.String,
-          status: ShipmentStatus,
+          status: S.String,
           tracking_number: S.String,
           tracking_url: S.String,
           updated_at: S.String,
@@ -346,12 +295,12 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           account_id: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(ListShipmentsRequestStatus.pipe(T.Query())),
-          payment_id: S.optional(ListShipmentsRequestPaymentIdList.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
+          payment_id: S.optional(__S(5, __c0, 5).pipe(T.Query())),
           created_before: S.optional(S.String.pipe(T.Query())),
           created_after: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(ListShipmentsRequestOrder.pipe(T.Query())),
-          direction: S.optional(ListShipmentsRequestDirection.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
           first: S.optional(S.Number.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           last: S.optional(S.Number.pipe(T.Query())),
@@ -359,7 +308,7 @@ function __c0(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/shipments", code: 200 })),
       ).annotate({ identifier: "ListShipmentsRequest" });
     case 7:
-      return S.Array(Shipment);
+      return S.Array(__S(3, __c0, 3));
   }
 }
 function __c1(j: number): any {
@@ -378,8 +327,8 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          data: ListShipmentsResponseDataList,
-          page_info: ListShipmentsResponsePageInfo,
+          data: __S(7, __c0, 7),
+          page_info: __S(8, __c1, 0),
         }),
       ).annotate({ identifier: "ListShipmentsResponse" });
     case 2:
@@ -390,4 +339,9 @@ function __c1(j: number): any {
         }).pipe(T.Http({ method: "PATCH", uri: "/shipments/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateShipmentRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

@@ -7,6 +7,8 @@ import * as Redacted from "effect/Redacted";
 import { GithubProtocol, type GithubOpError, type GithubOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GithubOpError, GithubOpContext };
 
@@ -59,24 +61,9 @@ export interface AcceptInvitationForAuthenticatedUserRequest {
   /** The unique identifier of the invitation. */
   invitation_id: number;
 }
-const AcceptInvitationForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AcceptInvitationForAuthenticatedUserRequest>;
-
 export interface AcceptInvitationForAuthenticatedUserResponse {}
-const AcceptInvitationForAuthenticatedUserResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AcceptInvitationForAuthenticatedUserResponse>;
-
 /** The GitHub Apps that have push access to this branch. Use the slugified version of the app name. **Note**: The list of users, apps, and teams in total is limited to 100 items. */
 export type AddAppAccessRestrictionsRequestAppsList = Array<string>;
-const AddAppAccessRestrictionsRequestAppsList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AddAppAccessRestrictionsRequestAppsList>;
-
 export interface AddAppAccessRestrictionsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -87,11 +74,6 @@ export interface AddAppAccessRestrictionsRequest {
   /** The GitHub Apps that have push access to this branch. Use the slugified version of the app name. **Note**: The list of users, apps, and teams in total is limited to 100 items. */
   apps: AddAppAccessRestrictionsRequestAppsList;
 }
-const AddAppAccessRestrictionsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<AddAppAccessRestrictionsRequest>;
-
 /** A GitHub user. */
 export interface SimpleUser {
   name?: string | null;
@@ -117,8 +99,6 @@ export interface SimpleUser {
   starred_at?: string;
   user_view_type?: string;
 }
-const SimpleUser = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<SimpleUser>;
-
 /** An enterprise on GitHub. */
 export interface Enterprise {
   /** A short description of the enterprise. */
@@ -138,8 +118,6 @@ export interface Enterprise {
   avatar_url: string;
 }
 export type IntegrationOwner = SimpleUser | Enterprise;
-const IntegrationOwner = S.Unknown as any as S.Schema<IntegrationOwner>;
-
 /** The set of permissions for the GitHub app */
 export interface IntegrationPermissions {
   issues?: string;
@@ -148,16 +126,8 @@ export interface IntegrationPermissions {
   contents?: string;
   deployments?: string;
 }
-const IntegrationPermissions = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<IntegrationPermissions>;
-
 /** The list of events for the GitHub app. Note that the `installation_target`, `security_advisory`, and `meta` events are not included because they are global events and not specific to an installation. */
 export type IntegrationEventsList = Array<string>;
-const IntegrationEventsList =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<IntegrationEventsList>;
-
 /** GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub. */
 export interface Integration {
   /** Unique identifier of the GitHub app */
@@ -181,20 +151,8 @@ export interface Integration {
   /** The number of installations associated with the GitHub app. Only returned when the integration is requesting details about itself. */
   installations_count?: number;
 }
-const Integration = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Integration>;
-
 export type AddAppAccessRestrictionsResponseBodyList = Array<Integration | null>;
-const AddAppAccessRestrictionsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<AddAppAccessRestrictionsResponseBodyList>;
-
 export type AddAppAccessRestrictionsResponse = AddAppAccessRestrictionsResponseBodyList;
-const AddAppAccessRestrictionsResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<AddAppAccessRestrictionsResponse>;
-
 export interface AddCollaboratorRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -205,19 +163,9 @@ export interface AddCollaboratorRequest {
   /** The permission to grant the collaborator. **Only valid on organization-owned repositories.** We accept the following permissions to be set: `pull`, `triage`, `triage_plus`, `push`, `maintain`, `admin` and you can also specify a custom repository role name, if the owning organization has defined any. */
   permission?: string;
 }
-const AddCollaboratorRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<AddCollaboratorRequest>;
-
 export type MinimalRepositoryTopicsList = Array<string>;
-const MinimalRepositoryTopicsList =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<MinimalRepositoryTopicsList>;
-
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type MinimalRepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
-const MinimalRepositoryPullRequestCreationPolicy = S.String;
-
 export interface MinimalRepositoryPermissions {
   admin?: boolean;
   maintain?: boolean;
@@ -225,11 +173,6 @@ export interface MinimalRepositoryPermissions {
   triage?: boolean;
   pull?: boolean;
 }
-const MinimalRepositoryPermissions = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<MinimalRepositoryPermissions>;
-
 /** Code Of Conduct */
 export interface CodeOfConduct {
   key: string;
@@ -238,8 +181,6 @@ export interface CodeOfConduct {
   body?: string;
   html_url: string | null;
 }
-const CodeOfConduct = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<CodeOfConduct>;
-
 export interface MinimalRepositoryLicense {
   key?: string;
   name?: string;
@@ -247,30 +188,15 @@ export interface MinimalRepositoryLicense {
   url?: string | null;
   node_id?: string;
 }
-const MinimalRepositoryLicense = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<MinimalRepositoryLicense>;
-
 export type SecurityAndAnalysisAdvancedSecurityStatus = "enabled" | "disabled";
-const SecurityAndAnalysisAdvancedSecurityStatus = S.String;
-
 /** Enable or disable GitHub Advanced Security for the repository. For standalone Code Scanning or Secret Protection products, this parameter cannot be used. */
 export interface SecurityAndAnalysisAdvancedSecurity {
   status?: SecurityAndAnalysisAdvancedSecurityStatus;
 }
-const SecurityAndAnalysisAdvancedSecurity = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<SecurityAndAnalysisAdvancedSecurity>;
-
 export type SecurityAndAnalysisCodeSecurityStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisCodeSecurity {
   status?: SecurityAndAnalysisCodeSecurityStatus;
 }
-const SecurityAndAnalysisCodeSecurity =
-  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisCodeSecurity>;
-
 /** The enablement status of Dependabot security updates for the repository. */
 export type SecurityAndAnalysisDependabotSecurityUpdatesStatus = "enabled" | "disabled";
 /** Enable or disable Dependabot security updates for the repository. */
@@ -278,67 +204,38 @@ export interface SecurityAndAnalysisDependabotSecurityUpdates {
   /** The enablement status of Dependabot security updates for the repository. */
   status?: SecurityAndAnalysisDependabotSecurityUpdatesStatus;
 }
-const SecurityAndAnalysisDependabotSecurityUpdates =
-  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisDependabotSecurityUpdates>;
-
 export type SecurityAndAnalysisSecretScanningStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanning {
   status?: SecurityAndAnalysisSecretScanningStatus;
 }
-const SecurityAndAnalysisSecretScanning =
-  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanning>;
-
 export type SecurityAndAnalysisSecretScanningPushProtectionStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanningPushProtection {
   status?: SecurityAndAnalysisSecretScanningPushProtectionStatus;
 }
-const SecurityAndAnalysisSecretScanningPushProtection =
-  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningPushProtection>;
-
 export type SecurityAndAnalysisSecretScanningNonProviderPatternsStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanningNonProviderPatterns {
   status?: SecurityAndAnalysisSecretScanningNonProviderPatternsStatus;
 }
-const SecurityAndAnalysisSecretScanningNonProviderPatterns =
-  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningNonProviderPatterns>;
-
 export type SecurityAndAnalysisSecretScanningAiDetectionStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanningAiDetection {
   status?: SecurityAndAnalysisSecretScanningAiDetectionStatus;
 }
-const SecurityAndAnalysisSecretScanningAiDetection =
-  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningAiDetection>;
-
 export type SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = "enabled" | "disabled";
-const SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanningDelegatedAlertDismissal {
   status?: SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus;
 }
-const SecurityAndAnalysisSecretScanningDelegatedAlertDismissal = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedAlertDismissal>;
-
 export type SecurityAndAnalysisSecretScanningDelegatedBypassStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanningDelegatedBypass {
   status?: SecurityAndAnalysisSecretScanningDelegatedBypassStatus;
 }
-const SecurityAndAnalysisSecretScanningDelegatedBypass =
-  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypass>;
-
 /** The type of the bypass reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
   | "TEAM"
   | "ROLE";
-const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType = S.String;
-
 /** The bypass mode for the reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode =
   | "ALWAYS"
   | "EXEMPT";
-const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode = S.String;
-
 export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem {
   /** The ID of the team or role selected as a bypass reviewer */
   reviewer_id: number;
@@ -347,28 +244,13 @@ export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewer
   /** The bypass mode for the reviewer */
   mode?: SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode;
 }
-const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem>;
-
 /** The bypass reviewers for secret scanning delegated bypass */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList =
   Array<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem>;
-const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList>;
-
 export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptions {
   /** The bypass reviewers for secret scanning delegated bypass */
   reviewers?: SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList;
 }
-const SecurityAndAnalysisSecretScanningDelegatedBypassOptions = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptions>;
-
 export interface SecurityAndAnalysis {
   /** Enable or disable GitHub Advanced Security for the repository. For standalone Code Scanning or Secret Protection products, this parameter cannot be used. */
   advanced_security?: SecurityAndAnalysisAdvancedSecurity;
@@ -383,15 +265,8 @@ export interface SecurityAndAnalysis {
   secret_scanning_delegated_bypass?: SecurityAndAnalysisSecretScanningDelegatedBypass;
   secret_scanning_delegated_bypass_options?: SecurityAndAnalysisSecretScanningDelegatedBypassOptions;
 }
-const SecurityAndAnalysis = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<SecurityAndAnalysis>;
-
 /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
 export type MinimalRepositoryCustomPropertiesMap = { [key: string]: unknown | undefined };
-const MinimalRepositoryCustomPropertiesMap = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<MinimalRepositoryCustomPropertiesMap>;
-
 /** Minimal Repository */
 export interface MinimalRepository {
   id: number;
@@ -488,8 +363,6 @@ export interface MinimalRepository {
   /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
   custom_properties?: MinimalRepositoryCustomPropertiesMap;
 }
-const MinimalRepository = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<MinimalRepository>;
-
 /** A GitHub user. */
 export type NullableSimpleUser = SimpleUser;
 /** The permission associated with the invitation. */
@@ -500,8 +373,6 @@ export type RepositoryInvitationPermissions =
   | "triage"
   | "triage_plus"
   | "maintain";
-const RepositoryInvitationPermissions = S.String;
-
 /** Repository invitations let you manage who you collaborate with. */
 export interface RepositoryInvitation {
   /** Unique identifier of the repository invitation. */
@@ -519,8 +390,6 @@ export interface RepositoryInvitation {
   html_url: string;
   node_id: string;
 }
-const RepositoryInvitation = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<RepositoryInvitation>;
-
 /** The name of the status checks */
 export type AddStatusCheckContextsRequestBodyCase0ContextsList = Array<string>;
 export interface AddStatusCheckContextsRequestBodyCase0 {
@@ -532,9 +401,6 @@ export type AddStatusCheckContextsRequestBodyCase1List = Array<string>;
 export type AddStatusCheckContextsRequestBody =
   | AddStatusCheckContextsRequestBodyCase0
   | AddStatusCheckContextsRequestBodyCase1List;
-const AddStatusCheckContextsRequestBody =
-  S.Unknown as any as S.Schema<AddStatusCheckContextsRequestBody>;
-
 export interface AddStatusCheckContextsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -544,21 +410,8 @@ export interface AddStatusCheckContextsRequest {
   branch: string;
   body?: AddStatusCheckContextsRequestBody;
 }
-const AddStatusCheckContextsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<AddStatusCheckContextsRequest>;
-
 export type AddStatusCheckContextsResponseBodyList = Array<string>;
-const AddStatusCheckContextsResponseBodyList =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<AddStatusCheckContextsResponseBodyList>;
-
 export type AddStatusCheckContextsResponse = AddStatusCheckContextsResponseBodyList;
-const AddStatusCheckContextsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<AddStatusCheckContextsResponse>;
-
 /** The slug values for teams */
 export type AddTeamAccessRestrictionsRequestBodyCase0TeamsList = Array<string>;
 export interface AddTeamAccessRestrictionsRequestBodyCase0 {
@@ -570,9 +423,6 @@ export type AddTeamAccessRestrictionsRequestBodyCase1List = Array<string>;
 export type AddTeamAccessRestrictionsRequestBody =
   | AddTeamAccessRestrictionsRequestBodyCase0
   | AddTeamAccessRestrictionsRequestBodyCase1List;
-const AddTeamAccessRestrictionsRequestBody =
-  S.Unknown as any as S.Schema<AddTeamAccessRestrictionsRequestBody>;
-
 export interface AddTeamAccessRestrictionsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -582,11 +432,6 @@ export interface AddTeamAccessRestrictionsRequest {
   branch: string;
   body?: AddTeamAccessRestrictionsRequestBody;
 }
-const AddTeamAccessRestrictionsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<AddTeamAccessRestrictionsRequest>;
-
 export interface TeamPermissions {
   pull: boolean;
   triage: boolean;
@@ -594,20 +439,12 @@ export interface TeamPermissions {
   maintain: boolean;
   admin: boolean;
 }
-const TeamPermissions = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<TeamPermissions>;
-
 /** The ownership type of the team */
 export type TeamType = "enterprise" | "organization";
-const TeamType = S.String;
-
 /** How the team's access to the repository was granted. This property is only present when the team is returned in a repository context, such as `GET /repos/{owner}/{repo}/teams`. */
 export type TeamAccessSource = "direct" | "organization" | "enterprise";
-const TeamAccessSource = S.String;
-
 /** The ownership type of the team */
 export type NullableTeamSimpleType = "enterprise" | "organization";
-const NullableTeamSimpleType = S.String;
-
 /** Groups of organization members that gives permissions on specified repositories. */
 export interface NullableTeamSimple {
   /** Unique identifier of the team */
@@ -638,8 +475,6 @@ export interface NullableTeamSimple {
   /** Unique identifier of the enterprise to which this team belongs */
   enterprise_id?: number;
 }
-const NullableTeamSimple = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<NullableTeamSimple>;
-
 /** Groups of organization members that gives permissions on specified repositories. */
 export interface Team {
   id: number;
@@ -665,25 +500,10 @@ export interface Team {
   enterprise_id?: number;
   parent: NullableTeamSimple | null;
 }
-const Team = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<Team>;
-
 export type AddTeamAccessRestrictionsResponseBodyList = Array<Team>;
-const AddTeamAccessRestrictionsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<AddTeamAccessRestrictionsResponseBodyList>;
-
 export type AddTeamAccessRestrictionsResponse = AddTeamAccessRestrictionsResponseBodyList;
-const AddTeamAccessRestrictionsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<AddTeamAccessRestrictionsResponse>;
-
 /** The username for users */
 export type AddUserAccessRestrictionsRequestUsersList = Array<string>;
-const AddUserAccessRestrictionsRequestUsersList =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<AddUserAccessRestrictionsRequestUsersList>;
-
 export interface AddUserAccessRestrictionsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -694,23 +514,8 @@ export interface AddUserAccessRestrictionsRequest {
   /** The username for users */
   users: AddUserAccessRestrictionsRequestUsersList;
 }
-const AddUserAccessRestrictionsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<AddUserAccessRestrictionsRequest>;
-
 export type AddUserAccessRestrictionsResponseBodyList = Array<SimpleUser>;
-const AddUserAccessRestrictionsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<AddUserAccessRestrictionsResponseBodyList>;
-
 export type AddUserAccessRestrictionsResponse = AddUserAccessRestrictionsResponseBodyList;
-const AddUserAccessRestrictionsResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<AddUserAccessRestrictionsResponse>;
-
 export interface CancelPagesDeploymentRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -719,28 +524,13 @@ export interface CancelPagesDeploymentRequest {
   /** The ID of the Pages deployment. You can also give the commit SHA of the deployment. */
   pages_deployment_id: string;
 }
-const CancelPagesDeploymentRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<CancelPagesDeploymentRequest>;
-
 export interface CancelPagesDeploymentResponse {}
-const CancelPagesDeploymentResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<CancelPagesDeploymentResponse>;
-
 export interface CheckAutomatedSecurityFixesRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-const CheckAutomatedSecurityFixesRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<CheckAutomatedSecurityFixesRequest>;
-
 /** Check Dependabot security updates */
 export interface CheckAutomatedSecurityFixes {
   /** Whether Dependabot security updates are enabled for the repository. */
@@ -748,11 +538,6 @@ export interface CheckAutomatedSecurityFixes {
   /** Whether Dependabot security updates are paused for the repository. */
   paused: boolean;
 }
-const CheckAutomatedSecurityFixes = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<CheckAutomatedSecurityFixes>;
-
 export interface CheckCollaboratorRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -761,26 +546,13 @@ export interface CheckCollaboratorRequest {
   /** The handle for the GitHub user account. */
   username: string;
 }
-const CheckCollaboratorRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<CheckCollaboratorRequest>;
-
 export interface CheckCollaboratorResponse {}
-const CheckCollaboratorResponse =
-  CancelPagesDeploymentResponse as any as S.Schema<CheckCollaboratorResponse>;
-
 export interface CheckImmutableReleasesRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-const CheckImmutableReleasesRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<CheckImmutableReleasesRequest>;
-
 /** Check immutable releases */
 export interface CheckImmutableReleases {
   /** Whether immutable releases are enabled for the repository. */
@@ -788,46 +560,23 @@ export interface CheckImmutableReleases {
   /** Whether immutable releases are enforced by the repository owner. */
   enforced_by_owner: boolean;
 }
-const CheckImmutableReleases = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<CheckImmutableReleases>;
-
 export interface CheckPrivateVulnerabilityReportingRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-const CheckPrivateVulnerabilityReportingRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<CheckPrivateVulnerabilityReportingRequest>;
-
 export interface CheckPrivateVulnerabilityReportingResponse {
   /** Whether or not private vulnerability reporting is enabled for the repository. */
   enabled: boolean;
 }
-const CheckPrivateVulnerabilityReportingResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<CheckPrivateVulnerabilityReportingResponse>;
-
 export interface CheckVulnerabilityAlertsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-const CheckVulnerabilityAlertsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<CheckVulnerabilityAlertsRequest>;
-
 export interface CheckVulnerabilityAlertsResponse {}
-const CheckVulnerabilityAlertsResponse =
-  AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<CheckVulnerabilityAlertsResponse>;
-
 export interface CodeownersErrorsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -836,11 +585,6 @@ export interface CodeownersErrorsRequest {
   /** A branch, tag or commit name used to determine which version of the CODEOWNERS file to use. Default: the repository's default branch (e.g. `main`) */
   ref?: string;
 }
-const CodeownersErrorsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<CodeownersErrorsRequest>;
-
 export interface CodeownersErrorsErrorsItem {
   /** The line number where this errors occurs. */
   line: number;
@@ -857,23 +601,11 @@ export interface CodeownersErrorsErrorsItem {
   /** The path of the file where the error occured. */
   path: string;
 }
-const CodeownersErrorsErrorsItem = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<CodeownersErrorsErrorsItem>;
-
 export type CodeownersErrorsErrorsList = Array<CodeownersErrorsErrorsItem>;
-const CodeownersErrorsErrorsList = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<CodeownersErrorsErrorsList>;
-
 /** A list of errors found in a repo's CODEOWNERS file */
 export interface CodeownersErrors {
   errors: CodeownersErrorsErrorsList;
 }
-const CodeownersErrors = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<CodeownersErrors>;
-
 export interface CompareCommitsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -886,25 +618,16 @@ export interface CompareCommitsRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
 }
-const CompareCommitsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<CompareCommitsRequest>;
-
 /** Metaproperties for Git author/committer information. */
 export interface NullableGitUser {
   name?: string;
   email?: string;
   date?: string;
 }
-const NullableGitUser = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<NullableGitUser>;
-
 export interface CommitCommitTree {
   sha: string;
   url: string;
 }
-const CommitCommitTree = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<CommitCommitTree>;
-
 export interface Verification {
   verified: boolean;
   reason: string;
@@ -912,8 +635,6 @@ export interface Verification {
   signature: string | null;
   verified_at: string | null;
 }
-const Verification = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<Verification>;
-
 export interface CommitCommit {
   url: string;
   author: NullableGitUser | null;
@@ -923,31 +644,19 @@ export interface CommitCommit {
   tree: CommitCommitTree;
   verification?: Verification;
 }
-const CommitCommit = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<CommitCommit>;
-
 export type CommitAuthor = SimpleUser | unknown;
-const CommitAuthor = S.Unknown as any as S.Schema<CommitAuthor>;
-
 export type CommitCommitter = SimpleUser | unknown;
-const CommitCommitter = S.Unknown as any as S.Schema<CommitCommitter>;
-
 export interface CommitParentsItem {
   sha: string;
   url: string;
   html_url?: string;
 }
-const CommitParentsItem = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<CommitParentsItem>;
-
 export type CommitParentsList = Array<CommitParentsItem>;
-const CommitParentsList = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<CommitParentsList>;
-
 export interface CommitStats {
   additions?: number;
   deletions?: number;
   total?: number;
 }
-const CommitStats = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<CommitStats>;
-
 export type DiffEntryStatus =
   | "added"
   | "removed"
@@ -956,8 +665,6 @@ export type DiffEntryStatus =
   | "copied"
   | "changed"
   | "unchanged";
-const DiffEntryStatus = S.String;
-
 /** Diff Entry */
 export interface DiffEntry {
   sha: string | null;
@@ -972,11 +679,7 @@ export interface DiffEntry {
   patch?: string;
   previous_filename?: string;
 }
-const DiffEntry = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<DiffEntry>;
-
 export type CommitFilesList = Array<DiffEntry>;
-const CommitFilesList = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<CommitFilesList>;
-
 /** Commit */
 export interface Commit {
   url: string;
@@ -991,23 +694,9 @@ export interface Commit {
   stats?: CommitStats;
   files?: CommitFilesList;
 }
-const Commit = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<Commit>;
-
 export type CommitComparisonStatus = "diverged" | "ahead" | "behind" | "identical";
-const CommitComparisonStatus = S.String;
-
 export type CommitComparisonCommitsList = Array<Commit>;
-const CommitComparisonCommitsList = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<CommitComparisonCommitsList>;
-
 export type CommitComparisonFilesList = Array<DiffEntry>;
-const CommitComparisonFilesList = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<CommitComparisonFilesList>;
-
 /** Commit Comparison */
 export interface CommitComparison {
   url: string;
@@ -1024,29 +713,16 @@ export interface CommitComparison {
   commits: CommitComparisonCommitsList;
   files?: CommitComparisonFilesList;
 }
-const CommitComparison = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<CommitComparison>;
-
 export type CreateAttestationRequestBundleVerificationMaterialMap = {
   [key: string]: unknown | undefined;
 };
-const CreateAttestationRequestBundleVerificationMaterialMap =
-  MinimalRepositoryCustomPropertiesMap as any as S.Schema<CreateAttestationRequestBundleVerificationMaterialMap>;
-
 export type CreateAttestationRequestBundleDsseEnvelopeMap = { [key: string]: unknown | undefined };
-const CreateAttestationRequestBundleDsseEnvelopeMap =
-  MinimalRepositoryCustomPropertiesMap as any as S.Schema<CreateAttestationRequestBundleDsseEnvelopeMap>;
-
 /** The attestation's Sigstore Bundle. Refer to the [Sigstore Bundle Specification](https://github.com/sigstore/protobuf-specs/blob/main/protos/sigstore_bundle.proto) for more information. */
 export interface CreateAttestationRequestBundle {
   mediaType?: string;
   verificationMaterial?: CreateAttestationRequestBundleVerificationMaterialMap;
   dsseEnvelope?: CreateAttestationRequestBundleDsseEnvelopeMap;
 }
-const CreateAttestationRequestBundle = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<CreateAttestationRequestBundle>;
-
 export interface CreateAttestationRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1055,20 +731,10 @@ export interface CreateAttestationRequest {
   /** The attestation's Sigstore Bundle. Refer to the [Sigstore Bundle Specification](https://github.com/sigstore/protobuf-specs/blob/main/protos/sigstore_bundle.proto) for more information. */
   bundle: CreateAttestationRequestBundle;
 }
-const CreateAttestationRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<CreateAttestationRequest>;
-
 export interface CreateAttestationResponse {
   /** The ID of the attestation. */
   id?: number;
 }
-const CreateAttestationResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<CreateAttestationResponse>;
-
 export interface CreateAutolinkRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1081,11 +747,6 @@ export interface CreateAutolinkRequest {
   /** Whether this autolink reference matches alphanumeric characters. If true, the `<num>` parameter of the `url_template` matches alphanumeric characters `A-Z` (case insensitive), `0-9`, and `-`. If false, this autolink reference only matches numeric characters. */
   is_alphanumeric?: boolean;
 }
-const CreateAutolinkRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<CreateAutolinkRequest>;
-
 /** An autolink reference. */
 export interface Autolink {
   id: number;
@@ -1097,8 +758,6 @@ export interface Autolink {
   is_alphanumeric: boolean;
   updated_at?: string | null;
 }
-const Autolink = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<Autolink>;
-
 export interface CreateCommitCommentRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1115,11 +774,6 @@ export interface CreateCommitCommentRequest {
   /** **Closing down notice**. Use **position** parameter instead. Line number in the file to comment on. */
   line?: number;
 }
-const CreateCommitCommentRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<CreateCommitCommentRequest>;
-
 /** How the author is associated with the repository. */
 export type AuthorAssociation =
   | "COLLABORATOR"
@@ -1130,8 +784,6 @@ export type AuthorAssociation =
   | "MEMBER"
   | "NONE"
   | "OWNER";
-const AuthorAssociation = S.String;
-
 export interface ReactionRollup {
   url: string;
   total_count: number;
@@ -1144,8 +796,6 @@ export interface ReactionRollup {
   eyes: number;
   rocket: number;
 }
-const ReactionRollup = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<ReactionRollup>;
-
 /** Commit Comment */
 export interface CommitComment {
   html_url: string;
@@ -1163,8 +813,6 @@ export interface CommitComment {
   author_association: AuthorAssociation;
   reactions?: ReactionRollup;
 }
-const CommitComment = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<CommitComment>;
-
 export interface CreateCommitSignatureProtectionRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1173,25 +821,13 @@ export interface CreateCommitSignatureProtectionRequest {
   /** The name of the branch. Cannot contain wildcard characters. To use wildcard characters in branch names, use [the GraphQL API](https://docs.github.com/graphql). */
   branch: string;
 }
-const CreateCommitSignatureProtectionRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<CreateCommitSignatureProtectionRequest>;
-
 /** Protected Branch Admin Enforced */
 export interface ProtectedBranchAdminEnforced {
   url: string;
   enabled: boolean;
 }
-const ProtectedBranchAdminEnforced = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<ProtectedBranchAdminEnforced>;
-
 /** The state of the status. */
 export type CreateCommitStatusRequestState = "error" | "failure" | "pending" | "success";
-const CreateCommitStatusRequestState = S.String;
-
 export interface CreateCommitStatusRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1207,11 +843,6 @@ export interface CreateCommitStatusRequest {
   /** A string label to differentiate this status from the status of other systems. This field is case-insensitive. */
   context?: string;
 }
-const CreateCommitStatusRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<CreateCommitStatusRequest>;
-
 /** The status of a commit. */
 export interface Status {
   url: string;
@@ -1226,8 +857,6 @@ export interface Status {
   updated_at: string;
   creator: SimpleUser | null;
 }
-const Status = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<Status>;
-
 export interface CreateDeployKeyRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1240,11 +869,6 @@ export interface CreateDeployKeyRequest {
   /** If `true`, the key will only be able to read repository contents. Otherwise, the key will be able to read and write. Deploy keys with write access can perform the same actions as an organization member with admin access, or a collaborator on a personal repository. For more information, see "[Repository permission levels for an organization](https://docs.github.com/articles/repository-permission-levels-for-an-organization/)" and "[Permission levels for a user account repository](https://docs.github.com/articles/permission-levels-for-a-user-account-repository/)." */
   read_only?: boolean;
 }
-const CreateDeployKeyRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<CreateDeployKeyRequest>;
-
 /** An SSH key granting access to a single repository. */
 export interface DeployKey {
   id: number;
@@ -1258,17 +882,10 @@ export interface DeployKey {
   last_used?: string | null;
   enabled?: boolean;
 }
-const DeployKey = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<DeployKey>;
-
 /** The [status](https://docs.github.com/rest/commits/statuses) contexts to verify against commit status checks. If you omit this parameter, GitHub verifies all unique contexts before creating a deployment. To bypass checking entirely, pass an empty array. Defaults to all unique contexts. */
 export type CreateDeploymentRequestRequiredContextsList = Array<string>;
-const CreateDeploymentRequestRequiredContextsList =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<CreateDeploymentRequestRequiredContextsList>;
-
 export type CreateDeploymentRequestPayloadCase0Map = { [key: string]: unknown | undefined };
 export type CreateDeploymentRequestPayload = CreateDeploymentRequestPayloadCase0Map | string;
-const CreateDeploymentRequestPayload = S.Unknown as any as S.Schema<CreateDeploymentRequestPayload>;
-
 export interface CreateDeploymentRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1292,25 +909,13 @@ export interface CreateDeploymentRequest {
   /** Specifies if the given environment is one that end-users directly interact with. Default: `true` when `environment` is `production` and `false` otherwise. */
   production_environment?: boolean;
 }
-const CreateDeploymentRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<CreateDeploymentRequest>;
-
 export type DeploymentPayloadCase0Map = { [key: string]: unknown | undefined };
 export type DeploymentPayload = DeploymentPayloadCase0Map | string;
-const DeploymentPayload = S.Unknown as any as S.Schema<DeploymentPayload>;
-
 export type NullableIntegrationOwner = SimpleUser | Enterprise;
-const NullableIntegrationOwner = S.Unknown as any as S.Schema<NullableIntegrationOwner>;
-
 /** The set of permissions for the GitHub app */
 export type NullableIntegrationPermissions = IntegrationPermissions;
 /** The list of events for the GitHub app. Note that the `installation_target`, `security_advisory`, and `meta` events are not included because they are global events and not specific to an installation. */
 export type NullableIntegrationEventsList = Array<string>;
-const NullableIntegrationEventsList =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<NullableIntegrationEventsList>;
-
 /** GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub. */
 export interface NullableIntegration {
   /** Unique identifier of the GitHub app */
@@ -1334,8 +939,6 @@ export interface NullableIntegration {
   /** The number of installations associated with the GitHub app. Only returned when the integration is requesting details about itself. */
   installations_count?: number;
 }
-const NullableIntegration = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<NullableIntegration>;
-
 /** A request for a specific ref(branch,sha,tag) to be deployed */
 export interface Deployment {
   url: string;
@@ -1363,12 +966,8 @@ export interface Deployment {
   production_environment?: boolean;
   performed_via_github_app?: NullableIntegration | null;
 }
-const Deployment = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<Deployment>;
-
 /** Whether this rule targets a branch or tag */
 export type CreateDeploymentBranchPolicyRequestType = "branch" | "tag";
-const CreateDeploymentBranchPolicyRequestType = S.String;
-
 export interface CreateDeploymentBranchPolicyRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1381,15 +980,8 @@ export interface CreateDeploymentBranchPolicyRequest {
   /** Whether this rule targets a branch or tag */
   type?: CreateDeploymentBranchPolicyRequestType | (string & {});
 }
-const CreateDeploymentBranchPolicyRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<CreateDeploymentBranchPolicyRequest>;
-
 /** Whether this rule targets a branch or tag. */
 export type DeploymentBranchPolicyType = "branch" | "tag";
-const DeploymentBranchPolicyType = S.String;
-
 /** Details of a deployment branch or tag policy. */
 export interface DeploymentBranchPolicy {
   /** The unique identifier of the branch or tag policy. */
@@ -1400,11 +992,6 @@ export interface DeploymentBranchPolicy {
   /** Whether this rule targets a branch or tag. */
   type?: DeploymentBranchPolicyType;
 }
-const DeploymentBranchPolicy = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<DeploymentBranchPolicy>;
-
 export interface CreateDeploymentProtectionRuleRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1415,11 +1002,6 @@ export interface CreateDeploymentProtectionRuleRequest {
   /** The ID of the custom app that will be enabled on the environment. */
   integration_id?: number;
 }
-const CreateDeploymentProtectionRuleRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<CreateDeploymentProtectionRuleRequest>;
-
 /** A GitHub App that is providing a custom deployment protection rule. */
 export interface CustomDeploymentRuleApp {
   /** The unique identifier of the deployment protection rule integration. */
@@ -1431,11 +1013,6 @@ export interface CustomDeploymentRuleApp {
   /** The node ID for the deployment protection rule integration. */
   node_id: string;
 }
-const CustomDeploymentRuleApp = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<CustomDeploymentRuleApp>;
-
 /** Deployment protection rule */
 export interface DeploymentProtectionRule {
   /** The unique identifier for the deployment protection rule. */
@@ -1446,11 +1023,6 @@ export interface DeploymentProtectionRule {
   enabled: boolean;
   app: CustomDeploymentRuleApp;
 }
-const DeploymentProtectionRule = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<DeploymentProtectionRule>;
-
 /** The state of the status. When you set a transient deployment to `inactive`, the deployment will be shown as `destroyed` in GitHub. */
 export type CreateDeploymentStatusRequestState =
   | "error"
@@ -1460,8 +1032,6 @@ export type CreateDeploymentStatusRequestState =
   | "queued"
   | "pending"
   | "success";
-const CreateDeploymentStatusRequestState = S.String;
-
 export interface CreateDeploymentStatusRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1484,11 +1054,6 @@ export interface CreateDeploymentStatusRequest {
   /** Adds a new `inactive` status to all prior non-transient, non-production environment deployments with the same repository and `environment` name as the created status's deployment. An `inactive` status is only added to deployments that had a `success` state. Default: `true` */
   auto_inactive?: boolean;
 }
-const CreateDeploymentStatusRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<CreateDeploymentStatusRequest>;
-
 /** The state of the status. */
 export type DeploymentStatusState =
   | "error"
@@ -1498,8 +1063,6 @@ export type DeploymentStatusState =
   | "success"
   | "queued"
   | "in_progress";
-const DeploymentStatusState = S.String;
-
 /** The status of a deployment. */
 export interface DeploymentStatus {
   url: string;
@@ -1524,13 +1087,8 @@ export interface DeploymentStatus {
   log_url?: string;
   performed_via_github_app?: NullableIntegration | null;
 }
-const DeploymentStatus = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<DeploymentStatus>;
-
 /** JSON payload with extra information about the webhook event that your action or workflow may use. The maximum number of top-level properties is 10. The total size of the JSON payload must be less than 64KB. */
 export type CreateDispatchEventRequestClientPayloadMap = { [key: string]: unknown | undefined };
-const CreateDispatchEventRequestClientPayloadMap =
-  MinimalRepositoryCustomPropertiesMap as any as S.Schema<CreateDispatchEventRequestClientPayloadMap>;
-
 export interface CreateDispatchEventRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1541,36 +1099,20 @@ export interface CreateDispatchEventRequest {
   /** JSON payload with extra information about the webhook event that your action or workflow may use. The maximum number of top-level properties is 10. The total size of the JSON payload must be less than 64KB. */
   client_payload?: CreateDispatchEventRequestClientPayloadMap;
 }
-const CreateDispatchEventRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<CreateDispatchEventRequest>;
-
 export interface CreateDispatchEventResponse {}
-const CreateDispatchEventResponse =
-  CancelPagesDeploymentResponse as any as S.Schema<CreateDispatchEventResponse>;
-
 /** Required when using `squash_merge_commit_message`. The default value for a squash merge commit title: - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit). */
 export type CreateForAuthenticatedUserRequestSquashMergeCommitTitle =
   | "PR_TITLE"
   | "COMMIT_OR_PR_TITLE";
-const CreateForAuthenticatedUserRequestSquashMergeCommitTitle = S.String;
-
 /** The default value for a squash merge commit message: - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message. */
 export type CreateForAuthenticatedUserRequestSquashMergeCommitMessage =
   | "PR_BODY"
   | "COMMIT_MESSAGES"
   | "BLANK";
-const CreateForAuthenticatedUserRequestSquashMergeCommitMessage = S.String;
-
 /** Required when using `merge_commit_message`. The default value for a merge commit title. - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name). */
 export type CreateForAuthenticatedUserRequestMergeCommitTitle = "PR_TITLE" | "MERGE_MESSAGE";
-const CreateForAuthenticatedUserRequestMergeCommitTitle = S.String;
-
 /** The default value for a merge commit message. - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message. */
 export type CreateForAuthenticatedUserRequestMergeCommitMessage = "PR_BODY" | "PR_TITLE" | "BLANK";
-const CreateForAuthenticatedUserRequestMergeCommitMessage = S.String;
-
 export interface CreateForAuthenticatedUserRequest {
   /** The name of the repository. */
   name: string;
@@ -1623,19 +1165,9 @@ export interface CreateForAuthenticatedUserRequest {
   /** Whether this repository acts as a template that can be used to generate new repositories. */
   is_template?: boolean;
 }
-const CreateForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<CreateForAuthenticatedUserRequest>;
-
 export type FullRepositoryTopicsList = Array<string>;
-const FullRepositoryTopicsList =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<FullRepositoryTopicsList>;
-
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type FullRepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
-const FullRepositoryPullRequestCreationPolicy = S.String;
-
 export interface FullRepositoryPermissions {
   admin: boolean;
   maintain?: boolean;
@@ -1643,11 +1175,6 @@ export interface FullRepositoryPermissions {
   triage?: boolean;
   pull: boolean;
 }
-const FullRepositoryPermissions = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<FullRepositoryPermissions>;
-
 /** License Simple */
 export interface NullableLicenseSimple {
   key: string;
@@ -1657,11 +1184,6 @@ export interface NullableLicenseSimple {
   node_id: string;
   html_url?: string;
 }
-const NullableLicenseSimple = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<NullableLicenseSimple>;
-
 export interface NullableRepositoryPermissions {
   admin: boolean;
   pull: boolean;
@@ -1669,45 +1191,22 @@ export interface NullableRepositoryPermissions {
   push: boolean;
   maintain?: boolean;
 }
-const NullableRepositoryPermissions = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<NullableRepositoryPermissions>;
-
 export type NullableRepositoryTopicsList = Array<string>;
-const NullableRepositoryTopicsList =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<NullableRepositoryTopicsList>;
-
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type NullableRepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
-const NullableRepositoryPullRequestCreationPolicy = S.String;
-
 /** The default value for a squash merge commit title: - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit). */
 export type NullableRepositorySquashMergeCommitTitle = "PR_TITLE" | "COMMIT_OR_PR_TITLE";
-const NullableRepositorySquashMergeCommitTitle = S.String;
-
 /** The default value for a squash merge commit message: - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message. */
 export type NullableRepositorySquashMergeCommitMessage = "PR_BODY" | "COMMIT_MESSAGES" | "BLANK";
-const NullableRepositorySquashMergeCommitMessage = S.String;
-
 /** The default value for a merge commit title. - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name). */
 export type NullableRepositoryMergeCommitTitle = "PR_TITLE" | "MERGE_MESSAGE";
-const NullableRepositoryMergeCommitTitle = S.String;
-
 /** The default value for a merge commit message. - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message. */
 export type NullableRepositoryMergeCommitMessage = "PR_BODY" | "PR_TITLE" | "BLANK";
-const NullableRepositoryMergeCommitMessage = S.String;
-
 /** The status of the code search index for this repository */
 export interface NullableRepositoryCodeSearchIndexStatus {
   lexical_search_ok?: boolean;
   lexical_commit_sha?: string;
 }
-const NullableRepositoryCodeSearchIndexStatus = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<NullableRepositoryCodeSearchIndexStatus>;
-
 /** A repository on GitHub. */
 export interface NullableRepository {
   /** Unique identifier of the repository */
@@ -1840,49 +1339,26 @@ export interface NullableRepository {
   /** The status of the code search index for this repository */
   code_search_index_status?: NullableRepositoryCodeSearchIndexStatus;
 }
-const NullableRepository = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<NullableRepository>;
-
 /** The default value for a squash merge commit title: - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit). */
 export type FullRepositorySquashMergeCommitTitle = "PR_TITLE" | "COMMIT_OR_PR_TITLE";
-const FullRepositorySquashMergeCommitTitle = S.String;
-
 /** The default value for a squash merge commit message: - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message. */
 export type FullRepositorySquashMergeCommitMessage = "PR_BODY" | "COMMIT_MESSAGES" | "BLANK";
-const FullRepositorySquashMergeCommitMessage = S.String;
-
 /** The default value for a merge commit title. - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name). */
 export type FullRepositoryMergeCommitTitle = "PR_TITLE" | "MERGE_MESSAGE";
-const FullRepositoryMergeCommitTitle = S.String;
-
 /** The default value for a merge commit message. - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message. */
 export type FullRepositoryMergeCommitMessage = "PR_BODY" | "PR_TITLE" | "BLANK";
-const FullRepositoryMergeCommitMessage = S.String;
-
 export type RepositoryPermissions = NullableRepositoryPermissions;
 export type RepositoryTopicsList = Array<string>;
-const RepositoryTopicsList =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<RepositoryTopicsList>;
-
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type RepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
-const RepositoryPullRequestCreationPolicy = S.String;
-
 /** The default value for a squash merge commit title: - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit). */
 export type RepositorySquashMergeCommitTitle = "PR_TITLE" | "COMMIT_OR_PR_TITLE";
-const RepositorySquashMergeCommitTitle = S.String;
-
 /** The default value for a squash merge commit message: - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message. */
 export type RepositorySquashMergeCommitMessage = "PR_BODY" | "COMMIT_MESSAGES" | "BLANK";
-const RepositorySquashMergeCommitMessage = S.String;
-
 /** The default value for a merge commit title. - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name). */
 export type RepositoryMergeCommitTitle = "PR_TITLE" | "MERGE_MESSAGE";
-const RepositoryMergeCommitTitle = S.String;
-
 /** The default value for a merge commit message. - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message. */
 export type RepositoryMergeCommitMessage = "PR_BODY" | "PR_TITLE" | "BLANK";
-const RepositoryMergeCommitMessage = S.String;
-
 /** The status of the code search index for this repository */
 export type RepositoryCodeSearchIndexStatus = NullableRepositoryCodeSearchIndexStatus;
 /** A repository on GitHub. */
@@ -2017,8 +1493,6 @@ export interface Repository {
   /** The status of the code search index for this repository */
   code_search_index_status?: NullableRepositoryCodeSearchIndexStatus;
 }
-const Repository = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<Repository>;
-
 /** Code of Conduct Simple */
 export interface CodeOfConductSimple {
   url: string;
@@ -2026,13 +1500,8 @@ export interface CodeOfConductSimple {
   name: string;
   html_url: string | null;
 }
-const CodeOfConductSimple = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<CodeOfConductSimple>;
-
 /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
 export type FullRepositoryCustomPropertiesMap = { [key: string]: unknown | undefined };
-const FullRepositoryCustomPropertiesMap =
-  MinimalRepositoryCustomPropertiesMap as any as S.Schema<FullRepositoryCustomPropertiesMap>;
-
 /** Full Repository */
 export interface FullRepository {
   id: number;
@@ -2151,8 +1620,6 @@ export interface FullRepository {
   /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
   custom_properties?: FullRepositoryCustomPropertiesMap;
 }
-const FullRepository = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<FullRepository>;
-
 export interface CreateForkRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -2165,36 +1632,19 @@ export interface CreateForkRequest {
   /** When forking from an existing repository, fork with only the default branch. */
   default_branch_only?: boolean;
 }
-const CreateForkRequest = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<CreateForkRequest>;
-
 export interface CreateForkResponse {}
-const CreateForkResponse = CancelPagesDeploymentResponse as any as S.Schema<CreateForkResponse>;
-
 /** The visibility of the repository. */
 export type CreateInOrgRequestVisibility = "public" | "private";
-const CreateInOrgRequestVisibility = S.String;
-
 /** Required when using `squash_merge_commit_message`. The default value for a squash merge commit title: - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit). */
 export type CreateInOrgRequestSquashMergeCommitTitle = "PR_TITLE" | "COMMIT_OR_PR_TITLE";
-const CreateInOrgRequestSquashMergeCommitTitle = S.String;
-
 /** The default value for a squash merge commit message: - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message. */
 export type CreateInOrgRequestSquashMergeCommitMessage = "PR_BODY" | "COMMIT_MESSAGES" | "BLANK";
-const CreateInOrgRequestSquashMergeCommitMessage = S.String;
-
 /** Required when using `merge_commit_message`. The default value for a merge commit title. - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name). */
 export type CreateInOrgRequestMergeCommitTitle = "PR_TITLE" | "MERGE_MESSAGE";
-const CreateInOrgRequestMergeCommitTitle = S.String;
-
 /** The default value for a merge commit message. - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message. */
 export type CreateInOrgRequestMergeCommitMessage = "PR_BODY" | "PR_TITLE" | "BLANK";
-const CreateInOrgRequestMergeCommitMessage = S.String;
-
 /** The custom properties for the new repository. The keys are the custom property names, and the values are the corresponding custom property values. */
 export type CreateInOrgRequestCustomPropertiesMap = { [key: string]: unknown | undefined };
-const CreateInOrgRequestCustomPropertiesMap =
-  MinimalRepositoryCustomPropertiesMap as any as S.Schema<CreateInOrgRequestCustomPropertiesMap>;
-
 export interface CreateInOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -2249,16 +1699,10 @@ export interface CreateInOrgRequest {
   /** The custom properties for the new repository. The keys are the custom property names, and the values are the corresponding custom property values. */
   custom_properties?: CreateInOrgRequestCustomPropertiesMap;
 }
-const CreateInOrgRequest = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<CreateInOrgRequest>;
-
 /** The target of the ruleset */
 export type CreateOrgRulesetRequestTarget = "branch" | "tag" | "push" | "repository";
-const CreateOrgRulesetRequestTarget = S.String;
-
 /** The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise). */
 export type RepositoryRuleEnforcement = "disabled" | "active" | "evaluate";
-const RepositoryRuleEnforcement = S.String;
-
 /** The type of actor that can bypass a ruleset. */
 export type RepositoryRulesetBypassActorActorType =
   | "Integration"
@@ -2267,12 +1711,8 @@ export type RepositoryRulesetBypassActorActorType =
   | "Team"
   | "DeployKey"
   | "User";
-const RepositoryRulesetBypassActorActorType = S.String;
-
 /** When the specified actor can bypass the ruleset. `pull_request` means that an actor can only bypass rules on pull requests. `pull_request` is not applicable for the `DeployKey` actor type. Also, `pull_request` is only applicable to branch rulesets. When `bypass_mode` is `exempt`, rules will not be run for that actor and a bypass audit entry will not be created. */
 export type RepositoryRulesetBypassActorBypassMode = "always" | "pull_request" | "exempt";
-const RepositoryRulesetBypassActorBypassMode = S.String;
-
 /** An actor that can bypass rules in a ruleset */
 export interface RepositoryRulesetBypassActor {
   /** The ID of the actor that can bypass a ruleset. Required for `Integration`, `RepositoryRole`, `Team`, and `User` actor types. If `actor_type` is `OrganizationAdmin`, `actor_id` is ignored. If `actor_type` is `DeployKey`, this should be null. `OrganizationAdmin` is not applicable for personal repositories. */
@@ -2282,39 +1722,18 @@ export interface RepositoryRulesetBypassActor {
   /** When the specified actor can bypass the ruleset. `pull_request` means that an actor can only bypass rules on pull requests. `pull_request` is not applicable for the `DeployKey` actor type. Also, `pull_request` is only applicable to branch rulesets. When `bypass_mode` is `exempt`, rules will not be run for that actor and a bypass audit entry will not be created. */
   bypass_mode?: RepositoryRulesetBypassActorBypassMode | (string & {});
 }
-const RepositoryRulesetBypassActor = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<RepositoryRulesetBypassActor>;
-
 /** The actors that can bypass the rules in this ruleset */
 export type CreateOrgRulesetRequestBypassActorsList = Array<RepositoryRulesetBypassActor>;
-const CreateOrgRulesetRequestBypassActorsList = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<CreateOrgRulesetRequestBypassActorsList>;
-
 /** Array of ref names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~DEFAULT_BRANCH` to include the default branch or `~ALL` to include all branches. */
 export type OrgRulesetConditionsCase0RefNameIncludeList = Array<string>;
-const OrgRulesetConditionsCase0RefNameIncludeList =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<OrgRulesetConditionsCase0RefNameIncludeList>;
-
 /** Array of ref names or patterns to exclude. The condition will not pass if any of these patterns match. */
 export type OrgRulesetConditionsCase0RefNameExcludeList = Array<string>;
-const OrgRulesetConditionsCase0RefNameExcludeList =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<OrgRulesetConditionsCase0RefNameExcludeList>;
-
 export interface OrgRulesetConditionsCase0RefName {
   /** Array of ref names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~DEFAULT_BRANCH` to include the default branch or `~ALL` to include all branches. */
   include?: OrgRulesetConditionsCase0RefNameIncludeList;
   /** Array of ref names or patterns to exclude. The condition will not pass if any of these patterns match. */
   exclude?: OrgRulesetConditionsCase0RefNameExcludeList;
 }
-const OrgRulesetConditionsCase0RefName = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<OrgRulesetConditionsCase0RefName>;
-
 /** Array of repository names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~ALL` to include all repositories. */
 export type OrgRulesetConditionsCase0RepositoryNameIncludeList = Array<string>;
 /** Array of repository names or patterns to exclude. The condition will not pass if any of these patterns match. */
@@ -2344,11 +1763,6 @@ export interface OrgRulesetConditionsCase1RefName {
 }
 /** The repository IDs that the ruleset applies to. One of these IDs must match for the condition to pass. */
 export type OrgRulesetConditionsCase1RepositoryIdRepositoryIdsList = Array<number>;
-const OrgRulesetConditionsCase1RepositoryIdRepositoryIdsList = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<OrgRulesetConditionsCase1RepositoryIdRepositoryIdsList>;
-
 export interface OrgRulesetConditionsCase1RepositoryId {
   /** The repository IDs that the ruleset applies to. One of these IDs must match for the condition to pass. */
   repository_ids?: OrgRulesetConditionsCase1RepositoryIdRepositoryIdsList;
@@ -2370,11 +1784,6 @@ export interface OrgRulesetConditionsCase2RefName {
 }
 /** The values to match for the repository property */
 export type RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList = Array<string>;
-const RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList>;
-
 /** The source of the repository property. Defaults to 'custom' if not specified. */
 export type RepositoryRulesetConditionsRepositoryPropertySpecSource = "custom" | "system";
 /** Parameters for a targeting a repository property */
@@ -2408,8 +1817,6 @@ export type OrgRulesetConditions =
   | OrgRulesetConditionsCase0
   | OrgRulesetConditionsCase1
   | OrgRulesetConditionsCase2;
-const OrgRulesetConditions = S.Unknown as any as S.Schema<OrgRulesetConditions>;
-
 export type RepositoryRuleCreationType = "creation";
 /** Only allow users with bypass permission to create matching refs. */
 export interface RepositoryRuleCreation {
@@ -2811,15 +2218,8 @@ export type OrgRules =
   | RepositoryRuleWorkflows
   | RepositoryRuleCodeScanning
   | RepositoryRuleCopilotCodeReview;
-const OrgRules = S.Unknown as any as S.Schema<OrgRules>;
-
 /** An array of rules within the ruleset. */
 export type CreateOrgRulesetRequestRulesList = Array<OrgRules>;
-const CreateOrgRulesetRequestRulesList = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<CreateOrgRulesetRequestRulesList>;
-
 export interface CreateOrgRulesetRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -2834,57 +2234,30 @@ export interface CreateOrgRulesetRequest {
   /** An array of rules within the ruleset. */
   rules?: CreateOrgRulesetRequestRulesList;
 }
-const CreateOrgRulesetRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<CreateOrgRulesetRequest>;
-
 /** The target of the ruleset */
 export type RepositoryRulesetTarget = "branch" | "tag" | "push" | "repository";
-const RepositoryRulesetTarget = S.String;
-
 /** The type of the source of the ruleset */
 export type RepositoryRulesetSourceType = "Repository" | "Organization" | "Enterprise";
-const RepositoryRulesetSourceType = S.String;
-
 /** The actors that can bypass the rules in this ruleset */
 export type RepositoryRulesetBypassActorsList = Array<RepositoryRulesetBypassActor>;
-const RepositoryRulesetBypassActorsList =
-  CreateOrgRulesetRequestBypassActorsList as any as S.Schema<RepositoryRulesetBypassActorsList>;
-
 /** The bypass type of the user making the API request for this ruleset. This field is only returned when querying the repository-level endpoint. */
 export type RepositoryRulesetCurrentUserCanBypass =
   | "always"
   | "pull_requests_only"
   | "never"
   | "exempt";
-const RepositoryRulesetCurrentUserCanBypass = S.String;
-
 export interface RepositoryRulesetLinksSelf {
   /** The URL of the ruleset */
   href?: string;
 }
-const RepositoryRulesetLinksSelf = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<RepositoryRulesetLinksSelf>;
-
 export interface RepositoryRulesetLinksHtml {
   /** The html URL of the ruleset */
   href?: string;
 }
-const RepositoryRulesetLinksHtml =
-  RepositoryRulesetLinksSelf as any as S.Schema<RepositoryRulesetLinksHtml>;
-
 export interface RepositoryRulesetLinks {
   self?: RepositoryRulesetLinksSelf;
   html?: RepositoryRulesetLinksHtml | null;
 }
-const RepositoryRulesetLinks = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<RepositoryRulesetLinks>;
-
 /** Array of ref names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~DEFAULT_BRANCH` to include the default branch or `~ALL` to include all branches. */
 export type RepositoryRulesetConditionsRefNameIncludeList = Array<string>;
 /** Array of ref names or patterns to exclude. The condition will not pass if any of these patterns match. */
@@ -2895,21 +2268,11 @@ export interface RepositoryRulesetConditionsRefName {
   /** Array of ref names or patterns to exclude. The condition will not pass if any of these patterns match. */
   exclude?: RepositoryRulesetConditionsRefNameExcludeList;
 }
-const RepositoryRulesetConditionsRefName =
-  OrgRulesetConditionsCase0RefName as any as S.Schema<RepositoryRulesetConditionsRefName>;
-
 /** Parameters for a repository ruleset ref name condition */
 export interface RepositoryRulesetConditions {
   ref_name?: RepositoryRulesetConditionsRefName;
 }
-const RepositoryRulesetConditions = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<RepositoryRulesetConditions>;
-
 export type RepositoryRulesetConditions2 = RepositoryRulesetConditions | OrgRulesetConditions;
-const RepositoryRulesetConditions2 = S.Unknown as any as S.Schema<RepositoryRulesetConditions2>;
-
 export type RepositoryRuleMergeQueueType = "merge_queue";
 /** When set to ALLGREEN, the merge commit created by merge queue for each PR in the group must pass all required checks to merge. When set to HEADGREEN, only the commit at the head of the merge group, i.e. the commit containing changes from all of the PRs in the group, must pass its required checks to merge. */
 export type RepositoryRuleMergeQueueParametersGroupingStrategy = "ALLGREEN" | "HEADGREEN";
@@ -2992,14 +2355,7 @@ export type RepositoryRule =
   | RepositoryRuleMaxFilePathLength
   | RepositoryRuleFileExtensionRestriction
   | RepositoryRuleMaxFileSize;
-const RepositoryRule = S.Unknown as any as S.Schema<RepositoryRule>;
-
 export type RepositoryRulesetRulesList = Array<RepositoryRule>;
-const RepositoryRulesetRulesList = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<RepositoryRulesetRulesList>;
-
 /** A set of rules to apply when specified conditions are met. */
 export interface RepositoryRuleset {
   /** The ID of the ruleset */
@@ -3024,30 +2380,16 @@ export interface RepositoryRuleset {
   created_at?: string;
   updated_at?: string;
 }
-const RepositoryRuleset = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<RepositoryRuleset>;
-
 /** The type of reviewer. */
 export type DeploymentReviewerType = "User" | "Team";
-const DeploymentReviewerType = S.String;
-
 export interface CreateOrUpdateEnvironmentRequestReviewersItem {
   type?: DeploymentReviewerType | (string & {});
   /** The id of the user or team who can review the deployment */
   id?: number;
 }
-const CreateOrUpdateEnvironmentRequestReviewersItem = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<CreateOrUpdateEnvironmentRequestReviewersItem>;
-
 /** The people or teams that may review jobs that reference the environment. You can list up to six users or teams as reviewers. The reviewers must have at least read access to the repository. Only one of the required reviewers needs to approve the job for it to proceed. */
 export type CreateOrUpdateEnvironmentRequestReviewersList =
   Array<CreateOrUpdateEnvironmentRequestReviewersItem>;
-const CreateOrUpdateEnvironmentRequestReviewersList = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<CreateOrUpdateEnvironmentRequestReviewersList>;
-
 /** The type of deployment branch policy for this environment. To allow all branches to deploy, set to `null`. */
 export interface DeploymentBranchPolicySettings {
   /** Whether only branches with branch protection rules can deploy to this environment. If `protected_branches` is `true`, `custom_branch_policies` must be `false`; if `protected_branches` is `false`, `custom_branch_policies` must be `true`. */
@@ -3055,11 +2397,6 @@ export interface DeploymentBranchPolicySettings {
   /** Whether only branches that match the specified name patterns can deploy to this environment. If `custom_branch_policies` is `true`, `protected_branches` must be `false`; if `custom_branch_policies` is `false`, `protected_branches` must be `true`. */
   custom_branch_policies: boolean;
 }
-const DeploymentBranchPolicySettings = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<DeploymentBranchPolicySettings>;
-
 export interface CreateOrUpdateEnvironmentRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -3073,11 +2410,6 @@ export interface CreateOrUpdateEnvironmentRequest {
   reviewers?: CreateOrUpdateEnvironmentRequestReviewersList | null;
   deployment_branch_policy?: DeploymentBranchPolicySettings | null;
 }
-const CreateOrUpdateEnvironmentRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<CreateOrUpdateEnvironmentRequest>;
-
 export interface EnvironmentProtectionRulesItemCase0 {
   id: number;
   node_id: string;
@@ -3110,15 +2442,8 @@ export type EnvironmentProtectionRulesItem =
   | EnvironmentProtectionRulesItemCase0
   | EnvironmentProtectionRulesItemCase1
   | EnvironmentProtectionRulesItemCase2;
-const EnvironmentProtectionRulesItem = S.Unknown as any as S.Schema<EnvironmentProtectionRulesItem>;
-
 /** Built-in deployment protection rules for the environment. */
 export type EnvironmentProtectionRulesList = Array<EnvironmentProtectionRulesItem>;
-const EnvironmentProtectionRulesList = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<EnvironmentProtectionRulesList>;
-
 /** Details of a deployment environment */
 export interface Environment {
   /** The id of the environment. */
@@ -3136,8 +2461,6 @@ export interface Environment {
   protection_rules?: EnvironmentProtectionRulesList;
   deployment_branch_policy?: DeploymentBranchPolicySettings | null;
 }
-const Environment = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<Environment>;
-
 /** The person that committed the file. Default: the authenticated user. */
 export interface CreateOrUpdateFileContentsRequestCommitter {
   /** The name of the author or committer of the commit. You'll receive a `422` status code if `name` is omitted. */
@@ -3146,11 +2469,6 @@ export interface CreateOrUpdateFileContentsRequestCommitter {
   email: string;
   date?: string;
 }
-const CreateOrUpdateFileContentsRequestCommitter = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<CreateOrUpdateFileContentsRequestCommitter>;
-
 /** The author of the file. Default: The `committer` or the authenticated user if you omit `committer`. */
 export type CreateOrUpdateFileContentsRequestAuthor = CreateOrUpdateFileContentsRequestCommitter;
 export interface CreateOrUpdateFileContentsRequest {
@@ -3173,21 +2491,11 @@ export interface CreateOrUpdateFileContentsRequest {
   /** The author of the file. Default: The `committer` or the authenticated user if you omit `committer`. */
   author?: CreateOrUpdateFileContentsRequestCommitter;
 }
-const CreateOrUpdateFileContentsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<CreateOrUpdateFileContentsRequest>;
-
 export interface FileCommitContentLinks {
   self?: string;
   git?: string;
   html?: string;
 }
-const FileCommitContentLinks = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<FileCommitContentLinks>;
-
 export interface FileCommitContent {
   name?: string;
   path?: string;
@@ -3200,44 +2508,22 @@ export interface FileCommitContent {
   type?: string;
   _links?: FileCommitContentLinks;
 }
-const FileCommitContent = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<FileCommitContent>;
-
 export interface FileCommitCommitAuthor {
   date?: string;
   name?: string;
   email?: string;
 }
-const FileCommitCommitAuthor = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<FileCommitCommitAuthor>;
-
 export type FileCommitCommitCommitter = FileCommitCommitAuthor;
 export interface FileCommitCommitTree {
   url?: string;
   sha?: string;
 }
-const FileCommitCommitTree = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<FileCommitCommitTree>;
-
 export interface FileCommitCommitParentsItem {
   url?: string;
   html_url?: string;
   sha?: string;
 }
-const FileCommitCommitParentsItem = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<FileCommitCommitParentsItem>;
-
 export type FileCommitCommitParentsList = Array<FileCommitCommitParentsItem>;
-const FileCommitCommitParentsList = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<FileCommitCommitParentsList>;
-
 export interface FileCommitCommitVerification {
   verified?: boolean;
   reason?: string;
@@ -3245,11 +2531,6 @@ export interface FileCommitCommitVerification {
   payload?: string | null;
   verified_at?: string | null;
 }
-const FileCommitCommitVerification = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<FileCommitCommitVerification>;
-
 export interface FileCommitCommit {
   sha?: string;
   node_id?: string;
@@ -3262,15 +2543,11 @@ export interface FileCommitCommit {
   parents?: FileCommitCommitParentsList;
   verification?: FileCommitCommitVerification;
 }
-const FileCommitCommit = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<FileCommitCommit>;
-
 /** File Commit */
 export interface FileCommit {
   content: FileCommitContent | null;
   commit: FileCommitCommit;
 }
-const FileCommit = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<FileCommit>;
-
 export interface CreatePagesDeploymentRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -3287,15 +2564,8 @@ export interface CreatePagesDeploymentRequest {
   /** The OIDC token issued by GitHub Actions certifying the origin of the deployment. */
   oidc_token: string;
 }
-const CreatePagesDeploymentRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<CreatePagesDeploymentRequest>;
-
 /** The ID of the GitHub Pages deployment. This is the Git SHA of the deployed commit. */
 export type PageDeploymentId = number | string;
-const PageDeploymentId = S.Unknown as any as S.Schema<PageDeploymentId>;
-
 /** The GitHub Pages deployment status. */
 export interface PageDeployment {
   /** The ID of the GitHub Pages deployment. This is the Git SHA of the deployed commit. */
@@ -3307,16 +2577,10 @@ export interface PageDeployment {
   /** The URI to the deployed GitHub Pages preview. */
   preview_url?: string;
 }
-const PageDeployment = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<PageDeployment>;
-
 /** The process in which the Page will be built. Possible values are `"legacy"` and `"workflow"`. */
 export type CreatePagesSiteRequestBuildType = "legacy" | "workflow";
-const CreatePagesSiteRequestBuildType = S.String;
-
 /** The repository directory that includes the source files for the Pages site. Allowed paths are `/` or `/docs`. Default: `/` */
 export type CreatePagesSiteRequestSourcePath = "/" | "/docs";
-const CreatePagesSiteRequestSourcePath = S.String;
-
 /** The source branch and directory used to publish your Pages site. */
 export interface CreatePagesSiteRequestSource {
   /** The repository branch used to publish your site's source files. */
@@ -3324,11 +2588,6 @@ export interface CreatePagesSiteRequestSource {
   /** The repository directory that includes the source files for the Pages site. Allowed paths are `/` or `/docs`. Default: `/` */
   path?: CreatePagesSiteRequestSourcePath | (string & {});
 }
-const CreatePagesSiteRequestSource = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<CreatePagesSiteRequestSource>;
-
 export interface CreatePagesSiteRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -3339,29 +2598,16 @@ export interface CreatePagesSiteRequest {
   /** The source branch and directory used to publish your Pages site. */
   source?: CreatePagesSiteRequestSource;
 }
-const CreatePagesSiteRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<CreatePagesSiteRequest>;
-
 /** The status of the most recent build of the Page. */
 export type PageStatus = "built" | "building" | "errored";
-const PageStatus = S.String;
-
 /** The state if the domain is verified */
 export type PageProtectedDomainState = "pending" | "verified" | "unverified";
-const PageProtectedDomainState = S.String;
-
 /** The process in which the Page will be built. */
 export type PageBuildType = "legacy" | "workflow";
-const PageBuildType = S.String;
-
 export interface PagesSourceHash {
   branch: string;
   path: string;
 }
-const PagesSourceHash = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<PagesSourceHash>;
-
 export type PagesHttpsCertificateState =
   | "new"
   | "authorization_created"
@@ -3375,13 +2621,8 @@ export type PagesHttpsCertificateState =
   | "bad_authz"
   | "destroy_pending"
   | "dns_changed";
-const PagesHttpsCertificateState = S.String;
-
 /** Array of the domain set and its alternate name (if it is configured) */
 export type PagesHttpsCertificateDomainsList = Array<string>;
-const PagesHttpsCertificateDomainsList =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<PagesHttpsCertificateDomainsList>;
-
 export interface PagesHttpsCertificate {
   state: PagesHttpsCertificateState;
   description: string;
@@ -3389,11 +2630,6 @@ export interface PagesHttpsCertificate {
   domains: PagesHttpsCertificateDomainsList;
   expires_at?: string;
 }
-const PagesHttpsCertificate = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<PagesHttpsCertificate>;
-
 /** The configuration for GitHub Pages for a repository. */
 export interface Page {
   /** The API address for accessing this Page resource. */
@@ -3419,12 +2655,8 @@ export interface Page {
   /** Whether https is enabled on the domain */
   https_enforced?: boolean;
 }
-const Page = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<Page>;
-
 /** Specifies whether this release should be set as the latest release for the repository. Drafts and prereleases cannot be set as latest. Defaults to `true` for newly published releases. `legacy` specifies that the latest release should be determined based on the release creation date and higher semantic version. */
 export type CreateReleaseRequestMakeLatest = "true" | "false" | "legacy";
-const CreateReleaseRequestMakeLatest = S.String;
-
 export interface CreateReleaseRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -3449,15 +2681,8 @@ export interface CreateReleaseRequest {
   /** Specifies whether this release should be set as the latest release for the repository. Drafts and prereleases cannot be set as latest. Defaults to `true` for newly published releases. `legacy` specifies that the latest release should be determined based on the release creation date and higher semantic version. */
   make_latest?: CreateReleaseRequestMakeLatest | (string & {});
 }
-const CreateReleaseRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<CreateReleaseRequest>;
-
 /** State of the release asset. */
 export type ReleaseAssetState = "uploaded" | "open";
-const ReleaseAssetState = S.String;
-
 /** Data related to a release. */
 export interface ReleaseAsset {
   url: string;
@@ -3477,11 +2702,7 @@ export interface ReleaseAsset {
   updated_at: string;
   uploader: SimpleUser | null;
 }
-const ReleaseAsset = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<ReleaseAsset>;
-
 export type ReleaseAssetsList = Array<ReleaseAsset>;
-const ReleaseAssetsList = /*@__PURE__*/ __L.at(__c16, 7) as any as S.Schema<ReleaseAssetsList>;
-
 /** A release. */
 export interface Release {
   url: string;
@@ -3516,22 +2737,12 @@ export interface Release {
   discussion_url?: string;
   reactions?: ReactionRollup;
 }
-const Release = /*@__PURE__*/ __L.at(__c17, 0) as any as S.Schema<Release>;
-
 /** The target of the ruleset */
 export type CreateRepoRulesetRequestTarget = "branch" | "tag" | "push";
-const CreateRepoRulesetRequestTarget = S.String;
-
 /** The actors that can bypass the rules in this ruleset */
 export type CreateRepoRulesetRequestBypassActorsList = Array<RepositoryRulesetBypassActor>;
-const CreateRepoRulesetRequestBypassActorsList =
-  CreateOrgRulesetRequestBypassActorsList as any as S.Schema<CreateRepoRulesetRequestBypassActorsList>;
-
 /** An array of rules within the ruleset. */
 export type CreateRepoRulesetRequestRulesList = Array<RepositoryRule>;
-const CreateRepoRulesetRequestRulesList =
-  RepositoryRulesetRulesList as any as S.Schema<CreateRepoRulesetRequestRulesList>;
-
 export interface CreateRepoRulesetRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -3548,11 +2759,6 @@ export interface CreateRepoRulesetRequest {
   /** An array of rules within the ruleset. */
   rules?: CreateRepoRulesetRequestRulesList;
 }
-const CreateRepoRulesetRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<CreateRepoRulesetRequest>;
-
 export interface CreateUsingTemplateRequest {
   /** The account owner of the template repository. The name is not case sensitive. */
   template_owner: string;
@@ -3569,14 +2775,7 @@ export interface CreateUsingTemplateRequest {
   /** Either `true` to create a new private repository or `false` to create a new public one. */
   private?: boolean;
 }
-const CreateUsingTemplateRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<CreateUsingTemplateRequest>;
-
 export type WebhookConfigInsecureSsl = string | number;
-const WebhookConfigInsecureSsl = S.Unknown as any as S.Schema<WebhookConfigInsecureSsl>;
-
 /** Key/value pairs to provide settings for this webhook. */
 export interface CreateWebhookRequestConfig {
   url?: string;
@@ -3584,16 +2783,8 @@ export interface CreateWebhookRequestConfig {
   secret?: string | Redacted.Redacted<string>;
   insecure_ssl?: WebhookConfigInsecureSsl;
 }
-const CreateWebhookRequestConfig = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<CreateWebhookRequestConfig>;
-
 /** Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered for. */
 export type CreateWebhookRequestEventsList = Array<string>;
-const CreateWebhookRequestEventsList =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<CreateWebhookRequestEventsList>;
-
 export interface CreateWebhookRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -3608,15 +2799,8 @@ export interface CreateWebhookRequest {
   /** Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications. */
   active?: boolean;
 }
-const CreateWebhookRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<CreateWebhookRequest>;
-
 /** Determines what events the hook is triggered for. Default: ['push']. */
 export type HookEventsList = Array<string>;
-const HookEventsList = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<HookEventsList>;
-
 /** Configuration object of the webhook */
 export interface WebhookConfig {
   url?: string;
@@ -3624,15 +2808,11 @@ export interface WebhookConfig {
   secret?: string | Redacted.Redacted<string>;
   insecure_ssl?: WebhookConfigInsecureSsl;
 }
-const WebhookConfig = /*@__PURE__*/ __L.at(__c17, 6) as any as S.Schema<WebhookConfig>;
-
 export interface HookResponse {
   code: number | null;
   status: string | null;
   message: string | null;
 }
-const HookResponse = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<HookResponse>;
-
 /** Webhooks for repositories. */
 export interface Hook {
   type: string;
@@ -3653,13 +2833,9 @@ export interface Hook {
   deliveries_url?: string;
   last_response: HookResponse;
 }
-const Hook = /*@__PURE__*/ __L.at(__c18, 0) as any as S.Schema<Hook>;
-
 export type CustomPropertyValueValueCase1List = Array<string>;
 /** The value assigned to the property */
 export type CustomPropertyValueValue = string | CustomPropertyValueValueCase1List;
-const CustomPropertyValueValue = S.Unknown as any as S.Schema<CustomPropertyValueValue>;
-
 /** Custom property name and associated value */
 export interface CustomPropertyValue {
   /** The name of the property */
@@ -3667,17 +2843,9 @@ export interface CustomPropertyValue {
   /** The value assigned to the property */
   value: CustomPropertyValueValue | null;
 }
-const CustomPropertyValue = /*@__PURE__*/ __L.at(__c18, 1) as any as S.Schema<CustomPropertyValue>;
-
 /** A list of custom property names and associated values to apply to the repositories. */
 export type CustomPropertiesForReposCreateOrUpdateRepositoryValuesRequestPropertiesList =
   Array<CustomPropertyValue>;
-const CustomPropertiesForReposCreateOrUpdateRepositoryValuesRequestPropertiesList =
-  /*@__PURE__*/ __L.at(
-    __c18,
-    2,
-  ) as any as S.Schema<CustomPropertiesForReposCreateOrUpdateRepositoryValuesRequestPropertiesList>;
-
 export interface CustomPropertiesForReposCreateOrUpdateRepositoryValuesRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -3686,66 +2854,29 @@ export interface CustomPropertiesForReposCreateOrUpdateRepositoryValuesRequest {
   /** A list of custom property names and associated values to apply to the repositories. */
   properties: CustomPropertiesForReposCreateOrUpdateRepositoryValuesRequestPropertiesList;
 }
-const CustomPropertiesForReposCreateOrUpdateRepositoryValuesRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<CustomPropertiesForReposCreateOrUpdateRepositoryValuesRequest>;
-
 export interface CustomPropertiesForReposCreateOrUpdateRepositoryValuesResponse {}
-const CustomPropertiesForReposCreateOrUpdateRepositoryValuesResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<CustomPropertiesForReposCreateOrUpdateRepositoryValuesResponse>;
-
 export interface CustomPropertiesForReposGetRepositoryValuesRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-const CustomPropertiesForReposGetRepositoryValuesRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<CustomPropertiesForReposGetRepositoryValuesRequest>;
-
 export type CustomPropertiesForReposGetRepositoryValuesResponseBodyList =
   Array<CustomPropertyValue>;
-const CustomPropertiesForReposGetRepositoryValuesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<CustomPropertiesForReposGetRepositoryValuesResponseBodyList>;
-
 export type CustomPropertiesForReposGetRepositoryValuesResponse =
   CustomPropertiesForReposGetRepositoryValuesResponseBodyList;
-const CustomPropertiesForReposGetRepositoryValuesResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<CustomPropertiesForReposGetRepositoryValuesResponse>;
-
 export interface DeclineInvitationForAuthenticatedUserRequest {
   /** The unique identifier of the invitation. */
   invitation_id: number;
 }
-const DeclineInvitationForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<DeclineInvitationForAuthenticatedUserRequest>;
-
 export interface DeclineInvitationForAuthenticatedUserResponse {}
-const DeclineInvitationForAuthenticatedUserResponse =
-  AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<DeclineInvitationForAuthenticatedUserResponse>;
-
 export interface DeleteRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-const DeleteRequest = /*@__PURE__*/ __L.at(__c19, 1) as any as S.Schema<DeleteRequest>;
-
 export interface DeleteResponse {}
-const DeleteResponse = CancelPagesDeploymentResponse as any as S.Schema<DeleteResponse>;
-
 export interface DeleteAccessRestrictionsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -3754,15 +2885,7 @@ export interface DeleteAccessRestrictionsRequest {
   /** The name of the branch. Cannot contain wildcard characters. To use wildcard characters in branch names, use [the GraphQL API](https://docs.github.com/graphql). */
   branch: string;
 }
-const DeleteAccessRestrictionsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<DeleteAccessRestrictionsRequest>;
-
 export interface DeleteAccessRestrictionsResponse {}
-const DeleteAccessRestrictionsResponse =
-  AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<DeleteAccessRestrictionsResponse>;
-
 export interface DeleteAdminBranchProtectionRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -3771,15 +2894,7 @@ export interface DeleteAdminBranchProtectionRequest {
   /** The name of the branch. Cannot contain wildcard characters. To use wildcard characters in branch names, use [the GraphQL API](https://docs.github.com/graphql). */
   branch: string;
 }
-const DeleteAdminBranchProtectionRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<DeleteAdminBranchProtectionRequest>;
-
 export interface DeleteAdminBranchProtectionResponse {}
-const DeleteAdminBranchProtectionResponse =
-  AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<DeleteAdminBranchProtectionResponse>;
-
 export interface DeleteAnEnvironmentRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -3788,15 +2903,7 @@ export interface DeleteAnEnvironmentRequest {
   /** The name of the environment. The name must be URL encoded. For example, any slashes in the name must be replaced with `%2F`. */
   environment_name: string;
 }
-const DeleteAnEnvironmentRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<DeleteAnEnvironmentRequest>;
-
 export interface DeleteAnEnvironmentResponse {}
-const DeleteAnEnvironmentResponse =
-  CancelPagesDeploymentResponse as any as S.Schema<DeleteAnEnvironmentResponse>;
-
 export interface DeleteAutolinkRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -3805,15 +2912,7 @@ export interface DeleteAutolinkRequest {
   /** The unique identifier of the autolink. */
   autolink_id: number;
 }
-const DeleteAutolinkRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<DeleteAutolinkRequest>;
-
 export interface DeleteAutolinkResponse {}
-const DeleteAutolinkResponse =
-  CancelPagesDeploymentResponse as any as S.Schema<DeleteAutolinkResponse>;
-
 export interface DeleteBranchProtectionRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -3822,15 +2921,7 @@ export interface DeleteBranchProtectionRequest {
   /** The name of the branch. Cannot contain wildcard characters. To use wildcard characters in branch names, use [the GraphQL API](https://docs.github.com/graphql). */
   branch: string;
 }
-const DeleteBranchProtectionRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<DeleteBranchProtectionRequest>;
-
 export interface DeleteBranchProtectionResponse {}
-const DeleteBranchProtectionResponse =
-  CancelPagesDeploymentResponse as any as S.Schema<DeleteBranchProtectionResponse>;
-
 export interface DeleteCommitCommentRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -3839,15 +2930,7 @@ export interface DeleteCommitCommentRequest {
   /** The unique identifier of the comment. */
   comment_id: number;
 }
-const DeleteCommitCommentRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<DeleteCommitCommentRequest>;
-
 export interface DeleteCommitCommentResponse {}
-const DeleteCommitCommentResponse =
-  CancelPagesDeploymentResponse as any as S.Schema<DeleteCommitCommentResponse>;
-
 export interface DeleteCommitSignatureProtectionRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -3856,15 +2939,7 @@ export interface DeleteCommitSignatureProtectionRequest {
   /** The name of the branch. Cannot contain wildcard characters. To use wildcard characters in branch names, use [the GraphQL API](https://docs.github.com/graphql). */
   branch: string;
 }
-const DeleteCommitSignatureProtectionRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<DeleteCommitSignatureProtectionRequest>;
-
 export interface DeleteCommitSignatureProtectionResponse {}
-const DeleteCommitSignatureProtectionResponse =
-  AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<DeleteCommitSignatureProtectionResponse>;
-
 export interface DeleteDeployKeyRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -3873,15 +2948,7 @@ export interface DeleteDeployKeyRequest {
   /** The unique identifier of the key. */
   key_id: number;
 }
-const DeleteDeployKeyRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<DeleteDeployKeyRequest>;
-
 export interface DeleteDeployKeyResponse {}
-const DeleteDeployKeyResponse =
-  CancelPagesDeploymentResponse as any as S.Schema<DeleteDeployKeyResponse>;
-
 export interface DeleteDeploymentRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -3890,15 +2957,7 @@ export interface DeleteDeploymentRequest {
   /** deployment_id parameter */
   deployment_id: number;
 }
-const DeleteDeploymentRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<DeleteDeploymentRequest>;
-
 export interface DeleteDeploymentResponse {}
-const DeleteDeploymentResponse =
-  CancelPagesDeploymentResponse as any as S.Schema<DeleteDeploymentResponse>;
-
 export interface DeleteDeploymentBranchPolicyRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -3909,15 +2968,7 @@ export interface DeleteDeploymentBranchPolicyRequest {
   /** The unique identifier of the branch policy. */
   branch_policy_id: number;
 }
-const DeleteDeploymentBranchPolicyRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<DeleteDeploymentBranchPolicyRequest>;
-
 export interface DeleteDeploymentBranchPolicyResponse {}
-const DeleteDeploymentBranchPolicyResponse =
-  AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<DeleteDeploymentBranchPolicyResponse>;
-
 /** object containing information about the committer. */
 export interface DeleteFileRequestCommitter {
   /** The name of the author (or committer) of the commit */
@@ -3925,11 +2976,6 @@ export interface DeleteFileRequestCommitter {
   /** The email of the author (or committer) of the commit */
   email?: string;
 }
-const DeleteFileRequestCommitter = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<DeleteFileRequestCommitter>;
-
 /** object containing information about the author. */
 export type DeleteFileRequestAuthor = DeleteFileRequestCommitter;
 export interface DeleteFileRequest {
@@ -3950,8 +2996,6 @@ export interface DeleteFileRequest {
   /** object containing information about the author. */
   author?: DeleteFileRequestCommitter;
 }
-const DeleteFileRequest = /*@__PURE__*/ __L.at(__c20, 5) as any as S.Schema<DeleteFileRequest>;
-
 export interface DeleteInvitationRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -3960,45 +3004,21 @@ export interface DeleteInvitationRequest {
   /** The unique identifier of the invitation. */
   invitation_id: number;
 }
-const DeleteInvitationRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<DeleteInvitationRequest>;
-
 export interface DeleteInvitationResponse {}
-const DeleteInvitationResponse =
-  CancelPagesDeploymentResponse as any as S.Schema<DeleteInvitationResponse>;
-
 export interface DeleteOrgRulesetRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The ID of the ruleset. */
   ruleset_id: number;
 }
-const DeleteOrgRulesetRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<DeleteOrgRulesetRequest>;
-
 export interface DeleteOrgRulesetResponse {}
-const DeleteOrgRulesetResponse =
-  CancelPagesDeploymentResponse as any as S.Schema<DeleteOrgRulesetResponse>;
-
 export interface DeletePagesSiteRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-const DeletePagesSiteRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<DeletePagesSiteRequest>;
-
 export interface DeletePagesSiteResponse {}
-const DeletePagesSiteResponse =
-  CancelPagesDeploymentResponse as any as S.Schema<DeletePagesSiteResponse>;
-
 export interface DeletePullRequestReviewProtectionRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -4007,15 +3027,7 @@ export interface DeletePullRequestReviewProtectionRequest {
   /** The name of the branch. Cannot contain wildcard characters. To use wildcard characters in branch names, use [the GraphQL API](https://docs.github.com/graphql). */
   branch: string;
 }
-const DeletePullRequestReviewProtectionRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<DeletePullRequestReviewProtectionRequest>;
-
 export interface DeletePullRequestReviewProtectionResponse {}
-const DeletePullRequestReviewProtectionResponse =
-  AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<DeletePullRequestReviewProtectionResponse>;
-
 export interface DeleteReleaseRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -4024,15 +3036,7 @@ export interface DeleteReleaseRequest {
   /** The unique identifier of the release. */
   release_id: number;
 }
-const DeleteReleaseRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<DeleteReleaseRequest>;
-
 export interface DeleteReleaseResponse {}
-const DeleteReleaseResponse =
-  CancelPagesDeploymentResponse as any as S.Schema<DeleteReleaseResponse>;
-
 export interface DeleteReleaseAssetRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -4041,15 +3045,7 @@ export interface DeleteReleaseAssetRequest {
   /** The unique identifier of the asset. */
   asset_id: number;
 }
-const DeleteReleaseAssetRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<DeleteReleaseAssetRequest>;
-
 export interface DeleteReleaseAssetResponse {}
-const DeleteReleaseAssetResponse =
-  CancelPagesDeploymentResponse as any as S.Schema<DeleteReleaseAssetResponse>;
-
 export interface DeleteRepoRulesetRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -4058,15 +3054,7 @@ export interface DeleteRepoRulesetRequest {
   /** The ID of the ruleset. */
   ruleset_id: number;
 }
-const DeleteRepoRulesetRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<DeleteRepoRulesetRequest>;
-
 export interface DeleteRepoRulesetResponse {}
-const DeleteRepoRulesetResponse =
-  CancelPagesDeploymentResponse as any as S.Schema<DeleteRepoRulesetResponse>;
-
 export interface DeleteWebhookRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -4075,30 +3063,14 @@ export interface DeleteWebhookRequest {
   /** The unique identifier of the hook. You can find this value in the `X-GitHub-Hook-ID` header of a webhook delivery. */
   hook_id: number;
 }
-const DeleteWebhookRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<DeleteWebhookRequest>;
-
 export interface DeleteWebhookResponse {}
-const DeleteWebhookResponse =
-  CancelPagesDeploymentResponse as any as S.Schema<DeleteWebhookResponse>;
-
 export interface DisableAutomatedSecurityFixesRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-const DisableAutomatedSecurityFixesRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<DisableAutomatedSecurityFixesRequest>;
-
 export interface DisableAutomatedSecurityFixesResponse {}
-const DisableAutomatedSecurityFixesResponse =
-  AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<DisableAutomatedSecurityFixesResponse>;
-
 export interface DisableDeploymentProtectionRuleRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -4109,60 +3081,28 @@ export interface DisableDeploymentProtectionRuleRequest {
   /** The unique identifier of the protection rule. */
   protection_rule_id: number;
 }
-const DisableDeploymentProtectionRuleRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<DisableDeploymentProtectionRuleRequest>;
-
 export interface DisableDeploymentProtectionRuleResponse {}
-const DisableDeploymentProtectionRuleResponse =
-  AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<DisableDeploymentProtectionRuleResponse>;
-
 export interface DisableImmutableReleasesRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-const DisableImmutableReleasesRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<DisableImmutableReleasesRequest>;
-
 export interface DisableImmutableReleasesResponse {}
-const DisableImmutableReleasesResponse =
-  AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<DisableImmutableReleasesResponse>;
-
 export interface DisablePrivateVulnerabilityReportingRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-const DisablePrivateVulnerabilityReportingRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<DisablePrivateVulnerabilityReportingRequest>;
-
 export interface DisablePrivateVulnerabilityReportingResponse {}
-const DisablePrivateVulnerabilityReportingResponse =
-  AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<DisablePrivateVulnerabilityReportingResponse>;
-
 export interface DisableVulnerabilityAlertsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-const DisableVulnerabilityAlertsRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<DisableVulnerabilityAlertsRequest>;
-
 export interface DisableVulnerabilityAlertsResponse {}
-const DisableVulnerabilityAlertsResponse =
-  AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<DisableVulnerabilityAlertsResponse>;
-
 export interface DownloadTarballArchiveRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -4170,15 +3110,7 @@ export interface DownloadTarballArchiveRequest {
   repo: string;
   ref: string;
 }
-const DownloadTarballArchiveRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<DownloadTarballArchiveRequest>;
-
 export interface DownloadTarballArchiveResponse {}
-const DownloadTarballArchiveResponse =
-  CancelPagesDeploymentResponse as any as S.Schema<DownloadTarballArchiveResponse>;
-
 export interface DownloadZipballArchiveRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -4186,77 +3118,35 @@ export interface DownloadZipballArchiveRequest {
   repo: string;
   ref: string;
 }
-const DownloadZipballArchiveRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<DownloadZipballArchiveRequest>;
-
 export interface DownloadZipballArchiveResponse {}
-const DownloadZipballArchiveResponse =
-  CancelPagesDeploymentResponse as any as S.Schema<DownloadZipballArchiveResponse>;
-
 export interface EnableAutomatedSecurityFixesRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-const EnableAutomatedSecurityFixesRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<EnableAutomatedSecurityFixesRequest>;
-
 export interface EnableAutomatedSecurityFixesResponse {}
-const EnableAutomatedSecurityFixesResponse =
-  AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<EnableAutomatedSecurityFixesResponse>;
-
 export interface EnableImmutableReleasesRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-const EnableImmutableReleasesRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<EnableImmutableReleasesRequest>;
-
 export interface EnableImmutableReleasesResponse {}
-const EnableImmutableReleasesResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<EnableImmutableReleasesResponse>;
-
 export interface EnablePrivateVulnerabilityReportingRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-const EnablePrivateVulnerabilityReportingRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<EnablePrivateVulnerabilityReportingRequest>;
-
 export interface EnablePrivateVulnerabilityReportingResponse {}
-const EnablePrivateVulnerabilityReportingResponse =
-  AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<EnablePrivateVulnerabilityReportingResponse>;
-
 export interface EnableVulnerabilityAlertsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-const EnableVulnerabilityAlertsRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<EnableVulnerabilityAlertsRequest>;
-
 export interface EnableVulnerabilityAlertsResponse {}
-const EnableVulnerabilityAlertsResponse =
-  AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<EnableVulnerabilityAlertsResponse>;
-
 export interface GenerateReleaseNotesRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -4271,11 +3161,6 @@ export interface GenerateReleaseNotesRequest {
   /** Specifies a path to a file in the repository containing configuration settings used for generating the release notes. If unspecified, the configuration file located in the repository at '.github/release.yml' or '.github/release.yaml' will be used. If that is not present, the default configuration will be used. */
   configuration_file_path?: string;
 }
-const GenerateReleaseNotesRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<GenerateReleaseNotesRequest>;
-
 /** Generated name and body describing a release */
 export interface ReleaseNotesContent {
   /** The generated name of the release */
@@ -4283,16 +3168,12 @@ export interface ReleaseNotesContent {
   /** The generated body describing the contents of the release supporting markdown formatting */
   body: string;
 }
-const ReleaseNotesContent = /*@__PURE__*/ __L.at(__c23, 3) as any as S.Schema<ReleaseNotesContent>;
-
 export interface GetRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-const GetRequest = /*@__PURE__*/ __L.at(__c23, 4) as any as S.Schema<GetRequest>;
-
 export interface GetAccessRestrictionsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -4301,11 +3182,6 @@ export interface GetAccessRestrictionsRequest {
   /** The name of the branch. Cannot contain wildcard characters. To use wildcard characters in branch names, use [the GraphQL API](https://docs.github.com/graphql). */
   branch: string;
 }
-const GetAccessRestrictionsRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<GetAccessRestrictionsRequest>;
-
 export interface BranchRestrictionPolicyUsersItem {
   login?: string;
   id?: number;
@@ -4327,21 +3203,8 @@ export interface BranchRestrictionPolicyUsersItem {
   site_admin?: boolean;
   user_view_type?: string;
 }
-const BranchRestrictionPolicyUsersItem = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<BranchRestrictionPolicyUsersItem>;
-
 export type BranchRestrictionPolicyUsersList = Array<BranchRestrictionPolicyUsersItem>;
-const BranchRestrictionPolicyUsersList = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<BranchRestrictionPolicyUsersList>;
-
 export type BranchRestrictionPolicyTeamsList = Array<Team>;
-const BranchRestrictionPolicyTeamsList =
-  AddTeamAccessRestrictionsResponseBodyList as any as S.Schema<BranchRestrictionPolicyTeamsList>;
-
 export interface BranchRestrictionPolicyAppsItemOwner {
   login?: string;
   id?: number;
@@ -4368,26 +3231,13 @@ export interface BranchRestrictionPolicyAppsItemOwner {
   site_admin?: boolean;
   user_view_type?: string;
 }
-const BranchRestrictionPolicyAppsItemOwner = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<BranchRestrictionPolicyAppsItemOwner>;
-
 export interface BranchRestrictionPolicyAppsItemPermissions {
   metadata?: string;
   contents?: string;
   issues?: string;
   single_file?: string;
 }
-const BranchRestrictionPolicyAppsItemPermissions = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<BranchRestrictionPolicyAppsItemPermissions>;
-
 export type BranchRestrictionPolicyAppsItemEventsList = Array<string>;
-const BranchRestrictionPolicyAppsItemEventsList =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<BranchRestrictionPolicyAppsItemEventsList>;
-
 export interface BranchRestrictionPolicyAppsItem {
   id?: number;
   slug?: string;
@@ -4403,17 +3253,7 @@ export interface BranchRestrictionPolicyAppsItem {
   permissions?: BranchRestrictionPolicyAppsItemPermissions;
   events?: BranchRestrictionPolicyAppsItemEventsList;
 }
-const BranchRestrictionPolicyAppsItem = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<BranchRestrictionPolicyAppsItem>;
-
 export type BranchRestrictionPolicyAppsList = Array<BranchRestrictionPolicyAppsItem>;
-const BranchRestrictionPolicyAppsList = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<BranchRestrictionPolicyAppsList>;
-
 /** Branch Restriction Policy */
 export interface BranchRestrictionPolicy {
   url: string;
@@ -4424,11 +3264,6 @@ export interface BranchRestrictionPolicy {
   teams: BranchRestrictionPolicyTeamsList;
   apps: BranchRestrictionPolicyAppsList;
 }
-const BranchRestrictionPolicy = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<BranchRestrictionPolicy>;
-
 export interface GetAdminBranchProtectionRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -4437,11 +3272,6 @@ export interface GetAdminBranchProtectionRequest {
   /** The name of the branch. Cannot contain wildcard characters. To use wildcard characters in branch names, use [the GraphQL API](https://docs.github.com/graphql). */
   branch: string;
 }
-const GetAdminBranchProtectionRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<GetAdminBranchProtectionRequest>;
-
 export interface GetAllDeploymentProtectionRulesRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -4450,29 +3280,13 @@ export interface GetAllDeploymentProtectionRulesRequest {
   /** The name of the environment. The name must be URL encoded. For example, any slashes in the name must be replaced with `%2F`. */
   environment_name: string;
 }
-const GetAllDeploymentProtectionRulesRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<GetAllDeploymentProtectionRulesRequest>;
-
 export type GetAllDeploymentProtectionRulesResponseCustomDeploymentProtectionRulesList =
   Array<DeploymentProtectionRule>;
-const GetAllDeploymentProtectionRulesResponseCustomDeploymentProtectionRulesList =
-  /*@__PURE__*/ __L.at(
-    __c24,
-    7,
-  ) as any as S.Schema<GetAllDeploymentProtectionRulesResponseCustomDeploymentProtectionRulesList>;
-
 export interface GetAllDeploymentProtectionRulesResponse {
   /** The number of enabled custom deployment protection rules for this environment */
   total_count?: number;
   custom_deployment_protection_rules?: GetAllDeploymentProtectionRulesResponseCustomDeploymentProtectionRulesList;
 }
-const GetAllDeploymentProtectionRulesResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<GetAllDeploymentProtectionRulesResponse>;
-
 export interface GetAllEnvironmentsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -4483,27 +3297,12 @@ export interface GetAllEnvironmentsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const GetAllEnvironmentsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<GetAllEnvironmentsRequest>;
-
 export type GetAllEnvironmentsResponseEnvironmentsList = Array<Environment>;
-const GetAllEnvironmentsResponseEnvironmentsList = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<GetAllEnvironmentsResponseEnvironmentsList>;
-
 export interface GetAllEnvironmentsResponse {
   /** The number of environments in this repository */
   total_count?: number;
   environments?: GetAllEnvironmentsResponseEnvironmentsList;
 }
-const GetAllEnvironmentsResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  3,
-) as any as S.Schema<GetAllEnvironmentsResponse>;
-
 export interface GetAllStatusCheckContextsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -4512,16 +3311,8 @@ export interface GetAllStatusCheckContextsRequest {
   /** The name of the branch. Cannot contain wildcard characters. To use wildcard characters in branch names, use [the GraphQL API](https://docs.github.com/graphql). */
   branch: string;
 }
-const GetAllStatusCheckContextsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  4,
-) as any as S.Schema<GetAllStatusCheckContextsRequest>;
-
 export type GetAllStatusCheckContextsResponseBodyList = Array<string>;
 export type GetAllStatusCheckContextsResponse = GetAllStatusCheckContextsResponseBodyList;
-const GetAllStatusCheckContextsResponse =
-  AddStatusCheckContextsResponse as any as S.Schema<GetAllStatusCheckContextsResponse>;
-
 export interface GetAllTopicsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -4532,17 +3323,11 @@ export interface GetAllTopicsRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
 }
-const GetAllTopicsRequest = /*@__PURE__*/ __L.at(__c25, 5) as any as S.Schema<GetAllTopicsRequest>;
-
 export type TopicNamesList = Array<string>;
-const TopicNamesList = HookEventsList as any as S.Schema<TopicNamesList>;
-
 /** A topic aggregates entities that are related to a subject. */
 export interface Topic {
   names: TopicNamesList;
 }
-const Topic = /*@__PURE__*/ __L.at(__c25, 6) as any as S.Schema<Topic>;
-
 export interface GetAppsWithAccessToProtectedBranchRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -4551,17 +3336,9 @@ export interface GetAppsWithAccessToProtectedBranchRequest {
   /** The name of the branch. Cannot contain wildcard characters. To use wildcard characters in branch names, use [the GraphQL API](https://docs.github.com/graphql). */
   branch: string;
 }
-const GetAppsWithAccessToProtectedBranchRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<GetAppsWithAccessToProtectedBranchRequest>;
-
 export type GetAppsWithAccessToProtectedBranchResponseBodyList = Array<Integration | null>;
 export type GetAppsWithAccessToProtectedBranchResponse =
   GetAppsWithAccessToProtectedBranchResponseBodyList;
-const GetAppsWithAccessToProtectedBranchResponse =
-  AddAppAccessRestrictionsResponse as any as S.Schema<GetAppsWithAccessToProtectedBranchResponse>;
-
 export interface GetAutolinkRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -4570,8 +3347,6 @@ export interface GetAutolinkRequest {
   /** The unique identifier of the autolink. */
   autolink_id: number;
 }
-const GetAutolinkRequest = /*@__PURE__*/ __L.at(__c26, 0) as any as S.Schema<GetAutolinkRequest>;
-
 export interface GetBranchRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -4580,37 +3355,17 @@ export interface GetBranchRequest {
   /** The name of the branch. Cannot contain wildcard characters. To use wildcard characters in branch names, use [the GraphQL API](https://docs.github.com/graphql). */
   branch: string;
 }
-const GetBranchRequest = /*@__PURE__*/ __L.at(__c26, 1) as any as S.Schema<GetBranchRequest>;
-
 export interface BranchWithProtectionLinks {
   html: string;
   self: string;
 }
-const BranchWithProtectionLinks = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<BranchWithProtectionLinks>;
-
 export type ProtectedBranchRequiredStatusCheckContextsList = Array<string>;
-const ProtectedBranchRequiredStatusCheckContextsList =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<ProtectedBranchRequiredStatusCheckContextsList>;
-
 export interface ProtectedBranchRequiredStatusCheckChecksItem {
   context: string;
   app_id: number | null;
 }
-const ProtectedBranchRequiredStatusCheckChecksItem = /*@__PURE__*/ __L.at(
-  __c26,
-  3,
-) as any as S.Schema<ProtectedBranchRequiredStatusCheckChecksItem>;
-
 export type ProtectedBranchRequiredStatusCheckChecksList =
   Array<ProtectedBranchRequiredStatusCheckChecksItem>;
-const ProtectedBranchRequiredStatusCheckChecksList = /*@__PURE__*/ __L.at(
-  __c26,
-  4,
-) as any as S.Schema<ProtectedBranchRequiredStatusCheckChecksList>;
-
 /** Protected Branch Required Status Check */
 export interface ProtectedBranchRequiredStatusCheck {
   url?: string;
@@ -4620,27 +3375,13 @@ export interface ProtectedBranchRequiredStatusCheck {
   contexts_url?: string;
   strict?: boolean;
 }
-const ProtectedBranchRequiredStatusCheck = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<ProtectedBranchRequiredStatusCheck>;
-
 /** The list of users with review dismissal access. */
 export type ProtectedBranchPullRequestReviewDismissalRestrictionsUsersList = Array<SimpleUser>;
-const ProtectedBranchPullRequestReviewDismissalRestrictionsUsersList =
-  AddUserAccessRestrictionsResponseBodyList as any as S.Schema<ProtectedBranchPullRequestReviewDismissalRestrictionsUsersList>;
-
 /** The list of teams with review dismissal access. */
 export type ProtectedBranchPullRequestReviewDismissalRestrictionsTeamsList = Array<Team>;
-const ProtectedBranchPullRequestReviewDismissalRestrictionsTeamsList =
-  AddTeamAccessRestrictionsResponseBodyList as any as S.Schema<ProtectedBranchPullRequestReviewDismissalRestrictionsTeamsList>;
-
 /** The list of apps with review dismissal access. */
 export type ProtectedBranchPullRequestReviewDismissalRestrictionsAppsList =
   Array<Integration | null>;
-const ProtectedBranchPullRequestReviewDismissalRestrictionsAppsList =
-  AddAppAccessRestrictionsResponseBodyList as any as S.Schema<ProtectedBranchPullRequestReviewDismissalRestrictionsAppsList>;
-
 export interface ProtectedBranchPullRequestReviewDismissalRestrictions {
   /** The list of users with review dismissal access. */
   users?: ProtectedBranchPullRequestReviewDismissalRestrictionsUsersList;
@@ -4652,34 +3393,14 @@ export interface ProtectedBranchPullRequestReviewDismissalRestrictions {
   users_url?: string;
   teams_url?: string;
 }
-const ProtectedBranchPullRequestReviewDismissalRestrictions = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<ProtectedBranchPullRequestReviewDismissalRestrictions>;
-
 /** The list of users allowed to bypass pull request requirements. */
 export type ProtectedBranchPullRequestReviewBypassPullRequestAllowancesUsersList =
   Array<SimpleUser>;
-const ProtectedBranchPullRequestReviewBypassPullRequestAllowancesUsersList = /*@__PURE__*/ __L.at(
-  __c26,
-  7,
-) as any as S.Schema<ProtectedBranchPullRequestReviewBypassPullRequestAllowancesUsersList>;
-
 /** The list of teams allowed to bypass pull request requirements. */
 export type ProtectedBranchPullRequestReviewBypassPullRequestAllowancesTeamsList = Array<Team>;
-const ProtectedBranchPullRequestReviewBypassPullRequestAllowancesTeamsList = /*@__PURE__*/ __L.at(
-  __c27,
-  0,
-) as any as S.Schema<ProtectedBranchPullRequestReviewBypassPullRequestAllowancesTeamsList>;
-
 /** The list of apps allowed to bypass pull request requirements. */
 export type ProtectedBranchPullRequestReviewBypassPullRequestAllowancesAppsList =
   Array<Integration | null>;
-const ProtectedBranchPullRequestReviewBypassPullRequestAllowancesAppsList = /*@__PURE__*/ __L.at(
-  __c27,
-  1,
-) as any as S.Schema<ProtectedBranchPullRequestReviewBypassPullRequestAllowancesAppsList>;
-
 /** Allow specific users, teams, or apps to bypass pull request requirements. */
 export interface ProtectedBranchPullRequestReviewBypassPullRequestAllowances {
   /** The list of users allowed to bypass pull request requirements. */
@@ -4689,11 +3410,6 @@ export interface ProtectedBranchPullRequestReviewBypassPullRequestAllowances {
   /** The list of apps allowed to bypass pull request requirements. */
   apps?: ProtectedBranchPullRequestReviewBypassPullRequestAllowancesAppsList;
 }
-const ProtectedBranchPullRequestReviewBypassPullRequestAllowances = /*@__PURE__*/ __L.at(
-  __c27,
-  2,
-) as any as S.Schema<ProtectedBranchPullRequestReviewBypassPullRequestAllowances>;
-
 /** Protected Branch Pull Request Review */
 export interface ProtectedBranchPullRequestReview {
   url?: string;
@@ -4706,19 +3422,9 @@ export interface ProtectedBranchPullRequestReview {
   /** Whether the most recent push must be approved by someone other than the person who pushed it. */
   require_last_push_approval?: boolean;
 }
-const ProtectedBranchPullRequestReview = /*@__PURE__*/ __L.at(
-  __c27,
-  3,
-) as any as S.Schema<ProtectedBranchPullRequestReview>;
-
 export interface BranchProtectionRequiredLinearHistory {
   enabled?: boolean;
 }
-const BranchProtectionRequiredLinearHistory = /*@__PURE__*/ __L.at(
-  __c27,
-  4,
-) as any as S.Schema<BranchProtectionRequiredLinearHistory>;
-
 export type BranchProtectionAllowForcePushes = BranchProtectionRequiredLinearHistory;
 export type BranchProtectionAllowDeletions = BranchProtectionRequiredLinearHistory;
 export type BranchProtectionBlockCreations = BranchProtectionRequiredLinearHistory;
@@ -4727,9 +3433,6 @@ export interface BranchProtectionRequiredSignatures {
   url: string;
   enabled: boolean;
 }
-const BranchProtectionRequiredSignatures =
-  ProtectedBranchAdminEnforced as any as S.Schema<BranchProtectionRequiredSignatures>;
-
 /** Whether to set the branch as read-only. If this is true, users will not be able to push to the branch. */
 export type BranchProtectionLockBranch = BranchProtectionRequiredLinearHistory;
 /** Whether users can pull changes from upstream when the branch is locked. Set to `true` to allow fork syncing. Set to `false` to prevent fork syncing. */
@@ -4755,8 +3458,6 @@ export interface BranchProtection {
   /** Whether users can pull changes from upstream when the branch is locked. Set to `true` to allow fork syncing. Set to `false` to prevent fork syncing. */
   allow_fork_syncing?: BranchProtectionRequiredLinearHistory;
 }
-const BranchProtection = /*@__PURE__*/ __L.at(__c27, 5) as any as S.Schema<BranchProtection>;
-
 /** Branch With Protection */
 export interface BranchWithProtection {
   name: string;
@@ -4768,11 +3469,6 @@ export interface BranchWithProtection {
   pattern?: string;
   required_approving_review_count?: number;
 }
-const BranchWithProtection = /*@__PURE__*/ __L.at(
-  __c27,
-  6,
-) as any as S.Schema<BranchWithProtection>;
-
 export interface GetBranchProtectionRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -4781,11 +3477,6 @@ export interface GetBranchProtectionRequest {
   /** The name of the branch. Cannot contain wildcard characters. To use wildcard characters in branch names, use [the GraphQL API](https://docs.github.com/graphql). */
   branch: string;
 }
-const GetBranchProtectionRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  7,
-) as any as S.Schema<GetBranchProtectionRequest>;
-
 export interface GetBranchRulesRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -4798,11 +3489,6 @@ export interface GetBranchRulesRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const GetBranchRulesRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  0,
-) as any as S.Schema<GetBranchRulesRequest>;
-
 export type RepositoryRuleDetailedCase0Type = "creation";
 /** The type of source for the ruleset that includes this rule. */
 export type RepositoryRuleDetailedCase0RulesetSourceType = "Repository" | "Organization";
@@ -5297,23 +3983,9 @@ export type RepositoryRuleDetailed =
   | RepositoryRuleDetailedCase20
   | RepositoryRuleDetailedCase21
   | RepositoryRuleDetailedCase22;
-const RepositoryRuleDetailed = S.Unknown as any as S.Schema<RepositoryRuleDetailed>;
-
 export type GetBranchRulesResponseBodyList = Array<RepositoryRuleDetailed>;
-const GetBranchRulesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c28,
-  1,
-) as any as S.Schema<GetBranchRulesResponseBodyList>;
-
 export type GetBranchRulesResponse = GetBranchRulesResponseBodyList;
-const GetBranchRulesResponse = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<GetBranchRulesResponse>;
-
 export type GetClonesRequestPer = "day" | "week";
-const GetClonesRequestPer = S.String;
-
 export interface GetClonesRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -5322,57 +3994,28 @@ export interface GetClonesRequest {
   /** The time frame to display results for. */
   per?: GetClonesRequestPer | (string & {});
 }
-const GetClonesRequest = /*@__PURE__*/ __L.at(__c28, 3) as any as S.Schema<GetClonesRequest>;
-
 export interface Traffic {
   timestamp: string;
   uniques: number;
   count: number;
 }
-const Traffic = /*@__PURE__*/ __L.at(__c28, 4) as any as S.Schema<Traffic>;
-
 export type CloneTrafficClonesList = Array<Traffic>;
-const CloneTrafficClonesList = /*@__PURE__*/ __L.at(
-  __c28,
-  5,
-) as any as S.Schema<CloneTrafficClonesList>;
-
 /** Clone Traffic */
 export interface CloneTraffic {
   count: number;
   uniques: number;
   clones: CloneTrafficClonesList;
 }
-const CloneTraffic = /*@__PURE__*/ __L.at(__c28, 6) as any as S.Schema<CloneTraffic>;
-
 export interface GetCodeFrequencyStatsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-const GetCodeFrequencyStatsRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  7,
-) as any as S.Schema<GetCodeFrequencyStatsRequest>;
-
 /** Code Frequency Stat */
 export type CodeFrequencyStat = Array<number>;
-const CodeFrequencyStat =
-  OrgRulesetConditionsCase1RepositoryIdRepositoryIdsList as any as S.Schema<CodeFrequencyStat>;
-
 export type GetCodeFrequencyStatsResponseBodyList = Array<CodeFrequencyStat>;
-const GetCodeFrequencyStatsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c29,
-  0,
-) as any as S.Schema<GetCodeFrequencyStatsResponseBodyList>;
-
 export type GetCodeFrequencyStatsResponse = GetCodeFrequencyStatsResponseBodyList;
-const GetCodeFrequencyStatsResponse = /*@__PURE__*/ __L.at(
-  __c29,
-  1,
-) as any as S.Schema<GetCodeFrequencyStatsResponse>;
-
 export interface GetCollaboratorPermissionLevelRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -5381,11 +4024,6 @@ export interface GetCollaboratorPermissionLevelRequest {
   /** The handle for the GitHub user account. */
   username: string;
 }
-const GetCollaboratorPermissionLevelRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  2,
-) as any as S.Schema<GetCollaboratorPermissionLevelRequest>;
-
 export interface NullableCollaboratorPermissions {
   pull: boolean;
   triage?: boolean;
@@ -5393,11 +4031,6 @@ export interface NullableCollaboratorPermissions {
   maintain?: boolean;
   admin: boolean;
 }
-const NullableCollaboratorPermissions = /*@__PURE__*/ __L.at(
-  __c29,
-  3,
-) as any as S.Schema<NullableCollaboratorPermissions>;
-
 /** Collaborator */
 export interface NullableCollaborator {
   login: string;
@@ -5424,22 +4057,12 @@ export interface NullableCollaborator {
   role_name: string;
   user_view_type?: string;
 }
-const NullableCollaborator = /*@__PURE__*/ __L.at(
-  __c29,
-  4,
-) as any as S.Schema<NullableCollaborator>;
-
 /** Repository Collaborator Permission */
 export interface RepositoryCollaboratorPermission {
   permission: string;
   role_name: string;
   user: NullableCollaborator | null;
 }
-const RepositoryCollaboratorPermission = /*@__PURE__*/ __L.at(
-  __c29,
-  5,
-) as any as S.Schema<RepositoryCollaboratorPermission>;
-
 export interface GetCombinedStatusForRefRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -5452,11 +4075,6 @@ export interface GetCombinedStatusForRefRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const GetCombinedStatusForRefRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  6,
-) as any as S.Schema<GetCombinedStatusForRefRequest>;
-
 export interface SimpleCommitStatus {
   description: string | null;
   id: number;
@@ -5470,14 +4088,7 @@ export interface SimpleCommitStatus {
   created_at: string;
   updated_at: string;
 }
-const SimpleCommitStatus = /*@__PURE__*/ __L.at(__c29, 7) as any as S.Schema<SimpleCommitStatus>;
-
 export type CombinedCommitStatusStatusesList = Array<SimpleCommitStatus>;
-const CombinedCommitStatusStatusesList = /*@__PURE__*/ __L.at(
-  __c30,
-  0,
-) as any as S.Schema<CombinedCommitStatusStatusesList>;
-
 /** Combined Commit Status */
 export interface CombinedCommitStatus {
   state: string;
@@ -5488,11 +4099,6 @@ export interface CombinedCommitStatus {
   commit_url: string;
   url: string;
 }
-const CombinedCommitStatus = /*@__PURE__*/ __L.at(
-  __c30,
-  1,
-) as any as S.Schema<CombinedCommitStatus>;
-
 export interface GetCommitRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -5505,43 +4111,21 @@ export interface GetCommitRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
 }
-const GetCommitRequest = /*@__PURE__*/ __L.at(__c30, 2) as any as S.Schema<GetCommitRequest>;
-
 export interface GetCommitActivityStatsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-const GetCommitActivityStatsRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  3,
-) as any as S.Schema<GetCommitActivityStatsRequest>;
-
 export type CommitActivityDaysList = Array<number>;
-const CommitActivityDaysList =
-  OrgRulesetConditionsCase1RepositoryIdRepositoryIdsList as any as S.Schema<CommitActivityDaysList>;
-
 /** Commit Activity */
 export interface CommitActivity {
   days: CommitActivityDaysList;
   total: number;
   week: number;
 }
-const CommitActivity = /*@__PURE__*/ __L.at(__c30, 4) as any as S.Schema<CommitActivity>;
-
 export type GetCommitActivityStatsResponseBodyList = Array<CommitActivity>;
-const GetCommitActivityStatsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c30,
-  5,
-) as any as S.Schema<GetCommitActivityStatsResponseBodyList>;
-
 export type GetCommitActivityStatsResponse = GetCommitActivityStatsResponseBodyList;
-const GetCommitActivityStatsResponse = /*@__PURE__*/ __L.at(
-  __c30,
-  6,
-) as any as S.Schema<GetCommitActivityStatsResponse>;
-
 export interface GetCommitCommentRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -5550,11 +4134,6 @@ export interface GetCommitCommentRequest {
   /** The unique identifier of the comment. */
   comment_id: number;
 }
-const GetCommitCommentRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  7,
-) as any as S.Schema<GetCommitCommentRequest>;
-
 export interface GetCommitSignatureProtectionRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -5563,33 +4142,18 @@ export interface GetCommitSignatureProtectionRequest {
   /** The name of the branch. Cannot contain wildcard characters. To use wildcard characters in branch names, use [the GraphQL API](https://docs.github.com/graphql). */
   branch: string;
 }
-const GetCommitSignatureProtectionRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  0,
-) as any as S.Schema<GetCommitSignatureProtectionRequest>;
-
 export interface GetCommunityProfileMetricsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-const GetCommunityProfileMetricsRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  1,
-) as any as S.Schema<GetCommunityProfileMetricsRequest>;
-
 /** Code of Conduct Simple */
 export type NullableCodeOfConductSimple = CodeOfConductSimple;
 export interface NullableCommunityHealthFile {
   url: string;
   html_url: string;
 }
-const NullableCommunityHealthFile = /*@__PURE__*/ __L.at(
-  __c31,
-  2,
-) as any as S.Schema<NullableCommunityHealthFile>;
-
 export interface CommunityProfileFiles {
   code_of_conduct: CodeOfConductSimple | null;
   code_of_conduct_file: NullableCommunityHealthFile | null;
@@ -5599,11 +4163,6 @@ export interface CommunityProfileFiles {
   issue_template: NullableCommunityHealthFile | null;
   pull_request_template: NullableCommunityHealthFile | null;
 }
-const CommunityProfileFiles = /*@__PURE__*/ __L.at(
-  __c31,
-  3,
-) as any as S.Schema<CommunityProfileFiles>;
-
 /** Community Profile */
 export interface CommunityProfile {
   health_percentage: number;
@@ -5613,8 +4172,6 @@ export interface CommunityProfile {
   updated_at: string | null;
   content_reports_enabled?: boolean;
 }
-const CommunityProfile = /*@__PURE__*/ __L.at(__c31, 4) as any as S.Schema<CommunityProfile>;
-
 export interface GetContentRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -5625,19 +4182,12 @@ export interface GetContentRequest {
   /** The name of the commit/branch/tag. Default: the repository's default branch. */
   ref?: string;
 }
-const GetContentRequest = /*@__PURE__*/ __L.at(__c31, 5) as any as S.Schema<GetContentRequest>;
-
 export type ContentDirectoryItemType = "dir" | "file" | "submodule" | "symlink";
 export interface ContentDirectoryItemLinks {
   git: string | null;
   html: string | null;
   self: string;
 }
-const ContentDirectoryItemLinks = /*@__PURE__*/ __L.at(
-  __c31,
-  6,
-) as any as S.Schema<ContentDirectoryItemLinks>;
-
 export interface ContentDirectoryItem {
   type: ContentDirectoryItemType;
   size: number;
@@ -5654,8 +4204,6 @@ export interface ContentDirectoryItem {
 /** A list of directory items */
 export type ContentDirectory = Array<ContentDirectoryItem>;
 export type ContentFileType = "file";
-const ContentFileType = S.String;
-
 export type ContentFileLinks = ContentDirectoryItemLinks;
 /** Content File */
 export interface ContentFile {
@@ -5674,8 +4222,6 @@ export interface ContentFile {
   target?: string;
   submodule_git_url?: string;
 }
-const ContentFile = /*@__PURE__*/ __L.at(__c31, 7) as any as S.Schema<ContentFile>;
-
 export type ContentSymlinkType = "symlink";
 export type ContentSymlinkLinks = ContentDirectoryItemLinks;
 /** An object describing a symlink */
@@ -5713,59 +4259,28 @@ export type GetContentResponseBody =
   | ContentFile
   | ContentSymlink
   | ContentSubmodule;
-const GetContentResponseBody = S.Unknown as any as S.Schema<GetContentResponseBody>;
-
 export type GetContentResponse = GetContentResponseBody;
-const GetContentResponse = /*@__PURE__*/ __L.at(__c32, 0) as any as S.Schema<GetContentResponse>;
-
 export interface GetContributorsStatsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-const GetContributorsStatsRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  1,
-) as any as S.Schema<GetContributorsStatsRequest>;
-
 export interface ContributorActivityWeeksItem {
   w?: number;
   a?: number;
   d?: number;
   c?: number;
 }
-const ContributorActivityWeeksItem = /*@__PURE__*/ __L.at(
-  __c32,
-  2,
-) as any as S.Schema<ContributorActivityWeeksItem>;
-
 export type ContributorActivityWeeksList = Array<ContributorActivityWeeksItem>;
-const ContributorActivityWeeksList = /*@__PURE__*/ __L.at(
-  __c32,
-  3,
-) as any as S.Schema<ContributorActivityWeeksList>;
-
 /** Contributor Activity */
 export interface ContributorActivity {
   author: SimpleUser | null;
   total: number;
   weeks: ContributorActivityWeeksList;
 }
-const ContributorActivity = /*@__PURE__*/ __L.at(__c32, 4) as any as S.Schema<ContributorActivity>;
-
 export type GetContributorsStatsResponseBodyList = Array<ContributorActivity>;
-const GetContributorsStatsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c32,
-  5,
-) as any as S.Schema<GetContributorsStatsResponseBodyList>;
-
 export type GetContributorsStatsResponse = GetContributorsStatsResponseBodyList;
-const GetContributorsStatsResponse = /*@__PURE__*/ __L.at(
-  __c32,
-  6,
-) as any as S.Schema<GetContributorsStatsResponse>;
-
 export interface GetCustomDeploymentProtectionRuleRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -5776,11 +4291,6 @@ export interface GetCustomDeploymentProtectionRuleRequest {
   /** The unique identifier of the protection rule. */
   protection_rule_id: number;
 }
-const GetCustomDeploymentProtectionRuleRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  7,
-) as any as S.Schema<GetCustomDeploymentProtectionRuleRequest>;
-
 export interface GetDeployKeyRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -5789,8 +4299,6 @@ export interface GetDeployKeyRequest {
   /** The unique identifier of the key. */
   key_id: number;
 }
-const GetDeployKeyRequest = /*@__PURE__*/ __L.at(__c33, 0) as any as S.Schema<GetDeployKeyRequest>;
-
 export interface GetDeploymentRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -5799,11 +4307,6 @@ export interface GetDeploymentRequest {
   /** deployment_id parameter */
   deployment_id: number;
 }
-const GetDeploymentRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  1,
-) as any as S.Schema<GetDeploymentRequest>;
-
 export interface GetDeploymentBranchPolicyRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -5814,11 +4317,6 @@ export interface GetDeploymentBranchPolicyRequest {
   /** The unique identifier of the branch policy. */
   branch_policy_id: number;
 }
-const GetDeploymentBranchPolicyRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  2,
-) as any as S.Schema<GetDeploymentBranchPolicyRequest>;
-
 export interface GetDeploymentStatusRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -5828,11 +4326,6 @@ export interface GetDeploymentStatusRequest {
   deployment_id: number;
   status_id: number;
 }
-const GetDeploymentStatusRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  3,
-) as any as S.Schema<GetDeploymentStatusRequest>;
-
 export interface GetEnvironmentRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -5841,52 +4334,28 @@ export interface GetEnvironmentRequest {
   /** The name of the environment. The name must be URL encoded. For example, any slashes in the name must be replaced with `%2F`. */
   environment_name: string;
 }
-const GetEnvironmentRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  4,
-) as any as S.Schema<GetEnvironmentRequest>;
-
 export interface GetHashAlgorithmRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-const GetHashAlgorithmRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  5,
-) as any as S.Schema<GetHashAlgorithmRequest>;
-
 /** The Git hash algorithm used by this repository. */
 export type RepositoryHashAlgorithmHashAlgorithm = "sha1" | "sha256";
-const RepositoryHashAlgorithmHashAlgorithm = S.String;
-
 /** Repository hash algorithm */
 export interface RepositoryHashAlgorithm {
   /** The Git hash algorithm used by this repository. */
   hash_algorithm: RepositoryHashAlgorithmHashAlgorithm;
 }
-const RepositoryHashAlgorithm = /*@__PURE__*/ __L.at(
-  __c33,
-  6,
-) as any as S.Schema<RepositoryHashAlgorithm>;
-
 export interface GetLatestPagesBuildRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-const GetLatestPagesBuildRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  7,
-) as any as S.Schema<GetLatestPagesBuildRequest>;
-
 export interface PageBuildError {
   message: string | null;
 }
-const PageBuildError = /*@__PURE__*/ __L.at(__c34, 0) as any as S.Schema<PageBuildError>;
-
 /** Page Build */
 export interface PageBuild {
   url: string;
@@ -5898,30 +4367,18 @@ export interface PageBuild {
   created_at: string;
   updated_at: string;
 }
-const PageBuild = /*@__PURE__*/ __L.at(__c34, 1) as any as S.Schema<PageBuild>;
-
 export interface GetLatestReleaseRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-const GetLatestReleaseRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  2,
-) as any as S.Schema<GetLatestReleaseRequest>;
-
 export interface GetOrgRulesetRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The ID of the ruleset. */
   ruleset_id: number;
 }
-const GetOrgRulesetRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  3,
-) as any as S.Schema<GetOrgRulesetRequest>;
-
 export interface GetOrgRulesetsRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -5932,42 +4389,18 @@ export interface GetOrgRulesetsRequest {
   /** A comma-separated list of rule targets to filter by. If provided, only rulesets that apply to the specified targets will be returned. For example, `branch,tag,push`. */
   targets?: string;
 }
-const GetOrgRulesetsRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  4,
-) as any as S.Schema<GetOrgRulesetsRequest>;
-
 export type GetOrgRulesetsResponseBodyList = Array<RepositoryRuleset>;
-const GetOrgRulesetsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c34,
-  5,
-) as any as S.Schema<GetOrgRulesetsResponseBodyList>;
-
 export type GetOrgRulesetsResponse = GetOrgRulesetsResponseBodyList;
-const GetOrgRulesetsResponse = /*@__PURE__*/ __L.at(
-  __c34,
-  6,
-) as any as S.Schema<GetOrgRulesetsResponse>;
-
 export interface GetOrgRuleSuiteRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The unique identifier of the rule suite result. To get this ID, you can use [GET /repos/{owner}/{repo}/rulesets/rule-suites](https://docs.github.com/rest/repos/rule-suites#list-repository-rule-suites) for repositories and [GET /orgs/{org}/rulesets/rule-suites](https://docs.github.com/rest/orgs/rule-suites#list-organization-rule-suites) for organizations. */
   rule_suite_id: number;
 }
-const GetOrgRuleSuiteRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  7,
-) as any as S.Schema<GetOrgRuleSuiteRequest>;
-
 /** The result of the rule evaluations for rules with the `active` enforcement status. */
 export type RuleSuiteResult = "pass" | "fail" | "bypass";
-const RuleSuiteResult = S.String;
-
 /** The result of the rule evaluations for rules with the `active` and `evaluate` enforcement statuses, demonstrating whether rules would pass or fail if all rules in the rule suite were `active`. Null if no rules with `evaluate` enforcement status were run. */
 export type RuleSuiteEvaluationResult = "pass" | "fail" | "bypass";
-const RuleSuiteEvaluationResult = S.String;
-
 export interface RuleSuiteRuleEvaluationsItemRuleSource {
   /** The type of rule source. */
   type?: string;
@@ -5976,19 +4409,10 @@ export interface RuleSuiteRuleEvaluationsItemRuleSource {
   /** The name of the rule source. */
   name?: string | null;
 }
-const RuleSuiteRuleEvaluationsItemRuleSource = /*@__PURE__*/ __L.at(
-  __c35,
-  0,
-) as any as S.Schema<RuleSuiteRuleEvaluationsItemRuleSource>;
-
 /** The enforcement level of this rule source. */
 export type RuleSuiteRuleEvaluationsItemEnforcement = "active" | "evaluate" | "deleted ruleset";
-const RuleSuiteRuleEvaluationsItemEnforcement = S.String;
-
 /** The result of the evaluation of the individual rule. */
 export type RuleSuiteRuleEvaluationsItemResult = "pass" | "fail";
-const RuleSuiteRuleEvaluationsItemResult = S.String;
-
 export interface RuleSuiteRuleEvaluationsItem {
   rule_source?: RuleSuiteRuleEvaluationsItemRuleSource;
   /** The enforcement level of this rule source. */
@@ -6000,18 +4424,8 @@ export interface RuleSuiteRuleEvaluationsItem {
   /** The detailed failure message for the rule. Null if the rule passed. */
   details?: string | null;
 }
-const RuleSuiteRuleEvaluationsItem = /*@__PURE__*/ __L.at(
-  __c35,
-  1,
-) as any as S.Schema<RuleSuiteRuleEvaluationsItem>;
-
 /** Details on the evaluated rules. */
 export type RuleSuiteRuleEvaluationsList = Array<RuleSuiteRuleEvaluationsItem>;
-const RuleSuiteRuleEvaluationsList = /*@__PURE__*/ __L.at(
-  __c35,
-  2,
-) as any as S.Schema<RuleSuiteRuleEvaluationsList>;
-
 /** Response */
 export interface RuleSuite {
   /** The unique identifier of the rule insight. */
@@ -6038,17 +4452,9 @@ export interface RuleSuite {
   /** Details on the evaluated rules. */
   rule_evaluations?: RuleSuiteRuleEvaluationsList;
 }
-const RuleSuite = /*@__PURE__*/ __L.at(__c35, 3) as any as S.Schema<RuleSuite>;
-
 export type GetOrgRuleSuitesRequestTimePeriod = "hour" | "day" | "week" | "month";
-const GetOrgRuleSuitesRequestTimePeriod = S.String;
-
 export type GetOrgRuleSuitesRequestRuleSuiteResult = "pass" | "fail" | "bypass" | "all";
-const GetOrgRuleSuitesRequestRuleSuiteResult = S.String;
-
 export type GetOrgRuleSuitesRequestEvaluateStatus = "all" | "active" | "evaluate";
-const GetOrgRuleSuitesRequestEvaluateStatus = S.String;
-
 export interface GetOrgRuleSuitesRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -6069,19 +4475,10 @@ export interface GetOrgRuleSuitesRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const GetOrgRuleSuitesRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  4,
-) as any as S.Schema<GetOrgRuleSuitesRequest>;
-
 /** The result of the rule evaluations for rules with the `active` enforcement status. */
 export type RuleSuitesItemResult = "pass" | "fail" | "bypass";
-const RuleSuitesItemResult = S.String;
-
 /** The result of the rule evaluations for rules with the `active` and `evaluate` enforcement statuses, demonstrating whether rules would pass or fail if all rules in the rule suite were `active`. */
 export type RuleSuitesItemEvaluationResult = "pass" | "fail" | "bypass";
-const RuleSuitesItemEvaluationResult = S.String;
-
 export interface RuleSuitesItem {
   /** The unique identifier of the rule insight. */
   id?: number;
@@ -6105,26 +4502,15 @@ export interface RuleSuitesItem {
   /** The result of the rule evaluations for rules with the `active` and `evaluate` enforcement statuses, demonstrating whether rules would pass or fail if all rules in the rule suite were `active`. */
   evaluation_result?: RuleSuitesItemEvaluationResult;
 }
-const RuleSuitesItem = /*@__PURE__*/ __L.at(__c35, 5) as any as S.Schema<RuleSuitesItem>;
-
 /** Response */
 export type RuleSuites = Array<RuleSuitesItem>;
-const RuleSuites = /*@__PURE__*/ __L.at(__c35, 6) as any as S.Schema<RuleSuites>;
-
 export type GetOrgRuleSuitesResponse = RuleSuites;
-const GetOrgRuleSuitesResponse = /*@__PURE__*/ __L.at(
-  __c35,
-  7,
-) as any as S.Schema<GetOrgRuleSuitesResponse>;
-
 export interface GetPagesRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-const GetPagesRequest = /*@__PURE__*/ __L.at(__c36, 0) as any as S.Schema<GetPagesRequest>;
-
 export interface GetPagesBuildRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -6132,11 +4518,6 @@ export interface GetPagesBuildRequest {
   repo: string;
   build_id: number;
 }
-const GetPagesBuildRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  1,
-) as any as S.Schema<GetPagesBuildRequest>;
-
 export interface GetPagesDeploymentRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -6145,11 +4526,6 @@ export interface GetPagesDeploymentRequest {
   /** The ID of the Pages deployment. You can also give the commit SHA of the deployment. */
   pages_deployment_id: string;
 }
-const GetPagesDeploymentRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  2,
-) as any as S.Schema<GetPagesDeploymentRequest>;
-
 /** The current status of the deployment. */
 export type PagesDeploymentStatusStatus =
   | "deployment_in_progress"
@@ -6163,28 +4539,16 @@ export type PagesDeploymentStatusStatus =
   | "deployment_attempt_error"
   | "deployment_lost"
   | "succeed";
-const PagesDeploymentStatusStatus = S.String;
-
 export interface PagesDeploymentStatus {
   /** The current status of the deployment. */
   status?: PagesDeploymentStatusStatus;
 }
-const PagesDeploymentStatus = /*@__PURE__*/ __L.at(
-  __c36,
-  3,
-) as any as S.Schema<PagesDeploymentStatus>;
-
 export interface GetPagesHealthCheckRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-const GetPagesHealthCheckRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  4,
-) as any as S.Schema<GetPagesHealthCheckRequest>;
-
 export interface PagesHealthCheckDomain {
   host?: string;
   uri?: string;
@@ -6215,44 +4579,24 @@ export interface PagesHealthCheckDomain {
   is_https_eligible?: boolean | null;
   caa_error?: string | null;
 }
-const PagesHealthCheckDomain = /*@__PURE__*/ __L.at(
-  __c36,
-  5,
-) as any as S.Schema<PagesHealthCheckDomain>;
-
 export type PagesHealthCheckAltDomain = PagesHealthCheckDomain;
 /** Pages Health Check Status */
 export interface PagesHealthCheck {
   domain?: PagesHealthCheckDomain;
   alt_domain?: PagesHealthCheckDomain | null;
 }
-const PagesHealthCheck = /*@__PURE__*/ __L.at(__c36, 6) as any as S.Schema<PagesHealthCheck>;
-
 export interface GetParticipationStatsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-const GetParticipationStatsRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  7,
-) as any as S.Schema<GetParticipationStatsRequest>;
-
 export type ParticipationStatsAllList = Array<number>;
-const ParticipationStatsAllList =
-  OrgRulesetConditionsCase1RepositoryIdRepositoryIdsList as any as S.Schema<ParticipationStatsAllList>;
-
 export type ParticipationStatsOwnerList = Array<number>;
-const ParticipationStatsOwnerList =
-  OrgRulesetConditionsCase1RepositoryIdRepositoryIdsList as any as S.Schema<ParticipationStatsOwnerList>;
-
 export interface ParticipationStats {
   all: ParticipationStatsAllList;
   owner: ParticipationStatsOwnerList;
 }
-const ParticipationStats = /*@__PURE__*/ __L.at(__c37, 0) as any as S.Schema<ParticipationStats>;
-
 export interface GetPullRequestReviewProtectionRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -6261,27 +4605,14 @@ export interface GetPullRequestReviewProtectionRequest {
   /** The name of the branch. Cannot contain wildcard characters. To use wildcard characters in branch names, use [the GraphQL API](https://docs.github.com/graphql). */
   branch: string;
 }
-const GetPullRequestReviewProtectionRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  1,
-) as any as S.Schema<GetPullRequestReviewProtectionRequest>;
-
 export interface GetPunchCardStatsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-const GetPunchCardStatsRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  2,
-) as any as S.Schema<GetPunchCardStatsRequest>;
-
 export type GetPunchCardStatsResponseBodyList = Array<CodeFrequencyStat>;
 export type GetPunchCardStatsResponse = GetPunchCardStatsResponseBodyList;
-const GetPunchCardStatsResponse =
-  GetCodeFrequencyStatsResponse as any as S.Schema<GetPunchCardStatsResponse>;
-
 export interface GetReadmeRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -6290,8 +4621,6 @@ export interface GetReadmeRequest {
   /** The name of the commit/branch/tag. Default: the repository's default branch. */
   ref?: string;
 }
-const GetReadmeRequest = /*@__PURE__*/ __L.at(__c37, 3) as any as S.Schema<GetReadmeRequest>;
-
 export interface GetReadmeInDirectoryRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -6302,11 +4631,6 @@ export interface GetReadmeInDirectoryRequest {
   /** The name of the commit/branch/tag. Default: the repository's default branch. */
   ref?: string;
 }
-const GetReadmeInDirectoryRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  4,
-) as any as S.Schema<GetReadmeInDirectoryRequest>;
-
 export interface GetReleaseRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -6315,8 +4639,6 @@ export interface GetReleaseRequest {
   /** The unique identifier of the release. */
   release_id: number;
 }
-const GetReleaseRequest = /*@__PURE__*/ __L.at(__c37, 5) as any as S.Schema<GetReleaseRequest>;
-
 export interface GetReleaseAssetRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -6325,11 +4647,6 @@ export interface GetReleaseAssetRequest {
   /** The unique identifier of the asset. */
   asset_id: number;
 }
-const GetReleaseAssetRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  6,
-) as any as S.Schema<GetReleaseAssetRequest>;
-
 export interface GetReleaseByTagRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -6338,11 +4655,6 @@ export interface GetReleaseByTagRequest {
   /** tag parameter */
   tag: string;
 }
-const GetReleaseByTagRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  7,
-) as any as S.Schema<GetReleaseByTagRequest>;
-
 export interface GetRepoRulesetRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -6353,11 +4665,6 @@ export interface GetRepoRulesetRequest {
   /** Include rulesets configured at higher levels that apply to this repository */
   includes_parents?: boolean;
 }
-const GetRepoRulesetRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  0,
-) as any as S.Schema<GetRepoRulesetRequest>;
-
 export interface GetRepoRulesetHistoryRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -6370,18 +4677,11 @@ export interface GetRepoRulesetHistoryRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const GetRepoRulesetHistoryRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  1,
-) as any as S.Schema<GetRepoRulesetHistoryRequest>;
-
 /** The actor who updated the ruleset */
 export interface RulesetVersionActor {
   id?: number;
   type?: string;
 }
-const RulesetVersionActor = /*@__PURE__*/ __L.at(__c38, 2) as any as S.Schema<RulesetVersionActor>;
-
 /** The historical version of a ruleset */
 export interface RulesetVersion {
   /** The ID of the previous version of the ruleset */
@@ -6390,20 +4690,8 @@ export interface RulesetVersion {
   actor: RulesetVersionActor;
   updated_at: string;
 }
-const RulesetVersion = /*@__PURE__*/ __L.at(__c38, 3) as any as S.Schema<RulesetVersion>;
-
 export type GetRepoRulesetHistoryResponseBodyList = Array<RulesetVersion>;
-const GetRepoRulesetHistoryResponseBodyList = /*@__PURE__*/ __L.at(
-  __c38,
-  4,
-) as any as S.Schema<GetRepoRulesetHistoryResponseBodyList>;
-
 export type GetRepoRulesetHistoryResponse = GetRepoRulesetHistoryResponseBodyList;
-const GetRepoRulesetHistoryResponse = /*@__PURE__*/ __L.at(
-  __c38,
-  5,
-) as any as S.Schema<GetRepoRulesetHistoryResponse>;
-
 export interface GetRepoRulesetsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -6418,15 +4706,8 @@ export interface GetRepoRulesetsRequest {
   /** A comma-separated list of rule targets to filter by. If provided, only rulesets that apply to the specified targets will be returned. For example, `branch,tag,push`. */
   targets?: string;
 }
-const GetRepoRulesetsRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  6,
-) as any as S.Schema<GetRepoRulesetsRequest>;
-
 export type GetRepoRulesetsResponseBodyList = Array<RepositoryRuleset>;
 export type GetRepoRulesetsResponse = GetRepoRulesetsResponseBodyList;
-const GetRepoRulesetsResponse = GetOrgRulesetsResponse as any as S.Schema<GetRepoRulesetsResponse>;
-
 export interface GetRepoRulesetVersionRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -6437,11 +4718,6 @@ export interface GetRepoRulesetVersionRequest {
   /** The ID of the version */
   version_id: number;
 }
-const GetRepoRulesetVersionRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  7,
-) as any as S.Schema<GetRepoRulesetVersionRequest>;
-
 /** The actor who updated the ruleset */
 export type GetRepoRulesetVersionResponseActor = RulesetVersionActor;
 export interface GetRepoRulesetVersionResponse {
@@ -6453,11 +4729,6 @@ export interface GetRepoRulesetVersionResponse {
   /** The state of the ruleset version */
   state: unknown;
 }
-const GetRepoRulesetVersionResponse = /*@__PURE__*/ __L.at(
-  __c39,
-  0,
-) as any as S.Schema<GetRepoRulesetVersionResponse>;
-
 export interface GetRepoRuleSuiteRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -6466,20 +4737,9 @@ export interface GetRepoRuleSuiteRequest {
   /** The unique identifier of the rule suite result. To get this ID, you can use [GET /repos/{owner}/{repo}/rulesets/rule-suites](https://docs.github.com/rest/repos/rule-suites#list-repository-rule-suites) for repositories and [GET /orgs/{org}/rulesets/rule-suites](https://docs.github.com/rest/orgs/rule-suites#list-organization-rule-suites) for organizations. */
   rule_suite_id: number;
 }
-const GetRepoRuleSuiteRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  1,
-) as any as S.Schema<GetRepoRuleSuiteRequest>;
-
 export type GetRepoRuleSuitesRequestTimePeriod = "hour" | "day" | "week" | "month";
-const GetRepoRuleSuitesRequestTimePeriod = S.String;
-
 export type GetRepoRuleSuitesRequestRuleSuiteResult = "pass" | "fail" | "bypass" | "all";
-const GetRepoRuleSuitesRequestRuleSuiteResult = S.String;
-
 export type GetRepoRuleSuitesRequestEvaluateStatus = "all" | "active" | "evaluate";
-const GetRepoRuleSuitesRequestEvaluateStatus = S.String;
-
 export interface GetRepoRuleSuitesRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -6500,17 +4760,7 @@ export interface GetRepoRuleSuitesRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const GetRepoRuleSuitesRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  2,
-) as any as S.Schema<GetRepoRuleSuitesRequest>;
-
 export type GetRepoRuleSuitesResponse = RuleSuites;
-const GetRepoRuleSuitesResponse = /*@__PURE__*/ __L.at(
-  __c39,
-  3,
-) as any as S.Schema<GetRepoRuleSuitesResponse>;
-
 export interface GetStatusChecksProtectionRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -6519,20 +4769,9 @@ export interface GetStatusChecksProtectionRequest {
   /** The name of the branch. Cannot contain wildcard characters. To use wildcard characters in branch names, use [the GraphQL API](https://docs.github.com/graphql). */
   branch: string;
 }
-const GetStatusChecksProtectionRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  4,
-) as any as S.Schema<GetStatusChecksProtectionRequest>;
-
 export type StatusCheckPolicyContextsList = Array<string>;
-const StatusCheckPolicyContextsList =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<StatusCheckPolicyContextsList>;
-
 export type StatusCheckPolicyChecksItem = ProtectedBranchRequiredStatusCheckChecksItem;
 export type StatusCheckPolicyChecksList = Array<ProtectedBranchRequiredStatusCheckChecksItem>;
-const StatusCheckPolicyChecksList =
-  ProtectedBranchRequiredStatusCheckChecksList as any as S.Schema<StatusCheckPolicyChecksList>;
-
 /** Status Check Policy */
 export interface StatusCheckPolicy {
   url: string;
@@ -6541,8 +4780,6 @@ export interface StatusCheckPolicy {
   checks: StatusCheckPolicyChecksList;
   contexts_url: string;
 }
-const StatusCheckPolicy = /*@__PURE__*/ __L.at(__c39, 5) as any as S.Schema<StatusCheckPolicy>;
-
 export interface GetTeamsWithAccessToProtectedBranchRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -6551,25 +4788,15 @@ export interface GetTeamsWithAccessToProtectedBranchRequest {
   /** The name of the branch. Cannot contain wildcard characters. To use wildcard characters in branch names, use [the GraphQL API](https://docs.github.com/graphql). */
   branch: string;
 }
-const GetTeamsWithAccessToProtectedBranchRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  6,
-) as any as S.Schema<GetTeamsWithAccessToProtectedBranchRequest>;
-
 export type GetTeamsWithAccessToProtectedBranchResponseBodyList = Array<Team>;
 export type GetTeamsWithAccessToProtectedBranchResponse =
   GetTeamsWithAccessToProtectedBranchResponseBodyList;
-const GetTeamsWithAccessToProtectedBranchResponse =
-  AddTeamAccessRestrictionsResponse as any as S.Schema<GetTeamsWithAccessToProtectedBranchResponse>;
-
 export interface GetTopPathsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-const GetTopPathsRequest = /*@__PURE__*/ __L.at(__c39, 7) as any as S.Schema<GetTopPathsRequest>;
-
 /** Content Traffic */
 export interface ContentTraffic {
   path: string;
@@ -6577,48 +4804,22 @@ export interface ContentTraffic {
   count: number;
   uniques: number;
 }
-const ContentTraffic = /*@__PURE__*/ __L.at(__c40, 0) as any as S.Schema<ContentTraffic>;
-
 export type GetTopPathsResponseBodyList = Array<ContentTraffic>;
-const GetTopPathsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c40,
-  1,
-) as any as S.Schema<GetTopPathsResponseBodyList>;
-
 export type GetTopPathsResponse = GetTopPathsResponseBodyList;
-const GetTopPathsResponse = /*@__PURE__*/ __L.at(__c40, 2) as any as S.Schema<GetTopPathsResponse>;
-
 export interface GetTopReferrersRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-const GetTopReferrersRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  3,
-) as any as S.Schema<GetTopReferrersRequest>;
-
 /** Referrer Traffic */
 export interface ReferrerTraffic {
   referrer: string;
   count: number;
   uniques: number;
 }
-const ReferrerTraffic = /*@__PURE__*/ __L.at(__c40, 4) as any as S.Schema<ReferrerTraffic>;
-
 export type GetTopReferrersResponseBodyList = Array<ReferrerTraffic>;
-const GetTopReferrersResponseBodyList = /*@__PURE__*/ __L.at(
-  __c40,
-  5,
-) as any as S.Schema<GetTopReferrersResponseBodyList>;
-
 export type GetTopReferrersResponse = GetTopReferrersResponseBodyList;
-const GetTopReferrersResponse = /*@__PURE__*/ __L.at(
-  __c40,
-  6,
-) as any as S.Schema<GetTopReferrersResponse>;
-
 export interface GetUsersWithAccessToProtectedBranchRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -6627,20 +4828,10 @@ export interface GetUsersWithAccessToProtectedBranchRequest {
   /** The name of the branch. Cannot contain wildcard characters. To use wildcard characters in branch names, use [the GraphQL API](https://docs.github.com/graphql). */
   branch: string;
 }
-const GetUsersWithAccessToProtectedBranchRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  7,
-) as any as S.Schema<GetUsersWithAccessToProtectedBranchRequest>;
-
 export type GetUsersWithAccessToProtectedBranchResponseBodyList = Array<SimpleUser>;
 export type GetUsersWithAccessToProtectedBranchResponse =
   GetUsersWithAccessToProtectedBranchResponseBodyList;
-const GetUsersWithAccessToProtectedBranchResponse =
-  AddUserAccessRestrictionsResponse as any as S.Schema<GetUsersWithAccessToProtectedBranchResponse>;
-
 export type GetViewsRequestPer = "day" | "week";
-const GetViewsRequestPer = S.String;
-
 export interface GetViewsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -6649,19 +4840,13 @@ export interface GetViewsRequest {
   /** The time frame to display results for. */
   per?: GetViewsRequestPer | (string & {});
 }
-const GetViewsRequest = /*@__PURE__*/ __L.at(__c41, 0) as any as S.Schema<GetViewsRequest>;
-
 export type ViewTrafficViewsList = Array<Traffic>;
-const ViewTrafficViewsList = CloneTrafficClonesList as any as S.Schema<ViewTrafficViewsList>;
-
 /** View Traffic */
 export interface ViewTraffic {
   count: number;
   uniques: number;
   views: ViewTrafficViewsList;
 }
-const ViewTraffic = /*@__PURE__*/ __L.at(__c41, 1) as any as S.Schema<ViewTraffic>;
-
 export interface GetWebhookRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -6670,8 +4855,6 @@ export interface GetWebhookRequest {
   /** The unique identifier of the hook. You can find this value in the `X-GitHub-Hook-ID` header of a webhook delivery. */
   hook_id: number;
 }
-const GetWebhookRequest = /*@__PURE__*/ __L.at(__c41, 2) as any as S.Schema<GetWebhookRequest>;
-
 export interface GetWebhookConfigForRepoRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -6680,11 +4863,6 @@ export interface GetWebhookConfigForRepoRequest {
   /** The unique identifier of the hook. You can find this value in the `X-GitHub-Hook-ID` header of a webhook delivery. */
   hook_id: number;
 }
-const GetWebhookConfigForRepoRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  3,
-) as any as S.Schema<GetWebhookConfigForRepoRequest>;
-
 export interface GetWebhookDeliveryRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -6694,29 +4872,16 @@ export interface GetWebhookDeliveryRequest {
   hook_id: number;
   delivery_id: number;
 }
-const GetWebhookDeliveryRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  4,
-) as any as S.Schema<GetWebhookDeliveryRequest>;
-
 /** The request headers sent with the webhook delivery. */
 export type HookDeliveryRequestHeadersMap = { [key: string]: unknown | undefined };
-const HookDeliveryRequestHeadersMap =
-  MinimalRepositoryCustomPropertiesMap as any as S.Schema<HookDeliveryRequestHeadersMap>;
-
 /** The webhook payload. */
 export type HookDeliveryRequestPayloadMap = { [key: string]: unknown | undefined };
-const HookDeliveryRequestPayloadMap =
-  MinimalRepositoryCustomPropertiesMap as any as S.Schema<HookDeliveryRequestPayloadMap>;
-
 export interface HookDeliveryRequest {
   /** The request headers sent with the webhook delivery. */
   headers: HookDeliveryRequestHeadersMap | null;
   /** The webhook payload. */
   payload: HookDeliveryRequestPayloadMap | null;
 }
-const HookDeliveryRequest = /*@__PURE__*/ __L.at(__c41, 5) as any as S.Schema<HookDeliveryRequest>;
-
 /** The response headers received when the delivery was made. */
 export type HookDeliveryResponseHeadersMap = { [key: string]: unknown | undefined };
 /** The response payload received. */
@@ -6727,8 +4892,6 @@ export interface HookDeliveryResponse {
   /** The response payload received. */
   payload: HookDeliveryResponsePayloadMap | null;
 }
-const HookDeliveryResponse = HookDeliveryRequest as any as S.Schema<HookDeliveryResponse>;
-
 /** Delivery made by a webhook. */
 export interface HookDelivery {
   /** Unique identifier of the delivery. */
@@ -6760,14 +4923,8 @@ export interface HookDelivery {
   request: HookDeliveryRequest;
   response: HookDeliveryResponse;
 }
-const HookDelivery = /*@__PURE__*/ __L.at(__c41, 6) as any as S.Schema<HookDelivery>;
-
 export type ListActivitiesRequestDirection = "asc" | "desc";
-const ListActivitiesRequestDirection = S.String;
-
 export type ListActivitiesRequestTimePeriod = "day" | "week" | "month" | "quarter" | "year";
-const ListActivitiesRequestTimePeriod = S.String;
-
 export type ListActivitiesRequestActivityType =
   | "push"
   | "force_push"
@@ -6775,8 +4932,6 @@ export type ListActivitiesRequestActivityType =
   | "branch_deletion"
   | "pr_merge"
   | "merge_queue_merge";
-const ListActivitiesRequestActivityType = S.String;
-
 export interface ListActivitiesRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -6799,11 +4954,6 @@ export interface ListActivitiesRequest {
   /** The activity type to filter by. For example, you can choose to filter by "force_push", to see all force pushes to the repository. */
   activity_type?: ListActivitiesRequestActivityType | (string & {});
 }
-const ListActivitiesRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  7,
-) as any as S.Schema<ListActivitiesRequest>;
-
 /** The type of the activity that was performed. */
 export type ActivityActivityType =
   | "push"
@@ -6812,8 +4962,6 @@ export type ActivityActivityType =
   | "branch_creation"
   | "pr_merge"
   | "merge_queue_merge";
-const ActivityActivityType = S.String;
-
 /** Activity */
 export interface Activity {
   id: number;
@@ -6830,20 +4978,8 @@ export interface Activity {
   activity_type: ActivityActivityType;
   actor: SimpleUser | null;
 }
-const Activity = /*@__PURE__*/ __L.at(__c42, 0) as any as S.Schema<Activity>;
-
 export type ListActivitiesResponseBodyList = Array<Activity>;
-const ListActivitiesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c42,
-  1,
-) as any as S.Schema<ListActivitiesResponseBodyList>;
-
 export type ListActivitiesResponse = ListActivitiesResponseBodyList;
-const ListActivitiesResponse = /*@__PURE__*/ __L.at(
-  __c42,
-  2,
-) as any as S.Schema<ListActivitiesResponse>;
-
 export interface ListAttestationsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -6860,36 +4996,18 @@ export interface ListAttestationsRequest {
   /** Optional filter for fetching attestations with a given predicate type. This option accepts `provenance`, `sbom`, `release`, or freeform text for custom predicate types. */
   predicate_type?: string;
 }
-const ListAttestationsRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  3,
-) as any as S.Schema<ListAttestationsRequest>;
-
 export type ListAttestationsResponseAttestationsItemBundleVerificationMaterialMap = {
   [key: string]: unknown | undefined;
 };
-const ListAttestationsResponseAttestationsItemBundleVerificationMaterialMap = /*@__PURE__*/ __L.at(
-  __c42,
-  4,
-) as any as S.Schema<ListAttestationsResponseAttestationsItemBundleVerificationMaterialMap>;
-
 export type ListAttestationsResponseAttestationsItemBundleDsseEnvelopeMap = {
   [key: string]: unknown | undefined;
 };
-const ListAttestationsResponseAttestationsItemBundleDsseEnvelopeMap =
-  MinimalRepositoryCustomPropertiesMap as any as S.Schema<ListAttestationsResponseAttestationsItemBundleDsseEnvelopeMap>;
-
 /** The attestation's Sigstore Bundle. Refer to the [Sigstore Bundle Specification](https://github.com/sigstore/protobuf-specs/blob/main/protos/sigstore_bundle.proto) for more information. */
 export interface ListAttestationsResponseAttestationsItemBundle {
   mediaType?: string;
   verificationMaterial?: ListAttestationsResponseAttestationsItemBundleVerificationMaterialMap;
   dsseEnvelope?: ListAttestationsResponseAttestationsItemBundleDsseEnvelopeMap;
 }
-const ListAttestationsResponseAttestationsItemBundle = /*@__PURE__*/ __L.at(
-  __c42,
-  5,
-) as any as S.Schema<ListAttestationsResponseAttestationsItemBundle>;
-
 export interface ListAttestationsResponseAttestationsItem {
   /** The attestation's Sigstore Bundle. Refer to the [Sigstore Bundle Specification](https://github.com/sigstore/protobuf-specs/blob/main/protos/sigstore_bundle.proto) for more information. */
   bundle?: ListAttestationsResponseAttestationsItemBundle;
@@ -6897,49 +5015,19 @@ export interface ListAttestationsResponseAttestationsItem {
   bundle_url?: string;
   initiator?: string;
 }
-const ListAttestationsResponseAttestationsItem = /*@__PURE__*/ __L.at(
-  __c42,
-  6,
-) as any as S.Schema<ListAttestationsResponseAttestationsItem>;
-
 export type ListAttestationsResponseAttestationsList =
   Array<ListAttestationsResponseAttestationsItem>;
-const ListAttestationsResponseAttestationsList = /*@__PURE__*/ __L.at(
-  __c42,
-  7,
-) as any as S.Schema<ListAttestationsResponseAttestationsList>;
-
 export interface ListAttestationsResponse {
   attestations?: ListAttestationsResponseAttestationsList;
 }
-const ListAttestationsResponse = /*@__PURE__*/ __L.at(
-  __c43,
-  0,
-) as any as S.Schema<ListAttestationsResponse>;
-
 export interface ListAutolinksRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-const ListAutolinksRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  1,
-) as any as S.Schema<ListAutolinksRequest>;
-
 export type ListAutolinksResponseBodyList = Array<Autolink>;
-const ListAutolinksResponseBodyList = /*@__PURE__*/ __L.at(
-  __c43,
-  2,
-) as any as S.Schema<ListAutolinksResponseBodyList>;
-
 export type ListAutolinksResponse = ListAutolinksResponseBodyList;
-const ListAutolinksResponse = /*@__PURE__*/ __L.at(
-  __c43,
-  3,
-) as any as S.Schema<ListAutolinksResponse>;
-
 export interface ListBranchesRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -6952,8 +5040,6 @@ export interface ListBranchesRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListBranchesRequest = /*@__PURE__*/ __L.at(__c43, 4) as any as S.Schema<ListBranchesRequest>;
-
 export type ShortBranchCommit = CommitCommitTree;
 /** Short Branch */
 export interface ShortBranch {
@@ -6963,20 +5049,8 @@ export interface ShortBranch {
   protection?: BranchProtection;
   protection_url?: string;
 }
-const ShortBranch = /*@__PURE__*/ __L.at(__c43, 5) as any as S.Schema<ShortBranch>;
-
 export type ListBranchesResponseBodyList = Array<ShortBranch>;
-const ListBranchesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c43,
-  6,
-) as any as S.Schema<ListBranchesResponseBodyList>;
-
 export type ListBranchesResponse = ListBranchesResponseBodyList;
-const ListBranchesResponse = /*@__PURE__*/ __L.at(
-  __c43,
-  7,
-) as any as S.Schema<ListBranchesResponse>;
-
 export interface ListBranchesForHeadCommitRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -6985,11 +5059,6 @@ export interface ListBranchesForHeadCommitRequest {
   /** The SHA of the commit. */
   commit_sha: string;
 }
-const ListBranchesForHeadCommitRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  0,
-) as any as S.Schema<ListBranchesForHeadCommitRequest>;
-
 export type BranchShortCommit = CommitCommitTree;
 /** Branch Short */
 export interface BranchShort {
@@ -6997,23 +5066,9 @@ export interface BranchShort {
   commit: CommitCommitTree;
   protected: boolean;
 }
-const BranchShort = /*@__PURE__*/ __L.at(__c44, 1) as any as S.Schema<BranchShort>;
-
 export type ListBranchesForHeadCommitResponseBodyList = Array<BranchShort>;
-const ListBranchesForHeadCommitResponseBodyList = /*@__PURE__*/ __L.at(
-  __c44,
-  2,
-) as any as S.Schema<ListBranchesForHeadCommitResponseBodyList>;
-
 export type ListBranchesForHeadCommitResponse = ListBranchesForHeadCommitResponseBodyList;
-const ListBranchesForHeadCommitResponse = /*@__PURE__*/ __L.at(
-  __c44,
-  3,
-) as any as S.Schema<ListBranchesForHeadCommitResponse>;
-
 export type ListCollaboratorsRequestAffiliation = "outside" | "direct" | "all";
-const ListCollaboratorsRequestAffiliation = S.String;
-
 export type ListCollaboratorsRequestPermission =
   | "pull"
   | "triage"
@@ -7021,8 +5076,6 @@ export type ListCollaboratorsRequestPermission =
   | "push"
   | "maintain"
   | "admin";
-const ListCollaboratorsRequestPermission = S.String;
-
 export interface ListCollaboratorsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -7037,26 +5090,11 @@ export interface ListCollaboratorsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListCollaboratorsRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  4,
-) as any as S.Schema<ListCollaboratorsRequest>;
-
 export type CollaboratorPermissions = NullableCollaboratorPermissions;
 /** Collaborator */
 export type Collaborator = NullableCollaborator;
 export type ListCollaboratorsResponseBodyList = Array<NullableCollaborator>;
-const ListCollaboratorsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c44,
-  5,
-) as any as S.Schema<ListCollaboratorsResponseBodyList>;
-
 export type ListCollaboratorsResponse = ListCollaboratorsResponseBodyList;
-const ListCollaboratorsResponse = /*@__PURE__*/ __L.at(
-  __c44,
-  6,
-) as any as S.Schema<ListCollaboratorsResponse>;
-
 export interface ListCommentsForCommitRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -7069,23 +5107,8 @@ export interface ListCommentsForCommitRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListCommentsForCommitRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  7,
-) as any as S.Schema<ListCommentsForCommitRequest>;
-
 export type ListCommentsForCommitResponseBodyList = Array<CommitComment>;
-const ListCommentsForCommitResponseBodyList = /*@__PURE__*/ __L.at(
-  __c45,
-  0,
-) as any as S.Schema<ListCommentsForCommitResponseBodyList>;
-
 export type ListCommentsForCommitResponse = ListCommentsForCommitResponseBodyList;
-const ListCommentsForCommitResponse = /*@__PURE__*/ __L.at(
-  __c45,
-  1,
-) as any as S.Schema<ListCommentsForCommitResponse>;
-
 export interface ListCommitCommentsForRepoRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -7096,16 +5119,8 @@ export interface ListCommitCommentsForRepoRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListCommitCommentsForRepoRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  2,
-) as any as S.Schema<ListCommitCommentsForRepoRequest>;
-
 export type ListCommitCommentsForRepoResponseBodyList = Array<CommitComment>;
 export type ListCommitCommentsForRepoResponse = ListCommitCommentsForRepoResponseBodyList;
-const ListCommitCommentsForRepoResponse =
-  ListCommentsForCommitResponse as any as S.Schema<ListCommitCommentsForRepoResponse>;
-
 export interface ListCommitsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -7128,15 +5143,8 @@ export interface ListCommitsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListCommitsRequest = /*@__PURE__*/ __L.at(__c45, 3) as any as S.Schema<ListCommitsRequest>;
-
 export type ListCommitsResponseBodyList = Array<Commit>;
-const ListCommitsResponseBodyList =
-  CommitComparisonCommitsList as any as S.Schema<ListCommitsResponseBodyList>;
-
 export type ListCommitsResponse = ListCommitsResponseBodyList;
-const ListCommitsResponse = /*@__PURE__*/ __L.at(__c45, 4) as any as S.Schema<ListCommitsResponse>;
-
 export interface ListCommitStatusesForRefRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -7149,23 +5157,8 @@ export interface ListCommitStatusesForRefRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListCommitStatusesForRefRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  5,
-) as any as S.Schema<ListCommitStatusesForRefRequest>;
-
 export type ListCommitStatusesForRefResponseBodyList = Array<Status>;
-const ListCommitStatusesForRefResponseBodyList = /*@__PURE__*/ __L.at(
-  __c45,
-  6,
-) as any as S.Schema<ListCommitStatusesForRefResponseBodyList>;
-
 export type ListCommitStatusesForRefResponse = ListCommitStatusesForRefResponseBodyList;
-const ListCommitStatusesForRefResponse = /*@__PURE__*/ __L.at(
-  __c45,
-  7,
-) as any as S.Schema<ListCommitStatusesForRefResponse>;
-
 export interface ListContributorsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -7178,11 +5171,6 @@ export interface ListContributorsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListContributorsRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  0,
-) as any as S.Schema<ListContributorsRequest>;
-
 /** Contributor */
 export interface Contributor {
   login?: string;
@@ -7208,20 +5196,8 @@ export interface Contributor {
   name?: string;
   user_view_type?: string;
 }
-const Contributor = /*@__PURE__*/ __L.at(__c46, 1) as any as S.Schema<Contributor>;
-
 export type ListContributorsResponseBodyList = Array<Contributor>;
-const ListContributorsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c46,
-  2,
-) as any as S.Schema<ListContributorsResponseBodyList>;
-
 export type ListContributorsResponse = ListContributorsResponseBodyList;
-const ListContributorsResponse = /*@__PURE__*/ __L.at(
-  __c46,
-  3,
-) as any as S.Schema<ListContributorsResponse>;
-
 export interface ListCustomDeploymentRuleIntegrationsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -7234,29 +5210,13 @@ export interface ListCustomDeploymentRuleIntegrationsRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
 }
-const ListCustomDeploymentRuleIntegrationsRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  4,
-) as any as S.Schema<ListCustomDeploymentRuleIntegrationsRequest>;
-
 export type ListCustomDeploymentRuleIntegrationsResponseAvailableCustomDeploymentProtectionRuleIntegrationsList =
   Array<CustomDeploymentRuleApp>;
-const ListCustomDeploymentRuleIntegrationsResponseAvailableCustomDeploymentProtectionRuleIntegrationsList =
-  /*@__PURE__*/ __L.at(
-    __c46,
-    5,
-  ) as any as S.Schema<ListCustomDeploymentRuleIntegrationsResponseAvailableCustomDeploymentProtectionRuleIntegrationsList>;
-
 export interface ListCustomDeploymentRuleIntegrationsResponse {
   /** The total number of custom deployment protection rule integrations available for this environment. */
   total_count?: number;
   available_custom_deployment_protection_rule_integrations?: ListCustomDeploymentRuleIntegrationsResponseAvailableCustomDeploymentProtectionRuleIntegrationsList;
 }
-const ListCustomDeploymentRuleIntegrationsResponse = /*@__PURE__*/ __L.at(
-  __c46,
-  6,
-) as any as S.Schema<ListCustomDeploymentRuleIntegrationsResponse>;
-
 export interface ListDeployKeysRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -7267,23 +5227,8 @@ export interface ListDeployKeysRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListDeployKeysRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  7,
-) as any as S.Schema<ListDeployKeysRequest>;
-
 export type ListDeployKeysResponseBodyList = Array<DeployKey>;
-const ListDeployKeysResponseBodyList = /*@__PURE__*/ __L.at(
-  __c47,
-  0,
-) as any as S.Schema<ListDeployKeysResponseBodyList>;
-
 export type ListDeployKeysResponse = ListDeployKeysResponseBodyList;
-const ListDeployKeysResponse = /*@__PURE__*/ __L.at(
-  __c47,
-  1,
-) as any as S.Schema<ListDeployKeysResponse>;
-
 export interface ListDeploymentBranchPoliciesRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -7296,27 +5241,12 @@ export interface ListDeploymentBranchPoliciesRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListDeploymentBranchPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  2,
-) as any as S.Schema<ListDeploymentBranchPoliciesRequest>;
-
 export type ListDeploymentBranchPoliciesResponseBranchPoliciesList = Array<DeploymentBranchPolicy>;
-const ListDeploymentBranchPoliciesResponseBranchPoliciesList = /*@__PURE__*/ __L.at(
-  __c47,
-  3,
-) as any as S.Schema<ListDeploymentBranchPoliciesResponseBranchPoliciesList>;
-
 export interface ListDeploymentBranchPoliciesResponse {
   /** The number of deployment branch policies for the environment. */
   total_count: number;
   branch_policies: ListDeploymentBranchPoliciesResponseBranchPoliciesList;
 }
-const ListDeploymentBranchPoliciesResponse = /*@__PURE__*/ __L.at(
-  __c47,
-  4,
-) as any as S.Schema<ListDeploymentBranchPoliciesResponse>;
-
 export interface ListDeploymentsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -7335,23 +5265,8 @@ export interface ListDeploymentsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListDeploymentsRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  5,
-) as any as S.Schema<ListDeploymentsRequest>;
-
 export type ListDeploymentsResponseBodyList = Array<Deployment>;
-const ListDeploymentsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c47,
-  6,
-) as any as S.Schema<ListDeploymentsResponseBodyList>;
-
 export type ListDeploymentsResponse = ListDeploymentsResponseBodyList;
-const ListDeploymentsResponse = /*@__PURE__*/ __L.at(
-  __c47,
-  7,
-) as any as S.Schema<ListDeploymentsResponse>;
-
 export interface ListDeploymentStatusesRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -7364,35 +5279,12 @@ export interface ListDeploymentStatusesRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListDeploymentStatusesRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  0,
-) as any as S.Schema<ListDeploymentStatusesRequest>;
-
 export type ListDeploymentStatusesResponseBodyList = Array<DeploymentStatus>;
-const ListDeploymentStatusesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c48,
-  1,
-) as any as S.Schema<ListDeploymentStatusesResponseBodyList>;
-
 export type ListDeploymentStatusesResponse = ListDeploymentStatusesResponseBodyList;
-const ListDeploymentStatusesResponse = /*@__PURE__*/ __L.at(
-  __c48,
-  2,
-) as any as S.Schema<ListDeploymentStatusesResponse>;
-
 export type ListForAuthenticatedUserRequestVisibility = "all" | "public" | "private";
-const ListForAuthenticatedUserRequestVisibility = S.String;
-
 export type ListForAuthenticatedUserRequestType = "all" | "owner" | "public" | "private" | "member";
-const ListForAuthenticatedUserRequestType = S.String;
-
 export type ListForAuthenticatedUserRequestSort = "created" | "updated" | "pushed" | "full_name";
-const ListForAuthenticatedUserRequestSort = S.String;
-
 export type ListForAuthenticatedUserRequestDirection = "asc" | "desc";
-const ListForAuthenticatedUserRequestDirection = S.String;
-
 export interface ListForAuthenticatedUserRequest {
   /** Limit results to repositories with the specified visibility. */
   visibility?: ListForAuthenticatedUserRequestVisibility | (string & {});
@@ -7413,26 +5305,9 @@ export interface ListForAuthenticatedUserRequest {
   /** Only show repositories updated before the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. */
   before?: string;
 }
-const ListForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  3,
-) as any as S.Schema<ListForAuthenticatedUserRequest>;
-
 export type ListForAuthenticatedUserResponseBodyList = Array<Repository>;
-const ListForAuthenticatedUserResponseBodyList = /*@__PURE__*/ __L.at(
-  __c48,
-  4,
-) as any as S.Schema<ListForAuthenticatedUserResponseBodyList>;
-
 export type ListForAuthenticatedUserResponse = ListForAuthenticatedUserResponseBodyList;
-const ListForAuthenticatedUserResponse = /*@__PURE__*/ __L.at(
-  __c48,
-  5,
-) as any as S.Schema<ListForAuthenticatedUserResponse>;
-
 export type ListForksRequestSort = "newest" | "oldest" | "stargazers" | "watchers";
-const ListForksRequestSort = S.String;
-
 export interface ListForksRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -7445,26 +5320,11 @@ export interface ListForksRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListForksRequest = /*@__PURE__*/ __L.at(__c48, 6) as any as S.Schema<ListForksRequest>;
-
 export type ListForksResponseBodyList = Array<MinimalRepository>;
-const ListForksResponseBodyList = /*@__PURE__*/ __L.at(
-  __c48,
-  7,
-) as any as S.Schema<ListForksResponseBodyList>;
-
 export type ListForksResponse = ListForksResponseBodyList;
-const ListForksResponse = /*@__PURE__*/ __L.at(__c49, 0) as any as S.Schema<ListForksResponse>;
-
 export type ListForOrgRequestType = "all" | "public" | "private" | "forks" | "sources" | "member";
-const ListForOrgRequestType = S.String;
-
 export type ListForOrgRequestSort = "created" | "updated" | "pushed" | "full_name";
-const ListForOrgRequestSort = S.String;
-
 export type ListForOrgRequestDirection = "asc" | "desc";
-const ListForOrgRequestDirection = S.String;
-
 export interface ListForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -7479,21 +5339,11 @@ export interface ListForOrgRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListForOrgRequest = /*@__PURE__*/ __L.at(__c49, 1) as any as S.Schema<ListForOrgRequest>;
-
 export type ListForOrgResponseBodyList = Array<MinimalRepository>;
 export type ListForOrgResponse = ListForOrgResponseBodyList;
-const ListForOrgResponse = ListForksResponse as any as S.Schema<ListForOrgResponse>;
-
 export type ListForUserRequestType = "all" | "owner" | "member";
-const ListForUserRequestType = S.String;
-
 export type ListForUserRequestSort = "created" | "updated" | "pushed" | "full_name";
-const ListForUserRequestSort = S.String;
-
 export type ListForUserRequestDirection = "asc" | "desc";
-const ListForUserRequestDirection = S.String;
-
 export interface ListForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
@@ -7508,12 +5358,8 @@ export interface ListForUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListForUserRequest = /*@__PURE__*/ __L.at(__c49, 2) as any as S.Schema<ListForUserRequest>;
-
 export type ListForUserResponseBodyList = Array<MinimalRepository>;
 export type ListForUserResponse = ListForUserResponseBodyList;
-const ListForUserResponse = ListForksResponse as any as S.Schema<ListForUserResponse>;
-
 export interface ListInvitationsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -7524,56 +5370,23 @@ export interface ListInvitationsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListInvitationsRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  3,
-) as any as S.Schema<ListInvitationsRequest>;
-
 export type ListInvitationsResponseBodyList = Array<RepositoryInvitation>;
-const ListInvitationsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c49,
-  4,
-) as any as S.Schema<ListInvitationsResponseBodyList>;
-
 export type ListInvitationsResponse = ListInvitationsResponseBodyList;
-const ListInvitationsResponse = /*@__PURE__*/ __L.at(
-  __c49,
-  5,
-) as any as S.Schema<ListInvitationsResponse>;
-
 export interface ListInvitationsForAuthenticatedUserRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListInvitationsForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  6,
-) as any as S.Schema<ListInvitationsForAuthenticatedUserRequest>;
-
 export type ListInvitationsForAuthenticatedUserResponseBodyList = Array<RepositoryInvitation>;
-const ListInvitationsForAuthenticatedUserResponseBodyList =
-  ListInvitationsResponseBodyList as any as S.Schema<ListInvitationsForAuthenticatedUserResponseBodyList>;
-
 export type ListInvitationsForAuthenticatedUserResponse =
   ListInvitationsForAuthenticatedUserResponseBodyList;
-const ListInvitationsForAuthenticatedUserResponse = /*@__PURE__*/ __L.at(
-  __c49,
-  7,
-) as any as S.Schema<ListInvitationsForAuthenticatedUserResponse>;
-
 export interface ListIssueTypesRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-const ListIssueTypesRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  0,
-) as any as S.Schema<ListIssueTypesRequest>;
-
 /** The color of the issue type. */
 export type IssueTypeColor =
   | "gray"
@@ -7584,8 +5397,6 @@ export type IssueTypeColor =
   | "red"
   | "pink"
   | "purple";
-const IssueTypeColor = S.String;
-
 /** The type assigned to the issue. This is only present for issues in repositories where issue types are supported. */
 export interface IssueType {
   /** The unique identifier of the issue type. */
@@ -7605,41 +5416,17 @@ export interface IssueType {
   /** The enabled state of the issue type. */
   is_enabled?: boolean;
 }
-const IssueType = /*@__PURE__*/ __L.at(__c50, 1) as any as S.Schema<IssueType>;
-
 export type ListIssueTypesResponseBodyList = Array<IssueType | null>;
-const ListIssueTypesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c50,
-  2,
-) as any as S.Schema<ListIssueTypesResponseBodyList>;
-
 export type ListIssueTypesResponse = ListIssueTypesResponseBodyList;
-const ListIssueTypesResponse = /*@__PURE__*/ __L.at(
-  __c50,
-  3,
-) as any as S.Schema<ListIssueTypesResponse>;
-
 export interface ListLanguagesRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-const ListLanguagesRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  4,
-) as any as S.Schema<ListLanguagesRequest>;
-
 /** Language */
 export type Language = { [key: string]: number | undefined };
-const Language = /*@__PURE__*/ __L.at(__c50, 5) as any as S.Schema<Language>;
-
 export type ListLanguagesResponse = Language;
-const ListLanguagesResponse = /*@__PURE__*/ __L.at(
-  __c50,
-  6,
-) as any as S.Schema<ListLanguagesResponse>;
-
 export interface ListPagesBuildsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -7650,33 +5437,14 @@ export interface ListPagesBuildsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListPagesBuildsRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  7,
-) as any as S.Schema<ListPagesBuildsRequest>;
-
 export type ListPagesBuildsResponseBodyList = Array<PageBuild>;
-const ListPagesBuildsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c51,
-  0,
-) as any as S.Schema<ListPagesBuildsResponseBodyList>;
-
 export type ListPagesBuildsResponse = ListPagesBuildsResponseBodyList;
-const ListPagesBuildsResponse = /*@__PURE__*/ __L.at(
-  __c51,
-  1,
-) as any as S.Schema<ListPagesBuildsResponse>;
-
 export interface ListPublicRequest {
   /** A repository ID. Only return repositories with an ID greater than this ID. */
   since?: number;
 }
-const ListPublicRequest = /*@__PURE__*/ __L.at(__c51, 2) as any as S.Schema<ListPublicRequest>;
-
 export type ListPublicResponseBodyList = Array<MinimalRepository>;
 export type ListPublicResponse = ListPublicResponseBodyList;
-const ListPublicResponse = ListForksResponse as any as S.Schema<ListPublicResponse>;
-
 export interface ListPullRequestsAssociatedWithCommitRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -7689,11 +5457,6 @@ export interface ListPullRequestsAssociatedWithCommitRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListPullRequestsAssociatedWithCommitRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  3,
-) as any as S.Schema<ListPullRequestsAssociatedWithCommitRequest>;
-
 export interface PullRequestSimpleLabelsItem {
   id: number;
   node_id: string;
@@ -7705,21 +5468,9 @@ export interface PullRequestSimpleLabelsItem {
   /** The user who archived the label, or `null` if it has not been archived. */
   archived_by: SimpleUser | null;
 }
-const PullRequestSimpleLabelsItem = /*@__PURE__*/ __L.at(
-  __c51,
-  4,
-) as any as S.Schema<PullRequestSimpleLabelsItem>;
-
 export type PullRequestSimpleLabelsList = Array<PullRequestSimpleLabelsItem>;
-const PullRequestSimpleLabelsList = /*@__PURE__*/ __L.at(
-  __c51,
-  5,
-) as any as S.Schema<PullRequestSimpleLabelsList>;
-
 /** The state of the milestone. */
 export type NullableMilestoneState = "open" | "closed";
-const NullableMilestoneState = S.String;
-
 /** A collection of related issues and pull requests. */
 export interface NullableMilestone {
   url: string;
@@ -7742,20 +5493,9 @@ export interface NullableMilestone {
   closed_at: string | null;
   due_on: string | null;
 }
-const NullableMilestone = /*@__PURE__*/ __L.at(__c51, 6) as any as S.Schema<NullableMilestone>;
-
 export type PullRequestSimpleAssigneesList = Array<SimpleUser>;
-const PullRequestSimpleAssigneesList =
-  AddUserAccessRestrictionsResponseBodyList as any as S.Schema<PullRequestSimpleAssigneesList>;
-
 export type PullRequestSimpleRequestedReviewersList = Array<SimpleUser>;
-const PullRequestSimpleRequestedReviewersList =
-  AddUserAccessRestrictionsResponseBodyList as any as S.Schema<PullRequestSimpleRequestedReviewersList>;
-
 export type PullRequestSimpleRequestedTeamsList = Array<Team>;
-const PullRequestSimpleRequestedTeamsList =
-  AddTeamAccessRestrictionsResponseBodyList as any as S.Schema<PullRequestSimpleRequestedTeamsList>;
-
 export interface PullRequestSimpleHead {
   label: string;
   ref: string;
@@ -7763,18 +5503,11 @@ export interface PullRequestSimpleHead {
   sha: string;
   user: SimpleUser | null;
 }
-const PullRequestSimpleHead = /*@__PURE__*/ __L.at(
-  __c51,
-  7,
-) as any as S.Schema<PullRequestSimpleHead>;
-
 export type PullRequestSimpleBase = PullRequestSimpleHead;
 /** Hypermedia Link */
 export interface Link {
   href: string;
 }
-const Link = /*@__PURE__*/ __L.at(__c52, 0) as any as S.Schema<Link>;
-
 export interface PullRequestSimpleLinks {
   comments: Link;
   commits: Link;
@@ -7785,15 +5518,8 @@ export interface PullRequestSimpleLinks {
   review_comment: Link;
   self: Link;
 }
-const PullRequestSimpleLinks = /*@__PURE__*/ __L.at(
-  __c52,
-  1,
-) as any as S.Schema<PullRequestSimpleLinks>;
-
 /** The merge method to use. */
 export type AutoMergeMergeMethod = "merge" | "squash" | "rebase";
-const AutoMergeMergeMethod = S.String;
-
 /** The status of auto merging a pull request. */
 export interface AutoMerge {
   enabled_by: SimpleUser;
@@ -7804,19 +5530,12 @@ export interface AutoMerge {
   /** Commit message for the merge commit. */
   commit_message: string;
 }
-const AutoMerge = /*@__PURE__*/ __L.at(__c52, 2) as any as S.Schema<AutoMerge>;
-
 export interface PullRequestStackBase {
   /** The base ref of the stack this pull request belongs to. */
   ref: string;
   /** The base SHA of the stack this pull request belongs to. */
   sha: string;
 }
-const PullRequestStackBase = /*@__PURE__*/ __L.at(
-  __c52,
-  3,
-) as any as S.Schema<PullRequestStackBase>;
-
 /** The stack information associated with a pull request. */
 export interface PullRequestStack {
   base: PullRequestStackBase;
@@ -7829,8 +5548,6 @@ export interface PullRequestStack {
   /** The number of the stack that this pull request belongs to. */
   number?: number;
 }
-const PullRequestStack = /*@__PURE__*/ __L.at(__c52, 4) as any as S.Schema<PullRequestStack>;
-
 /** Pull Request Simple */
 export interface PullRequestSimple {
   url: string;
@@ -7872,21 +5589,9 @@ export interface PullRequestSimple {
   /** Indicates whether or not the pull request is a draft. */
   draft?: boolean;
 }
-const PullRequestSimple = /*@__PURE__*/ __L.at(__c52, 5) as any as S.Schema<PullRequestSimple>;
-
 export type ListPullRequestsAssociatedWithCommitResponseBodyList = Array<PullRequestSimple>;
-const ListPullRequestsAssociatedWithCommitResponseBodyList = /*@__PURE__*/ __L.at(
-  __c52,
-  6,
-) as any as S.Schema<ListPullRequestsAssociatedWithCommitResponseBodyList>;
-
 export type ListPullRequestsAssociatedWithCommitResponse =
   ListPullRequestsAssociatedWithCommitResponseBodyList;
-const ListPullRequestsAssociatedWithCommitResponse = /*@__PURE__*/ __L.at(
-  __c52,
-  7,
-) as any as S.Schema<ListPullRequestsAssociatedWithCommitResponse>;
-
 export interface ListReleaseAssetsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -7899,21 +5604,8 @@ export interface ListReleaseAssetsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListReleaseAssetsRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  0,
-) as any as S.Schema<ListReleaseAssetsRequest>;
-
 export type ListReleaseAssetsResponseBodyList = Array<ReleaseAsset>;
-const ListReleaseAssetsResponseBodyList =
-  ReleaseAssetsList as any as S.Schema<ListReleaseAssetsResponseBodyList>;
-
 export type ListReleaseAssetsResponse = ListReleaseAssetsResponseBodyList;
-const ListReleaseAssetsResponse = /*@__PURE__*/ __L.at(
-  __c53,
-  1,
-) as any as S.Schema<ListReleaseAssetsResponse>;
-
 export interface ListReleasesRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -7924,20 +5616,8 @@ export interface ListReleasesRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListReleasesRequest = /*@__PURE__*/ __L.at(__c53, 2) as any as S.Schema<ListReleasesRequest>;
-
 export type ListReleasesResponseBodyList = Array<Release>;
-const ListReleasesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c53,
-  3,
-) as any as S.Schema<ListReleasesResponseBodyList>;
-
 export type ListReleasesResponse = ListReleasesResponseBodyList;
-const ListReleasesResponse = /*@__PURE__*/ __L.at(
-  __c53,
-  4,
-) as any as S.Schema<ListReleasesResponse>;
-
 export interface ListTagsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -7948,8 +5628,6 @@ export interface ListTagsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListTagsRequest = /*@__PURE__*/ __L.at(__c53, 5) as any as S.Schema<ListTagsRequest>;
-
 export type TagCommit = CommitCommitTree;
 /** Tag */
 export interface Tag {
@@ -7959,17 +5637,8 @@ export interface Tag {
   tarball_url: string;
   node_id: string;
 }
-const Tag = /*@__PURE__*/ __L.at(__c53, 6) as any as S.Schema<Tag>;
-
 export type ListTagsResponseBodyList = Array<Tag>;
-const ListTagsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c53,
-  7,
-) as any as S.Schema<ListTagsResponseBodyList>;
-
 export type ListTagsResponse = ListTagsResponseBodyList;
-const ListTagsResponse = /*@__PURE__*/ __L.at(__c54, 0) as any as S.Schema<ListTagsResponse>;
-
 export interface ListTeamsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -7980,18 +5649,9 @@ export interface ListTeamsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListTeamsRequest = /*@__PURE__*/ __L.at(__c54, 1) as any as S.Schema<ListTeamsRequest>;
-
 export type ListTeamsResponseBodyList = Array<Team>;
-const ListTeamsResponseBodyList =
-  AddTeamAccessRestrictionsResponseBodyList as any as S.Schema<ListTeamsResponseBodyList>;
-
 export type ListTeamsResponse = ListTeamsResponseBodyList;
-const ListTeamsResponse = /*@__PURE__*/ __L.at(__c54, 2) as any as S.Schema<ListTeamsResponse>;
-
 export type ListWebhookDeliveriesRequestStatus = "success" | "failure";
-const ListWebhookDeliveriesRequestStatus = S.String;
-
 export interface ListWebhookDeliveriesRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -8006,11 +5666,6 @@ export interface ListWebhookDeliveriesRequest {
   /** Returns webhook deliveries filtered by delivery outcome classification based on `status_code` range. A `status` of `success` returns deliveries with a `status_code` in the 200-399 range (inclusive). A `status` of `failure` returns deliveries with a `status_code` in the 400-599 range (inclusive). */
   status?: ListWebhookDeliveriesRequestStatus | (string & {});
 }
-const ListWebhookDeliveriesRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  3,
-) as any as S.Schema<ListWebhookDeliveriesRequest>;
-
 /** Delivery made by a webhook, without request and response information. */
 export interface HookDeliveryItem {
   /** Unique identifier of the webhook delivery. */
@@ -8038,20 +5693,8 @@ export interface HookDeliveryItem {
   /** Time when the webhook delivery was throttled. */
   throttled_at?: string | null;
 }
-const HookDeliveryItem = /*@__PURE__*/ __L.at(__c54, 4) as any as S.Schema<HookDeliveryItem>;
-
 export type ListWebhookDeliveriesResponseBodyList = Array<HookDeliveryItem>;
-const ListWebhookDeliveriesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c54,
-  5,
-) as any as S.Schema<ListWebhookDeliveriesResponseBodyList>;
-
 export type ListWebhookDeliveriesResponse = ListWebhookDeliveriesResponseBodyList;
-const ListWebhookDeliveriesResponse = /*@__PURE__*/ __L.at(
-  __c54,
-  6,
-) as any as S.Schema<ListWebhookDeliveriesResponse>;
-
 export interface ListWebhooksRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -8062,20 +5705,8 @@ export interface ListWebhooksRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListWebhooksRequest = /*@__PURE__*/ __L.at(__c54, 7) as any as S.Schema<ListWebhooksRequest>;
-
 export type ListWebhooksResponseBodyList = Array<Hook>;
-const ListWebhooksResponseBodyList = /*@__PURE__*/ __L.at(
-  __c55,
-  0,
-) as any as S.Schema<ListWebhooksResponseBodyList>;
-
 export type ListWebhooksResponse = ListWebhooksResponseBodyList;
-const ListWebhooksResponse = /*@__PURE__*/ __L.at(
-  __c55,
-  1,
-) as any as S.Schema<ListWebhooksResponse>;
-
 export interface MergeRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -8088,8 +5719,6 @@ export interface MergeRequest {
   /** Commit message to use for the merge commit. If omitted, a default message will be used. */
   commit_message?: string;
 }
-const MergeRequest = /*@__PURE__*/ __L.at(__c55, 2) as any as S.Schema<MergeRequest>;
-
 export interface MergeUpstreamRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -8098,22 +5727,13 @@ export interface MergeUpstreamRequest {
   /** The name of the branch which should be updated to match upstream. */
   branch: string;
 }
-const MergeUpstreamRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  3,
-) as any as S.Schema<MergeUpstreamRequest>;
-
 export type MergedUpstreamMergeType = "merge" | "fast-forward" | "none";
-const MergedUpstreamMergeType = S.String;
-
 /** Results of a successful merge upstream request */
 export interface MergedUpstream {
   message?: string;
   merge_type?: MergedUpstreamMergeType;
   base_branch?: string;
 }
-const MergedUpstream = /*@__PURE__*/ __L.at(__c55, 4) as any as S.Schema<MergedUpstream>;
-
 export interface PingWebhookRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -8122,11 +5742,7 @@ export interface PingWebhookRequest {
   /** The unique identifier of the hook. You can find this value in the `X-GitHub-Hook-ID` header of a webhook delivery. */
   hook_id: number;
 }
-const PingWebhookRequest = /*@__PURE__*/ __L.at(__c55, 5) as any as S.Schema<PingWebhookRequest>;
-
 export interface PingWebhookResponse {}
-const PingWebhookResponse = CancelPagesDeploymentResponse as any as S.Schema<PingWebhookResponse>;
-
 export interface RedeliverWebhookDeliveryRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -8136,20 +5752,9 @@ export interface RedeliverWebhookDeliveryRequest {
   hook_id: number;
   delivery_id: number;
 }
-const RedeliverWebhookDeliveryRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  6,
-) as any as S.Schema<RedeliverWebhookDeliveryRequest>;
-
 export interface RedeliverWebhookDeliveryResponse {}
-const RedeliverWebhookDeliveryResponse =
-  AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<RedeliverWebhookDeliveryResponse>;
-
 /** The GitHub Apps that have push access to this branch. Use the slugified version of the app name. **Note**: The list of users, apps, and teams in total is limited to 100 items. */
 export type RemoveAppAccessRestrictionsRequestAppsList = Array<string>;
-const RemoveAppAccessRestrictionsRequestAppsList =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<RemoveAppAccessRestrictionsRequestAppsList>;
-
 export interface RemoveAppAccessRestrictionsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -8160,16 +5765,8 @@ export interface RemoveAppAccessRestrictionsRequest {
   /** The GitHub Apps that have push access to this branch. Use the slugified version of the app name. **Note**: The list of users, apps, and teams in total is limited to 100 items. */
   apps: RemoveAppAccessRestrictionsRequestAppsList;
 }
-const RemoveAppAccessRestrictionsRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  7,
-) as any as S.Schema<RemoveAppAccessRestrictionsRequest>;
-
 export type RemoveAppAccessRestrictionsResponseBodyList = Array<Integration | null>;
 export type RemoveAppAccessRestrictionsResponse = RemoveAppAccessRestrictionsResponseBodyList;
-const RemoveAppAccessRestrictionsResponse =
-  AddAppAccessRestrictionsResponse as any as S.Schema<RemoveAppAccessRestrictionsResponse>;
-
 export interface RemoveCollaboratorRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -8178,15 +5775,7 @@ export interface RemoveCollaboratorRequest {
   /** The handle for the GitHub user account. */
   username: string;
 }
-const RemoveCollaboratorRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  0,
-) as any as S.Schema<RemoveCollaboratorRequest>;
-
 export interface RemoveCollaboratorResponse {}
-const RemoveCollaboratorResponse =
-  CancelPagesDeploymentResponse as any as S.Schema<RemoveCollaboratorResponse>;
-
 /** The name of the status checks */
 export type RemoveStatusCheckContextsRequestBodyCase0ContextsList = Array<string>;
 export interface RemoveStatusCheckContextsRequestBodyCase0 {
@@ -8198,9 +5787,6 @@ export type RemoveStatusCheckContextsRequestBodyCase1List = Array<string>;
 export type RemoveStatusCheckContextsRequestBody =
   | RemoveStatusCheckContextsRequestBodyCase0
   | RemoveStatusCheckContextsRequestBodyCase1List;
-const RemoveStatusCheckContextsRequestBody =
-  S.Unknown as any as S.Schema<RemoveStatusCheckContextsRequestBody>;
-
 export interface RemoveStatusCheckContextsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -8210,16 +5796,8 @@ export interface RemoveStatusCheckContextsRequest {
   branch: string;
   body?: RemoveStatusCheckContextsRequestBody;
 }
-const RemoveStatusCheckContextsRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  1,
-) as any as S.Schema<RemoveStatusCheckContextsRequest>;
-
 export type RemoveStatusCheckContextsResponseBodyList = Array<string>;
 export type RemoveStatusCheckContextsResponse = RemoveStatusCheckContextsResponseBodyList;
-const RemoveStatusCheckContextsResponse =
-  AddStatusCheckContextsResponse as any as S.Schema<RemoveStatusCheckContextsResponse>;
-
 export interface RemoveStatusCheckProtectionRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -8228,15 +5806,7 @@ export interface RemoveStatusCheckProtectionRequest {
   /** The name of the branch. Cannot contain wildcard characters. To use wildcard characters in branch names, use [the GraphQL API](https://docs.github.com/graphql). */
   branch: string;
 }
-const RemoveStatusCheckProtectionRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  2,
-) as any as S.Schema<RemoveStatusCheckProtectionRequest>;
-
 export interface RemoveStatusCheckProtectionResponse {}
-const RemoveStatusCheckProtectionResponse =
-  AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<RemoveStatusCheckProtectionResponse>;
-
 /** The slug values for teams */
 export type RemoveTeamAccessRestrictionsRequestBodyCase0TeamsList = Array<string>;
 export interface RemoveTeamAccessRestrictionsRequestBodyCase0 {
@@ -8248,9 +5818,6 @@ export type RemoveTeamAccessRestrictionsRequestBodyCase1List = Array<string>;
 export type RemoveTeamAccessRestrictionsRequestBody =
   | RemoveTeamAccessRestrictionsRequestBodyCase0
   | RemoveTeamAccessRestrictionsRequestBodyCase1List;
-const RemoveTeamAccessRestrictionsRequestBody =
-  S.Unknown as any as S.Schema<RemoveTeamAccessRestrictionsRequestBody>;
-
 export interface RemoveTeamAccessRestrictionsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -8260,21 +5827,10 @@ export interface RemoveTeamAccessRestrictionsRequest {
   branch: string;
   body?: RemoveTeamAccessRestrictionsRequestBody;
 }
-const RemoveTeamAccessRestrictionsRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  3,
-) as any as S.Schema<RemoveTeamAccessRestrictionsRequest>;
-
 export type RemoveTeamAccessRestrictionsResponseBodyList = Array<Team>;
 export type RemoveTeamAccessRestrictionsResponse = RemoveTeamAccessRestrictionsResponseBodyList;
-const RemoveTeamAccessRestrictionsResponse =
-  AddTeamAccessRestrictionsResponse as any as S.Schema<RemoveTeamAccessRestrictionsResponse>;
-
 /** The username for users */
 export type RemoveUserAccessRestrictionsRequestUsersList = Array<string>;
-const RemoveUserAccessRestrictionsRequestUsersList =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<RemoveUserAccessRestrictionsRequestUsersList>;
-
 export interface RemoveUserAccessRestrictionsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -8285,16 +5841,8 @@ export interface RemoveUserAccessRestrictionsRequest {
   /** The username for users */
   users: RemoveUserAccessRestrictionsRequestUsersList;
 }
-const RemoveUserAccessRestrictionsRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  4,
-) as any as S.Schema<RemoveUserAccessRestrictionsRequest>;
-
 export type RemoveUserAccessRestrictionsResponseBodyList = Array<SimpleUser>;
 export type RemoveUserAccessRestrictionsResponse = RemoveUserAccessRestrictionsResponseBodyList;
-const RemoveUserAccessRestrictionsResponse =
-  AddUserAccessRestrictionsResponse as any as S.Schema<RemoveUserAccessRestrictionsResponse>;
-
 export interface RenameBranchRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -8305,13 +5853,8 @@ export interface RenameBranchRequest {
   /** The new name of the branch. */
   new_name: string;
 }
-const RenameBranchRequest = /*@__PURE__*/ __L.at(__c56, 5) as any as S.Schema<RenameBranchRequest>;
-
 /** An array of topics to add to the repository. Pass one or more topics to _replace_ the set of existing topics. Send an empty array (`[]`) to clear all topics from the repository. **Note:** Topic `names` will be saved as lowercase. */
 export type ReplaceAllTopicsRequestNamesList = Array<string>;
-const ReplaceAllTopicsRequestNamesList =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<ReplaceAllTopicsRequestNamesList>;
-
 export interface ReplaceAllTopicsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -8320,29 +5863,17 @@ export interface ReplaceAllTopicsRequest {
   /** An array of topics to add to the repository. Pass one or more topics to _replace_ the set of existing topics. Send an empty array (`[]`) to clear all topics from the repository. **Note:** Topic `names` will be saved as lowercase. */
   names: ReplaceAllTopicsRequestNamesList;
 }
-const ReplaceAllTopicsRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  6,
-) as any as S.Schema<ReplaceAllTopicsRequest>;
-
 export interface RequestPagesBuildRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-const RequestPagesBuildRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  7,
-) as any as S.Schema<RequestPagesBuildRequest>;
-
 /** Page Build Status */
 export interface PageBuildStatus {
   url: string;
   status: string;
 }
-const PageBuildStatus = /*@__PURE__*/ __L.at(__c57, 0) as any as S.Schema<PageBuildStatus>;
-
 export interface SetAdminBranchProtectionRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -8351,16 +5882,8 @@ export interface SetAdminBranchProtectionRequest {
   /** The name of the branch. Cannot contain wildcard characters. To use wildcard characters in branch names, use [the GraphQL API](https://docs.github.com/graphql). */
   branch: string;
 }
-const SetAdminBranchProtectionRequest = /*@__PURE__*/ __L.at(
-  __c57,
-  1,
-) as any as S.Schema<SetAdminBranchProtectionRequest>;
-
 /** The GitHub Apps that have push access to this branch. Use the slugified version of the app name. **Note**: The list of users, apps, and teams in total is limited to 100 items. */
 export type SetAppAccessRestrictionsRequestAppsList = Array<string>;
-const SetAppAccessRestrictionsRequestAppsList =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<SetAppAccessRestrictionsRequestAppsList>;
-
 export interface SetAppAccessRestrictionsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -8371,16 +5894,8 @@ export interface SetAppAccessRestrictionsRequest {
   /** The GitHub Apps that have push access to this branch. Use the slugified version of the app name. **Note**: The list of users, apps, and teams in total is limited to 100 items. */
   apps: SetAppAccessRestrictionsRequestAppsList;
 }
-const SetAppAccessRestrictionsRequest = /*@__PURE__*/ __L.at(
-  __c57,
-  2,
-) as any as S.Schema<SetAppAccessRestrictionsRequest>;
-
 export type SetAppAccessRestrictionsResponseBodyList = Array<Integration | null>;
 export type SetAppAccessRestrictionsResponse = SetAppAccessRestrictionsResponseBodyList;
-const SetAppAccessRestrictionsResponse =
-  AddAppAccessRestrictionsResponse as any as S.Schema<SetAppAccessRestrictionsResponse>;
-
 /** The name of the status checks */
 export type SetStatusCheckContextsRequestBodyCase0ContextsList = Array<string>;
 export interface SetStatusCheckContextsRequestBodyCase0 {
@@ -8392,9 +5907,6 @@ export type SetStatusCheckContextsRequestBodyCase1List = Array<string>;
 export type SetStatusCheckContextsRequestBody =
   | SetStatusCheckContextsRequestBodyCase0
   | SetStatusCheckContextsRequestBodyCase1List;
-const SetStatusCheckContextsRequestBody =
-  S.Unknown as any as S.Schema<SetStatusCheckContextsRequestBody>;
-
 export interface SetStatusCheckContextsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -8404,16 +5916,8 @@ export interface SetStatusCheckContextsRequest {
   branch: string;
   body?: SetStatusCheckContextsRequestBody;
 }
-const SetStatusCheckContextsRequest = /*@__PURE__*/ __L.at(
-  __c57,
-  3,
-) as any as S.Schema<SetStatusCheckContextsRequest>;
-
 export type SetStatusCheckContextsResponseBodyList = Array<string>;
 export type SetStatusCheckContextsResponse = SetStatusCheckContextsResponseBodyList;
-const SetStatusCheckContextsResponse =
-  AddStatusCheckContextsResponse as any as S.Schema<SetStatusCheckContextsResponse>;
-
 /** The slug values for teams */
 export type SetTeamAccessRestrictionsRequestBodyCase0TeamsList = Array<string>;
 export interface SetTeamAccessRestrictionsRequestBodyCase0 {
@@ -8425,9 +5929,6 @@ export type SetTeamAccessRestrictionsRequestBodyCase1List = Array<string>;
 export type SetTeamAccessRestrictionsRequestBody =
   | SetTeamAccessRestrictionsRequestBodyCase0
   | SetTeamAccessRestrictionsRequestBodyCase1List;
-const SetTeamAccessRestrictionsRequestBody =
-  S.Unknown as any as S.Schema<SetTeamAccessRestrictionsRequestBody>;
-
 export interface SetTeamAccessRestrictionsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -8437,21 +5938,10 @@ export interface SetTeamAccessRestrictionsRequest {
   branch: string;
   body?: SetTeamAccessRestrictionsRequestBody;
 }
-const SetTeamAccessRestrictionsRequest = /*@__PURE__*/ __L.at(
-  __c57,
-  4,
-) as any as S.Schema<SetTeamAccessRestrictionsRequest>;
-
 export type SetTeamAccessRestrictionsResponseBodyList = Array<Team>;
 export type SetTeamAccessRestrictionsResponse = SetTeamAccessRestrictionsResponseBodyList;
-const SetTeamAccessRestrictionsResponse =
-  AddTeamAccessRestrictionsResponse as any as S.Schema<SetTeamAccessRestrictionsResponse>;
-
 /** The username for users */
 export type SetUserAccessRestrictionsRequestUsersList = Array<string>;
-const SetUserAccessRestrictionsRequestUsersList =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<SetUserAccessRestrictionsRequestUsersList>;
-
 export interface SetUserAccessRestrictionsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -8462,16 +5952,8 @@ export interface SetUserAccessRestrictionsRequest {
   /** The username for users */
   users: SetUserAccessRestrictionsRequestUsersList;
 }
-const SetUserAccessRestrictionsRequest = /*@__PURE__*/ __L.at(
-  __c57,
-  5,
-) as any as S.Schema<SetUserAccessRestrictionsRequest>;
-
 export type SetUserAccessRestrictionsResponseBodyList = Array<SimpleUser>;
 export type SetUserAccessRestrictionsResponse = SetUserAccessRestrictionsResponseBodyList;
-const SetUserAccessRestrictionsResponse =
-  AddUserAccessRestrictionsResponse as any as S.Schema<SetUserAccessRestrictionsResponse>;
-
 export interface TestPushWebhookRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -8480,20 +5962,9 @@ export interface TestPushWebhookRequest {
   /** The unique identifier of the hook. You can find this value in the `X-GitHub-Hook-ID` header of a webhook delivery. */
   hook_id: number;
 }
-const TestPushWebhookRequest = /*@__PURE__*/ __L.at(
-  __c57,
-  6,
-) as any as S.Schema<TestPushWebhookRequest>;
-
 export interface TestPushWebhookResponse {}
-const TestPushWebhookResponse =
-  CancelPagesDeploymentResponse as any as S.Schema<TestPushWebhookResponse>;
-
 /** ID of the team or teams to add to the repository. Teams can only be added to organization-owned repositories. */
 export type TransferRequestTeamIdsList = Array<number>;
-const TransferRequestTeamIdsList =
-  OrgRulesetConditionsCase1RepositoryIdRepositoryIdsList as any as S.Schema<TransferRequestTeamIdsList>;
-
 export interface TransferRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -8506,25 +5977,14 @@ export interface TransferRequest {
   /** ID of the team or teams to add to the repository. Teams can only be added to organization-owned repositories. */
   team_ids?: TransferRequestTeamIdsList;
 }
-const TransferRequest = /*@__PURE__*/ __L.at(__c57, 7) as any as S.Schema<TransferRequest>;
-
 export interface TransferResponse {}
-const TransferResponse = CancelPagesDeploymentResponse as any as S.Schema<TransferResponse>;
-
 /** The visibility of the repository. */
 export type UpdateRequestVisibility = "public" | "private";
-const UpdateRequestVisibility = S.String;
-
 /** Use the `status` property to enable or disable GitHub Advanced Security for this repository. For more information, see "[About GitHub Advanced Security](/github/getting-started-with-github/learning-about-github/about-github-advanced-security)." For standalone Code Scanning or Secret Protection products, this parameter cannot be used. */
 export interface UpdateRequestSecurityAndAnalysisAdvancedSecurity {
   /** Can be `enabled` or `disabled`. */
   status?: string;
 }
-const UpdateRequestSecurityAndAnalysisAdvancedSecurity = /*@__PURE__*/ __L.at(
-  __c58,
-  0,
-) as any as S.Schema<UpdateRequestSecurityAndAnalysisAdvancedSecurity>;
-
 /** Use the `status` property to enable or disable GitHub Code Security for this repository. */
 export type UpdateRequestSecurityAndAnalysisCodeSecurity =
   UpdateRequestSecurityAndAnalysisAdvancedSecurity;
@@ -8550,16 +6010,10 @@ export type UpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypass =
 export type UpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
   | "TEAM"
   | "ROLE";
-const UpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
-  S.String;
-
 /** The bypass mode for the reviewer */
 export type UpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode =
   | "ALWAYS"
   | "EXEMPT";
-const UpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode =
-  S.String;
-
 export interface UpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem {
   /** The ID of the team or role selected as a bypass reviewer */
   reviewer_id: number;
@@ -8572,31 +6026,14 @@ export interface UpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOp
     | UpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode
     | (string & {});
 }
-const UpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem =
-  /*@__PURE__*/ __L.at(
-    __c58,
-    1,
-  ) as any as S.Schema<UpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem>;
-
 /** The bypass reviewers for secret scanning delegated bypass. If you omit this field, the existing set of reviewers is unchanged. */
 export type UpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList =
   Array<UpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem>;
-const UpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList =
-  /*@__PURE__*/ __L.at(
-    __c58,
-    2,
-  ) as any as S.Schema<UpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList>;
-
 /** Feature options for secret scanning delegated bypass. This object is only honored when `security_and_analysis.secret_scanning_delegated_bypass.status` is set to `enabled`. You can send this object in the same request as `secret_scanning_delegated_bypass`, or update just the options in a separate request. */
 export interface UpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOptions {
   /** The bypass reviewers for secret scanning delegated bypass. If you omit this field, the existing set of reviewers is unchanged. */
   reviewers?: UpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList;
 }
-const UpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOptions = /*@__PURE__*/ __L.at(
-  __c58,
-  3,
-) as any as S.Schema<UpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOptions>;
-
 /** Specify which security and analysis features to enable or disable for the repository. To use this parameter, you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see "[Managing security managers in your organization](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)." For example, to enable GitHub Advanced Security, use this data in the body of the `PATCH` request: `{ "security_and_analysis": {"advanced_security": { "status": "enabled" } } }`. You can check which security and analysis features are currently enabled by using a `GET /repos/{owner}/{repo}` request. */
 export interface UpdateRequestSecurityAndAnalysis {
   /** Use the `status` property to enable or disable GitHub Advanced Security for this repository. For more information, see "[About GitHub Advanced Security](/github/getting-started-with-github/learning-about-github/about-github-advanced-security)." For standalone Code Scanning or Secret Protection products, this parameter cannot be used. */
@@ -8618,31 +6055,16 @@ export interface UpdateRequestSecurityAndAnalysis {
   /** Feature options for secret scanning delegated bypass. This object is only honored when `security_and_analysis.secret_scanning_delegated_bypass.status` is set to `enabled`. You can send this object in the same request as `secret_scanning_delegated_bypass`, or update just the options in a separate request. */
   secret_scanning_delegated_bypass_options?: UpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOptions;
 }
-const UpdateRequestSecurityAndAnalysis = /*@__PURE__*/ __L.at(
-  __c58,
-  4,
-) as any as S.Schema<UpdateRequestSecurityAndAnalysis>;
-
 /** The policy that controls who can create pull requests for this repository: `all` or `collaborators_only`. */
 export type UpdateRequestPullRequestCreationPolicy = "all" | "collaborators_only";
-const UpdateRequestPullRequestCreationPolicy = S.String;
-
 /** Required when using `squash_merge_commit_message`. The default value for a squash merge commit title: - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit). */
 export type UpdateRequestSquashMergeCommitTitle = "PR_TITLE" | "COMMIT_OR_PR_TITLE";
-const UpdateRequestSquashMergeCommitTitle = S.String;
-
 /** The default value for a squash merge commit message: - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message. */
 export type UpdateRequestSquashMergeCommitMessage = "PR_BODY" | "COMMIT_MESSAGES" | "BLANK";
-const UpdateRequestSquashMergeCommitMessage = S.String;
-
 /** Required when using `merge_commit_message`. The default value for a merge commit title. - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name). */
 export type UpdateRequestMergeCommitTitle = "PR_TITLE" | "MERGE_MESSAGE";
-const UpdateRequestMergeCommitTitle = S.String;
-
 /** The default value for a merge commit message. - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message. */
 export type UpdateRequestMergeCommitMessage = "PR_BODY" | "PR_TITLE" | "BLANK";
-const UpdateRequestMergeCommitMessage = S.String;
-
 export interface UpdateRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -8703,32 +6125,17 @@ export interface UpdateRequest {
   /** Either `true` to require contributors to sign off on web-based commits, or `false` to not require contributors to sign off on web-based commits. */
   web_commit_signoff_required?: boolean;
 }
-const UpdateRequest = /*@__PURE__*/ __L.at(__c58, 5) as any as S.Schema<UpdateRequest>;
-
 /** **Closing down notice**: The list of status checks to require in order to merge into this branch. If any of these checks have recently been set by a particular GitHub App, they will be required to come from that app in future for the branch to merge. Use `checks` instead of `contexts` for more fine-grained control. */
 export type UpdateBranchProtectionRequestRequiredStatusChecksContextsList = Array<string>;
-const UpdateBranchProtectionRequestRequiredStatusChecksContextsList =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<UpdateBranchProtectionRequestRequiredStatusChecksContextsList>;
-
 export interface UpdateBranchProtectionRequestRequiredStatusChecksChecksItem {
   /** The name of the required check */
   context: string;
   /** The ID of the GitHub App that must provide this check. Omit this field to automatically select the GitHub App that has recently provided this check, or any app if it was not set by a GitHub App. Pass -1 to explicitly allow any app to set the status. */
   app_id?: number;
 }
-const UpdateBranchProtectionRequestRequiredStatusChecksChecksItem = /*@__PURE__*/ __L.at(
-  __c58,
-  6,
-) as any as S.Schema<UpdateBranchProtectionRequestRequiredStatusChecksChecksItem>;
-
 /** The list of status checks to require in order to merge into this branch. */
 export type UpdateBranchProtectionRequestRequiredStatusChecksChecksList =
   Array<UpdateBranchProtectionRequestRequiredStatusChecksChecksItem>;
-const UpdateBranchProtectionRequestRequiredStatusChecksChecksList = /*@__PURE__*/ __L.at(
-  __c58,
-  7,
-) as any as S.Schema<UpdateBranchProtectionRequestRequiredStatusChecksChecksList>;
-
 /** Require status checks to pass before merging. Set to `null` to disable. */
 export interface UpdateBranchProtectionRequestRequiredStatusChecks {
   /** Require branches to be up to date before merging. */
@@ -8738,29 +6145,15 @@ export interface UpdateBranchProtectionRequestRequiredStatusChecks {
   /** The list of status checks to require in order to merge into this branch. */
   checks?: UpdateBranchProtectionRequestRequiredStatusChecksChecksList;
 }
-const UpdateBranchProtectionRequestRequiredStatusChecks = /*@__PURE__*/ __L.at(
-  __c59,
-  0,
-) as any as S.Schema<UpdateBranchProtectionRequestRequiredStatusChecks>;
-
 /** The list of user `login`s with dismissal access */
 export type UpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictionsUsersList =
   Array<string>;
-const UpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictionsUsersList =
-  RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList as any as S.Schema<UpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictionsUsersList>;
-
 /** The list of team `slug`s with dismissal access */
 export type UpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictionsTeamsList =
   Array<string>;
-const UpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictionsTeamsList =
-  RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList as any as S.Schema<UpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictionsTeamsList>;
-
 /** The list of app `slug`s with dismissal access */
 export type UpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictionsAppsList =
   Array<string>;
-const UpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictionsAppsList =
-  RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList as any as S.Schema<UpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictionsAppsList>;
-
 /** Specify which users, teams, and apps can dismiss pull request reviews. Pass an empty `dismissal_restrictions` object to disable. User and team `dismissal_restrictions` are only available for organization-owned repositories. Omit this parameter for personal repositories. */
 export interface UpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictions {
   /** The list of user `login`s with dismissal access */
@@ -8770,30 +6163,15 @@ export interface UpdateBranchProtectionRequestRequiredPullRequestReviewsDismissa
   /** The list of app `slug`s with dismissal access */
   apps?: UpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictionsAppsList;
 }
-const UpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictions =
-  /*@__PURE__*/ __L.at(
-    __c59,
-    1,
-  ) as any as S.Schema<UpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictions>;
-
 /** The list of user `login`s allowed to bypass pull request requirements. */
 export type UpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowancesUsersList =
   Array<string>;
-const UpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowancesUsersList =
-  RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList as any as S.Schema<UpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowancesUsersList>;
-
 /** The list of team `slug`s allowed to bypass pull request requirements. */
 export type UpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowancesTeamsList =
   Array<string>;
-const UpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowancesTeamsList =
-  RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList as any as S.Schema<UpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowancesTeamsList>;
-
 /** The list of app `slug`s allowed to bypass pull request requirements. */
 export type UpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowancesAppsList =
   Array<string>;
-const UpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowancesAppsList =
-  RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList as any as S.Schema<UpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowancesAppsList>;
-
 /** Allow specific users, teams, or apps to bypass pull request requirements. */
 export interface UpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowances {
   /** The list of user `login`s allowed to bypass pull request requirements. */
@@ -8803,12 +6181,6 @@ export interface UpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPu
   /** The list of app `slug`s allowed to bypass pull request requirements. */
   apps?: UpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowancesAppsList;
 }
-const UpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowances =
-  /*@__PURE__*/ __L.at(
-    __c59,
-    2,
-  ) as any as S.Schema<UpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowances>;
-
 /** Require at least one approving review on a pull request, before merging. Set to `null` to disable. */
 export interface UpdateBranchProtectionRequestRequiredPullRequestReviews {
   /** Specify which users, teams, and apps can dismiss pull request reviews. Pass an empty `dismissal_restrictions` object to disable. User and team `dismissal_restrictions` are only available for organization-owned repositories. Omit this parameter for personal repositories. */
@@ -8824,26 +6196,12 @@ export interface UpdateBranchProtectionRequestRequiredPullRequestReviews {
   /** Allow specific users, teams, or apps to bypass pull request requirements. */
   bypass_pull_request_allowances?: UpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowances;
 }
-const UpdateBranchProtectionRequestRequiredPullRequestReviews = /*@__PURE__*/ __L.at(
-  __c59,
-  3,
-) as any as S.Schema<UpdateBranchProtectionRequestRequiredPullRequestReviews>;
-
 /** The list of user `login`s with push access */
 export type UpdateBranchProtectionRequestRestrictionsUsersList = Array<string>;
-const UpdateBranchProtectionRequestRestrictionsUsersList =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<UpdateBranchProtectionRequestRestrictionsUsersList>;
-
 /** The list of team `slug`s with push access */
 export type UpdateBranchProtectionRequestRestrictionsTeamsList = Array<string>;
-const UpdateBranchProtectionRequestRestrictionsTeamsList =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<UpdateBranchProtectionRequestRestrictionsTeamsList>;
-
 /** The list of app `slug`s with push access */
 export type UpdateBranchProtectionRequestRestrictionsAppsList = Array<string>;
-const UpdateBranchProtectionRequestRestrictionsAppsList =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<UpdateBranchProtectionRequestRestrictionsAppsList>;
-
 /** Restrict who can push to the protected branch. User, app, and team `restrictions` are only available for organization-owned repositories. Set to `null` to disable. */
 export interface UpdateBranchProtectionRequestRestrictions {
   /** The list of user `login`s with push access */
@@ -8853,11 +6211,6 @@ export interface UpdateBranchProtectionRequestRestrictions {
   /** The list of app `slug`s with push access */
   apps?: UpdateBranchProtectionRequestRestrictionsAppsList;
 }
-const UpdateBranchProtectionRequestRestrictions = /*@__PURE__*/ __L.at(
-  __c59,
-  4,
-) as any as S.Schema<UpdateBranchProtectionRequestRestrictions>;
-
 export interface UpdateBranchProtectionRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -8888,25 +6241,11 @@ export interface UpdateBranchProtectionRequest {
   /** Whether users can pull changes from upstream when the branch is locked. Set to `true` to allow fork syncing. Set to `false` to prevent fork syncing. Default: `false`. */
   allow_fork_syncing?: boolean;
 }
-const UpdateBranchProtectionRequest = /*@__PURE__*/ __L.at(
-  __c59,
-  5,
-) as any as S.Schema<UpdateBranchProtectionRequest>;
-
 export type ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsUsersList =
   Array<SimpleUser>;
-const ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsUsersList =
-  ProtectedBranchPullRequestReviewBypassPullRequestAllowancesUsersList as any as S.Schema<ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsUsersList>;
-
 export type ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsTeamsList = Array<Team>;
-const ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsTeamsList =
-  ProtectedBranchPullRequestReviewBypassPullRequestAllowancesTeamsList as any as S.Schema<ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsTeamsList>;
-
 export type ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsAppsList =
   Array<Integration | null>;
-const ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsAppsList =
-  ProtectedBranchPullRequestReviewBypassPullRequestAllowancesAppsList as any as S.Schema<ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsAppsList>;
-
 export interface ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions {
   url: string;
   users_url: string;
@@ -8915,36 +6254,17 @@ export interface ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions 
   teams: ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsTeamsList;
   apps?: ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsAppsList;
 }
-const ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions = /*@__PURE__*/ __L.at(
-  __c59,
-  6,
-) as any as S.Schema<ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions>;
-
 export type ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowancesUsersList =
   Array<SimpleUser>;
-const ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowancesUsersList =
-  ProtectedBranchPullRequestReviewBypassPullRequestAllowancesUsersList as any as S.Schema<ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowancesUsersList>;
-
 export type ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowancesTeamsList =
   Array<Team>;
-const ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowancesTeamsList =
-  ProtectedBranchPullRequestReviewBypassPullRequestAllowancesTeamsList as any as S.Schema<ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowancesTeamsList>;
-
 export type ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowancesAppsList =
   Array<Integration | null>;
-const ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowancesAppsList =
-  ProtectedBranchPullRequestReviewBypassPullRequestAllowancesAppsList as any as S.Schema<ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowancesAppsList>;
-
 export interface ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowances {
   users: ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowancesUsersList;
   teams: ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowancesTeamsList;
   apps?: ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowancesAppsList;
 }
-const ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowances = /*@__PURE__*/ __L.at(
-  __c59,
-  7,
-) as any as S.Schema<ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowances>;
-
 export interface ProtectedBranchRequiredPullRequestReviews {
   url: string;
   dismiss_stale_reviews?: boolean;
@@ -8955,19 +6275,11 @@ export interface ProtectedBranchRequiredPullRequestReviews {
   dismissal_restrictions?: ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions;
   bypass_pull_request_allowances?: ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowances;
 }
-const ProtectedBranchRequiredPullRequestReviews = /*@__PURE__*/ __L.at(
-  __c60,
-  0,
-) as any as S.Schema<ProtectedBranchRequiredPullRequestReviews>;
-
 export type ProtectedBranchRequiredSignatures = BranchProtectionRequiredSignatures;
 export type ProtectedBranchEnforceAdmins = BranchProtectionRequiredSignatures;
 export interface ProtectedBranchRequiredLinearHistory {
   enabled: boolean;
 }
-const ProtectedBranchRequiredLinearHistory =
-  CheckPrivateVulnerabilityReportingResponse as any as S.Schema<ProtectedBranchRequiredLinearHistory>;
-
 export type ProtectedBranchAllowForcePushes = ProtectedBranchRequiredLinearHistory;
 export type ProtectedBranchAllowDeletions = ProtectedBranchRequiredLinearHistory;
 export type ProtectedBranchRequiredConversationResolution = BranchProtectionRequiredLinearHistory;
@@ -8994,8 +6306,6 @@ export interface ProtectedBranch {
   /** Whether users can pull changes from upstream when the branch is locked. Set to `true` to allow fork syncing. Set to `false` to prevent fork syncing. */
   allow_fork_syncing?: BranchProtectionRequiredLinearHistory;
 }
-const ProtectedBranch = /*@__PURE__*/ __L.at(__c60, 1) as any as S.Schema<ProtectedBranch>;
-
 export interface UpdateCommitCommentRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -9006,11 +6316,6 @@ export interface UpdateCommitCommentRequest {
   /** The contents of the comment */
   body: string;
 }
-const UpdateCommitCommentRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  2,
-) as any as S.Schema<UpdateCommitCommentRequest>;
-
 export interface UpdateDeploymentBranchPolicyRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -9023,15 +6328,8 @@ export interface UpdateDeploymentBranchPolicyRequest {
   /** The name pattern that branches must match in order to deploy to the environment. Wildcard characters will not match `/`. For example, to match branches that begin with `release/` and contain an additional single slash, use `release/*\/*`. For more information about pattern matching syntax, see the [Ruby File.fnmatch documentation](https://ruby-doc.org/core-2.5.1/File.html#method-c-fnmatch). */
   name: string;
 }
-const UpdateDeploymentBranchPolicyRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  3,
-) as any as S.Schema<UpdateDeploymentBranchPolicyRequest>;
-
 /** The process by which the GitHub Pages site will be built. `workflow` means that the site is built by a custom GitHub Actions workflow. `legacy` means that the site is built by GitHub when changes are pushed to a specific branch. */
 export type UpdateInformationAboutPagesSiteRequestBuildType = "legacy" | "workflow";
-const UpdateInformationAboutPagesSiteRequestBuildType = S.String;
-
 /** Update the source for the repository. Must include the branch name, and may optionally specify the subdirectory `/docs`. Possible values are `"gh-pages"`, `"master"`, and `"master /docs"`. */
 export type UpdateInformationAboutPagesSiteRequestSourceCase0 =
   | "gh-pages"
@@ -9049,9 +6347,6 @@ export interface UpdateInformationAboutPagesSiteRequestSourceCase1 {
 export type UpdateInformationAboutPagesSiteRequestSource =
   | UpdateInformationAboutPagesSiteRequestSourceCase0
   | UpdateInformationAboutPagesSiteRequestSourceCase1;
-const UpdateInformationAboutPagesSiteRequestSource =
-  S.Unknown as any as S.Schema<UpdateInformationAboutPagesSiteRequestSource>;
-
 export interface UpdateInformationAboutPagesSiteRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -9065,19 +6360,9 @@ export interface UpdateInformationAboutPagesSiteRequest {
   build_type?: UpdateInformationAboutPagesSiteRequestBuildType | (string & {});
   source?: UpdateInformationAboutPagesSiteRequestSource;
 }
-const UpdateInformationAboutPagesSiteRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  4,
-) as any as S.Schema<UpdateInformationAboutPagesSiteRequest>;
-
 export interface UpdateInformationAboutPagesSiteResponse {}
-const UpdateInformationAboutPagesSiteResponse =
-  AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<UpdateInformationAboutPagesSiteResponse>;
-
 /** The permissions that the associated user will have on the repository. Valid values are `read`, `write`, `maintain`, `triage`, and `admin`. */
 export type UpdateInvitationRequestPermissions = "read" | "write" | "maintain" | "triage" | "admin";
-const UpdateInvitationRequestPermissions = S.String;
-
 export interface UpdateInvitationRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -9088,25 +6373,12 @@ export interface UpdateInvitationRequest {
   /** The permissions that the associated user will have on the repository. Valid values are `read`, `write`, `maintain`, `triage`, and `admin`. */
   permissions?: UpdateInvitationRequestPermissions | (string & {});
 }
-const UpdateInvitationRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  5,
-) as any as S.Schema<UpdateInvitationRequest>;
-
 /** The target of the ruleset */
 export type UpdateOrgRulesetRequestTarget = "branch" | "tag" | "push" | "repository";
-const UpdateOrgRulesetRequestTarget = S.String;
-
 /** The actors that can bypass the rules in this ruleset */
 export type UpdateOrgRulesetRequestBypassActorsList = Array<RepositoryRulesetBypassActor>;
-const UpdateOrgRulesetRequestBypassActorsList =
-  CreateOrgRulesetRequestBypassActorsList as any as S.Schema<UpdateOrgRulesetRequestBypassActorsList>;
-
 /** An array of rules within the ruleset. */
 export type UpdateOrgRulesetRequestRulesList = Array<OrgRules>;
-const UpdateOrgRulesetRequestRulesList =
-  CreateOrgRulesetRequestRulesList as any as S.Schema<UpdateOrgRulesetRequestRulesList>;
-
 export interface UpdateOrgRulesetRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -9123,26 +6395,12 @@ export interface UpdateOrgRulesetRequest {
   /** An array of rules within the ruleset. */
   rules?: UpdateOrgRulesetRequestRulesList;
 }
-const UpdateOrgRulesetRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  6,
-) as any as S.Schema<UpdateOrgRulesetRequest>;
-
 /** The list of user `login`s with dismissal access */
 export type UpdatePullRequestReviewProtectionRequestDismissalRestrictionsUsersList = Array<string>;
-const UpdatePullRequestReviewProtectionRequestDismissalRestrictionsUsersList =
-  RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList as any as S.Schema<UpdatePullRequestReviewProtectionRequestDismissalRestrictionsUsersList>;
-
 /** The list of team `slug`s with dismissal access */
 export type UpdatePullRequestReviewProtectionRequestDismissalRestrictionsTeamsList = Array<string>;
-const UpdatePullRequestReviewProtectionRequestDismissalRestrictionsTeamsList =
-  RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList as any as S.Schema<UpdatePullRequestReviewProtectionRequestDismissalRestrictionsTeamsList>;
-
 /** The list of app `slug`s with dismissal access */
 export type UpdatePullRequestReviewProtectionRequestDismissalRestrictionsAppsList = Array<string>;
-const UpdatePullRequestReviewProtectionRequestDismissalRestrictionsAppsList =
-  RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList as any as S.Schema<UpdatePullRequestReviewProtectionRequestDismissalRestrictionsAppsList>;
-
 /** Specify which users, teams, and apps can dismiss pull request reviews. Pass an empty `dismissal_restrictions` object to disable. User and team `dismissal_restrictions` are only available for organization-owned repositories. Omit this parameter for personal repositories. */
 export interface UpdatePullRequestReviewProtectionRequestDismissalRestrictions {
   /** The list of user `login`s with dismissal access */
@@ -9152,29 +6410,15 @@ export interface UpdatePullRequestReviewProtectionRequestDismissalRestrictions {
   /** The list of app `slug`s with dismissal access */
   apps?: UpdatePullRequestReviewProtectionRequestDismissalRestrictionsAppsList;
 }
-const UpdatePullRequestReviewProtectionRequestDismissalRestrictions = /*@__PURE__*/ __L.at(
-  __c60,
-  7,
-) as any as S.Schema<UpdatePullRequestReviewProtectionRequestDismissalRestrictions>;
-
 /** The list of user `login`s allowed to bypass pull request requirements. */
 export type UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowancesUsersList =
   Array<string>;
-const UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowancesUsersList =
-  RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList as any as S.Schema<UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowancesUsersList>;
-
 /** The list of team `slug`s allowed to bypass pull request requirements. */
 export type UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowancesTeamsList =
   Array<string>;
-const UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowancesTeamsList =
-  RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList as any as S.Schema<UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowancesTeamsList>;
-
 /** The list of app `slug`s allowed to bypass pull request requirements. */
 export type UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowancesAppsList =
   Array<string>;
-const UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowancesAppsList =
-  RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList as any as S.Schema<UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowancesAppsList>;
-
 /** Allow specific users, teams, or apps to bypass pull request requirements. */
 export interface UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowances {
   /** The list of user `login`s allowed to bypass pull request requirements. */
@@ -9184,11 +6428,6 @@ export interface UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowa
   /** The list of app `slug`s allowed to bypass pull request requirements. */
   apps?: UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowancesAppsList;
 }
-const UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowances = /*@__PURE__*/ __L.at(
-  __c61,
-  0,
-) as any as S.Schema<UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowances>;
-
 export interface UpdatePullRequestReviewProtectionRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -9209,15 +6448,8 @@ export interface UpdatePullRequestReviewProtectionRequest {
   /** Allow specific users, teams, or apps to bypass pull request requirements. */
   bypass_pull_request_allowances?: UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowances;
 }
-const UpdatePullRequestReviewProtectionRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  1,
-) as any as S.Schema<UpdatePullRequestReviewProtectionRequest>;
-
 /** Specifies whether this release should be set as the latest release for the repository. Drafts and prereleases cannot be set as latest. Defaults to `true` for newly published releases. `legacy` specifies that the latest release should be determined based on the release creation date and higher semantic version. */
 export type UpdateReleaseRequestMakeLatest = "true" | "false" | "legacy";
-const UpdateReleaseRequestMakeLatest = S.String;
-
 export interface UpdateReleaseRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -9242,11 +6474,6 @@ export interface UpdateReleaseRequest {
   /** If specified, a discussion of the specified category is created and linked to the release. The value must be a category that already exists in the repository. If there is already a discussion linked to the release, this parameter is ignored. For more information, see "[Managing categories for discussions in your repository](https://docs.github.com/discussions/managing-discussions-for-your-community/managing-categories-for-discussions-in-your-repository)." */
   discussion_category_name?: string;
 }
-const UpdateReleaseRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  2,
-) as any as S.Schema<UpdateReleaseRequest>;
-
 export interface UpdateReleaseAssetRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -9260,25 +6487,12 @@ export interface UpdateReleaseAssetRequest {
   label?: string;
   state?: string;
 }
-const UpdateReleaseAssetRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  3,
-) as any as S.Schema<UpdateReleaseAssetRequest>;
-
 /** The target of the ruleset */
 export type UpdateRepoRulesetRequestTarget = "branch" | "tag" | "push";
-const UpdateRepoRulesetRequestTarget = S.String;
-
 /** The actors that can bypass the rules in this ruleset */
 export type UpdateRepoRulesetRequestBypassActorsList = Array<RepositoryRulesetBypassActor>;
-const UpdateRepoRulesetRequestBypassActorsList =
-  CreateOrgRulesetRequestBypassActorsList as any as S.Schema<UpdateRepoRulesetRequestBypassActorsList>;
-
 /** An array of rules within the ruleset. */
 export type UpdateRepoRulesetRequestRulesList = Array<RepositoryRule>;
-const UpdateRepoRulesetRequestRulesList =
-  RepositoryRulesetRulesList as any as S.Schema<UpdateRepoRulesetRequestRulesList>;
-
 export interface UpdateRepoRulesetRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -9297,24 +6511,13 @@ export interface UpdateRepoRulesetRequest {
   /** An array of rules within the ruleset. */
   rules?: UpdateRepoRulesetRequestRulesList;
 }
-const UpdateRepoRulesetRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  4,
-) as any as S.Schema<UpdateRepoRulesetRequest>;
-
 /** **Closing down notice**: The list of status checks to require in order to merge into this branch. If any of these checks have recently been set by a particular GitHub App, they will be required to come from that app in future for the branch to merge. Use `checks` instead of `contexts` for more fine-grained control. */
 export type UpdateStatusCheckProtectionRequestContextsList = Array<string>;
-const UpdateStatusCheckProtectionRequestContextsList =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<UpdateStatusCheckProtectionRequestContextsList>;
-
 export type UpdateStatusCheckProtectionRequestChecksItem =
   UpdateBranchProtectionRequestRequiredStatusChecksChecksItem;
 /** The list of status checks to require in order to merge into this branch. */
 export type UpdateStatusCheckProtectionRequestChecksList =
   Array<UpdateBranchProtectionRequestRequiredStatusChecksChecksItem>;
-const UpdateStatusCheckProtectionRequestChecksList =
-  UpdateBranchProtectionRequestRequiredStatusChecksChecksList as any as S.Schema<UpdateStatusCheckProtectionRequestChecksList>;
-
 export interface UpdateStatusCheckProtectionRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -9329,26 +6532,12 @@ export interface UpdateStatusCheckProtectionRequest {
   /** The list of status checks to require in order to merge into this branch. */
   checks?: UpdateStatusCheckProtectionRequestChecksList;
 }
-const UpdateStatusCheckProtectionRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  5,
-) as any as S.Schema<UpdateStatusCheckProtectionRequest>;
-
 /** Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered for. This replaces the entire array of events. */
 export type UpdateWebhookRequestEventsList = Array<string>;
-const UpdateWebhookRequestEventsList =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<UpdateWebhookRequestEventsList>;
-
 /** Determines a list of events to be added to the list of events that the Hook triggers for. */
 export type UpdateWebhookRequestAddEventsList = Array<string>;
-const UpdateWebhookRequestAddEventsList =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<UpdateWebhookRequestAddEventsList>;
-
 /** Determines a list of events to be removed from the list of events that the Hook triggers for. */
 export type UpdateWebhookRequestRemoveEventsList = Array<string>;
-const UpdateWebhookRequestRemoveEventsList =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<UpdateWebhookRequestRemoveEventsList>;
-
 export interface UpdateWebhookRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -9366,11 +6555,6 @@ export interface UpdateWebhookRequest {
   /** Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications. */
   active?: boolean;
 }
-const UpdateWebhookRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  6,
-) as any as S.Schema<UpdateWebhookRequest>;
-
 export interface UpdateWebhookConfigForRepoRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -9383,11 +6567,6 @@ export interface UpdateWebhookConfigForRepoRequest {
   secret?: string | Redacted.Redacted<string>;
   insecure_ssl?: WebhookConfigInsecureSsl;
 }
-const UpdateWebhookConfigForRepoRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  7,
-) as any as S.Schema<UpdateWebhookConfigForRepoRequest>;
-
 export interface UploadReleaseAssetRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -9398,11 +6577,6 @@ export interface UploadReleaseAssetRequest {
   name: string;
   label?: string;
 }
-const UploadReleaseAssetRequest = /*@__PURE__*/ __L.at(
-  __c62,
-  0,
-) as any as S.Schema<UploadReleaseAssetRequest>;
-
 export type AcceptInvitationForAuthenticatedUserError =
   | Forbidden
   | NotFound
@@ -9415,8 +6589,8 @@ export const acceptInvitationForAuthenticatedUser: API.OperationMethod<
   AcceptInvitationForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AcceptInvitationForAuthenticatedUserRequest,
-  output: AcceptInvitationForAuthenticatedUserResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<AcceptInvitationForAuthenticatedUserRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<AcceptInvitationForAuthenticatedUserResponse>,
   errors: [Forbidden, NotFound, Conflict],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -9430,8 +6604,8 @@ export const addAppAccessRestrictions: API.OperationMethod<
   AddAppAccessRestrictionsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddAppAccessRestrictionsRequest,
-  output: AddAppAccessRestrictionsResponse,
+  input: __S(3, __c0, 3) as any as S.Schema<AddAppAccessRestrictionsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<AddAppAccessRestrictionsResponse>,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -9445,8 +6619,8 @@ export const addCollaborator: API.OperationMethod<
   AddCollaboratorError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddCollaboratorRequest,
-  output: RepositoryInvitation,
+  input: __S(9, __c1, 1) as any as S.Schema<AddCollaboratorRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<RepositoryInvitation>,
   errors: [Forbidden, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -9464,8 +6638,8 @@ export const addStatusCheckContexts: API.OperationMethod<
   AddStatusCheckContextsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddStatusCheckContextsRequest,
-  output: AddStatusCheckContextsResponse,
+  input: __S(22, __c2, 6) as any as S.Schema<AddStatusCheckContextsRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<AddStatusCheckContextsResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -9479,8 +6653,8 @@ export const addTeamAccessRestrictions: API.OperationMethod<
   AddTeamAccessRestrictionsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddTeamAccessRestrictionsRequest,
-  output: AddTeamAccessRestrictionsResponse,
+  input: __S(24, __c3, 0) as any as S.Schema<AddTeamAccessRestrictionsRequest>,
+  output: __S(29, __c3, 5) as any as S.Schema<AddTeamAccessRestrictionsResponse>,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -9494,8 +6668,8 @@ export const addUserAccessRestrictions: API.OperationMethod<
   AddUserAccessRestrictionsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddUserAccessRestrictionsRequest,
-  output: AddUserAccessRestrictionsResponse,
+  input: __S(30, __c3, 6) as any as S.Schema<AddUserAccessRestrictionsRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<AddUserAccessRestrictionsResponse>,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -9509,8 +6683,8 @@ export const cancelPagesDeployment: API.OperationMethod<
   CancelPagesDeploymentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelPagesDeploymentRequest,
-  output: CancelPagesDeploymentResponse,
+  input: __S(33, __c4, 1) as any as S.Schema<CancelPagesDeploymentRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<CancelPagesDeploymentResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -9524,8 +6698,8 @@ export const checkAutomatedSecurityFixes2: API.OperationMethod<
   CheckAutomatedSecurityFixes2Error,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckAutomatedSecurityFixesRequest,
-  output: CheckAutomatedSecurityFixes,
+  input: __S(35, __c4, 3) as any as S.Schema<CheckAutomatedSecurityFixesRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<CheckAutomatedSecurityFixes>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -9539,8 +6713,8 @@ export const checkCollaborator: API.OperationMethod<
   CheckCollaboratorError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckCollaboratorRequest,
-  output: CheckCollaboratorResponse,
+  input: __S(37, __c4, 5) as any as S.Schema<CheckCollaboratorRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<CheckCollaboratorResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -9554,8 +6728,8 @@ export const checkImmutableReleases2: API.OperationMethod<
   CheckImmutableReleases2Error,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckImmutableReleasesRequest,
-  output: CheckImmutableReleases,
+  input: __S(38, __c4, 6) as any as S.Schema<CheckImmutableReleasesRequest>,
+  output: __S(39, __c4, 7) as any as S.Schema<CheckImmutableReleases>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -9569,8 +6743,8 @@ export const checkPrivateVulnerabilityReporting: API.OperationMethod<
   CheckPrivateVulnerabilityReportingError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckPrivateVulnerabilityReportingRequest,
-  output: CheckPrivateVulnerabilityReportingResponse,
+  input: __S(40, __c5, 0) as any as S.Schema<CheckPrivateVulnerabilityReportingRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<CheckPrivateVulnerabilityReportingResponse>,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -9584,8 +6758,8 @@ export const checkVulnerabilityAlerts: API.OperationMethod<
   CheckVulnerabilityAlertsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckVulnerabilityAlertsRequest,
-  output: CheckVulnerabilityAlertsResponse,
+  input: __S(42, __c5, 2) as any as S.Schema<CheckVulnerabilityAlertsRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CheckVulnerabilityAlertsResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -9599,8 +6773,8 @@ export const codeownersErrors2: API.OperationMethod<
   CodeownersErrors2Error,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CodeownersErrorsRequest,
-  output: CodeownersErrors,
+  input: __S(43, __c5, 3) as any as S.Schema<CodeownersErrorsRequest>,
+  output: __S(46, __c5, 6) as any as S.Schema<CodeownersErrors>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -9614,8 +6788,8 @@ export const compareCommits: API.OperationMethod<
   CompareCommitsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CompareCommitsRequest,
-  output: CommitComparison,
+  input: __S(47, __c5, 7) as any as S.Schema<CompareCommitsRequest>,
+  output: __S(60, __c7, 4) as any as S.Schema<CommitComparison>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -9629,8 +6803,8 @@ export const createAttestation: API.OperationMethod<
   CreateAttestationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAttestationRequest,
-  output: CreateAttestationResponse,
+  input: __S(62, __c7, 6) as any as S.Schema<CreateAttestationRequest>,
+  output: __S(63, __c7, 7) as any as S.Schema<CreateAttestationResponse>,
   errors: [Forbidden, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -9644,8 +6818,8 @@ export const createAutolink: API.OperationMethod<
   CreateAutolinkError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAutolinkRequest,
-  output: Autolink,
+  input: __S(64, __c8, 0) as any as S.Schema<CreateAutolinkRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<Autolink>,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -9659,8 +6833,8 @@ export const createCommitComment: API.OperationMethod<
   CreateCommitCommentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCommitCommentRequest,
-  output: CommitComment,
+  input: __S(66, __c8, 2) as any as S.Schema<CreateCommitCommentRequest>,
+  output: __S(68, __c8, 4) as any as S.Schema<CommitComment>,
   errors: [Forbidden, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -9674,8 +6848,8 @@ export const createCommitSignatureProtection: API.OperationMethod<
   CreateCommitSignatureProtectionError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCommitSignatureProtectionRequest,
-  output: ProtectedBranchAdminEnforced,
+  input: __S(69, __c8, 5) as any as S.Schema<CreateCommitSignatureProtectionRequest>,
+  output: __S(70, __c8, 6) as any as S.Schema<ProtectedBranchAdminEnforced>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -9689,8 +6863,8 @@ export const createCommitStatus: API.OperationMethod<
   CreateCommitStatusError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCommitStatusRequest,
-  output: Status,
+  input: __S(71, __c8, 7) as any as S.Schema<CreateCommitStatusRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<Status>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -9704,8 +6878,8 @@ export const createDeployKey: API.OperationMethod<
   CreateDeployKeyError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDeployKeyRequest,
-  output: DeployKey,
+  input: __S(73, __c9, 1) as any as S.Schema<CreateDeployKeyRequest>,
+  output: __S(74, __c9, 2) as any as S.Schema<DeployKey>,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -9719,8 +6893,8 @@ export const createDeployment: API.OperationMethod<
   CreateDeploymentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDeploymentRequest,
-  output: Deployment,
+  input: __S(75, __c9, 3) as any as S.Schema<CreateDeploymentRequest>,
+  output: __S(77, __c9, 5) as any as S.Schema<Deployment>,
   errors: [Conflict, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -9734,8 +6908,8 @@ export const createDeploymentBranchPolicy: API.OperationMethod<
   CreateDeploymentBranchPolicyError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDeploymentBranchPolicyRequest,
-  output: DeploymentBranchPolicy,
+  input: __S(78, __c9, 6) as any as S.Schema<CreateDeploymentBranchPolicyRequest>,
+  output: __S(79, __c9, 7) as any as S.Schema<DeploymentBranchPolicy>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -9749,8 +6923,8 @@ export const createDeploymentProtectionRule: API.OperationMethod<
   CreateDeploymentProtectionRuleError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDeploymentProtectionRuleRequest,
-  output: DeploymentProtectionRule,
+  input: __S(80, __c10, 0) as any as S.Schema<CreateDeploymentProtectionRuleRequest>,
+  output: __S(82, __c10, 2) as any as S.Schema<DeploymentProtectionRule>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -9764,8 +6938,8 @@ export const createDeploymentStatus: API.OperationMethod<
   CreateDeploymentStatusError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDeploymentStatusRequest,
-  output: DeploymentStatus,
+  input: __S(83, __c10, 3) as any as S.Schema<CreateDeploymentStatusRequest>,
+  output: __S(84, __c10, 4) as any as S.Schema<DeploymentStatus>,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -9779,8 +6953,8 @@ export const createDispatchEvent: API.OperationMethod<
   CreateDispatchEventError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDispatchEventRequest,
-  output: CreateDispatchEventResponse,
+  input: __S(85, __c10, 5) as any as S.Schema<CreateDispatchEventRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<CreateDispatchEventResponse>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -9799,8 +6973,8 @@ export const createForAuthenticatedUser: API.OperationMethod<
   CreateForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateForAuthenticatedUserRequest,
-  output: FullRepository,
+  input: __S(86, __c10, 6) as any as S.Schema<CreateForAuthenticatedUserRequest>,
+  output: __S(94, __c11, 6) as any as S.Schema<FullRepository>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -9819,8 +6993,8 @@ export const createFork: API.OperationMethod<
   CreateForkError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateForkRequest,
-  output: CreateForkResponse,
+  input: __S(95, __c11, 7) as any as S.Schema<CreateForkRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<CreateForkResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -9834,8 +7008,8 @@ export const createInOrg: API.OperationMethod<
   CreateInOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateInOrgRequest,
-  output: FullRepository,
+  input: __S(96, __c12, 0) as any as S.Schema<CreateInOrgRequest>,
+  output: __S(94, __c11, 6) as any as S.Schema<FullRepository>,
   errors: [Forbidden, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -9849,8 +7023,8 @@ export const createOrgRuleset: API.OperationMethod<
   CreateOrgRulesetError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOrgRulesetRequest,
-  output: RepositoryRuleset,
+  input: __S(103, __c12, 7) as any as S.Schema<CreateOrgRulesetRequest>,
+  output: __S(108, __c13, 4) as any as S.Schema<RepositoryRuleset>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -9864,8 +7038,8 @@ export const createOrUpdateEnvironment: API.OperationMethod<
   CreateOrUpdateEnvironmentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOrUpdateEnvironmentRequest,
-  output: Environment,
+  input: __S(112, __c14, 0) as any as S.Schema<CreateOrUpdateEnvironmentRequest>,
+  output: __S(114, __c14, 2) as any as S.Schema<Environment>,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -9883,8 +7057,8 @@ export const createOrUpdateFileContents: API.OperationMethod<
   CreateOrUpdateFileContentsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOrUpdateFileContentsRequest,
-  output: FileCommit,
+  input: __S(116, __c14, 4) as any as S.Schema<CreateOrUpdateFileContentsRequest>,
+  output: __S(125, __c15, 5) as any as S.Schema<FileCommit>,
   errors: [NotFound, Conflict, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -9902,8 +7076,8 @@ export const createPagesDeployment: API.OperationMethod<
   CreatePagesDeploymentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePagesDeploymentRequest,
-  output: PageDeployment,
+  input: __S(126, __c15, 6) as any as S.Schema<CreatePagesDeploymentRequest>,
+  output: __S(127, __c15, 7) as any as S.Schema<PageDeployment>,
   errors: [BadRequest, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -9917,8 +7091,8 @@ export const createPagesSite: API.OperationMethod<
   CreatePagesSiteError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePagesSiteRequest,
-  output: Page,
+  input: __S(129, __c16, 1) as any as S.Schema<CreatePagesSiteRequest>,
+  output: __S(132, __c16, 4) as any as S.Schema<Page>,
   errors: [Conflict, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -9932,8 +7106,8 @@ export const createRelease: API.OperationMethod<
   CreateReleaseError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateReleaseRequest,
-  output: Release,
+  input: __S(133, __c16, 5) as any as S.Schema<CreateReleaseRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<Release>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -9947,8 +7121,8 @@ export const createRepoRuleset: API.OperationMethod<
   CreateRepoRulesetError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRepoRulesetRequest,
-  output: RepositoryRuleset,
+  input: __S(137, __c17, 1) as any as S.Schema<CreateRepoRulesetRequest>,
+  output: __S(108, __c13, 4) as any as S.Schema<RepositoryRuleset>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -9962,8 +7136,8 @@ export const createUsingTemplate: API.OperationMethod<
   CreateUsingTemplateError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateUsingTemplateRequest,
-  output: FullRepository,
+  input: __S(138, __c17, 2) as any as S.Schema<CreateUsingTemplateRequest>,
+  output: __S(94, __c11, 6) as any as S.Schema<FullRepository>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -9977,8 +7151,8 @@ export const createWebhook: API.OperationMethod<
   CreateWebhookError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateWebhookRequest,
-  output: Hook,
+  input: __S(140, __c17, 4) as any as S.Schema<CreateWebhookRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<Hook>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -9996,8 +7170,16 @@ export const customPropertiesForReposCreateOrUpdateRepositoryValues: API.Operati
   CustomPropertiesForReposCreateOrUpdateRepositoryValuesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomPropertiesForReposCreateOrUpdateRepositoryValuesRequest,
-  output: CustomPropertiesForReposCreateOrUpdateRepositoryValuesResponse,
+  input: __S(
+    147,
+    __c18,
+    3,
+  ) as any as S.Schema<CustomPropertiesForReposCreateOrUpdateRepositoryValuesRequest>,
+  output: __S(
+    148,
+    __c18,
+    4,
+  ) as any as S.Schema<CustomPropertiesForReposCreateOrUpdateRepositoryValuesResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10011,8 +7193,12 @@ export const customPropertiesForReposGetRepositoryValues: API.OperationMethod<
   CustomPropertiesForReposGetRepositoryValuesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomPropertiesForReposGetRepositoryValuesRequest,
-  output: CustomPropertiesForReposGetRepositoryValuesResponse,
+  input: __S(149, __c18, 5) as any as S.Schema<CustomPropertiesForReposGetRepositoryValuesRequest>,
+  output: __S(
+    151,
+    __c18,
+    7,
+  ) as any as S.Schema<CustomPropertiesForReposGetRepositoryValuesResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10030,8 +7216,8 @@ export const declineInvitationForAuthenticatedUser: API.OperationMethod<
   DeclineInvitationForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeclineInvitationForAuthenticatedUserRequest,
-  output: DeclineInvitationForAuthenticatedUserResponse,
+  input: __S(152, __c19, 0) as any as S.Schema<DeclineInvitationForAuthenticatedUserRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeclineInvitationForAuthenticatedUserResponse>,
   errors: [Forbidden, NotFound, Conflict],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10045,8 +7231,8 @@ export const Delete: API.OperationMethod<
   DeleteError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRequest,
-  output: DeleteResponse,
+  input: __S(153, __c19, 1) as any as S.Schema<DeleteRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<DeleteResponse>,
   errors: [Forbidden, NotFound, Conflict],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10060,8 +7246,8 @@ export const deleteAccessRestrictions: API.OperationMethod<
   DeleteAccessRestrictionsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccessRestrictionsRequest,
-  output: DeleteAccessRestrictionsResponse,
+  input: __S(154, __c19, 2) as any as S.Schema<DeleteAccessRestrictionsRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteAccessRestrictionsResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10075,8 +7261,8 @@ export const deleteAdminBranchProtection: API.OperationMethod<
   DeleteAdminBranchProtectionError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAdminBranchProtectionRequest,
-  output: DeleteAdminBranchProtectionResponse,
+  input: __S(155, __c19, 3) as any as S.Schema<DeleteAdminBranchProtectionRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteAdminBranchProtectionResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10090,8 +7276,8 @@ export const deleteAnEnvironment: API.OperationMethod<
   DeleteAnEnvironmentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAnEnvironmentRequest,
-  output: DeleteAnEnvironmentResponse,
+  input: __S(156, __c19, 4) as any as S.Schema<DeleteAnEnvironmentRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<DeleteAnEnvironmentResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10105,8 +7291,8 @@ export const deleteAutolink: API.OperationMethod<
   DeleteAutolinkError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAutolinkRequest,
-  output: DeleteAutolinkResponse,
+  input: __S(157, __c19, 5) as any as S.Schema<DeleteAutolinkRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<DeleteAutolinkResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10120,8 +7306,8 @@ export const deleteBranchProtection: API.OperationMethod<
   DeleteBranchProtectionError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBranchProtectionRequest,
-  output: DeleteBranchProtectionResponse,
+  input: __S(158, __c19, 6) as any as S.Schema<DeleteBranchProtectionRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<DeleteBranchProtectionResponse>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10135,8 +7321,8 @@ export const deleteCommitComment: API.OperationMethod<
   DeleteCommitCommentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCommitCommentRequest,
-  output: DeleteCommitCommentResponse,
+  input: __S(159, __c19, 7) as any as S.Schema<DeleteCommitCommentRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<DeleteCommitCommentResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10150,8 +7336,8 @@ export const deleteCommitSignatureProtection: API.OperationMethod<
   DeleteCommitSignatureProtectionError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCommitSignatureProtectionRequest,
-  output: DeleteCommitSignatureProtectionResponse,
+  input: __S(160, __c20, 0) as any as S.Schema<DeleteCommitSignatureProtectionRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteCommitSignatureProtectionResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10165,8 +7351,8 @@ export const deleteDeployKey: API.OperationMethod<
   DeleteDeployKeyError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDeployKeyRequest,
-  output: DeleteDeployKeyResponse,
+  input: __S(161, __c20, 1) as any as S.Schema<DeleteDeployKeyRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<DeleteDeployKeyResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10180,8 +7366,8 @@ export const deleteDeployment: API.OperationMethod<
   DeleteDeploymentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDeploymentRequest,
-  output: DeleteDeploymentResponse,
+  input: __S(162, __c20, 2) as any as S.Schema<DeleteDeploymentRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<DeleteDeploymentResponse>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10195,8 +7381,8 @@ export const deleteDeploymentBranchPolicy: API.OperationMethod<
   DeleteDeploymentBranchPolicyError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDeploymentBranchPolicyRequest,
-  output: DeleteDeploymentBranchPolicyResponse,
+  input: __S(163, __c20, 3) as any as S.Schema<DeleteDeploymentBranchPolicyRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteDeploymentBranchPolicyResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10210,8 +7396,8 @@ export const deleteFile: API.OperationMethod<
   DeleteFileError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFileRequest,
-  output: FileCommit,
+  input: __S(165, __c20, 5) as any as S.Schema<DeleteFileRequest>,
+  output: __S(125, __c15, 5) as any as S.Schema<FileCommit>,
   errors: [NotFound, Conflict, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10225,8 +7411,8 @@ export const deleteInvitation: API.OperationMethod<
   DeleteInvitationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteInvitationRequest,
-  output: DeleteInvitationResponse,
+  input: __S(166, __c20, 6) as any as S.Schema<DeleteInvitationRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<DeleteInvitationResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10240,8 +7426,8 @@ export const deleteOrgRuleset: API.OperationMethod<
   DeleteOrgRulesetError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOrgRulesetRequest,
-  output: DeleteOrgRulesetResponse,
+  input: __S(167, __c20, 7) as any as S.Schema<DeleteOrgRulesetRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<DeleteOrgRulesetResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10255,8 +7441,8 @@ export const deletePagesSite: API.OperationMethod<
   DeletePagesSiteError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePagesSiteRequest,
-  output: DeletePagesSiteResponse,
+  input: __S(168, __c21, 0) as any as S.Schema<DeletePagesSiteRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<DeletePagesSiteResponse>,
   errors: [NotFound, Conflict, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10270,8 +7456,8 @@ export const deletePullRequestReviewProtection: API.OperationMethod<
   DeletePullRequestReviewProtectionError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePullRequestReviewProtectionRequest,
-  output: DeletePullRequestReviewProtectionResponse,
+  input: __S(169, __c21, 1) as any as S.Schema<DeletePullRequestReviewProtectionRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeletePullRequestReviewProtectionResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10285,8 +7471,8 @@ export const deleteRelease: API.OperationMethod<
   DeleteReleaseError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteReleaseRequest,
-  output: DeleteReleaseResponse,
+  input: __S(170, __c21, 2) as any as S.Schema<DeleteReleaseRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<DeleteReleaseResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10300,8 +7486,8 @@ export const deleteReleaseAsset: API.OperationMethod<
   DeleteReleaseAssetError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteReleaseAssetRequest,
-  output: DeleteReleaseAssetResponse,
+  input: __S(171, __c21, 3) as any as S.Schema<DeleteReleaseAssetRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<DeleteReleaseAssetResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10315,8 +7501,8 @@ export const deleteRepoRuleset: API.OperationMethod<
   DeleteRepoRulesetError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRepoRulesetRequest,
-  output: DeleteRepoRulesetResponse,
+  input: __S(172, __c21, 4) as any as S.Schema<DeleteRepoRulesetRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<DeleteRepoRulesetResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10330,8 +7516,8 @@ export const deleteWebhook: API.OperationMethod<
   DeleteWebhookError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteWebhookRequest,
-  output: DeleteWebhookResponse,
+  input: __S(173, __c21, 5) as any as S.Schema<DeleteWebhookRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<DeleteWebhookResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10345,8 +7531,8 @@ export const disableAutomatedSecurityFixes: API.OperationMethod<
   DisableAutomatedSecurityFixesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisableAutomatedSecurityFixesRequest,
-  output: DisableAutomatedSecurityFixesResponse,
+  input: __S(174, __c21, 6) as any as S.Schema<DisableAutomatedSecurityFixesRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DisableAutomatedSecurityFixesResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10360,8 +7546,8 @@ export const disableDeploymentProtectionRule: API.OperationMethod<
   DisableDeploymentProtectionRuleError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisableDeploymentProtectionRuleRequest,
-  output: DisableDeploymentProtectionRuleResponse,
+  input: __S(175, __c21, 7) as any as S.Schema<DisableDeploymentProtectionRuleRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DisableDeploymentProtectionRuleResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10375,8 +7561,8 @@ export const disableImmutableReleases: API.OperationMethod<
   DisableImmutableReleasesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisableImmutableReleasesRequest,
-  output: DisableImmutableReleasesResponse,
+  input: __S(176, __c22, 0) as any as S.Schema<DisableImmutableReleasesRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DisableImmutableReleasesResponse>,
   errors: [Conflict],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10390,8 +7576,8 @@ export const disablePrivateVulnerabilityReporting: API.OperationMethod<
   DisablePrivateVulnerabilityReportingError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisablePrivateVulnerabilityReportingRequest,
-  output: DisablePrivateVulnerabilityReportingResponse,
+  input: __S(177, __c22, 1) as any as S.Schema<DisablePrivateVulnerabilityReportingRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DisablePrivateVulnerabilityReportingResponse>,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10405,8 +7591,8 @@ export const disableVulnerabilityAlerts: API.OperationMethod<
   DisableVulnerabilityAlertsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisableVulnerabilityAlertsRequest,
-  output: DisableVulnerabilityAlertsResponse,
+  input: __S(178, __c22, 2) as any as S.Schema<DisableVulnerabilityAlertsRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DisableVulnerabilityAlertsResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10420,8 +7606,8 @@ export const downloadTarballArchive: API.OperationMethod<
   DownloadTarballArchiveError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DownloadTarballArchiveRequest,
-  output: DownloadTarballArchiveResponse,
+  input: __S(179, __c22, 3) as any as S.Schema<DownloadTarballArchiveRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<DownloadTarballArchiveResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10435,8 +7621,8 @@ export const downloadZipballArchive: API.OperationMethod<
   DownloadZipballArchiveError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DownloadZipballArchiveRequest,
-  output: DownloadZipballArchiveResponse,
+  input: __S(180, __c22, 4) as any as S.Schema<DownloadZipballArchiveRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<DownloadZipballArchiveResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10450,8 +7636,8 @@ export const enableAutomatedSecurityFixes: API.OperationMethod<
   EnableAutomatedSecurityFixesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnableAutomatedSecurityFixesRequest,
-  output: EnableAutomatedSecurityFixesResponse,
+  input: __S(181, __c22, 5) as any as S.Schema<EnableAutomatedSecurityFixesRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<EnableAutomatedSecurityFixesResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10465,8 +7651,8 @@ export const enableImmutableReleases: API.OperationMethod<
   EnableImmutableReleasesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnableImmutableReleasesRequest,
-  output: EnableImmutableReleasesResponse,
+  input: __S(182, __c22, 6) as any as S.Schema<EnableImmutableReleasesRequest>,
+  output: __S(183, __c22, 7) as any as S.Schema<EnableImmutableReleasesResponse>,
   errors: [Conflict],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10480,8 +7666,8 @@ export const enablePrivateVulnerabilityReporting: API.OperationMethod<
   EnablePrivateVulnerabilityReportingError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnablePrivateVulnerabilityReportingRequest,
-  output: EnablePrivateVulnerabilityReportingResponse,
+  input: __S(184, __c23, 0) as any as S.Schema<EnablePrivateVulnerabilityReportingRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<EnablePrivateVulnerabilityReportingResponse>,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10495,8 +7681,8 @@ export const enableVulnerabilityAlerts: API.OperationMethod<
   EnableVulnerabilityAlertsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnableVulnerabilityAlertsRequest,
-  output: EnableVulnerabilityAlertsResponse,
+  input: __S(185, __c23, 1) as any as S.Schema<EnableVulnerabilityAlertsRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<EnableVulnerabilityAlertsResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10510,8 +7696,8 @@ export const generateReleaseNotes: API.OperationMethod<
   GenerateReleaseNotesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GenerateReleaseNotesRequest,
-  output: ReleaseNotesContent,
+  input: __S(186, __c23, 2) as any as S.Schema<GenerateReleaseNotesRequest>,
+  output: __S(187, __c23, 3) as any as S.Schema<ReleaseNotesContent>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10521,8 +7707,8 @@ export type GetError = Forbidden | NotFound | GithubOpError;
 /** Get a repository The `parent` and `source` objects are present when the repository is a fork. `parent` is the repository this repository was forked from, `source` is the ultimate source for the network. > [!NOTE] > - In order to see the `security_and_analysis` block for a repository you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see "[Managing security managers in your organization](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)." > - To view merge-related settings, you must have the `contents:read` and `contents:write` permissions. */
 export const get: API.OperationMethod<GetRequest, FullRepository, GetError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: GetRequest,
-    output: FullRepository,
+    input: __S(188, __c23, 4) as any as S.Schema<GetRequest>,
+    output: __S(94, __c11, 6) as any as S.Schema<FullRepository>,
     errors: [Forbidden, NotFound],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -10536,8 +7722,8 @@ export const getAccessRestrictions: API.OperationMethod<
   GetAccessRestrictionsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccessRestrictionsRequest,
-  output: BranchRestrictionPolicy,
+  input: __S(189, __c23, 5) as any as S.Schema<GetAccessRestrictionsRequest>,
+  output: __S(196, __c24, 4) as any as S.Schema<BranchRestrictionPolicy>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10551,8 +7737,8 @@ export const getAdminBranchProtection: API.OperationMethod<
   GetAdminBranchProtectionError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAdminBranchProtectionRequest,
-  output: ProtectedBranchAdminEnforced,
+  input: __S(197, __c24, 5) as any as S.Schema<GetAdminBranchProtectionRequest>,
+  output: __S(70, __c8, 6) as any as S.Schema<ProtectedBranchAdminEnforced>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10566,8 +7752,8 @@ export const getAllDeploymentProtectionRules: API.OperationMethod<
   GetAllDeploymentProtectionRulesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAllDeploymentProtectionRulesRequest,
-  output: GetAllDeploymentProtectionRulesResponse,
+  input: __S(198, __c24, 6) as any as S.Schema<GetAllDeploymentProtectionRulesRequest>,
+  output: __S(200, __c25, 0) as any as S.Schema<GetAllDeploymentProtectionRulesResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10581,8 +7767,8 @@ export const getAllEnvironments: API.OperationMethod<
   GetAllEnvironmentsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAllEnvironmentsRequest,
-  output: GetAllEnvironmentsResponse,
+  input: __S(201, __c25, 1) as any as S.Schema<GetAllEnvironmentsRequest>,
+  output: __S(203, __c25, 3) as any as S.Schema<GetAllEnvironmentsResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10596,8 +7782,8 @@ export const getAllStatusCheckContexts: API.OperationMethod<
   GetAllStatusCheckContextsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAllStatusCheckContextsRequest,
-  output: GetAllStatusCheckContextsResponse,
+  input: __S(204, __c25, 4) as any as S.Schema<GetAllStatusCheckContextsRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<GetAllStatusCheckContextsResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10611,8 +7797,8 @@ export const getAllTopics: API.OperationMethod<
   GetAllTopicsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAllTopicsRequest,
-  output: Topic,
+  input: __S(205, __c25, 5) as any as S.Schema<GetAllTopicsRequest>,
+  output: __S(206, __c25, 6) as any as S.Schema<Topic>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10626,8 +7812,8 @@ export const getAppsWithAccessToProtectedBranch: API.OperationMethod<
   GetAppsWithAccessToProtectedBranchError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAppsWithAccessToProtectedBranchRequest,
-  output: GetAppsWithAccessToProtectedBranchResponse,
+  input: __S(207, __c25, 7) as any as S.Schema<GetAppsWithAccessToProtectedBranchRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetAppsWithAccessToProtectedBranchResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10641,8 +7827,8 @@ export const getAutolink: API.OperationMethod<
   GetAutolinkError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAutolinkRequest,
-  output: Autolink,
+  input: __S(208, __c26, 0) as any as S.Schema<GetAutolinkRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<Autolink>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10656,8 +7842,8 @@ export const getBranch: API.OperationMethod<
   GetBranchError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBranchRequest,
-  output: BranchWithProtection,
+  input: __S(209, __c26, 1) as any as S.Schema<GetBranchRequest>,
+  output: __S(222, __c27, 6) as any as S.Schema<BranchWithProtection>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10671,8 +7857,8 @@ export const getBranchProtection: API.OperationMethod<
   GetBranchProtectionError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBranchProtectionRequest,
-  output: BranchProtection,
+  input: __S(223, __c27, 7) as any as S.Schema<GetBranchProtectionRequest>,
+  output: __S(221, __c27, 5) as any as S.Schema<BranchProtection>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10686,8 +7872,8 @@ export const getBranchRules: API.OperationMethod<
   GetBranchRulesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBranchRulesRequest,
-  output: GetBranchRulesResponse,
+  input: __S(224, __c28, 0) as any as S.Schema<GetBranchRulesRequest>,
+  output: __S(226, __c28, 2) as any as S.Schema<GetBranchRulesResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10701,8 +7887,8 @@ export const getClones: API.OperationMethod<
   GetClonesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetClonesRequest,
-  output: CloneTraffic,
+  input: __S(227, __c28, 3) as any as S.Schema<GetClonesRequest>,
+  output: __S(230, __c28, 6) as any as S.Schema<CloneTraffic>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10716,8 +7902,8 @@ export const getCodeFrequencyStats: API.OperationMethod<
   GetCodeFrequencyStatsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCodeFrequencyStatsRequest,
-  output: GetCodeFrequencyStatsResponse,
+  input: __S(231, __c28, 7) as any as S.Schema<GetCodeFrequencyStatsRequest>,
+  output: __S(233, __c29, 1) as any as S.Schema<GetCodeFrequencyStatsResponse>,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10731,8 +7917,8 @@ export const getCollaboratorPermissionLevel: API.OperationMethod<
   GetCollaboratorPermissionLevelError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCollaboratorPermissionLevelRequest,
-  output: RepositoryCollaboratorPermission,
+  input: __S(234, __c29, 2) as any as S.Schema<GetCollaboratorPermissionLevelRequest>,
+  output: __S(237, __c29, 5) as any as S.Schema<RepositoryCollaboratorPermission>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10746,8 +7932,8 @@ export const getCombinedStatusForRef: API.OperationMethod<
   GetCombinedStatusForRefError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCombinedStatusForRefRequest,
-  output: CombinedCommitStatus,
+  input: __S(238, __c29, 6) as any as S.Schema<GetCombinedStatusForRefRequest>,
+  output: __S(241, __c30, 1) as any as S.Schema<CombinedCommitStatus>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10761,8 +7947,8 @@ export const getCommit: API.OperationMethod<
   GetCommitError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCommitRequest,
-  output: Commit,
+  input: __S(242, __c30, 2) as any as S.Schema<GetCommitRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<Commit>,
   errors: [NotFound, Conflict, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10776,8 +7962,8 @@ export const getCommitActivityStats: API.OperationMethod<
   GetCommitActivityStatsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCommitActivityStatsRequest,
-  output: GetCommitActivityStatsResponse,
+  input: __S(243, __c30, 3) as any as S.Schema<GetCommitActivityStatsRequest>,
+  output: __S(246, __c30, 6) as any as S.Schema<GetCommitActivityStatsResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10791,8 +7977,8 @@ export const getCommitComment: API.OperationMethod<
   GetCommitCommentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCommitCommentRequest,
-  output: CommitComment,
+  input: __S(247, __c30, 7) as any as S.Schema<GetCommitCommentRequest>,
+  output: __S(68, __c8, 4) as any as S.Schema<CommitComment>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10806,8 +7992,8 @@ export const getCommitSignatureProtection: API.OperationMethod<
   GetCommitSignatureProtectionError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCommitSignatureProtectionRequest,
-  output: ProtectedBranchAdminEnforced,
+  input: __S(248, __c31, 0) as any as S.Schema<GetCommitSignatureProtectionRequest>,
+  output: __S(70, __c8, 6) as any as S.Schema<ProtectedBranchAdminEnforced>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10821,8 +8007,8 @@ export const getCommunityProfileMetrics: API.OperationMethod<
   GetCommunityProfileMetricsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCommunityProfileMetricsRequest,
-  output: CommunityProfile,
+  input: __S(249, __c31, 1) as any as S.Schema<GetCommunityProfileMetricsRequest>,
+  output: __S(252, __c31, 4) as any as S.Schema<CommunityProfile>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10836,8 +8022,8 @@ export const getContent: API.OperationMethod<
   GetContentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetContentRequest,
-  output: GetContentResponse,
+  input: __S(253, __c31, 5) as any as S.Schema<GetContentRequest>,
+  output: __S(256, __c32, 0) as any as S.Schema<GetContentResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10851,8 +8037,8 @@ export const getContributorsStats: API.OperationMethod<
   GetContributorsStatsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetContributorsStatsRequest,
-  output: GetContributorsStatsResponse,
+  input: __S(257, __c32, 1) as any as S.Schema<GetContributorsStatsRequest>,
+  output: __S(262, __c32, 6) as any as S.Schema<GetContributorsStatsResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10866,8 +8052,8 @@ export const getCustomDeploymentProtectionRule: API.OperationMethod<
   GetCustomDeploymentProtectionRuleError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCustomDeploymentProtectionRuleRequest,
-  output: DeploymentProtectionRule,
+  input: __S(263, __c32, 7) as any as S.Schema<GetCustomDeploymentProtectionRuleRequest>,
+  output: __S(82, __c10, 2) as any as S.Schema<DeploymentProtectionRule>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10881,8 +8067,8 @@ export const getDeployKey: API.OperationMethod<
   GetDeployKeyError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDeployKeyRequest,
-  output: DeployKey,
+  input: __S(264, __c33, 0) as any as S.Schema<GetDeployKeyRequest>,
+  output: __S(74, __c9, 2) as any as S.Schema<DeployKey>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10896,8 +8082,8 @@ export const getDeployment: API.OperationMethod<
   GetDeploymentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDeploymentRequest,
-  output: Deployment,
+  input: __S(265, __c33, 1) as any as S.Schema<GetDeploymentRequest>,
+  output: __S(77, __c9, 5) as any as S.Schema<Deployment>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10911,8 +8097,8 @@ export const getDeploymentBranchPolicy: API.OperationMethod<
   GetDeploymentBranchPolicyError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDeploymentBranchPolicyRequest,
-  output: DeploymentBranchPolicy,
+  input: __S(266, __c33, 2) as any as S.Schema<GetDeploymentBranchPolicyRequest>,
+  output: __S(79, __c9, 7) as any as S.Schema<DeploymentBranchPolicy>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10926,8 +8112,8 @@ export const getDeploymentStatus: API.OperationMethod<
   GetDeploymentStatusError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDeploymentStatusRequest,
-  output: DeploymentStatus,
+  input: __S(267, __c33, 3) as any as S.Schema<GetDeploymentStatusRequest>,
+  output: __S(84, __c10, 4) as any as S.Schema<DeploymentStatus>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10941,8 +8127,8 @@ export const getEnvironment: API.OperationMethod<
   GetEnvironmentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEnvironmentRequest,
-  output: Environment,
+  input: __S(268, __c33, 4) as any as S.Schema<GetEnvironmentRequest>,
+  output: __S(114, __c14, 2) as any as S.Schema<Environment>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10956,8 +8142,8 @@ export const getHashAlgorithm: API.OperationMethod<
   GetHashAlgorithmError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHashAlgorithmRequest,
-  output: RepositoryHashAlgorithm,
+  input: __S(269, __c33, 5) as any as S.Schema<GetHashAlgorithmRequest>,
+  output: __S(270, __c33, 6) as any as S.Schema<RepositoryHashAlgorithm>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10971,8 +8157,8 @@ export const getLatestPagesBuild: API.OperationMethod<
   GetLatestPagesBuildError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLatestPagesBuildRequest,
-  output: PageBuild,
+  input: __S(271, __c33, 7) as any as S.Schema<GetLatestPagesBuildRequest>,
+  output: __S(273, __c34, 1) as any as S.Schema<PageBuild>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -10986,8 +8172,8 @@ export const getLatestRelease: API.OperationMethod<
   GetLatestReleaseError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLatestReleaseRequest,
-  output: Release,
+  input: __S(274, __c34, 2) as any as S.Schema<GetLatestReleaseRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<Release>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11001,8 +8187,8 @@ export const getOrgRuleset: API.OperationMethod<
   GetOrgRulesetError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrgRulesetRequest,
-  output: RepositoryRuleset,
+  input: __S(275, __c34, 3) as any as S.Schema<GetOrgRulesetRequest>,
+  output: __S(108, __c13, 4) as any as S.Schema<RepositoryRuleset>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11016,8 +8202,8 @@ export const getOrgRulesets: API.OperationMethod<
   GetOrgRulesetsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrgRulesetsRequest,
-  output: GetOrgRulesetsResponse,
+  input: __S(276, __c34, 4) as any as S.Schema<GetOrgRulesetsRequest>,
+  output: __S(278, __c34, 6) as any as S.Schema<GetOrgRulesetsResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11031,8 +8217,8 @@ export const getOrgRuleSuite: API.OperationMethod<
   GetOrgRuleSuiteError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrgRuleSuiteRequest,
-  output: RuleSuite,
+  input: __S(279, __c34, 7) as any as S.Schema<GetOrgRuleSuiteRequest>,
+  output: __S(283, __c35, 3) as any as S.Schema<RuleSuite>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11046,8 +8232,8 @@ export const getOrgRuleSuites: API.OperationMethod<
   GetOrgRuleSuitesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrgRuleSuitesRequest,
-  output: GetOrgRuleSuitesResponse,
+  input: __S(284, __c35, 4) as any as S.Schema<GetOrgRuleSuitesRequest>,
+  output: __S(287, __c35, 7) as any as S.Schema<GetOrgRuleSuitesResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11057,8 +8243,8 @@ export type GetPagesError = NotFound | GithubOpError;
 /** Get a GitHub Pages site Gets information about a GitHub Pages site. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint. */
 export const getPages: API.OperationMethod<GetPagesRequest, Page, GetPagesError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: GetPagesRequest,
-    output: Page,
+    input: __S(288, __c36, 0) as any as S.Schema<GetPagesRequest>,
+    output: __S(132, __c16, 4) as any as S.Schema<Page>,
     errors: [NotFound],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -11072,8 +8258,8 @@ export const getPagesBuild: API.OperationMethod<
   GetPagesBuildError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPagesBuildRequest,
-  output: PageBuild,
+  input: __S(289, __c36, 1) as any as S.Schema<GetPagesBuildRequest>,
+  output: __S(273, __c34, 1) as any as S.Schema<PageBuild>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11087,8 +8273,8 @@ export const getPagesDeployment: API.OperationMethod<
   GetPagesDeploymentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPagesDeploymentRequest,
-  output: PagesDeploymentStatus,
+  input: __S(290, __c36, 2) as any as S.Schema<GetPagesDeploymentRequest>,
+  output: __S(291, __c36, 3) as any as S.Schema<PagesDeploymentStatus>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11102,8 +8288,8 @@ export const getPagesHealthCheck: API.OperationMethod<
   GetPagesHealthCheckError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPagesHealthCheckRequest,
-  output: PagesHealthCheck,
+  input: __S(292, __c36, 4) as any as S.Schema<GetPagesHealthCheckRequest>,
+  output: __S(294, __c36, 6) as any as S.Schema<PagesHealthCheck>,
   errors: [BadRequest, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11117,8 +8303,8 @@ export const getParticipationStats: API.OperationMethod<
   GetParticipationStatsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetParticipationStatsRequest,
-  output: ParticipationStats,
+  input: __S(295, __c36, 7) as any as S.Schema<GetParticipationStatsRequest>,
+  output: __S(296, __c37, 0) as any as S.Schema<ParticipationStats>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11132,8 +8318,8 @@ export const getPullRequestReviewProtection: API.OperationMethod<
   GetPullRequestReviewProtectionError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPullRequestReviewProtectionRequest,
-  output: ProtectedBranchPullRequestReview,
+  input: __S(297, __c37, 1) as any as S.Schema<GetPullRequestReviewProtectionRequest>,
+  output: __S(219, __c27, 3) as any as S.Schema<ProtectedBranchPullRequestReview>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11147,8 +8333,8 @@ export const getPunchCardStats: API.OperationMethod<
   GetPunchCardStatsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPunchCardStatsRequest,
-  output: GetPunchCardStatsResponse,
+  input: __S(298, __c37, 2) as any as S.Schema<GetPunchCardStatsRequest>,
+  output: __S(233, __c29, 1) as any as S.Schema<GetPunchCardStatsResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11162,8 +8348,8 @@ export const getReadme: API.OperationMethod<
   GetReadmeError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetReadmeRequest,
-  output: ContentFile,
+  input: __S(299, __c37, 3) as any as S.Schema<GetReadmeRequest>,
+  output: __S(255, __c31, 7) as any as S.Schema<ContentFile>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11177,8 +8363,8 @@ export const getReadmeInDirectory: API.OperationMethod<
   GetReadmeInDirectoryError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetReadmeInDirectoryRequest,
-  output: ContentFile,
+  input: __S(300, __c37, 4) as any as S.Schema<GetReadmeInDirectoryRequest>,
+  output: __S(255, __c31, 7) as any as S.Schema<ContentFile>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11192,8 +8378,8 @@ export const getRelease: API.OperationMethod<
   GetReleaseError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetReleaseRequest,
-  output: Release,
+  input: __S(301, __c37, 5) as any as S.Schema<GetReleaseRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<Release>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11207,8 +8393,8 @@ export const getReleaseAsset: API.OperationMethod<
   GetReleaseAssetError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetReleaseAssetRequest,
-  output: ReleaseAsset,
+  input: __S(302, __c37, 6) as any as S.Schema<GetReleaseAssetRequest>,
+  output: __S(134, __c16, 6) as any as S.Schema<ReleaseAsset>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11222,8 +8408,8 @@ export const getReleaseByTag: API.OperationMethod<
   GetReleaseByTagError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetReleaseByTagRequest,
-  output: Release,
+  input: __S(303, __c37, 7) as any as S.Schema<GetReleaseByTagRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<Release>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11237,8 +8423,8 @@ export const getRepoRuleset: API.OperationMethod<
   GetRepoRulesetError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRepoRulesetRequest,
-  output: RepositoryRuleset,
+  input: __S(304, __c38, 0) as any as S.Schema<GetRepoRulesetRequest>,
+  output: __S(108, __c13, 4) as any as S.Schema<RepositoryRuleset>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11252,8 +8438,8 @@ export const getRepoRulesetHistory: API.OperationMethod<
   GetRepoRulesetHistoryError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRepoRulesetHistoryRequest,
-  output: GetRepoRulesetHistoryResponse,
+  input: __S(305, __c38, 1) as any as S.Schema<GetRepoRulesetHistoryRequest>,
+  output: __S(309, __c38, 5) as any as S.Schema<GetRepoRulesetHistoryResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11267,8 +8453,8 @@ export const getRepoRulesets: API.OperationMethod<
   GetRepoRulesetsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRepoRulesetsRequest,
-  output: GetRepoRulesetsResponse,
+  input: __S(310, __c38, 6) as any as S.Schema<GetRepoRulesetsRequest>,
+  output: __S(278, __c34, 6) as any as S.Schema<GetRepoRulesetsResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11282,8 +8468,8 @@ export const getRepoRulesetVersion: API.OperationMethod<
   GetRepoRulesetVersionError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRepoRulesetVersionRequest,
-  output: GetRepoRulesetVersionResponse,
+  input: __S(311, __c38, 7) as any as S.Schema<GetRepoRulesetVersionRequest>,
+  output: __S(312, __c39, 0) as any as S.Schema<GetRepoRulesetVersionResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11297,8 +8483,8 @@ export const getRepoRuleSuite: API.OperationMethod<
   GetRepoRuleSuiteError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRepoRuleSuiteRequest,
-  output: RuleSuite,
+  input: __S(313, __c39, 1) as any as S.Schema<GetRepoRuleSuiteRequest>,
+  output: __S(283, __c35, 3) as any as S.Schema<RuleSuite>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11312,8 +8498,8 @@ export const getRepoRuleSuites: API.OperationMethod<
   GetRepoRuleSuitesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRepoRuleSuitesRequest,
-  output: GetRepoRuleSuitesResponse,
+  input: __S(314, __c39, 2) as any as S.Schema<GetRepoRuleSuitesRequest>,
+  output: __S(315, __c39, 3) as any as S.Schema<GetRepoRuleSuitesResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11327,8 +8513,8 @@ export const getStatusChecksProtection: API.OperationMethod<
   GetStatusChecksProtectionError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetStatusChecksProtectionRequest,
-  output: StatusCheckPolicy,
+  input: __S(316, __c39, 4) as any as S.Schema<GetStatusChecksProtectionRequest>,
+  output: __S(317, __c39, 5) as any as S.Schema<StatusCheckPolicy>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11342,8 +8528,8 @@ export const getTeamsWithAccessToProtectedBranch: API.OperationMethod<
   GetTeamsWithAccessToProtectedBranchError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTeamsWithAccessToProtectedBranchRequest,
-  output: GetTeamsWithAccessToProtectedBranchResponse,
+  input: __S(318, __c39, 6) as any as S.Schema<GetTeamsWithAccessToProtectedBranchRequest>,
+  output: __S(29, __c3, 5) as any as S.Schema<GetTeamsWithAccessToProtectedBranchResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11357,8 +8543,8 @@ export const getTopPaths: API.OperationMethod<
   GetTopPathsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTopPathsRequest,
-  output: GetTopPathsResponse,
+  input: __S(319, __c39, 7) as any as S.Schema<GetTopPathsRequest>,
+  output: __S(322, __c40, 2) as any as S.Schema<GetTopPathsResponse>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11372,8 +8558,8 @@ export const getTopReferrers: API.OperationMethod<
   GetTopReferrersError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTopReferrersRequest,
-  output: GetTopReferrersResponse,
+  input: __S(323, __c40, 3) as any as S.Schema<GetTopReferrersRequest>,
+  output: __S(326, __c40, 6) as any as S.Schema<GetTopReferrersResponse>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11387,8 +8573,8 @@ export const getUsersWithAccessToProtectedBranch: API.OperationMethod<
   GetUsersWithAccessToProtectedBranchError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUsersWithAccessToProtectedBranchRequest,
-  output: GetUsersWithAccessToProtectedBranchResponse,
+  input: __S(327, __c40, 7) as any as S.Schema<GetUsersWithAccessToProtectedBranchRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<GetUsersWithAccessToProtectedBranchResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11402,8 +8588,8 @@ export const getViews: API.OperationMethod<
   GetViewsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetViewsRequest,
-  output: ViewTraffic,
+  input: __S(328, __c41, 0) as any as S.Schema<GetViewsRequest>,
+  output: __S(329, __c41, 1) as any as S.Schema<ViewTraffic>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11417,8 +8603,8 @@ export const getWebhook: API.OperationMethod<
   GetWebhookError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWebhookRequest,
-  output: Hook,
+  input: __S(330, __c41, 2) as any as S.Schema<GetWebhookRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<Hook>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11432,8 +8618,8 @@ export const getWebhookConfigForRepo: API.OperationMethod<
   GetWebhookConfigForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWebhookConfigForRepoRequest,
-  output: WebhookConfig,
+  input: __S(331, __c41, 3) as any as S.Schema<GetWebhookConfigForRepoRequest>,
+  output: __S(142, __c17, 6) as any as S.Schema<WebhookConfig>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11447,8 +8633,8 @@ export const getWebhookDelivery: API.OperationMethod<
   GetWebhookDeliveryError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWebhookDeliveryRequest,
-  output: HookDelivery,
+  input: __S(332, __c41, 4) as any as S.Schema<GetWebhookDeliveryRequest>,
+  output: __S(334, __c41, 6) as any as S.Schema<HookDelivery>,
   errors: [BadRequest, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11462,8 +8648,8 @@ export const listActivities: API.OperationMethod<
   ListActivitiesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListActivitiesRequest,
-  output: ListActivitiesResponse,
+  input: __S(335, __c41, 7) as any as S.Schema<ListActivitiesRequest>,
+  output: __S(338, __c42, 2) as any as S.Schema<ListActivitiesResponse>,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11477,8 +8663,8 @@ export const listAttestations: API.OperationMethod<
   ListAttestationsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAttestationsRequest,
-  output: ListAttestationsResponse,
+  input: __S(339, __c42, 3) as any as S.Schema<ListAttestationsRequest>,
+  output: __S(344, __c43, 0) as any as S.Schema<ListAttestationsResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11492,8 +8678,8 @@ export const listAutolinks: API.OperationMethod<
   ListAutolinksError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAutolinksRequest,
-  output: ListAutolinksResponse,
+  input: __S(345, __c43, 1) as any as S.Schema<ListAutolinksRequest>,
+  output: __S(347, __c43, 3) as any as S.Schema<ListAutolinksResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11507,8 +8693,8 @@ export const listBranches: API.OperationMethod<
   ListBranchesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListBranchesRequest,
-  output: ListBranchesResponse,
+  input: __S(348, __c43, 4) as any as S.Schema<ListBranchesRequest>,
+  output: __S(351, __c43, 7) as any as S.Schema<ListBranchesResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11522,8 +8708,8 @@ export const listBranchesForHeadCommit: API.OperationMethod<
   ListBranchesForHeadCommitError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListBranchesForHeadCommitRequest,
-  output: ListBranchesForHeadCommitResponse,
+  input: __S(352, __c44, 0) as any as S.Schema<ListBranchesForHeadCommitRequest>,
+  output: __S(355, __c44, 3) as any as S.Schema<ListBranchesForHeadCommitResponse>,
   errors: [Conflict, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11537,8 +8723,8 @@ export const listCollaborators: API.OperationMethod<
   ListCollaboratorsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCollaboratorsRequest,
-  output: ListCollaboratorsResponse,
+  input: __S(356, __c44, 4) as any as S.Schema<ListCollaboratorsRequest>,
+  output: __S(358, __c44, 6) as any as S.Schema<ListCollaboratorsResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11552,8 +8738,8 @@ export const listCommentsForCommit: API.OperationMethod<
   ListCommentsForCommitError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCommentsForCommitRequest,
-  output: ListCommentsForCommitResponse,
+  input: __S(359, __c44, 7) as any as S.Schema<ListCommentsForCommitRequest>,
+  output: __S(361, __c45, 1) as any as S.Schema<ListCommentsForCommitResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11567,8 +8753,8 @@ export const listCommitCommentsForRepo: API.OperationMethod<
   ListCommitCommentsForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCommitCommentsForRepoRequest,
-  output: ListCommitCommentsForRepoResponse,
+  input: __S(362, __c45, 2) as any as S.Schema<ListCommitCommentsForRepoRequest>,
+  output: __S(361, __c45, 1) as any as S.Schema<ListCommitCommentsForRepoResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11587,8 +8773,8 @@ export const listCommits: API.OperationMethod<
   ListCommitsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCommitsRequest,
-  output: ListCommitsResponse,
+  input: __S(363, __c45, 3) as any as S.Schema<ListCommitsRequest>,
+  output: __S(364, __c45, 4) as any as S.Schema<ListCommitsResponse>,
   errors: [BadRequest, NotFound, Conflict, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11602,8 +8788,8 @@ export const listCommitStatusesForRef: API.OperationMethod<
   ListCommitStatusesForRefError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCommitStatusesForRefRequest,
-  output: ListCommitStatusesForRefResponse,
+  input: __S(365, __c45, 5) as any as S.Schema<ListCommitStatusesForRefRequest>,
+  output: __S(367, __c45, 7) as any as S.Schema<ListCommitStatusesForRefResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11617,8 +8803,8 @@ export const listContributors: API.OperationMethod<
   ListContributorsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListContributorsRequest,
-  output: ListContributorsResponse,
+  input: __S(368, __c46, 0) as any as S.Schema<ListContributorsRequest>,
+  output: __S(371, __c46, 3) as any as S.Schema<ListContributorsResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11632,8 +8818,8 @@ export const listCustomDeploymentRuleIntegrations: API.OperationMethod<
   ListCustomDeploymentRuleIntegrationsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCustomDeploymentRuleIntegrationsRequest,
-  output: ListCustomDeploymentRuleIntegrationsResponse,
+  input: __S(372, __c46, 4) as any as S.Schema<ListCustomDeploymentRuleIntegrationsRequest>,
+  output: __S(374, __c46, 6) as any as S.Schema<ListCustomDeploymentRuleIntegrationsResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11647,8 +8833,8 @@ export const listDeployKeys: API.OperationMethod<
   ListDeployKeysError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDeployKeysRequest,
-  output: ListDeployKeysResponse,
+  input: __S(375, __c46, 7) as any as S.Schema<ListDeployKeysRequest>,
+  output: __S(377, __c47, 1) as any as S.Schema<ListDeployKeysResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11662,8 +8848,8 @@ export const listDeploymentBranchPolicies: API.OperationMethod<
   ListDeploymentBranchPoliciesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDeploymentBranchPoliciesRequest,
-  output: ListDeploymentBranchPoliciesResponse,
+  input: __S(378, __c47, 2) as any as S.Schema<ListDeploymentBranchPoliciesRequest>,
+  output: __S(380, __c47, 4) as any as S.Schema<ListDeploymentBranchPoliciesResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11677,8 +8863,8 @@ export const listDeployments: API.OperationMethod<
   ListDeploymentsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDeploymentsRequest,
-  output: ListDeploymentsResponse,
+  input: __S(381, __c47, 5) as any as S.Schema<ListDeploymentsRequest>,
+  output: __S(383, __c47, 7) as any as S.Schema<ListDeploymentsResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11692,8 +8878,8 @@ export const listDeploymentStatuses: API.OperationMethod<
   ListDeploymentStatusesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDeploymentStatusesRequest,
-  output: ListDeploymentStatusesResponse,
+  input: __S(384, __c48, 0) as any as S.Schema<ListDeploymentStatusesRequest>,
+  output: __S(386, __c48, 2) as any as S.Schema<ListDeploymentStatusesResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11707,8 +8893,8 @@ export const listForAuthenticatedUser: API.OperationMethod<
   ListForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListForAuthenticatedUserRequest,
-  output: ListForAuthenticatedUserResponse,
+  input: __S(387, __c48, 3) as any as S.Schema<ListForAuthenticatedUserRequest>,
+  output: __S(389, __c48, 5) as any as S.Schema<ListForAuthenticatedUserResponse>,
   errors: [Forbidden, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11722,8 +8908,8 @@ export const listForks: API.OperationMethod<
   ListForksError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListForksRequest,
-  output: ListForksResponse,
+  input: __S(390, __c48, 6) as any as S.Schema<ListForksRequest>,
+  output: __S(392, __c49, 0) as any as S.Schema<ListForksResponse>,
   errors: [BadRequest],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11737,8 +8923,8 @@ export const listForOrg: API.OperationMethod<
   ListForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListForOrgRequest,
-  output: ListForOrgResponse,
+  input: __S(393, __c49, 1) as any as S.Schema<ListForOrgRequest>,
+  output: __S(392, __c49, 0) as any as S.Schema<ListForOrgResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11752,8 +8938,8 @@ export const listForUser: API.OperationMethod<
   ListForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListForUserRequest,
-  output: ListForUserResponse,
+  input: __S(394, __c49, 2) as any as S.Schema<ListForUserRequest>,
+  output: __S(392, __c49, 0) as any as S.Schema<ListForUserResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11767,8 +8953,8 @@ export const listInvitations: API.OperationMethod<
   ListInvitationsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListInvitationsRequest,
-  output: ListInvitationsResponse,
+  input: __S(395, __c49, 3) as any as S.Schema<ListInvitationsRequest>,
+  output: __S(397, __c49, 5) as any as S.Schema<ListInvitationsResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11782,8 +8968,8 @@ export const listInvitationsForAuthenticatedUser: API.OperationMethod<
   ListInvitationsForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListInvitationsForAuthenticatedUserRequest,
-  output: ListInvitationsForAuthenticatedUserResponse,
+  input: __S(398, __c49, 6) as any as S.Schema<ListInvitationsForAuthenticatedUserRequest>,
+  output: __S(399, __c49, 7) as any as S.Schema<ListInvitationsForAuthenticatedUserResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11797,8 +8983,8 @@ export const listIssueTypes: API.OperationMethod<
   ListIssueTypesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIssueTypesRequest,
-  output: ListIssueTypesResponse,
+  input: __S(400, __c50, 0) as any as S.Schema<ListIssueTypesRequest>,
+  output: __S(403, __c50, 3) as any as S.Schema<ListIssueTypesResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11812,8 +8998,8 @@ export const listLanguages: API.OperationMethod<
   ListLanguagesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListLanguagesRequest,
-  output: ListLanguagesResponse,
+  input: __S(404, __c50, 4) as any as S.Schema<ListLanguagesRequest>,
+  output: __S(406, __c50, 6) as any as S.Schema<ListLanguagesResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11827,8 +9013,8 @@ export const listPagesBuilds: API.OperationMethod<
   ListPagesBuildsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPagesBuildsRequest,
-  output: ListPagesBuildsResponse,
+  input: __S(407, __c50, 7) as any as S.Schema<ListPagesBuildsRequest>,
+  output: __S(409, __c51, 1) as any as S.Schema<ListPagesBuildsResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11842,8 +9028,8 @@ export const listPublic: API.OperationMethod<
   ListPublicError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPublicRequest,
-  output: ListPublicResponse,
+  input: __S(410, __c51, 2) as any as S.Schema<ListPublicRequest>,
+  output: __S(392, __c49, 0) as any as S.Schema<ListPublicResponse>,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11857,8 +9043,8 @@ export const listPullRequestsAssociatedWithCommit: API.OperationMethod<
   ListPullRequestsAssociatedWithCommitError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPullRequestsAssociatedWithCommitRequest,
-  output: ListPullRequestsAssociatedWithCommitResponse,
+  input: __S(411, __c51, 3) as any as S.Schema<ListPullRequestsAssociatedWithCommitRequest>,
+  output: __S(423, __c52, 7) as any as S.Schema<ListPullRequestsAssociatedWithCommitResponse>,
   errors: [Conflict],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11872,8 +9058,8 @@ export const listReleaseAssets: API.OperationMethod<
   ListReleaseAssetsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListReleaseAssetsRequest,
-  output: ListReleaseAssetsResponse,
+  input: __S(424, __c53, 0) as any as S.Schema<ListReleaseAssetsRequest>,
+  output: __S(425, __c53, 1) as any as S.Schema<ListReleaseAssetsResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11887,8 +9073,8 @@ export const listReleases: API.OperationMethod<
   ListReleasesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListReleasesRequest,
-  output: ListReleasesResponse,
+  input: __S(426, __c53, 2) as any as S.Schema<ListReleasesRequest>,
+  output: __S(428, __c53, 4) as any as S.Schema<ListReleasesResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11902,8 +9088,8 @@ export const listTags: API.OperationMethod<
   ListTagsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsRequest,
-  output: ListTagsResponse,
+  input: __S(429, __c53, 5) as any as S.Schema<ListTagsRequest>,
+  output: __S(432, __c54, 0) as any as S.Schema<ListTagsResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11917,8 +9103,8 @@ export const listTeams: API.OperationMethod<
   ListTeamsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTeamsRequest,
-  output: ListTeamsResponse,
+  input: __S(433, __c54, 1) as any as S.Schema<ListTeamsRequest>,
+  output: __S(434, __c54, 2) as any as S.Schema<ListTeamsResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11932,8 +9118,8 @@ export const listWebhookDeliveries: API.OperationMethod<
   ListWebhookDeliveriesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWebhookDeliveriesRequest,
-  output: ListWebhookDeliveriesResponse,
+  input: __S(435, __c54, 3) as any as S.Schema<ListWebhookDeliveriesRequest>,
+  output: __S(438, __c54, 6) as any as S.Schema<ListWebhookDeliveriesResponse>,
   errors: [BadRequest, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11947,8 +9133,8 @@ export const listWebhooks: API.OperationMethod<
   ListWebhooksError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWebhooksRequest,
-  output: ListWebhooksResponse,
+  input: __S(439, __c54, 7) as any as S.Schema<ListWebhooksRequest>,
+  output: __S(441, __c55, 1) as any as S.Schema<ListWebhooksResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11958,8 +9144,8 @@ export type MergeError = Forbidden | NotFound | Conflict | UnprocessableEntity |
 /** Merge a branch */
 export const merge: API.OperationMethod<MergeRequest, Commit, MergeError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: MergeRequest,
-    output: Commit,
+    input: __S(442, __c55, 2) as any as S.Schema<MergeRequest>,
+    output: __S(57, __c7, 1) as any as S.Schema<Commit>,
     errors: [Forbidden, NotFound, Conflict, UnprocessableEntity],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -11973,8 +9159,8 @@ export const mergeUpstream: API.OperationMethod<
   MergeUpstreamError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MergeUpstreamRequest,
-  output: MergedUpstream,
+  input: __S(443, __c55, 3) as any as S.Schema<MergeUpstreamRequest>,
+  output: __S(444, __c55, 4) as any as S.Schema<MergedUpstream>,
   errors: [Conflict, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -11988,8 +9174,8 @@ export const pingWebhook: API.OperationMethod<
   PingWebhookError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PingWebhookRequest,
-  output: PingWebhookResponse,
+  input: __S(445, __c55, 5) as any as S.Schema<PingWebhookRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<PingWebhookResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -12003,8 +9189,8 @@ export const redeliverWebhookDelivery: API.OperationMethod<
   RedeliverWebhookDeliveryError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RedeliverWebhookDeliveryRequest,
-  output: RedeliverWebhookDeliveryResponse,
+  input: __S(446, __c55, 6) as any as S.Schema<RedeliverWebhookDeliveryRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<RedeliverWebhookDeliveryResponse>,
   errors: [BadRequest, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -12018,8 +9204,8 @@ export const removeAppAccessRestrictions: API.OperationMethod<
   RemoveAppAccessRestrictionsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveAppAccessRestrictionsRequest,
-  output: RemoveAppAccessRestrictionsResponse,
+  input: __S(447, __c55, 7) as any as S.Schema<RemoveAppAccessRestrictionsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<RemoveAppAccessRestrictionsResponse>,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -12033,8 +9219,8 @@ export const removeCollaborator: API.OperationMethod<
   RemoveCollaboratorError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveCollaboratorRequest,
-  output: RemoveCollaboratorResponse,
+  input: __S(448, __c56, 0) as any as S.Schema<RemoveCollaboratorRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<RemoveCollaboratorResponse>,
   errors: [Forbidden, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -12048,8 +9234,8 @@ export const removeStatusCheckContexts: API.OperationMethod<
   RemoveStatusCheckContextsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveStatusCheckContextsRequest,
-  output: RemoveStatusCheckContextsResponse,
+  input: __S(449, __c56, 1) as any as S.Schema<RemoveStatusCheckContextsRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<RemoveStatusCheckContextsResponse>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -12063,8 +9249,8 @@ export const removeStatusCheckProtection: API.OperationMethod<
   RemoveStatusCheckProtectionError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveStatusCheckProtectionRequest,
-  output: RemoveStatusCheckProtectionResponse,
+  input: __S(450, __c56, 2) as any as S.Schema<RemoveStatusCheckProtectionRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<RemoveStatusCheckProtectionResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -12078,8 +9264,8 @@ export const removeTeamAccessRestrictions: API.OperationMethod<
   RemoveTeamAccessRestrictionsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveTeamAccessRestrictionsRequest,
-  output: RemoveTeamAccessRestrictionsResponse,
+  input: __S(451, __c56, 3) as any as S.Schema<RemoveTeamAccessRestrictionsRequest>,
+  output: __S(29, __c3, 5) as any as S.Schema<RemoveTeamAccessRestrictionsResponse>,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -12093,8 +9279,8 @@ export const removeUserAccessRestrictions: API.OperationMethod<
   RemoveUserAccessRestrictionsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveUserAccessRestrictionsRequest,
-  output: RemoveUserAccessRestrictionsResponse,
+  input: __S(452, __c56, 4) as any as S.Schema<RemoveUserAccessRestrictionsRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<RemoveUserAccessRestrictionsResponse>,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -12108,8 +9294,8 @@ export const renameBranch: API.OperationMethod<
   RenameBranchError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RenameBranchRequest,
-  output: BranchWithProtection,
+  input: __S(453, __c56, 5) as any as S.Schema<RenameBranchRequest>,
+  output: __S(222, __c27, 6) as any as S.Schema<BranchWithProtection>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -12123,8 +9309,8 @@ export const replaceAllTopics: API.OperationMethod<
   ReplaceAllTopicsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceAllTopicsRequest,
-  output: Topic,
+  input: __S(454, __c56, 6) as any as S.Schema<ReplaceAllTopicsRequest>,
+  output: __S(206, __c25, 6) as any as S.Schema<Topic>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -12138,8 +9324,8 @@ export const requestPagesBuild: API.OperationMethod<
   RequestPagesBuildError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RequestPagesBuildRequest,
-  output: PageBuildStatus,
+  input: __S(455, __c56, 7) as any as S.Schema<RequestPagesBuildRequest>,
+  output: __S(456, __c57, 0) as any as S.Schema<PageBuildStatus>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -12153,8 +9339,8 @@ export const setAdminBranchProtection: API.OperationMethod<
   SetAdminBranchProtectionError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetAdminBranchProtectionRequest,
-  output: ProtectedBranchAdminEnforced,
+  input: __S(457, __c57, 1) as any as S.Schema<SetAdminBranchProtectionRequest>,
+  output: __S(70, __c8, 6) as any as S.Schema<ProtectedBranchAdminEnforced>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -12168,8 +9354,8 @@ export const setAppAccessRestrictions: API.OperationMethod<
   SetAppAccessRestrictionsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetAppAccessRestrictionsRequest,
-  output: SetAppAccessRestrictionsResponse,
+  input: __S(458, __c57, 2) as any as S.Schema<SetAppAccessRestrictionsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<SetAppAccessRestrictionsResponse>,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -12183,8 +9369,8 @@ export const setStatusCheckContexts: API.OperationMethod<
   SetStatusCheckContextsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetStatusCheckContextsRequest,
-  output: SetStatusCheckContextsResponse,
+  input: __S(459, __c57, 3) as any as S.Schema<SetStatusCheckContextsRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<SetStatusCheckContextsResponse>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -12198,8 +9384,8 @@ export const setTeamAccessRestrictions: API.OperationMethod<
   SetTeamAccessRestrictionsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetTeamAccessRestrictionsRequest,
-  output: SetTeamAccessRestrictionsResponse,
+  input: __S(460, __c57, 4) as any as S.Schema<SetTeamAccessRestrictionsRequest>,
+  output: __S(29, __c3, 5) as any as S.Schema<SetTeamAccessRestrictionsResponse>,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -12213,8 +9399,8 @@ export const setUserAccessRestrictions: API.OperationMethod<
   SetUserAccessRestrictionsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetUserAccessRestrictionsRequest,
-  output: SetUserAccessRestrictionsResponse,
+  input: __S(461, __c57, 5) as any as S.Schema<SetUserAccessRestrictionsRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<SetUserAccessRestrictionsResponse>,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -12228,8 +9414,8 @@ export const testPushWebhook: API.OperationMethod<
   TestPushWebhookError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestPushWebhookRequest,
-  output: TestPushWebhookResponse,
+  input: __S(462, __c57, 6) as any as S.Schema<TestPushWebhookRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<TestPushWebhookResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -12243,8 +9429,8 @@ export const transfer: API.OperationMethod<
   TransferError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TransferRequest,
-  output: TransferResponse,
+  input: __S(463, __c57, 7) as any as S.Schema<TransferRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<TransferResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -12258,8 +9444,8 @@ export const update: API.OperationMethod<
   UpdateError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRequest,
-  output: FullRepository,
+  input: __S(469, __c58, 5) as any as S.Schema<UpdateRequest>,
+  output: __S(94, __c11, 6) as any as S.Schema<FullRepository>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -12277,8 +9463,8 @@ export const updateBranchProtection: API.OperationMethod<
   UpdateBranchProtectionError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateBranchProtectionRequest,
-  output: ProtectedBranch,
+  input: __S(477, __c59, 5) as any as S.Schema<UpdateBranchProtectionRequest>,
+  output: __S(481, __c60, 1) as any as S.Schema<ProtectedBranch>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -12292,8 +9478,8 @@ export const updateCommitComment: API.OperationMethod<
   UpdateCommitCommentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCommitCommentRequest,
-  output: CommitComment,
+  input: __S(482, __c60, 2) as any as S.Schema<UpdateCommitCommentRequest>,
+  output: __S(68, __c8, 4) as any as S.Schema<CommitComment>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -12307,8 +9493,8 @@ export const updateDeploymentBranchPolicy: API.OperationMethod<
   UpdateDeploymentBranchPolicyError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDeploymentBranchPolicyRequest,
-  output: DeploymentBranchPolicy,
+  input: __S(483, __c60, 3) as any as S.Schema<UpdateDeploymentBranchPolicyRequest>,
+  output: __S(79, __c9, 7) as any as S.Schema<DeploymentBranchPolicy>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -12326,8 +9512,8 @@ export const updateInformationAboutPagesSite: API.OperationMethod<
   UpdateInformationAboutPagesSiteError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateInformationAboutPagesSiteRequest,
-  output: UpdateInformationAboutPagesSiteResponse,
+  input: __S(484, __c60, 4) as any as S.Schema<UpdateInformationAboutPagesSiteRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<UpdateInformationAboutPagesSiteResponse>,
   errors: [BadRequest, Conflict, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -12341,8 +9527,8 @@ export const updateInvitation: API.OperationMethod<
   UpdateInvitationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateInvitationRequest,
-  output: RepositoryInvitation,
+  input: __S(485, __c60, 5) as any as S.Schema<UpdateInvitationRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<RepositoryInvitation>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -12356,8 +9542,8 @@ export const updateOrgRuleset: API.OperationMethod<
   UpdateOrgRulesetError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateOrgRulesetRequest,
-  output: RepositoryRuleset,
+  input: __S(486, __c60, 6) as any as S.Schema<UpdateOrgRulesetRequest>,
+  output: __S(108, __c13, 4) as any as S.Schema<RepositoryRuleset>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -12371,8 +9557,8 @@ export const updatePullRequestReviewProtection: API.OperationMethod<
   UpdatePullRequestReviewProtectionError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePullRequestReviewProtectionRequest,
-  output: ProtectedBranchPullRequestReview,
+  input: __S(489, __c61, 1) as any as S.Schema<UpdatePullRequestReviewProtectionRequest>,
+  output: __S(219, __c27, 3) as any as S.Schema<ProtectedBranchPullRequestReview>,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -12386,8 +9572,8 @@ export const updateRelease: API.OperationMethod<
   UpdateReleaseError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateReleaseRequest,
-  output: Release,
+  input: __S(490, __c61, 2) as any as S.Schema<UpdateReleaseRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<Release>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -12401,8 +9587,8 @@ export const updateReleaseAsset: API.OperationMethod<
   UpdateReleaseAssetError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateReleaseAssetRequest,
-  output: ReleaseAsset,
+  input: __S(491, __c61, 3) as any as S.Schema<UpdateReleaseAssetRequest>,
+  output: __S(134, __c16, 6) as any as S.Schema<ReleaseAsset>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -12416,8 +9602,8 @@ export const updateRepoRuleset: API.OperationMethod<
   UpdateRepoRulesetError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRepoRulesetRequest,
-  output: RepositoryRuleset,
+  input: __S(492, __c61, 4) as any as S.Schema<UpdateRepoRulesetRequest>,
+  output: __S(108, __c13, 4) as any as S.Schema<RepositoryRuleset>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -12431,8 +9617,8 @@ export const updateStatusCheckProtection: API.OperationMethod<
   UpdateStatusCheckProtectionError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateStatusCheckProtectionRequest,
-  output: StatusCheckPolicy,
+  input: __S(493, __c61, 5) as any as S.Schema<UpdateStatusCheckProtectionRequest>,
+  output: __S(317, __c39, 5) as any as S.Schema<StatusCheckPolicy>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -12446,8 +9632,8 @@ export const updateWebhook: API.OperationMethod<
   UpdateWebhookError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateWebhookRequest,
-  output: Hook,
+  input: __S(494, __c61, 6) as any as S.Schema<UpdateWebhookRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<Hook>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -12461,8 +9647,8 @@ export const updateWebhookConfigForRepo: API.OperationMethod<
   UpdateWebhookConfigForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateWebhookConfigForRepoRequest,
-  output: WebhookConfig,
+  input: __S(495, __c61, 7) as any as S.Schema<UpdateWebhookConfigForRepoRequest>,
+  output: __S(142, __c17, 6) as any as S.Schema<WebhookConfig>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -12476,8 +9662,8 @@ export const uploadReleaseAsset: API.OperationMethod<
   UploadReleaseAssetError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UploadReleaseAssetRequest,
-  output: ReleaseAsset,
+  input: __S(496, __c62, 0) as any as S.Schema<UploadReleaseAssetRequest>,
+  output: __S(134, __c16, 6) as any as S.Schema<ReleaseAsset>,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -12512,7 +9698,7 @@ function __c0(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
-          apps: AddAppAccessRestrictionsRequestAppsList,
+          apps: __S(2, __c0, 2),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12567,28 +9753,26 @@ function __c0(j: number): any {
           slug: S.optional(S.String),
           node_id: S.String,
           client_id: S.optional(S.String),
-          owner: IntegrationOwner,
+          owner: S.Unknown,
           name: S.String,
           description: S.NullOr(S.String),
           external_url: S.String,
           html_url: S.String,
           created_at: S.String,
           updated_at: S.String,
-          permissions: IntegrationPermissions,
-          events: IntegrationEventsList,
+          permissions: __S(5, __c0, 5),
+          events: __S(2, __c0, 2),
           installations_count: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Integration" });
     case 7:
-      return S.Array(/*@__PURE__*/ S.NullOr(Integration));
+      return S.Array(/*@__PURE__*/ S.NullOr(__S(6, __c0, 6)));
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        AddAppAccessRestrictionsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(7, __c0, 7).pipe(T.RawResponseRoot())).annotate({
         identifier: "AddAppAccessRestrictionsResponse",
       });
     case 1:
@@ -12641,7 +9825,7 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(SecurityAndAnalysisAdvancedSecurityStatus),
+          status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SecurityAndAnalysisAdvancedSecurity",
@@ -12649,7 +9833,7 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus),
+          status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SecurityAndAnalysisSecretScanningDelegatedAlertDismissal",
@@ -12658,11 +9842,8 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           reviewer_id: S.Number,
-          reviewer_type:
-            SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType,
-          mode: S.optional(
-            SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode,
-          ),
+          reviewer_type: S.String,
+          mode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem",
@@ -12672,13 +9853,11 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem);
+      return S.Array(__S(15, __c1, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          reviewers: S.optional(
-            SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList,
-          ),
+          reviewers: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({
         identifier: "SecurityAndAnalysisSecretScanningDelegatedBypassOptions",
@@ -12686,26 +9865,16 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          advanced_security: S.optional(SecurityAndAnalysisAdvancedSecurity),
-          code_security: S.optional(SecurityAndAnalysisCodeSecurity),
-          dependabot_security_updates: S.optional(SecurityAndAnalysisDependabotSecurityUpdates),
-          secret_scanning: S.optional(SecurityAndAnalysisSecretScanning),
-          secret_scanning_push_protection: S.optional(
-            SecurityAndAnalysisSecretScanningPushProtection,
-          ),
-          secret_scanning_non_provider_patterns: S.optional(
-            SecurityAndAnalysisSecretScanningNonProviderPatterns,
-          ),
-          secret_scanning_ai_detection: S.optional(SecurityAndAnalysisSecretScanningAiDetection),
-          secret_scanning_delegated_alert_dismissal: S.optional(
-            SecurityAndAnalysisSecretScanningDelegatedAlertDismissal,
-          ),
-          secret_scanning_delegated_bypass: S.optional(
-            SecurityAndAnalysisSecretScanningDelegatedBypass,
-          ),
-          secret_scanning_delegated_bypass_options: S.optional(
-            SecurityAndAnalysisSecretScanningDelegatedBypassOptions,
-          ),
+          advanced_security: S.optional(__S(13, __c1, 5)),
+          code_security: S.optional(__S(13, __c1, 5)),
+          dependabot_security_updates: S.optional(__S(13, __c1, 5)),
+          secret_scanning: S.optional(__S(13, __c1, 5)),
+          secret_scanning_push_protection: S.optional(__S(13, __c1, 5)),
+          secret_scanning_non_provider_patterns: S.optional(__S(13, __c1, 5)),
+          secret_scanning_ai_detection: S.optional(__S(13, __c1, 5)),
+          secret_scanning_delegated_alert_dismissal: S.optional(__S(14, __c1, 6)),
+          secret_scanning_delegated_bypass: S.optional(__S(13, __c1, 5)),
+          secret_scanning_delegated_bypass_options: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({ identifier: "SecurityAndAnalysis" });
     case 3:
@@ -12717,7 +9886,7 @@ function __c2(j: number): any {
           node_id: S.String,
           name: S.String,
           full_name: S.String,
-          owner: SimpleUser,
+          owner: __S(4, __c0, 4),
           private: S.Boolean,
           html_url: S.String,
           description: S.NullOr(S.String),
@@ -12773,7 +9942,7 @@ function __c2(j: number): any {
           default_branch: S.optional(S.String),
           open_issues_count: S.optional(S.Number),
           is_template: S.optional(S.Boolean),
-          topics: S.optional(MinimalRepositoryTopicsList),
+          topics: S.optional(__S(2, __c0, 2)),
           has_issues: S.optional(S.Boolean),
           has_projects: S.optional(S.Boolean),
           has_wiki: S.optional(S.Boolean),
@@ -12781,38 +9950,38 @@ function __c2(j: number): any {
           has_downloads: S.optional(S.Boolean),
           has_discussions: S.optional(S.Boolean),
           has_pull_requests: S.optional(S.Boolean),
-          pull_request_creation_policy: S.optional(MinimalRepositoryPullRequestCreationPolicy),
+          pull_request_creation_policy: S.optional(S.String),
           archived: S.optional(S.Boolean),
           disabled: S.optional(S.Boolean),
           visibility: S.optional(S.String),
           pushed_at: S.optional(S.NullOr(S.String)),
           created_at: S.optional(S.NullOr(S.String)),
           updated_at: S.optional(S.NullOr(S.String)),
-          permissions: S.optional(MinimalRepositoryPermissions),
+          permissions: S.optional(__S(10, __c1, 2)),
           role_name: S.optional(S.String),
           temp_clone_token: S.optional(S.String),
           delete_branch_on_merge: S.optional(S.Boolean),
           subscribers_count: S.optional(S.Number),
           network_count: S.optional(S.Number),
-          code_of_conduct: S.optional(CodeOfConduct),
-          license: S.optional(S.NullOr(MinimalRepositoryLicense)),
+          code_of_conduct: S.optional(__S(11, __c1, 3)),
+          license: S.optional(S.NullOr(__S(12, __c1, 4))),
           forks: S.optional(S.Number),
           open_issues: S.optional(S.Number),
           watchers: S.optional(S.Number),
           allow_forking: S.optional(S.Boolean),
           web_commit_signoff_required: S.optional(S.Boolean),
-          security_and_analysis: S.optional(S.NullOr(SecurityAndAnalysis)),
-          custom_properties: S.optional(MinimalRepositoryCustomPropertiesMap),
+          security_and_analysis: S.optional(S.NullOr(__S(18, __c2, 2))),
+          custom_properties: S.optional(__S(19, __c2, 3)),
         }),
       ).annotate({ identifier: "MinimalRepository" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
-          repository: MinimalRepository,
-          invitee: S.NullOr(SimpleUser),
-          inviter: S.NullOr(SimpleUser),
-          permissions: RepositoryInvitationPermissions,
+          repository: __S(20, __c2, 4),
+          invitee: S.NullOr(__S(4, __c0, 4)),
+          inviter: S.NullOr(__S(4, __c0, 4)),
+          permissions: S.String,
           created_at: S.String,
           expired: S.optional(S.Boolean),
           url: S.String,
@@ -12826,7 +9995,7 @@ function __c2(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
-          body: S.optional(AddStatusCheckContextsRequestBody.pipe(T.HttpBody())),
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12838,9 +10007,7 @@ function __c2(j: number): any {
         identifier: "AddStatusCheckContextsRequest",
       });
     case 7:
-      return S.suspend(() =>
-        AddStatusCheckContextsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(2, __c0, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "AddStatusCheckContextsResponse",
       });
   }
@@ -12853,7 +10020,7 @@ function __c3(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
-          body: S.optional(AddTeamAccessRestrictionsRequestBody.pipe(T.HttpBody())),
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12890,7 +10057,7 @@ function __c3(j: number): any {
           repositories_url: S.String,
           slug: S.String,
           ldap_dn: S.optional(S.String),
-          type: NullableTeamSimpleType,
+          type: S.String,
           organization_id: S.optional(S.Number),
           enterprise_id: S.optional(S.Number),
         }),
@@ -12906,24 +10073,22 @@ function __c3(j: number): any {
           privacy: S.optional(S.String),
           notification_setting: S.optional(S.String),
           permission: S.String,
-          permissions: S.optional(TeamPermissions),
+          permissions: S.optional(__S(25, __c3, 1)),
           url: S.String,
           html_url: S.String,
           members_url: S.String,
           repositories_url: S.String,
-          type: TeamType,
-          access_source: S.optional(TeamAccessSource),
+          type: S.String,
+          access_source: S.optional(S.String),
           organization_id: S.optional(S.Number),
           enterprise_id: S.optional(S.Number),
-          parent: S.NullOr(NullableTeamSimple),
+          parent: S.NullOr(__S(26, __c3, 2)),
         }),
       ).annotate({ identifier: "Team" });
     case 4:
-      return S.Array(Team);
+      return S.Array(__S(27, __c3, 3));
     case 5:
-      return S.suspend(() =>
-        AddTeamAccessRestrictionsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(28, __c3, 4).pipe(T.RawResponseRoot())).annotate({
         identifier: "AddTeamAccessRestrictionsResponse",
       });
     case 6:
@@ -12932,7 +10097,7 @@ function __c3(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
-          users: AddUserAccessRestrictionsRequestUsersList,
+          users: __S(2, __c0, 2),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12944,15 +10109,13 @@ function __c3(j: number): any {
         identifier: "AddUserAccessRestrictionsRequest",
       });
     case 7:
-      return S.Array(SimpleUser);
+      return S.Array(__S(4, __c0, 4));
   }
 }
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        AddUserAccessRestrictionsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(31, __c3, 7).pipe(T.RawResponseRoot())).annotate({
         identifier: "AddUserAccessRestrictionsResponse",
       });
     case 1:
@@ -13094,11 +10257,11 @@ function __c5(j: number): any {
         identifier: "CodeownersErrorsErrorsItem",
       });
     case 5:
-      return S.Array(CodeownersErrorsErrorsItem);
+      return S.Array(__S(44, __c5, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          errors: CodeownersErrorsErrorsList,
+          errors: __S(45, __c5, 5),
         }),
       ).annotate({ identifier: "CodeownersErrors" });
     case 7:
@@ -13146,12 +10309,12 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           url: S.String,
-          author: S.NullOr(NullableGitUser),
-          committer: S.NullOr(NullableGitUser),
+          author: S.NullOr(__S(48, __c6, 0)),
+          committer: S.NullOr(__S(48, __c6, 0)),
           message: S.String,
           comment_count: S.Number,
-          tree: CommitCommitTree,
-          verification: S.optional(Verification),
+          tree: __S(49, __c6, 1),
+          verification: S.optional(__S(50, __c6, 2)),
         }),
       ).annotate({ identifier: "CommitCommit" });
     case 4:
@@ -13163,7 +10326,7 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "CommitParentsItem" });
     case 5:
-      return S.Array(CommitParentsItem);
+      return S.Array(__S(52, __c6, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -13177,7 +10340,7 @@ function __c6(j: number): any {
         S.Struct({
           sha: S.NullOr(S.String),
           filename: S.String,
-          status: DiffEntryStatus,
+          status: S.String,
           additions: S.Number,
           deletions: S.Number,
           changes: S.Number,
@@ -13193,7 +10356,7 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DiffEntry);
+      return S.Array(__S(55, __c6, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -13202,18 +10365,18 @@ function __c7(j: number): any {
           node_id: S.String,
           html_url: S.String,
           comments_url: S.String,
-          commit: CommitCommit,
-          author: S.NullOr(CommitAuthor),
-          committer: S.NullOr(CommitCommitter),
-          parents: CommitParentsList,
-          stats: S.optional(CommitStats),
-          files: S.optional(CommitFilesList),
+          commit: __S(51, __c6, 3),
+          author: S.NullOr(S.Unknown),
+          committer: S.NullOr(S.Unknown),
+          parents: __S(53, __c6, 5),
+          stats: S.optional(__S(54, __c6, 6)),
+          files: S.optional(__S(56, __c7, 0)),
         }),
       ).annotate({ identifier: "Commit" });
     case 2:
-      return S.Array(Commit);
+      return S.Array(__S(57, __c7, 1));
     case 3:
-      return S.Array(DiffEntry);
+      return S.Array(__S(55, __c6, 7));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -13222,22 +10385,22 @@ function __c7(j: number): any {
           permalink_url: S.String,
           diff_url: S.String,
           patch_url: S.String,
-          base_commit: Commit,
-          merge_base_commit: Commit,
-          status: CommitComparisonStatus,
+          base_commit: __S(57, __c7, 1),
+          merge_base_commit: __S(57, __c7, 1),
+          status: S.String,
           ahead_by: S.Number,
           behind_by: S.Number,
           total_commits: S.Number,
-          commits: CommitComparisonCommitsList,
-          files: S.optional(CommitComparisonFilesList),
+          commits: __S(58, __c7, 2),
+          files: S.optional(__S(59, __c7, 3)),
         }),
       ).annotate({ identifier: "CommitComparison" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           mediaType: S.optional(S.String),
-          verificationMaterial: S.optional(CreateAttestationRequestBundleVerificationMaterialMap),
-          dsseEnvelope: S.optional(CreateAttestationRequestBundleDsseEnvelopeMap),
+          verificationMaterial: S.optional(__S(19, __c2, 3)),
+          dsseEnvelope: S.optional(__S(19, __c2, 3)),
         }),
       ).annotate({
         identifier: "CreateAttestationRequestBundle",
@@ -13247,7 +10410,7 @@ function __c7(j: number): any {
         S.Struct({
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          bundle: CreateAttestationRequestBundle,
+          bundle: __S(61, __c7, 5),
         }).pipe(T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/attestations", code: 200 })),
       ).annotate({ identifier: "CreateAttestationRequest" });
     case 7:
@@ -13329,11 +10492,11 @@ function __c8(j: number): any {
           position: S.NullOr(S.Number),
           line: S.NullOr(S.Number),
           commit_id: S.String,
-          user: S.NullOr(SimpleUser),
+          user: S.NullOr(__S(4, __c0, 4)),
           created_at: S.String,
           updated_at: S.String,
-          author_association: AuthorAssociation,
-          reactions: S.optional(ReactionRollup),
+          author_association: S.String,
+          reactions: S.optional(__S(67, __c8, 3)),
         }),
       ).annotate({ identifier: "CommitComment" });
     case 5:
@@ -13367,7 +10530,7 @@ function __c8(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           sha: S.String.pipe(T.Label()),
-          state: CreateCommitStatusRequestState,
+          state: S.String,
           target_url: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
           context: S.optional(S.String),
@@ -13392,7 +10555,7 @@ function __c9(j: number): any {
           context: S.String,
           created_at: S.String,
           updated_at: S.String,
-          creator: S.NullOr(SimpleUser),
+          creator: S.NullOr(__S(4, __c0, 4)),
         }),
       ).annotate({ identifier: "Status" });
     case 1:
@@ -13428,8 +10591,8 @@ function __c9(j: number): any {
           ref: S.String,
           task: S.optional(S.String),
           auto_merge: S.optional(S.Boolean),
-          required_contexts: S.optional(CreateDeploymentRequestRequiredContextsList),
-          payload: S.optional(CreateDeploymentRequestPayload),
+          required_contexts: S.optional(__S(2, __c0, 2)),
+          payload: S.optional(S.Unknown),
           environment: S.optional(S.String),
           description: S.optional(S.NullOr(S.String)),
           transient_environment: S.optional(S.Boolean),
@@ -13443,15 +10606,15 @@ function __c9(j: number): any {
           slug: S.optional(S.String),
           node_id: S.String,
           client_id: S.optional(S.String),
-          owner: NullableIntegrationOwner,
+          owner: S.Unknown,
           name: S.String,
           description: S.NullOr(S.String),
           external_url: S.String,
           html_url: S.String,
           created_at: S.String,
           updated_at: S.String,
-          permissions: IntegrationPermissions,
-          events: NullableIntegrationEventsList,
+          permissions: __S(5, __c0, 5),
+          events: __S(2, __c0, 2),
           installations_count: S.optional(S.Number),
         }),
       ).annotate({ identifier: "NullableIntegration" });
@@ -13464,18 +10627,18 @@ function __c9(j: number): any {
           sha: S.String,
           ref: S.String,
           task: S.String,
-          payload: DeploymentPayload,
+          payload: S.Unknown,
           original_environment: S.optional(S.String),
           environment: S.String,
           description: S.NullOr(S.String),
-          creator: S.NullOr(SimpleUser),
+          creator: S.NullOr(__S(4, __c0, 4)),
           created_at: S.String,
           updated_at: S.String,
           statuses_url: S.String,
           repository_url: S.String,
           transient_environment: S.optional(S.Boolean),
           production_environment: S.optional(S.Boolean),
-          performed_via_github_app: S.optional(S.NullOr(NullableIntegration)),
+          performed_via_github_app: S.optional(S.NullOr(__S(76, __c9, 4))),
         }),
       ).annotate({ identifier: "Deployment" });
     case 6:
@@ -13485,7 +10648,7 @@ function __c9(j: number): any {
           repo: S.String.pipe(T.Label()),
           environment_name: S.String.pipe(T.Label()),
           name: S.String,
-          type: S.optional(CreateDeploymentBranchPolicyRequestType),
+          type: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13502,7 +10665,7 @@ function __c9(j: number): any {
           id: S.optional(S.Number),
           node_id: S.optional(S.String),
           name: S.optional(S.String),
-          type: S.optional(DeploymentBranchPolicyType),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeploymentBranchPolicy" });
   }
@@ -13541,7 +10704,7 @@ function __c10(j: number): any {
           id: S.Number,
           node_id: S.String,
           enabled: S.Boolean,
-          app: CustomDeploymentRuleApp,
+          app: __S(81, __c10, 1),
         }),
       ).annotate({ identifier: "DeploymentProtectionRule" });
     case 3:
@@ -13550,7 +10713,7 @@ function __c10(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           deployment_id: S.Number.pipe(T.Label()),
-          state: CreateDeploymentStatusRequestState,
+          state: S.String,
           target_url: S.optional(S.String),
           log_url: S.optional(S.String),
           description: S.optional(S.String),
@@ -13573,8 +10736,8 @@ function __c10(j: number): any {
           url: S.String,
           id: S.Number,
           node_id: S.String,
-          state: DeploymentStatusState,
-          creator: S.NullOr(SimpleUser),
+          state: S.String,
+          creator: S.NullOr(__S(4, __c0, 4)),
           description: S.String,
           environment: S.optional(S.String),
           target_url: S.String,
@@ -13584,7 +10747,7 @@ function __c10(j: number): any {
           repository_url: S.String,
           environment_url: S.optional(S.String),
           log_url: S.optional(S.String),
-          performed_via_github_app: S.optional(S.NullOr(NullableIntegration)),
+          performed_via_github_app: S.optional(S.NullOr(__S(76, __c9, 4))),
         }),
       ).annotate({ identifier: "DeploymentStatus" });
     case 5:
@@ -13593,7 +10756,7 @@ function __c10(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           event_type: S.String,
-          client_payload: S.optional(CreateDispatchEventRequestClientPayloadMap),
+          client_payload: S.optional(__S(19, __c2, 3)),
         }).pipe(T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/dispatches", code: 200 })),
       ).annotate({
         identifier: "CreateDispatchEventRequest",
@@ -13618,14 +10781,10 @@ function __c10(j: number): any {
           allow_rebase_merge: S.optional(S.Boolean),
           allow_auto_merge: S.optional(S.Boolean),
           delete_branch_on_merge: S.optional(S.Boolean),
-          squash_merge_commit_title: S.optional(
-            CreateForAuthenticatedUserRequestSquashMergeCommitTitle,
-          ),
-          squash_merge_commit_message: S.optional(
-            CreateForAuthenticatedUserRequestSquashMergeCommitMessage,
-          ),
-          merge_commit_title: S.optional(CreateForAuthenticatedUserRequestMergeCommitTitle),
-          merge_commit_message: S.optional(CreateForAuthenticatedUserRequestMergeCommitMessage),
+          squash_merge_commit_title: S.optional(S.String),
+          squash_merge_commit_message: S.optional(S.String),
+          merge_commit_title: S.optional(S.String),
+          merge_commit_message: S.optional(S.String),
           has_downloads: S.optional(S.Boolean),
           is_template: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/user/repos", code: 200 })),
@@ -13687,10 +10846,10 @@ function __c11(j: number): any {
           node_id: S.String,
           name: S.String,
           full_name: S.String,
-          license: S.NullOr(NullableLicenseSimple),
+          license: S.NullOr(__S(88, __c11, 0)),
           forks: S.Number,
-          permissions: S.optional(NullableRepositoryPermissions),
-          owner: SimpleUser,
+          permissions: S.optional(__S(89, __c11, 1)),
+          owner: __S(4, __c0, 4),
           private: S.Boolean,
           html_url: S.String,
           description: S.NullOr(S.String),
@@ -13746,7 +10905,7 @@ function __c11(j: number): any {
           default_branch: S.String,
           open_issues_count: S.Number,
           is_template: S.optional(S.Boolean),
-          topics: S.optional(NullableRepositoryTopicsList),
+          topics: S.optional(__S(2, __c0, 2)),
           has_issues: S.Boolean,
           has_projects: S.Boolean,
           has_wiki: S.Boolean,
@@ -13754,7 +10913,7 @@ function __c11(j: number): any {
           has_downloads: S.Boolean,
           has_discussions: S.optional(S.Boolean),
           has_pull_requests: S.optional(S.Boolean),
-          pull_request_creation_policy: S.optional(NullableRepositoryPullRequestCreationPolicy),
+          pull_request_creation_policy: S.optional(S.String),
           archived: S.Boolean,
           disabled: S.Boolean,
           visibility: S.optional(S.String),
@@ -13768,10 +10927,10 @@ function __c11(j: number): any {
           delete_branch_on_merge: S.optional(S.Boolean),
           allow_update_branch: S.optional(S.Boolean),
           use_squash_pr_title_as_default: S.optional(S.Boolean),
-          squash_merge_commit_title: S.optional(NullableRepositorySquashMergeCommitTitle),
-          squash_merge_commit_message: S.optional(NullableRepositorySquashMergeCommitMessage),
-          merge_commit_title: S.optional(NullableRepositoryMergeCommitTitle),
-          merge_commit_message: S.optional(NullableRepositoryMergeCommitMessage),
+          squash_merge_commit_title: S.optional(S.String),
+          squash_merge_commit_message: S.optional(S.String),
+          merge_commit_title: S.optional(S.String),
+          merge_commit_message: S.optional(S.String),
           allow_merge_commit: S.optional(S.Boolean),
           allow_forking: S.optional(S.Boolean),
           web_commit_signoff_required: S.optional(S.Boolean),
@@ -13780,7 +10939,7 @@ function __c11(j: number): any {
           master_branch: S.optional(S.String),
           starred_at: S.optional(S.String),
           anonymous_access_enabled: S.optional(S.Boolean),
-          code_search_index_status: S.optional(NullableRepositoryCodeSearchIndexStatus),
+          code_search_index_status: S.optional(__S(90, __c11, 2)),
         }),
       ).annotate({ identifier: "NullableRepository" });
     case 4:
@@ -13790,10 +10949,10 @@ function __c11(j: number): any {
           node_id: S.String,
           name: S.String,
           full_name: S.String,
-          license: S.NullOr(NullableLicenseSimple),
+          license: S.NullOr(__S(88, __c11, 0)),
           forks: S.Number,
-          permissions: S.optional(NullableRepositoryPermissions),
-          owner: SimpleUser,
+          permissions: S.optional(__S(89, __c11, 1)),
+          owner: __S(4, __c0, 4),
           private: S.Boolean,
           html_url: S.String,
           description: S.NullOr(S.String),
@@ -13849,7 +11008,7 @@ function __c11(j: number): any {
           default_branch: S.String,
           open_issues_count: S.Number,
           is_template: S.optional(S.Boolean),
-          topics: S.optional(RepositoryTopicsList),
+          topics: S.optional(__S(2, __c0, 2)),
           has_issues: S.Boolean,
           has_projects: S.Boolean,
           has_wiki: S.Boolean,
@@ -13857,7 +11016,7 @@ function __c11(j: number): any {
           has_downloads: S.Boolean,
           has_discussions: S.optional(S.Boolean),
           has_pull_requests: S.optional(S.Boolean),
-          pull_request_creation_policy: S.optional(RepositoryPullRequestCreationPolicy),
+          pull_request_creation_policy: S.optional(S.String),
           archived: S.Boolean,
           disabled: S.Boolean,
           visibility: S.optional(S.String),
@@ -13871,10 +11030,10 @@ function __c11(j: number): any {
           delete_branch_on_merge: S.optional(S.Boolean),
           allow_update_branch: S.optional(S.Boolean),
           use_squash_pr_title_as_default: S.optional(S.Boolean),
-          squash_merge_commit_title: S.optional(RepositorySquashMergeCommitTitle),
-          squash_merge_commit_message: S.optional(RepositorySquashMergeCommitMessage),
-          merge_commit_title: S.optional(RepositoryMergeCommitTitle),
-          merge_commit_message: S.optional(RepositoryMergeCommitMessage),
+          squash_merge_commit_title: S.optional(S.String),
+          squash_merge_commit_message: S.optional(S.String),
+          merge_commit_title: S.optional(S.String),
+          merge_commit_message: S.optional(S.String),
           allow_merge_commit: S.optional(S.Boolean),
           allow_forking: S.optional(S.Boolean),
           web_commit_signoff_required: S.optional(S.Boolean),
@@ -13883,7 +11042,7 @@ function __c11(j: number): any {
           master_branch: S.optional(S.String),
           starred_at: S.optional(S.String),
           anonymous_access_enabled: S.optional(S.Boolean),
-          code_search_index_status: S.optional(NullableRepositoryCodeSearchIndexStatus),
+          code_search_index_status: S.optional(__S(90, __c11, 2)),
         }),
       ).annotate({ identifier: "Repository" });
     case 5:
@@ -13902,7 +11061,7 @@ function __c11(j: number): any {
           node_id: S.String,
           name: S.String,
           full_name: S.String,
-          owner: SimpleUser,
+          owner: __S(4, __c0, 4),
           private: S.Boolean,
           html_url: S.String,
           description: S.NullOr(S.String),
@@ -13958,7 +11117,7 @@ function __c11(j: number): any {
           default_branch: S.String,
           open_issues_count: S.Number,
           is_template: S.optional(S.Boolean),
-          topics: S.optional(FullRepositoryTopicsList),
+          topics: S.optional(__S(2, __c0, 2)),
           has_issues: S.Boolean,
           has_projects: S.Boolean,
           has_wiki: S.Boolean,
@@ -13966,16 +11125,16 @@ function __c11(j: number): any {
           has_downloads: S.optional(S.Boolean),
           has_discussions: S.Boolean,
           has_pull_requests: S.optional(S.Boolean),
-          pull_request_creation_policy: S.optional(FullRepositoryPullRequestCreationPolicy),
+          pull_request_creation_policy: S.optional(S.String),
           archived: S.Boolean,
           disabled: S.Boolean,
           visibility: S.optional(S.String),
           pushed_at: S.String,
           created_at: S.String,
           updated_at: S.String,
-          permissions: S.optional(FullRepositoryPermissions),
+          permissions: S.optional(__S(87, __c10, 7)),
           allow_rebase_merge: S.optional(S.Boolean),
-          template_repository: S.optional(S.NullOr(NullableRepository)),
+          template_repository: S.optional(S.NullOr(__S(91, __c11, 3))),
           temp_clone_token: S.optional(S.NullOr(S.String)),
           allow_squash_merge: S.optional(S.Boolean),
           allow_auto_merge: S.optional(S.Boolean),
@@ -13983,26 +11142,26 @@ function __c11(j: number): any {
           allow_merge_commit: S.optional(S.Boolean),
           allow_update_branch: S.optional(S.Boolean),
           use_squash_pr_title_as_default: S.optional(S.Boolean),
-          squash_merge_commit_title: S.optional(FullRepositorySquashMergeCommitTitle),
-          squash_merge_commit_message: S.optional(FullRepositorySquashMergeCommitMessage),
-          merge_commit_title: S.optional(FullRepositoryMergeCommitTitle),
-          merge_commit_message: S.optional(FullRepositoryMergeCommitMessage),
+          squash_merge_commit_title: S.optional(S.String),
+          squash_merge_commit_message: S.optional(S.String),
+          merge_commit_title: S.optional(S.String),
+          merge_commit_message: S.optional(S.String),
           allow_forking: S.optional(S.Boolean),
           web_commit_signoff_required: S.optional(S.Boolean),
           subscribers_count: S.Number,
           network_count: S.Number,
-          license: S.NullOr(NullableLicenseSimple),
-          organization: S.optional(S.NullOr(SimpleUser)),
-          parent: S.optional(Repository),
-          source: S.optional(Repository),
+          license: S.NullOr(__S(88, __c11, 0)),
+          organization: S.optional(S.NullOr(__S(4, __c0, 4))),
+          parent: S.optional(__S(92, __c11, 4)),
+          source: S.optional(__S(92, __c11, 4)),
           forks: S.Number,
           master_branch: S.optional(S.String),
           open_issues: S.Number,
           watchers: S.Number,
           anonymous_access_enabled: S.optional(S.Boolean),
-          code_of_conduct: S.optional(CodeOfConductSimple),
-          security_and_analysis: S.optional(S.NullOr(SecurityAndAnalysis)),
-          custom_properties: S.optional(FullRepositoryCustomPropertiesMap),
+          code_of_conduct: S.optional(__S(93, __c11, 5)),
+          security_and_analysis: S.optional(S.NullOr(__S(18, __c2, 2))),
+          custom_properties: S.optional(__S(19, __c2, 3)),
         }),
       ).annotate({ identifier: "FullRepository" });
     case 7:
@@ -14027,7 +11186,7 @@ function __c12(j: number): any {
           description: S.optional(S.String),
           homepage: S.optional(S.String),
           private: S.optional(S.Boolean),
-          visibility: S.optional(CreateInOrgRequestVisibility),
+          visibility: S.optional(S.String),
           has_issues: S.optional(S.Boolean),
           has_projects: S.optional(S.Boolean),
           has_wiki: S.optional(S.Boolean),
@@ -14043,30 +11202,30 @@ function __c12(j: number): any {
           allow_auto_merge: S.optional(S.Boolean),
           delete_branch_on_merge: S.optional(S.Boolean),
           use_squash_pr_title_as_default: S.optional(S.Boolean),
-          squash_merge_commit_title: S.optional(CreateInOrgRequestSquashMergeCommitTitle),
-          squash_merge_commit_message: S.optional(CreateInOrgRequestSquashMergeCommitMessage),
-          merge_commit_title: S.optional(CreateInOrgRequestMergeCommitTitle),
-          merge_commit_message: S.optional(CreateInOrgRequestMergeCommitMessage),
-          custom_properties: S.optional(CreateInOrgRequestCustomPropertiesMap),
+          squash_merge_commit_title: S.optional(S.String),
+          squash_merge_commit_message: S.optional(S.String),
+          merge_commit_title: S.optional(S.String),
+          merge_commit_message: S.optional(S.String),
+          custom_properties: S.optional(__S(19, __c2, 3)),
         }).pipe(T.Http({ method: "POST", uri: "/orgs/{org}/repos", code: 200 })),
       ).annotate({ identifier: "CreateInOrgRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           actor_id: S.optional(S.NullOr(S.Number)),
-          actor_type: RepositoryRulesetBypassActorActorType,
-          bypass_mode: S.optional(RepositoryRulesetBypassActorBypassMode),
+          actor_type: S.String,
+          bypass_mode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RepositoryRulesetBypassActor",
       });
     case 2:
-      return S.Array(RepositoryRulesetBypassActor);
+      return S.Array(__S(97, __c12, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          include: S.optional(OrgRulesetConditionsCase0RefNameIncludeList),
-          exclude: S.optional(OrgRulesetConditionsCase0RefNameExcludeList),
+          include: S.optional(__S(2, __c0, 2)),
+          exclude: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({
         identifier: "OrgRulesetConditionsCase0RefName",
@@ -14076,17 +11235,17 @@ function __c12(j: number): any {
     case 5:
       return S.Array(S.String);
     case 6:
-      return S.Array(OrgRules);
+      return S.Array(S.Unknown);
     case 7:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
           name: S.String,
-          target: S.optional(CreateOrgRulesetRequestTarget),
-          enforcement: RepositoryRuleEnforcement,
-          bypass_actors: S.optional(CreateOrgRulesetRequestBypassActorsList),
-          conditions: S.optional(OrgRulesetConditions),
-          rules: S.optional(CreateOrgRulesetRequestRulesList),
+          target: S.optional(S.String),
+          enforcement: S.String,
+          bypass_actors: S.optional(__S(98, __c12, 2)),
+          conditions: S.optional(S.Unknown),
+          rules: S.optional(__S(102, __c12, 6)),
         }).pipe(T.Http({ method: "POST", uri: "/orgs/{org}/rulesets", code: 200 })),
       ).annotate({ identifier: "CreateOrgRulesetRequest" });
   }
@@ -14104,35 +11263,35 @@ function __c13(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          self: S.optional(RepositoryRulesetLinksSelf),
-          html: S.optional(S.NullOr(RepositoryRulesetLinksHtml)),
+          self: S.optional(__S(104, __c13, 0)),
+          html: S.optional(S.NullOr(__S(104, __c13, 0))),
         }),
       ).annotate({ identifier: "RepositoryRulesetLinks" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ref_name: S.optional(RepositoryRulesetConditionsRefName),
+          ref_name: S.optional(__S(99, __c12, 3)),
         }),
       ).annotate({
         identifier: "RepositoryRulesetConditions",
       });
     case 3:
-      return S.Array(RepositoryRule);
+      return S.Array(S.Unknown);
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           name: S.String,
-          target: S.optional(RepositoryRulesetTarget),
-          source_type: S.optional(RepositoryRulesetSourceType),
+          target: S.optional(S.String),
+          source_type: S.optional(S.String),
           source: S.String,
-          enforcement: RepositoryRuleEnforcement,
-          bypass_actors: S.optional(RepositoryRulesetBypassActorsList),
-          current_user_can_bypass: S.optional(RepositoryRulesetCurrentUserCanBypass),
+          enforcement: S.String,
+          bypass_actors: S.optional(__S(98, __c12, 2)),
+          current_user_can_bypass: S.optional(S.String),
           node_id: S.optional(S.String),
-          _links: S.optional(RepositoryRulesetLinks),
-          conditions: S.optional(S.NullOr(RepositoryRulesetConditions2)),
-          rules: S.optional(RepositoryRulesetRulesList),
+          _links: S.optional(__S(105, __c13, 1)),
+          conditions: S.optional(S.NullOr(S.Unknown)),
+          rules: S.optional(__S(107, __c13, 3)),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
         }),
@@ -14140,14 +11299,14 @@ function __c13(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(DeploymentReviewerType),
+          type: S.optional(S.String),
           id: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "CreateOrUpdateEnvironmentRequestReviewersItem",
       });
     case 6:
-      return S.Array(CreateOrUpdateEnvironmentRequestReviewersItem);
+      return S.Array(__S(109, __c13, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -14169,8 +11328,8 @@ function __c14(j: number): any {
           environment_name: S.String.pipe(T.Label()),
           wait_timer: S.optional(S.Number),
           prevent_self_review: S.optional(S.Boolean),
-          reviewers: S.optional(S.NullOr(CreateOrUpdateEnvironmentRequestReviewersList)),
-          deployment_branch_policy: S.optional(S.NullOr(DeploymentBranchPolicySettings)),
+          reviewers: S.optional(S.NullOr(__S(110, __c13, 6))),
+          deployment_branch_policy: S.optional(S.NullOr(__S(111, __c13, 7))),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14182,7 +11341,7 @@ function __c14(j: number): any {
         identifier: "CreateOrUpdateEnvironmentRequest",
       });
     case 1:
-      return S.Array(EnvironmentProtectionRulesItem);
+      return S.Array(S.Unknown);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -14193,8 +11352,8 @@ function __c14(j: number): any {
           html_url: S.String,
           created_at: S.String,
           updated_at: S.String,
-          protection_rules: S.optional(EnvironmentProtectionRulesList),
-          deployment_branch_policy: S.optional(S.NullOr(DeploymentBranchPolicySettings)),
+          protection_rules: S.optional(__S(113, __c14, 1)),
+          deployment_branch_policy: S.optional(S.NullOr(__S(111, __c13, 7))),
         }),
       ).annotate({ identifier: "Environment" });
     case 3:
@@ -14217,8 +11376,8 @@ function __c14(j: number): any {
           content: S.String,
           sha: S.optional(S.String),
           branch: S.optional(S.String),
-          committer: S.optional(CreateOrUpdateFileContentsRequestCommitter),
-          author: S.optional(CreateOrUpdateFileContentsRequestCommitter),
+          committer: S.optional(__S(115, __c14, 3)),
+          author: S.optional(__S(115, __c14, 3)),
         }).pipe(T.Http({ method: "PUT", uri: "/repos/{owner}/{repo}/contents/{path}", code: 200 })),
       ).annotate({
         identifier: "CreateOrUpdateFileContentsRequest",
@@ -14243,7 +11402,7 @@ function __c14(j: number): any {
           git_url: S.optional(S.String),
           download_url: S.optional(S.String),
           type: S.optional(S.String),
-          _links: S.optional(FileCommitContentLinks),
+          _links: S.optional(__S(117, __c14, 5)),
         }),
       ).annotate({ identifier: "FileCommitContent" });
     case 7:
@@ -14276,7 +11435,7 @@ function __c15(j: number): any {
         identifier: "FileCommitCommitParentsItem",
       });
     case 2:
-      return S.Array(FileCommitCommitParentsItem);
+      return S.Array(__S(121, __c15, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -14296,19 +11455,19 @@ function __c15(j: number): any {
           node_id: S.optional(S.String),
           url: S.optional(S.String),
           html_url: S.optional(S.String),
-          author: S.optional(FileCommitCommitAuthor),
-          committer: S.optional(FileCommitCommitAuthor),
+          author: S.optional(__S(119, __c14, 7)),
+          committer: S.optional(__S(119, __c14, 7)),
           message: S.optional(S.String),
-          tree: S.optional(FileCommitCommitTree),
-          parents: S.optional(FileCommitCommitParentsList),
-          verification: S.optional(FileCommitCommitVerification),
+          tree: S.optional(__S(120, __c15, 0)),
+          parents: S.optional(__S(122, __c15, 2)),
+          verification: S.optional(__S(123, __c15, 3)),
         }),
       ).annotate({ identifier: "FileCommitCommit" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          content: S.NullOr(FileCommitContent),
-          commit: FileCommitCommit,
+          content: S.NullOr(__S(118, __c14, 6)),
+          commit: __S(124, __c15, 4),
         }),
       ).annotate({ identifier: "FileCommit" });
     case 6:
@@ -14330,7 +11489,7 @@ function __c15(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          id: PageDeploymentId,
+          id: S.Unknown,
           status_url: S.String,
           page_url: S.String,
           preview_url: S.optional(S.String),
@@ -14344,7 +11503,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           branch: S.String,
-          path: S.optional(CreatePagesSiteRequestSourcePath),
+          path: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CreatePagesSiteRequestSource",
@@ -14354,8 +11513,8 @@ function __c16(j: number): any {
         S.Struct({
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          build_type: S.optional(CreatePagesSiteRequestBuildType),
-          source: S.optional(CreatePagesSiteRequestSource),
+          build_type: S.optional(S.String),
+          source: S.optional(__S(128, __c16, 0)),
         }).pipe(T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/pages", code: 200 })),
       ).annotate({ identifier: "CreatePagesSiteRequest" });
     case 2:
@@ -14368,9 +11527,9 @@ function __c16(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          state: PagesHttpsCertificateState,
+          state: S.String,
           description: S.String,
-          domains: PagesHttpsCertificateDomainsList,
+          domains: __S(2, __c0, 2),
           expires_at: S.optional(S.String),
         }),
       ).annotate({ identifier: "PagesHttpsCertificate" });
@@ -14378,16 +11537,16 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           url: S.String,
-          status: S.NullOr(PageStatus),
+          status: S.NullOr(S.String),
           cname: S.NullOr(S.String),
-          protected_domain_state: S.optional(S.NullOr(PageProtectedDomainState)),
+          protected_domain_state: S.optional(S.NullOr(S.String)),
           pending_domain_unverified_at: S.optional(S.NullOr(S.String)),
           custom_404: S.Boolean,
           html_url: S.optional(S.String),
-          build_type: S.optional(S.NullOr(PageBuildType)),
-          source: S.optional(PagesSourceHash),
+          build_type: S.optional(S.NullOr(S.String)),
+          source: S.optional(__S(130, __c16, 2)),
           public: S.Boolean,
-          https_certificate: S.optional(PagesHttpsCertificate),
+          https_certificate: S.optional(__S(131, __c16, 3)),
           https_enforced: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Page" });
@@ -14404,7 +11563,7 @@ function __c16(j: number): any {
           prerelease: S.optional(S.Boolean),
           discussion_category_name: S.optional(S.String),
           generate_release_notes: S.optional(S.Boolean),
-          make_latest: S.optional(CreateReleaseRequestMakeLatest),
+          make_latest: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/releases", code: 200 })),
       ).annotate({ identifier: "CreateReleaseRequest" });
     case 6:
@@ -14416,18 +11575,18 @@ function __c16(j: number): any {
           node_id: S.String,
           name: S.String,
           label: S.NullOr(S.String),
-          state: ReleaseAssetState,
+          state: S.String,
           content_type: S.String,
           size: S.Number,
           digest: S.NullOr(S.String),
           download_count: S.Number,
           created_at: S.String,
           updated_at: S.String,
-          uploader: S.NullOr(SimpleUser),
+          uploader: S.NullOr(__S(4, __c0, 4)),
         }),
       ).annotate({ identifier: "ReleaseAsset" });
     case 7:
-      return S.Array(ReleaseAsset);
+      return S.Array(__S(134, __c16, 6));
   }
 }
 function __c17(j: number): any {
@@ -14453,13 +11612,13 @@ function __c17(j: number): any {
           created_at: S.String,
           published_at: S.NullOr(S.String),
           updated_at: S.optional(S.NullOr(S.String)),
-          author: SimpleUser,
-          assets: ReleaseAssetsList,
+          author: __S(4, __c0, 4),
+          assets: __S(135, __c16, 7),
           body_html: S.optional(S.String),
           body_text: S.optional(S.String),
           mentions_count: S.optional(S.Number),
           discussion_url: S.optional(S.String),
-          reactions: S.optional(ReactionRollup),
+          reactions: S.optional(__S(67, __c8, 3)),
         }),
       ).annotate({ identifier: "Release" });
     case 1:
@@ -14468,11 +11627,11 @@ function __c17(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           name: S.String,
-          target: S.optional(CreateRepoRulesetRequestTarget),
-          enforcement: RepositoryRuleEnforcement,
-          bypass_actors: S.optional(CreateRepoRulesetRequestBypassActorsList),
-          conditions: S.optional(RepositoryRulesetConditions),
-          rules: S.optional(CreateRepoRulesetRequestRulesList),
+          target: S.optional(S.String),
+          enforcement: S.String,
+          bypass_actors: S.optional(__S(98, __c12, 2)),
+          conditions: S.optional(__S(106, __c13, 2)),
+          rules: S.optional(__S(107, __c13, 3)),
         }).pipe(T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/rulesets", code: 200 })),
       ).annotate({ identifier: "CreateRepoRulesetRequest" });
     case 2:
@@ -14501,7 +11660,7 @@ function __c17(j: number): any {
           url: S.optional(S.String),
           content_type: S.optional(S.String),
           secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          insecure_ssl: S.optional(WebhookConfigInsecureSsl),
+          insecure_ssl: S.optional(S.Unknown),
         }),
       ).annotate({
         identifier: "CreateWebhookRequestConfig",
@@ -14512,8 +11671,8 @@ function __c17(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          config: S.optional(CreateWebhookRequestConfig),
-          events: S.optional(CreateWebhookRequestEventsList),
+          config: S.optional(__S(139, __c17, 3)),
+          events: S.optional(__S(2, __c0, 2)),
           active: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/hooks", code: 200 })),
       ).annotate({ identifier: "CreateWebhookRequest" });
@@ -14525,7 +11684,7 @@ function __c17(j: number): any {
           url: S.optional(S.String),
           content_type: S.optional(S.String),
           secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          insecure_ssl: S.optional(WebhookConfigInsecureSsl),
+          insecure_ssl: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "WebhookConfig" });
     case 7:
@@ -14547,32 +11706,32 @@ function __c18(j: number): any {
           id: S.Number,
           name: S.String,
           active: S.Boolean,
-          events: HookEventsList,
-          config: WebhookConfig,
+          events: __S(141, __c17, 5),
+          config: __S(142, __c17, 6),
           updated_at: S.String,
           created_at: S.String,
           url: S.String,
           test_url: S.String,
           ping_url: S.String,
           deliveries_url: S.optional(S.String),
-          last_response: HookResponse,
+          last_response: __S(143, __c17, 7),
         }),
       ).annotate({ identifier: "Hook" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           property_name: S.String,
-          value: S.NullOr(CustomPropertyValueValue),
+          value: S.NullOr(S.Unknown),
         }),
       ).annotate({ identifier: "CustomPropertyValue" });
     case 2:
-      return S.Array(CustomPropertyValue);
+      return S.Array(__S(145, __c18, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          properties: CustomPropertiesForReposCreateOrUpdateRepositoryValuesRequestPropertiesList,
+          properties: __S(146, __c18, 2),
         }).pipe(
           T.Http({ method: "PATCH", uri: "/repos/{owner}/{repo}/properties/values", code: 200 }),
         ),
@@ -14595,11 +11754,9 @@ function __c18(j: number): any {
         identifier: "CustomPropertiesForReposGetRepositoryValuesRequest",
       });
     case 6:
-      return S.Array(CustomPropertyValue);
+      return S.Array(__S(145, __c18, 1));
     case 7:
-      return S.suspend(() =>
-        CustomPropertiesForReposGetRepositoryValuesResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(150, __c18, 6).pipe(T.RawResponseRoot())).annotate({
         identifier: "CustomPropertiesForReposGetRepositoryValuesResponse",
       });
   }
@@ -14800,8 +11957,8 @@ function __c20(j: number): any {
           message: S.String,
           sha: S.String,
           branch: S.optional(S.String),
-          committer: S.optional(DeleteFileRequestCommitter),
-          author: S.optional(DeleteFileRequestCommitter),
+          committer: S.optional(__S(164, __c20, 4)),
+          author: S.optional(__S(164, __c20, 4)),
         }).pipe(
           T.Http({ method: "DELETE", uri: "/repos/{owner}/{repo}/contents/{path}", code: 200 }),
         ),
@@ -15141,7 +12298,7 @@ function __c23(j: number): any {
         identifier: "BranchRestrictionPolicyUsersItem",
       });
     case 7:
-      return S.Array(BranchRestrictionPolicyUsersItem);
+      return S.Array(__S(190, __c23, 6));
   }
 }
 function __c24(j: number): any {
@@ -15194,7 +12351,7 @@ function __c24(j: number): any {
           id: S.optional(S.Number),
           slug: S.optional(S.String),
           node_id: S.optional(S.String),
-          owner: S.optional(BranchRestrictionPolicyAppsItemOwner),
+          owner: S.optional(__S(192, __c24, 0)),
           name: S.optional(S.String),
           client_id: S.optional(S.String),
           description: S.optional(S.String),
@@ -15202,14 +12359,14 @@ function __c24(j: number): any {
           html_url: S.optional(S.String),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
-          permissions: S.optional(BranchRestrictionPolicyAppsItemPermissions),
-          events: S.optional(BranchRestrictionPolicyAppsItemEventsList),
+          permissions: S.optional(__S(193, __c24, 1)),
+          events: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({
         identifier: "BranchRestrictionPolicyAppsItem",
       });
     case 3:
-      return S.Array(BranchRestrictionPolicyAppsItem);
+      return S.Array(__S(194, __c24, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -15217,9 +12374,9 @@ function __c24(j: number): any {
           users_url: S.String,
           teams_url: S.String,
           apps_url: S.String,
-          users: BranchRestrictionPolicyUsersList,
-          teams: BranchRestrictionPolicyTeamsList,
-          apps: BranchRestrictionPolicyAppsList,
+          users: __S(191, __c23, 7),
+          teams: __S(28, __c3, 4),
+          apps: __S(195, __c24, 3),
         }),
       ).annotate({ identifier: "BranchRestrictionPolicy" });
     case 5:
@@ -15255,7 +12412,7 @@ function __c24(j: number): any {
         identifier: "GetAllDeploymentProtectionRulesRequest",
       });
     case 7:
-      return S.Array(DeploymentProtectionRule);
+      return S.Array(__S(82, __c10, 2));
   }
 }
 function __c25(j: number): any {
@@ -15264,9 +12421,7 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           total_count: S.optional(S.Number),
-          custom_deployment_protection_rules: S.optional(
-            GetAllDeploymentProtectionRulesResponseCustomDeploymentProtectionRulesList,
-          ),
+          custom_deployment_protection_rules: S.optional(__S(199, __c24, 7)),
         }),
       ).annotate({
         identifier: "GetAllDeploymentProtectionRulesResponse",
@@ -15283,12 +12438,12 @@ function __c25(j: number): any {
         identifier: "GetAllEnvironmentsRequest",
       });
     case 2:
-      return S.Array(Environment);
+      return S.Array(__S(114, __c14, 2));
     case 3:
       return S.suspend(() =>
         S.Struct({
           total_count: S.optional(S.Number),
-          environments: S.optional(GetAllEnvironmentsResponseEnvironmentsList),
+          environments: S.optional(__S(202, __c25, 2)),
         }),
       ).annotate({
         identifier: "GetAllEnvironmentsResponse",
@@ -15321,7 +12476,7 @@ function __c25(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          names: TopicNamesList,
+          names: __S(141, __c17, 5),
         }),
       ).annotate({ identifier: "Topic" });
     case 7:
@@ -15387,14 +12542,14 @@ function __c26(j: number): any {
         identifier: "ProtectedBranchRequiredStatusCheckChecksItem",
       });
     case 4:
-      return S.Array(ProtectedBranchRequiredStatusCheckChecksItem);
+      return S.Array(__S(211, __c26, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           url: S.optional(S.String),
           enforcement_level: S.optional(S.String),
-          contexts: ProtectedBranchRequiredStatusCheckContextsList,
-          checks: ProtectedBranchRequiredStatusCheckChecksList,
+          contexts: __S(2, __c0, 2),
+          checks: __S(212, __c26, 4),
           contexts_url: S.optional(S.String),
           strict: S.optional(S.Boolean),
         }),
@@ -15404,9 +12559,9 @@ function __c26(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          users: S.optional(ProtectedBranchPullRequestReviewDismissalRestrictionsUsersList),
-          teams: S.optional(ProtectedBranchPullRequestReviewDismissalRestrictionsTeamsList),
-          apps: S.optional(ProtectedBranchPullRequestReviewDismissalRestrictionsAppsList),
+          users: S.optional(__S(31, __c3, 7)),
+          teams: S.optional(__S(28, __c3, 4)),
+          apps: S.optional(__S(7, __c0, 7)),
           url: S.optional(S.String),
           users_url: S.optional(S.String),
           teams_url: S.optional(S.String),
@@ -15415,21 +12570,21 @@ function __c26(j: number): any {
         identifier: "ProtectedBranchPullRequestReviewDismissalRestrictions",
       });
     case 7:
-      return S.Array(SimpleUser);
+      return S.Array(__S(4, __c0, 4));
   }
 }
 function __c27(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Team);
+      return S.Array(__S(27, __c3, 3));
     case 1:
-      return S.Array(/*@__PURE__*/ S.NullOr(Integration));
+      return S.Array(/*@__PURE__*/ S.NullOr(__S(6, __c0, 6)));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          users: S.optional(ProtectedBranchPullRequestReviewBypassPullRequestAllowancesUsersList),
-          teams: S.optional(ProtectedBranchPullRequestReviewBypassPullRequestAllowancesTeamsList),
-          apps: S.optional(ProtectedBranchPullRequestReviewBypassPullRequestAllowancesAppsList),
+          users: S.optional(__S(215, __c26, 7)),
+          teams: S.optional(__S(216, __c27, 0)),
+          apps: S.optional(__S(217, __c27, 1)),
         }),
       ).annotate({
         identifier: "ProtectedBranchPullRequestReviewBypassPullRequestAllowances",
@@ -15438,10 +12593,8 @@ function __c27(j: number): any {
       return S.suspend(() =>
         S.Struct({
           url: S.optional(S.String),
-          dismissal_restrictions: S.optional(ProtectedBranchPullRequestReviewDismissalRestrictions),
-          bypass_pull_request_allowances: S.optional(
-            ProtectedBranchPullRequestReviewBypassPullRequestAllowances,
-          ),
+          dismissal_restrictions: S.optional(__S(214, __c26, 6)),
+          bypass_pull_request_allowances: S.optional(__S(218, __c27, 2)),
           dismiss_stale_reviews: S.Boolean,
           require_code_owner_reviews: S.Boolean,
           required_approving_review_count: S.optional(S.Number),
@@ -15463,30 +12616,30 @@ function __c27(j: number): any {
         S.Struct({
           url: S.optional(S.String),
           enabled: S.optional(S.Boolean),
-          required_status_checks: S.optional(ProtectedBranchRequiredStatusCheck),
-          enforce_admins: S.optional(ProtectedBranchAdminEnforced),
-          required_pull_request_reviews: S.optional(ProtectedBranchPullRequestReview),
-          restrictions: S.optional(BranchRestrictionPolicy),
-          required_linear_history: S.optional(BranchProtectionRequiredLinearHistory),
-          allow_force_pushes: S.optional(BranchProtectionRequiredLinearHistory),
-          allow_deletions: S.optional(BranchProtectionRequiredLinearHistory),
-          block_creations: S.optional(BranchProtectionRequiredLinearHistory),
-          required_conversation_resolution: S.optional(BranchProtectionRequiredLinearHistory),
+          required_status_checks: S.optional(__S(213, __c26, 5)),
+          enforce_admins: S.optional(__S(70, __c8, 6)),
+          required_pull_request_reviews: S.optional(__S(219, __c27, 3)),
+          restrictions: S.optional(__S(196, __c24, 4)),
+          required_linear_history: S.optional(__S(220, __c27, 4)),
+          allow_force_pushes: S.optional(__S(220, __c27, 4)),
+          allow_deletions: S.optional(__S(220, __c27, 4)),
+          block_creations: S.optional(__S(220, __c27, 4)),
+          required_conversation_resolution: S.optional(__S(220, __c27, 4)),
           name: S.optional(S.String),
           protection_url: S.optional(S.String),
-          required_signatures: S.optional(BranchProtectionRequiredSignatures),
-          lock_branch: S.optional(BranchProtectionRequiredLinearHistory),
-          allow_fork_syncing: S.optional(BranchProtectionRequiredLinearHistory),
+          required_signatures: S.optional(__S(70, __c8, 6)),
+          lock_branch: S.optional(__S(220, __c27, 4)),
+          allow_fork_syncing: S.optional(__S(220, __c27, 4)),
         }),
       ).annotate({ identifier: "BranchProtection" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          commit: Commit,
-          _links: BranchWithProtectionLinks,
+          commit: __S(57, __c7, 1),
+          _links: __S(210, __c26, 2),
           protected: S.Boolean,
-          protection: BranchProtection,
+          protection: __S(221, __c27, 5),
           protection_url: S.String,
           pattern: S.optional(S.String),
           required_approving_review_count: S.optional(S.Number),
@@ -15529,9 +12682,9 @@ function __c28(j: number): any {
         ),
       ).annotate({ identifier: "GetBranchRulesRequest" });
     case 1:
-      return S.Array(RepositoryRuleDetailed);
+      return S.Array(S.Unknown);
     case 2:
-      return S.suspend(() => GetBranchRulesResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(225, __c28, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetBranchRulesResponse",
       });
     case 3:
@@ -15539,7 +12692,7 @@ function __c28(j: number): any {
         S.Struct({
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          per: S.optional(GetClonesRequestPer.pipe(T.Query())),
+          per: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/traffic/clones", code: 200 })),
       ).annotate({ identifier: "GetClonesRequest" });
     case 4:
@@ -15551,13 +12704,13 @@ function __c28(j: number): any {
         }),
       ).annotate({ identifier: "Traffic" });
     case 5:
-      return S.Array(Traffic);
+      return S.Array(__S(228, __c28, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           uniques: S.Number,
-          clones: CloneTrafficClonesList,
+          clones: __S(229, __c28, 5),
         }),
       ).annotate({ identifier: "CloneTraffic" });
     case 7:
@@ -15576,11 +12729,9 @@ function __c28(j: number): any {
 function __c29(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(CodeFrequencyStat);
+      return S.Array(__S(100, __c12, 4));
     case 1:
-      return S.suspend(() =>
-        GetCodeFrequencyStatsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(232, __c29, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetCodeFrequencyStatsResponse",
       });
     case 2:
@@ -15634,7 +12785,7 @@ function __c29(j: number): any {
           received_events_url: S.String,
           type: S.String,
           site_admin: S.Boolean,
-          permissions: S.optional(NullableCollaboratorPermissions),
+          permissions: S.optional(__S(235, __c29, 3)),
           role_name: S.String,
           user_view_type: S.optional(S.String),
         }),
@@ -15644,7 +12795,7 @@ function __c29(j: number): any {
         S.Struct({
           permission: S.String,
           role_name: S.String,
-          user: S.NullOr(NullableCollaborator),
+          user: S.NullOr(__S(236, __c29, 4)),
         }),
       ).annotate({
         identifier: "RepositoryCollaboratorPermission",
@@ -15684,15 +12835,15 @@ function __c29(j: number): any {
 function __c30(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SimpleCommitStatus);
+      return S.Array(__S(239, __c29, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           state: S.String,
-          statuses: CombinedCommitStatusStatusesList,
+          statuses: __S(240, __c30, 0),
           sha: S.String,
           total_count: S.Number,
-          repository: MinimalRepository,
+          repository: __S(20, __c2, 4),
           commit_url: S.String,
           url: S.String,
         }),
@@ -15721,17 +12872,15 @@ function __c30(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          days: CommitActivityDaysList,
+          days: __S(100, __c12, 4),
           total: S.Number,
           week: S.Number,
         }),
       ).annotate({ identifier: "CommitActivity" });
     case 5:
-      return S.Array(CommitActivity);
+      return S.Array(__S(244, __c30, 4));
     case 6:
-      return S.suspend(() =>
-        GetCommitActivityStatsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(245, __c30, 5).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetCommitActivityStatsResponse",
       });
     case 7:
@@ -15787,13 +12936,13 @@ function __c31(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          code_of_conduct: S.NullOr(CodeOfConductSimple),
-          code_of_conduct_file: S.NullOr(NullableCommunityHealthFile),
-          license: S.NullOr(NullableLicenseSimple),
-          contributing: S.NullOr(NullableCommunityHealthFile),
-          readme: S.NullOr(NullableCommunityHealthFile),
-          issue_template: S.NullOr(NullableCommunityHealthFile),
-          pull_request_template: S.NullOr(NullableCommunityHealthFile),
+          code_of_conduct: S.NullOr(__S(93, __c11, 5)),
+          code_of_conduct_file: S.NullOr(__S(250, __c31, 2)),
+          license: S.NullOr(__S(88, __c11, 0)),
+          contributing: S.NullOr(__S(250, __c31, 2)),
+          readme: S.NullOr(__S(250, __c31, 2)),
+          issue_template: S.NullOr(__S(250, __c31, 2)),
+          pull_request_template: S.NullOr(__S(250, __c31, 2)),
         }),
       ).annotate({ identifier: "CommunityProfileFiles" });
     case 4:
@@ -15802,7 +12951,7 @@ function __c31(j: number): any {
           health_percentage: S.Number,
           description: S.NullOr(S.String),
           documentation: S.NullOr(S.String),
-          files: CommunityProfileFiles,
+          files: __S(251, __c31, 3),
           updated_at: S.NullOr(S.String),
           content_reports_enabled: S.optional(S.Boolean),
         }),
@@ -15829,7 +12978,7 @@ function __c31(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          type: ContentFileType,
+          type: S.String,
           encoding: S.String,
           size: S.Number,
           name: S.String,
@@ -15840,7 +12989,7 @@ function __c31(j: number): any {
           git_url: S.NullOr(S.String),
           html_url: S.NullOr(S.String),
           download_url: S.NullOr(S.String),
-          _links: ContentDirectoryItemLinks,
+          _links: __S(254, __c31, 6),
           target: S.optional(S.String),
           submodule_git_url: S.optional(S.String),
         }),
@@ -15850,7 +12999,7 @@ function __c31(j: number): any {
 function __c32(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => GetContentResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetContentResponse",
       });
     case 1:
@@ -15876,21 +13025,19 @@ function __c32(j: number): any {
         identifier: "ContributorActivityWeeksItem",
       });
     case 3:
-      return S.Array(ContributorActivityWeeksItem);
+      return S.Array(__S(258, __c32, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          author: S.NullOr(SimpleUser),
+          author: S.NullOr(__S(4, __c0, 4)),
           total: S.Number,
-          weeks: ContributorActivityWeeksList,
+          weeks: __S(259, __c32, 3),
         }),
       ).annotate({ identifier: "ContributorActivity" });
     case 5:
-      return S.Array(ContributorActivity);
+      return S.Array(__S(260, __c32, 4));
     case 6:
-      return S.suspend(() =>
-        GetContributorsStatsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(261, __c32, 5).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetContributorsStatsResponse",
       });
     case 7:
@@ -15994,7 +13141,7 @@ function __c33(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          hash_algorithm: RepositoryHashAlgorithmHashAlgorithm,
+          hash_algorithm: S.String,
         }),
       ).annotate({ identifier: "RepositoryHashAlgorithm" });
     case 7:
@@ -16023,8 +13170,8 @@ function __c34(j: number): any {
         S.Struct({
           url: S.String,
           status: S.String,
-          error: PageBuildError,
-          pusher: S.NullOr(SimpleUser),
+          error: __S(272, __c34, 0),
+          pusher: S.NullOr(__S(4, __c0, 4)),
           commit: S.String,
           duration: S.Number,
           created_at: S.String,
@@ -16055,9 +13202,9 @@ function __c34(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/rulesets", code: 200 })),
       ).annotate({ identifier: "GetOrgRulesetsRequest" });
     case 5:
-      return S.Array(RepositoryRuleset);
+      return S.Array(__S(108, __c13, 4));
     case 6:
-      return S.suspend(() => GetOrgRulesetsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(277, __c34, 5).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetOrgRulesetsResponse",
       });
     case 7:
@@ -16090,9 +13237,9 @@ function __c35(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          rule_source: S.optional(RuleSuiteRuleEvaluationsItemRuleSource),
-          enforcement: S.optional(RuleSuiteRuleEvaluationsItemEnforcement),
-          result: S.optional(RuleSuiteRuleEvaluationsItemResult),
+          rule_source: S.optional(__S(280, __c35, 0)),
+          enforcement: S.optional(S.String),
+          result: S.optional(S.String),
           rule_type: S.optional(S.String),
           details: S.optional(S.NullOr(S.String)),
         }),
@@ -16100,7 +13247,7 @@ function __c35(j: number): any {
         identifier: "RuleSuiteRuleEvaluationsItem",
       });
     case 2:
-      return S.Array(RuleSuiteRuleEvaluationsItem);
+      return S.Array(__S(281, __c35, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -16113,9 +13260,9 @@ function __c35(j: number): any {
           repository_id: S.optional(S.Number),
           repository_name: S.optional(S.String),
           pushed_at: S.optional(S.String),
-          result: S.optional(RuleSuiteResult),
-          evaluation_result: S.optional(S.NullOr(RuleSuiteEvaluationResult)),
-          rule_evaluations: S.optional(RuleSuiteRuleEvaluationsList),
+          result: S.optional(S.String),
+          evaluation_result: S.optional(S.NullOr(S.String)),
+          rule_evaluations: S.optional(__S(282, __c35, 2)),
         }),
       ).annotate({ identifier: "RuleSuite" });
     case 4:
@@ -16124,10 +13271,10 @@ function __c35(j: number): any {
           org: S.String.pipe(T.Label()),
           ref: S.optional(S.String.pipe(T.Query())),
           repository_name: S.optional(S.String.pipe(T.Query())),
-          time_period: S.optional(GetOrgRuleSuitesRequestTimePeriod.pipe(T.Query())),
+          time_period: S.optional(S.String.pipe(T.Query())),
           actor_name: S.optional(S.String.pipe(T.Query())),
-          rule_suite_result: S.optional(GetOrgRuleSuitesRequestRuleSuiteResult.pipe(T.Query())),
-          evaluate_status: S.optional(GetOrgRuleSuitesRequestEvaluateStatus.pipe(T.Query())),
+          rule_suite_result: S.optional(S.String.pipe(T.Query())),
+          evaluate_status: S.optional(S.String.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/rulesets/rule-suites", code: 200 })),
@@ -16144,14 +13291,14 @@ function __c35(j: number): any {
           repository_id: S.optional(S.Number),
           repository_name: S.optional(S.String),
           pushed_at: S.optional(S.String),
-          result: S.optional(RuleSuitesItemResult),
-          evaluation_result: S.optional(RuleSuitesItemEvaluationResult),
+          result: S.optional(S.String),
+          evaluation_result: S.optional(S.String),
         }),
       ).annotate({ identifier: "RuleSuitesItem" });
     case 6:
-      return S.Array(RuleSuitesItem);
+      return S.Array(__S(285, __c35, 5));
     case 7:
-      return S.suspend(() => RuleSuites.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(286, __c35, 6).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetOrgRuleSuitesResponse",
       });
   }
@@ -16198,7 +13345,7 @@ function __c36(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(PagesDeploymentStatusStatus),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "PagesDeploymentStatus" });
     case 4:
@@ -16246,8 +13393,8 @@ function __c36(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          domain: S.optional(PagesHealthCheckDomain),
-          alt_domain: S.optional(S.NullOr(PagesHealthCheckDomain)),
+          domain: S.optional(__S(293, __c36, 5)),
+          alt_domain: S.optional(S.NullOr(__S(293, __c36, 5))),
         }),
       ).annotate({ identifier: "PagesHealthCheck" });
     case 7:
@@ -16268,8 +13415,8 @@ function __c37(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          all: ParticipationStatsAllList,
-          owner: ParticipationStatsOwnerList,
+          all: __S(100, __c12, 4),
+          owner: __S(100, __c12, 4),
         }),
       ).annotate({ identifier: "ParticipationStats" });
     case 1:
@@ -16394,16 +13541,14 @@ function __c38(j: number): any {
       return S.suspend(() =>
         S.Struct({
           version_id: S.Number,
-          actor: RulesetVersionActor,
+          actor: __S(306, __c38, 2),
           updated_at: S.String,
         }),
       ).annotate({ identifier: "RulesetVersion" });
     case 4:
-      return S.Array(RulesetVersion);
+      return S.Array(__S(307, __c38, 3));
     case 5:
-      return S.suspend(() =>
-        GetRepoRulesetHistoryResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(308, __c38, 4).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetRepoRulesetHistoryResponse",
       });
     case 6:
@@ -16442,7 +13587,7 @@ function __c39(j: number): any {
       return S.suspend(() =>
         S.Struct({
           version_id: S.Number,
-          actor: RulesetVersionActor,
+          actor: __S(306, __c38, 2),
           updated_at: S.String,
           state: S.Unknown,
         }),
@@ -16469,10 +13614,10 @@ function __c39(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           ref: S.optional(S.String.pipe(T.Query())),
-          time_period: S.optional(GetRepoRuleSuitesRequestTimePeriod.pipe(T.Query())),
+          time_period: S.optional(S.String.pipe(T.Query())),
           actor_name: S.optional(S.String.pipe(T.Query())),
-          rule_suite_result: S.optional(GetRepoRuleSuitesRequestRuleSuiteResult.pipe(T.Query())),
-          evaluate_status: S.optional(GetRepoRuleSuitesRequestEvaluateStatus.pipe(T.Query())),
+          rule_suite_result: S.optional(S.String.pipe(T.Query())),
+          evaluate_status: S.optional(S.String.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
@@ -16480,7 +13625,7 @@ function __c39(j: number): any {
         ),
       ).annotate({ identifier: "GetRepoRuleSuitesRequest" });
     case 3:
-      return S.suspend(() => RuleSuites.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(286, __c35, 6).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetRepoRuleSuitesResponse",
       });
     case 4:
@@ -16504,8 +13649,8 @@ function __c39(j: number): any {
         S.Struct({
           url: S.String,
           strict: S.Boolean,
-          contexts: StatusCheckPolicyContextsList,
-          checks: StatusCheckPolicyChecksList,
+          contexts: __S(2, __c0, 2),
+          checks: __S(212, __c26, 4),
           contexts_url: S.String,
         }),
       ).annotate({ identifier: "StatusCheckPolicy" });
@@ -16548,9 +13693,9 @@ function __c40(j: number): any {
         }),
       ).annotate({ identifier: "ContentTraffic" });
     case 1:
-      return S.Array(ContentTraffic);
+      return S.Array(__S(320, __c40, 0));
     case 2:
-      return S.suspend(() => GetTopPathsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(321, __c40, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetTopPathsResponse",
       });
     case 3:
@@ -16575,9 +13720,9 @@ function __c40(j: number): any {
         }),
       ).annotate({ identifier: "ReferrerTraffic" });
     case 5:
-      return S.Array(ReferrerTraffic);
+      return S.Array(__S(324, __c40, 4));
     case 6:
-      return S.suspend(() => GetTopReferrersResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(325, __c40, 5).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetTopReferrersResponse",
       });
     case 7:
@@ -16605,7 +13750,7 @@ function __c41(j: number): any {
         S.Struct({
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          per: S.optional(GetViewsRequestPer.pipe(T.Query())),
+          per: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/traffic/views", code: 200 })),
       ).annotate({ identifier: "GetViewsRequest" });
     case 1:
@@ -16613,7 +13758,7 @@ function __c41(j: number): any {
         S.Struct({
           count: S.Number,
           uniques: S.Number,
-          views: ViewTrafficViewsList,
+          views: __S(229, __c28, 5),
         }),
       ).annotate({ identifier: "ViewTraffic" });
     case 2:
@@ -16656,8 +13801,8 @@ function __c41(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          headers: S.NullOr(HookDeliveryRequestHeadersMap),
-          payload: S.NullOr(HookDeliveryRequestPayloadMap),
+          headers: S.NullOr(__S(19, __c2, 3)),
+          payload: S.NullOr(__S(19, __c2, 3)),
         }),
       ).annotate({ identifier: "HookDeliveryRequest" });
     case 6:
@@ -16676,8 +13821,8 @@ function __c41(j: number): any {
           repository_id: S.NullOr(S.Number),
           throttled_at: S.optional(S.NullOr(S.String)),
           url: S.optional(S.String),
-          request: HookDeliveryRequest,
-          response: HookDeliveryResponse,
+          request: __S(333, __c41, 5),
+          response: __S(333, __c41, 5),
         }),
       ).annotate({ identifier: "HookDelivery" });
     case 7:
@@ -16685,14 +13830,14 @@ function __c41(j: number): any {
         S.Struct({
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          direction: S.optional(ListActivitiesRequestDirection.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           ref: S.optional(S.String.pipe(T.Query())),
           actor: S.optional(S.String.pipe(T.Query())),
-          time_period: S.optional(ListActivitiesRequestTimePeriod.pipe(T.Query())),
-          activity_type: S.optional(ListActivitiesRequestActivityType.pipe(T.Query())),
+          time_period: S.optional(S.String.pipe(T.Query())),
+          activity_type: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/activity", code: 200 })),
       ).annotate({ identifier: "ListActivitiesRequest" });
   }
@@ -16708,14 +13853,14 @@ function __c42(j: number): any {
           after: S.String,
           ref: S.String,
           timestamp: S.String,
-          activity_type: ActivityActivityType,
-          actor: S.NullOr(SimpleUser),
+          activity_type: S.String,
+          actor: S.NullOr(__S(4, __c0, 4)),
         }),
       ).annotate({ identifier: "Activity" });
     case 1:
-      return S.Array(Activity);
+      return S.Array(__S(336, __c42, 0));
     case 2:
-      return S.suspend(() => ListActivitiesResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(337, __c42, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListActivitiesResponse",
       });
     case 3:
@@ -16742,10 +13887,8 @@ function __c42(j: number): any {
       return S.suspend(() =>
         S.Struct({
           mediaType: S.optional(S.String),
-          verificationMaterial: S.optional(
-            ListAttestationsResponseAttestationsItemBundleVerificationMaterialMap,
-          ),
-          dsseEnvelope: S.optional(ListAttestationsResponseAttestationsItemBundleDsseEnvelopeMap),
+          verificationMaterial: S.optional(__S(340, __c42, 4)),
+          dsseEnvelope: S.optional(__S(19, __c2, 3)),
         }),
       ).annotate({
         identifier: "ListAttestationsResponseAttestationsItemBundle",
@@ -16753,7 +13896,7 @@ function __c42(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          bundle: S.optional(ListAttestationsResponseAttestationsItemBundle),
+          bundle: S.optional(__S(341, __c42, 5)),
           repository_id: S.optional(S.Number),
           bundle_url: S.optional(S.String),
           initiator: S.optional(S.String),
@@ -16762,7 +13905,7 @@ function __c42(j: number): any {
         identifier: "ListAttestationsResponseAttestationsItem",
       });
     case 7:
-      return S.Array(ListAttestationsResponseAttestationsItem);
+      return S.Array(__S(342, __c42, 6));
   }
 }
 function __c43(j: number): any {
@@ -16770,7 +13913,7 @@ function __c43(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          attestations: S.optional(ListAttestationsResponseAttestationsList),
+          attestations: S.optional(__S(343, __c42, 7)),
         }),
       ).annotate({ identifier: "ListAttestationsResponse" });
     case 1:
@@ -16781,9 +13924,9 @@ function __c43(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/autolinks", code: 200 })),
       ).annotate({ identifier: "ListAutolinksRequest" });
     case 2:
-      return S.Array(Autolink);
+      return S.Array(__S(65, __c8, 1));
     case 3:
-      return S.suspend(() => ListAutolinksResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(346, __c43, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListAutolinksResponse",
       });
     case 4:
@@ -16800,16 +13943,16 @@ function __c43(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          commit: CommitCommitTree,
+          commit: __S(49, __c6, 1),
           protected: S.Boolean,
-          protection: S.optional(BranchProtection),
+          protection: S.optional(__S(221, __c27, 5)),
           protection_url: S.optional(S.String),
         }),
       ).annotate({ identifier: "ShortBranch" });
     case 6:
-      return S.Array(ShortBranch);
+      return S.Array(__S(349, __c43, 5));
     case 7:
-      return S.suspend(() => ListBranchesResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(350, __c43, 6).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListBranchesResponse",
       });
   }
@@ -16836,16 +13979,14 @@ function __c44(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          commit: CommitCommitTree,
+          commit: __S(49, __c6, 1),
           protected: S.Boolean,
         }),
       ).annotate({ identifier: "BranchShort" });
     case 2:
-      return S.Array(BranchShort);
+      return S.Array(__S(353, __c44, 1));
     case 3:
-      return S.suspend(() =>
-        ListBranchesForHeadCommitResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(354, __c44, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListBranchesForHeadCommitResponse",
       });
     case 4:
@@ -16853,16 +13994,16 @@ function __c44(j: number): any {
         S.Struct({
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          affiliation: S.optional(ListCollaboratorsRequestAffiliation.pipe(T.Query())),
-          permission: S.optional(ListCollaboratorsRequestPermission.pipe(T.Query())),
+          affiliation: S.optional(S.String.pipe(T.Query())),
+          permission: S.optional(S.String.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/collaborators", code: 200 })),
       ).annotate({ identifier: "ListCollaboratorsRequest" });
     case 5:
-      return S.Array(NullableCollaborator);
+      return S.Array(__S(236, __c29, 4));
     case 6:
-      return S.suspend(() => ListCollaboratorsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(357, __c44, 5).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListCollaboratorsResponse",
       });
     case 7:
@@ -16888,11 +14029,9 @@ function __c44(j: number): any {
 function __c45(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(CommitComment);
+      return S.Array(__S(68, __c8, 4));
     case 1:
-      return S.suspend(() =>
-        ListCommentsForCommitResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(360, __c45, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListCommentsForCommitResponse",
       });
     case 2:
@@ -16922,7 +14061,7 @@ function __c45(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/commits", code: 200 })),
       ).annotate({ identifier: "ListCommitsRequest" });
     case 4:
-      return S.suspend(() => ListCommitsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(58, __c7, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListCommitsResponse",
       });
     case 5:
@@ -16940,11 +14079,9 @@ function __c45(j: number): any {
         identifier: "ListCommitStatusesForRefRequest",
       });
     case 6:
-      return S.Array(Status);
+      return S.Array(__S(72, __c9, 0));
     case 7:
-      return S.suspend(() =>
-        ListCommitStatusesForRefResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(366, __c45, 6).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListCommitStatusesForRefResponse",
       });
   }
@@ -16989,9 +14126,9 @@ function __c46(j: number): any {
         }),
       ).annotate({ identifier: "Contributor" });
     case 2:
-      return S.Array(Contributor);
+      return S.Array(__S(369, __c46, 1));
     case 3:
-      return S.suspend(() => ListContributorsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(370, __c46, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListContributorsResponse",
       });
     case 4:
@@ -17013,14 +14150,12 @@ function __c46(j: number): any {
         identifier: "ListCustomDeploymentRuleIntegrationsRequest",
       });
     case 5:
-      return S.Array(CustomDeploymentRuleApp);
+      return S.Array(__S(81, __c10, 1));
     case 6:
       return S.suspend(() =>
         S.Struct({
           total_count: S.optional(S.Number),
-          available_custom_deployment_protection_rule_integrations: S.optional(
-            ListCustomDeploymentRuleIntegrationsResponseAvailableCustomDeploymentProtectionRuleIntegrationsList,
-          ),
+          available_custom_deployment_protection_rule_integrations: S.optional(__S(373, __c46, 5)),
         }),
       ).annotate({
         identifier: "ListCustomDeploymentRuleIntegrationsResponse",
@@ -17039,9 +14174,9 @@ function __c46(j: number): any {
 function __c47(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DeployKey);
+      return S.Array(__S(74, __c9, 2));
     case 1:
-      return S.suspend(() => ListDeployKeysResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(376, __c47, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListDeployKeysResponse",
       });
     case 2:
@@ -17063,12 +14198,12 @@ function __c47(j: number): any {
         identifier: "ListDeploymentBranchPoliciesRequest",
       });
     case 3:
-      return S.Array(DeploymentBranchPolicy);
+      return S.Array(__S(79, __c9, 7));
     case 4:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          branch_policies: ListDeploymentBranchPoliciesResponseBranchPoliciesList,
+          branch_policies: __S(379, __c47, 3),
         }),
       ).annotate({
         identifier: "ListDeploymentBranchPoliciesResponse",
@@ -17087,9 +14222,9 @@ function __c47(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/deployments", code: 200 })),
       ).annotate({ identifier: "ListDeploymentsRequest" });
     case 6:
-      return S.Array(Deployment);
+      return S.Array(__S(77, __c9, 5));
     case 7:
-      return S.suspend(() => ListDeploymentsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(382, __c47, 6).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListDeploymentsResponse",
       });
   }
@@ -17115,21 +14250,19 @@ function __c48(j: number): any {
         identifier: "ListDeploymentStatusesRequest",
       });
     case 1:
-      return S.Array(DeploymentStatus);
+      return S.Array(__S(84, __c10, 4));
     case 2:
-      return S.suspend(() =>
-        ListDeploymentStatusesResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(385, __c48, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListDeploymentStatusesResponse",
       });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          visibility: S.optional(ListForAuthenticatedUserRequestVisibility.pipe(T.Query())),
+          visibility: S.optional(S.String.pipe(T.Query())),
           affiliation: S.optional(S.String.pipe(T.Query())),
-          type: S.optional(ListForAuthenticatedUserRequestType.pipe(T.Query())),
-          sort: S.optional(ListForAuthenticatedUserRequestSort.pipe(T.Query())),
-          direction: S.optional(ListForAuthenticatedUserRequestDirection.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           since: S.optional(S.String.pipe(T.Query())),
@@ -17139,11 +14272,9 @@ function __c48(j: number): any {
         identifier: "ListForAuthenticatedUserRequest",
       });
     case 4:
-      return S.Array(Repository);
+      return S.Array(__S(92, __c11, 4));
     case 5:
-      return S.suspend(() =>
-        ListForAuthenticatedUserResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(388, __c48, 4).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListForAuthenticatedUserResponse",
       });
     case 6:
@@ -17151,28 +14282,28 @@ function __c48(j: number): any {
         S.Struct({
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          sort: S.optional(ListForksRequestSort.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/forks", code: 200 })),
       ).annotate({ identifier: "ListForksRequest" });
     case 7:
-      return S.Array(MinimalRepository);
+      return S.Array(__S(20, __c2, 4));
   }
 }
 function __c49(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => ListForksResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(391, __c48, 7).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListForksResponse",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
-          type: S.optional(ListForOrgRequestType.pipe(T.Query())),
-          sort: S.optional(ListForOrgRequestSort.pipe(T.Query())),
-          direction: S.optional(ListForOrgRequestDirection.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/repos", code: 200 })),
@@ -17181,9 +14312,9 @@ function __c49(j: number): any {
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
-          type: S.optional(ListForUserRequestType.pipe(T.Query())),
-          sort: S.optional(ListForUserRequestSort.pipe(T.Query())),
-          direction: S.optional(ListForUserRequestDirection.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/users/{username}/repos", code: 200 })),
@@ -17198,9 +14329,9 @@ function __c49(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/invitations", code: 200 })),
       ).annotate({ identifier: "ListInvitationsRequest" });
     case 4:
-      return S.Array(RepositoryInvitation);
+      return S.Array(__S(21, __c2, 5));
     case 5:
-      return S.suspend(() => ListInvitationsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(396, __c49, 4).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListInvitationsResponse",
       });
     case 6:
@@ -17213,9 +14344,7 @@ function __c49(j: number): any {
         identifier: "ListInvitationsForAuthenticatedUserRequest",
       });
     case 7:
-      return S.suspend(() =>
-        ListInvitationsForAuthenticatedUserResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(396, __c49, 4).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListInvitationsForAuthenticatedUserResponse",
       });
   }
@@ -17236,16 +14365,16 @@ function __c50(j: number): any {
           node_id: S.String,
           name: S.String,
           description: S.NullOr(S.String),
-          color: S.optional(S.NullOr(IssueTypeColor)),
+          color: S.optional(S.NullOr(S.String)),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
           is_enabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "IssueType" });
     case 2:
-      return S.Array(/*@__PURE__*/ S.NullOr(IssueType));
+      return S.Array(/*@__PURE__*/ S.NullOr(__S(401, __c50, 1)));
     case 3:
-      return S.suspend(() => ListIssueTypesResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(402, __c50, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListIssueTypesResponse",
       });
     case 4:
@@ -17258,7 +14387,7 @@ function __c50(j: number): any {
     case 5:
       return S.Record(S.String, S.Number);
     case 6:
-      return S.suspend(() => Language.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(405, __c50, 5).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListLanguagesResponse",
       });
     case 7:
@@ -17275,9 +14404,9 @@ function __c50(j: number): any {
 function __c51(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(PageBuild);
+      return S.Array(__S(273, __c34, 1));
     case 1:
-      return S.suspend(() => ListPagesBuildsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(408, __c51, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListPagesBuildsResponse",
       });
     case 2:
@@ -17314,13 +14443,13 @@ function __c51(j: number): any {
           description: S.String,
           color: S.String,
           default: S.Boolean,
-          archived_by: S.NullOr(SimpleUser),
+          archived_by: S.NullOr(__S(4, __c0, 4)),
         }),
       ).annotate({
         identifier: "PullRequestSimpleLabelsItem",
       });
     case 5:
-      return S.Array(PullRequestSimpleLabelsItem);
+      return S.Array(__S(412, __c51, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -17330,10 +14459,10 @@ function __c51(j: number): any {
           id: S.Number,
           node_id: S.String,
           number: S.Number,
-          state: NullableMilestoneState,
+          state: S.String,
           title: S.String,
           description: S.NullOr(S.String),
-          creator: S.NullOr(SimpleUser),
+          creator: S.NullOr(__S(4, __c0, 4)),
           open_issues: S.Number,
           closed_issues: S.Number,
           created_at: S.String,
@@ -17347,9 +14476,9 @@ function __c51(j: number): any {
         S.Struct({
           label: S.String,
           ref: S.String,
-          repo: Repository,
+          repo: __S(92, __c11, 4),
           sha: S.String,
-          user: S.NullOr(SimpleUser),
+          user: S.NullOr(__S(4, __c0, 4)),
         }),
       ).annotate({ identifier: "PullRequestSimpleHead" });
   }
@@ -17365,21 +14494,21 @@ function __c52(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          comments: Link,
-          commits: Link,
-          statuses: Link,
-          html: Link,
-          issue: Link,
-          review_comments: Link,
-          review_comment: Link,
-          self: Link,
+          comments: __S(416, __c52, 0),
+          commits: __S(416, __c52, 0),
+          statuses: __S(416, __c52, 0),
+          html: __S(416, __c52, 0),
+          issue: __S(416, __c52, 0),
+          review_comments: __S(416, __c52, 0),
+          review_comment: __S(416, __c52, 0),
+          self: __S(416, __c52, 0),
         }),
       ).annotate({ identifier: "PullRequestSimpleLinks" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          enabled_by: SimpleUser,
-          merge_method: AutoMergeMergeMethod,
+          enabled_by: __S(4, __c0, 4),
+          merge_method: S.String,
           commit_title: S.String,
           commit_message: S.String,
         }),
@@ -17394,7 +14523,7 @@ function __c52(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          base: PullRequestStackBase,
+          base: __S(419, __c52, 3),
           size: S.optional(S.Number),
           position: S.optional(S.Number),
           id: S.optional(S.Number),
@@ -17420,35 +14549,33 @@ function __c52(j: number): any {
           state: S.String,
           locked: S.Boolean,
           title: S.String,
-          user: S.NullOr(SimpleUser),
+          user: S.NullOr(__S(4, __c0, 4)),
           body: S.NullOr(S.String),
-          labels: PullRequestSimpleLabelsList,
-          milestone: S.NullOr(NullableMilestone),
+          labels: __S(413, __c51, 5),
+          milestone: S.NullOr(__S(414, __c51, 6)),
           active_lock_reason: S.optional(S.NullOr(S.String)),
           created_at: S.String,
           updated_at: S.String,
           closed_at: S.NullOr(S.String),
           merged_at: S.NullOr(S.String),
           merge_commit_sha: S.NullOr(S.String),
-          assignee: S.NullOr(SimpleUser),
-          assignees: S.optional(PullRequestSimpleAssigneesList),
-          requested_reviewers: S.optional(PullRequestSimpleRequestedReviewersList),
-          requested_teams: S.optional(PullRequestSimpleRequestedTeamsList),
-          head: PullRequestSimpleHead,
-          base: PullRequestSimpleHead,
-          _links: PullRequestSimpleLinks,
-          author_association: AuthorAssociation,
-          auto_merge: S.NullOr(AutoMerge),
-          stack: S.optional(S.NullOr(PullRequestStack)),
+          assignee: S.NullOr(__S(4, __c0, 4)),
+          assignees: S.optional(__S(31, __c3, 7)),
+          requested_reviewers: S.optional(__S(31, __c3, 7)),
+          requested_teams: S.optional(__S(28, __c3, 4)),
+          head: __S(415, __c51, 7),
+          base: __S(415, __c51, 7),
+          _links: __S(417, __c52, 1),
+          author_association: S.String,
+          auto_merge: S.NullOr(__S(418, __c52, 2)),
+          stack: S.optional(S.NullOr(__S(420, __c52, 4))),
           draft: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "PullRequestSimple" });
     case 6:
-      return S.Array(PullRequestSimple);
+      return S.Array(__S(421, __c52, 5));
     case 7:
-      return S.suspend(() =>
-        ListPullRequestsAssociatedWithCommitResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(422, __c52, 6).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListPullRequestsAssociatedWithCommitResponse",
       });
   }
@@ -17472,7 +14599,7 @@ function __c53(j: number): any {
         ),
       ).annotate({ identifier: "ListReleaseAssetsRequest" });
     case 1:
-      return S.suspend(() => ListReleaseAssetsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(135, __c16, 7).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListReleaseAssetsResponse",
       });
     case 2:
@@ -17485,9 +14612,9 @@ function __c53(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/releases", code: 200 })),
       ).annotate({ identifier: "ListReleasesRequest" });
     case 3:
-      return S.Array(Release);
+      return S.Array(__S(136, __c17, 0));
     case 4:
-      return S.suspend(() => ListReleasesResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(427, __c53, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListReleasesResponse",
       });
     case 5:
@@ -17503,20 +14630,20 @@ function __c53(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          commit: CommitCommitTree,
+          commit: __S(49, __c6, 1),
           zipball_url: S.String,
           tarball_url: S.String,
           node_id: S.String,
         }),
       ).annotate({ identifier: "Tag" });
     case 7:
-      return S.Array(Tag);
+      return S.Array(__S(430, __c53, 6));
   }
 }
 function __c54(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => ListTagsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(431, __c53, 7).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListTagsResponse",
       });
     case 1:
@@ -17529,7 +14656,7 @@ function __c54(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/teams", code: 200 })),
       ).annotate({ identifier: "ListTeamsRequest" });
     case 2:
-      return S.suspend(() => ListTeamsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(28, __c3, 4).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListTeamsResponse",
       });
     case 3:
@@ -17540,7 +14667,7 @@ function __c54(j: number): any {
           hook_id: S.Number.pipe(T.Label()),
           per_page: S.optional(S.Number.pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(ListWebhookDeliveriesRequestStatus.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -17569,11 +14696,9 @@ function __c54(j: number): any {
         }),
       ).annotate({ identifier: "HookDeliveryItem" });
     case 5:
-      return S.Array(HookDeliveryItem);
+      return S.Array(__S(436, __c54, 4));
     case 6:
-      return S.suspend(() =>
-        ListWebhookDeliveriesResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(437, __c54, 5).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListWebhookDeliveriesResponse",
       });
     case 7:
@@ -17590,9 +14715,9 @@ function __c54(j: number): any {
 function __c55(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Hook);
+      return S.Array(__S(144, __c18, 0));
     case 1:
-      return S.suspend(() => ListWebhooksResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(440, __c55, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListWebhooksResponse",
       });
     case 2:
@@ -17617,7 +14742,7 @@ function __c55(j: number): any {
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          merge_type: S.optional(MergedUpstreamMergeType),
+          merge_type: S.optional(S.String),
           base_branch: S.optional(S.String),
         }),
       ).annotate({ identifier: "MergedUpstream" });
@@ -17654,7 +14779,7 @@ function __c55(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
-          apps: RemoveAppAccessRestrictionsRequestAppsList,
+          apps: __S(2, __c0, 2),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -17691,7 +14816,7 @@ function __c56(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
-          body: S.optional(RemoveStatusCheckContextsRequestBody.pipe(T.HttpBody())),
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -17724,7 +14849,7 @@ function __c56(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
-          body: S.optional(RemoveTeamAccessRestrictionsRequestBody.pipe(T.HttpBody())),
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -17741,7 +14866,7 @@ function __c56(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
-          users: RemoveUserAccessRestrictionsRequestUsersList,
+          users: __S(2, __c0, 2),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -17772,7 +14897,7 @@ function __c56(j: number): any {
         S.Struct({
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          names: ReplaceAllTopicsRequestNamesList,
+          names: __S(2, __c0, 2),
         }).pipe(T.Http({ method: "PUT", uri: "/repos/{owner}/{repo}/topics", code: 200 })),
       ).annotate({ identifier: "ReplaceAllTopicsRequest" });
     case 7:
@@ -17815,7 +14940,7 @@ function __c57(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
-          apps: SetAppAccessRestrictionsRequestAppsList,
+          apps: __S(2, __c0, 2),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -17832,7 +14957,7 @@ function __c57(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
-          body: S.optional(SetStatusCheckContextsRequestBody.pipe(T.HttpBody())),
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -17849,7 +14974,7 @@ function __c57(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
-          body: S.optional(SetTeamAccessRestrictionsRequestBody.pipe(T.HttpBody())),
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -17866,7 +14991,7 @@ function __c57(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
-          users: SetUserAccessRestrictionsRequestUsersList,
+          users: __S(2, __c0, 2),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -17894,7 +15019,7 @@ function __c57(j: number): any {
           repo: S.String.pipe(T.Label()),
           new_owner: S.String,
           new_name: S.optional(S.String),
-          team_ids: S.optional(TransferRequestTeamIdsList),
+          team_ids: S.optional(__S(100, __c12, 4)),
         }).pipe(T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/transfer", code: 200 })),
       ).annotate({ identifier: "TransferRequest" });
   }
@@ -17913,26 +15038,19 @@ function __c58(j: number): any {
       return S.suspend(() =>
         S.Struct({
           reviewer_id: S.Number,
-          reviewer_type:
-            UpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType,
-          mode: S.optional(
-            UpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode,
-          ),
+          reviewer_type: S.String,
+          mode: S.optional(S.String),
         }),
       ).annotate({
         identifier:
           "UpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem",
       });
     case 2:
-      return S.Array(
-        UpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem,
-      );
+      return S.Array(__S(465, __c58, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          reviewers: S.optional(
-            UpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList,
-          ),
+          reviewers: S.optional(__S(466, __c58, 2)),
         }),
       ).annotate({
         identifier: "UpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOptions",
@@ -17940,27 +15058,15 @@ function __c58(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          advanced_security: S.optional(UpdateRequestSecurityAndAnalysisAdvancedSecurity),
-          code_security: S.optional(UpdateRequestSecurityAndAnalysisAdvancedSecurity),
-          secret_scanning: S.optional(UpdateRequestSecurityAndAnalysisAdvancedSecurity),
-          secret_scanning_push_protection: S.optional(
-            UpdateRequestSecurityAndAnalysisAdvancedSecurity,
-          ),
-          secret_scanning_ai_detection: S.optional(
-            UpdateRequestSecurityAndAnalysisAdvancedSecurity,
-          ),
-          secret_scanning_non_provider_patterns: S.optional(
-            UpdateRequestSecurityAndAnalysisAdvancedSecurity,
-          ),
-          secret_scanning_delegated_alert_dismissal: S.optional(
-            UpdateRequestSecurityAndAnalysisAdvancedSecurity,
-          ),
-          secret_scanning_delegated_bypass: S.optional(
-            UpdateRequestSecurityAndAnalysisAdvancedSecurity,
-          ),
-          secret_scanning_delegated_bypass_options: S.optional(
-            UpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOptions,
-          ),
+          advanced_security: S.optional(__S(464, __c58, 0)),
+          code_security: S.optional(__S(464, __c58, 0)),
+          secret_scanning: S.optional(__S(464, __c58, 0)),
+          secret_scanning_push_protection: S.optional(__S(464, __c58, 0)),
+          secret_scanning_ai_detection: S.optional(__S(464, __c58, 0)),
+          secret_scanning_non_provider_patterns: S.optional(__S(464, __c58, 0)),
+          secret_scanning_delegated_alert_dismissal: S.optional(__S(464, __c58, 0)),
+          secret_scanning_delegated_bypass: S.optional(__S(464, __c58, 0)),
+          secret_scanning_delegated_bypass_options: S.optional(__S(467, __c58, 3)),
         }),
       ).annotate({
         identifier: "UpdateRequestSecurityAndAnalysis",
@@ -17974,13 +15080,13 @@ function __c58(j: number): any {
           description: S.optional(S.String),
           homepage: S.optional(S.String),
           private: S.optional(S.Boolean),
-          visibility: S.optional(UpdateRequestVisibility),
-          security_and_analysis: S.optional(S.NullOr(UpdateRequestSecurityAndAnalysis)),
+          visibility: S.optional(S.String),
+          security_and_analysis: S.optional(S.NullOr(__S(468, __c58, 4))),
           has_issues: S.optional(S.Boolean),
           has_projects: S.optional(S.Boolean),
           has_wiki: S.optional(S.Boolean),
           has_pull_requests: S.optional(S.Boolean),
-          pull_request_creation_policy: S.optional(UpdateRequestPullRequestCreationPolicy),
+          pull_request_creation_policy: S.optional(S.String),
           is_template: S.optional(S.Boolean),
           default_branch: S.optional(S.String),
           allow_squash_merge: S.optional(S.Boolean),
@@ -17990,10 +15096,10 @@ function __c58(j: number): any {
           delete_branch_on_merge: S.optional(S.Boolean),
           allow_update_branch: S.optional(S.Boolean),
           use_squash_pr_title_as_default: S.optional(S.Boolean),
-          squash_merge_commit_title: S.optional(UpdateRequestSquashMergeCommitTitle),
-          squash_merge_commit_message: S.optional(UpdateRequestSquashMergeCommitMessage),
-          merge_commit_title: S.optional(UpdateRequestMergeCommitTitle),
-          merge_commit_message: S.optional(UpdateRequestMergeCommitMessage),
+          squash_merge_commit_title: S.optional(S.String),
+          squash_merge_commit_message: S.optional(S.String),
+          merge_commit_title: S.optional(S.String),
+          merge_commit_message: S.optional(S.String),
           archived: S.optional(S.Boolean),
           allow_forking: S.optional(S.Boolean),
           web_commit_signoff_required: S.optional(S.Boolean),
@@ -18009,7 +15115,7 @@ function __c58(j: number): any {
         identifier: "UpdateBranchProtectionRequestRequiredStatusChecksChecksItem",
       });
     case 7:
-      return S.Array(UpdateBranchProtectionRequestRequiredStatusChecksChecksItem);
+      return S.Array(__S(470, __c58, 6));
   }
 }
 function __c59(j: number): any {
@@ -18018,8 +15124,8 @@ function __c59(j: number): any {
       return S.suspend(() =>
         S.Struct({
           strict: S.Boolean,
-          contexts: UpdateBranchProtectionRequestRequiredStatusChecksContextsList,
-          checks: S.optional(UpdateBranchProtectionRequestRequiredStatusChecksChecksList),
+          contexts: __S(2, __c0, 2),
+          checks: S.optional(__S(471, __c58, 7)),
         }),
       ).annotate({
         identifier: "UpdateBranchProtectionRequestRequiredStatusChecks",
@@ -18027,15 +15133,9 @@ function __c59(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          users: S.optional(
-            UpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictionsUsersList,
-          ),
-          teams: S.optional(
-            UpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictionsTeamsList,
-          ),
-          apps: S.optional(
-            UpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictionsAppsList,
-          ),
+          users: S.optional(__S(101, __c12, 5)),
+          teams: S.optional(__S(101, __c12, 5)),
+          apps: S.optional(__S(101, __c12, 5)),
         }),
       ).annotate({
         identifier: "UpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictions",
@@ -18043,15 +15143,9 @@ function __c59(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          users: S.optional(
-            UpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowancesUsersList,
-          ),
-          teams: S.optional(
-            UpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowancesTeamsList,
-          ),
-          apps: S.optional(
-            UpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowancesAppsList,
-          ),
+          users: S.optional(__S(101, __c12, 5)),
+          teams: S.optional(__S(101, __c12, 5)),
+          apps: S.optional(__S(101, __c12, 5)),
         }),
       ).annotate({
         identifier:
@@ -18060,16 +15154,12 @@ function __c59(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          dismissal_restrictions: S.optional(
-            UpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictions,
-          ),
+          dismissal_restrictions: S.optional(__S(473, __c59, 1)),
           dismiss_stale_reviews: S.optional(S.Boolean),
           require_code_owner_reviews: S.optional(S.Boolean),
           required_approving_review_count: S.optional(S.Number),
           require_last_push_approval: S.optional(S.Boolean),
-          bypass_pull_request_allowances: S.optional(
-            UpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowances,
-          ),
+          bypass_pull_request_allowances: S.optional(__S(474, __c59, 2)),
         }),
       ).annotate({
         identifier: "UpdateBranchProtectionRequestRequiredPullRequestReviews",
@@ -18077,9 +15167,9 @@ function __c59(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          users: UpdateBranchProtectionRequestRestrictionsUsersList,
-          teams: UpdateBranchProtectionRequestRestrictionsTeamsList,
-          apps: S.optional(UpdateBranchProtectionRequestRestrictionsAppsList),
+          users: __S(2, __c0, 2),
+          teams: __S(2, __c0, 2),
+          apps: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({
         identifier: "UpdateBranchProtectionRequestRestrictions",
@@ -18090,12 +15180,10 @@ function __c59(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
-          required_status_checks: S.NullOr(UpdateBranchProtectionRequestRequiredStatusChecks),
+          required_status_checks: S.NullOr(__S(472, __c59, 0)),
           enforce_admins: S.NullOr(S.Boolean),
-          required_pull_request_reviews: S.NullOr(
-            UpdateBranchProtectionRequestRequiredPullRequestReviews,
-          ),
-          restrictions: S.NullOr(UpdateBranchProtectionRequestRestrictions),
+          required_pull_request_reviews: S.NullOr(__S(475, __c59, 3)),
+          restrictions: S.NullOr(__S(476, __c59, 4)),
           required_linear_history: S.optional(S.Boolean),
           allow_force_pushes: S.optional(S.NullOr(S.Boolean)),
           allow_deletions: S.optional(S.Boolean),
@@ -18119,9 +15207,9 @@ function __c59(j: number): any {
           url: S.String,
           users_url: S.String,
           teams_url: S.String,
-          users: ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsUsersList,
-          teams: ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsTeamsList,
-          apps: S.optional(ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsAppsList),
+          users: __S(215, __c26, 7),
+          teams: __S(216, __c27, 0),
+          apps: S.optional(__S(217, __c27, 1)),
         }),
       ).annotate({
         identifier: "ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions",
@@ -18129,11 +15217,9 @@ function __c59(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          users: ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowancesUsersList,
-          teams: ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowancesTeamsList,
-          apps: S.optional(
-            ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowancesAppsList,
-          ),
+          users: __S(215, __c26, 7),
+          teams: __S(216, __c27, 0),
+          apps: S.optional(__S(217, __c27, 1)),
         }),
       ).annotate({
         identifier: "ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowances",
@@ -18150,12 +15236,8 @@ function __c60(j: number): any {
           require_code_owner_reviews: S.optional(S.Boolean),
           required_approving_review_count: S.optional(S.Number),
           require_last_push_approval: S.optional(S.Boolean),
-          dismissal_restrictions: S.optional(
-            ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions,
-          ),
-          bypass_pull_request_allowances: S.optional(
-            ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowances,
-          ),
+          dismissal_restrictions: S.optional(__S(478, __c59, 6)),
+          bypass_pull_request_allowances: S.optional(__S(479, __c59, 7)),
         }),
       ).annotate({
         identifier: "ProtectedBranchRequiredPullRequestReviews",
@@ -18164,18 +15246,18 @@ function __c60(j: number): any {
       return S.suspend(() =>
         S.Struct({
           url: S.String,
-          required_status_checks: S.optional(StatusCheckPolicy),
-          required_pull_request_reviews: S.optional(ProtectedBranchRequiredPullRequestReviews),
-          required_signatures: S.optional(BranchProtectionRequiredSignatures),
-          enforce_admins: S.optional(BranchProtectionRequiredSignatures),
-          required_linear_history: S.optional(ProtectedBranchRequiredLinearHistory),
-          allow_force_pushes: S.optional(ProtectedBranchRequiredLinearHistory),
-          allow_deletions: S.optional(ProtectedBranchRequiredLinearHistory),
-          restrictions: S.optional(BranchRestrictionPolicy),
-          required_conversation_resolution: S.optional(BranchProtectionRequiredLinearHistory),
-          block_creations: S.optional(ProtectedBranchRequiredLinearHistory),
-          lock_branch: S.optional(BranchProtectionRequiredLinearHistory),
-          allow_fork_syncing: S.optional(BranchProtectionRequiredLinearHistory),
+          required_status_checks: S.optional(__S(317, __c39, 5)),
+          required_pull_request_reviews: S.optional(__S(480, __c60, 0)),
+          required_signatures: S.optional(__S(70, __c8, 6)),
+          enforce_admins: S.optional(__S(70, __c8, 6)),
+          required_linear_history: S.optional(__S(41, __c5, 1)),
+          allow_force_pushes: S.optional(__S(41, __c5, 1)),
+          allow_deletions: S.optional(__S(41, __c5, 1)),
+          restrictions: S.optional(__S(196, __c24, 4)),
+          required_conversation_resolution: S.optional(__S(220, __c27, 4)),
+          block_creations: S.optional(__S(41, __c5, 1)),
+          lock_branch: S.optional(__S(220, __c27, 4)),
+          allow_fork_syncing: S.optional(__S(220, __c27, 4)),
         }),
       ).annotate({ identifier: "ProtectedBranch" });
     case 2:
@@ -18220,8 +15302,8 @@ function __c60(j: number): any {
           repo: S.String.pipe(T.Label()),
           cname: S.optional(S.NullOr(S.String)),
           https_enforced: S.optional(S.Boolean),
-          build_type: S.optional(UpdateInformationAboutPagesSiteRequestBuildType),
-          source: S.optional(UpdateInformationAboutPagesSiteRequestSource),
+          build_type: S.optional(S.String),
+          source: S.optional(S.Unknown),
         }).pipe(T.Http({ method: "PUT", uri: "/repos/{owner}/{repo}/pages", code: 200 })),
       ).annotate({
         identifier: "UpdateInformationAboutPagesSiteRequest",
@@ -18232,7 +15314,7 @@ function __c60(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           invitation_id: S.Number.pipe(T.Label()),
-          permissions: S.optional(UpdateInvitationRequestPermissions),
+          permissions: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -18247,19 +15329,19 @@ function __c60(j: number): any {
           org: S.String.pipe(T.Label()),
           ruleset_id: S.Number.pipe(T.Label()),
           name: S.optional(S.String),
-          target: S.optional(UpdateOrgRulesetRequestTarget),
-          enforcement: S.optional(RepositoryRuleEnforcement),
-          bypass_actors: S.optional(UpdateOrgRulesetRequestBypassActorsList),
-          conditions: S.optional(OrgRulesetConditions),
-          rules: S.optional(UpdateOrgRulesetRequestRulesList),
+          target: S.optional(S.String),
+          enforcement: S.optional(S.String),
+          bypass_actors: S.optional(__S(98, __c12, 2)),
+          conditions: S.optional(S.Unknown),
+          rules: S.optional(__S(102, __c12, 6)),
         }).pipe(T.Http({ method: "PUT", uri: "/orgs/{org}/rulesets/{ruleset_id}", code: 200 })),
       ).annotate({ identifier: "UpdateOrgRulesetRequest" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          users: S.optional(UpdatePullRequestReviewProtectionRequestDismissalRestrictionsUsersList),
-          teams: S.optional(UpdatePullRequestReviewProtectionRequestDismissalRestrictionsTeamsList),
-          apps: S.optional(UpdatePullRequestReviewProtectionRequestDismissalRestrictionsAppsList),
+          users: S.optional(__S(101, __c12, 5)),
+          teams: S.optional(__S(101, __c12, 5)),
+          apps: S.optional(__S(101, __c12, 5)),
         }),
       ).annotate({
         identifier: "UpdatePullRequestReviewProtectionRequestDismissalRestrictions",
@@ -18271,15 +15353,9 @@ function __c61(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          users: S.optional(
-            UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowancesUsersList,
-          ),
-          teams: S.optional(
-            UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowancesTeamsList,
-          ),
-          apps: S.optional(
-            UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowancesAppsList,
-          ),
+          users: S.optional(__S(101, __c12, 5)),
+          teams: S.optional(__S(101, __c12, 5)),
+          apps: S.optional(__S(101, __c12, 5)),
         }),
       ).annotate({
         identifier: "UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowances",
@@ -18290,16 +15366,12 @@ function __c61(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
-          dismissal_restrictions: S.optional(
-            UpdatePullRequestReviewProtectionRequestDismissalRestrictions,
-          ),
+          dismissal_restrictions: S.optional(__S(487, __c60, 7)),
           dismiss_stale_reviews: S.optional(S.Boolean),
           require_code_owner_reviews: S.optional(S.Boolean),
           required_approving_review_count: S.optional(S.Number),
           require_last_push_approval: S.optional(S.Boolean),
-          bypass_pull_request_allowances: S.optional(
-            UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowances,
-          ),
+          bypass_pull_request_allowances: S.optional(__S(488, __c61, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -18322,7 +15394,7 @@ function __c61(j: number): any {
           body: S.optional(S.String),
           draft: S.optional(S.Boolean),
           prerelease: S.optional(S.Boolean),
-          make_latest: S.optional(UpdateReleaseRequestMakeLatest),
+          make_latest: S.optional(S.String),
           discussion_category_name: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -18358,11 +15430,11 @@ function __c61(j: number): any {
           repo: S.String.pipe(T.Label()),
           ruleset_id: S.Number.pipe(T.Label()),
           name: S.optional(S.String),
-          target: S.optional(UpdateRepoRulesetRequestTarget),
-          enforcement: S.optional(RepositoryRuleEnforcement),
-          bypass_actors: S.optional(UpdateRepoRulesetRequestBypassActorsList),
-          conditions: S.optional(RepositoryRulesetConditions),
-          rules: S.optional(UpdateRepoRulesetRequestRulesList),
+          target: S.optional(S.String),
+          enforcement: S.optional(S.String),
+          bypass_actors: S.optional(__S(98, __c12, 2)),
+          conditions: S.optional(__S(106, __c13, 2)),
+          rules: S.optional(__S(107, __c13, 3)),
         }).pipe(
           T.Http({ method: "PUT", uri: "/repos/{owner}/{repo}/rulesets/{ruleset_id}", code: 200 }),
         ),
@@ -18374,8 +15446,8 @@ function __c61(j: number): any {
           repo: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
           strict: S.optional(S.Boolean),
-          contexts: S.optional(UpdateStatusCheckProtectionRequestContextsList),
-          checks: S.optional(UpdateStatusCheckProtectionRequestChecksList),
+          contexts: S.optional(__S(2, __c0, 2)),
+          checks: S.optional(__S(471, __c58, 7)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -18392,10 +15464,10 @@ function __c61(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           hook_id: S.Number.pipe(T.Label()),
-          config: S.optional(WebhookConfig),
-          events: S.optional(UpdateWebhookRequestEventsList),
-          add_events: S.optional(UpdateWebhookRequestAddEventsList),
-          remove_events: S.optional(UpdateWebhookRequestRemoveEventsList),
+          config: S.optional(__S(142, __c17, 6)),
+          events: S.optional(__S(2, __c0, 2)),
+          add_events: S.optional(__S(2, __c0, 2)),
+          remove_events: S.optional(__S(2, __c0, 2)),
           active: S.optional(S.Boolean),
         }).pipe(
           T.Http({ method: "PATCH", uri: "/repos/{owner}/{repo}/hooks/{hook_id}", code: 200 }),
@@ -18410,7 +15482,7 @@ function __c61(j: number): any {
           url: S.optional(S.String),
           content_type: S.optional(S.String),
           secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          insecure_ssl: S.optional(WebhookConfigInsecureSsl),
+          insecure_ssl: S.optional(S.Unknown),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -18444,4 +15516,9 @@ function __c62(j: number): any {
         identifier: "UploadReleaseAssetRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

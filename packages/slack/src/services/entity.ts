@@ -6,16 +6,13 @@ import { SlackError, SlackRateLimited } from "../errors.ts";
 import { SlackProtocol, type SlackOpError, type SlackOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { SlackOpError, SlackOpContext };
 
 /** The full comment data. Required for edit and post actions. See the [comment schema](/messaging/work-objects-comments#entity-present-comments-method) for the full list of properties. */
 export type AcknowledgeCommentActionRequestCommentMap = { [key: string]: unknown | undefined };
-const AcknowledgeCommentActionRequestCommentMap = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AcknowledgeCommentActionRequestCommentMap>;
-
 export interface AcknowledgeCommentActionRequest {
   /** A reference to the original user action that initiated the comment mutation */
   trigger_id: string;
@@ -24,31 +21,13 @@ export interface AcknowledgeCommentActionRequest {
   /** Error message if the action failed in the app. When present, signals that the mutation could not be completed. */
   error?: string;
 }
-const AcknowledgeCommentActionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AcknowledgeCommentActionRequest>;
-
 export interface AcknowledgeCommentActionResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-const AcknowledgeCommentActionResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AcknowledgeCommentActionResponse>;
-
 export type PresentCommentsRequestCommentsItemMap = { [key: string]: unknown | undefined };
-const PresentCommentsRequestCommentsItemMap =
-  AcknowledgeCommentActionRequestCommentMap as any as S.Schema<PresentCommentsRequestCommentsItemMap>;
-
 /** Array of comments to present to the user. See the [comment schema](/messaging/work-objects-comments#entity-present-comments-method) for the full list of properties. */
 export type PresentCommentsRequestCommentsList = Array<PresentCommentsRequestCommentsItemMap>;
-const PresentCommentsRequestCommentsList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<PresentCommentsRequestCommentsList>;
-
 export interface PresentCommentsRequest {
   /** Array of comments to present to the user. See the [comment schema](/messaging/work-objects-comments#entity-present-comments-method) for the full list of properties. */
   comments: PresentCommentsRequestCommentsList;
@@ -66,37 +45,19 @@ export interface PresentCommentsRequest {
   user_auth_url?: string;
   error?: string;
 }
-const PresentCommentsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<PresentCommentsRequest>;
-
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export interface PresentCommentsResponseResponseMetadata {
   /** Cursor for the next page -- pass as `cursor` on the next call. */
   next_cursor?: string;
 }
-const PresentCommentsResponseResponseMetadata = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<PresentCommentsResponseResponseMetadata>;
-
 export interface PresentCommentsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   /** Pagination metadata. An empty `next_cursor` means the last page. */
   response_metadata?: PresentCommentsResponseResponseMetadata;
 }
-const PresentCommentsResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<PresentCommentsResponse>;
-
 /** URL-encoded JSON object containing flexpane metadata from the app that will be conformed to a Work Object metadata schema, keyed by entity ID. */
 export type PresentDetailsRequestMetadataMap = { [key: string]: unknown | undefined };
-const PresentDetailsRequestMetadataMap =
-  AcknowledgeCommentActionRequestCommentMap as any as S.Schema<PresentDetailsRequestMetadataMap>;
-
 export interface PresentDetailsRequest {
   /** URL-encoded JSON object containing flexpane metadata from the app that will be conformed to a Work Object metadata schema, keyed by entity ID. */
   metadata?: PresentDetailsRequestMetadataMap;
@@ -108,20 +69,10 @@ export interface PresentDetailsRequest {
   user_auth_url?: string;
   error?: string;
 }
-const PresentDetailsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<PresentDetailsRequest>;
-
 export interface PresentDetailsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-const PresentDetailsResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<PresentDetailsResponse>;
-
 export type AcknowledgeCommentActionError = SlackOpError;
 /** Acknowledge a comment mutation (edit, delete, or post) on a work object entity. Apps call this endpoint to confirm they have processed a comment action, and the backend emits a dedicated RTM event to the user. Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `method_not_found` -- when the API isn't available to the caller - `invalid_trigger_id` -- Trigger id is not valid - `invalid_app_id` -- App ID is not a valid format - `invalid_auth` -- Invalid token provided - `invalid_action` -- The comment data does not match the original trigger context (e.g., comment_id or thread_root_id mismatch) - `missing_comment_data` -- Required comment fields are missing for the given action type - `not_allowed` -- User is not enrolled in comment syncing - `invalid_sender_schema` -- The sender field could not be transformed to a valid user schema See https://docs.slack.dev/reference/methods/entity.acknowledgeCommentAction */
 export const acknowledgeCommentAction: API.OperationMethod<
@@ -130,8 +81,8 @@ export const acknowledgeCommentAction: API.OperationMethod<
   AcknowledgeCommentActionError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AcknowledgeCommentActionRequest,
-  output: AcknowledgeCommentActionResponse,
+  input: __S(1, __c0, 1) as any as S.Schema<AcknowledgeCommentActionRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<AcknowledgeCommentActionResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -145,8 +96,8 @@ export const presentComments: API.OperationMethod<
   PresentCommentsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PresentCommentsRequest,
-  output: PresentCommentsResponse,
+  input: __S(4, __c0, 4) as any as S.Schema<PresentCommentsRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<PresentCommentsResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -160,8 +111,8 @@ export const presentDetails: API.OperationMethod<
   PresentDetailsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PresentDetailsRequest,
-  output: PresentDetailsResponse,
+  input: __S(7, __c0, 7) as any as S.Schema<PresentDetailsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PresentDetailsResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -176,7 +127,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           trigger_id: S.String,
-          comment: S.optional(AcknowledgeCommentActionRequestCommentMap),
+          comment: S.optional(__S(0, __c0, 0)),
           error: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/entity.acknowledgeCommentAction", code: 200 })),
       ).annotate({
@@ -191,11 +142,11 @@ function __c0(j: number): any {
         identifier: "AcknowledgeCommentActionResponse",
       });
     case 3:
-      return S.Array(PresentCommentsRequestCommentsItemMap);
+      return S.Array(__S(0, __c0, 0));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          comments: PresentCommentsRequestCommentsList,
+          comments: __S(3, __c0, 3),
           cursor: S.optional(S.String),
           can_post_comment: S.optional(S.Boolean),
           trigger_id: S.String,
@@ -217,13 +168,13 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          response_metadata: S.optional(PresentCommentsResponseResponseMetadata),
+          response_metadata: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "PresentCommentsResponse" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(PresentDetailsRequestMetadataMap),
+          metadata: S.optional(__S(0, __c0, 0)),
           trigger_id: S.String,
           user_auth_required: S.optional(S.Boolean),
           user_auth_url: S.optional(S.String),
@@ -241,4 +192,9 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "PresentDetailsResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

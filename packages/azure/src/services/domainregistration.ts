@@ -6,6 +6,8 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -15,15 +17,8 @@ export interface CheckDomainAvailabilityRequest {
   /** Name of the object. */
   name?: string;
 }
-const CheckDomainAvailabilityRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CheckDomainAvailabilityRequest>;
-
 /** Valid values are Regular domain: Azure will charge the full price of domain registration, SoftDeleted: Purchasing this domain will simply restore it and this operation will not cost anything. */
 export type DomainType = "Regular" | "SoftDeleted";
-const DomainType = S.String;
-
 /** Domain availability check result. */
 export interface DomainAvailabilityCheckResult {
   /** Name of the domain. */
@@ -33,11 +28,6 @@ export interface DomainAvailabilityCheckResult {
   /** Valid values are Regular domain: Azure will charge the full price of domain registration, SoftDeleted: Purchasing this domain will simply restore it and this operation will not cost anything. */
   domainType?: DomainType;
 }
-const DomainAvailabilityCheckResult = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<DomainAvailabilityCheckResult>;
-
 export interface DeleteDomainRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -48,11 +38,7 @@ export interface DeleteDomainRequest {
   /** Specify <code>true</code> to delete the domain immediately. The default is <code>false</code> which deletes the domain after 24 hours. */
   forceHardDeleteDomain?: boolean;
 }
-const DeleteDomainRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DeleteDomainRequest>;
-
 export interface DeleteDomainResponse {}
-const DeleteDomainResponse = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DeleteDomainResponse>;
-
 export interface DeleteDomainOwnershipIdentifierRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -63,24 +49,9 @@ export interface DeleteDomainOwnershipIdentifierRequest {
   /** Name of identifier. */
   name: string;
 }
-const DeleteDomainOwnershipIdentifierRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<DeleteDomainOwnershipIdentifierRequest>;
-
 export interface DeleteDomainOwnershipIdentifierResponse {}
-const DeleteDomainOwnershipIdentifierResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<DeleteDomainOwnershipIdentifierResponse>;
-
 /** Resource tags. */
 export type DomainsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const DomainsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<DomainsCreateOrUpdateRequestTagsMap>;
-
 /** Address information for domain registration. */
 export interface Address {
   /** First line of an Address. */
@@ -96,8 +67,6 @@ export interface Address {
   /** The state or province for the address. */
   state: string;
 }
-const Address = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Address>;
-
 /** Contact information for domain registration. If 'Domain Privacy' option is not selected then the contact information is made publicly available through the Whois directories as per ICANN requirements. */
 export interface Contact {
   /** Mailing address. */
@@ -119,15 +88,8 @@ export interface Contact {
   /** Phone number. */
   phone: string;
 }
-const Contact = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Contact>;
-
 /** List of applicable legal agreement keys. This list can be retrieved using ListLegalAgreements API under <code>TopLevelDomain</code> resource. */
 export type DomainPurchaseConsentAgreementKeysList = Array<string>;
-const DomainPurchaseConsentAgreementKeysList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<DomainPurchaseConsentAgreementKeysList>;
-
 /** Domain purchase consent object, representing acceptance of applicable legal agreements. */
 export interface DomainPurchaseConsent {
   /** List of applicable legal agreement keys. This list can be retrieved using ListLegalAgreements API under <code>TopLevelDomain</code> resource. */
@@ -137,15 +99,8 @@ export interface DomainPurchaseConsent {
   /** Timestamp when the agreements were accepted. */
   agreedAt?: string;
 }
-const DomainPurchaseConsent = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<DomainPurchaseConsent>;
-
 /** Current DNS type */
 export type DnsType = "AzureDns" | "DefaultDomainRegistrarDns";
-const DnsType = S.String;
-
 /** Domain resource specific properties */
 export interface DomainPropertiesInput {
   /** Administrative contact. */
@@ -171,11 +126,6 @@ export interface DomainPropertiesInput {
   /** Authorization code for the domain. */
   authCode?: string;
 }
-const DomainPropertiesInput = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<DomainPropertiesInput>;
-
 export interface DomainsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -192,19 +142,10 @@ export interface DomainsCreateOrUpdateRequest {
   /** Kind of resource */
   kind?: string;
 }
-const DomainsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<DomainsCreateOrUpdateRequest>;
-
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -220,13 +161,8 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const SystemData = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<SystemData>;
-
 /** Resource tags. */
 export type DomainsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const DomainsCreateOrUpdateResponseTagsMap =
-  DomainsCreateOrUpdateRequestTagsMap as any as S.Schema<DomainsCreateOrUpdateResponseTagsMap>;
-
 /** Domain registration status. */
 export type DomainStatus =
   | "Active"
@@ -250,34 +186,18 @@ export type DomainStatus =
   | "Unparked"
   | "Updated"
   | "JsonConverterFailed";
-const DomainStatus = S.String;
-
 /** Domain provisioning state. */
 export type ProvisioningState = "Succeeded" | "Failed" | "Canceled" | "InProgress" | "Deleting";
-const ProvisioningState = S.String;
-
 /** Name servers. */
 export type DomainPropertiesNameServersList = Array<string>;
-const DomainPropertiesNameServersList =
-  DomainPurchaseConsentAgreementKeysList as any as S.Schema<DomainPropertiesNameServersList>;
-
 /** List of apps the hostname is assigned to. This list will have more than one app only if the hostname is pointing to a Traffic Manager. */
 export type HostNameSiteNamesList = Array<string>;
-const HostNameSiteNamesList =
-  DomainPurchaseConsentAgreementKeysList as any as S.Schema<HostNameSiteNamesList>;
-
 /** Type of the Azure resource the hostname is assigned to. */
 export type AzureResourceType = "Website" | "TrafficManager";
-const AzureResourceType = S.String;
-
 /** Type of the DNS record. */
 export type CustomHostNameDnsRecordType = "CName" | "A";
-const CustomHostNameDnsRecordType = S.String;
-
 /** Type of the hostname. */
 export type HostNameType = "Verified" | "Managed";
-const HostNameType = S.String;
-
 /** Details of a hostname derived from a domain. */
 export interface HostName {
   /** Name of the hostname. */
@@ -293,29 +213,15 @@ export interface HostName {
   /** Type of the hostname. */
   hostNameType?: HostNameType;
 }
-const HostName = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<HostName>;
-
 /** All hostnames derived from the domain and assigned to Azure resources. */
 export type DomainPropertiesManagedHostNamesList = Array<HostName>;
-const DomainPropertiesManagedHostNamesList = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<DomainPropertiesManagedHostNamesList>;
-
 /** Reasons why domain is not renewable. */
 export type ResourceNotRenewableReason =
   | "RegistrationStatusNotSupportedForRenewal"
   | "ExpirationNotInRenewalTimeRange"
   | "SubscriptionNotActive";
-const ResourceNotRenewableReason = S.String;
-
 /** Reasons why domain is not renewable. */
 export type DomainPropertiesDomainNotRenewableReasonsList = Array<ResourceNotRenewableReason>;
-const DomainPropertiesDomainNotRenewableReasonsList = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<DomainPropertiesDomainNotRenewableReasonsList>;
-
 /** Domain resource specific properties */
 export interface DomainProperties {
   /** Administrative contact. */
@@ -359,8 +265,6 @@ export interface DomainProperties {
   /** Authorization code for the domain. */
   authCode?: string;
 }
-const DomainProperties = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<DomainProperties>;
-
 export interface DomainsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -379,21 +283,11 @@ export interface DomainsCreateOrUpdateResponse {
   /** Kind of resource */
   kind?: string;
 }
-const DomainsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<DomainsCreateOrUpdateResponse>;
-
 /** DomainOwnershipIdentifier resource specific properties */
 export interface DomainOwnershipIdentifierProperties {
   /** Ownership Id. */
   ownershipId?: string;
 }
-const DomainOwnershipIdentifierProperties = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<DomainOwnershipIdentifierProperties>;
-
 export interface DomainsCreateOrUpdateOwnershipIdentifierRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -408,11 +302,6 @@ export interface DomainsCreateOrUpdateOwnershipIdentifierRequest {
   /** Kind of resource */
   kind?: string;
 }
-const DomainsCreateOrUpdateOwnershipIdentifierRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<DomainsCreateOrUpdateOwnershipIdentifierRequest>;
-
 export interface DomainsCreateOrUpdateOwnershipIdentifierResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -427,11 +316,6 @@ export interface DomainsCreateOrUpdateOwnershipIdentifierResponse {
   /** Kind of resource */
   kind?: string;
 }
-const DomainsCreateOrUpdateOwnershipIdentifierResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<DomainsCreateOrUpdateOwnershipIdentifierResponse>;
-
 export interface GetDomainRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -440,13 +324,8 @@ export interface GetDomainRequest {
   /** Name of the domain. */
   domainName: string;
 }
-const GetDomainRequest = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<GetDomainRequest>;
-
 /** Resource tags. */
 export type GetDomainResponseTagsMap = { [key: string]: string | undefined };
-const GetDomainResponseTagsMap =
-  DomainsCreateOrUpdateRequestTagsMap as any as S.Schema<GetDomainResponseTagsMap>;
-
 export interface GetDomainResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -465,17 +344,10 @@ export interface GetDomainResponse {
   /** Kind of resource */
   kind?: string;
 }
-const GetDomainResponse = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<GetDomainResponse>;
-
 export interface GetDomainControlCenterSsoRequestRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-const GetDomainControlCenterSsoRequestRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<GetDomainControlCenterSsoRequestRequest>;
-
 /** Single sign-on request information for domain management. */
 export interface DomainControlCenterSsoRequest {
   /** URL where the single sign-on request is to be made. */
@@ -485,11 +357,6 @@ export interface DomainControlCenterSsoRequest {
   /** Post parameter value. Client should use 'application/x-www-form-urlencoded' encoding for this value. */
   postParameterValue?: string;
 }
-const DomainControlCenterSsoRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<DomainControlCenterSsoRequest>;
-
 export interface GetDomainOwnershipIdentifierRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -500,11 +367,6 @@ export interface GetDomainOwnershipIdentifierRequest {
   /** Name of identifier. */
   name: string;
 }
-const GetDomainOwnershipIdentifierRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<GetDomainOwnershipIdentifierRequest>;
-
 export interface GetDomainOwnershipIdentifierResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -519,30 +381,17 @@ export interface GetDomainOwnershipIdentifierResponse {
   /** Kind of resource */
   kind?: string;
 }
-const GetDomainOwnershipIdentifierResponse =
-  DomainsCreateOrUpdateOwnershipIdentifierResponse as any as S.Schema<GetDomainOwnershipIdentifierResponse>;
-
 export interface GetTopLevelDomainRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** Name of the top-level domain. */
   name: string;
 }
-const GetTopLevelDomainRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<GetTopLevelDomainRequest>;
-
 /** TopLevelDomain resource specific properties */
 export interface TopLevelDomainProperties {
   /** If <code>true</code>, then the top level domain supports domain privacy; otherwise, <code>false</code>. */
   privacy?: boolean;
 }
-const TopLevelDomainProperties = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<TopLevelDomainProperties>;
-
 export interface GetTopLevelDomainResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -557,22 +406,12 @@ export interface GetTopLevelDomainResponse {
   /** Kind of resource */
   kind?: string;
 }
-const GetTopLevelDomainResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<GetTopLevelDomainResponse>;
-
 export interface ListDomainByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListDomainByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<ListDomainByResourceGroupRequest>;
-
 /** Resource tags. */
 export type DomainTagsMap = { [key: string]: string | undefined };
 /** Information about a domain. */
@@ -594,15 +433,8 @@ export interface Domain {
   /** Kind of resource */
   kind?: string;
 }
-const Domain = GetDomainResponse as any as S.Schema<Domain>;
-
 /** The Domain items on this page */
 export type DomainCollectionValueList = Array<Domain>;
-const DomainCollectionValueList = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<DomainCollectionValueList>;
-
 /** Collection of domains. */
 export interface DomainCollection {
   /** The Domain items on this page */
@@ -610,8 +442,6 @@ export interface DomainCollection {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const DomainCollection = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<DomainCollection>;
-
 export interface ListDomainOwnershipIdentifiersRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -620,11 +450,6 @@ export interface ListDomainOwnershipIdentifiersRequest {
   /** Name of the domain. */
   domainName: string;
 }
-const ListDomainOwnershipIdentifiersRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<ListDomainOwnershipIdentifiersRequest>;
-
 /** Domain ownership Identifier. */
 export interface DomainOwnershipIdentifier {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -640,16 +465,8 @@ export interface DomainOwnershipIdentifier {
   /** Kind of resource */
   kind?: string;
 }
-const DomainOwnershipIdentifier =
-  DomainsCreateOrUpdateOwnershipIdentifierResponse as any as S.Schema<DomainOwnershipIdentifier>;
-
 /** The DomainOwnershipIdentifier items on this page */
 export type DomainOwnershipIdentifierCollectionValueList = Array<DomainOwnershipIdentifier>;
-const DomainOwnershipIdentifierCollectionValueList = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<DomainOwnershipIdentifierCollectionValueList>;
-
 /** Collection of domain ownership identifiers. */
 export interface DomainOwnershipIdentifierCollection {
   /** The DomainOwnershipIdentifier items on this page */
@@ -657,11 +474,6 @@ export interface DomainOwnershipIdentifierCollection {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const DomainOwnershipIdentifierCollection = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<DomainOwnershipIdentifierCollection>;
-
 export interface ListDomainRecommendationsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -670,25 +482,13 @@ export interface ListDomainRecommendationsRequest {
   /** Maximum number of recommendations. */
   maxDomainRecommendations?: number;
 }
-const ListDomainRecommendationsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<ListDomainRecommendationsRequest>;
-
 /** Identifies an object. */
 export interface NameIdentifier {
   /** Name of the object. */
   name?: string;
 }
-const NameIdentifier = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<NameIdentifier>;
-
 /** The NameIdentifier items on this page */
 export type NameIdentifierCollectionValueList = Array<NameIdentifier>;
-const NameIdentifierCollectionValueList = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<NameIdentifierCollectionValueList>;
-
 /** Paged collection of NameIdentifier items */
 export interface NameIdentifierCollection {
   /** The NameIdentifier items on this page */
@@ -696,17 +496,7 @@ export interface NameIdentifierCollection {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const NameIdentifierCollection = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<NameIdentifierCollection>;
-
 export interface ListDomainRegistrationProviderOperationsRequest {}
-const ListDomainRegistrationProviderOperationsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<ListDomainRegistrationProviderOperationsRequest>;
-
 /** Meta data about operation used for display in portal. */
 export interface CsmOperationDisplay {
   /** Provider name. */
@@ -718,8 +508,6 @@ export interface CsmOperationDisplay {
   /** Operation description. */
   description?: string;
 }
-const CsmOperationDisplay = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<CsmOperationDisplay>;
-
 /** Dimension of a resource metric. For e.g. instance specific HTTP requests for a web app, where instance name is dimension of the metric HTTP request */
 export interface Dimension {
   /** Name of the dimension. */
@@ -731,15 +519,8 @@ export interface Dimension {
   /** Dimension to be exported for shoebox. */
   toBeExportedForShoebox?: boolean;
 }
-const Dimension = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<Dimension>;
-
 /** Resource metric dimensions. */
 export type MetricSpecificationDimensionsList = Array<Dimension>;
-const MetricSpecificationDimensionsList = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<MetricSpecificationDimensionsList>;
-
 /** Retention policy of a resource metric. */
 export interface MetricAvailability {
   /** Metric availability time grain. */
@@ -747,25 +528,12 @@ export interface MetricAvailability {
   /** Metric availability blob duration. */
   blobDuration?: string;
 }
-const MetricAvailability = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<MetricAvailability>;
-
 /** Resource metric availability. */
 export type MetricSpecificationAvailabilitiesList = Array<MetricAvailability>;
-const MetricSpecificationAvailabilitiesList = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<MetricSpecificationAvailabilitiesList>;
-
 /** Resource metric supported time grain types. */
 export type MetricSpecificationSupportedTimeGrainTypesList = Array<string>;
-const MetricSpecificationSupportedTimeGrainTypesList =
-  DomainPurchaseConsentAgreementKeysList as any as S.Schema<MetricSpecificationSupportedTimeGrainTypesList>;
-
 /** Resource metric supported aggregation types. */
 export type MetricSpecificationSupportedAggregationTypesList = Array<string>;
-const MetricSpecificationSupportedAggregationTypesList =
-  DomainPurchaseConsentAgreementKeysList as any as S.Schema<MetricSpecificationSupportedAggregationTypesList>;
-
 /** Definition of a single resource metric. */
 export interface MetricSpecification {
   /** Name of the resource metric. */
@@ -803,15 +571,8 @@ export interface MetricSpecification {
   /** Resource metric supported aggregation types. */
   supportedAggregationTypes?: MetricSpecificationSupportedAggregationTypesList;
 }
-const MetricSpecification = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<MetricSpecification>;
-
 /** Resource metrics service name. */
 export type ServiceSpecificationMetricSpecificationsList = Array<MetricSpecification>;
-const ServiceSpecificationMetricSpecificationsList = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<ServiceSpecificationMetricSpecificationsList>;
-
 /** Log Definition of a single resource metric. */
 export interface LogSpecification {
   /** Name of the log. */
@@ -823,15 +584,8 @@ export interface LogSpecification {
   /** Log filtered pattern of the log. */
   logFilterPattern?: string;
 }
-const LogSpecification = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<LogSpecification>;
-
 /** Resource logs service provided by Microsoft.Insights resource provider. */
 export type ServiceSpecificationLogSpecificationsList = Array<LogSpecification>;
-const ServiceSpecificationLogSpecificationsList = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<ServiceSpecificationLogSpecificationsList>;
-
 /** Resource metrics service provided by Microsoft.Insights resource provider. */
 export interface ServiceSpecification {
   /** Resource metrics service name. */
@@ -839,18 +593,11 @@ export interface ServiceSpecification {
   /** Resource logs service provided by Microsoft.Insights resource provider. */
   logSpecifications?: ServiceSpecificationLogSpecificationsList;
 }
-const ServiceSpecification = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<ServiceSpecification>;
-
 /** Properties available for a Microsoft.Web resource provider operation. */
 export interface CsmOperationDescriptionProperties {
   /** Resource metrics service provided by Microsoft.Insights resource provider. */
   serviceSpecification?: ServiceSpecification;
 }
-const CsmOperationDescriptionProperties = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<CsmOperationDescriptionProperties>;
-
 /** Description of an operation available for Microsoft.Web resource provider. */
 export interface CsmOperationDescription {
   /** Operation name, e.g. Microsoft.Web/sites/write. */
@@ -864,18 +611,8 @@ export interface CsmOperationDescription {
   /** Properties available for a Microsoft.Web resource provider operation. */
   properties?: CsmOperationDescriptionProperties;
 }
-const CsmOperationDescription = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<CsmOperationDescription>;
-
 /** Collection of resources. */
 export type CsmOperationCollectionValueList = Array<CsmOperationDescription>;
-const CsmOperationCollectionValueList = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<CsmOperationCollectionValueList>;
-
 /** Collection of Azure resource manager operation metadata. */
 export interface CsmOperationCollection {
   /** Collection of resources. */
@@ -883,17 +620,10 @@ export interface CsmOperationCollection {
   /** Link to next page of resources. */
   nextLink?: string;
 }
-const CsmOperationCollection = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<CsmOperationCollection>;
-
 export interface ListDomainsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-const ListDomainsRequest = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<ListDomainsRequest>;
-
 export interface ListTopLevelDomainAgreementsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -904,11 +634,6 @@ export interface ListTopLevelDomainAgreementsRequest {
   /** If <code>true</code>, then the list of agreements will include agreements for domain transfer as well; otherwise, <code>false</code>. */
   forTransfer?: boolean;
 }
-const ListTopLevelDomainAgreementsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<ListTopLevelDomainAgreementsRequest>;
-
 /** Legal agreement for a top level domain. */
 export interface TldLegalAgreement {
   /** Unique identifier for the agreement. */
@@ -920,15 +645,8 @@ export interface TldLegalAgreement {
   /** URL where a copy of the agreement details is hosted. */
   url?: string;
 }
-const TldLegalAgreement = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<TldLegalAgreement>;
-
 /** The TldLegalAgreement items on this page */
 export type TldLegalAgreementCollectionValueList = Array<TldLegalAgreement>;
-const TldLegalAgreementCollectionValueList = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<TldLegalAgreementCollectionValueList>;
-
 /** Paged collection of TldLegalAgreement items */
 export interface TldLegalAgreementCollection {
   /** The TldLegalAgreement items on this page */
@@ -936,20 +654,10 @@ export interface TldLegalAgreementCollection {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const TldLegalAgreementCollection = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<TldLegalAgreementCollection>;
-
 export interface ListTopLevelDomainsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-const ListTopLevelDomainsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<ListTopLevelDomainsRequest>;
-
 /** A top level domain object. */
 export interface TopLevelDomain {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -965,15 +673,8 @@ export interface TopLevelDomain {
   /** Kind of resource */
   kind?: string;
 }
-const TopLevelDomain = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<TopLevelDomain>;
-
 /** The TopLevelDomain items on this page */
 export type TopLevelDomainCollectionValueList = Array<TopLevelDomain>;
-const TopLevelDomainCollectionValueList = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<TopLevelDomainCollectionValueList>;
-
 /** Collection of Top-level domains. */
 export interface TopLevelDomainCollection {
   /** The TopLevelDomain items on this page */
@@ -981,11 +682,6 @@ export interface TopLevelDomainCollection {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const TopLevelDomainCollection = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<TopLevelDomainCollection>;
-
 export interface RenewDomainRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -994,11 +690,7 @@ export interface RenewDomainRequest {
   /** Name of the domain. */
   domainName: string;
 }
-const RenewDomainRequest = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<RenewDomainRequest>;
-
 export interface RenewDomainResponse {}
-const RenewDomainResponse = DeleteDomainResponse as any as S.Schema<RenewDomainResponse>;
-
 export interface TransferDomainOutRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1007,11 +699,6 @@ export interface TransferDomainOutRequest {
   /** Name of the domain. */
   domainName: string;
 }
-const TransferDomainOutRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<TransferDomainOutRequest>;
-
 /** Resource tags. */
 export type TransferDomainOutResponseTagsMap = { [key: string]: string | undefined };
 export interface TransferDomainOutResponse {
@@ -1032,9 +719,6 @@ export interface TransferDomainOutResponse {
   /** Kind of resource */
   kind?: string;
 }
-const TransferDomainOutResponse =
-  DomainsCreateOrUpdateResponse as any as S.Schema<TransferDomainOutResponse>;
-
 /** DomainPatchResource resource specific properties */
 export type DomainPatchResourcePropertiesInput = DomainPropertiesInput;
 export interface UpdateDomainRequest {
@@ -1049,8 +733,6 @@ export interface UpdateDomainRequest {
   /** DomainPatchResource resource specific properties */
   properties?: DomainPropertiesInput;
 }
-const UpdateDomainRequest = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<UpdateDomainRequest>;
-
 /** Resource tags. */
 export type UpdateDomainResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateDomainResponse {
@@ -1071,8 +753,6 @@ export interface UpdateDomainResponse {
   /** Kind of resource */
   kind?: string;
 }
-const UpdateDomainResponse = GetDomainResponse as any as S.Schema<UpdateDomainResponse>;
-
 export interface UpdateDomainOwnershipIdentifierRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1087,11 +767,6 @@ export interface UpdateDomainOwnershipIdentifierRequest {
   /** Kind of resource */
   kind?: string;
 }
-const UpdateDomainOwnershipIdentifierRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<UpdateDomainOwnershipIdentifierRequest>;
-
 export interface UpdateDomainOwnershipIdentifierResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1106,9 +781,6 @@ export interface UpdateDomainOwnershipIdentifierResponse {
   /** Kind of resource */
   kind?: string;
 }
-const UpdateDomainOwnershipIdentifierResponse =
-  DomainsCreateOrUpdateOwnershipIdentifierResponse as any as S.Schema<UpdateDomainOwnershipIdentifierResponse>;
-
 export type CheckDomainAvailabilityError = AzureOpError;
 /** Check if a domain is available for registration. Description for Check if a domain is available for registration. */
 export const CheckDomainAvailability: API.OperationMethod<
@@ -1117,8 +789,8 @@ export const CheckDomainAvailability: API.OperationMethod<
   CheckDomainAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckDomainAvailabilityRequest,
-  output: DomainAvailabilityCheckResult,
+  input: __S(0, __c0, 0) as any as S.Schema<CheckDomainAvailabilityRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DomainAvailabilityCheckResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1132,8 +804,8 @@ export const DeleteDomain: API.OperationMethod<
   DeleteDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDomainRequest,
-  output: DeleteDomainResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<DeleteDomainRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<DeleteDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1147,8 +819,8 @@ export const DeleteDomainOwnershipIdentifier: API.OperationMethod<
   DeleteDomainOwnershipIdentifierError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDomainOwnershipIdentifierRequest,
-  output: DeleteDomainOwnershipIdentifierResponse,
+  input: __S(4, __c0, 4) as any as S.Schema<DeleteDomainOwnershipIdentifierRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<DeleteDomainOwnershipIdentifierResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1162,8 +834,8 @@ export const DomainsCreateOrUpdate: API.OperationMethod<
   DomainsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DomainsCreateOrUpdateRequest,
-  output: DomainsCreateOrUpdateResponse,
+  input: __S(12, __c1, 4) as any as S.Schema<DomainsCreateOrUpdateRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<DomainsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1177,8 +849,8 @@ export const DomainsCreateOrUpdateOwnershipIdentifier: API.OperationMethod<
   DomainsCreateOrUpdateOwnershipIdentifierError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DomainsCreateOrUpdateOwnershipIdentifierRequest,
-  output: DomainsCreateOrUpdateOwnershipIdentifierResponse,
+  input: __S(20, __c2, 4) as any as S.Schema<DomainsCreateOrUpdateOwnershipIdentifierRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<DomainsCreateOrUpdateOwnershipIdentifierResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1192,8 +864,8 @@ export const GetDomain: API.OperationMethod<
   GetDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDomainRequest,
-  output: GetDomainResponse,
+  input: __S(22, __c2, 6) as any as S.Schema<GetDomainRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<GetDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1207,8 +879,8 @@ export const GetDomainControlCenterSsoRequest: API.OperationMethod<
   GetDomainControlCenterSsoRequestError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDomainControlCenterSsoRequestRequest,
-  output: DomainControlCenterSsoRequest,
+  input: __S(24, __c3, 0) as any as S.Schema<GetDomainControlCenterSsoRequestRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<DomainControlCenterSsoRequest>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1222,8 +894,8 @@ export const GetDomainOwnershipIdentifier: API.OperationMethod<
   GetDomainOwnershipIdentifierError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDomainOwnershipIdentifierRequest,
-  output: GetDomainOwnershipIdentifierResponse,
+  input: __S(26, __c3, 2) as any as S.Schema<GetDomainOwnershipIdentifierRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<GetDomainOwnershipIdentifierResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1237,8 +909,8 @@ export const GetTopLevelDomain: API.OperationMethod<
   GetTopLevelDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTopLevelDomainRequest,
-  output: GetTopLevelDomainResponse,
+  input: __S(27, __c3, 3) as any as S.Schema<GetTopLevelDomainRequest>,
+  output: __S(29, __c3, 5) as any as S.Schema<GetTopLevelDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1252,8 +924,8 @@ export const ListDomainByResourceGroup: API.OperationMethod<
   ListDomainByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDomainByResourceGroupRequest,
-  output: DomainCollection,
+  input: __S(30, __c3, 6) as any as S.Schema<ListDomainByResourceGroupRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<DomainCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1267,8 +939,8 @@ export const ListDomainOwnershipIdentifiers: API.OperationMethod<
   ListDomainOwnershipIdentifiersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDomainOwnershipIdentifiersRequest,
-  output: DomainOwnershipIdentifierCollection,
+  input: __S(33, __c4, 1) as any as S.Schema<ListDomainOwnershipIdentifiersRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<DomainOwnershipIdentifierCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1282,8 +954,8 @@ export const ListDomainRecommendations: API.OperationMethod<
   ListDomainRecommendationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDomainRecommendationsRequest,
-  output: NameIdentifierCollection,
+  input: __S(36, __c4, 4) as any as S.Schema<ListDomainRecommendationsRequest>,
+  output: __S(39, __c4, 7) as any as S.Schema<NameIdentifierCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1297,8 +969,8 @@ export const ListDomainRegistrationProviderOperations: API.OperationMethod<
   ListDomainRegistrationProviderOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDomainRegistrationProviderOperationsRequest,
-  output: CsmOperationCollection,
+  input: __S(40, __c5, 0) as any as S.Schema<ListDomainRegistrationProviderOperationsRequest>,
+  output: __S(54, __c6, 6) as any as S.Schema<CsmOperationCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1312,8 +984,8 @@ export const ListDomains: API.OperationMethod<
   ListDomainsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDomainsRequest,
-  output: DomainCollection,
+  input: __S(55, __c6, 7) as any as S.Schema<ListDomainsRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<DomainCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1327,8 +999,8 @@ export const ListTopLevelDomainAgreements: API.OperationMethod<
   ListTopLevelDomainAgreementsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTopLevelDomainAgreementsRequest,
-  output: TldLegalAgreementCollection,
+  input: __S(56, __c7, 0) as any as S.Schema<ListTopLevelDomainAgreementsRequest>,
+  output: __S(59, __c7, 3) as any as S.Schema<TldLegalAgreementCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1342,8 +1014,8 @@ export const ListTopLevelDomains: API.OperationMethod<
   ListTopLevelDomainsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTopLevelDomainsRequest,
-  output: TopLevelDomainCollection,
+  input: __S(60, __c7, 4) as any as S.Schema<ListTopLevelDomainsRequest>,
+  output: __S(63, __c7, 7) as any as S.Schema<TopLevelDomainCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1357,8 +1029,8 @@ export const RenewDomain: API.OperationMethod<
   RenewDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RenewDomainRequest,
-  output: RenewDomainResponse,
+  input: __S(64, __c8, 0) as any as S.Schema<RenewDomainRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<RenewDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1372,8 +1044,8 @@ export const TransferDomainOut: API.OperationMethod<
   TransferDomainOutError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TransferDomainOutRequest,
-  output: TransferDomainOutResponse,
+  input: __S(65, __c8, 1) as any as S.Schema<TransferDomainOutRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<TransferDomainOutResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1387,8 +1059,8 @@ export const UpdateDomain: API.OperationMethod<
   UpdateDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDomainRequest,
-  output: UpdateDomainResponse,
+  input: __S(66, __c8, 2) as any as S.Schema<UpdateDomainRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<UpdateDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1402,8 +1074,8 @@ export const UpdateDomainOwnershipIdentifier: API.OperationMethod<
   UpdateDomainOwnershipIdentifierError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDomainOwnershipIdentifierRequest,
-  output: UpdateDomainOwnershipIdentifierResponse,
+  input: __S(67, __c8, 3) as any as S.Schema<UpdateDomainOwnershipIdentifierRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<UpdateDomainOwnershipIdentifierResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1433,7 +1105,7 @@ function __c0(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           available: S.optional(S.Boolean),
-          domainType: S.optional(DomainType),
+          domainType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DomainAvailabilityCheckResult",
@@ -1500,7 +1172,7 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          addressMailing: S.optional(Address),
+          addressMailing: S.optional(__S(7, __c0, 7)),
           email: S.String,
           fax: S.optional(S.String),
           jobTitle: S.optional(S.String),
@@ -1516,7 +1188,7 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          agreementKeys: S.optional(DomainPurchaseConsentAgreementKeysList),
+          agreementKeys: S.optional(__S(9, __c1, 1)),
           agreedBy: S.optional(S.String),
           agreedAt: S.optional(S.String),
         }),
@@ -1524,16 +1196,16 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          contactAdmin: Contact,
-          contactBilling: Contact,
-          contactRegistrant: Contact,
-          contactTech: Contact,
+          contactAdmin: __S(8, __c1, 0),
+          contactBilling: __S(8, __c1, 0),
+          contactRegistrant: __S(8, __c1, 0),
+          contactTech: __S(8, __c1, 0),
           privacy: S.optional(S.Boolean),
           autoRenew: S.optional(S.Boolean),
-          consent: DomainPurchaseConsent,
-          dnsType: S.optional(DnsType),
+          consent: __S(10, __c1, 2),
+          dnsType: S.optional(S.String),
           dnsZoneId: S.optional(S.String),
-          targetDnsType: S.optional(DnsType),
+          targetDnsType: S.optional(S.String),
           authCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "DomainPropertiesInput" });
@@ -1543,9 +1215,9 @@ function __c1(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           domainName: S.String.pipe(T.Label()),
-          tags: S.optional(DomainsCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(6, __c0, 6)),
           location: S.String,
-          properties: S.optional(DomainPropertiesInput),
+          properties: S.optional(__S(11, __c1, 3)),
           kind: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -1562,10 +1234,10 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(SystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -1573,43 +1245,43 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          siteNames: S.optional(HostNameSiteNamesList),
+          siteNames: S.optional(__S(9, __c1, 1)),
           azureResourceName: S.optional(S.String),
-          azureResourceType: S.optional(AzureResourceType),
-          customHostNameDnsRecordType: S.optional(CustomHostNameDnsRecordType),
-          hostNameType: S.optional(HostNameType),
+          azureResourceType: S.optional(S.String),
+          customHostNameDnsRecordType: S.optional(S.String),
+          hostNameType: S.optional(S.String),
         }),
       ).annotate({ identifier: "HostName" });
     case 7:
-      return S.Array(HostName);
+      return S.Array(__S(14, __c1, 6));
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ResourceNotRenewableReason);
+      return S.Array(S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          contactAdmin: Contact,
-          contactBilling: Contact,
-          contactRegistrant: Contact,
-          contactTech: Contact,
-          registrationStatus: S.optional(DomainStatus),
-          provisioningState: S.optional(ProvisioningState),
-          nameServers: S.optional(DomainPropertiesNameServersList),
+          contactAdmin: __S(8, __c1, 0),
+          contactBilling: __S(8, __c1, 0),
+          contactRegistrant: __S(8, __c1, 0),
+          contactTech: __S(8, __c1, 0),
+          registrationStatus: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          nameServers: S.optional(__S(9, __c1, 1)),
           privacy: S.optional(S.Boolean),
           createdTime: S.optional(S.String),
           expirationTime: S.optional(S.String),
           lastRenewedTime: S.optional(S.String),
           autoRenew: S.optional(S.Boolean),
           readyForDnsRecordManagement: S.optional(S.Boolean),
-          managedHostNames: S.optional(DomainPropertiesManagedHostNamesList),
-          consent: DomainPurchaseConsent,
-          domainNotRenewableReasons: S.optional(DomainPropertiesDomainNotRenewableReasonsList),
-          dnsType: S.optional(DnsType),
+          managedHostNames: S.optional(__S(15, __c1, 7)),
+          consent: __S(10, __c1, 2),
+          domainNotRenewableReasons: S.optional(__S(16, __c2, 0)),
+          dnsType: S.optional(S.String),
           dnsZoneId: S.optional(S.String),
-          targetDnsType: S.optional(DnsType),
+          targetDnsType: S.optional(S.String),
           authCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "DomainProperties" });
@@ -1619,10 +1291,10 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(DomainsCreateOrUpdateResponseTagsMap),
+          systemData: S.optional(__S(13, __c1, 5)),
+          tags: S.optional(__S(6, __c0, 6)),
           location: S.String,
-          properties: S.optional(DomainProperties),
+          properties: S.optional(__S(17, __c2, 1)),
           kind: S.optional(S.String),
         }),
       ).annotate({
@@ -1643,7 +1315,7 @@ function __c2(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           domainName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: S.optional(DomainOwnershipIdentifierProperties),
+          properties: S.optional(__S(19, __c2, 3)),
           kind: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -1662,8 +1334,8 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(DomainOwnershipIdentifierProperties),
+          systemData: S.optional(__S(13, __c1, 5)),
+          properties: S.optional(__S(19, __c2, 3)),
           kind: S.optional(S.String),
         }),
       ).annotate({
@@ -1690,10 +1362,10 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(GetDomainResponseTagsMap),
+          systemData: S.optional(__S(13, __c1, 5)),
+          tags: S.optional(__S(6, __c0, 6)),
           location: S.String,
-          properties: S.optional(DomainProperties),
+          properties: S.optional(__S(17, __c2, 1)),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetDomainResponse" });
@@ -1770,8 +1442,8 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(TopLevelDomainProperties),
+          systemData: S.optional(__S(13, __c1, 5)),
+          properties: S.optional(__S(28, __c3, 4)),
           kind: S.optional(S.String),
         }),
       ).annotate({
@@ -1794,7 +1466,7 @@ function __c3(j: number): any {
         identifier: "ListDomainByResourceGroupRequest",
       });
     case 7:
-      return S.Array(Domain);
+      return S.Array(__S(23, __c2, 7));
   }
 }
 function __c4(j: number): any {
@@ -1802,7 +1474,7 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: DomainCollectionValueList,
+          value: __S(31, __c3, 7),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DomainCollection" });
@@ -1824,11 +1496,11 @@ function __c4(j: number): any {
         identifier: "ListDomainOwnershipIdentifiersRequest",
       });
     case 2:
-      return S.Array(DomainOwnershipIdentifier);
+      return S.Array(__S(21, __c2, 5));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: DomainOwnershipIdentifierCollectionValueList,
+          value: __S(34, __c4, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -1858,11 +1530,11 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "NameIdentifier" });
     case 6:
-      return S.Array(NameIdentifier);
+      return S.Array(__S(37, __c4, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: NameIdentifierCollectionValueList,
+          value: __S(38, __c4, 6),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "NameIdentifierCollection" });
@@ -1902,7 +1574,7 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "Dimension" });
     case 3:
-      return S.Array(Dimension);
+      return S.Array(__S(42, __c5, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1911,7 +1583,7 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "MetricAvailability" });
     case 5:
-      return S.Array(MetricAvailability);
+      return S.Array(__S(44, __c5, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -1927,15 +1599,15 @@ function __c5(j: number): any {
           metricFilterPattern: S.optional(S.String),
           fillGapWithZero: S.optional(S.Boolean),
           isInternal: S.optional(S.Boolean),
-          dimensions: S.optional(MetricSpecificationDimensionsList),
+          dimensions: S.optional(__S(43, __c5, 3)),
           category: S.optional(S.String),
-          availabilities: S.optional(MetricSpecificationAvailabilitiesList),
-          supportedTimeGrainTypes: S.optional(MetricSpecificationSupportedTimeGrainTypesList),
-          supportedAggregationTypes: S.optional(MetricSpecificationSupportedAggregationTypesList),
+          availabilities: S.optional(__S(45, __c5, 5)),
+          supportedTimeGrainTypes: S.optional(__S(9, __c1, 1)),
+          supportedAggregationTypes: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({ identifier: "MetricSpecification" });
     case 7:
-      return S.Array(MetricSpecification);
+      return S.Array(__S(46, __c5, 6));
   }
 }
 function __c6(j: number): any {
@@ -1950,18 +1622,18 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "LogSpecification" });
     case 1:
-      return S.Array(LogSpecification);
+      return S.Array(__S(48, __c6, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          metricSpecifications: S.optional(ServiceSpecificationMetricSpecificationsList),
-          logSpecifications: S.optional(ServiceSpecificationLogSpecificationsList),
+          metricSpecifications: S.optional(__S(47, __c5, 7)),
+          logSpecifications: S.optional(__S(49, __c6, 1)),
         }),
       ).annotate({ identifier: "ServiceSpecification" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          serviceSpecification: S.optional(ServiceSpecification),
+          serviceSpecification: S.optional(__S(50, __c6, 2)),
         }),
       ).annotate({
         identifier: "CsmOperationDescriptionProperties",
@@ -1971,17 +1643,17 @@ function __c6(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(CsmOperationDisplay),
+          display: S.optional(__S(41, __c5, 1)),
           origin: S.optional(S.String),
-          properties: S.optional(CsmOperationDescriptionProperties),
+          properties: S.optional(__S(51, __c6, 3)),
         }),
       ).annotate({ identifier: "CsmOperationDescription" });
     case 5:
-      return S.Array(CsmOperationDescription);
+      return S.Array(__S(52, __c6, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: CsmOperationCollectionValueList,
+          value: __S(53, __c6, 5),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CsmOperationCollection" });
@@ -2030,11 +1702,11 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "TldLegalAgreement" });
     case 2:
-      return S.Array(TldLegalAgreement);
+      return S.Array(__S(57, __c7, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: TldLegalAgreementCollectionValueList,
+          value: __S(58, __c7, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2061,17 +1733,17 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(TopLevelDomainProperties),
+          systemData: S.optional(__S(13, __c1, 5)),
+          properties: S.optional(__S(28, __c3, 4)),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "TopLevelDomain" });
     case 6:
-      return S.Array(TopLevelDomain);
+      return S.Array(__S(61, __c7, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: TopLevelDomainCollectionValueList,
+          value: __S(62, __c7, 6),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "TopLevelDomainCollection" });
@@ -2116,7 +1788,7 @@ function __c8(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           domainName: S.String.pipe(T.Label()),
           kind: S.optional(S.String),
-          properties: S.optional(DomainPropertiesInput),
+          properties: S.optional(__S(11, __c1, 3)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2133,7 +1805,7 @@ function __c8(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           domainName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: S.optional(DomainOwnershipIdentifierProperties),
+          properties: S.optional(__S(19, __c2, 3)),
           kind: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -2147,4 +1819,9 @@ function __c8(j: number): any {
         identifier: "UpdateDomainOwnershipIdentifierRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

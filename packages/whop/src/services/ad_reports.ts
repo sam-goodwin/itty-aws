@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -47,29 +49,14 @@ export class UnprocessableEntity
 
 /** Scope the report to these ad campaigns (max 100); stats are summed across them. Mutually exclusive with `companyId`, `adGroupIds`, and `adIds`. */
 export type GetAdReportRequestAdCampaignIdsList = Array<string>;
-const GetAdReportRequestAdCampaignIdsList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GetAdReportRequestAdCampaignIdsList>;
-
 /** Scope the report to these ad groups (max 100); stats are summed across them. Mutually exclusive with `companyId`, `adCampaignIds`, and `adIds`. */
 export type GetAdReportRequestAdGroupIdsList = Array<string>;
-const GetAdReportRequestAdGroupIdsList =
-  GetAdReportRequestAdCampaignIdsList as any as S.Schema<GetAdReportRequestAdGroupIdsList>;
-
 /** Scope the report to these ads (max 100); stats are summed across them. Mutually exclusive with `companyId`, `adCampaignIds`, and `adGroupIds`. */
 export type GetAdReportRequestAdIdsList = Array<string>;
-const GetAdReportRequestAdIdsList =
-  GetAdReportRequestAdCampaignIdsList as any as S.Schema<GetAdReportRequestAdIdsList>;
-
 /** Entity level to group an ad report by. */
 export type AdReportBreakdownLevels = "campaign" | "ad_group" | "ad";
-const AdReportBreakdownLevels = S.String;
-
 /** Bucket size for external ad stat rows. */
 export type Granularities = "hourly" | "daily" | "weekly" | "monthly";
-const Granularities = S.String;
-
 export interface GetAdReportRequest {
   ad_campaign_ids?: GetAdReportRequestAdCampaignIdsList;
   ad_group_ids?: GetAdReportRequestAdGroupIdsList;
@@ -81,8 +68,6 @@ export interface GetAdReportRequest {
   granularity?: Granularities | (string & {});
   to: string;
 }
-const GetAdReportRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<GetAdReportRequest>;
-
 /** Types of optimization results tracked from external ad platforms */
 export type ResultLabelKeys =
   | "app_installs"
@@ -119,8 +104,6 @@ export type ResultLabelKeys =
   | "website_find_locations"
   | "website_product_customizations"
   | "custom";
-const ResultLabelKeys = S.String;
-
 /** The available currencies on the platform */
 export type Currencies =
   | "usd"
@@ -213,8 +196,6 @@ export type Currencies =
   | "awg"
   | "whop_usd"
   | "xau";
-const Currencies = S.String;
-
 /** Per-bucket ad performance for an ad campaign, ad group, or ad. Bucket grain is set by the `ad_report` query's `granularity` argument. */
 export interface AdReportBreakdownItemGranularityItem {
   /** The bucket's start time as a real UTC instant. `(statDate, statHour)` resolved in the ad account's reporting timezone -- render this in the viewer's local timezone. */
@@ -242,18 +223,8 @@ export interface AdReportBreakdownItemGranularityItem {
   /** Hour of the day in the ad account's reporting timezone (0-23). `null` for daily rows. */
   stat_hour: number | null;
 }
-const AdReportBreakdownItemGranularityItem = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AdReportBreakdownItemGranularityItem>;
-
 /** Per-bucket time series for this entity over the date range, ordered ascending by `bucketStart`. `null` when the `granularity` arg on `adReport` is omitted; otherwise contains rows at the requested grain (`daily` or `hourly`). */
 export type AdReportBreakdownItemGranularityList = Array<AdReportBreakdownItemGranularityItem>;
-const AdReportBreakdownItemGranularityList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<AdReportBreakdownItemGranularityList>;
-
 /** Aggregate totals and rates for this entity over the date range. */
 export interface AdReportBreakdownItemSummary {
   /** Click-through rate (clicks / impressions). */
@@ -285,11 +256,6 @@ export interface AdReportBreakdownItemSummary {
   /** Currency of the `spend` value. Matches the requested `currency` when set. */
   spend_currency: Currencies | null;
 }
-const AdReportBreakdownItemSummary = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<AdReportBreakdownItemSummary>;
-
 /** Per-entity ad performance row. Returned when the `breakdown` arg on `adReport` is set. */
 export interface AdReportBreakdownItem {
   /** Per-bucket time series for this entity over the date range, ordered ascending by `bucketStart`. `null` when the `granularity` arg on `adReport` is omitted; otherwise contains rows at the requested grain (`daily` or `hourly`). */
@@ -303,25 +269,12 @@ export interface AdReportBreakdownItem {
   /** Aggregate totals and rates for this entity over the date range. */
   summary: AdReportBreakdownItemSummary;
 }
-const AdReportBreakdownItem = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<AdReportBreakdownItem>;
-
 /** Per-entity rows over the date range. `null` when the `breakdown` arg on `adReport` is omitted; otherwise contains one row per ad campaign, ad group, or ad inside the requested scope at the requested level. */
 export type AdReportBreakdownList = Array<AdReportBreakdownItem>;
-const AdReportBreakdownList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<AdReportBreakdownList>;
-
 /** Per-bucket ad performance for an ad campaign, ad group, or ad. Bucket grain is set by the `ad_report` query's `granularity` argument. */
 export type AdReportGranularityItem = AdReportBreakdownItemGranularityItem;
 /** Per-bucket time series over the date range, ordered ascending by `bucketStart`. `null` when the `granularity` arg on `adReport` is omitted; otherwise contains rows at the requested grain (`daily` or `hourly`). */
 export type AdReportGranularityList = Array<AdReportBreakdownItemGranularityItem>;
-const AdReportGranularityList =
-  AdReportBreakdownItemGranularityList as any as S.Schema<AdReportGranularityList>;
-
 /** Aggregate totals and rates over the date range. */
 export type AdReportSummary = AdReportBreakdownItemSummary;
 /** An ads performance report. Always returns a summary. The `granularity` field contains a per-bucket time series when the `granularity` arg is set; the `breakdown` field contains per-entity rows when the `breakdown` arg is set. */
@@ -333,8 +286,6 @@ export interface AdReport {
   /** Aggregate totals and rates over the date range. */
   summary: AdReportBreakdownItemSummary;
 }
-const AdReport = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<AdReport>;
-
 export type GetAdReportError =
   | BadRequest
   | Forbidden
@@ -348,8 +299,8 @@ export const getAdReport: API.OperationMethod<
   GetAdReportError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAdReportRequest,
-  output: AdReport,
+  input: __S(1, __c0, 1) as any as S.Schema<GetAdReportRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<AdReport>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -363,14 +314,14 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ad_campaign_ids: S.optional(GetAdReportRequestAdCampaignIdsList.pipe(T.Query())),
-          ad_group_ids: S.optional(GetAdReportRequestAdGroupIdsList.pipe(T.Query())),
-          ad_ids: S.optional(GetAdReportRequestAdIdsList.pipe(T.Query())),
-          breakdown: S.optional(AdReportBreakdownLevels.pipe(T.Query())),
+          ad_campaign_ids: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          ad_group_ids: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          ad_ids: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          breakdown: S.optional(S.String.pipe(T.Query())),
           company_id: S.optional(S.String.pipe(T.Query())),
           currency: S.optional(S.String.pipe(T.Query())),
           from: S.String.pipe(T.Query()),
-          granularity: S.optional(Granularities.pipe(T.Query())),
+          granularity: S.optional(S.String.pipe(T.Query())),
           to: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/ad_reports", code: 200 })),
       ).annotate({ identifier: "GetAdReportRequest" });
@@ -379,14 +330,14 @@ function __c0(j: number): any {
         S.Struct({
           bucket_start: S.String,
           clicks: S.Number,
-          granularity: Granularities,
+          granularity: S.String,
           impressions: S.Number,
           reach: S.Number,
           result_count: S.NullOr(S.Number),
-          result_label_key: S.NullOr(ResultLabelKeys),
+          result_label_key: S.NullOr(S.String),
           result_label_override: S.NullOr(S.String),
           spend: S.Number,
-          spend_currency: Currencies,
+          spend_currency: S.String,
           stat_date: S.String,
           stat_hour: S.NullOr(S.Number),
         }),
@@ -394,7 +345,7 @@ function __c0(j: number): any {
         identifier: "AdReportBreakdownItemGranularityItem",
       });
     case 3:
-      return S.Array(AdReportBreakdownItemGranularityItem);
+      return S.Array(__S(2, __c0, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -407,11 +358,11 @@ function __c0(j: number): any {
           impressions: S.Number,
           reach: S.Number,
           result_count: S.NullOr(S.Number),
-          result_label_key: S.NullOr(ResultLabelKeys),
+          result_label_key: S.NullOr(S.String),
           result_label_override: S.NullOr(S.String),
           return_on_ad_spend: S.NullOr(S.Number),
           spend: S.Number,
-          spend_currency: S.NullOr(Currencies),
+          spend_currency: S.NullOr(S.String),
         }),
       ).annotate({
         identifier: "AdReportBreakdownItemSummary",
@@ -419,22 +370,27 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          granularity: S.NullOr(AdReportBreakdownItemGranularityList),
+          granularity: S.NullOr(__S(3, __c0, 3)),
           id: S.String,
-          level: AdReportBreakdownLevels,
+          level: S.String,
           name: S.NullOr(S.String),
-          summary: AdReportBreakdownItemSummary,
+          summary: __S(4, __c0, 4),
         }),
       ).annotate({ identifier: "AdReportBreakdownItem" });
     case 6:
-      return S.Array(AdReportBreakdownItem);
+      return S.Array(__S(5, __c0, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          breakdown: S.NullOr(AdReportBreakdownList),
-          granularity: S.NullOr(AdReportGranularityList),
-          summary: AdReportBreakdownItemSummary,
+          breakdown: S.NullOr(__S(6, __c0, 6)),
+          granularity: S.NullOr(__S(3, __c0, 3)),
+          summary: __S(4, __c0, 4),
         }),
       ).annotate({ identifier: "AdReport" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

@@ -8,6 +8,8 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const ns = /*@__PURE__*/ T.XmlNamespace("https://route53.amazonaws.com/doc/2013-04-01/");
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Route 53",
@@ -349,7 +351,7 @@ export class InvalidArgument
 export class InvalidChangeBatch
   extends /*@__PURE__*/ S.TaggedError<InvalidChangeBatch>()("InvalidChangeBatch", {
     messages: /*@__PURE__*/ S.optional(
-      /*@__PURE__*/ S.suspend(() => ErrorMessages).annotate({ identifier: "ErrorMessages" }),
+      /*@__PURE__*/ S.suspend(() => __S(216, __c27, 0)).annotate({ identifier: "ErrorMessages" }),
     ),
     message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
@@ -608,13 +610,7 @@ export interface ActivateKeySigningKeyRequest {
   HostedZoneId: string;
   Name: string;
 }
-const ActivateKeySigningKeyRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ActivateKeySigningKeyRequest>;
 export type ChangeStatus = "PENDING" | "INSYNC" | (string & {});
-const ChangeStatus = S.String;
-
 export type ResourceDescription = string;
 export interface ChangeInfo {
   Id: string;
@@ -622,14 +618,9 @@ export interface ChangeInfo {
   SubmittedAt: Date;
   Comment?: string;
 }
-const ChangeInfo = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<ChangeInfo>;
 export interface ActivateKeySigningKeyResponse {
   ChangeInfo: ChangeInfo;
 }
-const ActivateKeySigningKeyResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<ActivateKeySigningKeyResponse>;
 export type VPCRegion =
   | "us-east-1"
   | "us-east-2"
@@ -678,68 +669,42 @@ export type VPCRegion =
   | "us-isob-west-1"
   | "eusc-de-east-1"
   | (string & {});
-const VPCRegion = S.String;
-
 export type VPCId = string;
 export interface VPC {
   VPCRegion?: VPCRegion;
   VPCId?: string;
 }
-const VPC = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<VPC>;
 export type AssociateVPCComment = string;
 export interface AssociateVPCWithHostedZoneRequest {
   HostedZoneId: string;
   VPC: VPC;
   Comment?: string;
 }
-const AssociateVPCWithHostedZoneRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<AssociateVPCWithHostedZoneRequest>;
 export interface AssociateVPCWithHostedZoneResponse {
   ChangeInfo: ChangeInfo;
 }
-const AssociateVPCWithHostedZoneResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<AssociateVPCWithHostedZoneResponse>;
 export type UUID = string;
 export type CollectionVersion = number;
 export type CidrLocationNameDefaultNotAllowed = string;
 export type CidrCollectionChangeAction = "PUT" | "DELETE_IF_EXISTS" | (string & {});
-const CidrCollectionChangeAction = S.String;
-
 export type Cidr = string;
 export type CidrList = string[];
-const CidrList = /*@__PURE__*/ __L.at(__c0, 6);
 export interface CidrCollectionChange {
   LocationName: string;
   Action: CidrCollectionChangeAction;
   CidrList: string[];
 }
-const CidrCollectionChange = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<CidrCollectionChange>;
 export type CidrCollectionChanges = CidrCollectionChange[];
-const CidrCollectionChanges = /*@__PURE__*/ __L.at(__c1, 0);
 export interface ChangeCidrCollectionRequest {
   Id: string;
   CollectionVersion?: number;
   Changes: CidrCollectionChange[];
 }
-const ChangeCidrCollectionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<ChangeCidrCollectionRequest>;
 export type ChangeId = string;
 export interface ChangeCidrCollectionResponse {
   Id: string;
 }
-const ChangeCidrCollectionResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ChangeCidrCollectionResponse>;
 export type ChangeAction = "CREATE" | "DELETE" | "UPSERT" | (string & {});
-const ChangeAction = S.String;
-
 export type DNSName = string;
 export type RRType =
   | "SOA"
@@ -760,8 +725,6 @@ export type RRType =
   | "SVCB"
   | "HTTPS"
   | (string & {});
-const RRType = S.String;
-
 export type ResourceRecordSetIdentifier = string;
 export type ResourceRecordSetWeight = number;
 export type ResourceRecordSetRegion =
@@ -805,8 +768,6 @@ export type ResourceRecordSetRegion =
   | "ap-southeast-6"
   | "eusc-de-east-1"
   | (string & {});
-const ResourceRecordSetRegion = S.String;
-
 export type GeoLocationContinentCode = string;
 export type GeoLocationCountryCode = string;
 export type GeoLocationSubdivisionCode = string;
@@ -815,26 +776,20 @@ export interface GeoLocation {
   CountryCode?: string;
   SubdivisionCode?: string;
 }
-const GeoLocation = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<GeoLocation>;
 export type ResourceRecordSetFailover = "PRIMARY" | "SECONDARY" | (string & {});
-const ResourceRecordSetFailover = S.String;
-
 export type ResourceRecordSetMultiValueAnswer = boolean;
 export type TTL = number;
 export type RData = string;
 export interface ResourceRecord {
   Value: string;
 }
-const ResourceRecord = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<ResourceRecord>;
 export type ResourceRecords = ResourceRecord[];
-const ResourceRecords = /*@__PURE__*/ __L.at(__c1, 5);
 export type AliasHealthEnabled = boolean;
 export interface AliasTarget {
   HostedZoneId: string;
   DNSName: string;
   EvaluateTargetHealth: boolean;
 }
-const AliasTarget = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<AliasTarget>;
 export type HealthCheckId = string;
 export type TrafficPolicyInstanceId = string;
 export type CidrLocationNameDefaultAllowed = string;
@@ -842,7 +797,6 @@ export interface CidrRoutingConfig {
   CollectionId: string;
   LocationName: string;
 }
-const CidrRoutingConfig = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<CidrRoutingConfig>;
 export type AWSRegion = string;
 export type LocalZoneGroup = string;
 export type Latitude = string;
@@ -851,7 +805,6 @@ export interface Coordinates {
   Latitude: string;
   Longitude: string;
 }
-const Coordinates = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Coordinates>;
 export type Bias = number;
 export interface GeoProximityLocation {
   AWSRegion?: string;
@@ -859,7 +812,6 @@ export interface GeoProximityLocation {
   Coordinates?: Coordinates;
   Bias?: number;
 }
-const GeoProximityLocation = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<GeoProximityLocation>;
 export interface ResourceRecordSet {
   Name: string;
   Type: RRType;
@@ -877,37 +829,23 @@ export interface ResourceRecordSet {
   CidrRoutingConfig?: CidrRoutingConfig;
   GeoProximityLocation?: GeoProximityLocation;
 }
-const ResourceRecordSet = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<ResourceRecordSet>;
 export interface Change {
   Action: ChangeAction;
   ResourceRecordSet: ResourceRecordSet;
 }
-const Change = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<Change>;
 export type Changes = Change[];
-const Changes = /*@__PURE__*/ __L.at(__c2, 4);
 export interface ChangeBatch {
   Comment?: string;
   Changes: Change[];
 }
-const ChangeBatch = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<ChangeBatch>;
 export interface ChangeResourceRecordSetsRequest {
   HostedZoneId: string;
   ChangeBatch: ChangeBatch;
 }
-const ChangeResourceRecordSetsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<ChangeResourceRecordSetsRequest>;
 export interface ChangeResourceRecordSetsResponse {
   ChangeInfo: ChangeInfo;
 }
-const ChangeResourceRecordSetsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ChangeResourceRecordSetsResponse>;
 export type TagResourceType = "healthcheck" | "hostedzone" | (string & {});
-const TagResourceType = S.String;
-
 export type TagResourceId = string;
 export type TagKey = string;
 export type TagValue = string;
@@ -915,36 +853,21 @@ export interface Tag {
   Key?: string;
   Value?: string;
 }
-const Tag = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-const TagList = /*@__PURE__*/ __L.at(__c3, 1);
 export type TagKeyList = string[];
-const TagKeyList = /*@__PURE__*/ __L.at(__c3, 2);
 export interface ChangeTagsForResourceRequest {
   ResourceType: TagResourceType;
   ResourceId: string;
   AddTags?: Tag[];
   RemoveTagKeys?: string[];
 }
-const ChangeTagsForResourceRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<ChangeTagsForResourceRequest>;
 export interface ChangeTagsForResourceResponse {}
-const ChangeTagsForResourceResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<ChangeTagsForResourceResponse>;
 export type CollectionName = string;
 export type CidrNonce = string;
 export interface CreateCidrCollectionRequest {
   Name: string;
   CallerReference: string;
 }
-const CreateCidrCollectionRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<CreateCidrCollectionRequest>;
 export type ARN = string;
 export interface CidrCollection {
   Arn?: string;
@@ -952,16 +875,11 @@ export interface CidrCollection {
   Name?: string;
   Version?: number;
 }
-const CidrCollection = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<CidrCollection>;
 export type ResourceURI = string;
 export interface CreateCidrCollectionResponse {
   Collection?: CidrCollection;
   Location?: string;
 }
-const CreateCidrCollectionResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<CreateCidrCollectionResponse>;
 export type HealthCheckNonce = string;
 export type IPAddress = string;
 export type Port = number;
@@ -975,8 +893,6 @@ export type HealthCheckType =
   | "CLOUDWATCH_METRIC"
   | "RECOVERY_CONTROL"
   | (string & {});
-const HealthCheckType = S.String;
-
 export type ResourcePath = string;
 export type FullyQualifiedDomainName = string;
 export type SearchString = string;
@@ -987,7 +903,6 @@ export type Inverted = boolean;
 export type Disabled = boolean;
 export type HealthThreshold = number;
 export type ChildHealthCheckList = string[];
-const ChildHealthCheckList = /*@__PURE__*/ __L.at(__c4, 0);
 export type EnableSNI = boolean;
 export type HealthCheckRegion =
   | "us-east-1"
@@ -999,10 +914,7 @@ export type HealthCheckRegion =
   | "ap-northeast-1"
   | "sa-east-1"
   | (string & {});
-const HealthCheckRegion = S.String;
-
 export type HealthCheckRegionList = HealthCheckRegion[];
-const HealthCheckRegionList = /*@__PURE__*/ __L.at(__c4, 1);
 export type CloudWatchRegion =
   | "us-east-1"
   | "us-east-2"
@@ -1051,21 +963,16 @@ export type CloudWatchRegion =
   | "us-isob-west-1"
   | "eusc-de-east-1"
   | (string & {});
-const CloudWatchRegion = S.String;
-
 export type AlarmName = string;
 export interface AlarmIdentifier {
   Region: CloudWatchRegion;
   Name: string;
 }
-const AlarmIdentifier = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<AlarmIdentifier>;
 export type InsufficientDataHealthStatus =
   | "Healthy"
   | "Unhealthy"
   | "LastKnownStatus"
   | (string & {});
-const InsufficientDataHealthStatus = S.String;
-
 export type RoutingControlArn = string;
 export interface HealthCheckConfig {
   IPAddress?: string;
@@ -1087,21 +994,15 @@ export interface HealthCheckConfig {
   InsufficientDataHealthStatus?: InsufficientDataHealthStatus;
   RoutingControlArn?: string;
 }
-const HealthCheckConfig = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<HealthCheckConfig>;
 export interface CreateHealthCheckRequest {
   CallerReference: string;
   HealthCheckConfig: HealthCheckConfig;
 }
-const CreateHealthCheckRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<CreateHealthCheckRequest>;
 export type ServicePrincipal = string;
 export interface LinkedService {
   ServicePrincipal?: string;
   Description?: string;
 }
-const LinkedService = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<LinkedService>;
 export type HealthCheckVersion = number;
 export type EvaluationPeriods = number;
 export type Threshold = number;
@@ -1111,22 +1012,16 @@ export type ComparisonOperator =
   | "LessThanThreshold"
   | "LessThanOrEqualToThreshold"
   | (string & {});
-const ComparisonOperator = S.String;
-
 export type Period = number;
 export type MetricName = string;
 export type Namespace = string;
 export type Statistic = "Average" | "Sum" | "SampleCount" | "Maximum" | "Minimum" | (string & {});
-const Statistic = S.String;
-
 export type DimensionField = string;
 export interface Dimension {
   Name: string;
   Value: string;
 }
-const Dimension = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<Dimension>;
 export type DimensionList = Dimension[];
-const DimensionList = /*@__PURE__*/ __L.at(__c4, 7);
 export interface CloudWatchAlarmConfiguration {
   EvaluationPeriods: number;
   Threshold: number;
@@ -1137,10 +1032,6 @@ export interface CloudWatchAlarmConfiguration {
   Statistic: Statistic;
   Dimensions?: Dimension[];
 }
-const CloudWatchAlarmConfiguration = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<CloudWatchAlarmConfiguration>;
 export interface HealthCheck {
   Id: string;
   CallerReference: string;
@@ -1149,22 +1040,16 @@ export interface HealthCheck {
   HealthCheckVersion: number;
   CloudWatchAlarmConfiguration?: CloudWatchAlarmConfiguration;
 }
-const HealthCheck = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<HealthCheck>;
 export interface CreateHealthCheckResponse {
   HealthCheck: HealthCheck;
   Location: string;
 }
-const CreateHealthCheckResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<CreateHealthCheckResponse>;
 export type Nonce = string;
 export type IsPrivateZone = boolean;
 export interface HostedZoneConfig {
   Comment?: string;
   PrivateZone?: boolean;
 }
-const HostedZoneConfig = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<HostedZoneConfig>;
 export interface CreateHostedZoneRequest {
   Name: string;
   VPC?: VPC;
@@ -1172,10 +1057,6 @@ export interface CreateHostedZoneRequest {
   HostedZoneConfig?: HostedZoneConfig;
   DelegationSetId?: string;
 }
-const CreateHostedZoneRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<CreateHostedZoneRequest>;
 export type HostedZoneRRSetCount = number;
 export type AcceleratedRecoveryStatus =
   | "ENABLING"
@@ -1187,21 +1068,14 @@ export type AcceleratedRecoveryStatus =
   | "DISABLED"
   | "DISABLING_HOSTED_ZONE_LOCKED"
   | (string & {});
-const AcceleratedRecoveryStatus = S.String;
-
 export type FailureReason = string;
 export interface HostedZoneFailureReasons {
   AcceleratedRecovery?: string;
 }
-const HostedZoneFailureReasons = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<HostedZoneFailureReasons>;
 export interface HostedZoneFeatures {
   AcceleratedRecoveryStatus?: AcceleratedRecoveryStatus;
   FailureReasons?: HostedZoneFailureReasons;
 }
-const HostedZoneFeatures = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<HostedZoneFeatures>;
 export interface HostedZone {
   Id: string;
   Name: string;
@@ -1211,15 +1085,12 @@ export interface HostedZone {
   LinkedService?: LinkedService;
   Features?: HostedZoneFeatures;
 }
-const HostedZone = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<HostedZone>;
 export type DelegationSetNameServers = string[];
-const DelegationSetNameServers = /*@__PURE__*/ __L.at(__c6, 0);
 export interface DelegationSet {
   Id?: string;
   CallerReference?: string;
   NameServers: string[];
 }
-const DelegationSet = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<DelegationSet>;
 export interface CreateHostedZoneResponse {
   HostedZone: HostedZone;
   ChangeInfo: ChangeInfo;
@@ -1227,10 +1098,6 @@ export interface CreateHostedZoneResponse {
   VPC?: VPC;
   Location: string;
 }
-const CreateHostedZoneResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<CreateHostedZoneResponse>;
 export type SigningKeyString = string;
 export type SigningKeyStatus = string;
 export interface CreateKeySigningKeyRequest {
@@ -1240,10 +1107,6 @@ export interface CreateKeySigningKeyRequest {
   Name: string;
   Status: string;
 }
-const CreateKeySigningKeyRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<CreateKeySigningKeyRequest>;
 export type SigningKeyInteger = number;
 export type SigningKeyTag = number;
 export type SigningKeyStatusMessage = string;
@@ -1265,56 +1128,34 @@ export interface KeySigningKey {
   CreatedDate?: Date;
   LastModifiedDate?: Date;
 }
-const KeySigningKey = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<KeySigningKey>;
 export interface CreateKeySigningKeyResponse {
   ChangeInfo: ChangeInfo;
   KeySigningKey: KeySigningKey;
   Location: string;
 }
-const CreateKeySigningKeyResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<CreateKeySigningKeyResponse>;
 export type CloudWatchLogsLogGroupArn = string;
 export interface CreateQueryLoggingConfigRequest {
   HostedZoneId: string;
   CloudWatchLogsLogGroupArn: string;
 }
-const CreateQueryLoggingConfigRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<CreateQueryLoggingConfigRequest>;
 export type QueryLoggingConfigId = string;
 export interface QueryLoggingConfig {
   Id: string;
   HostedZoneId: string;
   CloudWatchLogsLogGroupArn: string;
 }
-const QueryLoggingConfig = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<QueryLoggingConfig>;
 export interface CreateQueryLoggingConfigResponse {
   QueryLoggingConfig: QueryLoggingConfig;
   Location: string;
 }
-const CreateQueryLoggingConfigResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<CreateQueryLoggingConfigResponse>;
 export interface CreateReusableDelegationSetRequest {
   CallerReference: string;
   HostedZoneId?: string;
 }
-const CreateReusableDelegationSetRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<CreateReusableDelegationSetRequest>;
 export interface CreateReusableDelegationSetResponse {
   DelegationSet: DelegationSet;
   Location: string;
 }
-const CreateReusableDelegationSetResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<CreateReusableDelegationSetResponse>;
 export type TrafficPolicyName = string;
 export type TrafficPolicyDocument = string;
 export type TrafficPolicyComment = string;
@@ -1323,10 +1164,6 @@ export interface CreateTrafficPolicyRequest {
   Document: string;
   Comment?: string;
 }
-const CreateTrafficPolicyRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<CreateTrafficPolicyRequest>;
 export type TrafficPolicyId = string;
 export type TrafficPolicyVersion = number;
 export interface TrafficPolicy {
@@ -1337,15 +1174,10 @@ export interface TrafficPolicy {
   Document: string;
   Comment?: string;
 }
-const TrafficPolicy = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<TrafficPolicy>;
 export interface CreateTrafficPolicyResponse {
   TrafficPolicy: TrafficPolicy;
   Location: string;
 }
-const CreateTrafficPolicyResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<CreateTrafficPolicyResponse>;
 export interface CreateTrafficPolicyInstanceRequest {
   HostedZoneId: string;
   Name: string;
@@ -1353,10 +1185,6 @@ export interface CreateTrafficPolicyInstanceRequest {
   TrafficPolicyId: string;
   TrafficPolicyVersion: number;
 }
-const CreateTrafficPolicyInstanceRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<CreateTrafficPolicyInstanceRequest>;
 export type TrafficPolicyInstanceState = string;
 export type Message = string;
 export interface TrafficPolicyInstance {
@@ -1370,226 +1198,98 @@ export interface TrafficPolicyInstance {
   TrafficPolicyVersion: number;
   TrafficPolicyType: RRType;
 }
-const TrafficPolicyInstance = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<TrafficPolicyInstance>;
 export interface CreateTrafficPolicyInstanceResponse {
   TrafficPolicyInstance: TrafficPolicyInstance;
   Location: string;
 }
-const CreateTrafficPolicyInstanceResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<CreateTrafficPolicyInstanceResponse>;
 export interface CreateTrafficPolicyVersionRequest {
   Id: string;
   Document: string;
   Comment?: string;
 }
-const CreateTrafficPolicyVersionRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<CreateTrafficPolicyVersionRequest>;
 export interface CreateTrafficPolicyVersionResponse {
   TrafficPolicy: TrafficPolicy;
   Location: string;
 }
-const CreateTrafficPolicyVersionResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<CreateTrafficPolicyVersionResponse>;
 export interface CreateVPCAssociationAuthorizationRequest {
   HostedZoneId: string;
   VPC: VPC;
 }
-const CreateVPCAssociationAuthorizationRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<CreateVPCAssociationAuthorizationRequest>;
 export interface CreateVPCAssociationAuthorizationResponse {
   HostedZoneId: string;
   VPC: VPC;
 }
-const CreateVPCAssociationAuthorizationResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<CreateVPCAssociationAuthorizationResponse>;
 export interface DeactivateKeySigningKeyRequest {
   HostedZoneId: string;
   Name: string;
 }
-const DeactivateKeySigningKeyRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<DeactivateKeySigningKeyRequest>;
 export interface DeactivateKeySigningKeyResponse {
   ChangeInfo: ChangeInfo;
 }
-const DeactivateKeySigningKeyResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<DeactivateKeySigningKeyResponse>;
 export interface DeleteCidrCollectionRequest {
   Id: string;
 }
-const DeleteCidrCollectionRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<DeleteCidrCollectionRequest>;
 export interface DeleteCidrCollectionResponse {}
-const DeleteCidrCollectionResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<DeleteCidrCollectionResponse>;
 export interface DeleteHealthCheckRequest {
   HealthCheckId: string;
 }
-const DeleteHealthCheckRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<DeleteHealthCheckRequest>;
 export interface DeleteHealthCheckResponse {}
-const DeleteHealthCheckResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<DeleteHealthCheckResponse>;
 export interface DeleteHostedZoneRequest {
   Id: string;
 }
-const DeleteHostedZoneRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<DeleteHostedZoneRequest>;
 export interface DeleteHostedZoneResponse {
   ChangeInfo: ChangeInfo;
 }
-const DeleteHostedZoneResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<DeleteHostedZoneResponse>;
 export interface DeleteKeySigningKeyRequest {
   HostedZoneId: string;
   Name: string;
 }
-const DeleteKeySigningKeyRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<DeleteKeySigningKeyRequest>;
 export interface DeleteKeySigningKeyResponse {
   ChangeInfo: ChangeInfo;
 }
-const DeleteKeySigningKeyResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<DeleteKeySigningKeyResponse>;
 export interface DeleteQueryLoggingConfigRequest {
   Id: string;
 }
-const DeleteQueryLoggingConfigRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<DeleteQueryLoggingConfigRequest>;
 export interface DeleteQueryLoggingConfigResponse {}
-const DeleteQueryLoggingConfigResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<DeleteQueryLoggingConfigResponse>;
 export interface DeleteReusableDelegationSetRequest {
   Id: string;
 }
-const DeleteReusableDelegationSetRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<DeleteReusableDelegationSetRequest>;
 export interface DeleteReusableDelegationSetResponse {}
-const DeleteReusableDelegationSetResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<DeleteReusableDelegationSetResponse>;
 export interface DeleteTrafficPolicyRequest {
   Id: string;
   Version: number;
 }
-const DeleteTrafficPolicyRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<DeleteTrafficPolicyRequest>;
 export interface DeleteTrafficPolicyResponse {}
-const DeleteTrafficPolicyResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<DeleteTrafficPolicyResponse>;
 export interface DeleteTrafficPolicyInstanceRequest {
   Id: string;
 }
-const DeleteTrafficPolicyInstanceRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<DeleteTrafficPolicyInstanceRequest>;
 export interface DeleteTrafficPolicyInstanceResponse {}
-const DeleteTrafficPolicyInstanceResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<DeleteTrafficPolicyInstanceResponse>;
 export interface DeleteVPCAssociationAuthorizationRequest {
   HostedZoneId: string;
   VPC: VPC;
 }
-const DeleteVPCAssociationAuthorizationRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<DeleteVPCAssociationAuthorizationRequest>;
 export interface DeleteVPCAssociationAuthorizationResponse {}
-const DeleteVPCAssociationAuthorizationResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<DeleteVPCAssociationAuthorizationResponse>;
 export interface DisableHostedZoneDNSSECRequest {
   HostedZoneId: string;
 }
-const DisableHostedZoneDNSSECRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<DisableHostedZoneDNSSECRequest>;
 export interface DisableHostedZoneDNSSECResponse {
   ChangeInfo: ChangeInfo;
 }
-const DisableHostedZoneDNSSECResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<DisableHostedZoneDNSSECResponse>;
 export type DisassociateVPCComment = string;
 export interface DisassociateVPCFromHostedZoneRequest {
   HostedZoneId: string;
   VPC: VPC;
   Comment?: string;
 }
-const DisassociateVPCFromHostedZoneRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<DisassociateVPCFromHostedZoneRequest>;
 export interface DisassociateVPCFromHostedZoneResponse {
   ChangeInfo: ChangeInfo;
 }
-const DisassociateVPCFromHostedZoneResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<DisassociateVPCFromHostedZoneResponse>;
 export interface EnableHostedZoneDNSSECRequest {
   HostedZoneId: string;
 }
-const EnableHostedZoneDNSSECRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<EnableHostedZoneDNSSECRequest>;
 export interface EnableHostedZoneDNSSECResponse {
   ChangeInfo: ChangeInfo;
 }
-const EnableHostedZoneDNSSECResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<EnableHostedZoneDNSSECResponse>;
 export type AccountLimitType =
   | "MAX_HEALTH_CHECKS_BY_OWNER"
   | "MAX_HOSTED_ZONES_BY_OWNER"
@@ -1597,79 +1297,49 @@ export type AccountLimitType =
   | "MAX_REUSABLE_DELEGATION_SETS_BY_OWNER"
   | "MAX_TRAFFIC_POLICIES_BY_OWNER"
   | (string & {});
-const AccountLimitType = S.String;
-
 export interface GetAccountLimitRequest {
   Type: AccountLimitType;
 }
-const GetAccountLimitRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<GetAccountLimitRequest>;
 export type LimitValue = number;
 export interface AccountLimit {
   Type: AccountLimitType;
   Value: number;
 }
-const AccountLimit = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<AccountLimit>;
 export type UsageCount = number;
 export interface GetAccountLimitResponse {
   Limit: AccountLimit;
   Count: number;
 }
-const GetAccountLimitResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<GetAccountLimitResponse>;
 export interface GetChangeRequest {
   Id: string;
 }
-const GetChangeRequest = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<GetChangeRequest>;
 export interface GetChangeResponse {
   ChangeInfo: ChangeInfo;
 }
-const GetChangeResponse = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<GetChangeResponse>;
 export interface GetCheckerIpRangesRequest {}
-const GetCheckerIpRangesRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<GetCheckerIpRangesRequest>;
 export type IPAddressCidr = string;
 export type CheckerIpRanges = string[];
-const CheckerIpRanges = /*@__PURE__*/ __L.at(__c12, 5);
 export interface GetCheckerIpRangesResponse {
   CheckerIpRanges: string[];
 }
-const GetCheckerIpRangesResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<GetCheckerIpRangesResponse>;
 export interface GetDNSSECRequest {
   HostedZoneId: string;
 }
-const GetDNSSECRequest = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<GetDNSSECRequest>;
 export type ServeSignature = string;
 export interface DNSSECStatus {
   ServeSignature?: string;
   StatusMessage?: string;
 }
-const DNSSECStatus = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<DNSSECStatus>;
 export type KeySigningKeys = KeySigningKey[];
-const KeySigningKeys = /*@__PURE__*/ __L.at(__c13, 1);
 export interface GetDNSSECResponse {
   Status: DNSSECStatus;
   KeySigningKeys: KeySigningKey[];
 }
-const GetDNSSECResponse = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<GetDNSSECResponse>;
 export interface GetGeoLocationRequest {
   ContinentCode?: string;
   CountryCode?: string;
   SubdivisionCode?: string;
 }
-const GetGeoLocationRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<GetGeoLocationRequest>;
 export type GeoLocationContinentName = string;
 export type GeoLocationCountryName = string;
 export type GeoLocationSubdivisionName = string;
@@ -1681,241 +1351,116 @@ export interface GeoLocationDetails {
   SubdivisionCode?: string;
   SubdivisionName?: string;
 }
-const GeoLocationDetails = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<GeoLocationDetails>;
 export interface GetGeoLocationResponse {
   GeoLocationDetails: GeoLocationDetails;
 }
-const GetGeoLocationResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<GetGeoLocationResponse>;
 export interface GetHealthCheckRequest {
   HealthCheckId: string;
 }
-const GetHealthCheckRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<GetHealthCheckRequest>;
 export interface GetHealthCheckResponse {
   HealthCheck: HealthCheck;
 }
-const GetHealthCheckResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<GetHealthCheckResponse>;
 export interface GetHealthCheckCountRequest {}
-const GetHealthCheckCountRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<GetHealthCheckCountRequest>;
 export type HealthCheckCount = number;
 export interface GetHealthCheckCountResponse {
   HealthCheckCount: number;
 }
-const GetHealthCheckCountResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<GetHealthCheckCountResponse>;
 export interface GetHealthCheckLastFailureReasonRequest {
   HealthCheckId: string;
 }
-const GetHealthCheckLastFailureReasonRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<GetHealthCheckLastFailureReasonRequest>;
 export type Status = string;
 export interface StatusReport {
   Status?: string;
   CheckedTime?: Date;
 }
-const StatusReport = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<StatusReport>;
 export interface HealthCheckObservation {
   Region?: HealthCheckRegion;
   IPAddress?: string;
   StatusReport?: StatusReport;
 }
-const HealthCheckObservation = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<HealthCheckObservation>;
 export type HealthCheckObservations = HealthCheckObservation[];
-const HealthCheckObservations = /*@__PURE__*/ __L.at(__c14, 5);
 export interface GetHealthCheckLastFailureReasonResponse {
   HealthCheckObservations: HealthCheckObservation[];
 }
-const GetHealthCheckLastFailureReasonResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<GetHealthCheckLastFailureReasonResponse>;
 export interface GetHealthCheckStatusRequest {
   HealthCheckId: string;
 }
-const GetHealthCheckStatusRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<GetHealthCheckStatusRequest>;
 export interface GetHealthCheckStatusResponse {
   HealthCheckObservations: HealthCheckObservation[];
 }
-const GetHealthCheckStatusResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<GetHealthCheckStatusResponse>;
 export interface GetHostedZoneRequest {
   Id: string;
 }
-const GetHostedZoneRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<GetHostedZoneRequest>;
 export type VPCs = VPC[];
-const VPCs = /*@__PURE__*/ __L.at(__c15, 2);
 export interface GetHostedZoneResponse {
   HostedZone: HostedZone;
   DelegationSet?: DelegationSet;
   VPCs?: VPC[];
 }
-const GetHostedZoneResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<GetHostedZoneResponse>;
 export interface GetHostedZoneCountRequest {}
-const GetHostedZoneCountRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<GetHostedZoneCountRequest>;
 export type HostedZoneCount = number;
 export interface GetHostedZoneCountResponse {
   HostedZoneCount: number;
 }
-const GetHostedZoneCountResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<GetHostedZoneCountResponse>;
 export type HostedZoneLimitType =
   | "MAX_RRSETS_BY_ZONE"
   | "MAX_VPCS_ASSOCIATED_BY_ZONE"
   | (string & {});
-const HostedZoneLimitType = S.String;
-
 export interface GetHostedZoneLimitRequest {
   Type: HostedZoneLimitType;
   HostedZoneId: string;
 }
-const GetHostedZoneLimitRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<GetHostedZoneLimitRequest>;
 export interface HostedZoneLimit {
   Type: HostedZoneLimitType;
   Value: number;
 }
-const HostedZoneLimit = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<HostedZoneLimit>;
 export interface GetHostedZoneLimitResponse {
   Limit: HostedZoneLimit;
   Count: number;
 }
-const GetHostedZoneLimitResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<GetHostedZoneLimitResponse>;
 export interface GetQueryLoggingConfigRequest {
   Id: string;
 }
-const GetQueryLoggingConfigRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<GetQueryLoggingConfigRequest>;
 export interface GetQueryLoggingConfigResponse {
   QueryLoggingConfig: QueryLoggingConfig;
 }
-const GetQueryLoggingConfigResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<GetQueryLoggingConfigResponse>;
 export interface GetReusableDelegationSetRequest {
   Id: string;
 }
-const GetReusableDelegationSetRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<GetReusableDelegationSetRequest>;
 export interface GetReusableDelegationSetResponse {
   DelegationSet: DelegationSet;
 }
-const GetReusableDelegationSetResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<GetReusableDelegationSetResponse>;
 export type ReusableDelegationSetLimitType = "MAX_ZONES_BY_REUSABLE_DELEGATION_SET" | (string & {});
-const ReusableDelegationSetLimitType = S.String;
-
 export interface GetReusableDelegationSetLimitRequest {
   Type: ReusableDelegationSetLimitType;
   DelegationSetId: string;
 }
-const GetReusableDelegationSetLimitRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<GetReusableDelegationSetLimitRequest>;
 export interface ReusableDelegationSetLimit {
   Type: ReusableDelegationSetLimitType;
   Value: number;
 }
-const ReusableDelegationSetLimit = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<ReusableDelegationSetLimit>;
 export interface GetReusableDelegationSetLimitResponse {
   Limit: ReusableDelegationSetLimit;
   Count: number;
 }
-const GetReusableDelegationSetLimitResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<GetReusableDelegationSetLimitResponse>;
 export interface GetTrafficPolicyRequest {
   Id: string;
   Version: number;
 }
-const GetTrafficPolicyRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<GetTrafficPolicyRequest>;
 export interface GetTrafficPolicyResponse {
   TrafficPolicy: TrafficPolicy;
 }
-const GetTrafficPolicyResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<GetTrafficPolicyResponse>;
 export interface GetTrafficPolicyInstanceRequest {
   Id: string;
 }
-const GetTrafficPolicyInstanceRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<GetTrafficPolicyInstanceRequest>;
 export interface GetTrafficPolicyInstanceResponse {
   TrafficPolicyInstance: TrafficPolicyInstance;
 }
-const GetTrafficPolicyInstanceResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<GetTrafficPolicyInstanceResponse>;
 export interface GetTrafficPolicyInstanceCountRequest {}
-const GetTrafficPolicyInstanceCountRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<GetTrafficPolicyInstanceCountRequest>;
 export type TrafficPolicyInstanceCount = number;
 export interface GetTrafficPolicyInstanceCountResponse {
   TrafficPolicyInstanceCount: number;
 }
-const GetTrafficPolicyInstanceCountResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<GetTrafficPolicyInstanceCountResponse>;
 export type PaginationToken = string;
 export interface ListCidrBlocksRequest {
   CollectionId: string;
@@ -1923,85 +1468,50 @@ export interface ListCidrBlocksRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-const ListCidrBlocksRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<ListCidrBlocksRequest>;
 export interface CidrBlockSummary {
   CidrBlock?: string;
   LocationName?: string;
 }
-const CidrBlockSummary = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<CidrBlockSummary>;
 export type CidrBlockSummaries = CidrBlockSummary[];
-const CidrBlockSummaries = /*@__PURE__*/ __L.at(__c18, 0);
 export interface ListCidrBlocksResponse {
   NextToken?: string;
   CidrBlocks?: CidrBlockSummary[];
 }
-const ListCidrBlocksResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<ListCidrBlocksResponse>;
 export interface ListCidrCollectionsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-const ListCidrCollectionsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<ListCidrCollectionsRequest>;
 export interface CollectionSummary {
   Arn?: string;
   Id?: string;
   Name?: string;
   Version?: number;
 }
-const CollectionSummary = /*@__PURE__*/ __L.at(__c18, 3) as any as S.Schema<CollectionSummary>;
 export type CollectionSummaries = CollectionSummary[];
-const CollectionSummaries = /*@__PURE__*/ __L.at(__c18, 4);
 export interface ListCidrCollectionsResponse {
   NextToken?: string;
   CidrCollections?: CollectionSummary[];
 }
-const ListCidrCollectionsResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<ListCidrCollectionsResponse>;
 export interface ListCidrLocationsRequest {
   CollectionId: string;
   NextToken?: string;
   MaxResults?: number;
 }
-const ListCidrLocationsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<ListCidrLocationsRequest>;
 export interface LocationSummary {
   LocationName?: string;
 }
-const LocationSummary = /*@__PURE__*/ __L.at(__c18, 7) as any as S.Schema<LocationSummary>;
 export type LocationSummaries = LocationSummary[];
-const LocationSummaries = /*@__PURE__*/ __L.at(__c19, 0);
 export interface ListCidrLocationsResponse {
   NextToken?: string;
   CidrLocations?: LocationSummary[];
 }
-const ListCidrLocationsResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<ListCidrLocationsResponse>;
 export interface ListGeoLocationsRequest {
   StartContinentCode?: string;
   StartCountryCode?: string;
   StartSubdivisionCode?: string;
   MaxItems?: number;
 }
-const ListGeoLocationsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<ListGeoLocationsRequest>;
 export type GeoLocationDetailsList = GeoLocationDetails[];
-const GeoLocationDetailsList = /*@__PURE__*/ __L.at(__c19, 3);
 export type PageTruncated = boolean;
 export interface ListGeoLocationsResponse {
   GeoLocationDetailsList: GeoLocationDetails[];
@@ -2011,21 +1521,12 @@ export interface ListGeoLocationsResponse {
   NextSubdivisionCode?: string;
   MaxItems: number;
 }
-const ListGeoLocationsResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<ListGeoLocationsResponse>;
 export type PageMarker = string;
 export interface ListHealthChecksRequest {
   Marker?: string;
   MaxItems?: number;
 }
-const ListHealthChecksRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<ListHealthChecksRequest>;
 export type HealthChecks = HealthCheck[];
-const HealthChecks = /*@__PURE__*/ __L.at(__c19, 6);
 export interface ListHealthChecksResponse {
   HealthChecks?: HealthCheck[];
   Marker?: string;
@@ -2033,25 +1534,14 @@ export interface ListHealthChecksResponse {
   NextMarker?: string;
   MaxItems: number;
 }
-const ListHealthChecksResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<ListHealthChecksResponse>;
 export type HostedZoneType = "PrivateHostedZone" | (string & {});
-const HostedZoneType = S.String;
-
 export interface ListHostedZonesRequest {
   Marker?: string;
   MaxItems?: number;
   DelegationSetId?: string;
   HostedZoneType?: HostedZoneType;
 }
-const ListHostedZonesRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<ListHostedZonesRequest>;
 export type HostedZones = HostedZone[];
-const HostedZones = /*@__PURE__*/ __L.at(__c20, 1);
 export interface ListHostedZonesResponse {
   HostedZones?: HostedZone[];
   Marker?: string;
@@ -2059,19 +1549,11 @@ export interface ListHostedZonesResponse {
   NextMarker?: string;
   MaxItems: number;
 }
-const ListHostedZonesResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<ListHostedZonesResponse>;
 export interface ListHostedZonesByNameRequest {
   DNSName?: string;
   HostedZoneId?: string;
   MaxItems?: number;
 }
-const ListHostedZonesByNameRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<ListHostedZonesByNameRequest>;
 export interface ListHostedZonesByNameResponse {
   HostedZones?: HostedZone[];
   DNSName?: string;
@@ -2081,63 +1563,39 @@ export interface ListHostedZonesByNameResponse {
   NextHostedZoneId?: string;
   MaxItems: number;
 }
-const ListHostedZonesByNameResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<ListHostedZonesByNameResponse>;
 export interface ListHostedZonesByVPCRequest {
   VPCId: string;
   VPCRegion: VPCRegion;
   MaxItems?: number;
   NextToken?: string;
 }
-const ListHostedZonesByVPCRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<ListHostedZonesByVPCRequest>;
 export type AWSAccountID = string;
 export type HostedZoneOwningService = string;
 export interface HostedZoneOwner {
   OwningAccount?: string;
   OwningService?: string;
 }
-const HostedZoneOwner = /*@__PURE__*/ __L.at(__c20, 6) as any as S.Schema<HostedZoneOwner>;
 export interface HostedZoneSummary {
   HostedZoneId: string;
   Name: string;
   Owner: HostedZoneOwner;
 }
-const HostedZoneSummary = /*@__PURE__*/ __L.at(__c20, 7) as any as S.Schema<HostedZoneSummary>;
 export type HostedZoneSummaries = HostedZoneSummary[];
-const HostedZoneSummaries = /*@__PURE__*/ __L.at(__c21, 0);
 export interface ListHostedZonesByVPCResponse {
   HostedZoneSummaries: HostedZoneSummary[];
   MaxItems: number;
   NextToken?: string;
 }
-const ListHostedZonesByVPCResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<ListHostedZonesByVPCResponse>;
 export interface ListQueryLoggingConfigsRequest {
   HostedZoneId?: string;
   NextToken?: string;
   MaxResults?: number;
 }
-const ListQueryLoggingConfigsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<ListQueryLoggingConfigsRequest>;
 export type QueryLoggingConfigs = QueryLoggingConfig[];
-const QueryLoggingConfigs = /*@__PURE__*/ __L.at(__c21, 3);
 export interface ListQueryLoggingConfigsResponse {
   QueryLoggingConfigs?: QueryLoggingConfig[];
   NextToken?: string;
 }
-const ListQueryLoggingConfigsResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<ListQueryLoggingConfigsResponse>;
 export interface ListResourceRecordSetsRequest {
   HostedZoneId: string;
   StartRecordName?: string;
@@ -2145,12 +1603,7 @@ export interface ListResourceRecordSetsRequest {
   StartRecordIdentifier?: string;
   MaxItems?: number;
 }
-const ListResourceRecordSetsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<ListResourceRecordSetsRequest>;
 export type ResourceRecordSets = ResourceRecordSet[];
-const ResourceRecordSets = /*@__PURE__*/ __L.at(__c21, 6);
 export interface ListResourceRecordSetsResponse {
   ResourceRecordSets?: ResourceRecordSet[];
   IsTruncated: boolean;
@@ -2159,20 +1612,11 @@ export interface ListResourceRecordSetsResponse {
   NextRecordIdentifier?: string;
   MaxItems: number;
 }
-const ListResourceRecordSetsResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<ListResourceRecordSetsResponse>;
 export interface ListReusableDelegationSetsRequest {
   Marker?: string;
   MaxItems?: number;
 }
-const ListReusableDelegationSetsRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<ListReusableDelegationSetsRequest>;
 export type DelegationSets = DelegationSet[];
-const DelegationSets = /*@__PURE__*/ __L.at(__c22, 1);
 export interface ListReusableDelegationSetsResponse {
   DelegationSets: DelegationSet[];
   Marker: string;
@@ -2180,58 +1624,31 @@ export interface ListReusableDelegationSetsResponse {
   NextMarker?: string;
   MaxItems: number;
 }
-const ListReusableDelegationSetsResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<ListReusableDelegationSetsResponse>;
 export interface ListTagsForResourceRequest {
   ResourceType: TagResourceType;
   ResourceId: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ResourceTagSet {
   ResourceType?: TagResourceType;
   ResourceId?: string;
   Tags?: Tag[];
 }
-const ResourceTagSet = /*@__PURE__*/ __L.at(__c22, 4) as any as S.Schema<ResourceTagSet>;
 export interface ListTagsForResourceResponse {
   ResourceTagSet: ResourceTagSet;
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<ListTagsForResourceResponse>;
 export type TagResourceIdList = string[];
-const TagResourceIdList = /*@__PURE__*/ __L.at(__c22, 6);
 export interface ListTagsForResourcesRequest {
   ResourceType: TagResourceType;
   ResourceIds: string[];
 }
-const ListTagsForResourcesRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<ListTagsForResourcesRequest>;
 export type ResourceTagSetList = ResourceTagSet[];
-const ResourceTagSetList = /*@__PURE__*/ __L.at(__c23, 0);
 export interface ListTagsForResourcesResponse {
   ResourceTagSets: ResourceTagSet[];
 }
-const ListTagsForResourcesResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<ListTagsForResourcesResponse>;
 export interface ListTrafficPoliciesRequest {
   TrafficPolicyIdMarker?: string;
   MaxItems?: number;
 }
-const ListTrafficPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<ListTrafficPoliciesRequest>;
 export interface TrafficPolicySummary {
   Id: string;
   Name: string;
@@ -2239,34 +1656,20 @@ export interface TrafficPolicySummary {
   LatestVersion: number;
   TrafficPolicyCount: number;
 }
-const TrafficPolicySummary = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<TrafficPolicySummary>;
 export type TrafficPolicySummaries = TrafficPolicySummary[];
-const TrafficPolicySummaries = /*@__PURE__*/ __L.at(__c23, 4);
 export interface ListTrafficPoliciesResponse {
   TrafficPolicySummaries: TrafficPolicySummary[];
   IsTruncated: boolean;
   TrafficPolicyIdMarker: string;
   MaxItems: number;
 }
-const ListTrafficPoliciesResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<ListTrafficPoliciesResponse>;
 export interface ListTrafficPolicyInstancesRequest {
   HostedZoneIdMarker?: string;
   TrafficPolicyInstanceNameMarker?: string;
   TrafficPolicyInstanceTypeMarker?: RRType;
   MaxItems?: number;
 }
-const ListTrafficPolicyInstancesRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<ListTrafficPolicyInstancesRequest>;
 export type TrafficPolicyInstances = TrafficPolicyInstance[];
-const TrafficPolicyInstances = /*@__PURE__*/ __L.at(__c23, 7);
 export interface ListTrafficPolicyInstancesResponse {
   TrafficPolicyInstances: TrafficPolicyInstance[];
   HostedZoneIdMarker?: string;
@@ -2275,20 +1678,12 @@ export interface ListTrafficPolicyInstancesResponse {
   IsTruncated: boolean;
   MaxItems: number;
 }
-const ListTrafficPolicyInstancesResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<ListTrafficPolicyInstancesResponse>;
 export interface ListTrafficPolicyInstancesByHostedZoneRequest {
   HostedZoneId: string;
   TrafficPolicyInstanceNameMarker?: string;
   TrafficPolicyInstanceTypeMarker?: RRType;
   MaxItems?: number;
 }
-const ListTrafficPolicyInstancesByHostedZoneRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<ListTrafficPolicyInstancesByHostedZoneRequest>;
 export interface ListTrafficPolicyInstancesByHostedZoneResponse {
   TrafficPolicyInstances: TrafficPolicyInstance[];
   TrafficPolicyInstanceNameMarker?: string;
@@ -2296,10 +1691,6 @@ export interface ListTrafficPolicyInstancesByHostedZoneResponse {
   IsTruncated: boolean;
   MaxItems: number;
 }
-const ListTrafficPolicyInstancesByHostedZoneResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<ListTrafficPolicyInstancesByHostedZoneResponse>;
 export interface ListTrafficPolicyInstancesByPolicyRequest {
   TrafficPolicyId: string;
   TrafficPolicyVersion: number;
@@ -2308,10 +1699,6 @@ export interface ListTrafficPolicyInstancesByPolicyRequest {
   TrafficPolicyInstanceTypeMarker?: RRType;
   MaxItems?: number;
 }
-const ListTrafficPolicyInstancesByPolicyRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<ListTrafficPolicyInstancesByPolicyRequest>;
 export interface ListTrafficPolicyInstancesByPolicyResponse {
   TrafficPolicyInstances: TrafficPolicyInstance[];
   HostedZoneIdMarker?: string;
@@ -2320,50 +1707,29 @@ export interface ListTrafficPolicyInstancesByPolicyResponse {
   IsTruncated: boolean;
   MaxItems: number;
 }
-const ListTrafficPolicyInstancesByPolicyResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<ListTrafficPolicyInstancesByPolicyResponse>;
 export type TrafficPolicyVersionMarker = string;
 export interface ListTrafficPolicyVersionsRequest {
   Id: string;
   TrafficPolicyVersionMarker?: string;
   MaxItems?: number;
 }
-const ListTrafficPolicyVersionsRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<ListTrafficPolicyVersionsRequest>;
 export type TrafficPolicies = TrafficPolicy[];
-const TrafficPolicies = /*@__PURE__*/ __L.at(__c24, 6);
 export interface ListTrafficPolicyVersionsResponse {
   TrafficPolicies: TrafficPolicy[];
   IsTruncated: boolean;
   TrafficPolicyVersionMarker: string;
   MaxItems: number;
 }
-const ListTrafficPolicyVersionsResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<ListTrafficPolicyVersionsResponse>;
 export interface ListVPCAssociationAuthorizationsRequest {
   HostedZoneId: string;
   NextToken?: string;
   MaxResults?: number;
 }
-const ListVPCAssociationAuthorizationsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<ListVPCAssociationAuthorizationsRequest>;
 export interface ListVPCAssociationAuthorizationsResponse {
   HostedZoneId: string;
   NextToken?: string;
   VPCs?: VPC[];
 }
-const ListVPCAssociationAuthorizationsResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<ListVPCAssociationAuthorizationsResponse>;
 export type SubnetMask = string;
 export interface TestDNSAnswerRequest {
   HostedZoneId: string;
@@ -2373,14 +1739,9 @@ export interface TestDNSAnswerRequest {
   EDNS0ClientSubnetIP?: string;
   EDNS0ClientSubnetMask?: string;
 }
-const TestDNSAnswerRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<TestDNSAnswerRequest>;
 export type Nameserver = string;
 export type RecordDataEntry = string;
 export type RecordData = string[];
-const RecordData = /*@__PURE__*/ __L.at(__c25, 3);
 export type DNSRCode = string;
 export type TransportProtocol = string;
 export interface TestDNSAnswerResponse {
@@ -2391,20 +1752,13 @@ export interface TestDNSAnswerResponse {
   ResponseCode: string;
   Protocol: string;
 }
-const TestDNSAnswerResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  4,
-) as any as S.Schema<TestDNSAnswerResponse>;
 export type ResettableElementName =
   | "FullyQualifiedDomainName"
   | "Regions"
   | "ResourcePath"
   | "ChildHealthChecks"
   | (string & {});
-const ResettableElementName = S.String;
-
 export type ResettableElementNameList = ResettableElementName[];
-const ResettableElementNameList = /*@__PURE__*/ __L.at(__c25, 5);
 export interface UpdateHealthCheckRequest {
   HealthCheckId: string;
   HealthCheckVersion?: number;
@@ -2424,82 +1778,41 @@ export interface UpdateHealthCheckRequest {
   InsufficientDataHealthStatus?: InsufficientDataHealthStatus;
   ResetElements?: ResettableElementName[];
 }
-const UpdateHealthCheckRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  6,
-) as any as S.Schema<UpdateHealthCheckRequest>;
 export interface UpdateHealthCheckResponse {
   HealthCheck: HealthCheck;
 }
-const UpdateHealthCheckResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<UpdateHealthCheckResponse>;
 export interface UpdateHostedZoneCommentRequest {
   Id: string;
   Comment?: string;
 }
-const UpdateHostedZoneCommentRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  0,
-) as any as S.Schema<UpdateHostedZoneCommentRequest>;
 export interface UpdateHostedZoneCommentResponse {
   HostedZone: HostedZone;
 }
-const UpdateHostedZoneCommentResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<UpdateHostedZoneCommentResponse>;
 export type AcceleratedRecoveryEnabled = boolean;
 export interface UpdateHostedZoneFeaturesRequest {
   HostedZoneId: string;
   EnableAcceleratedRecovery?: boolean;
 }
-const UpdateHostedZoneFeaturesRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<UpdateHostedZoneFeaturesRequest>;
 export interface UpdateHostedZoneFeaturesResponse {}
-const UpdateHostedZoneFeaturesResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  3,
-) as any as S.Schema<UpdateHostedZoneFeaturesResponse>;
 export interface UpdateTrafficPolicyCommentRequest {
   Id: string;
   Version: number;
   Comment: string;
 }
-const UpdateTrafficPolicyCommentRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  4,
-) as any as S.Schema<UpdateTrafficPolicyCommentRequest>;
 export interface UpdateTrafficPolicyCommentResponse {
   TrafficPolicy: TrafficPolicy;
 }
-const UpdateTrafficPolicyCommentResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<UpdateTrafficPolicyCommentResponse>;
 export interface UpdateTrafficPolicyInstanceRequest {
   Id: string;
   TTL: number;
   TrafficPolicyId: string;
   TrafficPolicyVersion: number;
 }
-const UpdateTrafficPolicyInstanceRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<UpdateTrafficPolicyInstanceRequest>;
 export interface UpdateTrafficPolicyInstanceResponse {
   TrafficPolicyInstance: TrafficPolicyInstance;
 }
-const UpdateTrafficPolicyInstanceResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  7,
-) as any as S.Schema<UpdateTrafficPolicyInstanceResponse>;
 export type ErrorMessage = string;
 export type ErrorMessages = string[];
-const ErrorMessages = /*@__PURE__*/ __L.at(__c27, 0);
 export type ActivateKeySigningKeyError =
   | ConcurrentModification
   | InvalidInput
@@ -2518,8 +1831,8 @@ export const activateKeySigningKey: API.OperationMethod<
   ActivateKeySigningKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ActivateKeySigningKeyRequest,
-  output: ActivateKeySigningKeyResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<ActivateKeySigningKeyRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<ActivateKeySigningKeyResponse>,
   errors: [
     ConcurrentModification,
     InvalidInput,
@@ -2576,8 +1889,8 @@ export const associateVPCWithHostedZone: API.OperationMethod<
   AssociateVPCWithHostedZoneError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AssociateVPCWithHostedZoneRequest,
-  output: AssociateVPCWithHostedZoneResponse,
+  input: __S(4, __c0, 4) as any as S.Schema<AssociateVPCWithHostedZoneRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<AssociateVPCWithHostedZoneResponse>,
   errors: [
     ConflictingDomainExists,
     InvalidInput,
@@ -2629,8 +1942,8 @@ export const changeCidrCollection: API.OperationMethod<
   ChangeCidrCollectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ChangeCidrCollectionRequest,
-  output: ChangeCidrCollectionResponse,
+  input: __S(9, __c1, 1) as any as S.Schema<ChangeCidrCollectionRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<ChangeCidrCollectionResponse>,
   errors: [
     CidrBlockInUseException,
     CidrCollectionVersionMismatchException,
@@ -2743,8 +2056,8 @@ export const changeResourceRecordSets: API.OperationMethod<
   ChangeResourceRecordSetsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ChangeResourceRecordSetsRequest,
-  output: ChangeResourceRecordSetsResponse,
+  input: __S(22, __c2, 6) as any as S.Schema<ChangeResourceRecordSetsRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<ChangeResourceRecordSetsResponse>,
   errors: [
     InvalidChangeBatch,
     InvalidInput,
@@ -2776,8 +2089,8 @@ export const changeTagsForResource: API.OperationMethod<
   ChangeTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ChangeTagsForResourceRequest,
-  output: ChangeTagsForResourceResponse,
+  input: __S(27, __c3, 3) as any as S.Schema<ChangeTagsForResourceRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<ChangeTagsForResourceResponse>,
   errors: [
     InvalidInput,
     NoSuchHealthCheck,
@@ -2805,8 +2118,8 @@ export const createCidrCollection: API.OperationMethod<
   CreateCidrCollectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCidrCollectionRequest,
-  output: CreateCidrCollectionResponse,
+  input: __S(29, __c3, 5) as any as S.Schema<CreateCidrCollectionRequest>,
+  output: __S(31, __c3, 7) as any as S.Schema<CreateCidrCollectionResponse>,
   errors: [
     CidrCollectionAlreadyExistsException,
     ConcurrentModification,
@@ -2862,8 +2175,8 @@ export const createHealthCheck: API.OperationMethod<
   CreateHealthCheckError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateHealthCheckRequest,
-  output: CreateHealthCheckResponse,
+  input: __S(36, __c4, 4) as any as S.Schema<CreateHealthCheckRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<CreateHealthCheckResponse>,
   errors: [HealthCheckAlreadyExists, InvalidInput, TooManyHealthChecks],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2944,8 +2257,8 @@ export const createHostedZone: API.OperationMethod<
   CreateHostedZoneError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateHostedZoneRequest,
-  output: CreateHostedZoneResponse,
+  input: __S(44, __c5, 4) as any as S.Schema<CreateHostedZoneRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<CreateHostedZoneResponse>,
   errors: [
     ConflictingDomainExists,
     DelegationSetNotAvailable,
@@ -2984,8 +2297,8 @@ export const createKeySigningKey: API.OperationMethod<
   CreateKeySigningKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateKeySigningKeyRequest,
-  output: CreateKeySigningKeyResponse,
+  input: __S(51, __c6, 3) as any as S.Schema<CreateKeySigningKeyRequest>,
+  output: __S(53, __c6, 5) as any as S.Schema<CreateKeySigningKeyResponse>,
   errors: [
     ConcurrentModification,
     InvalidArgument,
@@ -3160,8 +2473,8 @@ export const createQueryLoggingConfig: API.OperationMethod<
   CreateQueryLoggingConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateQueryLoggingConfigRequest,
-  output: CreateQueryLoggingConfigResponse,
+  input: __S(54, __c6, 6) as any as S.Schema<CreateQueryLoggingConfigRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<CreateQueryLoggingConfigResponse>,
   errors: [
     ConcurrentModification,
     InsufficientCloudWatchLogsResourcePolicy,
@@ -3240,8 +2553,8 @@ export const createReusableDelegationSet: API.OperationMethod<
   CreateReusableDelegationSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateReusableDelegationSetRequest,
-  output: CreateReusableDelegationSetResponse,
+  input: __S(57, __c7, 1) as any as S.Schema<CreateReusableDelegationSetRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<CreateReusableDelegationSetResponse>,
   errors: [
     DelegationSetAlreadyCreated,
     DelegationSetAlreadyReusable,
@@ -3273,8 +2586,8 @@ export const createTrafficPolicy: API.OperationMethod<
   CreateTrafficPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTrafficPolicyRequest,
-  output: CreateTrafficPolicyResponse,
+  input: __S(59, __c7, 3) as any as S.Schema<CreateTrafficPolicyRequest>,
+  output: __S(61, __c7, 5) as any as S.Schema<CreateTrafficPolicyResponse>,
   errors: [
     InvalidInput,
     InvalidTrafficPolicyDocument,
@@ -3314,8 +2627,8 @@ export const createTrafficPolicyInstance: API.OperationMethod<
   CreateTrafficPolicyInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTrafficPolicyInstanceRequest,
-  output: CreateTrafficPolicyInstanceResponse,
+  input: __S(62, __c7, 6) as any as S.Schema<CreateTrafficPolicyInstanceRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<CreateTrafficPolicyInstanceResponse>,
   errors: [
     InvalidInput,
     NoSuchHostedZone,
@@ -3350,8 +2663,8 @@ export const createTrafficPolicyVersion: API.OperationMethod<
   CreateTrafficPolicyVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTrafficPolicyVersionRequest,
-  output: CreateTrafficPolicyVersionResponse,
+  input: __S(65, __c8, 1) as any as S.Schema<CreateTrafficPolicyVersionRequest>,
+  output: __S(66, __c8, 2) as any as S.Schema<CreateTrafficPolicyVersionResponse>,
   errors: [
     ConcurrentModification,
     InvalidInput,
@@ -3389,8 +2702,8 @@ export const createVPCAssociationAuthorization: API.OperationMethod<
   CreateVPCAssociationAuthorizationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateVPCAssociationAuthorizationRequest,
-  output: CreateVPCAssociationAuthorizationResponse,
+  input: __S(67, __c8, 3) as any as S.Schema<CreateVPCAssociationAuthorizationRequest>,
+  output: __S(68, __c8, 4) as any as S.Schema<CreateVPCAssociationAuthorizationResponse>,
   errors: [
     ConcurrentModification,
     InvalidInput,
@@ -3422,8 +2735,8 @@ export const deactivateKeySigningKey: API.OperationMethod<
   DeactivateKeySigningKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeactivateKeySigningKeyRequest,
-  output: DeactivateKeySigningKeyResponse,
+  input: __S(69, __c8, 5) as any as S.Schema<DeactivateKeySigningKeyRequest>,
+  output: __S(70, __c8, 6) as any as S.Schema<DeactivateKeySigningKeyResponse>,
   errors: [
     ConcurrentModification,
     InvalidInput,
@@ -3454,8 +2767,8 @@ export const deleteCidrCollection: API.OperationMethod<
   DeleteCidrCollectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCidrCollectionRequest,
-  output: DeleteCidrCollectionResponse,
+  input: __S(71, __c8, 7) as any as S.Schema<DeleteCidrCollectionRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<DeleteCidrCollectionResponse>,
   errors: [
     CidrCollectionInUseException,
     ConcurrentModification,
@@ -3495,8 +2808,8 @@ export const deleteHealthCheck: API.OperationMethod<
   DeleteHealthCheckError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteHealthCheckRequest,
-  output: DeleteHealthCheckResponse,
+  input: __S(73, __c9, 1) as any as S.Schema<DeleteHealthCheckRequest>,
+  output: __S(74, __c9, 2) as any as S.Schema<DeleteHealthCheckResponse>,
   errors: [HealthCheckInUse, InvalidInput, NoSuchHealthCheck],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3560,8 +2873,8 @@ export const deleteHostedZone: API.OperationMethod<
   DeleteHostedZoneError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteHostedZoneRequest,
-  output: DeleteHostedZoneResponse,
+  input: __S(75, __c9, 3) as any as S.Schema<DeleteHostedZoneRequest>,
+  output: __S(76, __c9, 4) as any as S.Schema<DeleteHostedZoneResponse>,
   errors: [
     HostedZoneNotEmpty,
     InvalidDomainName,
@@ -3598,8 +2911,8 @@ export const deleteKeySigningKey: API.OperationMethod<
   DeleteKeySigningKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteKeySigningKeyRequest,
-  output: DeleteKeySigningKeyResponse,
+  input: __S(77, __c9, 5) as any as S.Schema<DeleteKeySigningKeyRequest>,
+  output: __S(78, __c9, 6) as any as S.Schema<DeleteKeySigningKeyResponse>,
   errors: [
     ConcurrentModification,
     InvalidInput,
@@ -3631,8 +2944,8 @@ export const deleteQueryLoggingConfig: API.OperationMethod<
   DeleteQueryLoggingConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteQueryLoggingConfigRequest,
-  output: DeleteQueryLoggingConfigResponse,
+  input: __S(79, __c9, 7) as any as S.Schema<DeleteQueryLoggingConfigRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<DeleteQueryLoggingConfigResponse>,
   errors: [ConcurrentModification, InvalidInput, NoSuchQueryLoggingConfig],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3661,8 +2974,8 @@ export const deleteReusableDelegationSet: API.OperationMethod<
   DeleteReusableDelegationSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteReusableDelegationSetRequest,
-  output: DeleteReusableDelegationSetResponse,
+  input: __S(81, __c10, 1) as any as S.Schema<DeleteReusableDelegationSetRequest>,
+  output: __S(82, __c10, 2) as any as S.Schema<DeleteReusableDelegationSetResponse>,
   errors: [DelegationSetInUse, DelegationSetNotReusable, InvalidInput, NoSuchDelegationSet],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3695,8 +3008,8 @@ export const deleteTrafficPolicy: API.OperationMethod<
   DeleteTrafficPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTrafficPolicyRequest,
-  output: DeleteTrafficPolicyResponse,
+  input: __S(83, __c10, 3) as any as S.Schema<DeleteTrafficPolicyRequest>,
+  output: __S(84, __c10, 4) as any as S.Schema<DeleteTrafficPolicyResponse>,
   errors: [ConcurrentModification, InvalidInput, NoSuchTrafficPolicy, TrafficPolicyInUse],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3721,8 +3034,8 @@ export const deleteTrafficPolicyInstance: API.OperationMethod<
   DeleteTrafficPolicyInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTrafficPolicyInstanceRequest,
-  output: DeleteTrafficPolicyInstanceResponse,
+  input: __S(85, __c10, 5) as any as S.Schema<DeleteTrafficPolicyInstanceRequest>,
+  output: __S(86, __c10, 6) as any as S.Schema<DeleteTrafficPolicyInstanceResponse>,
   errors: [InvalidInput, NoSuchTrafficPolicyInstance, PriorRequestNotComplete],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3755,8 +3068,8 @@ export const deleteVPCAssociationAuthorization: API.OperationMethod<
   DeleteVPCAssociationAuthorizationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteVPCAssociationAuthorizationRequest,
-  output: DeleteVPCAssociationAuthorizationResponse,
+  input: __S(87, __c10, 7) as any as S.Schema<DeleteVPCAssociationAuthorizationRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<DeleteVPCAssociationAuthorizationResponse>,
   errors: [
     ConcurrentModification,
     InvalidInput,
@@ -3789,8 +3102,8 @@ export const disableHostedZoneDNSSEC: API.OperationMethod<
   DisableHostedZoneDNSSECError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisableHostedZoneDNSSECRequest,
-  output: DisableHostedZoneDNSSECResponse,
+  input: __S(89, __c11, 1) as any as S.Schema<DisableHostedZoneDNSSECRequest>,
+  output: __S(90, __c11, 2) as any as S.Schema<DisableHostedZoneDNSSECResponse>,
   errors: [
     ConcurrentModification,
     DNSSECNotFound,
@@ -3858,8 +3171,8 @@ export const disassociateVPCFromHostedZone: API.OperationMethod<
   DisassociateVPCFromHostedZoneError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisassociateVPCFromHostedZoneRequest,
-  output: DisassociateVPCFromHostedZoneResponse,
+  input: __S(91, __c11, 3) as any as S.Schema<DisassociateVPCFromHostedZoneRequest>,
+  output: __S(92, __c11, 4) as any as S.Schema<DisassociateVPCFromHostedZoneResponse>,
   errors: [
     InvalidInput,
     InvalidVPCId,
@@ -3892,8 +3205,8 @@ export const enableHostedZoneDNSSEC: API.OperationMethod<
   EnableHostedZoneDNSSECError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnableHostedZoneDNSSECRequest,
-  output: EnableHostedZoneDNSSECResponse,
+  input: __S(93, __c11, 5) as any as S.Schema<EnableHostedZoneDNSSECRequest>,
+  output: __S(94, __c11, 6) as any as S.Schema<EnableHostedZoneDNSSECResponse>,
   errors: [
     ConcurrentModification,
     DNSSECNotFound,
@@ -3928,8 +3241,8 @@ export const getAccountLimit: API.OperationMethod<
   GetAccountLimitError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountLimitRequest,
-  output: GetAccountLimitResponse,
+  input: __S(95, __c11, 7) as any as S.Schema<GetAccountLimitRequest>,
+  output: __S(97, __c12, 1) as any as S.Schema<GetAccountLimitResponse>,
   errors: [InvalidInput],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3954,8 +3267,8 @@ export const getChange: API.OperationMethod<
   GetChangeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetChangeRequest,
-  output: GetChangeResponse,
+  input: __S(98, __c12, 2) as any as S.Schema<GetChangeRequest>,
+  output: __S(99, __c12, 3) as any as S.Schema<GetChangeResponse>,
   errors: [InvalidInput, NoSuchChange],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3979,8 +3292,8 @@ export const getCheckerIpRanges: API.OperationMethod<
   GetCheckerIpRangesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCheckerIpRangesRequest,
-  output: GetCheckerIpRangesResponse,
+  input: __S(100, __c12, 4) as any as S.Schema<GetCheckerIpRangesRequest>,
+  output: __S(102, __c12, 6) as any as S.Schema<GetCheckerIpRangesResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3998,8 +3311,8 @@ export const getDNSSEC: API.OperationMethod<
   GetDNSSECError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDNSSECRequest,
-  output: GetDNSSECResponse,
+  input: __S(103, __c12, 7) as any as S.Schema<GetDNSSECRequest>,
+  output: __S(106, __c13, 2) as any as S.Schema<GetDNSSECResponse>,
   errors: [InvalidArgument, InvalidInput, NoSuchHostedZone],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4039,8 +3352,8 @@ export const getGeoLocation: API.OperationMethod<
   GetGeoLocationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGeoLocationRequest,
-  output: GetGeoLocationResponse,
+  input: __S(107, __c13, 3) as any as S.Schema<GetGeoLocationRequest>,
+  output: __S(109, __c13, 5) as any as S.Schema<GetGeoLocationResponse>,
   errors: [InvalidInput, NoSuchGeoLocation],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4061,8 +3374,8 @@ export const getHealthCheck: API.OperationMethod<
   GetHealthCheckError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHealthCheckRequest,
-  output: GetHealthCheckResponse,
+  input: __S(110, __c13, 6) as any as S.Schema<GetHealthCheckRequest>,
+  output: __S(111, __c13, 7) as any as S.Schema<GetHealthCheckResponse>,
   errors: [IncompatibleVersion, InvalidInput, NoSuchHealthCheck],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4079,8 +3392,8 @@ export const getHealthCheckCount: API.OperationMethod<
   GetHealthCheckCountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHealthCheckCountRequest,
-  output: GetHealthCheckCountResponse,
+  input: __S(112, __c14, 0) as any as S.Schema<GetHealthCheckCountRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<GetHealthCheckCountResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4097,8 +3410,8 @@ export const getHealthCheckLastFailureReason: API.OperationMethod<
   GetHealthCheckLastFailureReasonError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHealthCheckLastFailureReasonRequest,
-  output: GetHealthCheckLastFailureReasonResponse,
+  input: __S(114, __c14, 2) as any as S.Schema<GetHealthCheckLastFailureReasonRequest>,
+  output: __S(118, __c14, 6) as any as S.Schema<GetHealthCheckLastFailureReasonResponse>,
   errors: [InvalidInput, NoSuchHealthCheck],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4119,8 +3432,8 @@ export const getHealthCheckStatus: API.OperationMethod<
   GetHealthCheckStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHealthCheckStatusRequest,
-  output: GetHealthCheckStatusResponse,
+  input: __S(119, __c14, 7) as any as S.Schema<GetHealthCheckStatusRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<GetHealthCheckStatusResponse>,
   errors: [InvalidInput, NoSuchHealthCheck],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4141,8 +3454,8 @@ export const getHostedZone: API.OperationMethod<
   GetHostedZoneError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostedZoneRequest,
-  output: GetHostedZoneResponse,
+  input: __S(121, __c15, 1) as any as S.Schema<GetHostedZoneRequest>,
+  output: __S(123, __c15, 3) as any as S.Schema<GetHostedZoneResponse>,
   errors: [InvalidInput, NoSuchHostedZone],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4159,8 +3472,8 @@ export const getHostedZoneCount: API.OperationMethod<
   GetHostedZoneCountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostedZoneCountRequest,
-  output: GetHostedZoneCountResponse,
+  input: __S(124, __c15, 4) as any as S.Schema<GetHostedZoneCountRequest>,
+  output: __S(125, __c15, 5) as any as S.Schema<GetHostedZoneCountResponse>,
   errors: [InvalidInput],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4186,8 +3499,8 @@ export const getHostedZoneLimit: API.OperationMethod<
   GetHostedZoneLimitError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostedZoneLimitRequest,
-  output: GetHostedZoneLimitResponse,
+  input: __S(126, __c15, 6) as any as S.Schema<GetHostedZoneLimitRequest>,
+  output: __S(128, __c16, 0) as any as S.Schema<GetHostedZoneLimitResponse>,
   errors: [HostedZoneNotPrivate, InvalidInput, NoSuchHostedZone],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4207,8 +3520,8 @@ export const getQueryLoggingConfig: API.OperationMethod<
   GetQueryLoggingConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetQueryLoggingConfigRequest,
-  output: GetQueryLoggingConfigResponse,
+  input: __S(129, __c16, 1) as any as S.Schema<GetQueryLoggingConfigRequest>,
+  output: __S(130, __c16, 2) as any as S.Schema<GetQueryLoggingConfigResponse>,
   errors: [InvalidInput, NoSuchQueryLoggingConfig],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4230,8 +3543,8 @@ export const getReusableDelegationSet: API.OperationMethod<
   GetReusableDelegationSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetReusableDelegationSetRequest,
-  output: GetReusableDelegationSetResponse,
+  input: __S(131, __c16, 3) as any as S.Schema<GetReusableDelegationSetRequest>,
+  output: __S(132, __c16, 4) as any as S.Schema<GetReusableDelegationSetResponse>,
   errors: [DelegationSetNotReusable, InvalidInput, NoSuchDelegationSet],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4253,8 +3566,8 @@ export const getReusableDelegationSetLimit: API.OperationMethod<
   GetReusableDelegationSetLimitError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetReusableDelegationSetLimitRequest,
-  output: GetReusableDelegationSetLimitResponse,
+  input: __S(133, __c16, 5) as any as S.Schema<GetReusableDelegationSetLimitRequest>,
+  output: __S(135, __c16, 7) as any as S.Schema<GetReusableDelegationSetLimitResponse>,
   errors: [InvalidInput, NoSuchDelegationSet],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4274,8 +3587,8 @@ export const getTrafficPolicy: API.OperationMethod<
   GetTrafficPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTrafficPolicyRequest,
-  output: GetTrafficPolicyResponse,
+  input: __S(136, __c17, 0) as any as S.Schema<GetTrafficPolicyRequest>,
+  output: __S(137, __c17, 1) as any as S.Schema<GetTrafficPolicyResponse>,
   errors: [InvalidInput, NoSuchTrafficPolicy],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4303,8 +3616,8 @@ export const getTrafficPolicyInstance: API.OperationMethod<
   GetTrafficPolicyInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTrafficPolicyInstanceRequest,
-  output: GetTrafficPolicyInstanceResponse,
+  input: __S(138, __c17, 2) as any as S.Schema<GetTrafficPolicyInstanceRequest>,
+  output: __S(139, __c17, 3) as any as S.Schema<GetTrafficPolicyInstanceResponse>,
   errors: [InvalidInput, NoSuchTrafficPolicyInstance],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4322,8 +3635,8 @@ export const getTrafficPolicyInstanceCount: API.OperationMethod<
   GetTrafficPolicyInstanceCountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTrafficPolicyInstanceCountRequest,
-  output: GetTrafficPolicyInstanceCountResponse,
+  input: __S(140, __c17, 4) as any as S.Schema<GetTrafficPolicyInstanceCountRequest>,
+  output: __S(141, __c17, 5) as any as S.Schema<GetTrafficPolicyInstanceCountResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4345,8 +3658,8 @@ export const listCidrBlocks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CidrBlockSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCidrBlocksRequest,
-  output: ListCidrBlocksResponse,
+  input: __S(142, __c17, 6) as any as S.Schema<ListCidrBlocksRequest>,
+  output: __S(145, __c18, 1) as any as S.Schema<ListCidrBlocksResponse>,
   errors: [InvalidInput, NoSuchCidrCollectionException, NoSuchCidrLocationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4371,8 +3684,8 @@ export const listCidrCollections: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CollectionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCidrCollectionsRequest,
-  output: ListCidrCollectionsResponse,
+  input: __S(146, __c18, 2) as any as S.Schema<ListCidrCollectionsRequest>,
+  output: __S(149, __c18, 5) as any as S.Schema<ListCidrCollectionsResponse>,
   errors: [InvalidInput],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4397,8 +3710,8 @@ export const listCidrLocations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   LocationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCidrLocationsRequest,
-  output: ListCidrLocationsResponse,
+  input: __S(150, __c18, 6) as any as S.Schema<ListCidrLocationsRequest>,
+  output: __S(153, __c19, 1) as any as S.Schema<ListCidrLocationsResponse>,
   errors: [InvalidInput, NoSuchCidrCollectionException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4432,8 +3745,8 @@ export const listGeoLocations: API.OperationMethod<
   ListGeoLocationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListGeoLocationsRequest,
-  output: ListGeoLocationsResponse,
+  input: __S(154, __c19, 2) as any as S.Schema<ListGeoLocationsRequest>,
+  output: __S(156, __c19, 4) as any as S.Schema<ListGeoLocationsResponse>,
   errors: [InvalidInput],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4451,8 +3764,8 @@ export const listHealthChecks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   HealthCheck
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListHealthChecksRequest,
-  output: ListHealthChecksResponse,
+  input: __S(157, __c19, 5) as any as S.Schema<ListHealthChecksRequest>,
+  output: __S(159, __c19, 7) as any as S.Schema<ListHealthChecksResponse>,
   errors: [IncompatibleVersion, InvalidInput],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4486,8 +3799,8 @@ export const listHostedZones: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   HostedZone
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListHostedZonesRequest,
-  output: ListHostedZonesResponse,
+  input: __S(160, __c20, 0) as any as S.Schema<ListHostedZonesRequest>,
+  output: __S(162, __c20, 2) as any as S.Schema<ListHostedZonesResponse>,
   errors: [DelegationSetNotReusable, InvalidInput, NoSuchDelegationSet],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4562,8 +3875,8 @@ export const listHostedZonesByName: API.OperationMethod<
   ListHostedZonesByNameError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostedZonesByNameRequest,
-  output: ListHostedZonesByNameResponse,
+  input: __S(163, __c20, 3) as any as S.Schema<ListHostedZonesByNameRequest>,
+  output: __S(164, __c20, 4) as any as S.Schema<ListHostedZonesByNameResponse>,
   errors: [InvalidDomainName, InvalidInput],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4611,8 +3924,8 @@ export const listHostedZonesByVPC: API.OperationMethod<
   ListHostedZonesByVPCError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostedZonesByVPCRequest,
-  output: ListHostedZonesByVPCResponse,
+  input: __S(165, __c20, 5) as any as S.Schema<ListHostedZonesByVPCRequest>,
+  output: __S(169, __c21, 1) as any as S.Schema<ListHostedZonesByVPCResponse>,
   errors: [InvalidInput, InvalidPaginationToken],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4640,8 +3953,8 @@ export const listQueryLoggingConfigs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   QueryLoggingConfig
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListQueryLoggingConfigsRequest,
-  output: ListQueryLoggingConfigsResponse,
+  input: __S(170, __c21, 2) as any as S.Schema<ListQueryLoggingConfigsRequest>,
+  output: __S(172, __c21, 4) as any as S.Schema<ListQueryLoggingConfigsResponse>,
   errors: [InvalidInput, InvalidPaginationToken, NoSuchHostedZone],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4733,8 +4046,8 @@ export const listResourceRecordSets: API.OperationMethod<
   ListResourceRecordSetsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListResourceRecordSetsRequest,
-  output: ListResourceRecordSetsResponse,
+  input: __S(173, __c21, 5) as any as S.Schema<ListResourceRecordSetsRequest>,
+  output: __S(175, __c21, 7) as any as S.Schema<ListResourceRecordSetsResponse>,
   errors: [InvalidInput, NoSuchHostedZone],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4752,8 +4065,8 @@ export const listReusableDelegationSets: API.OperationMethod<
   ListReusableDelegationSetsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListReusableDelegationSetsRequest,
-  output: ListReusableDelegationSetsResponse,
+  input: __S(176, __c22, 0) as any as S.Schema<ListReusableDelegationSetsRequest>,
+  output: __S(178, __c22, 2) as any as S.Schema<ListReusableDelegationSetsResponse>,
   errors: [InvalidInput],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4779,8 +4092,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
+  input: __S(179, __c22, 3) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(181, __c22, 5) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     InvalidInput,
     NoSuchHealthCheck,
@@ -4812,8 +4125,8 @@ export const listTagsForResources: API.OperationMethod<
   ListTagsForResourcesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourcesRequest,
-  output: ListTagsForResourcesResponse,
+  input: __S(183, __c22, 7) as any as S.Schema<ListTagsForResourcesRequest>,
+  output: __S(185, __c23, 1) as any as S.Schema<ListTagsForResourcesResponse>,
   errors: [
     InvalidInput,
     NoSuchHealthCheck,
@@ -4841,8 +4154,8 @@ export const listTrafficPolicies: API.OperationMethod<
   ListTrafficPoliciesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTrafficPoliciesRequest,
-  output: ListTrafficPoliciesResponse,
+  input: __S(186, __c23, 2) as any as S.Schema<ListTrafficPoliciesRequest>,
+  output: __S(189, __c23, 5) as any as S.Schema<ListTrafficPoliciesResponse>,
   errors: [InvalidInput],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4872,8 +4185,8 @@ export const listTrafficPolicyInstances: API.OperationMethod<
   ListTrafficPolicyInstancesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTrafficPolicyInstancesRequest,
-  output: ListTrafficPolicyInstancesResponse,
+  input: __S(190, __c23, 6) as any as S.Schema<ListTrafficPolicyInstancesRequest>,
+  output: __S(192, __c24, 0) as any as S.Schema<ListTrafficPolicyInstancesResponse>,
   errors: [InvalidInput, NoSuchTrafficPolicyInstance],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4905,8 +4218,8 @@ export const listTrafficPolicyInstancesByHostedZone: API.OperationMethod<
   ListTrafficPolicyInstancesByHostedZoneError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTrafficPolicyInstancesByHostedZoneRequest,
-  output: ListTrafficPolicyInstancesByHostedZoneResponse,
+  input: __S(193, __c24, 1) as any as S.Schema<ListTrafficPolicyInstancesByHostedZoneRequest>,
+  output: __S(194, __c24, 2) as any as S.Schema<ListTrafficPolicyInstancesByHostedZoneResponse>,
   errors: [InvalidInput, NoSuchHostedZone, NoSuchTrafficPolicyInstance],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4938,8 +4251,8 @@ export const listTrafficPolicyInstancesByPolicy: API.OperationMethod<
   ListTrafficPolicyInstancesByPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTrafficPolicyInstancesByPolicyRequest,
-  output: ListTrafficPolicyInstancesByPolicyResponse,
+  input: __S(195, __c24, 3) as any as S.Schema<ListTrafficPolicyInstancesByPolicyRequest>,
+  output: __S(196, __c24, 4) as any as S.Schema<ListTrafficPolicyInstancesByPolicyResponse>,
   errors: [InvalidInput, NoSuchTrafficPolicy, NoSuchTrafficPolicyInstance],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4959,8 +4272,8 @@ export const listTrafficPolicyVersions: API.OperationMethod<
   ListTrafficPolicyVersionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTrafficPolicyVersionsRequest,
-  output: ListTrafficPolicyVersionsResponse,
+  input: __S(197, __c24, 5) as any as S.Schema<ListTrafficPolicyVersionsRequest>,
+  output: __S(199, __c24, 7) as any as S.Schema<ListTrafficPolicyVersionsResponse>,
   errors: [InvalidInput, NoSuchTrafficPolicy],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4986,8 +4299,8 @@ export const listVPCAssociationAuthorizations: API.OperationMethod<
   ListVPCAssociationAuthorizationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVPCAssociationAuthorizationsRequest,
-  output: ListVPCAssociationAuthorizationsResponse,
+  input: __S(200, __c25, 0) as any as S.Schema<ListVPCAssociationAuthorizationsRequest>,
+  output: __S(201, __c25, 1) as any as S.Schema<ListVPCAssociationAuthorizationsResponse>,
   errors: [InvalidInput, InvalidPaginationToken, NoSuchHostedZone],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5013,8 +4326,8 @@ export const testDNSAnswer: API.OperationMethod<
   TestDNSAnswerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestDNSAnswerRequest,
-  output: TestDNSAnswerResponse,
+  input: __S(202, __c25, 2) as any as S.Schema<TestDNSAnswerRequest>,
+  output: __S(204, __c25, 4) as any as S.Schema<TestDNSAnswerResponse>,
   errors: [InvalidInput, NoSuchHostedZone],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5039,8 +4352,8 @@ export const updateHealthCheck: API.OperationMethod<
   UpdateHealthCheckError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateHealthCheckRequest,
-  output: UpdateHealthCheckResponse,
+  input: __S(206, __c25, 6) as any as S.Schema<UpdateHealthCheckRequest>,
+  output: __S(207, __c25, 7) as any as S.Schema<UpdateHealthCheckResponse>,
   errors: [HealthCheckVersionMismatch, InvalidInput, NoSuchHealthCheck],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5061,8 +4374,8 @@ export const updateHostedZoneComment: API.OperationMethod<
   UpdateHostedZoneCommentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateHostedZoneCommentRequest,
-  output: UpdateHostedZoneCommentResponse,
+  input: __S(208, __c26, 0) as any as S.Schema<UpdateHostedZoneCommentRequest>,
+  output: __S(209, __c26, 1) as any as S.Schema<UpdateHostedZoneCommentResponse>,
   errors: [InvalidInput, NoSuchHostedZone, PriorRequestNotComplete],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5086,8 +4399,8 @@ export const updateHostedZoneFeatures: API.OperationMethod<
   UpdateHostedZoneFeaturesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateHostedZoneFeaturesRequest,
-  output: UpdateHostedZoneFeaturesResponse,
+  input: __S(210, __c26, 2) as any as S.Schema<UpdateHostedZoneFeaturesRequest>,
+  output: __S(211, __c26, 3) as any as S.Schema<UpdateHostedZoneFeaturesResponse>,
   errors: [InvalidInput, LimitsExceeded, NoSuchHostedZone, PriorRequestNotComplete],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5108,8 +4421,8 @@ export const updateTrafficPolicyComment: API.OperationMethod<
   UpdateTrafficPolicyCommentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTrafficPolicyCommentRequest,
-  output: UpdateTrafficPolicyCommentResponse,
+  input: __S(212, __c26, 4) as any as S.Schema<UpdateTrafficPolicyCommentRequest>,
+  output: __S(213, __c26, 5) as any as S.Schema<UpdateTrafficPolicyCommentResponse>,
   errors: [ConcurrentModification, InvalidInput, NoSuchTrafficPolicy],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5154,8 +4467,8 @@ export const updateTrafficPolicyInstance: API.OperationMethod<
   UpdateTrafficPolicyInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTrafficPolicyInstanceRequest,
-  output: UpdateTrafficPolicyInstanceResponse,
+  input: __S(214, __c26, 6) as any as S.Schema<UpdateTrafficPolicyInstanceRequest>,
+  output: __S(215, __c26, 7) as any as S.Schema<UpdateTrafficPolicyInstanceResponse>,
   errors: [
     ConflictingTypes,
     InvalidInput,
@@ -5197,24 +4510,24 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Id: S.String,
-          Status: ChangeStatus,
+          Status: S.String,
           SubmittedAt: T.DateFromString,
           Comment: S.optional(S.String),
         }),
       ).annotate({ identifier: "ChangeInfo" });
     case 2:
-      return S.suspend(() => S.Struct({ ChangeInfo: ChangeInfo }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ ChangeInfo: __S(1, __c0, 1) }).pipe(ns)).annotate({
         identifier: "ActivateKeySigningKeyResponse",
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ VPCRegion: S.optional(VPCRegion), VPCId: S.optional(S.String) }),
+        S.Struct({ VPCRegion: S.optional(S.String), VPCId: S.optional(S.String) }),
       ).annotate({ identifier: "VPC" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")),
-          VPC: VPC,
+          VPC: __S(3, __c0, 3),
           Comment: S.optional(S.String),
         }).pipe(
           T.all(
@@ -5231,7 +4544,7 @@ function __c0(j: number): any {
         identifier: "AssociateVPCWithHostedZoneRequest",
       });
     case 5:
-      return S.suspend(() => S.Struct({ ChangeInfo: ChangeInfo }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ ChangeInfo: __S(1, __c0, 1) }).pipe(ns)).annotate({
         identifier: "AssociateVPCWithHostedZoneResponse",
       });
     case 6:
@@ -5240,8 +4553,8 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           LocationName: S.String,
-          Action: CidrCollectionChangeAction,
-          CidrList: CidrList,
+          Action: S.String,
+          CidrList: __S(6, __c0, 6),
         }),
       ).annotate({ identifier: "CidrCollectionChange" });
   }
@@ -5249,13 +4562,13 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(CidrCollectionChange);
+      return S.Array(__S(7, __c0, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           Id: S.String.pipe(T.HttpLabel("Id")),
           CollectionVersion: S.optional(S.Number),
-          Changes: CidrCollectionChanges,
+          Changes: __S(8, __c1, 0),
         }).pipe(
           T.all(
             ns,
@@ -5288,7 +4601,7 @@ function __c1(j: number): any {
       });
     case 5:
       return S.Array(
-        /*@__PURE__*/ ResourceRecord.pipe(/*@__PURE__*/ T.XmlName("ResourceRecord")).annotate({
+        /*@__PURE__*/ __S(12, __c1, 4).pipe(/*@__PURE__*/ T.XmlName("ResourceRecord")).annotate({
           identifier: "ResourceRecord",
         }),
       );
@@ -5313,7 +4626,7 @@ function __c2(j: number): any {
         S.Struct({
           AWSRegion: S.optional(S.String),
           LocalZoneGroup: S.optional(S.String),
-          Coordinates: S.optional(Coordinates),
+          Coordinates: S.optional(__S(16, __c2, 0)),
           Bias: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GeoProximityLocation" });
@@ -5321,41 +4634,41 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
-          Type: RRType,
+          Type: S.String,
           SetIdentifier: S.optional(S.String),
           Weight: S.optional(S.Number),
-          Region: S.optional(ResourceRecordSetRegion),
-          GeoLocation: S.optional(GeoLocation),
-          Failover: S.optional(ResourceRecordSetFailover),
+          Region: S.optional(S.String),
+          GeoLocation: S.optional(__S(11, __c1, 3)),
+          Failover: S.optional(S.String),
           MultiValueAnswer: S.optional(S.Boolean),
           TTL: S.optional(S.Number),
-          ResourceRecords: S.optional(ResourceRecords),
-          AliasTarget: S.optional(AliasTarget),
+          ResourceRecords: S.optional(__S(13, __c1, 5)),
+          AliasTarget: S.optional(__S(14, __c1, 6)),
           HealthCheckId: S.optional(S.String),
           TrafficPolicyInstanceId: S.optional(S.String),
-          CidrRoutingConfig: S.optional(CidrRoutingConfig),
-          GeoProximityLocation: S.optional(GeoProximityLocation),
+          CidrRoutingConfig: S.optional(__S(15, __c1, 7)),
+          GeoProximityLocation: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({ identifier: "ResourceRecordSet" });
     case 3:
       return S.suspend(() =>
-        S.Struct({ Action: ChangeAction, ResourceRecordSet: ResourceRecordSet }),
+        S.Struct({ Action: S.String, ResourceRecordSet: __S(18, __c2, 2) }),
       ).annotate({ identifier: "Change" });
     case 4:
       return S.Array(
-        /*@__PURE__*/ Change.pipe(/*@__PURE__*/ T.XmlName("Change")).annotate({
+        /*@__PURE__*/ __S(19, __c2, 3).pipe(/*@__PURE__*/ T.XmlName("Change")).annotate({
           identifier: "Change",
         }),
       );
     case 5:
       return S.suspend(() =>
-        S.Struct({ Comment: S.optional(S.String), Changes: Changes }),
+        S.Struct({ Comment: S.optional(S.String), Changes: __S(20, __c2, 4) }),
       ).annotate({ identifier: "ChangeBatch" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")),
-          ChangeBatch: ChangeBatch,
+          ChangeBatch: __S(21, __c2, 5),
         }).pipe(
           T.all(
             ns,
@@ -5371,7 +4684,7 @@ function __c2(j: number): any {
         identifier: "ChangeResourceRecordSetsRequest",
       });
     case 7:
-      return S.suspend(() => S.Struct({ ChangeInfo: ChangeInfo }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ ChangeInfo: __S(1, __c0, 1) }).pipe(ns)).annotate({
         identifier: "ChangeResourceRecordSetsResponse",
       });
   }
@@ -5384,17 +4697,19 @@ function __c3(j: number): any {
       ).annotate({ identifier: "Tag" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ Tag.pipe(/*@__PURE__*/ T.XmlName("Tag")).annotate({ identifier: "Tag" }),
+        /*@__PURE__*/ __S(24, __c3, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("Tag"))
+          .annotate({ identifier: "Tag" }),
       );
     case 2:
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Key")));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ResourceType: TagResourceType.pipe(T.HttpLabel("ResourceType")),
+          ResourceType: S.String.pipe(T.HttpLabel("ResourceType")),
           ResourceId: S.String.pipe(T.HttpLabel("ResourceId")),
-          AddTags: S.optional(TagList),
-          RemoveTagKeys: S.optional(TagKeyList),
+          AddTags: S.optional(__S(25, __c3, 1)),
+          RemoveTagKeys: S.optional(__S(26, __c3, 2)),
         }).pipe(
           T.all(
             ns,
@@ -5441,7 +4756,7 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Collection: S.optional(CidrCollection),
+          Collection: S.optional(__S(30, __c3, 6)),
           Location: S.optional(S.String).pipe(T.HttpHeader("Location")),
         }).pipe(ns),
       ).annotate({
@@ -5454,9 +4769,9 @@ function __c4(j: number): any {
     case 0:
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("ChildHealthCheck")));
     case 1:
-      return S.Array(/*@__PURE__*/ HealthCheckRegion.pipe(/*@__PURE__*/ T.XmlName("Region")));
+      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Region")));
     case 2:
-      return S.suspend(() => S.Struct({ Region: CloudWatchRegion, Name: S.String })).annotate({
+      return S.suspend(() => S.Struct({ Region: S.String, Name: S.String })).annotate({
         identifier: "AlarmIdentifier",
       });
     case 3:
@@ -5464,7 +4779,7 @@ function __c4(j: number): any {
         S.Struct({
           IPAddress: S.optional(S.String),
           Port: S.optional(S.Number),
-          Type: HealthCheckType,
+          Type: S.String,
           ResourcePath: S.optional(S.String),
           FullyQualifiedDomainName: S.optional(S.String),
           SearchString: S.optional(S.String),
@@ -5474,17 +4789,17 @@ function __c4(j: number): any {
           Inverted: S.optional(S.Boolean),
           Disabled: S.optional(S.Boolean),
           HealthThreshold: S.optional(S.Number),
-          ChildHealthChecks: S.optional(ChildHealthCheckList),
+          ChildHealthChecks: S.optional(__S(32, __c4, 0)),
           EnableSNI: S.optional(S.Boolean),
-          Regions: S.optional(HealthCheckRegionList),
-          AlarmIdentifier: S.optional(AlarmIdentifier),
-          InsufficientDataHealthStatus: S.optional(InsufficientDataHealthStatus),
+          Regions: S.optional(__S(33, __c4, 1)),
+          AlarmIdentifier: S.optional(__S(34, __c4, 2)),
+          InsufficientDataHealthStatus: S.optional(S.String),
           RoutingControlArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "HealthCheckConfig" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ CallerReference: S.String, HealthCheckConfig: HealthCheckConfig }).pipe(
+        S.Struct({ CallerReference: S.String, HealthCheckConfig: __S(35, __c4, 3) }).pipe(
           T.all(
             ns,
             T.Http({ method: "POST", uri: "/2013-04-01/healthcheck" }),
@@ -5506,7 +4821,7 @@ function __c4(j: number): any {
       });
     case 7:
       return S.Array(
-        /*@__PURE__*/ Dimension.pipe(/*@__PURE__*/ T.XmlName("Dimension")).annotate({
+        /*@__PURE__*/ __S(38, __c4, 6).pipe(/*@__PURE__*/ T.XmlName("Dimension")).annotate({
           identifier: "Dimension",
         }),
       );
@@ -5519,12 +4834,12 @@ function __c5(j: number): any {
         S.Struct({
           EvaluationPeriods: S.Number,
           Threshold: S.Number,
-          ComparisonOperator: ComparisonOperator,
+          ComparisonOperator: S.String,
           Period: S.Number,
           MetricName: S.String,
           Namespace: S.String,
-          Statistic: Statistic,
-          Dimensions: S.optional(DimensionList),
+          Statistic: S.String,
+          Dimensions: S.optional(__S(39, __c4, 7)),
         }),
       ).annotate({
         identifier: "CloudWatchAlarmConfiguration",
@@ -5534,16 +4849,16 @@ function __c5(j: number): any {
         S.Struct({
           Id: S.String,
           CallerReference: S.String,
-          LinkedService: S.optional(LinkedService),
-          HealthCheckConfig: HealthCheckConfig,
+          LinkedService: S.optional(__S(37, __c4, 5)),
+          HealthCheckConfig: __S(35, __c4, 3),
           HealthCheckVersion: S.Number,
-          CloudWatchAlarmConfiguration: S.optional(CloudWatchAlarmConfiguration),
+          CloudWatchAlarmConfiguration: S.optional(__S(40, __c5, 0)),
         }),
       ).annotate({ identifier: "HealthCheck" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          HealthCheck: HealthCheck,
+          HealthCheck: __S(41, __c5, 1),
           Location: S.String.pipe(T.HttpHeader("Location")),
         }).pipe(ns),
       ).annotate({
@@ -5557,9 +4872,9 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
-          VPC: S.optional(VPC),
+          VPC: S.optional(__S(3, __c0, 3)),
           CallerReference: S.String,
-          HostedZoneConfig: S.optional(HostedZoneConfig),
+          HostedZoneConfig: S.optional(__S(43, __c5, 3)),
           DelegationSetId: S.optional(S.String),
         }).pipe(
           T.all(
@@ -5580,8 +4895,8 @@ function __c5(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          AcceleratedRecoveryStatus: S.optional(AcceleratedRecoveryStatus),
-          FailureReasons: S.optional(HostedZoneFailureReasons),
+          AcceleratedRecoveryStatus: S.optional(S.String),
+          FailureReasons: S.optional(__S(45, __c5, 5)),
         }),
       ).annotate({ identifier: "HostedZoneFeatures" });
     case 7:
@@ -5590,10 +4905,10 @@ function __c5(j: number): any {
           Id: S.String,
           Name: S.String,
           CallerReference: S.String,
-          Config: S.optional(HostedZoneConfig),
+          Config: S.optional(__S(43, __c5, 3)),
           ResourceRecordSetCount: S.optional(S.Number),
-          LinkedService: S.optional(LinkedService),
-          Features: S.optional(HostedZoneFeatures),
+          LinkedService: S.optional(__S(37, __c4, 5)),
+          Features: S.optional(__S(46, __c5, 6)),
         }),
       ).annotate({ identifier: "HostedZone" });
   }
@@ -5607,16 +4922,16 @@ function __c6(j: number): any {
         S.Struct({
           Id: S.optional(S.String),
           CallerReference: S.optional(S.String),
-          NameServers: DelegationSetNameServers,
+          NameServers: __S(48, __c6, 0),
         }),
       ).annotate({ identifier: "DelegationSet" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          HostedZone: HostedZone,
-          ChangeInfo: ChangeInfo,
-          DelegationSet: S.optional(DelegationSet),
-          VPC: S.optional(VPC),
+          HostedZone: __S(47, __c5, 7),
+          ChangeInfo: __S(1, __c0, 1),
+          DelegationSet: S.optional(__S(49, __c6, 1)),
+          VPC: S.optional(__S(3, __c0, 3)),
           Location: S.String.pipe(T.HttpHeader("Location")),
         }).pipe(ns),
       ).annotate({ identifier: "CreateHostedZoneResponse" });
@@ -5666,8 +4981,8 @@ function __c6(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ChangeInfo: ChangeInfo,
-          KeySigningKey: KeySigningKey,
+          ChangeInfo: __S(1, __c0, 1),
+          KeySigningKey: __S(52, __c6, 4),
           Location: S.String.pipe(T.HttpHeader("Location")),
         }).pipe(ns),
       ).annotate({
@@ -5700,7 +5015,7 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          QueryLoggingConfig: QueryLoggingConfig,
+          QueryLoggingConfig: __S(55, __c6, 7),
           Location: S.String.pipe(T.HttpHeader("Location")),
         }).pipe(ns),
       ).annotate({
@@ -5725,7 +5040,7 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          DelegationSet: DelegationSet,
+          DelegationSet: __S(49, __c6, 1),
           Location: S.String.pipe(T.HttpHeader("Location")),
         }).pipe(ns),
       ).annotate({
@@ -5753,7 +5068,7 @@ function __c7(j: number): any {
           Id: S.String,
           Version: S.Number,
           Name: S.String,
-          Type: RRType,
+          Type: S.String,
           Document: S.String,
           Comment: S.optional(S.String),
         }),
@@ -5761,7 +5076,7 @@ function __c7(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          TrafficPolicy: TrafficPolicy,
+          TrafficPolicy: __S(60, __c7, 4),
           Location: S.String.pipe(T.HttpHeader("Location")),
         }).pipe(ns),
       ).annotate({
@@ -5800,7 +5115,7 @@ function __c7(j: number): any {
           Message: S.String,
           TrafficPolicyId: S.String,
           TrafficPolicyVersion: S.Number,
-          TrafficPolicyType: RRType,
+          TrafficPolicyType: S.String,
         }),
       ).annotate({ identifier: "TrafficPolicyInstance" });
   }
@@ -5810,7 +5125,7 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          TrafficPolicyInstance: TrafficPolicyInstance,
+          TrafficPolicyInstance: __S(63, __c7, 7),
           Location: S.String.pipe(T.HttpHeader("Location")),
         }).pipe(ns),
       ).annotate({
@@ -5839,7 +5154,7 @@ function __c8(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          TrafficPolicy: TrafficPolicy,
+          TrafficPolicy: __S(60, __c7, 4),
           Location: S.String.pipe(T.HttpHeader("Location")),
         }).pipe(ns),
       ).annotate({
@@ -5847,7 +5162,10 @@ function __c8(j: number): any {
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")), VPC: VPC }).pipe(
+        S.Struct({
+          HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")),
+          VPC: __S(3, __c0, 3),
+        }).pipe(
           T.all(
             ns,
             T.Http({
@@ -5865,7 +5183,9 @@ function __c8(j: number): any {
         identifier: "CreateVPCAssociationAuthorizationRequest",
       });
     case 4:
-      return S.suspend(() => S.Struct({ HostedZoneId: S.String, VPC: VPC }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ HostedZoneId: S.String, VPC: __S(3, __c0, 3) }).pipe(ns),
+      ).annotate({
         identifier: "CreateVPCAssociationAuthorizationResponse",
       });
     case 5:
@@ -5891,7 +5211,7 @@ function __c8(j: number): any {
         identifier: "DeactivateKeySigningKeyRequest",
       });
     case 6:
-      return S.suspend(() => S.Struct({ ChangeInfo: ChangeInfo }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ ChangeInfo: __S(1, __c0, 1) }).pipe(ns)).annotate({
         identifier: "DeactivateKeySigningKeyResponse",
       });
     case 7:
@@ -5951,7 +5271,7 @@ function __c9(j: number): any {
         ),
       ).annotate({ identifier: "DeleteHostedZoneRequest" });
     case 4:
-      return S.suspend(() => S.Struct({ ChangeInfo: ChangeInfo }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ ChangeInfo: __S(1, __c0, 1) }).pipe(ns)).annotate({
         identifier: "DeleteHostedZoneResponse",
       });
     case 5:
@@ -5974,7 +5294,7 @@ function __c9(j: number): any {
         identifier: "DeleteKeySigningKeyRequest",
       });
     case 6:
-      return S.suspend(() => S.Struct({ ChangeInfo: ChangeInfo }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ ChangeInfo: __S(1, __c0, 1) }).pipe(ns)).annotate({
         identifier: "DeleteKeySigningKeyResponse",
       });
     case 7:
@@ -6066,7 +5386,10 @@ function __c10(j: number): any {
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")), VPC: VPC }).pipe(
+        S.Struct({
+          HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")),
+          VPC: __S(3, __c0, 3),
+        }).pipe(
           T.all(
             ns,
             T.Http({
@@ -6108,14 +5431,14 @@ function __c11(j: number): any {
         identifier: "DisableHostedZoneDNSSECRequest",
       });
     case 2:
-      return S.suspend(() => S.Struct({ ChangeInfo: ChangeInfo }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ ChangeInfo: __S(1, __c0, 1) }).pipe(ns)).annotate({
         identifier: "DisableHostedZoneDNSSECResponse",
       });
     case 3:
       return S.suspend(() =>
         S.Struct({
           HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")),
-          VPC: VPC,
+          VPC: __S(3, __c0, 3),
           Comment: S.optional(S.String),
         }).pipe(
           T.all(
@@ -6135,7 +5458,7 @@ function __c11(j: number): any {
         identifier: "DisassociateVPCFromHostedZoneRequest",
       });
     case 4:
-      return S.suspend(() => S.Struct({ ChangeInfo: ChangeInfo }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ ChangeInfo: __S(1, __c0, 1) }).pipe(ns)).annotate({
         identifier: "DisassociateVPCFromHostedZoneResponse",
       });
     case 5:
@@ -6155,12 +5478,12 @@ function __c11(j: number): any {
         identifier: "EnableHostedZoneDNSSECRequest",
       });
     case 6:
-      return S.suspend(() => S.Struct({ ChangeInfo: ChangeInfo }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ ChangeInfo: __S(1, __c0, 1) }).pipe(ns)).annotate({
         identifier: "EnableHostedZoneDNSSECResponse",
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ Type: AccountLimitType.pipe(T.HttpLabel("Type")) }).pipe(
+        S.Struct({ Type: S.String.pipe(T.HttpLabel("Type")) }).pipe(
           T.all(
             ns,
             T.Http({ method: "GET", uri: "/2013-04-01/accountlimit/{Type}" }),
@@ -6177,11 +5500,13 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Type: AccountLimitType, Value: S.Number })).annotate({
+      return S.suspend(() => S.Struct({ Type: S.String, Value: S.Number })).annotate({
         identifier: "AccountLimit",
       });
     case 1:
-      return S.suspend(() => S.Struct({ Limit: AccountLimit, Count: S.Number }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ Limit: __S(96, __c12, 0), Count: S.Number }).pipe(ns),
+      ).annotate({
         identifier: "GetAccountLimitResponse",
       });
     case 2:
@@ -6199,7 +5524,7 @@ function __c12(j: number): any {
         ),
       ).annotate({ identifier: "GetChangeRequest" });
     case 3:
-      return S.suspend(() => S.Struct({ ChangeInfo: ChangeInfo }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ ChangeInfo: __S(1, __c0, 1) }).pipe(ns)).annotate({
         identifier: "GetChangeResponse",
       });
     case 4:
@@ -6221,7 +5546,7 @@ function __c12(j: number): any {
     case 5:
       return S.Array(S.String);
     case 6:
-      return S.suspend(() => S.Struct({ CheckerIpRanges: CheckerIpRanges }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ CheckerIpRanges: __S(101, __c12, 5) }).pipe(ns)).annotate({
         identifier: "GetCheckerIpRangesResponse",
       });
     case 7:
@@ -6247,10 +5572,10 @@ function __c13(j: number): any {
         S.Struct({ ServeSignature: S.optional(S.String), StatusMessage: S.optional(S.String) }),
       ).annotate({ identifier: "DNSSECStatus" });
     case 1:
-      return S.Array(KeySigningKey);
+      return S.Array(__S(52, __c6, 4));
     case 2:
       return S.suspend(() =>
-        S.Struct({ Status: DNSSECStatus, KeySigningKeys: KeySigningKeys }).pipe(ns),
+        S.Struct({ Status: __S(104, __c13, 0), KeySigningKeys: __S(105, __c13, 1) }).pipe(ns),
       ).annotate({ identifier: "GetDNSSECResponse" });
     case 3:
       return S.suspend(() =>
@@ -6283,7 +5608,7 @@ function __c13(j: number): any {
       ).annotate({ identifier: "GeoLocationDetails" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ GeoLocationDetails: GeoLocationDetails }).pipe(ns),
+        S.Struct({ GeoLocationDetails: __S(108, __c13, 4) }).pipe(ns),
       ).annotate({ identifier: "GetGeoLocationResponse" });
     case 6:
       return S.suspend(() =>
@@ -6300,7 +5625,7 @@ function __c13(j: number): any {
         ),
       ).annotate({ identifier: "GetHealthCheckRequest" });
     case 7:
-      return S.suspend(() => S.Struct({ HealthCheck: HealthCheck }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ HealthCheck: __S(41, __c5, 1) }).pipe(ns)).annotate({
         identifier: "GetHealthCheckResponse",
       });
   }
@@ -6353,22 +5678,22 @@ function __c14(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Region: S.optional(HealthCheckRegion),
+          Region: S.optional(S.String),
           IPAddress: S.optional(S.String),
-          StatusReport: S.optional(StatusReport),
+          StatusReport: S.optional(__S(115, __c14, 3)),
         }),
       ).annotate({ identifier: "HealthCheckObservation" });
     case 5:
       return S.Array(
-        /*@__PURE__*/ HealthCheckObservation.pipe(
-          /*@__PURE__*/ T.XmlName("HealthCheckObservation"),
-        ).annotate({
-          identifier: "HealthCheckObservation",
-        }),
+        /*@__PURE__*/ __S(116, __c14, 4)
+          .pipe(/*@__PURE__*/ T.XmlName("HealthCheckObservation"))
+          .annotate({
+            identifier: "HealthCheckObservation",
+          }),
       );
     case 6:
       return S.suspend(() =>
-        S.Struct({ HealthCheckObservations: HealthCheckObservations }).pipe(ns),
+        S.Struct({ HealthCheckObservations: __S(117, __c14, 5) }).pipe(ns),
       ).annotate({
         identifier: "GetHealthCheckLastFailureReasonResponse",
       });
@@ -6394,7 +5719,7 @@ function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ HealthCheckObservations: HealthCheckObservations }).pipe(ns),
+        S.Struct({ HealthCheckObservations: __S(117, __c14, 5) }).pipe(ns),
       ).annotate({
         identifier: "GetHealthCheckStatusResponse",
       });
@@ -6414,14 +5739,16 @@ function __c15(j: number): any {
       ).annotate({ identifier: "GetHostedZoneRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ VPC.pipe(/*@__PURE__*/ T.XmlName("VPC")).annotate({ identifier: "VPC" }),
+        /*@__PURE__*/ __S(3, __c0, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("VPC"))
+          .annotate({ identifier: "VPC" }),
       );
     case 3:
       return S.suspend(() =>
         S.Struct({
-          HostedZone: HostedZone,
-          DelegationSet: S.optional(DelegationSet),
-          VPCs: S.optional(VPCs),
+          HostedZone: __S(47, __c5, 7),
+          DelegationSet: S.optional(__S(49, __c6, 1)),
+          VPCs: S.optional(__S(122, __c15, 2)),
         }).pipe(ns),
       ).annotate({ identifier: "GetHostedZoneResponse" });
     case 4:
@@ -6447,7 +5774,7 @@ function __c15(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Type: HostedZoneLimitType.pipe(T.HttpLabel("Type")),
+          Type: S.String.pipe(T.HttpLabel("Type")),
           HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")),
         }).pipe(
           T.all(
@@ -6464,7 +5791,7 @@ function __c15(j: number): any {
         identifier: "GetHostedZoneLimitRequest",
       });
     case 7:
-      return S.suspend(() => S.Struct({ Type: HostedZoneLimitType, Value: S.Number })).annotate({
+      return S.suspend(() => S.Struct({ Type: S.String, Value: S.Number })).annotate({
         identifier: "HostedZoneLimit",
       });
   }
@@ -6473,7 +5800,7 @@ function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Limit: HostedZoneLimit, Count: S.Number }).pipe(ns),
+        S.Struct({ Limit: __S(127, __c15, 7), Count: S.Number }).pipe(ns),
       ).annotate({
         identifier: "GetHostedZoneLimitResponse",
       });
@@ -6494,9 +5821,7 @@ function __c16(j: number): any {
         identifier: "GetQueryLoggingConfigRequest",
       });
     case 2:
-      return S.suspend(() =>
-        S.Struct({ QueryLoggingConfig: QueryLoggingConfig }).pipe(ns),
-      ).annotate({
+      return S.suspend(() => S.Struct({ QueryLoggingConfig: __S(55, __c6, 7) }).pipe(ns)).annotate({
         identifier: "GetQueryLoggingConfigResponse",
       });
     case 3:
@@ -6516,13 +5841,13 @@ function __c16(j: number): any {
         identifier: "GetReusableDelegationSetRequest",
       });
     case 4:
-      return S.suspend(() => S.Struct({ DelegationSet: DelegationSet }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ DelegationSet: __S(49, __c6, 1) }).pipe(ns)).annotate({
         identifier: "GetReusableDelegationSetResponse",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Type: ReusableDelegationSetLimitType.pipe(T.HttpLabel("Type")),
+          Type: S.String.pipe(T.HttpLabel("Type")),
           DelegationSetId: S.String.pipe(T.HttpLabel("DelegationSetId")),
         }).pipe(
           T.all(
@@ -6542,14 +5867,12 @@ function __c16(j: number): any {
         identifier: "GetReusableDelegationSetLimitRequest",
       });
     case 6:
-      return S.suspend(() =>
-        S.Struct({ Type: ReusableDelegationSetLimitType, Value: S.Number }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ Type: S.String, Value: S.Number })).annotate({
         identifier: "ReusableDelegationSetLimit",
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ Limit: ReusableDelegationSetLimit, Count: S.Number }).pipe(ns),
+        S.Struct({ Limit: __S(134, __c16, 6), Count: S.Number }).pipe(ns),
       ).annotate({
         identifier: "GetReusableDelegationSetLimitResponse",
       });
@@ -6575,7 +5898,7 @@ function __c17(j: number): any {
         ),
       ).annotate({ identifier: "GetTrafficPolicyRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ TrafficPolicy: TrafficPolicy }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ TrafficPolicy: __S(60, __c7, 4) }).pipe(ns)).annotate({
         identifier: "GetTrafficPolicyResponse",
       });
     case 2:
@@ -6596,7 +5919,7 @@ function __c17(j: number): any {
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ TrafficPolicyInstance: TrafficPolicyInstance }).pipe(ns),
+        S.Struct({ TrafficPolicyInstance: __S(63, __c7, 7) }).pipe(ns),
       ).annotate({
         identifier: "GetTrafficPolicyInstanceResponse",
       });
@@ -6648,12 +5971,12 @@ function __c17(j: number): any {
 function __c18(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(CidrBlockSummary);
+      return S.Array(__S(143, __c17, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          CidrBlocks: S.optional(CidrBlockSummaries),
+          CidrBlocks: S.optional(__S(144, __c18, 0)),
         }).pipe(ns),
       ).annotate({ identifier: "ListCidrBlocksResponse" });
     case 2:
@@ -6685,12 +6008,12 @@ function __c18(j: number): any {
         }),
       ).annotate({ identifier: "CollectionSummary" });
     case 4:
-      return S.Array(CollectionSummary);
+      return S.Array(__S(147, __c18, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          CidrCollections: S.optional(CollectionSummaries),
+          CidrCollections: S.optional(__S(148, __c18, 4)),
         }).pipe(ns),
       ).annotate({
         identifier: "ListCidrCollectionsResponse",
@@ -6722,12 +6045,12 @@ function __c18(j: number): any {
 function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(LocationSummary);
+      return S.Array(__S(151, __c18, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          CidrLocations: S.optional(LocationSummaries),
+          CidrLocations: S.optional(__S(152, __c19, 0)),
         }).pipe(ns),
       ).annotate({
         identifier: "ListCidrLocationsResponse",
@@ -6753,16 +6076,16 @@ function __c19(j: number): any {
       ).annotate({ identifier: "ListGeoLocationsRequest" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ GeoLocationDetails.pipe(
-          /*@__PURE__*/ T.XmlName("GeoLocationDetails"),
-        ).annotate({
-          identifier: "GeoLocationDetails",
-        }),
+        /*@__PURE__*/ __S(108, __c13, 4)
+          .pipe(/*@__PURE__*/ T.XmlName("GeoLocationDetails"))
+          .annotate({
+            identifier: "GeoLocationDetails",
+          }),
       );
     case 4:
       return S.suspend(() =>
         S.Struct({
-          GeoLocationDetailsList: GeoLocationDetailsList,
+          GeoLocationDetailsList: __S(155, __c19, 3),
           IsTruncated: S.Boolean,
           NextContinentCode: S.optional(S.String),
           NextCountryCode: S.optional(S.String),
@@ -6789,14 +6112,14 @@ function __c19(j: number): any {
       ).annotate({ identifier: "ListHealthChecksRequest" });
     case 6:
       return S.Array(
-        /*@__PURE__*/ HealthCheck.pipe(/*@__PURE__*/ T.XmlName("HealthCheck")).annotate({
+        /*@__PURE__*/ __S(41, __c5, 1).pipe(/*@__PURE__*/ T.XmlName("HealthCheck")).annotate({
           identifier: "HealthCheck",
         }),
       );
     case 7:
       return S.suspend(() =>
         S.Struct({
-          HealthChecks: S.optional(HealthChecks),
+          HealthChecks: S.optional(__S(158, __c19, 6)),
           Marker: S.optional(S.String),
           IsTruncated: S.Boolean,
           NextMarker: S.optional(S.String),
@@ -6813,7 +6136,7 @@ function __c20(j: number): any {
           Marker: S.optional(S.String).pipe(T.HttpQuery("marker")),
           MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxitems")),
           DelegationSetId: S.optional(S.String).pipe(T.HttpQuery("delegationsetid")),
-          HostedZoneType: S.optional(HostedZoneType).pipe(T.HttpQuery("hostedzonetype")),
+          HostedZoneType: S.optional(S.String).pipe(T.HttpQuery("hostedzonetype")),
         }).pipe(
           T.all(
             ns,
@@ -6828,14 +6151,14 @@ function __c20(j: number): any {
       ).annotate({ identifier: "ListHostedZonesRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ HostedZone.pipe(/*@__PURE__*/ T.XmlName("HostedZone")).annotate({
+        /*@__PURE__*/ __S(47, __c5, 7).pipe(/*@__PURE__*/ T.XmlName("HostedZone")).annotate({
           identifier: "HostedZone",
         }),
       );
     case 2:
       return S.suspend(() =>
         S.Struct({
-          HostedZones: S.optional(HostedZones),
+          HostedZones: S.optional(__S(161, __c20, 1)),
           Marker: S.optional(S.String),
           IsTruncated: S.Boolean,
           NextMarker: S.optional(S.String),
@@ -6865,7 +6188,7 @@ function __c20(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          HostedZones: S.optional(HostedZones),
+          HostedZones: S.optional(__S(161, __c20, 1)),
           DNSName: S.optional(S.String),
           HostedZoneId: S.optional(S.String),
           IsTruncated: S.Boolean,
@@ -6880,7 +6203,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           VPCId: S.String.pipe(T.HttpQuery("vpcid")),
-          VPCRegion: VPCRegion.pipe(T.HttpQuery("vpcregion")),
+          VPCRegion: S.String.pipe(T.HttpQuery("vpcregion")),
           MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxitems")),
           NextToken: S.optional(S.String).pipe(T.HttpQuery("nexttoken")),
         }).pipe(
@@ -6903,7 +6226,7 @@ function __c20(j: number): any {
       ).annotate({ identifier: "HostedZoneOwner" });
     case 7:
       return S.suspend(() =>
-        S.Struct({ HostedZoneId: S.String, Name: S.String, Owner: HostedZoneOwner }),
+        S.Struct({ HostedZoneId: S.String, Name: S.String, Owner: __S(166, __c20, 6) }),
       ).annotate({ identifier: "HostedZoneSummary" });
   }
 }
@@ -6911,16 +6234,16 @@ function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.Array(
-        /*@__PURE__*/ HostedZoneSummary.pipe(/*@__PURE__*/ T.XmlName("HostedZoneSummary")).annotate(
-          {
+        /*@__PURE__*/ __S(167, __c20, 7)
+          .pipe(/*@__PURE__*/ T.XmlName("HostedZoneSummary"))
+          .annotate({
             identifier: "HostedZoneSummary",
-          },
-        ),
+          }),
       );
     case 1:
       return S.suspend(() =>
         S.Struct({
-          HostedZoneSummaries: HostedZoneSummaries,
+          HostedZoneSummaries: __S(168, __c21, 0),
           MaxItems: S.Number,
           NextToken: S.optional(S.String),
         }).pipe(ns),
@@ -6949,16 +6272,16 @@ function __c21(j: number): any {
       });
     case 3:
       return S.Array(
-        /*@__PURE__*/ QueryLoggingConfig.pipe(
-          /*@__PURE__*/ T.XmlName("QueryLoggingConfig"),
-        ).annotate({
-          identifier: "QueryLoggingConfig",
-        }),
+        /*@__PURE__*/ __S(55, __c6, 7)
+          .pipe(/*@__PURE__*/ T.XmlName("QueryLoggingConfig"))
+          .annotate({
+            identifier: "QueryLoggingConfig",
+          }),
       );
     case 4:
       return S.suspend(() =>
         S.Struct({
-          QueryLoggingConfigs: S.optional(QueryLoggingConfigs),
+          QueryLoggingConfigs: S.optional(__S(171, __c21, 3)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -6969,7 +6292,7 @@ function __c21(j: number): any {
         S.Struct({
           HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")),
           StartRecordName: S.optional(S.String).pipe(T.HttpQuery("name")),
-          StartRecordType: S.optional(RRType).pipe(T.HttpQuery("type")),
+          StartRecordType: S.optional(S.String).pipe(T.HttpQuery("type")),
           StartRecordIdentifier: S.optional(S.String).pipe(T.HttpQuery("identifier")),
           MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxitems")),
         }).pipe(
@@ -6988,19 +6311,17 @@ function __c21(j: number): any {
       });
     case 6:
       return S.Array(
-        /*@__PURE__*/ ResourceRecordSet.pipe(/*@__PURE__*/ T.XmlName("ResourceRecordSet")).annotate(
-          {
-            identifier: "ResourceRecordSet",
-          },
-        ),
+        /*@__PURE__*/ __S(18, __c2, 2).pipe(/*@__PURE__*/ T.XmlName("ResourceRecordSet")).annotate({
+          identifier: "ResourceRecordSet",
+        }),
       );
     case 7:
       return S.suspend(() =>
         S.Struct({
-          ResourceRecordSets: S.optional(ResourceRecordSets),
+          ResourceRecordSets: S.optional(__S(174, __c21, 6)),
           IsTruncated: S.Boolean,
           NextRecordName: S.optional(S.String),
-          NextRecordType: S.optional(RRType),
+          NextRecordType: S.optional(S.String),
           NextRecordIdentifier: S.optional(S.String),
           MaxItems: S.Number,
         }).pipe(ns),
@@ -7032,14 +6353,14 @@ function __c22(j: number): any {
       });
     case 1:
       return S.Array(
-        /*@__PURE__*/ DelegationSet.pipe(/*@__PURE__*/ T.XmlName("DelegationSet")).annotate({
+        /*@__PURE__*/ __S(49, __c6, 1).pipe(/*@__PURE__*/ T.XmlName("DelegationSet")).annotate({
           identifier: "DelegationSet",
         }),
       );
     case 2:
       return S.suspend(() =>
         S.Struct({
-          DelegationSets: DelegationSets,
+          DelegationSets: __S(177, __c22, 1),
           Marker: S.String,
           IsTruncated: S.Boolean,
           NextMarker: S.optional(S.String),
@@ -7051,7 +6372,7 @@ function __c22(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ResourceType: TagResourceType.pipe(T.HttpLabel("ResourceType")),
+          ResourceType: S.String.pipe(T.HttpLabel("ResourceType")),
           ResourceId: S.String.pipe(T.HttpLabel("ResourceId")),
         }).pipe(
           T.all(
@@ -7070,13 +6391,13 @@ function __c22(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ResourceType: S.optional(TagResourceType),
+          ResourceType: S.optional(S.String),
           ResourceId: S.optional(S.String),
-          Tags: S.optional(TagList),
+          Tags: S.optional(__S(25, __c3, 1)),
         }),
       ).annotate({ identifier: "ResourceTagSet" });
     case 5:
-      return S.suspend(() => S.Struct({ ResourceTagSet: ResourceTagSet }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ ResourceTagSet: __S(180, __c22, 4) }).pipe(ns)).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 6:
@@ -7084,8 +6405,8 @@ function __c22(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          ResourceType: TagResourceType.pipe(T.HttpLabel("ResourceType")),
-          ResourceIds: TagResourceIdList,
+          ResourceType: S.String.pipe(T.HttpLabel("ResourceType")),
+          ResourceIds: __S(182, __c22, 6),
         }).pipe(
           T.all(
             ns,
@@ -7106,12 +6427,12 @@ function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.Array(
-        /*@__PURE__*/ ResourceTagSet.pipe(/*@__PURE__*/ T.XmlName("ResourceTagSet")).annotate({
+        /*@__PURE__*/ __S(180, __c22, 4).pipe(/*@__PURE__*/ T.XmlName("ResourceTagSet")).annotate({
           identifier: "ResourceTagSet",
         }),
       );
     case 1:
-      return S.suspend(() => S.Struct({ ResourceTagSets: ResourceTagSetList }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ ResourceTagSets: __S(184, __c23, 0) }).pipe(ns)).annotate({
         identifier: "ListTagsForResourcesResponse",
       });
     case 2:
@@ -7138,23 +6459,23 @@ function __c23(j: number): any {
         S.Struct({
           Id: S.String,
           Name: S.String,
-          Type: RRType,
+          Type: S.String,
           LatestVersion: S.Number,
           TrafficPolicyCount: S.Number,
         }),
       ).annotate({ identifier: "TrafficPolicySummary" });
     case 4:
       return S.Array(
-        /*@__PURE__*/ TrafficPolicySummary.pipe(
-          /*@__PURE__*/ T.XmlName("TrafficPolicySummary"),
-        ).annotate({
-          identifier: "TrafficPolicySummary",
-        }),
+        /*@__PURE__*/ __S(187, __c23, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("TrafficPolicySummary"))
+          .annotate({
+            identifier: "TrafficPolicySummary",
+          }),
       );
     case 5:
       return S.suspend(() =>
         S.Struct({
-          TrafficPolicySummaries: TrafficPolicySummaries,
+          TrafficPolicySummaries: __S(188, __c23, 4),
           IsTruncated: S.Boolean,
           TrafficPolicyIdMarker: S.String,
           MaxItems: S.Number,
@@ -7169,7 +6490,7 @@ function __c23(j: number): any {
           TrafficPolicyInstanceNameMarker: S.optional(S.String).pipe(
             T.HttpQuery("trafficpolicyinstancename"),
           ),
-          TrafficPolicyInstanceTypeMarker: S.optional(RRType).pipe(
+          TrafficPolicyInstanceTypeMarker: S.optional(S.String).pipe(
             T.HttpQuery("trafficpolicyinstancetype"),
           ),
           MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxitems")),
@@ -7189,11 +6510,11 @@ function __c23(j: number): any {
       });
     case 7:
       return S.Array(
-        /*@__PURE__*/ TrafficPolicyInstance.pipe(
-          /*@__PURE__*/ T.XmlName("TrafficPolicyInstance"),
-        ).annotate({
-          identifier: "TrafficPolicyInstance",
-        }),
+        /*@__PURE__*/ __S(63, __c7, 7)
+          .pipe(/*@__PURE__*/ T.XmlName("TrafficPolicyInstance"))
+          .annotate({
+            identifier: "TrafficPolicyInstance",
+          }),
       );
   }
 }
@@ -7202,10 +6523,10 @@ function __c24(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          TrafficPolicyInstances: TrafficPolicyInstances,
+          TrafficPolicyInstances: __S(191, __c23, 7),
           HostedZoneIdMarker: S.optional(S.String),
           TrafficPolicyInstanceNameMarker: S.optional(S.String),
-          TrafficPolicyInstanceTypeMarker: S.optional(RRType),
+          TrafficPolicyInstanceTypeMarker: S.optional(S.String),
           IsTruncated: S.Boolean,
           MaxItems: S.Number,
         }).pipe(ns),
@@ -7219,7 +6540,7 @@ function __c24(j: number): any {
           TrafficPolicyInstanceNameMarker: S.optional(S.String).pipe(
             T.HttpQuery("trafficpolicyinstancename"),
           ),
-          TrafficPolicyInstanceTypeMarker: S.optional(RRType).pipe(
+          TrafficPolicyInstanceTypeMarker: S.optional(S.String).pipe(
             T.HttpQuery("trafficpolicyinstancetype"),
           ),
           MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxitems")),
@@ -7240,9 +6561,9 @@ function __c24(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          TrafficPolicyInstances: TrafficPolicyInstances,
+          TrafficPolicyInstances: __S(191, __c23, 7),
           TrafficPolicyInstanceNameMarker: S.optional(S.String),
-          TrafficPolicyInstanceTypeMarker: S.optional(RRType),
+          TrafficPolicyInstanceTypeMarker: S.optional(S.String),
           IsTruncated: S.Boolean,
           MaxItems: S.Number,
         }).pipe(ns),
@@ -7258,7 +6579,7 @@ function __c24(j: number): any {
           TrafficPolicyInstanceNameMarker: S.optional(S.String).pipe(
             T.HttpQuery("trafficpolicyinstancename"),
           ),
-          TrafficPolicyInstanceTypeMarker: S.optional(RRType).pipe(
+          TrafficPolicyInstanceTypeMarker: S.optional(S.String).pipe(
             T.HttpQuery("trafficpolicyinstancetype"),
           ),
           MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxitems")),
@@ -7279,10 +6600,10 @@ function __c24(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          TrafficPolicyInstances: TrafficPolicyInstances,
+          TrafficPolicyInstances: __S(191, __c23, 7),
           HostedZoneIdMarker: S.optional(S.String),
           TrafficPolicyInstanceNameMarker: S.optional(S.String),
-          TrafficPolicyInstanceTypeMarker: S.optional(RRType),
+          TrafficPolicyInstanceTypeMarker: S.optional(S.String),
           IsTruncated: S.Boolean,
           MaxItems: S.Number,
         }).pipe(ns),
@@ -7313,14 +6634,14 @@ function __c24(j: number): any {
       });
     case 6:
       return S.Array(
-        /*@__PURE__*/ TrafficPolicy.pipe(/*@__PURE__*/ T.XmlName("TrafficPolicy")).annotate({
+        /*@__PURE__*/ __S(60, __c7, 4).pipe(/*@__PURE__*/ T.XmlName("TrafficPolicy")).annotate({
           identifier: "TrafficPolicy",
         }),
       );
     case 7:
       return S.suspend(() =>
         S.Struct({
-          TrafficPolicies: TrafficPolicies,
+          TrafficPolicies: __S(198, __c24, 6),
           IsTruncated: S.Boolean,
           TrafficPolicyVersionMarker: S.String,
           MaxItems: S.Number,
@@ -7360,7 +6681,7 @@ function __c25(j: number): any {
         S.Struct({
           HostedZoneId: S.String,
           NextToken: S.optional(S.String),
-          VPCs: S.optional(VPCs),
+          VPCs: S.optional(__S(122, __c15, 2)),
         }).pipe(ns),
       ).annotate({
         identifier: "ListVPCAssociationAuthorizationsResponse",
@@ -7370,7 +6691,7 @@ function __c25(j: number): any {
         S.Struct({
           HostedZoneId: S.String.pipe(T.HttpQuery("hostedzoneid")),
           RecordName: S.String.pipe(T.HttpQuery("recordname")),
-          RecordType: RRType.pipe(T.HttpQuery("recordtype")),
+          RecordType: S.String.pipe(T.HttpQuery("recordtype")),
           ResolverIP: S.optional(S.String).pipe(T.HttpQuery("resolverip")),
           EDNS0ClientSubnetIP: S.optional(S.String).pipe(T.HttpQuery("edns0clientsubnetip")),
           EDNS0ClientSubnetMask: S.optional(S.String).pipe(T.HttpQuery("edns0clientsubnetmask")),
@@ -7393,16 +6714,14 @@ function __c25(j: number): any {
         S.Struct({
           Nameserver: S.String,
           RecordName: S.String,
-          RecordType: RRType,
-          RecordData: RecordData,
+          RecordType: S.String,
+          RecordData: __S(203, __c25, 3),
           ResponseCode: S.String,
           Protocol: S.String,
         }).pipe(ns),
       ).annotate({ identifier: "TestDNSAnswerResponse" });
     case 5:
-      return S.Array(
-        /*@__PURE__*/ ResettableElementName.pipe(/*@__PURE__*/ T.XmlName("ResettableElementName")),
-      );
+      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("ResettableElementName")));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -7417,12 +6736,12 @@ function __c25(j: number): any {
           Inverted: S.optional(S.Boolean),
           Disabled: S.optional(S.Boolean),
           HealthThreshold: S.optional(S.Number),
-          ChildHealthChecks: S.optional(ChildHealthCheckList),
+          ChildHealthChecks: S.optional(__S(32, __c4, 0)),
           EnableSNI: S.optional(S.Boolean),
-          Regions: S.optional(HealthCheckRegionList),
-          AlarmIdentifier: S.optional(AlarmIdentifier),
-          InsufficientDataHealthStatus: S.optional(InsufficientDataHealthStatus),
-          ResetElements: S.optional(ResettableElementNameList),
+          Regions: S.optional(__S(33, __c4, 1)),
+          AlarmIdentifier: S.optional(__S(34, __c4, 2)),
+          InsufficientDataHealthStatus: S.optional(S.String),
+          ResetElements: S.optional(__S(205, __c25, 5)),
         }).pipe(
           T.all(
             ns,
@@ -7436,7 +6755,7 @@ function __c25(j: number): any {
         ),
       ).annotate({ identifier: "UpdateHealthCheckRequest" });
     case 7:
-      return S.suspend(() => S.Struct({ HealthCheck: HealthCheck }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ HealthCheck: __S(41, __c5, 1) }).pipe(ns)).annotate({
         identifier: "UpdateHealthCheckResponse",
       });
   }
@@ -7460,7 +6779,7 @@ function __c26(j: number): any {
         identifier: "UpdateHostedZoneCommentRequest",
       });
     case 1:
-      return S.suspend(() => S.Struct({ HostedZone: HostedZone }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ HostedZone: __S(47, __c5, 7) }).pipe(ns)).annotate({
         identifier: "UpdateHostedZoneCommentResponse",
       });
     case 2:
@@ -7507,7 +6826,7 @@ function __c26(j: number): any {
         identifier: "UpdateTrafficPolicyCommentRequest",
       });
     case 5:
-      return S.suspend(() => S.Struct({ TrafficPolicy: TrafficPolicy }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ TrafficPolicy: __S(60, __c7, 4) }).pipe(ns)).annotate({
         identifier: "UpdateTrafficPolicyCommentResponse",
       });
     case 6:
@@ -7533,7 +6852,7 @@ function __c26(j: number): any {
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ TrafficPolicyInstance: TrafficPolicyInstance }).pipe(ns),
+        S.Struct({ TrafficPolicyInstance: __S(63, __c7, 7) }).pipe(ns),
       ).annotate({
         identifier: "UpdateTrafficPolicyInstanceResponse",
       });
@@ -7544,4 +6863,9 @@ function __c27(j: number): any {
     case 0:
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Message")));
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

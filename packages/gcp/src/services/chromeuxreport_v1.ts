@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -63,11 +65,7 @@ export class NotFound
   ) {}
 
 export type QueryHistoryRequestFormFactorEnum = "ALL_FORM_FACTORS" | "PHONE" | "DESKTOP" | "TABLET";
-const QueryHistoryRequestFormFactorEnum = S.String;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<StringList>;
-
 /** Request payload sent by a physical web client. This request includes all necessary context to load a particular user experience history record. */
 export interface QueryHistoryRequest {
   /** The url pattern "url" refers to a url pattern that is any arbitrary url. Examples: "https://example.com/", "https://cloud.google.com/why-google-cloud/" */
@@ -81,33 +79,17 @@ export interface QueryHistoryRequest {
   /** The number of collection periods to return. If not specified, the default is 25. If present, must be in the range [1, 40]. */
   collectionPeriodCount?: number;
 }
-const QueryHistoryRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<QueryHistoryRequest>;
-
 export interface QueryHistoryRecordRecordsRequest {
   /** Request body */
   body?: QueryHistoryRequest;
 }
-const QueryHistoryRecordRecordsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<QueryHistoryRecordRecordsRequest>;
-
 export type DocumentList = Array<unknown>;
-const DocumentList = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DocumentList>;
-
 /** Percentiles contains synthetic values of a metric at a given statistical percentile. These are used for estimating a metric's value as experienced by a percentage of users out of the total number of users. */
 export interface TimeseriesPercentiles {
   /** 75% of users experienced the given metric at or below this value. The length of this list of densities is equal to the length of the CollectionPeriods field in the HistoryRecord message, which describes when the density was observed in the field. */
   p75s?: DocumentList;
 }
-const TimeseriesPercentiles = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<TimeseriesPercentiles>;
-
 export type DoubleList = Array<number>;
-const DoubleList = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<DoubleList>;
-
 /** A bin is a discrete portion of data spanning from start to end, or if no end is given, then from start to +inf. A bin's start and end values are given in the value type of the metric it represents. For example, "first contentful paint" is measured in milliseconds and exposed as ints, therefore its metric bins will use int32s for its start and end types. However, "cumulative layout shift" is measured in unitless decimals and is exposed as a decimal encoded as a string, therefore its metric bins will use strings for its value type. */
 export interface TimeseriesBin {
   /** The proportion of users that experienced this bin's value for the given metric in a given collection period; the index for each of these entries corresponds to an entry in the CollectionPeriods field in the HistoryRecord message, which describes when the density was observed in the field. Thus, the length of this list of densities is equal to the length of the CollectionPeriods field in the HistoryRecord message. */
@@ -117,24 +99,13 @@ export interface TimeseriesBin {
   /** Start is the beginning of the data bin. */
   start?: unknown;
 }
-const TimeseriesBin = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<TimeseriesBin>;
-
 export type TimeseriesBinList = Array<TimeseriesBin>;
-const TimeseriesBinList = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<TimeseriesBinList>;
-
 /** For enum metrics, provides fraction timeseries which add up to approximately 1.0 per entry (k-th element into the repeated fractions field for any k <= len) across fraction_timeseries. */
 export interface FractionTimeseries {
   /** Values between 0.0 and 1.0 (inclusive) and NaN. */
   fractions?: DoubleList;
 }
-const FractionTimeseries = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<FractionTimeseries>;
-
 export type FractionTimeseriesMap = { [key: string]: FractionTimeseries | undefined };
-const FractionTimeseriesMap = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<FractionTimeseriesMap>;
-
 /** A `metric timeseries` is a set of user experience data for a single web performance metric, like "first contentful paint". It contains a summary histogram of real world Chrome usage as a series of `bins`, where each bin has density values for a particular time period. */
 export interface MetricTimeseries {
   /** Commonly useful percentiles of the Metric. The value type for the percentiles will be the same as the value types given for the Histogram bins. */
@@ -144,11 +115,7 @@ export interface MetricTimeseries {
   /** Mapping from labels to timeseries of fractions attributed to this label. */
   fractionTimeseries?: FractionTimeseriesMap;
 }
-const MetricTimeseries = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<MetricTimeseries>;
-
 export type MetricTimeseriesMap = { [key: string]: MetricTimeseries | undefined };
-const MetricTimeseriesMap = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<MetricTimeseriesMap>;
-
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
 export interface Chromeuxreport_Date {
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
@@ -158,8 +125,6 @@ export interface Chromeuxreport_Date {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
   year?: number;
 }
-const Chromeuxreport_Date = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<Chromeuxreport_Date>;
-
 /** The collection period is a date range which includes the `first` and `last` day. */
 export interface CollectionPeriod {
   /** The last day in the collection period, inclusive. */
@@ -167,14 +132,8 @@ export interface CollectionPeriod {
   /** The first day in the collection period, inclusive. */
   firstDate?: Chromeuxreport_Date;
 }
-const CollectionPeriod = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<CollectionPeriod>;
-
 export type CollectionPeriodList = Array<CollectionPeriod>;
-const CollectionPeriodList = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<CollectionPeriodList>;
-
 export type HistoryKeyFormFactorEnum = "ALL_FORM_FACTORS" | "PHONE" | "DESKTOP" | "TABLET";
-const HistoryKeyFormFactorEnum = S.String;
-
 /** Key defines all the dimensions that identify this record as unique. */
 export interface HistoryKey {
   /** Url specifies a specific url that this record is for. This url should be normalized, following the normalization actions taken in the request to increase the chances of successful lookup. Note: When specifying a "url" only data for that specific url will be aggregated. */
@@ -184,8 +143,6 @@ export interface HistoryKey {
   /** Origin specifies the origin that this record is for. Note: When specifying an origin, data for loads under this origin over all pages are aggregated into origin level user experience data. */
   origin?: string;
 }
-const HistoryKey = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<HistoryKey>;
-
 /** HistoryRecord is a timeseries of Chrome UX Report data. It contains user experience statistics for a single url pattern and a set of dimensions. */
 export interface HistoryRecord {
   /** Metrics is the map of user experience time series data available for the record defined in the key field. Metrics are keyed on the metric name. Allowed key values: ["first_contentful_paint", "first_input_delay", "largest_contentful_paint", "cumulative_layout_shift", "experimental_time_to_first_byte", "experimental_interaction_to_next_paint"] */
@@ -195,8 +152,6 @@ export interface HistoryRecord {
   /** Key defines all of the unique querying parameters needed to look up a user experience history record. */
   key?: HistoryKey;
 }
-const HistoryRecord = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<HistoryRecord>;
-
 /** Object representing the normalization actions taken to normalize a url to achieve a higher chance of successful lookup. These are simple automated changes that are taken when looking up the provided `url_patten` would be known to fail. Complex actions like following redirects are not handled. */
 export interface UrlNormalization {
   /** The original requested URL prior to any normalization actions. */
@@ -204,8 +159,6 @@ export interface UrlNormalization {
   /** The URL after any normalization actions. This is a valid user experience URL that could reasonably be looked up. */
   normalizedUrl?: string;
 }
-const UrlNormalization = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<UrlNormalization>;
-
 /** Response payload sent back to a physical web client. This response contains the record found based on the identiers present in a `QueryHistoryRequest`. The returned response will have a history record, and sometimes details on normalization actions taken on the request that were necessary to make the request successful. */
 export interface QueryHistoryResponse {
   /** The record that was found. */
@@ -213,11 +166,7 @@ export interface QueryHistoryResponse {
   /** These are details about automated normalization actions that were taken in order to make the requested `url_pattern` valid. */
   urlNormalizationDetails?: UrlNormalization;
 }
-const QueryHistoryResponse = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<QueryHistoryResponse>;
-
 export type QueryRequestFormFactorEnum = "ALL_FORM_FACTORS" | "PHONE" | "DESKTOP" | "TABLET";
-const QueryRequestFormFactorEnum = S.String;
-
 /** Request payload sent by a physical web client. This request includes all necessary context to load a particular user experience record. */
 export interface QueryRequest {
   /** The url pattern "url" refers to a url pattern that is any arbitrary url. Examples: "https://example.com/", "https://cloud.google.com/why-google-cloud/" */
@@ -231,20 +180,11 @@ export interface QueryRequest {
   /** The form factor is a query dimension that specifies the device class that the record's data should belong to. Note: If no form factor is specified, then a special record with aggregated data over all form factors will be returned. */
   formFactor?: QueryRequestFormFactorEnum | (string & {});
 }
-const QueryRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<QueryRequest>;
-
 export interface QueryRecordRecordsRequest {
   /** Request body */
   body?: QueryRequest;
 }
-const QueryRecordRecordsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<QueryRecordRecordsRequest>;
-
 export type KeyFormFactorEnum = "ALL_FORM_FACTORS" | "PHONE" | "DESKTOP" | "TABLET";
-const KeyFormFactorEnum = S.String;
-
 /** Key defines all the dimensions that identify this record as unique. */
 export interface Key {
   /** Origin specifies the origin that this record is for. Note: When specifying an origin, data for loads under this origin over all pages are aggregated into origin level user experience data. */
@@ -256,18 +196,12 @@ export interface Key {
   /** Url specifies a specific url that this record is for. Note: When specifying a "url" only data for that specific url will be aggregated. */
   url?: string;
 }
-const Key = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<Key>;
-
 export type DoubleMap = { [key: string]: number | undefined };
-const DoubleMap = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<DoubleMap>;
-
 /** Percentiles contains synthetic values of a metric at a given statistical percentile. These are used for estimating a metric's value as experienced by a percentage of users out of the total number of users. */
 export interface Percentiles {
   /** 75% of users experienced the given metric at or below this value. */
   p75?: unknown;
 }
-const Percentiles = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<Percentiles>;
-
 /** A bin is a discrete portion of data spanning from start to end, or if no end is given, then from start to +inf. A bin's start and end values are given in the value type of the metric it represents. For example, "first contentful paint" is measured in milliseconds and exposed as ints, therefore its metric bins will use int32s for its start and end types. However, "cumulative layout shift" is measured in unitless decimals and is exposed as a decimal encoded as a string, therefore its metric bins will use strings for its value type. */
 export interface Bin {
   /** Start is the beginning of the data bin. */
@@ -277,11 +211,7 @@ export interface Bin {
   /** End is the end of the data bin. If end is not populated, then the bin has no end and is valid from start to +inf. */
   end?: unknown;
 }
-const Bin = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<Bin>;
-
 export type BinList = Array<Bin>;
-const BinList = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<BinList>;
-
 /** A `metric` is a set of user experience data for a single web performance metric, like "first contentful paint". It contains a summary histogram of real world Chrome usage as a series of `bins`. */
 export interface Metric {
   /** For enum metrics, provides fractions which add up to approximately 1.0. */
@@ -291,11 +221,7 @@ export interface Metric {
   /** The histogram of user experiences for a metric. The histogram will have at least one bin and the densities of all bins will add up to ~1. */
   histogram?: BinList;
 }
-const Metric = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<Metric>;
-
 export type MetricMap = { [key: string]: Metric | undefined };
-const MetricMap = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<MetricMap>;
-
 /** Record is a single Chrome UX report data record. It contains use experience statistics for a single url pattern and set of dimensions. */
 export interface Chromeuxreport_Record {
   /** Key defines all of the unique querying parameters needed to look up a user experience record. */
@@ -305,11 +231,6 @@ export interface Chromeuxreport_Record {
   /** The collection period indicates when the data reflected in this record was collected. */
   collectionPeriod?: CollectionPeriod;
 }
-const Chromeuxreport_Record = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<Chromeuxreport_Record>;
-
 /** Response payload sent back to a physical web client. This response contains the record found based on the identiers present in a `QueryRequest`. The returned response will have a record, and sometimes details on normalization actions taken on the request that were necessary to make the request successful. */
 export interface QueryResponse {
   /** These are details about automated normalization actions that were taken in order to make the requested `url_pattern` valid. */
@@ -317,8 +238,6 @@ export interface QueryResponse {
   /** The record that was found. */
   record?: Chromeuxreport_Record;
 }
-const QueryResponse = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<QueryResponse>;
-
 export type QueryHistoryRecordRecordsError =
   | NotFound
   | Forbidden
@@ -332,8 +251,8 @@ export const queryHistoryRecordRecords: API.OperationMethod<
   QueryHistoryRecordRecordsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: QueryHistoryRecordRecordsRequest,
-  output: QueryHistoryResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<QueryHistoryRecordRecordsRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<QueryHistoryResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -347,8 +266,8 @@ export const queryRecordRecords: API.OperationMethod<
   QueryRecordRecordsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: QueryRecordRecordsRequest,
-  output: QueryResponse,
+  input: __S(20, __c2, 4) as any as S.Schema<QueryRecordRecordsRequest>,
+  output: __S(29, __c3, 5) as any as S.Schema<QueryResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -363,16 +282,16 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           url: S.optional(S.String),
-          formFactor: S.optional(QueryHistoryRequestFormFactorEnum),
+          formFactor: S.optional(S.String),
           origin: S.optional(S.String),
-          metrics: S.optional(StringList),
+          metrics: S.optional(__S(0, __c0, 0)),
           collectionPeriodCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "QueryHistoryRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(QueryHistoryRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -388,7 +307,7 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          p75s: S.optional(DocumentList),
+          p75s: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({ identifier: "TimeseriesPercentiles" });
     case 5:
@@ -396,13 +315,13 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          densities: S.optional(DoubleList),
+          densities: S.optional(__S(5, __c0, 5)),
           end: S.optional(S.Unknown),
           start: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "TimeseriesBin" });
     case 7:
-      return S.Array(TimeseriesBin);
+      return S.Array(__S(6, __c0, 6));
   }
 }
 function __c1(j: number): any {
@@ -410,21 +329,21 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          fractions: S.optional(DoubleList),
+          fractions: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "FractionTimeseries" });
     case 1:
-      return S.Record(S.String, FractionTimeseries);
+      return S.Record(S.String, __S(8, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          percentilesTimeseries: S.optional(TimeseriesPercentiles),
-          histogramTimeseries: S.optional(TimeseriesBinList),
-          fractionTimeseries: S.optional(FractionTimeseriesMap),
+          percentilesTimeseries: S.optional(__S(4, __c0, 4)),
+          histogramTimeseries: S.optional(__S(7, __c0, 7)),
+          fractionTimeseries: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({ identifier: "MetricTimeseries" });
     case 3:
-      return S.Record(S.String, MetricTimeseries);
+      return S.Record(S.String, __S(10, __c1, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -436,17 +355,17 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          lastDate: S.optional(Chromeuxreport_Date),
-          firstDate: S.optional(Chromeuxreport_Date),
+          lastDate: S.optional(__S(12, __c1, 4)),
+          firstDate: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({ identifier: "CollectionPeriod" });
     case 6:
-      return S.Array(CollectionPeriod);
+      return S.Array(__S(13, __c1, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           url: S.optional(S.String),
-          formFactor: S.optional(HistoryKeyFormFactorEnum),
+          formFactor: S.optional(S.String),
           origin: S.optional(S.String),
         }),
       ).annotate({ identifier: "HistoryKey" });
@@ -457,9 +376,9 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          metrics: S.optional(MetricTimeseriesMap),
-          collectionPeriods: S.optional(CollectionPeriodList),
-          key: S.optional(HistoryKey),
+          metrics: S.optional(__S(11, __c1, 3)),
+          collectionPeriods: S.optional(__S(14, __c1, 6)),
+          key: S.optional(__S(15, __c1, 7)),
         }),
       ).annotate({ identifier: "HistoryRecord" });
     case 1:
@@ -472,8 +391,8 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          record: S.optional(HistoryRecord),
-          urlNormalizationDetails: S.optional(UrlNormalization),
+          record: S.optional(__S(16, __c2, 0)),
+          urlNormalizationDetails: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({ identifier: "QueryHistoryResponse" });
     case 3:
@@ -482,14 +401,14 @@ function __c2(j: number): any {
           url: S.optional(S.String),
           effectiveConnectionType: S.optional(S.String),
           origin: S.optional(S.String),
-          metrics: S.optional(StringList),
-          formFactor: S.optional(QueryRequestFormFactorEnum),
+          metrics: S.optional(__S(0, __c0, 0)),
+          formFactor: S.optional(S.String),
         }),
       ).annotate({ identifier: "QueryRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(QueryRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(19, __c2, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -505,7 +424,7 @@ function __c2(j: number): any {
         S.Struct({
           origin: S.optional(S.String),
           effectiveConnectionType: S.optional(S.String),
-          formFactor: S.optional(KeyFormFactorEnum),
+          formFactor: S.optional(S.String),
           url: S.optional(S.String),
         }),
       ).annotate({ identifier: "Key" });
@@ -530,31 +449,36 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "Bin" });
     case 1:
-      return S.Array(Bin);
+      return S.Array(__S(24, __c3, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          fractions: S.optional(DoubleMap),
-          percentiles: S.optional(Percentiles),
-          histogram: S.optional(BinList),
+          fractions: S.optional(__S(22, __c2, 6)),
+          percentiles: S.optional(__S(23, __c2, 7)),
+          histogram: S.optional(__S(25, __c3, 1)),
         }),
       ).annotate({ identifier: "Metric" });
     case 3:
-      return S.Record(S.String, Metric);
+      return S.Record(S.String, __S(26, __c3, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          key: S.optional(Key),
-          metrics: S.optional(MetricMap),
-          collectionPeriod: S.optional(CollectionPeriod),
+          key: S.optional(__S(21, __c2, 5)),
+          metrics: S.optional(__S(27, __c3, 3)),
+          collectionPeriod: S.optional(__S(13, __c1, 5)),
         }),
       ).annotate({ identifier: "Chromeuxreport_Record" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          urlNormalizationDetails: S.optional(UrlNormalization),
-          record: S.optional(Chromeuxreport_Record),
+          urlNormalizationDetails: S.optional(__S(17, __c2, 1)),
+          record: S.optional(__S(28, __c3, 4)),
         }),
       ).annotate({ identifier: "QueryResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

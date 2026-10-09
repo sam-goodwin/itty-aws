@@ -6,21 +6,15 @@ import { SlackError, SlackRateLimited } from "../errors.ts";
 import { SlackProtocol, type SlackOpError, type SlackOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { SlackOpError, SlackOpContext };
 
 /** A comma separated string of encoded channel IDs for which the User Group uses as a default. */
 export type CreateUsergroupRequestChannelsList = Array<string>;
-const CreateUsergroupRequestChannelsList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateUsergroupRequestChannelsList>;
-
 /** A comma separated string of encoded channel IDs for which the User Group can custom add usergroup members too. */
 export type CreateUsergroupRequestAdditionalChannelsList = Array<string>;
-const CreateUsergroupRequestAdditionalChannelsList =
-  CreateUsergroupRequestChannelsList as any as S.Schema<CreateUsergroupRequestAdditionalChannelsList>;
-
 export interface CreateUsergroupRequest {
   /** A comma separated string of encoded channel IDs for which the User Group uses as a default. */
   channels?: CreateUsergroupRequestChannelsList;
@@ -39,21 +33,11 @@ export interface CreateUsergroupRequest {
   /** Configure this user group to show as a sidebar section for all group members. Note: Only relevant if group has 1 or more default channels added. */
   enable_section?: boolean;
 }
-const CreateUsergroupRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateUsergroupRequest>;
-
 export interface CreateUsergroupResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   usergroup: unknown;
 }
-const CreateUsergroupResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateUsergroupResponse>;
-
 export interface DisableUsergroupRequest {
   /** Include the number of users in the User Group. */
   include_count?: boolean;
@@ -62,19 +46,11 @@ export interface DisableUsergroupRequest {
   /** The encoded ID of the User Group to disable. */
   usergroup: string;
 }
-const DisableUsergroupRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<DisableUsergroupRequest>;
-
 export interface DisableUsergroupResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   usergroup: unknown;
 }
-const DisableUsergroupResponse =
-  CreateUsergroupResponse as any as S.Schema<DisableUsergroupResponse>;
-
 export interface EnableUsergroupRequest {
   /** Include the number of users in the User Group. */
   include_count?: boolean;
@@ -83,18 +59,11 @@ export interface EnableUsergroupRequest {
   /** The encoded ID of the User Group to enable. */
   usergroup: string;
 }
-const EnableUsergroupRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<EnableUsergroupRequest>;
-
 export interface EnableUsergroupResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   usergroup: unknown;
 }
-const EnableUsergroupResponse = CreateUsergroupResponse as any as S.Schema<EnableUsergroupResponse>;
-
 export interface ListUsergroupsRequest {
   /** Include the number of users in each User Group. */
   include_count?: boolean;
@@ -105,27 +74,12 @@ export interface ListUsergroupsRequest {
   /** The user group's encoded team ID. Required if org token is used. */
   team_id?: string;
 }
-const ListUsergroupsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ListUsergroupsRequest>;
-
 export type ListUsergroupsResponseUsergroupsList = Array<unknown>;
-const ListUsergroupsResponseUsergroupsList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ListUsergroupsResponseUsergroupsList>;
-
 export interface ListUsergroupsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   usergroups: ListUsergroupsResponseUsergroupsList;
 }
-const ListUsergroupsResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ListUsergroupsResponse>;
-
 export interface ListUsersRequest {
   /** Include results for disabled User Groups. */
   include_disabled?: boolean;
@@ -134,29 +88,16 @@ export interface ListUsersRequest {
   /** The user group's encoded team ID. Required if org token is used. */
   team_id?: string;
 }
-const ListUsersRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<ListUsersRequest>;
-
 export type ListUsersResponseUsersList = Array<unknown>;
-const ListUsersResponseUsersList =
-  ListUsergroupsResponseUsergroupsList as any as S.Schema<ListUsersResponseUsersList>;
-
 export interface ListUsersResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   users: ListUsersResponseUsersList;
 }
-const ListUsersResponse = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ListUsersResponse>;
-
 /** A comma separated string of encoded user IDs that represent the entire list of users for the user group. */
 export type UpdateUserRequestUsersList = Array<string>;
-const UpdateUserRequestUsersList =
-  CreateUsergroupRequestChannelsList as any as S.Schema<UpdateUserRequestUsersList>;
-
 /** A comma separated string of encoded channel IDs for which the User Group can custom add usergroup members too. */
 export type UpdateUserRequestAdditionalChannelsList = Array<string>;
-const UpdateUserRequestAdditionalChannelsList =
-  CreateUsergroupRequestChannelsList as any as S.Schema<UpdateUserRequestAdditionalChannelsList>;
-
 export interface UpdateUserRequest {
   /** Include the number of users in the user group. */
   include_count?: boolean;
@@ -171,25 +112,15 @@ export interface UpdateUserRequest {
   /** Boolean to identify if the API is getting called when a shared section is getting shared */
   is_shared?: boolean;
 }
-const UpdateUserRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<UpdateUserRequest>;
-
 export interface UpdateUserResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   usergroup: unknown;
 }
-const UpdateUserResponse = CreateUsergroupResponse as any as S.Schema<UpdateUserResponse>;
-
 /** A comma separated string of encoded channel IDs for which the User Group uses as a default. */
 export type UpdateUsergroupRequestChannelsList = Array<string>;
-const UpdateUsergroupRequestChannelsList =
-  CreateUsergroupRequestChannelsList as any as S.Schema<UpdateUsergroupRequestChannelsList>;
-
 /** A comma separated string of encoded channel IDs for which the User Group can custom add usergroup members too. */
 export type UpdateUsergroupRequestAdditionalChannelsList = Array<string>;
-const UpdateUsergroupRequestAdditionalChannelsList =
-  CreateUsergroupRequestChannelsList as any as S.Schema<UpdateUsergroupRequestAdditionalChannelsList>;
-
 export interface UpdateUsergroupRequest {
   /** A comma separated string of encoded channel IDs for which the User Group uses as a default. */
   channels?: UpdateUsergroupRequestChannelsList;
@@ -210,16 +141,8 @@ export interface UpdateUsergroupRequest {
   /** Configure this user group to show as a sidebar section for all group members. Note: Only relevant if group has 1 or more default channels added. */
   enable_section?: boolean;
 }
-const UpdateUsergroupRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<UpdateUsergroupRequest>;
-
 /** List of user IDs who would exceed their channel limit */
 export type UpdateUsergroupResponseChannelLimitUserIdsList = Array<string>;
-const UpdateUsergroupResponseChannelLimitUserIdsList =
-  CreateUsergroupRequestChannelsList as any as S.Schema<UpdateUsergroupResponseChannelLimitUserIdsList>;
-
 export interface UpdateUsergroupResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -227,11 +150,6 @@ export interface UpdateUsergroupResponse {
   /** List of user IDs who would exceed their channel limit */
   channel_limit_user_ids?: UpdateUsergroupResponseChannelLimitUserIdsList;
 }
-const UpdateUsergroupResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<UpdateUsergroupResponse>;
-
 export type CreateUsergroupError = SlackOpError;
 /** Create a User Group. Required scopes -- bot: `usergroups:write`; user: `usergroups:write` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `bad_handle` -- Handle is invalid - `description_too_long` -- Given usergroup description is too long - `forbidden_handle` -- Handle is invalid - `handle_already_exists` -- Handle is already in use on this workspace - `invalid_channel_provided` -- An invalid channel ID was provided - `invalid_group_provided` -- An invalid group ID was provided - `missing_argument` -- A required argument is missing. - `missing_subteam_name` -- Subteam name is required - `name_already_exists` -- Name is already in use on this workspace - `name_too_long` -- Name too long. - `paid_teams_only` -- Usergroups can only be used on paid Slack teams - `permission_denied` -- The user does not have permission to create a User Group. - `plan_upgrade_required` -- This workspace does not have access to User Groups, as that feature is only available on Standard and above plans. - `target_team_not_on_org` -- Target team specified is not on the org in context - `target_team_must_be_specified_in_org_context` -- No target team was specified but the team in context is an org See https://docs.slack.dev/reference/methods/usergroups.create */
 export const createUsergroup: API.OperationMethod<
@@ -240,8 +158,8 @@ export const createUsergroup: API.OperationMethod<
   CreateUsergroupError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateUsergroupRequest,
-  output: CreateUsergroupResponse,
+  input: __S(1, __c0, 1) as any as S.Schema<CreateUsergroupRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<CreateUsergroupResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -255,8 +173,8 @@ export const disableUsergroup: API.OperationMethod<
   DisableUsergroupError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisableUsergroupRequest,
-  output: DisableUsergroupResponse,
+  input: __S(3, __c0, 3) as any as S.Schema<DisableUsergroupRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<DisableUsergroupResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -270,8 +188,8 @@ export const enableUsergroup: API.OperationMethod<
   EnableUsergroupError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnableUsergroupRequest,
-  output: EnableUsergroupResponse,
+  input: __S(4, __c0, 4) as any as S.Schema<EnableUsergroupRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<EnableUsergroupResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -285,8 +203,8 @@ export const listUsergroups: API.OperationMethod<
   ListUsergroupsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListUsergroupsRequest,
-  output: ListUsergroupsResponse,
+  input: __S(5, __c0, 5) as any as S.Schema<ListUsergroupsRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<ListUsergroupsResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -300,8 +218,8 @@ export const listUsers: API.OperationMethod<
   ListUsersError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListUsersRequest,
-  output: ListUsersResponse,
+  input: __S(8, __c1, 0) as any as S.Schema<ListUsersRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<ListUsersResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -315,8 +233,8 @@ export const updateUser: API.OperationMethod<
   UpdateUserError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateUserRequest,
-  output: UpdateUserResponse,
+  input: __S(10, __c1, 2) as any as S.Schema<UpdateUserRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<UpdateUserResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -330,8 +248,8 @@ export const updateUsergroup: API.OperationMethod<
   UpdateUsergroupError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateUsergroupRequest,
-  output: UpdateUsergroupResponse,
+  input: __S(11, __c1, 3) as any as S.Schema<UpdateUsergroupRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<UpdateUsergroupResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -345,8 +263,8 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          channels: S.optional(CreateUsergroupRequestChannelsList),
-          additional_channels: S.optional(CreateUsergroupRequestAdditionalChannelsList),
+          channels: S.optional(__S(0, __c0, 0)),
+          additional_channels: S.optional(__S(0, __c0, 0)),
           description: S.optional(S.String),
           handle: S.optional(S.String),
           include_count: S.optional(S.Boolean),
@@ -393,7 +311,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          usergroups: ListUsergroupsResponseUsergroupsList,
+          usergroups: __S(6, __c0, 6),
         }),
       ).annotate({ identifier: "ListUsergroupsResponse" });
   }
@@ -412,7 +330,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          users: ListUsersResponseUsersList,
+          users: __S(6, __c0, 6),
         }),
       ).annotate({ identifier: "ListUsersResponse" });
     case 2:
@@ -421,16 +339,16 @@ function __c1(j: number): any {
           include_count: S.optional(S.Boolean),
           team_id: S.optional(S.String),
           usergroup: S.String,
-          users: UpdateUserRequestUsersList,
-          additional_channels: S.optional(UpdateUserRequestAdditionalChannelsList),
+          users: __S(0, __c0, 0),
+          additional_channels: S.optional(__S(0, __c0, 0)),
           is_shared: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/usergroups.users.update", code: 200 })),
       ).annotate({ identifier: "UpdateUserRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          channels: S.optional(UpdateUsergroupRequestChannelsList),
-          additional_channels: S.optional(UpdateUsergroupRequestAdditionalChannelsList),
+          channels: S.optional(__S(0, __c0, 0)),
+          additional_channels: S.optional(__S(0, __c0, 0)),
           description: S.optional(S.String),
           handle: S.optional(S.String),
           include_count: S.optional(S.Boolean),
@@ -445,8 +363,13 @@ function __c1(j: number): any {
         S.Struct({
           ok: S.Boolean,
           usergroup: S.Unknown,
-          channel_limit_user_ids: S.optional(UpdateUsergroupResponseChannelLimitUserIdsList),
+          channel_limit_user_ids: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({ identifier: "UpdateUsergroupResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

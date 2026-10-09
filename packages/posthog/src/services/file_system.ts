@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -46,17 +48,7 @@ export interface CreateFileSystemRequest {
   meta?: unknown;
   shortcut?: boolean | null;
 }
-const CreateFileSystemRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateFileSystemRequest>;
-
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-const UserBasicHedgehogConfigMap = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<UserBasicHedgehogConfigMap>;
-
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
@@ -70,8 +62,6 @@ export type RoleAtOrganizationEnum =
   | "other";
 export type BlankEnum = "";
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
-
 export interface UserBasic {
   id?: number;
   uuid?: string;
@@ -83,8 +73,6 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-const UserBasic = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<UserBasic>;
-
 export interface FileSystem2 {
   id?: string;
   path?: string;
@@ -100,25 +88,16 @@ export interface FileSystem2 {
   /** Resolved access level the user has for the object this entry references ('none' means the user can't open it). Null when access controls don't apply to the entry type. */
   user_access_level?: string | null;
 }
-const FileSystem2 = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<FileSystem2>;
-
 export interface CreateFileSystemHomeFolderRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const CreateFileSystemHomeFolderRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateFileSystemHomeFolderRequest>;
-
 export interface FileSystemHomeFolder {
   /** The user's home folder ID, or null if deleted. */
   id: string | null;
   /** The current path of the user's home folder. */
   path: string | null;
 }
-const FileSystemHomeFolder = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<FileSystemHomeFolder>;
-
 export interface FileSystemDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -127,17 +106,7 @@ export interface FileSystemDestroyRequest {
   /** Delete folder contents too (default: true). Set false to delete only empty folders. Nonempty folders return HTTP 409 with code directory_not_empty. */
   recursive?: boolean;
 }
-const FileSystemDestroyRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<FileSystemDestroyRequest>;
-
 export interface FileSystemDestroyResponse {}
-const FileSystemDestroyResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<FileSystemDestroyResponse>;
-
 export interface FileSystemUndoDeleteCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -148,25 +117,13 @@ export interface FileSystemUndoDeleteCreateRequest {
   meta?: unknown;
   shortcut?: boolean | null;
 }
-const FileSystemUndoDeleteCreateRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<FileSystemUndoDeleteCreateRequest>;
-
 export interface FileSystemUndoDeleteCreateResponse {}
-const FileSystemUndoDeleteCreateResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<FileSystemUndoDeleteCreateResponse>;
-
 export interface GetFileSystemRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this file system. */
   id: string;
 }
-const GetFileSystemRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<GetFileSystemRequest>;
-
 export interface ListFileSystemRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -179,28 +136,13 @@ export interface ListFileSystemRequest {
   /** A search term. */
   search?: string;
 }
-const ListFileSystemRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ListFileSystemRequest>;
-
 export type PaginatedFileSystemListResultsList = Array<FileSystem2>;
-const PaginatedFileSystemListResultsList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<PaginatedFileSystemListResultsList>;
-
 export interface PaginatedFileSystemList {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedFileSystemListResultsList;
 }
-const PaginatedFileSystemList = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<PaginatedFileSystemList>;
-
 export interface UpdateFileSystemRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -213,11 +155,6 @@ export interface UpdateFileSystemRequest {
   meta?: unknown;
   shortcut?: boolean | null;
 }
-const UpdateFileSystemRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<UpdateFileSystemRequest>;
-
 export interface UpdateFileSystemPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -230,11 +167,6 @@ export interface UpdateFileSystemPartialRequest {
   meta?: unknown;
   shortcut?: boolean | null;
 }
-const UpdateFileSystemPartialRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<UpdateFileSystemPartialRequest>;
-
 export type CreateFileSystemError = BadRequest | Forbidden | NotFound | PosthogOpError;
 export const createFileSystem: API.OperationMethod<
   CreateFileSystemRequest,
@@ -242,8 +174,8 @@ export const createFileSystem: API.OperationMethod<
   CreateFileSystemError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateFileSystemRequest,
-  output: FileSystem2,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateFileSystemRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<FileSystem2>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -256,8 +188,8 @@ export const createFileSystemHomeFolder: API.OperationMethod<
   CreateFileSystemHomeFolderError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateFileSystemHomeFolderRequest,
-  output: FileSystemHomeFolder,
+  input: __S(4, __c0, 4) as any as S.Schema<CreateFileSystemHomeFolderRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<FileSystemHomeFolder>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -270,8 +202,8 @@ export const fileSystemDestroy: API.OperationMethod<
   FileSystemDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FileSystemDestroyRequest,
-  output: FileSystemDestroyResponse,
+  input: __S(6, __c0, 6) as any as S.Schema<FileSystemDestroyRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<FileSystemDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -284,8 +216,8 @@ export const fileSystemUndoDeleteCreate: API.OperationMethod<
   FileSystemUndoDeleteCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FileSystemUndoDeleteCreateRequest,
-  output: FileSystemUndoDeleteCreateResponse,
+  input: __S(8, __c1, 0) as any as S.Schema<FileSystemUndoDeleteCreateRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<FileSystemUndoDeleteCreateResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -298,8 +230,8 @@ export const getFileSystem: API.OperationMethod<
   GetFileSystemError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFileSystemRequest,
-  output: FileSystem2,
+  input: __S(10, __c1, 2) as any as S.Schema<GetFileSystemRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<FileSystem2>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -312,8 +244,8 @@ export const listFileSystem: API.OperationMethod<
   ListFileSystemError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFileSystemRequest,
-  output: PaginatedFileSystemList,
+  input: __S(11, __c1, 3) as any as S.Schema<ListFileSystemRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<PaginatedFileSystemList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -326,8 +258,8 @@ export const updateFileSystem: API.OperationMethod<
   UpdateFileSystemError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateFileSystemRequest,
-  output: FileSystem2,
+  input: __S(14, __c1, 6) as any as S.Schema<UpdateFileSystemRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<FileSystem2>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -340,8 +272,8 @@ export const updateFileSystemPartial: API.OperationMethod<
   UpdateFileSystemPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateFileSystemPartialRequest,
-  output: FileSystem2,
+  input: __S(15, __c1, 7) as any as S.Schema<UpdateFileSystemPartialRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<FileSystem2>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -376,8 +308,8 @@ function __c0(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
-          role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
+          hedgehog_config: S.optional(S.NullOr(__S(1, __c0, 1))),
+          role_at_organization: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "UserBasic" });
     case 3:
@@ -392,7 +324,7 @@ function __c0(j: number): any {
           meta: S.optional(S.Unknown),
           shortcut: S.optional(S.NullOr(S.Boolean)),
           created_at: S.optional(S.String),
-          created_by: S.optional(S.NullOr(UserBasic)),
+          created_by: S.optional(S.NullOr(__S(2, __c0, 2))),
           last_viewed_at: S.optional(S.NullOr(S.String)),
           user_access_level: S.optional(S.NullOr(S.String)),
         }),
@@ -486,14 +418,14 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "ListFileSystemRequest" });
     case 4:
-      return S.Array(FileSystem2);
+      return S.Array(__S(3, __c0, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(PaginatedFileSystemListResultsList),
+          results: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({ identifier: "PaginatedFileSystemList" });
     case 6:
@@ -533,4 +465,9 @@ function __c1(j: number): any {
         identifier: "UpdateFileSystemPartialRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

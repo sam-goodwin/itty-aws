@@ -8,6 +8,8 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "ServiceDiscovery",
   serviceShapeName: "Route53AutoNaming_v20170314",
@@ -188,47 +190,28 @@ export interface Tag {
   Key: string;
   Value: string;
 }
-const Tag = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-const TagList = /*@__PURE__*/ __L.at(__c0, 1);
 export interface CreateHttpNamespaceRequest {
   Name: string;
   CreatorRequestId?: string;
   Description?: string;
   Tags?: Tag[];
 }
-const CreateHttpNamespaceRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateHttpNamespaceRequest>;
 export type OperationId = string;
 export interface CreateHttpNamespaceResponse {
   OperationId?: string;
 }
-const CreateHttpNamespaceResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateHttpNamespaceResponse>;
 export type NamespaceNamePrivate = string;
 export type RecordTTL = number;
 export interface SOA {
   TTL?: number;
 }
-const SOA = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<SOA>;
 export interface PrivateDnsPropertiesMutable {
   SOA: SOA;
 }
-const PrivateDnsPropertiesMutable = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<PrivateDnsPropertiesMutable>;
 export interface PrivateDnsNamespaceProperties {
   DnsProperties: PrivateDnsPropertiesMutable;
 }
-const PrivateDnsNamespaceProperties = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<PrivateDnsNamespaceProperties>;
 export interface CreatePrivateDnsNamespaceRequest {
   Name: string;
   CreatorRequestId?: string;
@@ -237,15 +220,9 @@ export interface CreatePrivateDnsNamespaceRequest {
   Tags?: Tag[];
   Properties?: PrivateDnsNamespaceProperties;
 }
-const CreatePrivateDnsNamespaceRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreatePrivateDnsNamespaceRequest>;
 export interface CreatePrivateDnsNamespaceResponse {
   OperationId?: string;
 }
-const CreatePrivateDnsNamespaceResponse =
-  CreateHttpNamespaceResponse as any as S.Schema<CreatePrivateDnsNamespaceResponse>;
 export type NamespaceNamePublic = string;
 export interface PublicDnsPropertiesMutable {
   SOA: SOA;
@@ -253,8 +230,6 @@ export interface PublicDnsPropertiesMutable {
 export interface PublicDnsNamespaceProperties {
   DnsProperties: PublicDnsPropertiesMutable;
 }
-const PublicDnsNamespaceProperties =
-  PrivateDnsNamespaceProperties as any as S.Schema<PublicDnsNamespaceProperties>;
 export interface CreatePublicDnsNamespaceRequest {
   Name: string;
   CreatorRequestId?: string;
@@ -262,39 +237,24 @@ export interface CreatePublicDnsNamespaceRequest {
   Tags?: Tag[];
   Properties?: PublicDnsNamespaceProperties;
 }
-const CreatePublicDnsNamespaceRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreatePublicDnsNamespaceRequest>;
 export interface CreatePublicDnsNamespaceResponse {
   OperationId?: string;
 }
-const CreatePublicDnsNamespaceResponse =
-  CreateHttpNamespaceResponse as any as S.Schema<CreatePublicDnsNamespaceResponse>;
 export type ServiceName = string;
 export type Arn = string;
 export type RoutingPolicy = "MULTIVALUE" | "WEIGHTED" | (string & {});
-const RoutingPolicy = S.String;
-
 export type RecordType = "SRV" | "A" | "AAAA" | "CNAME" | (string & {});
-const RecordType = S.String;
-
 export interface DnsRecord {
   Type: RecordType;
   TTL: number;
 }
-const DnsRecord = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<DnsRecord>;
 export type DnsRecordList = DnsRecord[];
-const DnsRecordList = /*@__PURE__*/ __L.at(__c1, 2);
 export interface DnsConfig {
   NamespaceId?: string;
   RoutingPolicy?: RoutingPolicy;
   DnsRecords?: DnsRecord[];
 }
-const DnsConfig = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<DnsConfig>;
 export type HealthCheckType = "HTTP" | "HTTPS" | "TCP" | (string & {});
-const HealthCheckType = S.String;
-
 export type ResourcePath = string;
 export type FailureThreshold = number;
 export interface HealthCheckConfig {
@@ -302,17 +262,10 @@ export interface HealthCheckConfig {
   ResourcePath?: string;
   FailureThreshold?: number;
 }
-const HealthCheckConfig = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<HealthCheckConfig>;
 export interface HealthCheckCustomConfig {
   FailureThreshold?: number;
 }
-const HealthCheckCustomConfig = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<HealthCheckCustomConfig>;
 export type ServiceTypeOption = "HTTP" | (string & {});
-const ServiceTypeOption = S.String;
-
 export interface CreateServiceRequest {
   Name: string;
   NamespaceId?: string;
@@ -324,12 +277,9 @@ export interface CreateServiceRequest {
   Tags?: Tag[];
   Type?: ServiceTypeOption;
 }
-const CreateServiceRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<CreateServiceRequest>;
 export type AWSAccountId = string;
 export type ResourceCount = number;
 export type ServiceType = "HTTP" | "DNS_HTTP" | "DNS" | (string & {});
-const ServiceType = S.String;
-
 export interface Service {
   Id?: string;
   Arn?: string;
@@ -346,80 +296,44 @@ export interface Service {
   CreatorRequestId?: string;
   CreatedByAccount?: string;
 }
-const Service = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<Service>;
 export interface CreateServiceResponse {
   Service?: Service;
 }
-const CreateServiceResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CreateServiceResponse>;
 export interface DeleteNamespaceRequest {
   Id: string;
 }
-const DeleteNamespaceRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<DeleteNamespaceRequest>;
 export interface DeleteNamespaceResponse {
   OperationId?: string;
 }
-const DeleteNamespaceResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<DeleteNamespaceResponse>;
 export interface DeleteServiceRequest {
   Id: string;
 }
-const DeleteServiceRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<DeleteServiceRequest>;
 export interface DeleteServiceResponse {}
-const DeleteServiceResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<DeleteServiceResponse>;
 export type ServiceAttributeKey = string;
 export type ServiceAttributeKeyList = string[];
-const ServiceAttributeKeyList = /*@__PURE__*/ __L.at(__c2, 5);
 export interface DeleteServiceAttributesRequest {
   ServiceId: string;
   Attributes: string[];
 }
-const DeleteServiceAttributesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<DeleteServiceAttributesRequest>;
 export interface DeleteServiceAttributesResponse {}
-const DeleteServiceAttributesResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<DeleteServiceAttributesResponse>;
 export interface DeregisterInstanceRequest {
   ServiceId: string;
   InstanceId: string;
 }
-const DeregisterInstanceRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<DeregisterInstanceRequest>;
 export interface DeregisterInstanceResponse {
   OperationId?: string;
 }
-const DeregisterInstanceResponse =
-  CreateHttpNamespaceResponse as any as S.Schema<DeregisterInstanceResponse>;
 export type NamespaceName = string;
 export type DiscoverMaxResults = number;
 export type AttrKey = string;
 export type AttrValue = string;
 export type Attributes = { [key: string]: string | undefined };
-const Attributes = /*@__PURE__*/ __L.at(__c3, 1);
 export type HealthStatusFilter =
   | "HEALTHY"
   | "UNHEALTHY"
   | "ALL"
   | "HEALTHY_OR_ELSE_ALL"
   | (string & {});
-const HealthStatusFilter = S.String;
-
 export interface DiscoverInstancesRequest {
   NamespaceName: string;
   ServiceName: string;
@@ -429,13 +343,7 @@ export interface DiscoverInstancesRequest {
   HealthStatus?: HealthStatusFilter;
   OwnerAccount?: string;
 }
-const DiscoverInstancesRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<DiscoverInstancesRequest>;
 export type HealthStatus = "HEALTHY" | "UNHEALTHY" | "UNKNOWN" | (string & {});
-const HealthStatus = S.String;
-
 export interface HttpInstanceSummary {
   InstanceId?: string;
   NamespaceName?: string;
@@ -443,53 +351,35 @@ export interface HttpInstanceSummary {
   HealthStatus?: HealthStatus;
   Attributes?: { [key: string]: string | undefined };
 }
-const HttpInstanceSummary = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<HttpInstanceSummary>;
 export type HttpInstanceSummaryList = HttpInstanceSummary[];
-const HttpInstanceSummaryList = /*@__PURE__*/ __L.at(__c3, 4);
 export type Revision = number;
 export interface DiscoverInstancesResponse {
   Instances?: HttpInstanceSummary[];
   InstancesRevision?: number;
 }
-const DiscoverInstancesResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<DiscoverInstancesResponse>;
 export interface DiscoverInstancesRevisionRequest {
   NamespaceName: string;
   ServiceName: string;
   OwnerAccount?: string;
 }
-const DiscoverInstancesRevisionRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<DiscoverInstancesRevisionRequest>;
 export interface DiscoverInstancesRevisionResponse {
   InstancesRevision?: number;
 }
-const DiscoverInstancesRevisionResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<DiscoverInstancesRevisionResponse>;
 export interface GetInstanceRequest {
   ServiceId: string;
   InstanceId: string;
 }
-const GetInstanceRequest = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<GetInstanceRequest>;
 export interface Instance {
   Id: string;
   CreatorRequestId?: string;
   Attributes?: { [key: string]: string | undefined };
   CreatedByAccount?: string;
 }
-const Instance = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<Instance>;
 export interface GetInstanceResponse {
   ResourceOwner?: string;
   Instance?: Instance;
 }
-const GetInstanceResponse = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<GetInstanceResponse>;
 export type InstanceIdList = string[];
-const InstanceIdList = /*@__PURE__*/ __L.at(__c4, 3);
 export type MaxResults = number;
 export type NextToken = string;
 export interface GetInstancesHealthStatusRequest {
@@ -498,41 +388,26 @@ export interface GetInstancesHealthStatusRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const GetInstancesHealthStatusRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<GetInstancesHealthStatusRequest>;
 export type InstanceHealthStatusMap = { [key: string]: HealthStatus | undefined };
-const InstanceHealthStatusMap = /*@__PURE__*/ __L.at(__c4, 5);
 export interface GetInstancesHealthStatusResponse {
   Status?: { [key: string]: HealthStatus | undefined };
   NextToken?: string;
 }
-const GetInstancesHealthStatusResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<GetInstancesHealthStatusResponse>;
 export interface GetNamespaceRequest {
   Id: string;
 }
-const GetNamespaceRequest = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<GetNamespaceRequest>;
 export type NamespaceType = "DNS_PUBLIC" | "DNS_PRIVATE" | "HTTP" | (string & {});
-const NamespaceType = S.String;
-
 export interface DnsProperties {
   HostedZoneId?: string;
   SOA?: SOA;
 }
-const DnsProperties = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<DnsProperties>;
 export interface HttpProperties {
   HttpName?: string;
 }
-const HttpProperties = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<HttpProperties>;
 export interface NamespaceProperties {
   DnsProperties?: DnsProperties;
   HttpProperties?: HttpProperties;
 }
-const NamespaceProperties = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<NamespaceProperties>;
 export interface Namespace {
   Id?: string;
   Arn?: string;
@@ -545,16 +420,13 @@ export interface Namespace {
   CreateDate?: Date;
   CreatorRequestId?: string;
 }
-const Namespace = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<Namespace>;
 export interface GetNamespaceResponse {
   Namespace?: Namespace;
 }
-const GetNamespaceResponse = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<GetNamespaceResponse>;
 export interface GetOperationRequest {
   OperationId: string;
   OwnerAccount?: string;
 }
-const GetOperationRequest = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<GetOperationRequest>;
 export type OperationType =
   | "CREATE_NAMESPACE"
   | "DELETE_NAMESPACE"
@@ -563,18 +435,11 @@ export type OperationType =
   | "REGISTER_INSTANCE"
   | "DEREGISTER_INSTANCE"
   | (string & {});
-const OperationType = S.String;
-
 export type OperationStatus = "SUBMITTED" | "PENDING" | "SUCCESS" | "FAIL" | (string & {});
-const OperationStatus = S.String;
-
 export type Message = string;
 export type Code = string;
 export type OperationTargetType = "NAMESPACE" | "SERVICE" | "INSTANCE" | (string & {});
-const OperationTargetType = S.String;
-
 export type OperationTargetsMap = { [key in OperationTargetType]?: string };
-const OperationTargetsMap = /*@__PURE__*/ __L.at(__c5, 6);
 export interface Operation {
   Id?: string;
   OwnerAccount?: string;
@@ -586,91 +451,59 @@ export interface Operation {
   UpdateDate?: Date;
   Targets?: { [key: string]: string | undefined };
 }
-const Operation = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<Operation>;
 export interface GetOperationResponse {
   Operation?: Operation;
 }
-const GetOperationResponse = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<GetOperationResponse>;
 export interface GetServiceRequest {
   Id: string;
 }
-const GetServiceRequest = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<GetServiceRequest>;
 export interface GetServiceResponse {
   Service?: Service;
 }
-const GetServiceResponse = CreateServiceResponse as any as S.Schema<GetServiceResponse>;
 export interface GetServiceAttributesRequest {
   ServiceId: string;
 }
-const GetServiceAttributesRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<GetServiceAttributesRequest>;
 export type ServiceAttributeValue = string;
 export type ServiceAttributesMap = { [key: string]: string | undefined };
-const ServiceAttributesMap = /*@__PURE__*/ __L.at(__c6, 3);
 export interface ServiceAttributes {
   ServiceArn?: string;
   ResourceOwner?: string;
   Attributes?: { [key: string]: string | undefined };
 }
-const ServiceAttributes = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<ServiceAttributes>;
 export interface GetServiceAttributesResponse {
   ServiceAttributes?: ServiceAttributes;
 }
-const GetServiceAttributesResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<GetServiceAttributesResponse>;
 export interface ListInstancesRequest {
   ServiceId: string;
   NextToken?: string;
   MaxResults?: number;
 }
-const ListInstancesRequest = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<ListInstancesRequest>;
 export interface InstanceSummary {
   Id?: string;
   Attributes?: { [key: string]: string | undefined };
   CreatedByAccount?: string;
 }
-const InstanceSummary = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<InstanceSummary>;
 export type InstanceSummaryList = InstanceSummary[];
-const InstanceSummaryList = /*@__PURE__*/ __L.at(__c7, 0);
 export interface ListInstancesResponse {
   ResourceOwner?: string;
   Instances?: InstanceSummary[];
   NextToken?: string;
 }
-const ListInstancesResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<ListInstancesResponse>;
 export type NamespaceFilterName = "TYPE" | "NAME" | "HTTP_NAME" | "RESOURCE_OWNER" | (string & {});
-const NamespaceFilterName = S.String;
-
 export type FilterValue = string;
 export type FilterValues = string[];
-const FilterValues = /*@__PURE__*/ __L.at(__c7, 2);
 export type FilterCondition = "EQ" | "IN" | "BETWEEN" | "BEGINS_WITH" | (string & {});
-const FilterCondition = S.String;
-
 export interface NamespaceFilter {
   Name: NamespaceFilterName;
   Values: string[];
   Condition?: FilterCondition;
 }
-const NamespaceFilter = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<NamespaceFilter>;
 export type NamespaceFilters = NamespaceFilter[];
-const NamespaceFilters = /*@__PURE__*/ __L.at(__c7, 4);
 export interface ListNamespacesRequest {
   NextToken?: string;
   MaxResults?: number;
   Filters?: NamespaceFilter[];
 }
-const ListNamespacesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<ListNamespacesRequest>;
 export interface NamespaceSummary {
   Id?: string;
   Arn?: string;
@@ -682,17 +515,11 @@ export interface NamespaceSummary {
   Properties?: NamespaceProperties;
   CreateDate?: Date;
 }
-const NamespaceSummary = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<NamespaceSummary>;
 export type NamespaceSummariesList = NamespaceSummary[];
-const NamespaceSummariesList = /*@__PURE__*/ __L.at(__c7, 7);
 export interface ListNamespacesResponse {
   Namespaces?: NamespaceSummary[];
   NextToken?: string;
 }
-const ListNamespacesResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<ListNamespacesResponse>;
 export type OperationFilterName =
   | "NAMESPACE_ID"
   | "SERVICE_ID"
@@ -706,31 +533,20 @@ export interface OperationFilter {
   Condition?: FilterCondition;
 }
 export type OperationFilters = OperationFilter[];
-const OperationFilters = NamespaceFilters as any as S.Schema<OperationFilters>;
 export interface ListOperationsRequest {
   NextToken?: string;
   MaxResults?: number;
   Filters?: OperationFilter[];
 }
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<ListOperationsRequest>;
 export interface OperationSummary {
   Id?: string;
   Status?: OperationStatus;
 }
-const OperationSummary = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<OperationSummary>;
 export type OperationSummaryList = OperationSummary[];
-const OperationSummaryList = /*@__PURE__*/ __L.at(__c8, 3);
 export interface ListOperationsResponse {
   Operations?: OperationSummary[];
   NextToken?: string;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<ListOperationsResponse>;
 export type ServiceFilterName = "NAMESPACE_ID" | "RESOURCE_OWNER" | (string & {});
 export interface ServiceFilter {
   Name: ServiceFilterName;
@@ -738,13 +554,11 @@ export interface ServiceFilter {
   Condition?: FilterCondition;
 }
 export type ServiceFilters = ServiceFilter[];
-const ServiceFilters = NamespaceFilters as any as S.Schema<ServiceFilters>;
 export interface ListServicesRequest {
   NextToken?: string;
   MaxResults?: number;
   Filters?: ServiceFilter[];
 }
-const ListServicesRequest = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<ListServicesRequest>;
 export interface ServiceSummary {
   Id?: string;
   Arn?: string;
@@ -759,29 +573,18 @@ export interface ServiceSummary {
   CreateDate?: Date;
   CreatedByAccount?: string;
 }
-const ServiceSummary = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<ServiceSummary>;
 export type ServiceSummariesList = ServiceSummary[];
-const ServiceSummariesList = /*@__PURE__*/ __L.at(__c8, 7);
 export interface ListServicesResponse {
   Services?: ServiceSummary[];
   NextToken?: string;
 }
-const ListServicesResponse = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<ListServicesResponse>;
 export type AmazonResourceName = string;
 export interface ListTagsForResourceRequest {
   ResourceARN: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   Tags?: Tag[];
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<ListTagsForResourceResponse>;
 export type InstanceId = string;
 export interface RegisterInstanceRequest {
   ServiceId: string;
@@ -789,169 +592,97 @@ export interface RegisterInstanceRequest {
   CreatorRequestId?: string;
   Attributes: { [key: string]: string | undefined };
 }
-const RegisterInstanceRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<RegisterInstanceRequest>;
 export interface RegisterInstanceResponse {
   OperationId?: string;
 }
-const RegisterInstanceResponse =
-  DeleteNamespaceResponse as any as S.Schema<RegisterInstanceResponse>;
 export interface TagResourceRequest {
   ResourceARN: string;
   Tags: Tag[];
 }
-const TagResourceRequest = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-const TagResourceResponse = DeleteServiceResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-const TagKeyList = ServiceAttributeKeyList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceARN: string;
   TagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-const UntagResourceResponse = DeleteServiceResponse as any as S.Schema<UntagResourceResponse>;
 export interface HttpNamespaceChange {
   Description: string;
 }
-const HttpNamespaceChange = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<HttpNamespaceChange>;
 export interface UpdateHttpNamespaceRequest {
   Id: string;
   UpdaterRequestId?: string;
   Namespace: HttpNamespaceChange;
 }
-const UpdateHttpNamespaceRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<UpdateHttpNamespaceRequest>;
 export interface UpdateHttpNamespaceResponse {
   OperationId?: string;
 }
-const UpdateHttpNamespaceResponse =
-  CreateHttpNamespaceResponse as any as S.Schema<UpdateHttpNamespaceResponse>;
 export type CustomHealthStatus = "HEALTHY" | "UNHEALTHY" | (string & {});
-const CustomHealthStatus = S.String;
-
 export interface UpdateInstanceCustomHealthStatusRequest {
   ServiceId: string;
   InstanceId: string;
   Status: CustomHealthStatus;
 }
-const UpdateInstanceCustomHealthStatusRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<UpdateInstanceCustomHealthStatusRequest>;
 export interface UpdateInstanceCustomHealthStatusResponse {}
-const UpdateInstanceCustomHealthStatusResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<UpdateInstanceCustomHealthStatusResponse>;
 export interface SOAChange {
   TTL: number;
 }
-const SOAChange = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<SOAChange>;
 export interface PrivateDnsPropertiesMutableChange {
   SOA: SOAChange;
 }
-const PrivateDnsPropertiesMutableChange = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<PrivateDnsPropertiesMutableChange>;
 export interface PrivateDnsNamespacePropertiesChange {
   DnsProperties: PrivateDnsPropertiesMutableChange;
 }
-const PrivateDnsNamespacePropertiesChange = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<PrivateDnsNamespacePropertiesChange>;
 export interface PrivateDnsNamespaceChange {
   Description?: string;
   Properties?: PrivateDnsNamespacePropertiesChange;
 }
-const PrivateDnsNamespaceChange = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<PrivateDnsNamespaceChange>;
 export interface UpdatePrivateDnsNamespaceRequest {
   Id: string;
   UpdaterRequestId?: string;
   Namespace: PrivateDnsNamespaceChange;
 }
-const UpdatePrivateDnsNamespaceRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<UpdatePrivateDnsNamespaceRequest>;
 export interface UpdatePrivateDnsNamespaceResponse {
   OperationId?: string;
 }
-const UpdatePrivateDnsNamespaceResponse =
-  CreateHttpNamespaceResponse as any as S.Schema<UpdatePrivateDnsNamespaceResponse>;
 export interface PublicDnsPropertiesMutableChange {
   SOA: SOAChange;
 }
 export interface PublicDnsNamespacePropertiesChange {
   DnsProperties: PublicDnsPropertiesMutableChange;
 }
-const PublicDnsNamespacePropertiesChange =
-  PrivateDnsNamespacePropertiesChange as any as S.Schema<PublicDnsNamespacePropertiesChange>;
 export interface PublicDnsNamespaceChange {
   Description?: string;
   Properties?: PublicDnsNamespacePropertiesChange;
 }
-const PublicDnsNamespaceChange = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<PublicDnsNamespaceChange>;
 export interface UpdatePublicDnsNamespaceRequest {
   Id: string;
   UpdaterRequestId?: string;
   Namespace: PublicDnsNamespaceChange;
 }
-const UpdatePublicDnsNamespaceRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<UpdatePublicDnsNamespaceRequest>;
 export interface UpdatePublicDnsNamespaceResponse {
   OperationId?: string;
 }
-const UpdatePublicDnsNamespaceResponse =
-  CreateHttpNamespaceResponse as any as S.Schema<UpdatePublicDnsNamespaceResponse>;
 export interface DnsConfigChange {
   DnsRecords: DnsRecord[];
 }
-const DnsConfigChange = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<DnsConfigChange>;
 export interface ServiceChange {
   Description?: string;
   DnsConfig?: DnsConfigChange;
   HealthCheckConfig?: HealthCheckConfig;
 }
-const ServiceChange = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<ServiceChange>;
 export interface UpdateServiceRequest {
   Id: string;
   Service: ServiceChange;
 }
-const UpdateServiceRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<UpdateServiceRequest>;
 export interface UpdateServiceResponse {
   OperationId?: string;
 }
-const UpdateServiceResponse = DeleteNamespaceResponse as any as S.Schema<UpdateServiceResponse>;
 export interface UpdateServiceAttributesRequest {
   ServiceId: string;
   Attributes: { [key: string]: string | undefined };
 }
-const UpdateServiceAttributesRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<UpdateServiceAttributesRequest>;
 export interface UpdateServiceAttributesResponse {}
-const UpdateServiceAttributesResponse =
-  DeleteServiceAttributesResponse as any as S.Schema<UpdateServiceAttributesResponse>;
 export type ErrorMessage = string;
 export type CreateHttpNamespaceError =
   | DuplicateRequest
@@ -974,8 +705,8 @@ export const createHttpNamespace: API.OperationMethod<
   CreateHttpNamespaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateHttpNamespaceRequest,
-  output: CreateHttpNamespaceResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<CreateHttpNamespaceRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<CreateHttpNamespaceResponse>,
   errors: [
     DuplicateRequest,
     InvalidInput,
@@ -1011,8 +742,8 @@ export const createPrivateDnsNamespace: API.OperationMethod<
   CreatePrivateDnsNamespaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePrivateDnsNamespaceRequest,
-  output: CreatePrivateDnsNamespaceResponse,
+  input: __S(7, __c0, 7) as any as S.Schema<CreatePrivateDnsNamespaceRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<CreatePrivateDnsNamespaceResponse>,
   errors: [
     DuplicateRequest,
     InvalidInput,
@@ -1049,8 +780,8 @@ export const createPublicDnsNamespace: API.OperationMethod<
   CreatePublicDnsNamespaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePublicDnsNamespaceRequest,
-  output: CreatePublicDnsNamespaceResponse,
+  input: __S(8, __c1, 0) as any as S.Schema<CreatePublicDnsNamespaceRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<CreatePublicDnsNamespaceResponse>,
   errors: [
     DuplicateRequest,
     InvalidInput,
@@ -1101,8 +832,8 @@ export const createService: API.OperationMethod<
   CreateServiceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateServiceRequest,
-  output: CreateServiceResponse,
+  input: __S(14, __c1, 6) as any as S.Schema<CreateServiceRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<CreateServiceResponse>,
   errors: [
     InvalidInput,
     NamespaceNotFound,
@@ -1131,8 +862,8 @@ export const deleteNamespace: API.OperationMethod<
   DeleteNamespaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteNamespaceRequest,
-  output: DeleteNamespaceResponse,
+  input: __S(17, __c2, 1) as any as S.Schema<DeleteNamespaceRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<DeleteNamespaceResponse>,
   errors: [DuplicateRequest, InvalidInput, NamespaceNotFound, ResourceInUse],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1150,8 +881,8 @@ export const deleteService: API.OperationMethod<
   DeleteServiceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteServiceRequest,
-  output: DeleteServiceResponse,
+  input: __S(19, __c2, 3) as any as S.Schema<DeleteServiceRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<DeleteServiceResponse>,
   errors: [InvalidInput, ResourceInUse, ServiceNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1168,8 +899,8 @@ export const deleteServiceAttributes: API.OperationMethod<
   DeleteServiceAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteServiceAttributesRequest,
-  output: DeleteServiceAttributesResponse,
+  input: __S(22, __c2, 6) as any as S.Schema<DeleteServiceAttributesRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<DeleteServiceAttributesResponse>,
   errors: [InvalidInput, ServiceNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1193,8 +924,8 @@ export const deregisterInstance: API.OperationMethod<
   DeregisterInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeregisterInstanceRequest,
-  output: DeregisterInstanceResponse,
+  input: __S(24, __c3, 0) as any as S.Schema<DeregisterInstanceRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<DeregisterInstanceResponse>,
   errors: [DuplicateRequest, InstanceNotFound, InvalidInput, ResourceInUse, ServiceNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1220,8 +951,8 @@ export const discoverInstances: API.OperationMethod<
   DiscoverInstancesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DiscoverInstancesRequest,
-  output: DiscoverInstancesResponse,
+  input: __S(26, __c3, 2) as any as S.Schema<DiscoverInstancesRequest>,
+  output: __S(29, __c3, 5) as any as S.Schema<DiscoverInstancesResponse>,
   errors: [InvalidInput, NamespaceNotFound, RequestLimitExceeded, ServiceNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1244,8 +975,8 @@ export const discoverInstancesRevision: API.OperationMethod<
   DiscoverInstancesRevisionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DiscoverInstancesRevisionRequest,
-  output: DiscoverInstancesRevisionResponse,
+  input: __S(30, __c3, 6) as any as S.Schema<DiscoverInstancesRevisionRequest>,
+  output: __S(31, __c3, 7) as any as S.Schema<DiscoverInstancesRevisionResponse>,
   errors: [InvalidInput, NamespaceNotFound, RequestLimitExceeded, ServiceNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1263,8 +994,8 @@ export const getInstance: API.OperationMethod<
   GetInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetInstanceRequest,
-  output: GetInstanceResponse,
+  input: __S(32, __c4, 0) as any as S.Schema<GetInstanceRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<GetInstanceResponse>,
   errors: [InstanceNotFound, InvalidInput, ServiceNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1291,8 +1022,8 @@ export const getInstancesHealthStatus: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetInstancesHealthStatusRequest,
-  output: GetInstancesHealthStatusResponse,
+  input: __S(36, __c4, 4) as any as S.Schema<GetInstancesHealthStatusRequest>,
+  output: __S(38, __c4, 6) as any as S.Schema<GetInstancesHealthStatusResponse>,
   errors: [InstanceNotFound, InvalidInput, ServiceNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1314,8 +1045,8 @@ export const getNamespace: API.OperationMethod<
   GetNamespaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNamespaceRequest,
-  output: GetNamespaceResponse,
+  input: __S(39, __c4, 7) as any as S.Schema<GetNamespaceRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<GetNamespaceResponse>,
   errors: [InvalidInput, NamespaceNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1335,8 +1066,8 @@ export const getOperation: API.OperationMethod<
   GetOperationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOperationRequest,
-  output: GetOperationResponse,
+  input: __S(45, __c5, 5) as any as S.Schema<GetOperationRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<GetOperationResponse>,
   errors: [InvalidInput, OperationNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1353,8 +1084,8 @@ export const getService: API.OperationMethod<
   GetServiceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetServiceRequest,
-  output: GetServiceResponse,
+  input: __S(49, __c6, 1) as any as S.Schema<GetServiceRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<GetServiceResponse>,
   errors: [InvalidInput, ServiceNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1371,8 +1102,8 @@ export const getServiceAttributes: API.OperationMethod<
   GetServiceAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetServiceAttributesRequest,
-  output: GetServiceAttributesResponse,
+  input: __S(50, __c6, 2) as any as S.Schema<GetServiceAttributesRequest>,
+  output: __S(53, __c6, 5) as any as S.Schema<GetServiceAttributesResponse>,
   errors: [InvalidInput, ServiceNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1391,8 +1122,8 @@ export const listInstances: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListInstancesRequest,
-  output: ListInstancesResponse,
+  input: __S(54, __c6, 6) as any as S.Schema<ListInstancesRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<ListInstancesResponse>,
   errors: [InvalidInput, ServiceNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1415,8 +1146,8 @@ export const listNamespaces: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListNamespacesRequest,
-  output: ListNamespacesResponse,
+  input: __S(61, __c7, 5) as any as S.Schema<ListNamespacesRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<ListNamespacesResponse>,
   errors: [InvalidInput],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1439,8 +1170,8 @@ export const listOperations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(65, __c8, 1) as any as S.Schema<ListOperationsRequest>,
+  output: __S(68, __c8, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [InvalidInput],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1464,8 +1195,8 @@ export const listServices: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListServicesRequest,
-  output: ListServicesResponse,
+  input: __S(69, __c8, 5) as any as S.Schema<ListServicesRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<ListServicesResponse>,
   errors: [InvalidInput],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1487,8 +1218,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
+  input: __S(73, __c9, 1) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(74, __c9, 2) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [InvalidInput, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1543,8 +1274,8 @@ export const registerInstance: API.OperationMethod<
   RegisterInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegisterInstanceRequest,
-  output: RegisterInstanceResponse,
+  input: __S(75, __c9, 3) as any as S.Schema<RegisterInstanceRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<RegisterInstanceResponse>,
   errors: [DuplicateRequest, InvalidInput, ResourceInUse, ResourceLimitExceeded, ServiceNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1565,8 +1296,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
+  input: __S(76, __c9, 4) as any as S.Schema<TagResourceRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<TagResourceResponse>,
   errors: [InvalidInput, ResourceNotFoundException, TooManyTagsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1583,8 +1314,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
+  input: __S(77, __c9, 5) as any as S.Schema<UntagResourceRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<UntagResourceResponse>,
   errors: [InvalidInput, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1607,8 +1338,8 @@ export const updateHttpNamespace: API.OperationMethod<
   UpdateHttpNamespaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateHttpNamespaceRequest,
-  output: UpdateHttpNamespaceResponse,
+  input: __S(79, __c9, 7) as any as S.Schema<UpdateHttpNamespaceRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<UpdateHttpNamespaceResponse>,
   errors: [DuplicateRequest, InvalidInput, NamespaceNotFound, ResourceInUse],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1638,8 +1369,8 @@ export const updateInstanceCustomHealthStatus: API.OperationMethod<
   UpdateInstanceCustomHealthStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateInstanceCustomHealthStatusRequest,
-  output: UpdateInstanceCustomHealthStatusResponse,
+  input: __S(80, __c10, 0) as any as S.Schema<UpdateInstanceCustomHealthStatusRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<UpdateInstanceCustomHealthStatusResponse>,
   errors: [CustomHealthNotFound, InstanceNotFound, InvalidInput, ServiceNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1662,8 +1393,8 @@ export const updatePrivateDnsNamespace: API.OperationMethod<
   UpdatePrivateDnsNamespaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePrivateDnsNamespaceRequest,
-  output: UpdatePrivateDnsNamespaceResponse,
+  input: __S(86, __c10, 6) as any as S.Schema<UpdatePrivateDnsNamespaceRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<UpdatePrivateDnsNamespaceResponse>,
   errors: [DuplicateRequest, InvalidInput, NamespaceNotFound, ResourceInUse],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1685,8 +1416,8 @@ export const updatePublicDnsNamespace: API.OperationMethod<
   UpdatePublicDnsNamespaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePublicDnsNamespaceRequest,
-  output: UpdatePublicDnsNamespaceResponse,
+  input: __S(88, __c11, 0) as any as S.Schema<UpdatePublicDnsNamespaceRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<UpdatePublicDnsNamespaceResponse>,
   errors: [DuplicateRequest, InvalidInput, NamespaceNotFound, ResourceInUse],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1731,8 +1462,8 @@ export const updateService: API.OperationMethod<
   UpdateServiceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateServiceRequest,
-  output: UpdateServiceResponse,
+  input: __S(91, __c11, 3) as any as S.Schema<UpdateServiceRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<UpdateServiceResponse>,
   errors: [DuplicateRequest, InvalidInput, ServiceNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1753,8 +1484,8 @@ export const updateServiceAttributes: API.OperationMethod<
   UpdateServiceAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateServiceAttributesRequest,
-  output: UpdateServiceAttributesResponse,
+  input: __S(92, __c11, 4) as any as S.Schema<UpdateServiceAttributesRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<UpdateServiceAttributesResponse>,
   errors: [InvalidInput, ServiceAttributesLimitExceededException, ServiceNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1769,14 +1500,14 @@ function __c0(j: number): any {
         identifier: "Tag",
       });
     case 1:
-      return S.Array(Tag);
+      return S.Array(__S(0, __c0, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
           CreatorRequestId: S.optional(S.String).pipe(T.IdempotencyToken()),
           Description: S.optional(S.String),
-          Tags: S.optional(TagList),
+          Tags: S.optional(__S(1, __c0, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateHttpNamespaceRequest",
@@ -1790,11 +1521,11 @@ function __c0(j: number): any {
         identifier: "SOA",
       });
     case 5:
-      return S.suspend(() => S.Struct({ SOA: SOA })).annotate({
+      return S.suspend(() => S.Struct({ SOA: __S(4, __c0, 4) })).annotate({
         identifier: "PrivateDnsPropertiesMutable",
       });
     case 6:
-      return S.suspend(() => S.Struct({ DnsProperties: PrivateDnsPropertiesMutable })).annotate({
+      return S.suspend(() => S.Struct({ DnsProperties: __S(5, __c0, 5) })).annotate({
         identifier: "PrivateDnsNamespaceProperties",
       });
     case 7:
@@ -1804,8 +1535,8 @@ function __c0(j: number): any {
           CreatorRequestId: S.optional(S.String).pipe(T.IdempotencyToken()),
           Description: S.optional(S.String),
           Vpc: S.String,
-          Tags: S.optional(TagList),
-          Properties: S.optional(PrivateDnsNamespaceProperties),
+          Tags: S.optional(__S(1, __c0, 1)),
+          Properties: S.optional(__S(6, __c0, 6)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreatePrivateDnsNamespaceRequest",
@@ -1820,30 +1551,30 @@ function __c1(j: number): any {
           Name: S.String,
           CreatorRequestId: S.optional(S.String).pipe(T.IdempotencyToken()),
           Description: S.optional(S.String),
-          Tags: S.optional(TagList),
-          Properties: S.optional(PublicDnsNamespaceProperties),
+          Tags: S.optional(__S(1, __c0, 1)),
+          Properties: S.optional(__S(6, __c0, 6)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreatePublicDnsNamespaceRequest",
       });
     case 1:
-      return S.suspend(() => S.Struct({ Type: RecordType, TTL: S.Number })).annotate({
+      return S.suspend(() => S.Struct({ Type: S.String, TTL: S.Number })).annotate({
         identifier: "DnsRecord",
       });
     case 2:
-      return S.Array(DnsRecord);
+      return S.Array(__S(9, __c1, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           NamespaceId: S.optional(S.String),
-          RoutingPolicy: S.optional(RoutingPolicy),
-          DnsRecords: S.optional(DnsRecordList),
+          RoutingPolicy: S.optional(S.String),
+          DnsRecords: S.optional(__S(10, __c1, 2)),
         }),
       ).annotate({ identifier: "DnsConfig" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Type: HealthCheckType,
+          Type: S.String,
           ResourcePath: S.optional(S.String),
           FailureThreshold: S.optional(S.Number),
         }),
@@ -1859,11 +1590,11 @@ function __c1(j: number): any {
           NamespaceId: S.optional(S.String),
           CreatorRequestId: S.optional(S.String).pipe(T.IdempotencyToken()),
           Description: S.optional(S.String),
-          DnsConfig: S.optional(DnsConfig),
-          HealthCheckConfig: S.optional(HealthCheckConfig),
-          HealthCheckCustomConfig: S.optional(HealthCheckCustomConfig),
-          Tags: S.optional(TagList),
-          Type: S.optional(ServiceTypeOption),
+          DnsConfig: S.optional(__S(11, __c1, 3)),
+          HealthCheckConfig: S.optional(__S(12, __c1, 4)),
+          HealthCheckCustomConfig: S.optional(__S(13, __c1, 5)),
+          Tags: S.optional(__S(1, __c0, 1)),
+          Type: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateServiceRequest" });
     case 7:
@@ -1876,10 +1607,10 @@ function __c1(j: number): any {
           NamespaceId: S.optional(S.String),
           Description: S.optional(S.String),
           InstanceCount: S.optional(S.Number),
-          DnsConfig: S.optional(DnsConfig),
-          Type: S.optional(ServiceType),
-          HealthCheckConfig: S.optional(HealthCheckConfig),
-          HealthCheckCustomConfig: S.optional(HealthCheckCustomConfig),
+          DnsConfig: S.optional(__S(11, __c1, 3)),
+          Type: S.optional(S.String),
+          HealthCheckConfig: S.optional(__S(12, __c1, 4)),
+          HealthCheckCustomConfig: S.optional(__S(13, __c1, 5)),
           CreateDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CreatorRequestId: S.optional(S.String),
           CreatedByAccount: S.optional(S.String),
@@ -1890,7 +1621,7 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Service: S.optional(Service) })).annotate({
+      return S.suspend(() => S.Struct({ Service: S.optional(__S(15, __c1, 7)) })).annotate({
         identifier: "CreateServiceResponse",
       });
     case 1:
@@ -1917,7 +1648,7 @@ function __c2(j: number): any {
       return S.Array(S.String);
     case 6:
       return S.suspend(() =>
-        S.Struct({ ServiceId: S.String, Attributes: ServiceAttributeKeyList }).pipe(
+        S.Struct({ ServiceId: S.String, Attributes: __S(21, __c2, 5) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -1947,9 +1678,9 @@ function __c3(j: number): any {
           NamespaceName: S.String,
           ServiceName: S.String,
           MaxResults: S.optional(S.Number),
-          QueryParameters: S.optional(Attributes),
-          OptionalParameters: S.optional(Attributes),
-          HealthStatus: S.optional(HealthStatusFilter),
+          QueryParameters: S.optional(__S(25, __c3, 1)),
+          OptionalParameters: S.optional(__S(25, __c3, 1)),
+          HealthStatus: S.optional(S.String),
           OwnerAccount: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DiscoverInstancesRequest" });
@@ -1959,16 +1690,16 @@ function __c3(j: number): any {
           InstanceId: S.optional(S.String),
           NamespaceName: S.optional(S.String),
           ServiceName: S.optional(S.String),
-          HealthStatus: S.optional(HealthStatus),
-          Attributes: S.optional(Attributes),
+          HealthStatus: S.optional(S.String),
+          Attributes: S.optional(__S(25, __c3, 1)),
         }),
       ).annotate({ identifier: "HttpInstanceSummary" });
     case 4:
-      return S.Array(HttpInstanceSummary);
+      return S.Array(__S(27, __c3, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Instances: S.optional(HttpInstanceSummaryList),
+          Instances: S.optional(__S(28, __c3, 4)),
           InstancesRevision: S.optional(S.Number),
         }),
       ).annotate({
@@ -2003,13 +1734,13 @@ function __c4(j: number): any {
         S.Struct({
           Id: S.String,
           CreatorRequestId: S.optional(S.String),
-          Attributes: S.optional(Attributes),
+          Attributes: S.optional(__S(25, __c3, 1)),
           CreatedByAccount: S.optional(S.String),
         }),
       ).annotate({ identifier: "Instance" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ ResourceOwner: S.optional(S.String), Instance: S.optional(Instance) }),
+        S.Struct({ ResourceOwner: S.optional(S.String), Instance: S.optional(__S(33, __c4, 1)) }),
       ).annotate({ identifier: "GetInstanceResponse" });
     case 3:
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("InstanceId")));
@@ -2017,7 +1748,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ServiceId: S.String,
-          Instances: S.optional(InstanceIdList),
+          Instances: S.optional(__S(35, __c4, 3)),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -2025,10 +1756,10 @@ function __c4(j: number): any {
         identifier: "GetInstancesHealthStatusRequest",
       });
     case 5:
-      return S.Record(S.String, /*@__PURE__*/ HealthStatus.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 6:
       return S.suspend(() =>
-        S.Struct({ Status: S.optional(InstanceHealthStatusMap), NextToken: S.optional(S.String) }),
+        S.Struct({ Status: S.optional(__S(37, __c4, 5)), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "GetInstancesHealthStatusResponse",
       });
@@ -2044,7 +1775,7 @@ function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ HostedZoneId: S.optional(S.String), SOA: S.optional(SOA) }),
+        S.Struct({ HostedZoneId: S.optional(S.String), SOA: S.optional(__S(4, __c0, 4)) }),
       ).annotate({ identifier: "DnsProperties" });
     case 1:
       return S.suspend(() => S.Struct({ HttpName: S.optional(S.String) })).annotate({
@@ -2053,8 +1784,8 @@ function __c5(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          DnsProperties: S.optional(DnsProperties),
-          HttpProperties: S.optional(HttpProperties),
+          DnsProperties: S.optional(__S(40, __c5, 0)),
+          HttpProperties: S.optional(__S(41, __c5, 1)),
         }),
       ).annotate({ identifier: "NamespaceProperties" });
     case 3:
@@ -2064,16 +1795,16 @@ function __c5(j: number): any {
           Arn: S.optional(S.String),
           ResourceOwner: S.optional(S.String),
           Name: S.optional(S.String),
-          Type: S.optional(NamespaceType),
+          Type: S.optional(S.String),
           Description: S.optional(S.String),
           ServiceCount: S.optional(S.Number),
-          Properties: S.optional(NamespaceProperties),
+          Properties: S.optional(__S(42, __c5, 2)),
           CreateDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CreatorRequestId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Namespace" });
     case 4:
-      return S.suspend(() => S.Struct({ Namespace: S.optional(Namespace) })).annotate({
+      return S.suspend(() => S.Struct({ Namespace: S.optional(__S(43, __c5, 3)) })).annotate({
         identifier: "GetNamespaceResponse",
       });
     case 5:
@@ -2083,19 +1814,19 @@ function __c5(j: number): any {
         ),
       ).annotate({ identifier: "GetOperationRequest" });
     case 6:
-      return S.Record(OperationTargetType, /*@__PURE__*/ S.String.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 7:
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
           OwnerAccount: S.optional(S.String),
-          Type: S.optional(OperationType),
-          Status: S.optional(OperationStatus),
+          Type: S.optional(S.String),
+          Status: S.optional(S.String),
           ErrorMessage: S.optional(S.String),
           ErrorCode: S.optional(S.String),
           CreateDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           UpdateDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Targets: S.optional(OperationTargetsMap),
+          Targets: S.optional(__S(46, __c5, 6)),
         }),
       ).annotate({ identifier: "Operation" });
   }
@@ -2103,7 +1834,7 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Operation: S.optional(Operation) })).annotate({
+      return S.suspend(() => S.Struct({ Operation: S.optional(__S(47, __c5, 7)) })).annotate({
         identifier: "GetOperationResponse",
       });
     case 1:
@@ -2127,12 +1858,12 @@ function __c6(j: number): any {
         S.Struct({
           ServiceArn: S.optional(S.String),
           ResourceOwner: S.optional(S.String),
-          Attributes: S.optional(ServiceAttributesMap),
+          Attributes: S.optional(__S(51, __c6, 3)),
         }),
       ).annotate({ identifier: "ServiceAttributes" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ ServiceAttributes: S.optional(ServiceAttributes) }),
+        S.Struct({ ServiceAttributes: S.optional(__S(52, __c6, 4)) }),
       ).annotate({
         identifier: "GetServiceAttributesResponse",
       });
@@ -2148,7 +1879,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
-          Attributes: S.optional(Attributes),
+          Attributes: S.optional(__S(25, __c3, 1)),
           CreatedByAccount: S.optional(S.String),
         }),
       ).annotate({ identifier: "InstanceSummary" });
@@ -2158,7 +1889,7 @@ function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.Array(
-        /*@__PURE__*/ InstanceSummary.pipe(/*@__PURE__*/ T.XmlName("InstanceSummary")).annotate({
+        /*@__PURE__*/ __S(55, __c6, 7).pipe(/*@__PURE__*/ T.XmlName("InstanceSummary")).annotate({
           identifier: "InstanceSummary",
         }),
       );
@@ -2166,7 +1897,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ResourceOwner: S.optional(S.String),
-          Instances: S.optional(InstanceSummaryList),
+          Instances: S.optional(__S(56, __c7, 0)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListInstancesResponse" });
@@ -2175,14 +1906,14 @@ function __c7(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Name: NamespaceFilterName,
-          Values: FilterValues,
-          Condition: S.optional(FilterCondition),
+          Name: S.String,
+          Values: __S(58, __c7, 2),
+          Condition: S.optional(S.String),
         }),
       ).annotate({ identifier: "NamespaceFilter" });
     case 4:
       return S.Array(
-        /*@__PURE__*/ NamespaceFilter.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+        /*@__PURE__*/ __S(59, __c7, 3).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
           identifier: "NamespaceFilter",
         }),
       );
@@ -2191,7 +1922,7 @@ function __c7(j: number): any {
         S.Struct({
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
-          Filters: S.optional(NamespaceFilters),
+          Filters: S.optional(__S(60, __c7, 4)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListNamespacesRequest" });
     case 6:
@@ -2201,15 +1932,15 @@ function __c7(j: number): any {
           Arn: S.optional(S.String),
           ResourceOwner: S.optional(S.String),
           Name: S.optional(S.String),
-          Type: S.optional(NamespaceType),
+          Type: S.optional(S.String),
           Description: S.optional(S.String),
           ServiceCount: S.optional(S.Number),
-          Properties: S.optional(NamespaceProperties),
+          Properties: S.optional(__S(42, __c5, 2)),
           CreateDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "NamespaceSummary" });
     case 7:
-      return S.Array(NamespaceSummary);
+      return S.Array(__S(62, __c7, 6));
   }
 }
 function __c8(j: number): any {
@@ -2217,7 +1948,7 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Namespaces: S.optional(NamespaceSummariesList),
+          Namespaces: S.optional(__S(63, __c7, 7)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListNamespacesResponse" });
@@ -2226,29 +1957,29 @@ function __c8(j: number): any {
         S.Struct({
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
-          Filters: S.optional(OperationFilters),
+          Filters: S.optional(__S(60, __c7, 4)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListOperationsRequest" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ Id: S.optional(S.String), Status: S.optional(OperationStatus) }),
+        S.Struct({ Id: S.optional(S.String), Status: S.optional(S.String) }),
       ).annotate({ identifier: "OperationSummary" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ OperationSummary.pipe(/*@__PURE__*/ T.XmlName("OperationSummary")).annotate({
+        /*@__PURE__*/ __S(66, __c8, 2).pipe(/*@__PURE__*/ T.XmlName("OperationSummary")).annotate({
           identifier: "OperationSummary",
         }),
       );
     case 4:
       return S.suspend(() =>
-        S.Struct({ Operations: S.optional(OperationSummaryList), NextToken: S.optional(S.String) }),
+        S.Struct({ Operations: S.optional(__S(67, __c8, 3)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListOperationsResponse" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
-          Filters: S.optional(ServiceFilters),
+          Filters: S.optional(__S(60, __c7, 4)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListServicesRequest" });
     case 6:
@@ -2258,25 +1989,25 @@ function __c8(j: number): any {
           Arn: S.optional(S.String),
           ResourceOwner: S.optional(S.String),
           Name: S.optional(S.String),
-          Type: S.optional(ServiceType),
+          Type: S.optional(S.String),
           Description: S.optional(S.String),
           InstanceCount: S.optional(S.Number),
-          DnsConfig: S.optional(DnsConfig),
-          HealthCheckConfig: S.optional(HealthCheckConfig),
-          HealthCheckCustomConfig: S.optional(HealthCheckCustomConfig),
+          DnsConfig: S.optional(__S(11, __c1, 3)),
+          HealthCheckConfig: S.optional(__S(12, __c1, 4)),
+          HealthCheckCustomConfig: S.optional(__S(13, __c1, 5)),
           CreateDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CreatedByAccount: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServiceSummary" });
     case 7:
-      return S.Array(ServiceSummary);
+      return S.Array(__S(70, __c8, 6));
   }
 }
 function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Services: S.optional(ServiceSummariesList), NextToken: S.optional(S.String) }),
+        S.Struct({ Services: S.optional(__S(71, __c8, 7)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListServicesResponse" });
     case 1:
       return S.suspend(() =>
@@ -2287,7 +2018,7 @@ function __c9(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 2:
-      return S.suspend(() => S.Struct({ Tags: S.optional(TagList) })).annotate({
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(1, __c0, 1)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 3:
@@ -2296,18 +2027,18 @@ function __c9(j: number): any {
           ServiceId: S.String,
           InstanceId: S.String,
           CreatorRequestId: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Attributes: Attributes,
+          Attributes: __S(25, __c3, 1),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "RegisterInstanceRequest" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, Tags: TagList }).pipe(
+        S.Struct({ ResourceARN: S.String, Tags: __S(1, __c0, 1) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, TagKeys: TagKeyList }).pipe(
+        S.Struct({ ResourceARN: S.String, TagKeys: __S(21, __c2, 5) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
@@ -2320,7 +2051,7 @@ function __c9(j: number): any {
         S.Struct({
           Id: S.String,
           UpdaterRequestId: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Namespace: HttpNamespaceChange,
+          Namespace: __S(78, __c9, 6),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateHttpNamespaceRequest",
@@ -2331,7 +2062,7 @@ function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ServiceId: S.String, InstanceId: S.String, Status: CustomHealthStatus }).pipe(
+        S.Struct({ ServiceId: S.String, InstanceId: S.String, Status: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -2346,20 +2077,18 @@ function __c10(j: number): any {
         identifier: "SOAChange",
       });
     case 3:
-      return S.suspend(() => S.Struct({ SOA: SOAChange })).annotate({
+      return S.suspend(() => S.Struct({ SOA: __S(82, __c10, 2) })).annotate({
         identifier: "PrivateDnsPropertiesMutableChange",
       });
     case 4:
-      return S.suspend(() =>
-        S.Struct({ DnsProperties: PrivateDnsPropertiesMutableChange }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ DnsProperties: __S(83, __c10, 3) })).annotate({
         identifier: "PrivateDnsNamespacePropertiesChange",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
           Description: S.optional(S.String),
-          Properties: S.optional(PrivateDnsNamespacePropertiesChange),
+          Properties: S.optional(__S(84, __c10, 4)),
         }),
       ).annotate({
         identifier: "PrivateDnsNamespaceChange",
@@ -2369,7 +2098,7 @@ function __c10(j: number): any {
         S.Struct({
           Id: S.String,
           UpdaterRequestId: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Namespace: PrivateDnsNamespaceChange,
+          Namespace: __S(85, __c10, 5),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdatePrivateDnsNamespaceRequest",
@@ -2378,7 +2107,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Description: S.optional(S.String),
-          Properties: S.optional(PublicDnsNamespacePropertiesChange),
+          Properties: S.optional(__S(84, __c10, 4)),
         }),
       ).annotate({ identifier: "PublicDnsNamespaceChange" });
   }
@@ -2390,36 +2119,41 @@ function __c11(j: number): any {
         S.Struct({
           Id: S.String,
           UpdaterRequestId: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Namespace: PublicDnsNamespaceChange,
+          Namespace: __S(87, __c10, 7),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdatePublicDnsNamespaceRequest",
       });
     case 1:
-      return S.suspend(() => S.Struct({ DnsRecords: DnsRecordList })).annotate({
+      return S.suspend(() => S.Struct({ DnsRecords: __S(10, __c1, 2) })).annotate({
         identifier: "DnsConfigChange",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
           Description: S.optional(S.String),
-          DnsConfig: S.optional(DnsConfigChange),
-          HealthCheckConfig: S.optional(HealthCheckConfig),
+          DnsConfig: S.optional(__S(89, __c11, 1)),
+          HealthCheckConfig: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({ identifier: "ServiceChange" });
     case 3:
       return S.suspend(() =>
-        S.Struct({ Id: S.String, Service: ServiceChange }).pipe(
+        S.Struct({ Id: S.String, Service: __S(90, __c11, 2) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UpdateServiceRequest" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ ServiceId: S.String, Attributes: ServiceAttributesMap }).pipe(
+        S.Struct({ ServiceId: S.String, Attributes: __S(51, __c6, 3) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "UpdateServiceAttributesRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

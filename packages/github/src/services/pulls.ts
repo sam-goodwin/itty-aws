@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { GithubProtocol, type GithubOpError, type GithubOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GithubOpError, GithubOpContext };
 
@@ -56,11 +58,6 @@ export class UnprocessableEntity
 
 /** An ordered list of pull request numbers to append to the stack, from the current top upward. */
 export type AddPullRequestStackRequestPullRequestsList = Array<number>;
-const AddPullRequestStackRequestPullRequestsList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AddPullRequestStackRequestPullRequestsList>;
-
 export interface AddPullRequestStackRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -71,44 +68,22 @@ export interface AddPullRequestStackRequest {
   /** An ordered list of pull request numbers to append to the stack, from the current top upward. */
   pull_requests: AddPullRequestStackRequestPullRequestsList;
 }
-const AddPullRequestStackRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AddPullRequestStackRequest>;
-
 export interface AddPullRequestStackResponseBase {
   ref: string;
 }
-const AddPullRequestStackResponseBase = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AddPullRequestStackResponseBase>;
-
 export interface PullRequestStackPullRequestHeadRepo {
   id: number;
   url: string;
   name: string;
 }
-const PullRequestStackPullRequestHeadRepo = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<PullRequestStackPullRequestHeadRepo>;
-
 export interface PullRequestStackPullRequestHead {
   ref: string;
   sha: string;
   repo: PullRequestStackPullRequestHeadRepo;
 }
-const PullRequestStackPullRequestHead = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<PullRequestStackPullRequestHead>;
-
 export type PullRequestStackPullRequestBaseRepo = PullRequestStackPullRequestHeadRepo;
 export type PullRequestStackPullRequestBase = PullRequestStackPullRequestHead;
 export type PullRequestStackPullRequestState = "open" | "closed";
-const PullRequestStackPullRequestState = S.String;
-
 /** A GitHub user. */
 export interface NullableSimpleUser {
   name?: string | null;
@@ -134,8 +109,6 @@ export interface NullableSimpleUser {
   starred_at?: string;
   user_view_type?: string;
 }
-const NullableSimpleUser = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<NullableSimpleUser>;
-
 export interface PullRequestStackPullRequest {
   id: number;
   number: number;
@@ -150,17 +123,7 @@ export interface PullRequestStackPullRequest {
   html_url: string;
   user: NullableSimpleUser | null;
 }
-const PullRequestStackPullRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<PullRequestStackPullRequest>;
-
 export type AddPullRequestStackResponsePullRequestsList = Array<PullRequestStackPullRequest>;
-const AddPullRequestStackResponsePullRequestsList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<AddPullRequestStackResponsePullRequestsList>;
-
 export interface AddPullRequestStackResponse {
   id: number;
   number: number;
@@ -172,11 +135,6 @@ export interface AddPullRequestStackResponse {
   created_at: string;
   pull_requests: AddPullRequestStackResponsePullRequestsList;
 }
-const AddPullRequestStackResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<AddPullRequestStackResponse>;
-
 export interface CheckIfMergedRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -185,14 +143,7 @@ export interface CheckIfMergedRequest {
   /** The number that identifies the pull request. */
   pull_number: number;
 }
-const CheckIfMergedRequest = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<CheckIfMergedRequest>;
-
 export interface CheckIfMergedResponse {}
-const CheckIfMergedResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CheckIfMergedResponse>;
-
 export interface CreateRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -215,12 +166,8 @@ export interface CreateRequest {
   /** An issue in the repository to convert to a pull request. The issue title, body, and comments will become the title, body, and comments on the new pull request. Required unless `title` is specified. */
   issue?: number;
 }
-const CreateRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<CreateRequest>;
-
 /** State of this Pull Request. Either `open` or `closed`. */
 export type PullRequestState = "open" | "closed";
-const PullRequestState = S.String;
-
 /** A GitHub user. */
 export type SimpleUser = NullableSimpleUser;
 export interface PullRequestLabelsItem {
@@ -234,21 +181,9 @@ export interface PullRequestLabelsItem {
   /** The user who archived the label, or `null` if it has not been archived. */
   archived_by: NullableSimpleUser | null;
 }
-const PullRequestLabelsItem = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<PullRequestLabelsItem>;
-
 export type PullRequestLabelsList = Array<PullRequestLabelsItem>;
-const PullRequestLabelsList = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<PullRequestLabelsList>;
-
 /** The state of the milestone. */
 export type NullableMilestoneState = "open" | "closed";
-const NullableMilestoneState = S.String;
-
 /** A collection of related issues and pull requests. */
 export interface NullableMilestone {
   url: string;
@@ -271,22 +206,10 @@ export interface NullableMilestone {
   closed_at: string | null;
   due_on: string | null;
 }
-const NullableMilestone = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<NullableMilestone>;
-
 export type PullRequestAssigneesList = Array<NullableSimpleUser>;
-const PullRequestAssigneesList = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<PullRequestAssigneesList>;
-
 export type PullRequestRequestedReviewersList = Array<NullableSimpleUser>;
-const PullRequestRequestedReviewersList =
-  PullRequestAssigneesList as any as S.Schema<PullRequestRequestedReviewersList>;
-
 /** The ownership type of the team */
 export type TeamSimpleType = "enterprise" | "organization";
-const TeamSimpleType = S.String;
-
 /** Groups of organization members that gives permissions on specified repositories. */
 export interface TeamSimple {
   /** Unique identifier of the team */
@@ -317,14 +240,7 @@ export interface TeamSimple {
   /** Unique identifier of the enterprise to which this team belongs */
   enterprise_id?: number;
 }
-const TeamSimple = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<TeamSimple>;
-
 export type PullRequestRequestedTeamsList = Array<TeamSimple>;
-const PullRequestRequestedTeamsList = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<PullRequestRequestedTeamsList>;
-
 /** License Simple */
 export interface NullableLicenseSimple {
   key: string;
@@ -334,11 +250,6 @@ export interface NullableLicenseSimple {
   node_id: string;
   html_url?: string;
 }
-const NullableLicenseSimple = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<NullableLicenseSimple>;
-
 export interface RepositoryPermissions {
   admin: boolean;
   pull: boolean;
@@ -346,44 +257,22 @@ export interface RepositoryPermissions {
   push: boolean;
   maintain?: boolean;
 }
-const RepositoryPermissions = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<RepositoryPermissions>;
-
 export type RepositoryTopicsList = Array<string>;
-const RepositoryTopicsList = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<RepositoryTopicsList>;
-
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type RepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
-const RepositoryPullRequestCreationPolicy = S.String;
-
 /** The default value for a squash merge commit title: - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit). */
 export type RepositorySquashMergeCommitTitle = "PR_TITLE" | "COMMIT_OR_PR_TITLE";
-const RepositorySquashMergeCommitTitle = S.String;
-
 /** The default value for a squash merge commit message: - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message. */
 export type RepositorySquashMergeCommitMessage = "PR_BODY" | "COMMIT_MESSAGES" | "BLANK";
-const RepositorySquashMergeCommitMessage = S.String;
-
 /** The default value for a merge commit title. - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name). */
 export type RepositoryMergeCommitTitle = "PR_TITLE" | "MERGE_MESSAGE";
-const RepositoryMergeCommitTitle = S.String;
-
 /** The default value for a merge commit message. - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message. */
 export type RepositoryMergeCommitMessage = "PR_BODY" | "PR_TITLE" | "BLANK";
-const RepositoryMergeCommitMessage = S.String;
-
 /** The status of the code search index for this repository */
 export interface RepositoryCodeSearchIndexStatus {
   lexical_search_ok?: boolean;
   lexical_commit_sha?: string;
 }
-const RepositoryCodeSearchIndexStatus = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<RepositoryCodeSearchIndexStatus>;
-
 /** A repository on GitHub. */
 export interface Repository {
   /** Unique identifier of the repository */
@@ -516,8 +405,6 @@ export interface Repository {
   /** The status of the code search index for this repository */
   code_search_index_status?: RepositoryCodeSearchIndexStatus;
 }
-const Repository = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<Repository>;
-
 export interface PullRequestHead {
   label: string;
   ref: string;
@@ -525,15 +412,11 @@ export interface PullRequestHead {
   sha: string;
   user: NullableSimpleUser;
 }
-const PullRequestHead = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<PullRequestHead>;
-
 export type PullRequestBase = PullRequestHead;
 /** Hypermedia Link */
 export interface Link {
   href: string;
 }
-const Link = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<Link>;
-
 export interface PullRequestLinks {
   comments: Link;
   commits: Link;
@@ -544,8 +427,6 @@ export interface PullRequestLinks {
   review_comment: Link;
   self: Link;
 }
-const PullRequestLinks = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<PullRequestLinks>;
-
 /** How the author is associated with the repository. */
 export type AuthorAssociation =
   | "COLLABORATOR"
@@ -556,12 +437,8 @@ export type AuthorAssociation =
   | "MEMBER"
   | "NONE"
   | "OWNER";
-const AuthorAssociation = S.String;
-
 /** The merge method to use. */
 export type AutoMergeMergeMethod = "merge" | "squash" | "rebase";
-const AutoMergeMergeMethod = S.String;
-
 /** The status of auto merging a pull request. */
 export interface AutoMerge {
   enabled_by: NullableSimpleUser;
@@ -572,16 +449,12 @@ export interface AutoMerge {
   /** Commit message for the merge commit. */
   commit_message: string;
 }
-const AutoMerge = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<AutoMerge>;
-
 export interface PullRequestStackBase {
   /** The base ref of the stack this pull request belongs to. */
   ref: string;
   /** The base SHA of the stack this pull request belongs to. */
   sha: string;
 }
-const PullRequestStackBase = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<PullRequestStackBase>;
-
 /** The stack information associated with a pull request. */
 export interface PullRequestStack {
   base: PullRequestStackBase;
@@ -594,8 +467,6 @@ export interface PullRequestStack {
   /** The number of the stack that this pull request belongs to. */
   number?: number;
 }
-const PullRequestStack = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<PullRequestStack>;
-
 /** Pull requests let you tell others about changes you've pushed to a repository on GitHub. Once a pull request is sent, interested parties can review the set of changes, discuss potential modifications, and even push follow-up commits if necessary. */
 export interface PullRequest {
   url: string;
@@ -653,13 +524,8 @@ export interface PullRequest {
   deletions: number;
   changed_files: number;
 }
-const PullRequest = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<PullRequest>;
-
 /** An ordered list of pull request numbers forming the stack from bottom to top. */
 export type CreatePullRequestStackRequestPullRequestsList = Array<number>;
-const CreatePullRequestStackRequestPullRequestsList =
-  AddPullRequestStackRequestPullRequestsList as any as S.Schema<CreatePullRequestStackRequestPullRequestsList>;
-
 export interface CreatePullRequestStackRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -668,11 +534,6 @@ export interface CreatePullRequestStackRequest {
   /** An ordered list of pull request numbers forming the stack from bottom to top. */
   pull_requests: CreatePullRequestStackRequestPullRequestsList;
 }
-const CreatePullRequestStackRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<CreatePullRequestStackRequest>;
-
 export type CreatePullRequestStackResponseBase = AddPullRequestStackResponseBase;
 export type CreatePullRequestStackResponsePullRequestsList = Array<PullRequestStackPullRequest>;
 export interface CreatePullRequestStackResponse {
@@ -686,9 +547,6 @@ export interface CreatePullRequestStackResponse {
   created_at: string;
   pull_requests: CreatePullRequestStackResponsePullRequestsList;
 }
-const CreatePullRequestStackResponse =
-  AddPullRequestStackResponse as any as S.Schema<CreatePullRequestStackResponse>;
-
 export interface CreateReplyForReviewCommentRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -701,11 +559,6 @@ export interface CreateReplyForReviewCommentRequest {
   /** The text of the review comment. */
   body: string;
 }
-const CreateReplyForReviewCommentRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<CreateReplyForReviewCommentRequest>;
-
 export type PullRequestReviewCommentLinksSelf = Link;
 export type PullRequestReviewCommentLinksHtml = Link;
 export type PullRequestReviewCommentLinksPullRequest = Link;
@@ -714,23 +567,12 @@ export interface PullRequestReviewCommentLinks {
   html: Link;
   pull_request: Link;
 }
-const PullRequestReviewCommentLinks = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<PullRequestReviewCommentLinks>;
-
 /** The side of the first line of the range for a multi-line comment. */
 export type PullRequestReviewCommentStartSide = "LEFT" | "RIGHT";
-const PullRequestReviewCommentStartSide = S.String;
-
 /** The side of the diff to which the comment applies. The side of the last line of the range for a multi-line comment */
 export type PullRequestReviewCommentSide = "LEFT" | "RIGHT";
-const PullRequestReviewCommentSide = S.String;
-
 /** The level at which the comment is targeted, can be a diff line or a file. */
 export type PullRequestReviewCommentSubjectType = "line" | "file";
-const PullRequestReviewCommentSubjectType = S.String;
-
 export interface ReactionRollup {
   url: string;
   total_count: number;
@@ -743,8 +585,6 @@ export interface ReactionRollup {
   eyes: number;
   rocket: number;
 }
-const ReactionRollup = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<ReactionRollup>;
-
 /** Pull Request Review Comments are comments on a portion of the Pull Request's diff. */
 export interface PullRequestReviewComment {
   /** URL for the pull request review comment */
@@ -798,15 +638,8 @@ export interface PullRequestReviewComment {
   body_html?: string;
   body_text?: string;
 }
-const PullRequestReviewComment = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<PullRequestReviewComment>;
-
 /** The review action you want to perform. The review actions include: `APPROVE`, `REQUEST_CHANGES`, or `COMMENT`. By leaving this blank, you set the review action state to `PENDING`, which means you will need to [submit the pull request review](https://docs.github.com/rest/pulls/reviews#submit-a-review-for-a-pull-request) when you are ready. */
 export type CreateReviewRequestEvent = "APPROVE" | "REQUEST_CHANGES" | "COMMENT";
-const CreateReviewRequestEvent = S.String;
-
 export interface CreateReviewRequestCommentsItem {
   /** The relative path to the file that necessitates a review comment. */
   path: string;
@@ -819,18 +652,8 @@ export interface CreateReviewRequestCommentsItem {
   start_line?: number;
   start_side?: string;
 }
-const CreateReviewRequestCommentsItem = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<CreateReviewRequestCommentsItem>;
-
 /** Use the following table to specify the location, destination, and contents of the draft review comment. */
 export type CreateReviewRequestCommentsList = Array<CreateReviewRequestCommentsItem>;
-const CreateReviewRequestCommentsList = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<CreateReviewRequestCommentsList>;
-
 export interface CreateReviewRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -847,19 +670,12 @@ export interface CreateReviewRequest {
   /** Use the following table to specify the location, destination, and contents of the draft review comment. */
   comments?: CreateReviewRequestCommentsList;
 }
-const CreateReviewRequest = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<CreateReviewRequest>;
-
 export type PullRequestReviewLinksHtml = Link;
 export type PullRequestReviewLinksPullRequest = Link;
 export interface PullRequestReviewLinks {
   html: Link;
   pull_request: Link;
 }
-const PullRequestReviewLinks = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<PullRequestReviewLinks>;
-
 /** Pull Request Reviews are reviews on pull requests. */
 export interface PullRequestReview {
   /** Unique identifier of the review */
@@ -879,20 +695,12 @@ export interface PullRequestReview {
   body_text?: string;
   author_association: AuthorAssociation;
 }
-const PullRequestReview = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<PullRequestReview>;
-
 /** In a split diff view, the side of the diff that the pull request's changes appear on. Can be `LEFT` or `RIGHT`. Use `LEFT` for deletions that appear in red. Use `RIGHT` for additions that appear in green or unchanged lines that appear in white and are shown for context. For a multi-line comment, side represents whether the last line of the comment range is a deletion or addition. For more information, see "[Diff view options](https://docs.github.com/articles/about-comparing-branches-in-pull-requests#diff-view-options)" in the GitHub Help documentation. */
 export type CreateReviewCommentRequestSide = "LEFT" | "RIGHT";
-const CreateReviewCommentRequestSide = S.String;
-
 /** **Required when using multi-line comments unless using `in_reply_to`**. The `start_side` is the starting side of the diff that the comment applies to. Can be `LEFT` or `RIGHT`. To learn more about multi-line comments, see "[Commenting on a pull request](https://docs.github.com/articles/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request)" in the GitHub Help documentation. See `side` in this table for additional context. */
 export type CreateReviewCommentRequestStartSide = "LEFT" | "RIGHT" | "side";
-const CreateReviewCommentRequestStartSide = S.String;
-
 /** The level at which the comment is targeted. */
 export type CreateReviewCommentRequestSubjectType = "line" | "file";
-const CreateReviewCommentRequestSubjectType = S.String;
-
 export interface CreateReviewCommentRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -921,11 +729,6 @@ export interface CreateReviewCommentRequest {
   /** The level at which the comment is targeted. */
   subject_type?: CreateReviewCommentRequestSubjectType | (string & {});
 }
-const CreateReviewCommentRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<CreateReviewCommentRequest>;
-
 export interface DeletePendingReviewRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -936,11 +739,6 @@ export interface DeletePendingReviewRequest {
   /** The unique identifier of the review. */
   review_id: number;
 }
-const DeletePendingReviewRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<DeletePendingReviewRequest>;
-
 export interface DeleteReviewCommentRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -949,18 +747,8 @@ export interface DeleteReviewCommentRequest {
   /** The unique identifier of the comment. */
   comment_id: number;
 }
-const DeleteReviewCommentRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<DeleteReviewCommentRequest>;
-
 export interface DeleteReviewCommentResponse {}
-const DeleteReviewCommentResponse =
-  CheckIfMergedResponse as any as S.Schema<DeleteReviewCommentResponse>;
-
 export type DismissReviewRequestEvent = "DISMISS";
-const DismissReviewRequestEvent = S.String;
-
 export interface DismissReviewRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -974,8 +762,6 @@ export interface DismissReviewRequest {
   message: string;
   event?: DismissReviewRequestEvent | (string & {});
 }
-const DismissReviewRequest = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<DismissReviewRequest>;
-
 export interface GetRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -984,8 +770,6 @@ export interface GetRequest {
   /** The number that identifies the pull request. */
   pull_number: number;
 }
-const GetRequest = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<GetRequest>;
-
 export interface GetMergeAsyncResultRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -996,14 +780,7 @@ export interface GetMergeAsyncResultRequest {
   /** The UUID of the asynchronous merge request, as returned when the merge was requested. */
   uuid: string;
 }
-const GetMergeAsyncResultRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<GetMergeAsyncResultRequest>;
-
 export type PullRequestMergeAsyncResultStatus = "pending" | "merged" | "enqueued" | "failed";
-const PullRequestMergeAsyncResultStatus = S.String;
-
 export type PullRequestMergeAsyncResultDetailsCase0MergeMethod =
   | "default"
   | "merge"
@@ -1040,19 +817,11 @@ export type PullRequestMergeAsyncResultDetails =
   | PullRequestMergeAsyncResultDetailsCase1
   | PullRequestMergeAsyncResultDetailsCase1
   | PullRequestMergeAsyncResultDetailsCase3;
-const PullRequestMergeAsyncResultDetails =
-  S.Unknown as any as S.Schema<PullRequestMergeAsyncResultDetails>;
-
 /** Pull Request Merge Async Result */
 export interface PullRequestMergeAsyncResult {
   status: PullRequestMergeAsyncResultStatus;
   details: PullRequestMergeAsyncResultDetails;
 }
-const PullRequestMergeAsyncResult = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<PullRequestMergeAsyncResult>;
-
 export interface GetPullRequestStackRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1061,11 +830,6 @@ export interface GetPullRequestStackRequest {
   /** The number that identifies the pull request stack. */
   stack_number: number;
 }
-const GetPullRequestStackRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<GetPullRequestStackRequest>;
-
 export type GetPullRequestStackResponseBase = AddPullRequestStackResponseBase;
 export type GetPullRequestStackResponsePullRequestsList = Array<PullRequestStackPullRequest>;
 export interface GetPullRequestStackResponse {
@@ -1079,9 +843,6 @@ export interface GetPullRequestStackResponse {
   created_at: string;
   pull_requests: GetPullRequestStackResponsePullRequestsList;
 }
-const GetPullRequestStackResponse =
-  AddPullRequestStackResponse as any as S.Schema<GetPullRequestStackResponse>;
-
 export interface GetReviewRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1092,8 +853,6 @@ export interface GetReviewRequest {
   /** The unique identifier of the review. */
   review_id: number;
 }
-const GetReviewRequest = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<GetReviewRequest>;
-
 export interface GetReviewCommentRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1102,20 +861,9 @@ export interface GetReviewCommentRequest {
   /** The unique identifier of the comment. */
   comment_id: number;
 }
-const GetReviewCommentRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<GetReviewCommentRequest>;
-
 export type ListRequestState = "open" | "closed" | "all";
-const ListRequestState = S.String;
-
 export type ListRequestSort = "created" | "updated" | "popularity" | "long-running";
-const ListRequestSort = S.String;
-
 export type ListRequestDirection = "asc" | "desc";
-const ListRequestDirection = S.String;
-
 export interface ListRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1136,8 +884,6 @@ export interface ListRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListRequest = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<ListRequest>;
-
 export interface PullRequestSimpleLabelsItem {
   id: number;
   node_id: string;
@@ -1149,25 +895,9 @@ export interface PullRequestSimpleLabelsItem {
   /** The user who archived the label, or `null` if it has not been archived. */
   archived_by: NullableSimpleUser | null;
 }
-const PullRequestSimpleLabelsItem = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<PullRequestSimpleLabelsItem>;
-
 export type PullRequestSimpleLabelsList = Array<PullRequestSimpleLabelsItem>;
-const PullRequestSimpleLabelsList = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<PullRequestSimpleLabelsList>;
-
 export type PullRequestSimpleAssigneesList = Array<NullableSimpleUser>;
-const PullRequestSimpleAssigneesList =
-  PullRequestAssigneesList as any as S.Schema<PullRequestSimpleAssigneesList>;
-
 export type PullRequestSimpleRequestedReviewersList = Array<NullableSimpleUser>;
-const PullRequestSimpleRequestedReviewersList =
-  PullRequestAssigneesList as any as S.Schema<PullRequestSimpleRequestedReviewersList>;
-
 export interface TeamPermissions {
   pull: boolean;
   triage: boolean;
@@ -1175,16 +905,10 @@ export interface TeamPermissions {
   maintain: boolean;
   admin: boolean;
 }
-const TeamPermissions = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<TeamPermissions>;
-
 /** The ownership type of the team */
 export type TeamType = "enterprise" | "organization";
-const TeamType = S.String;
-
 /** How the team's access to the repository was granted. This property is only present when the team is returned in a repository context, such as `GET /repos/{owner}/{repo}/teams`. */
 export type TeamAccessSource = "direct" | "organization" | "enterprise";
-const TeamAccessSource = S.String;
-
 /** The ownership type of the team */
 export type NullableTeamSimpleType = "enterprise" | "organization";
 /** Groups of organization members that gives permissions on specified repositories. */
@@ -1217,8 +941,6 @@ export interface NullableTeamSimple {
   /** Unique identifier of the enterprise to which this team belongs */
   enterprise_id?: number;
 }
-const NullableTeamSimple = TeamSimple as any as S.Schema<NullableTeamSimple>;
-
 /** Groups of organization members that gives permissions on specified repositories. */
 export interface Team {
   id: number;
@@ -1244,14 +966,7 @@ export interface Team {
   enterprise_id?: number;
   parent: NullableTeamSimple | null;
 }
-const Team = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<Team>;
-
 export type PullRequestSimpleRequestedTeamsList = Array<Team>;
-const PullRequestSimpleRequestedTeamsList = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<PullRequestSimpleRequestedTeamsList>;
-
 export interface PullRequestSimpleHead {
   label: string;
   ref: string;
@@ -1259,11 +974,6 @@ export interface PullRequestSimpleHead {
   sha: string;
   user: NullableSimpleUser | null;
 }
-const PullRequestSimpleHead = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<PullRequestSimpleHead>;
-
 export type PullRequestSimpleBase = PullRequestSimpleHead;
 export type PullRequestSimpleLinks = PullRequestLinks;
 /** Pull Request Simple */
@@ -1307,14 +1017,8 @@ export interface PullRequestSimple {
   /** Indicates whether or not the pull request is a draft. */
   draft?: boolean;
 }
-const PullRequestSimple = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<PullRequestSimple>;
-
 export type ListResponseBodyList = Array<PullRequestSimple>;
-const ListResponseBodyList = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<ListResponseBodyList>;
-
 export type ListResponse = ListResponseBodyList;
-const ListResponse = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<ListResponse>;
-
 export interface ListCommentsForReviewRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1329,24 +1033,13 @@ export interface ListCommentsForReviewRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListCommentsForReviewRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<ListCommentsForReviewRequest>;
-
 export type ReviewCommentLinks = PullRequestReviewCommentLinks;
 /** The side of the first line of the range for a multi-line comment. */
 export type ReviewCommentSide = "LEFT" | "RIGHT";
-const ReviewCommentSide = S.String;
-
 /** The side of the first line of the range for a multi-line comment. */
 export type ReviewCommentStartSide = "LEFT" | "RIGHT";
-const ReviewCommentStartSide = S.String;
-
 /** The level at which the comment is targeted, can be a diff line or a file. */
 export type ReviewCommentSubjectType = "line" | "file";
-const ReviewCommentSubjectType = S.String;
-
 /** Legacy Review Comment */
 export interface ReviewComment {
   url: string;
@@ -1386,20 +1079,8 @@ export interface ReviewComment {
   /** The level at which the comment is targeted, can be a diff line or a file. */
   subject_type?: ReviewCommentSubjectType;
 }
-const ReviewComment = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<ReviewComment>;
-
 export type ListCommentsForReviewResponseBodyList = Array<ReviewComment>;
-const ListCommentsForReviewResponseBodyList = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<ListCommentsForReviewResponseBodyList>;
-
 export type ListCommentsForReviewResponse = ListCommentsForReviewResponseBodyList;
-const ListCommentsForReviewResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<ListCommentsForReviewResponse>;
-
 export interface ListCommitsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1412,22 +1093,16 @@ export interface ListCommitsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListCommitsRequest = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<ListCommitsRequest>;
-
 /** Metaproperties for Git author/committer information. */
 export interface NullableGitUser {
   name?: string;
   email?: string;
   date?: string;
 }
-const NullableGitUser = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<NullableGitUser>;
-
 export interface CommitCommitTree {
   sha: string;
   url: string;
 }
-const CommitCommitTree = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<CommitCommitTree>;
-
 export interface Verification {
   verified: boolean;
   reason: string;
@@ -1435,8 +1110,6 @@ export interface Verification {
   signature: string | null;
   verified_at: string | null;
 }
-const Verification = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<Verification>;
-
 export interface CommitCommit {
   url: string;
   author: NullableGitUser | null;
@@ -1446,31 +1119,19 @@ export interface CommitCommit {
   tree: CommitCommitTree;
   verification?: Verification;
 }
-const CommitCommit = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<CommitCommit>;
-
 export type CommitAuthor = NullableSimpleUser | unknown;
-const CommitAuthor = S.Unknown as any as S.Schema<CommitAuthor>;
-
 export type CommitCommitter = NullableSimpleUser | unknown;
-const CommitCommitter = S.Unknown as any as S.Schema<CommitCommitter>;
-
 export interface CommitParentsItem {
   sha: string;
   url: string;
   html_url?: string;
 }
-const CommitParentsItem = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<CommitParentsItem>;
-
 export type CommitParentsList = Array<CommitParentsItem>;
-const CommitParentsList = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<CommitParentsList>;
-
 export interface CommitStats {
   additions?: number;
   deletions?: number;
   total?: number;
 }
-const CommitStats = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<CommitStats>;
-
 export type DiffEntryStatus =
   | "added"
   | "removed"
@@ -1479,8 +1140,6 @@ export type DiffEntryStatus =
   | "copied"
   | "changed"
   | "unchanged";
-const DiffEntryStatus = S.String;
-
 /** Diff Entry */
 export interface DiffEntry {
   sha: string | null;
@@ -1495,11 +1154,7 @@ export interface DiffEntry {
   patch?: string;
   previous_filename?: string;
 }
-const DiffEntry = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<DiffEntry>;
-
 export type CommitFilesList = Array<DiffEntry>;
-const CommitFilesList = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<CommitFilesList>;
-
 /** Commit */
 export interface Commit {
   url: string;
@@ -1514,17 +1169,8 @@ export interface Commit {
   stats?: CommitStats;
   files?: CommitFilesList;
 }
-const Commit = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<Commit>;
-
 export type ListCommitsResponseBodyList = Array<Commit>;
-const ListCommitsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<ListCommitsResponseBodyList>;
-
 export type ListCommitsResponse = ListCommitsResponseBodyList;
-const ListCommitsResponse = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<ListCommitsResponse>;
-
 export interface ListFilesRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1537,17 +1183,8 @@ export interface ListFilesRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListFilesRequest = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<ListFilesRequest>;
-
 export type ListFilesResponseBodyList = Array<DiffEntry>;
-const ListFilesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<ListFilesResponseBodyList>;
-
 export type ListFilesResponse = ListFilesResponseBodyList;
-const ListFilesResponse = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<ListFilesResponse>;
-
 export interface ListPullRequestStacksRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1560,24 +1197,12 @@ export interface ListPullRequestStacksRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListPullRequestStacksRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<ListPullRequestStacksRequest>;
-
 export type PullRequestStackMinimalBase = AddPullRequestStackResponseBase;
 export type PullRequestStackMinimalPullRequestsItemState = "open" | "closed";
-const PullRequestStackMinimalPullRequestsItemState = S.String;
-
 export interface PullRequestStackMinimalPullRequestsItemHead {
   ref: string;
   sha: string;
 }
-const PullRequestStackMinimalPullRequestsItemHead = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<PullRequestStackMinimalPullRequestsItemHead>;
-
 export interface PullRequestStackMinimalPullRequestsItem {
   number: number;
   state: PullRequestStackMinimalPullRequestsItemState;
@@ -1585,18 +1210,8 @@ export interface PullRequestStackMinimalPullRequestsItem {
   merged_at: string | null;
   head: PullRequestStackMinimalPullRequestsItemHead;
 }
-const PullRequestStackMinimalPullRequestsItem = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<PullRequestStackMinimalPullRequestsItem>;
-
 export type PullRequestStackMinimalPullRequestsList =
   Array<PullRequestStackMinimalPullRequestsItem>;
-const PullRequestStackMinimalPullRequestsList = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<PullRequestStackMinimalPullRequestsList>;
-
 export interface PullRequestStackMinimal {
   id: number;
   number: number;
@@ -1608,23 +1223,8 @@ export interface PullRequestStackMinimal {
   created_at: string;
   pull_requests: PullRequestStackMinimalPullRequestsList;
 }
-const PullRequestStackMinimal = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<PullRequestStackMinimal>;
-
 export type ListPullRequestStacksResponseBodyList = Array<PullRequestStackMinimal>;
-const ListPullRequestStacksResponseBodyList = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<ListPullRequestStacksResponseBodyList>;
-
 export type ListPullRequestStacksResponse = ListPullRequestStacksResponseBodyList;
-const ListPullRequestStacksResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<ListPullRequestStacksResponse>;
-
 export interface ListRequestedReviewersRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1633,35 +1233,15 @@ export interface ListRequestedReviewersRequest {
   /** The number that identifies the pull request. */
   pull_number: number;
 }
-const ListRequestedReviewersRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<ListRequestedReviewersRequest>;
-
 export type PullRequestReviewRequestUsersList = Array<NullableSimpleUser>;
-const PullRequestReviewRequestUsersList =
-  PullRequestAssigneesList as any as S.Schema<PullRequestReviewRequestUsersList>;
-
 export type PullRequestReviewRequestTeamsList = Array<Team>;
-const PullRequestReviewRequestTeamsList =
-  PullRequestSimpleRequestedTeamsList as any as S.Schema<PullRequestReviewRequestTeamsList>;
-
 /** Pull Request Review Request */
 export interface PullRequestReviewRequest {
   users: PullRequestReviewRequestUsersList;
   teams: PullRequestReviewRequestTeamsList;
 }
-const PullRequestReviewRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<PullRequestReviewRequest>;
-
 export type ListReviewCommentsRequestSort = "created" | "updated";
-const ListReviewCommentsRequestSort = S.String;
-
 export type ListReviewCommentsRequestDirection = "asc" | "desc";
-const ListReviewCommentsRequestDirection = S.String;
-
 export interface ListReviewCommentsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1680,29 +1260,10 @@ export interface ListReviewCommentsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListReviewCommentsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<ListReviewCommentsRequest>;
-
 export type ListReviewCommentsResponseBodyList = Array<PullRequestReviewComment>;
-const ListReviewCommentsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<ListReviewCommentsResponseBodyList>;
-
 export type ListReviewCommentsResponse = ListReviewCommentsResponseBodyList;
-const ListReviewCommentsResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<ListReviewCommentsResponse>;
-
 export type ListReviewCommentsForRepoRequestSort = "created" | "updated" | "created_at";
-const ListReviewCommentsForRepoRequestSort = S.String;
-
 export type ListReviewCommentsForRepoRequestDirection = "asc" | "desc";
-const ListReviewCommentsForRepoRequestDirection = S.String;
-
 export interface ListReviewCommentsForRepoRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1718,16 +1279,8 @@ export interface ListReviewCommentsForRepoRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListReviewCommentsForRepoRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<ListReviewCommentsForRepoRequest>;
-
 export type ListReviewCommentsForRepoResponseBodyList = Array<PullRequestReviewComment>;
 export type ListReviewCommentsForRepoResponse = ListReviewCommentsForRepoResponseBodyList;
-const ListReviewCommentsForRepoResponse =
-  ListReviewCommentsResponse as any as S.Schema<ListReviewCommentsForRepoResponse>;
-
 export interface ListReviewsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1740,21 +1293,10 @@ export interface ListReviewsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListReviewsRequest = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<ListReviewsRequest>;
-
 export type ListReviewsResponseBodyList = Array<PullRequestReview>;
-const ListReviewsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<ListReviewsResponseBodyList>;
-
 export type ListReviewsResponse = ListReviewsResponseBodyList;
-const ListReviewsResponse = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<ListReviewsResponse>;
-
 /** The merge method to use. */
 export type MergeRequestMergeMethod = "merge" | "squash" | "rebase";
-const MergeRequestMergeMethod = S.String;
-
 export interface MergeRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1771,27 +1313,16 @@ export interface MergeRequest {
   /** The merge method to use. */
   merge_method?: MergeRequestMergeMethod | (string & {});
 }
-const MergeRequest = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<MergeRequest>;
-
 /** Pull Request Merge Result */
 export interface PullRequestMergeResult {
   sha: string;
   merged: boolean;
   message: string;
 }
-const PullRequestMergeResult = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<PullRequestMergeResult>;
-
 /** The merge method to use for a direct merge. Only supported for direct merges. */
 export type MergeAsyncRequestMergeMethod = "merge" | "squash" | "rebase";
-const MergeAsyncRequestMergeMethod = S.String;
-
 /** The action that will be taken to merge the pull request. `direct_merge` merges the pull request directly without using a merge queue; `merge_queue` adds the pull request to a merge queue; `default` uses a merge queue if one is configured for the target branch, or merges directly otherwise. If omitted, defaults to `default`. */
 export type MergeAsyncRequestMergeAction = "default" | "direct_merge" | "merge_queue";
-const MergeAsyncRequestMergeAction = S.String;
-
 export interface MergeAsyncRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1812,8 +1343,6 @@ export interface MergeAsyncRequest {
   /** Whether to bypass repository rules that the authenticated actor is permitted to bypass. */
   bypass_rules?: boolean;
 }
-const MergeAsyncRequest = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<MergeAsyncRequest>;
-
 export interface PullRequestStacksUnstackRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1822,11 +1351,6 @@ export interface PullRequestStacksUnstackRequest {
   /** The number that identifies the pull request stack. */
   stack_number: number;
 }
-const PullRequestStacksUnstackRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<PullRequestStacksUnstackRequest>;
-
 export type PullRequestStacksUnstackResponseBase = AddPullRequestStackResponseBase;
 export type PullRequestStacksUnstackResponsePullRequestsList = Array<PullRequestStackPullRequest>;
 export interface PullRequestStacksUnstackResponse {
@@ -1840,19 +1364,10 @@ export interface PullRequestStacksUnstackResponse {
   created_at: string;
   pull_requests: PullRequestStacksUnstackResponsePullRequestsList;
 }
-const PullRequestStacksUnstackResponse =
-  AddPullRequestStackResponse as any as S.Schema<PullRequestStacksUnstackResponse>;
-
 /** An array of user `login`s that will be removed. */
 export type RemoveRequestedReviewersRequestReviewersList = Array<string>;
-const RemoveRequestedReviewersRequestReviewersList =
-  RepositoryTopicsList as any as S.Schema<RemoveRequestedReviewersRequestReviewersList>;
-
 /** An array of team `slug`s that will be removed. */
 export type RemoveRequestedReviewersRequestTeamReviewersList = Array<string>;
-const RemoveRequestedReviewersRequestTeamReviewersList =
-  RepositoryTopicsList as any as S.Schema<RemoveRequestedReviewersRequestTeamReviewersList>;
-
 export interface RemoveRequestedReviewersRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1865,21 +1380,10 @@ export interface RemoveRequestedReviewersRequest {
   /** An array of team `slug`s that will be removed. */
   team_reviewers?: RemoveRequestedReviewersRequestTeamReviewersList;
 }
-const RemoveRequestedReviewersRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<RemoveRequestedReviewersRequest>;
-
 /** An array of user `login`s that will be requested. */
 export type RequestReviewersRequestReviewersList = Array<string>;
-const RequestReviewersRequestReviewersList =
-  RepositoryTopicsList as any as S.Schema<RequestReviewersRequestReviewersList>;
-
 /** An array of team `slug`s that will be requested. */
 export type RequestReviewersRequestTeamReviewersList = Array<string>;
-const RequestReviewersRequestTeamReviewersList =
-  RepositoryTopicsList as any as S.Schema<RequestReviewersRequestTeamReviewersList>;
-
 export interface RequestReviewersRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1892,21 +1396,10 @@ export interface RequestReviewersRequest {
   /** An array of team `slug`s that will be requested. */
   team_reviewers?: RequestReviewersRequestTeamReviewersList;
 }
-const RequestReviewersRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<RequestReviewersRequest>;
-
 /** An array of user `login`s whose reviews will be rerequested. */
 export type RerequestReviewersRequestReviewersList = Array<string>;
-const RerequestReviewersRequestReviewersList =
-  RepositoryTopicsList as any as S.Schema<RerequestReviewersRequestReviewersList>;
-
 /** An array of team `slug`s whose reviews will be rerequested. */
 export type RerequestReviewersRequestTeamReviewersList = Array<string>;
-const RerequestReviewersRequestTeamReviewersList =
-  RepositoryTopicsList as any as S.Schema<RerequestReviewersRequestTeamReviewersList>;
-
 export interface RerequestReviewersRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1919,15 +1412,8 @@ export interface RerequestReviewersRequest {
   /** An array of team `slug`s whose reviews will be rerequested. */
   team_reviewers?: RerequestReviewersRequestTeamReviewersList;
 }
-const RerequestReviewersRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<RerequestReviewersRequest>;
-
 /** The review action you want to perform. The review actions include: `APPROVE`, `REQUEST_CHANGES`, or `COMMENT`. When you leave this blank, the API returns _HTTP 422 (Unrecognizable entity)_ and sets the review action state to `PENDING`, which means you will need to re-submit the pull request review using a review action. */
 export type SubmitReviewRequestEvent = "APPROVE" | "REQUEST_CHANGES" | "COMMENT";
-const SubmitReviewRequestEvent = S.String;
-
 export interface SubmitReviewRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1942,12 +1428,8 @@ export interface SubmitReviewRequest {
   /** The review action you want to perform. The review actions include: `APPROVE`, `REQUEST_CHANGES`, or `COMMENT`. When you leave this blank, the API returns _HTTP 422 (Unrecognizable entity)_ and sets the review action state to `PENDING`, which means you will need to re-submit the pull request review using a review action. */
   event: SubmitReviewRequestEvent | (string & {});
 }
-const SubmitReviewRequest = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<SubmitReviewRequest>;
-
 /** State of this Pull Request. Either `open` or `closed`. */
 export type UpdateRequestState = "open" | "closed";
-const UpdateRequestState = S.String;
-
 export interface UpdateRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1966,8 +1448,6 @@ export interface UpdateRequest {
   /** Indicates whether [maintainers can modify](https://docs.github.com/articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork/) the pull request. */
   maintainer_can_modify?: boolean;
 }
-const UpdateRequest = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<UpdateRequest>;
-
 export interface UpdateBranchRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1978,11 +1458,7 @@ export interface UpdateBranchRequest {
   /** The expected SHA of the pull request's HEAD ref. This is the most recent commit on the pull request's branch. If the expected SHA does not match the pull request's HEAD, you will receive a `422 Unprocessable Entity` status. You can use the "[List commits](https://docs.github.com/rest/commits/commits#list-commits)" endpoint to find the most recent commit SHA. Default: SHA of the pull request's current HEAD ref. */
   expected_head_sha?: string;
 }
-const UpdateBranchRequest = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<UpdateBranchRequest>;
-
 export interface UpdateBranchResponse {}
-const UpdateBranchResponse = CheckIfMergedResponse as any as S.Schema<UpdateBranchResponse>;
-
 export interface UpdateReviewRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1995,8 +1471,6 @@ export interface UpdateReviewRequest {
   /** The body text of the pull request review. */
   body: string;
 }
-const UpdateReviewRequest = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<UpdateReviewRequest>;
-
 export interface UpdateReviewCommentRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -2007,11 +1481,6 @@ export interface UpdateReviewCommentRequest {
   /** The text of the reply to the review comment. */
   body: string;
 }
-const UpdateReviewCommentRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<UpdateReviewCommentRequest>;
-
 export type AddPullRequestStackError = NotFound | Conflict | UnprocessableEntity | GithubOpError;
 /** Add pull requests to a pull request stack Appends an ordered list of pull request numbers onto the top of an existing stack. Provide only the pull requests you want to add, from the current top of the stack upward. The first new pull request's base ref must match the current top pull request's head ref. */
 export const addPullRequestStack: API.OperationMethod<
@@ -2020,8 +1489,8 @@ export const addPullRequestStack: API.OperationMethod<
   AddPullRequestStackError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddPullRequestStackRequest,
-  output: AddPullRequestStackResponse,
+  input: __S(1, __c0, 1) as any as S.Schema<AddPullRequestStackRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<AddPullRequestStackResponse>,
   errors: [NotFound, Conflict, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2035,8 +1504,8 @@ export const checkIfMerged: API.OperationMethod<
   CheckIfMergedError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckIfMergedRequest,
-  output: CheckIfMergedResponse,
+  input: __S(9, __c1, 1) as any as S.Schema<CheckIfMergedRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<CheckIfMergedResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2046,8 +1515,8 @@ export type CreateError = Forbidden | UnprocessableEntity | GithubOpError;
 /** Create a pull request Draft pull requests are available in public repositories with GitHub Free and GitHub Free for organizations, GitHub Pro, and legacy per-repository billing plans, and in public and private repositories with GitHub Team and GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation. To open or update a pull request in a public repository, you must have write access to the head or the source branch. For organization-owned repositories, you must be a member of the organization that owns the repository to open or update a pull request. This endpoint triggers [notifications](https://docs.github.com/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/rest/guides/best-practices-for-using-the-rest-api)." This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)." - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type. - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`. - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`. - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`. */
 export const create: API.OperationMethod<CreateRequest, PullRequest, CreateError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: CreateRequest,
-    output: PullRequest,
+    input: __S(11, __c1, 3) as any as S.Schema<CreateRequest>,
+    output: __S(29, __c3, 5) as any as S.Schema<PullRequest>,
     errors: [Forbidden, UnprocessableEntity],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -2061,8 +1530,8 @@ export const createPullRequestStack: API.OperationMethod<
   CreatePullRequestStackError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePullRequestStackRequest,
-  output: CreatePullRequestStackResponse,
+  input: __S(30, __c3, 6) as any as S.Schema<CreatePullRequestStackRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreatePullRequestStackResponse>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2076,8 +1545,8 @@ export const createReplyForReviewComment: API.OperationMethod<
   CreateReplyForReviewCommentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateReplyForReviewCommentRequest,
-  output: PullRequestReviewComment,
+  input: __S(31, __c3, 7) as any as S.Schema<CreateReplyForReviewCommentRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<PullRequestReviewComment>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2091,8 +1560,8 @@ export const createReview: API.OperationMethod<
   CreateReviewError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateReviewRequest,
-  output: PullRequestReview,
+  input: __S(37, __c4, 5) as any as S.Schema<CreateReviewRequest>,
+  output: __S(39, __c4, 7) as any as S.Schema<PullRequestReview>,
   errors: [Forbidden, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2106,8 +1575,8 @@ export const createReviewComment: API.OperationMethod<
   CreateReviewCommentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateReviewCommentRequest,
-  output: PullRequestReviewComment,
+  input: __S(40, __c5, 0) as any as S.Schema<CreateReviewCommentRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<PullRequestReviewComment>,
   errors: [Forbidden, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2121,8 +1590,8 @@ export const deletePendingReview: API.OperationMethod<
   DeletePendingReviewError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePendingReviewRequest,
-  output: PullRequestReview,
+  input: __S(41, __c5, 1) as any as S.Schema<DeletePendingReviewRequest>,
+  output: __S(39, __c4, 7) as any as S.Schema<PullRequestReview>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2136,8 +1605,8 @@ export const deleteReviewComment: API.OperationMethod<
   DeleteReviewCommentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteReviewCommentRequest,
-  output: DeleteReviewCommentResponse,
+  input: __S(42, __c5, 2) as any as S.Schema<DeleteReviewCommentRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<DeleteReviewCommentResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2151,8 +1620,8 @@ export const dismissReview: API.OperationMethod<
   DismissReviewError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DismissReviewRequest,
-  output: PullRequestReview,
+  input: __S(43, __c5, 3) as any as S.Schema<DismissReviewRequest>,
+  output: __S(39, __c4, 7) as any as S.Schema<PullRequestReview>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2162,8 +1631,8 @@ export type GetError = NotFound | UnprocessableEntity | GithubOpError;
 /** Get a pull request Draft pull requests are available in public repositories with GitHub Free and GitHub Free for organizations, GitHub Pro, and legacy per-repository billing plans, and in public and private repositories with GitHub Team and GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation. Lists details of a pull request by providing its number. When you get, [create](https://docs.github.com/rest/pulls/pulls/#create-a-pull-request), or [edit](https://docs.github.com/rest/pulls/pulls#update-a-pull-request) a pull request, GitHub creates a merge commit to test whether the pull request can be automatically merged into the base branch. This test commit is not added to the base branch or the head branch. You can review the status of the test commit using the `mergeable` key. For more information, see "[Checking mergeability of pull requests](https://docs.github.com/rest/guides/getting-started-with-the-git-database-api#checking-mergeability-of-pull-requests)". The value of the `mergeable` attribute can be `true`, `false`, or `null`. If the value is `null`, then GitHub has started a background job to compute the mergeability. After giving the job time to complete, resubmit the request. When the job finishes, you will see a non-`null` value for the `mergeable` attribute in the response. If `mergeable` is `true`, then `merge_commit_sha` will be the SHA of the _test_ merge commit. The value of the `merge_commit_sha` attribute changes depending on the state of the pull request. Before merging a pull request, the `merge_commit_sha` attribute holds the SHA of the _test_ merge commit. After merging a pull request, the `merge_commit_sha` attribute changes depending on how you merged the pull request: * If merged as a [merge commit](https://docs.github.com/articles/about-merge-methods-on-github/), `merge_commit_sha` represents the SHA of the merge commit. * If merged via a [squash](https://docs.github.com/articles/about-merge-methods-on-github/#squashing-your-merge-commits), `merge_commit_sha` represents the SHA of the squashed commit on the base branch. * If [rebased](https://docs.github.com/articles/about-merge-methods-on-github/#rebasing-and-merging-your-commits), `merge_commit_sha` represents the commit that the base branch was updated to. Pass the appropriate [media type](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types) to fetch diff and patch formats. This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)." - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type. - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`. - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`. - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`. - **`application/vnd.github.diff`**: For more information, see "[git-diff](https://git-scm.com/docs/git-diff)" in the Git documentation. If a diff is corrupt, contact us through the [GitHub Support portal](https://support.github.com/). Include the repository name and pull request ID in your message. */
 export const get: API.OperationMethod<GetRequest, PullRequest, GetError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: GetRequest,
-    output: PullRequest,
+    input: __S(44, __c5, 4) as any as S.Schema<GetRequest>,
+    output: __S(29, __c3, 5) as any as S.Schema<PullRequest>,
     errors: [NotFound, UnprocessableEntity],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -2177,8 +1646,8 @@ export const getMergeAsyncResult: API.OperationMethod<
   GetMergeAsyncResultError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMergeAsyncResultRequest,
-  output: PullRequestMergeAsyncResult,
+  input: __S(45, __c5, 5) as any as S.Schema<GetMergeAsyncResultRequest>,
+  output: __S(46, __c5, 6) as any as S.Schema<PullRequestMergeAsyncResult>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2192,8 +1661,8 @@ export const getPullRequestStack: API.OperationMethod<
   GetPullRequestStackError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPullRequestStackRequest,
-  output: GetPullRequestStackResponse,
+  input: __S(47, __c5, 7) as any as S.Schema<GetPullRequestStackRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetPullRequestStackResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2207,8 +1676,8 @@ export const getReview: API.OperationMethod<
   GetReviewError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetReviewRequest,
-  output: PullRequestReview,
+  input: __S(48, __c6, 0) as any as S.Schema<GetReviewRequest>,
+  output: __S(39, __c4, 7) as any as S.Schema<PullRequestReview>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2222,8 +1691,8 @@ export const getReviewComment: API.OperationMethod<
   GetReviewCommentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetReviewCommentRequest,
-  output: PullRequestReviewComment,
+  input: __S(49, __c6, 1) as any as S.Schema<GetReviewCommentRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<PullRequestReviewComment>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2233,8 +1702,8 @@ export type ListError = UnprocessableEntity | GithubOpError;
 /** List pull requests Lists pull requests in a specified repository. Draft pull requests are available in public repositories with GitHub Free and GitHub Free for organizations, GitHub Pro, and legacy per-repository billing plans, and in public and private repositories with GitHub Team and GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation. This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)." - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type. - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`. - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`. - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`. */
 export const list: API.OperationMethod<ListRequest, ListResponse, ListError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: ListRequest,
-    output: ListResponse,
+    input: __S(50, __c6, 2) as any as S.Schema<ListRequest>,
+    output: __S(59, __c7, 3) as any as S.Schema<ListResponse>,
     errors: [UnprocessableEntity],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -2248,8 +1717,8 @@ export const listCommentsForReview: API.OperationMethod<
   ListCommentsForReviewError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCommentsForReviewRequest,
-  output: ListCommentsForReviewResponse,
+  input: __S(60, __c7, 4) as any as S.Schema<ListCommentsForReviewRequest>,
+  output: __S(63, __c7, 7) as any as S.Schema<ListCommentsForReviewResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2263,8 +1732,8 @@ export const listCommits: API.OperationMethod<
   ListCommitsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCommitsRequest,
-  output: ListCommitsResponse,
+  input: __S(64, __c8, 0) as any as S.Schema<ListCommitsRequest>,
+  output: __S(76, __c9, 4) as any as S.Schema<ListCommitsResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2278,8 +1747,8 @@ export const listFiles: API.OperationMethod<
   ListFilesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFilesRequest,
-  output: ListFilesResponse,
+  input: __S(77, __c9, 5) as any as S.Schema<ListFilesRequest>,
+  output: __S(79, __c9, 7) as any as S.Schema<ListFilesResponse>,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2293,8 +1762,8 @@ export const listPullRequestStacks: API.OperationMethod<
   ListPullRequestStacksError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPullRequestStacksRequest,
-  output: ListPullRequestStacksResponse,
+  input: __S(80, __c10, 0) as any as S.Schema<ListPullRequestStacksRequest>,
+  output: __S(86, __c10, 6) as any as S.Schema<ListPullRequestStacksResponse>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2308,8 +1777,8 @@ export const listRequestedReviewers: API.OperationMethod<
   ListRequestedReviewersError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRequestedReviewersRequest,
-  output: PullRequestReviewRequest,
+  input: __S(87, __c10, 7) as any as S.Schema<ListRequestedReviewersRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<PullRequestReviewRequest>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2323,8 +1792,8 @@ export const listReviewComments: API.OperationMethod<
   ListReviewCommentsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListReviewCommentsRequest,
-  output: ListReviewCommentsResponse,
+  input: __S(89, __c11, 1) as any as S.Schema<ListReviewCommentsRequest>,
+  output: __S(91, __c11, 3) as any as S.Schema<ListReviewCommentsResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2338,8 +1807,8 @@ export const listReviewCommentsForRepo: API.OperationMethod<
   ListReviewCommentsForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListReviewCommentsForRepoRequest,
-  output: ListReviewCommentsForRepoResponse,
+  input: __S(92, __c11, 4) as any as S.Schema<ListReviewCommentsForRepoRequest>,
+  output: __S(91, __c11, 3) as any as S.Schema<ListReviewCommentsForRepoResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2353,8 +1822,8 @@ export const listReviews: API.OperationMethod<
   ListReviewsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListReviewsRequest,
-  output: ListReviewsResponse,
+  input: __S(93, __c11, 5) as any as S.Schema<ListReviewsRequest>,
+  output: __S(95, __c11, 7) as any as S.Schema<ListReviewsResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2368,8 +1837,8 @@ export const merge: API.OperationMethod<
   MergeError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MergeRequest,
-  output: PullRequestMergeResult,
+  input: __S(96, __c12, 0) as any as S.Schema<MergeRequest>,
+  output: __S(97, __c12, 1) as any as S.Schema<PullRequestMergeResult>,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2389,8 +1858,8 @@ export const mergeAsync: API.OperationMethod<
   MergeAsyncError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MergeAsyncRequest,
-  output: PullRequestMergeAsyncResult,
+  input: __S(98, __c12, 2) as any as S.Schema<MergeAsyncRequest>,
+  output: __S(46, __c5, 6) as any as S.Schema<PullRequestMergeAsyncResult>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2408,8 +1877,8 @@ export const pullRequestStacksUnstack: API.OperationMethod<
   PullRequestStacksUnstackError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PullRequestStacksUnstackRequest,
-  output: PullRequestStacksUnstackResponse,
+  input: __S(99, __c12, 3) as any as S.Schema<PullRequestStacksUnstackRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PullRequestStacksUnstackResponse>,
   errors: [NotFound, Conflict, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2423,8 +1892,8 @@ export const removeRequestedReviewers: API.OperationMethod<
   RemoveRequestedReviewersError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveRequestedReviewersRequest,
-  output: PullRequestSimple,
+  input: __S(100, __c12, 4) as any as S.Schema<RemoveRequestedReviewersRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<PullRequestSimple>,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2438,8 +1907,8 @@ export const requestReviewers: API.OperationMethod<
   RequestReviewersError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RequestReviewersRequest,
-  output: PullRequestSimple,
+  input: __S(101, __c12, 5) as any as S.Schema<RequestReviewersRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<PullRequestSimple>,
   errors: [Forbidden, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2453,8 +1922,8 @@ export const rerequestReviewers: API.OperationMethod<
   RerequestReviewersError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RerequestReviewersRequest,
-  output: PullRequestSimple,
+  input: __S(102, __c12, 6) as any as S.Schema<RerequestReviewersRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<PullRequestSimple>,
   errors: [Forbidden, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2468,8 +1937,8 @@ export const submitReview: API.OperationMethod<
   SubmitReviewError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SubmitReviewRequest,
-  output: PullRequestReview,
+  input: __S(103, __c12, 7) as any as S.Schema<SubmitReviewRequest>,
+  output: __S(39, __c4, 7) as any as S.Schema<PullRequestReview>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2479,8 +1948,8 @@ export type UpdateError = Forbidden | UnprocessableEntity | GithubOpError;
 /** Update a pull request Draft pull requests are available in public repositories with GitHub Free and GitHub Free for organizations, GitHub Pro, and legacy per-repository billing plans, and in public and private repositories with GitHub Team and GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation. To open or update a pull request in a public repository, you must have write access to the head or the source branch. For organization-owned repositories, you must be a member of the organization that owns the repository to open or update a pull request. This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)." - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type. - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`. - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`. - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`. */
 export const update: API.OperationMethod<UpdateRequest, PullRequest, UpdateError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: UpdateRequest,
-    output: PullRequest,
+    input: __S(104, __c13, 0) as any as S.Schema<UpdateRequest>,
+    output: __S(29, __c3, 5) as any as S.Schema<PullRequest>,
     errors: [Forbidden, UnprocessableEntity],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -2494,8 +1963,8 @@ export const updateBranch: API.OperationMethod<
   UpdateBranchError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateBranchRequest,
-  output: UpdateBranchResponse,
+  input: __S(105, __c13, 1) as any as S.Schema<UpdateBranchRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<UpdateBranchResponse>,
   errors: [Forbidden, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2509,8 +1978,8 @@ export const updateReview: API.OperationMethod<
   UpdateReviewError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateReviewRequest,
-  output: PullRequestReview,
+  input: __S(106, __c13, 2) as any as S.Schema<UpdateReviewRequest>,
+  output: __S(39, __c4, 7) as any as S.Schema<PullRequestReview>,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2524,8 +1993,8 @@ export const updateReviewComment: API.OperationMethod<
   UpdateReviewCommentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateReviewCommentRequest,
-  output: PullRequestReviewComment,
+  input: __S(107, __c13, 3) as any as S.Schema<UpdateReviewCommentRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<PullRequestReviewComment>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2542,7 +2011,7 @@ function __c0(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           stack_number: S.Number.pipe(T.Label()),
-          pull_requests: AddPullRequestStackRequestPullRequestsList,
+          pull_requests: __S(0, __c0, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2576,7 +2045,7 @@ function __c0(j: number): any {
         S.Struct({
           ref: S.String,
           sha: S.String,
-          repo: PullRequestStackPullRequestHeadRepo,
+          repo: __S(3, __c0, 3),
         }),
       ).annotate({
         identifier: "PullRequestStackPullRequestHead",
@@ -2614,21 +2083,21 @@ function __c0(j: number): any {
           id: S.Number,
           number: S.Number,
           url: S.String,
-          head: PullRequestStackPullRequestHead,
-          base: PullRequestStackPullRequestHead,
+          head: __S(4, __c0, 4),
+          base: __S(4, __c0, 4),
           node_id: S.String,
           title: S.String,
-          state: PullRequestStackPullRequestState,
+          state: S.String,
           merged_at: S.NullOr(S.String),
           draft: S.Boolean,
           html_url: S.String,
-          user: S.NullOr(NullableSimpleUser),
+          user: S.NullOr(__S(5, __c0, 5)),
         }),
       ).annotate({
         identifier: "PullRequestStackPullRequest",
       });
     case 7:
-      return S.Array(PullRequestStackPullRequest);
+      return S.Array(__S(6, __c0, 6));
   }
 }
 function __c1(j: number): any {
@@ -2640,10 +2109,10 @@ function __c1(j: number): any {
           number: S.Number,
           node_id: S.String,
           url: S.String,
-          base: AddPullRequestStackResponseBase,
+          base: __S(2, __c0, 2),
           open: S.Boolean,
           created_at: S.String,
-          pull_requests: AddPullRequestStackResponsePullRequestsList,
+          pull_requests: __S(7, __c0, 7),
         }),
       ).annotate({
         identifier: "AddPullRequestStackResponse",
@@ -2691,11 +2160,11 @@ function __c1(j: number): any {
           description: S.NullOr(S.String),
           color: S.String,
           default: S.Boolean,
-          archived_by: S.NullOr(NullableSimpleUser),
+          archived_by: S.NullOr(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "PullRequestLabelsItem" });
     case 5:
-      return S.Array(PullRequestLabelsItem);
+      return S.Array(__S(12, __c1, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -2705,10 +2174,10 @@ function __c1(j: number): any {
           id: S.Number,
           node_id: S.String,
           number: S.Number,
-          state: NullableMilestoneState,
+          state: S.String,
           title: S.String,
           description: S.NullOr(S.String),
-          creator: S.NullOr(NullableSimpleUser),
+          creator: S.NullOr(__S(5, __c0, 5)),
           open_issues: S.Number,
           closed_issues: S.Number,
           created_at: S.String,
@@ -2718,7 +2187,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "NullableMilestone" });
     case 7:
-      return S.Array(NullableSimpleUser);
+      return S.Array(__S(5, __c0, 5));
   }
 }
 function __c2(j: number): any {
@@ -2739,13 +2208,13 @@ function __c2(j: number): any {
           repositories_url: S.String,
           slug: S.String,
           ldap_dn: S.optional(S.String),
-          type: TeamSimpleType,
+          type: S.String,
           organization_id: S.optional(S.Number),
           enterprise_id: S.optional(S.Number),
         }),
       ).annotate({ identifier: "TeamSimple" });
     case 1:
-      return S.Array(TeamSimple);
+      return S.Array(__S(16, __c2, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2785,10 +2254,10 @@ function __c2(j: number): any {
           node_id: S.String,
           name: S.String,
           full_name: S.String,
-          license: S.NullOr(NullableLicenseSimple),
+          license: S.NullOr(__S(18, __c2, 2)),
           forks: S.Number,
-          permissions: S.optional(RepositoryPermissions),
-          owner: NullableSimpleUser,
+          permissions: S.optional(__S(19, __c2, 3)),
+          owner: __S(5, __c0, 5),
           private: S.Boolean,
           html_url: S.String,
           description: S.NullOr(S.String),
@@ -2844,7 +2313,7 @@ function __c2(j: number): any {
           default_branch: S.String,
           open_issues_count: S.Number,
           is_template: S.optional(S.Boolean),
-          topics: S.optional(RepositoryTopicsList),
+          topics: S.optional(__S(20, __c2, 4)),
           has_issues: S.Boolean,
           has_projects: S.Boolean,
           has_wiki: S.Boolean,
@@ -2852,7 +2321,7 @@ function __c2(j: number): any {
           has_downloads: S.Boolean,
           has_discussions: S.optional(S.Boolean),
           has_pull_requests: S.optional(S.Boolean),
-          pull_request_creation_policy: S.optional(RepositoryPullRequestCreationPolicy),
+          pull_request_creation_policy: S.optional(S.String),
           archived: S.Boolean,
           disabled: S.Boolean,
           visibility: S.optional(S.String),
@@ -2866,10 +2335,10 @@ function __c2(j: number): any {
           delete_branch_on_merge: S.optional(S.Boolean),
           allow_update_branch: S.optional(S.Boolean),
           use_squash_pr_title_as_default: S.optional(S.Boolean),
-          squash_merge_commit_title: S.optional(RepositorySquashMergeCommitTitle),
-          squash_merge_commit_message: S.optional(RepositorySquashMergeCommitMessage),
-          merge_commit_title: S.optional(RepositoryMergeCommitTitle),
-          merge_commit_message: S.optional(RepositoryMergeCommitMessage),
+          squash_merge_commit_title: S.optional(S.String),
+          squash_merge_commit_message: S.optional(S.String),
+          merge_commit_title: S.optional(S.String),
+          merge_commit_message: S.optional(S.String),
           allow_merge_commit: S.optional(S.Boolean),
           allow_forking: S.optional(S.Boolean),
           web_commit_signoff_required: S.optional(S.Boolean),
@@ -2878,7 +2347,7 @@ function __c2(j: number): any {
           master_branch: S.optional(S.String),
           starred_at: S.optional(S.String),
           anonymous_access_enabled: S.optional(S.Boolean),
-          code_search_index_status: S.optional(RepositoryCodeSearchIndexStatus),
+          code_search_index_status: S.optional(__S(21, __c2, 5)),
         }),
       ).annotate({ identifier: "Repository" });
     case 7:
@@ -2886,9 +2355,9 @@ function __c2(j: number): any {
         S.Struct({
           label: S.String,
           ref: S.String,
-          repo: Repository,
+          repo: __S(22, __c2, 6),
           sha: S.String,
-          user: NullableSimpleUser,
+          user: __S(5, __c0, 5),
         }),
       ).annotate({ identifier: "PullRequestHead" });
   }
@@ -2904,21 +2373,21 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          comments: Link,
-          commits: Link,
-          statuses: Link,
-          html: Link,
-          issue: Link,
-          review_comments: Link,
-          review_comment: Link,
-          self: Link,
+          comments: __S(24, __c3, 0),
+          commits: __S(24, __c3, 0),
+          statuses: __S(24, __c3, 0),
+          html: __S(24, __c3, 0),
+          issue: __S(24, __c3, 0),
+          review_comments: __S(24, __c3, 0),
+          review_comment: __S(24, __c3, 0),
+          self: __S(24, __c3, 0),
         }),
       ).annotate({ identifier: "PullRequestLinks" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          enabled_by: NullableSimpleUser,
-          merge_method: AutoMergeMergeMethod,
+          enabled_by: __S(5, __c0, 5),
+          merge_method: S.String,
           commit_title: S.String,
           commit_message: S.String,
         }),
@@ -2933,7 +2402,7 @@ function __c3(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          base: PullRequestStackBase,
+          base: __S(27, __c3, 3),
           size: S.optional(S.Number),
           position: S.optional(S.Number),
           id: S.optional(S.Number),
@@ -2956,35 +2425,35 @@ function __c3(j: number): any {
           comments_url: S.String,
           statuses_url: S.String,
           number: S.Number,
-          state: PullRequestState,
+          state: S.String,
           locked: S.Boolean,
           title: S.String,
-          user: NullableSimpleUser,
+          user: __S(5, __c0, 5),
           body: S.NullOr(S.String),
-          labels: PullRequestLabelsList,
-          milestone: S.NullOr(NullableMilestone),
+          labels: __S(13, __c1, 5),
+          milestone: S.NullOr(__S(14, __c1, 6)),
           active_lock_reason: S.optional(S.NullOr(S.String)),
           created_at: S.String,
           updated_at: S.String,
           closed_at: S.NullOr(S.String),
           merged_at: S.NullOr(S.String),
           merge_commit_sha: S.NullOr(S.String),
-          assignee: S.NullOr(NullableSimpleUser),
-          assignees: S.optional(PullRequestAssigneesList),
-          requested_reviewers: S.optional(PullRequestRequestedReviewersList),
-          requested_teams: S.optional(PullRequestRequestedTeamsList),
-          head: PullRequestHead,
-          base: PullRequestHead,
-          _links: PullRequestLinks,
-          author_association: AuthorAssociation,
-          auto_merge: S.NullOr(AutoMerge),
-          stack: S.optional(S.NullOr(PullRequestStack)),
+          assignee: S.NullOr(__S(5, __c0, 5)),
+          assignees: S.optional(__S(15, __c1, 7)),
+          requested_reviewers: S.optional(__S(15, __c1, 7)),
+          requested_teams: S.optional(__S(17, __c2, 1)),
+          head: __S(23, __c2, 7),
+          base: __S(23, __c2, 7),
+          _links: __S(25, __c3, 1),
+          author_association: S.String,
+          auto_merge: S.NullOr(__S(26, __c3, 2)),
+          stack: S.optional(S.NullOr(__S(28, __c3, 4))),
           draft: S.optional(S.Boolean),
           merged: S.Boolean,
           mergeable: S.NullOr(S.Boolean),
           rebaseable: S.optional(S.NullOr(S.Boolean)),
           mergeable_state: S.String,
-          merged_by: S.NullOr(NullableSimpleUser),
+          merged_by: S.NullOr(__S(5, __c0, 5)),
           comments: S.Number,
           review_comments: S.Number,
           maintainer_can_modify: S.Boolean,
@@ -2999,7 +2468,7 @@ function __c3(j: number): any {
         S.Struct({
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          pull_requests: CreatePullRequestStackRequestPullRequestsList,
+          pull_requests: __S(0, __c0, 0),
         }).pipe(T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/stacks", code: 200 })),
       ).annotate({
         identifier: "CreatePullRequestStackRequest",
@@ -3029,9 +2498,9 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          self: Link,
-          html: Link,
-          pull_request: Link,
+          self: __S(24, __c3, 0),
+          html: __S(24, __c3, 0),
+          pull_request: __S(24, __c3, 0),
         }),
       ).annotate({
         identifier: "PullRequestReviewCommentLinks",
@@ -3065,22 +2534,22 @@ function __c4(j: number): any {
           commit_id: S.String,
           original_commit_id: S.String,
           in_reply_to_id: S.optional(S.Number),
-          user: S.NullOr(NullableSimpleUser),
+          user: S.NullOr(__S(5, __c0, 5)),
           body: S.String,
           created_at: S.String,
           updated_at: S.String,
           html_url: S.String,
           pull_request_url: S.String,
-          author_association: AuthorAssociation,
-          _links: PullRequestReviewCommentLinks,
+          author_association: S.String,
+          _links: __S(32, __c4, 0),
           start_line: S.optional(S.NullOr(S.Number)),
           original_start_line: S.optional(S.NullOr(S.Number)),
-          start_side: S.optional(S.NullOr(PullRequestReviewCommentStartSide)),
+          start_side: S.optional(S.NullOr(S.String)),
           line: S.optional(S.Number),
           original_line: S.optional(S.Number),
-          side: S.optional(PullRequestReviewCommentSide),
-          subject_type: S.optional(PullRequestReviewCommentSubjectType),
-          reactions: S.optional(ReactionRollup),
+          side: S.optional(S.String),
+          subject_type: S.optional(S.String),
+          reactions: S.optional(__S(33, __c4, 1)),
           body_html: S.optional(S.String),
           body_text: S.optional(S.String),
         }),
@@ -3100,7 +2569,7 @@ function __c4(j: number): any {
         identifier: "CreateReviewRequestCommentsItem",
       });
     case 4:
-      return S.Array(CreateReviewRequestCommentsItem);
+      return S.Array(__S(35, __c4, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -3109,8 +2578,8 @@ function __c4(j: number): any {
           pull_number: S.Number.pipe(T.Label()),
           commit_id: S.optional(S.String),
           body: S.optional(S.String),
-          event: S.optional(CreateReviewRequestEvent),
-          comments: S.optional(CreateReviewRequestCommentsList),
+          event: S.optional(S.String),
+          comments: S.optional(__S(36, __c4, 4)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3122,8 +2591,8 @@ function __c4(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          html: Link,
-          pull_request: Link,
+          html: __S(24, __c3, 0),
+          pull_request: __S(24, __c3, 0),
         }),
       ).annotate({ identifier: "PullRequestReviewLinks" });
     case 7:
@@ -3131,17 +2600,17 @@ function __c4(j: number): any {
         S.Struct({
           id: S.Number,
           node_id: S.String,
-          user: S.NullOr(NullableSimpleUser),
+          user: S.NullOr(__S(5, __c0, 5)),
           body: S.String,
           state: S.String,
           html_url: S.String,
           pull_request_url: S.String,
-          _links: PullRequestReviewLinks,
+          _links: __S(38, __c4, 6),
           submitted_at: S.optional(S.String),
           commit_id: S.NullOr(S.String),
           body_html: S.optional(S.String),
           body_text: S.optional(S.String),
-          author_association: AuthorAssociation,
+          author_association: S.String,
         }),
       ).annotate({ identifier: "PullRequestReview" });
   }
@@ -3158,12 +2627,12 @@ function __c5(j: number): any {
           commit_id: S.String,
           path: S.String,
           position: S.optional(S.Number),
-          side: S.optional(CreateReviewCommentRequestSide),
+          side: S.optional(S.String),
           line: S.optional(S.Number),
           start_line: S.optional(S.Number),
-          start_side: S.optional(CreateReviewCommentRequestStartSide),
+          start_side: S.optional(S.String),
           in_reply_to: S.optional(S.Number),
-          subject_type: S.optional(CreateReviewCommentRequestSubjectType),
+          subject_type: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3215,7 +2684,7 @@ function __c5(j: number): any {
           pull_number: S.Number.pipe(T.Label()),
           review_id: S.Number.pipe(T.Label()),
           message: S.String,
-          event: S.optional(DismissReviewRequestEvent),
+          event: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3254,8 +2723,8 @@ function __c5(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          status: PullRequestMergeAsyncResultStatus,
-          details: PullRequestMergeAsyncResultDetails,
+          status: S.String,
+          details: S.Unknown,
         }),
       ).annotate({
         identifier: "PullRequestMergeAsyncResult",
@@ -3310,11 +2779,11 @@ function __c6(j: number): any {
         S.Struct({
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          state: S.optional(ListRequestState.pipe(T.Query())),
+          state: S.optional(S.String.pipe(T.Query())),
           head: S.optional(S.String.pipe(T.Query())),
           base: S.optional(S.String.pipe(T.Query())),
-          sort: S.optional(ListRequestSort.pipe(T.Query())),
-          direction: S.optional(ListRequestDirection.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/pulls", code: 200 })),
@@ -3329,13 +2798,13 @@ function __c6(j: number): any {
           description: S.String,
           color: S.String,
           default: S.Boolean,
-          archived_by: S.NullOr(NullableSimpleUser),
+          archived_by: S.NullOr(__S(5, __c0, 5)),
         }),
       ).annotate({
         identifier: "PullRequestSimpleLabelsItem",
       });
     case 4:
-      return S.Array(PullRequestSimpleLabelsItem);
+      return S.Array(__S(51, __c6, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -3357,20 +2826,20 @@ function __c6(j: number): any {
           privacy: S.optional(S.String),
           notification_setting: S.optional(S.String),
           permission: S.String,
-          permissions: S.optional(TeamPermissions),
+          permissions: S.optional(__S(53, __c6, 5)),
           url: S.String,
           html_url: S.String,
           members_url: S.String,
           repositories_url: S.String,
-          type: TeamType,
-          access_source: S.optional(TeamAccessSource),
+          type: S.String,
+          access_source: S.optional(S.String),
           organization_id: S.optional(S.Number),
           enterprise_id: S.optional(S.Number),
-          parent: S.NullOr(NullableTeamSimple),
+          parent: S.NullOr(__S(16, __c2, 0)),
         }),
       ).annotate({ identifier: "Team" });
     case 7:
-      return S.Array(Team);
+      return S.Array(__S(54, __c6, 6));
   }
 }
 function __c7(j: number): any {
@@ -3380,9 +2849,9 @@ function __c7(j: number): any {
         S.Struct({
           label: S.String,
           ref: S.String,
-          repo: Repository,
+          repo: __S(22, __c2, 6),
           sha: S.String,
-          user: S.NullOr(NullableSimpleUser),
+          user: S.NullOr(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "PullRequestSimpleHead" });
     case 1:
@@ -3404,33 +2873,33 @@ function __c7(j: number): any {
           state: S.String,
           locked: S.Boolean,
           title: S.String,
-          user: S.NullOr(NullableSimpleUser),
+          user: S.NullOr(__S(5, __c0, 5)),
           body: S.NullOr(S.String),
-          labels: PullRequestSimpleLabelsList,
-          milestone: S.NullOr(NullableMilestone),
+          labels: __S(52, __c6, 4),
+          milestone: S.NullOr(__S(14, __c1, 6)),
           active_lock_reason: S.optional(S.NullOr(S.String)),
           created_at: S.String,
           updated_at: S.String,
           closed_at: S.NullOr(S.String),
           merged_at: S.NullOr(S.String),
           merge_commit_sha: S.NullOr(S.String),
-          assignee: S.NullOr(NullableSimpleUser),
-          assignees: S.optional(PullRequestSimpleAssigneesList),
-          requested_reviewers: S.optional(PullRequestSimpleRequestedReviewersList),
-          requested_teams: S.optional(PullRequestSimpleRequestedTeamsList),
-          head: PullRequestSimpleHead,
-          base: PullRequestSimpleHead,
-          _links: PullRequestLinks,
-          author_association: AuthorAssociation,
-          auto_merge: S.NullOr(AutoMerge),
-          stack: S.optional(S.NullOr(PullRequestStack)),
+          assignee: S.NullOr(__S(5, __c0, 5)),
+          assignees: S.optional(__S(15, __c1, 7)),
+          requested_reviewers: S.optional(__S(15, __c1, 7)),
+          requested_teams: S.optional(__S(55, __c6, 7)),
+          head: __S(56, __c7, 0),
+          base: __S(56, __c7, 0),
+          _links: __S(25, __c3, 1),
+          author_association: S.String,
+          auto_merge: S.NullOr(__S(26, __c3, 2)),
+          stack: S.optional(S.NullOr(__S(28, __c3, 4))),
           draft: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "PullRequestSimple" });
     case 2:
-      return S.Array(PullRequestSimple);
+      return S.Array(__S(57, __c7, 1));
     case 3:
-      return S.suspend(() => ListResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(58, __c7, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListResponse",
       });
     case 4:
@@ -3466,32 +2935,30 @@ function __c7(j: number): any {
           commit_id: S.String,
           original_commit_id: S.String,
           in_reply_to_id: S.optional(S.Number),
-          user: S.NullOr(NullableSimpleUser),
+          user: S.NullOr(__S(5, __c0, 5)),
           body: S.String,
           created_at: S.String,
           updated_at: S.String,
           html_url: S.String,
           pull_request_url: S.String,
-          author_association: AuthorAssociation,
-          _links: PullRequestReviewCommentLinks,
+          author_association: S.String,
+          _links: __S(32, __c4, 0),
           body_text: S.optional(S.String),
           body_html: S.optional(S.String),
-          reactions: S.optional(ReactionRollup),
-          side: S.optional(ReviewCommentSide),
-          start_side: S.optional(S.NullOr(ReviewCommentStartSide)),
+          reactions: S.optional(__S(33, __c4, 1)),
+          side: S.optional(S.String),
+          start_side: S.optional(S.NullOr(S.String)),
           line: S.optional(S.Number),
           original_line: S.optional(S.Number),
           start_line: S.optional(S.NullOr(S.Number)),
           original_start_line: S.optional(S.NullOr(S.Number)),
-          subject_type: S.optional(ReviewCommentSubjectType),
+          subject_type: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReviewComment" });
     case 6:
-      return S.Array(ReviewComment);
+      return S.Array(__S(61, __c7, 5));
     case 7:
-      return S.suspend(() =>
-        ListCommentsForReviewResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(62, __c7, 6).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListCommentsForReviewResponse",
       });
   }
@@ -3543,12 +3010,12 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           url: S.String,
-          author: S.NullOr(NullableGitUser),
-          committer: S.NullOr(NullableGitUser),
+          author: S.NullOr(__S(65, __c8, 1)),
+          committer: S.NullOr(__S(65, __c8, 1)),
           message: S.String,
           comment_count: S.Number,
-          tree: CommitCommitTree,
-          verification: S.optional(Verification),
+          tree: __S(66, __c8, 2),
+          verification: S.optional(__S(67, __c8, 3)),
         }),
       ).annotate({ identifier: "CommitCommit" });
     case 5:
@@ -3560,7 +3027,7 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "CommitParentsItem" });
     case 6:
-      return S.Array(CommitParentsItem);
+      return S.Array(__S(69, __c8, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -3578,7 +3045,7 @@ function __c9(j: number): any {
         S.Struct({
           sha: S.NullOr(S.String),
           filename: S.String,
-          status: DiffEntryStatus,
+          status: S.String,
           additions: S.Number,
           deletions: S.Number,
           changes: S.Number,
@@ -3590,7 +3057,7 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "DiffEntry" });
     case 1:
-      return S.Array(DiffEntry);
+      return S.Array(__S(72, __c9, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3599,18 +3066,18 @@ function __c9(j: number): any {
           node_id: S.String,
           html_url: S.String,
           comments_url: S.String,
-          commit: CommitCommit,
-          author: S.NullOr(CommitAuthor),
-          committer: S.NullOr(CommitCommitter),
-          parents: CommitParentsList,
-          stats: S.optional(CommitStats),
-          files: S.optional(CommitFilesList),
+          commit: __S(68, __c8, 4),
+          author: S.NullOr(S.Unknown),
+          committer: S.NullOr(S.Unknown),
+          parents: __S(70, __c8, 6),
+          stats: S.optional(__S(71, __c8, 7)),
+          files: S.optional(__S(73, __c9, 1)),
         }),
       ).annotate({ identifier: "Commit" });
     case 3:
-      return S.Array(Commit);
+      return S.Array(__S(74, __c9, 2));
     case 4:
-      return S.suspend(() => ListCommitsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(75, __c9, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListCommitsResponse",
       });
     case 5:
@@ -3630,9 +3097,9 @@ function __c9(j: number): any {
         ),
       ).annotate({ identifier: "ListFilesRequest" });
     case 6:
-      return S.Array(DiffEntry);
+      return S.Array(__S(72, __c9, 0));
     case 7:
-      return S.suspend(() => ListFilesResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(78, __c9, 6).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListFilesResponse",
       });
   }
@@ -3664,16 +3131,16 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           number: S.Number,
-          state: PullRequestStackMinimalPullRequestsItemState,
+          state: S.String,
           draft: S.Boolean,
           merged_at: S.NullOr(S.String),
-          head: PullRequestStackMinimalPullRequestsItemHead,
+          head: __S(81, __c10, 1),
         }),
       ).annotate({
         identifier: "PullRequestStackMinimalPullRequestsItem",
       });
     case 3:
-      return S.Array(PullRequestStackMinimalPullRequestsItem);
+      return S.Array(__S(82, __c10, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -3681,18 +3148,16 @@ function __c10(j: number): any {
           number: S.Number,
           node_id: S.String,
           url: S.String,
-          base: AddPullRequestStackResponseBase,
+          base: __S(2, __c0, 2),
           open: S.Boolean,
           created_at: S.String,
-          pull_requests: PullRequestStackMinimalPullRequestsList,
+          pull_requests: __S(83, __c10, 3),
         }),
       ).annotate({ identifier: "PullRequestStackMinimal" });
     case 5:
-      return S.Array(PullRequestStackMinimal);
+      return S.Array(__S(84, __c10, 4));
     case 6:
-      return S.suspend(() =>
-        ListPullRequestStacksResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(85, __c10, 5).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListPullRequestStacksResponse",
       });
     case 7:
@@ -3718,8 +3183,8 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          users: PullRequestReviewRequestUsersList,
-          teams: PullRequestReviewRequestTeamsList,
+          users: __S(15, __c1, 7),
+          teams: __S(55, __c6, 7),
         }),
       ).annotate({ identifier: "PullRequestReviewRequest" });
     case 1:
@@ -3728,8 +3193,8 @@ function __c11(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           pull_number: S.Number.pipe(T.Label()),
-          sort: S.optional(ListReviewCommentsRequestSort.pipe(T.Query())),
-          direction: S.optional(ListReviewCommentsRequestDirection.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
           since: S.optional(S.String.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
@@ -3744,20 +3209,18 @@ function __c11(j: number): any {
         identifier: "ListReviewCommentsRequest",
       });
     case 2:
-      return S.Array(PullRequestReviewComment);
+      return S.Array(__S(34, __c4, 2));
     case 3:
-      return S.suspend(() => ListReviewCommentsResponseBodyList.pipe(T.RawResponseRoot())).annotate(
-        {
-          identifier: "ListReviewCommentsResponse",
-        },
-      );
+      return S.suspend(() => __S(90, __c11, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListReviewCommentsResponse",
+      });
     case 4:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          sort: S.optional(ListReviewCommentsForRepoRequestSort.pipe(T.Query())),
-          direction: S.optional(ListReviewCommentsForRepoRequestDirection.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
           since: S.optional(S.String.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
@@ -3782,9 +3245,9 @@ function __c11(j: number): any {
         ),
       ).annotate({ identifier: "ListReviewsRequest" });
     case 6:
-      return S.Array(PullRequestReview);
+      return S.Array(__S(39, __c4, 7));
     case 7:
-      return S.suspend(() => ListReviewsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(94, __c11, 6).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListReviewsResponse",
       });
   }
@@ -3800,7 +3263,7 @@ function __c12(j: number): any {
           commit_title: S.optional(S.String),
           commit_message: S.optional(S.String),
           sha: S.optional(S.String),
-          merge_method: S.optional(MergeRequestMergeMethod),
+          merge_method: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3826,8 +3289,8 @@ function __c12(j: number): any {
           commit_title: S.optional(S.String),
           commit_message: S.optional(S.String),
           sha: S.optional(S.String),
-          merge_method: S.optional(MergeAsyncRequestMergeMethod),
-          merge_action: S.optional(MergeAsyncRequestMergeAction),
+          merge_method: S.optional(S.String),
+          merge_action: S.optional(S.String),
           bypass_rules: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -3859,8 +3322,8 @@ function __c12(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           pull_number: S.Number.pipe(T.Label()),
-          reviewers: RemoveRequestedReviewersRequestReviewersList,
-          team_reviewers: S.optional(RemoveRequestedReviewersRequestTeamReviewersList),
+          reviewers: __S(20, __c2, 4),
+          team_reviewers: S.optional(__S(20, __c2, 4)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -3877,8 +3340,8 @@ function __c12(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           pull_number: S.Number.pipe(T.Label()),
-          reviewers: S.optional(RequestReviewersRequestReviewersList),
-          team_reviewers: S.optional(RequestReviewersRequestTeamReviewersList),
+          reviewers: S.optional(__S(20, __c2, 4)),
+          team_reviewers: S.optional(__S(20, __c2, 4)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3893,8 +3356,8 @@ function __c12(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           pull_number: S.Number.pipe(T.Label()),
-          reviewers: S.optional(RerequestReviewersRequestReviewersList),
-          team_reviewers: S.optional(RerequestReviewersRequestTeamReviewersList),
+          reviewers: S.optional(__S(20, __c2, 4)),
+          team_reviewers: S.optional(__S(20, __c2, 4)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3913,7 +3376,7 @@ function __c12(j: number): any {
           pull_number: S.Number.pipe(T.Label()),
           review_id: S.Number.pipe(T.Label()),
           body: S.optional(S.String),
-          event: SubmitReviewRequestEvent,
+          event: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -3934,7 +3397,7 @@ function __c13(j: number): any {
           pull_number: S.Number.pipe(T.Label()),
           title: S.optional(S.String),
           body: S.optional(S.String),
-          state: S.optional(UpdateRequestState),
+          state: S.optional(S.String),
           base: S.optional(S.String),
           maintainer_can_modify: S.optional(S.Boolean),
         }).pipe(
@@ -3990,4 +3453,9 @@ function __c13(j: number): any {
         identifier: "UpdateReviewCommentRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

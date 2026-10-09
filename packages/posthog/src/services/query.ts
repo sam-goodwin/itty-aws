@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -39,8 +41,6 @@ export class NotFound
 export type BreakdownFilterBreakdownCase1Item = string | number;
 export type BreakdownFilterBreakdownCase1List = Array<BreakdownFilterBreakdownCase1Item>;
 export type BreakdownFilterBreakdown = string | BreakdownFilterBreakdownCase1List | number;
-const BreakdownFilterBreakdown = S.Unknown as any as S.Schema<BreakdownFilterBreakdown>;
-
 export type BreakdownType =
   | "cohort"
   | "person"
@@ -52,11 +52,7 @@ export type BreakdownType =
   | "data_warehouse"
   | "data_warehouse_person_property"
   | "revenue_analytics";
-const BreakdownType = S.String;
-
 export type BreakdownProperty = string | number;
-const BreakdownProperty = S.Unknown as any as S.Schema<BreakdownProperty>;
-
 export type MultipleBreakdownType =
   | "person"
   | "event"
@@ -68,8 +64,6 @@ export type MultipleBreakdownType =
   | "revenue_analytics"
   | "data_warehouse"
   | "data_warehouse_person_property";
-const MultipleBreakdownType = S.String;
-
 export interface Breakdown {
   group_type_index?: number | null;
   histogram_bin_count?: number | null;
@@ -77,14 +71,7 @@ export interface Breakdown {
   property?: BreakdownProperty;
   type?: MultipleBreakdownType | (string & {}) | null;
 }
-const Breakdown = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Breakdown>;
-
 export type BreakdownFilterBreakdownsList = Array<Breakdown>;
-const BreakdownFilterBreakdownsList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<BreakdownFilterBreakdownsList>;
-
 export interface BreakdownFilter {
   breakdown?: BreakdownFilterBreakdown | null;
   breakdown_group_type_index?: number | null;
@@ -96,8 +83,6 @@ export interface BreakdownFilter {
   breakdown_type?: BreakdownType | (string & {}) | null;
   breakdowns?: BreakdownFilterBreakdownsList | null;
 }
-const BreakdownFilter = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<BreakdownFilter>;
-
 export type IntervalType =
   | "second"
   | "minute"
@@ -107,8 +92,6 @@ export type IntervalType =
   | "month"
   | "quarter"
   | "year";
-const IntervalType = S.String;
-
 export type PropertyOperator =
   | "exact"
   | "is_not"
@@ -522,14 +505,7 @@ export type DashboardFilterPropertiesItem =
   | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter
   | BehavioralPropertyFilter;
-const DashboardFilterPropertiesItem = S.Unknown as any as S.Schema<DashboardFilterPropertiesItem>;
-
 export type DashboardFilterPropertiesList = Array<DashboardFilterPropertiesItem>;
-const DashboardFilterPropertiesList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<DashboardFilterPropertiesList>;
-
 export interface DashboardFilter {
   breakdown_filter?: BreakdownFilter | null;
   date_from?: string | null;
@@ -541,11 +517,7 @@ export interface DashboardFilter {
   interval?: IntervalType | (string & {}) | null;
   properties?: DashboardFilterPropertiesList | null;
 }
-const DashboardFilter = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<DashboardFilter>;
-
 export type LimitContext = "posthog_ai";
-const LimitContext = S.String;
-
 export type EventsNodeFixedPropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
@@ -783,11 +755,6 @@ export interface RevenueCurrencyPropertyConfig {
   static?: CurrencyCode | (string & {}) | null;
 }
 export type EventsNodeOrderByList = Array<string>;
-const EventsNodeOrderByList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<EventsNodeOrderByList>;
-
 export type EventsNodePropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
@@ -815,11 +782,6 @@ export type EventsNodePropertiesItem =
   | BehavioralPropertyFilter;
 export type EventsNodePropertiesList = Array<EventsNodePropertiesItem>;
 export type EventsNodeResponseMap = { [key: string]: unknown | undefined };
-const EventsNodeResponseMap = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<EventsNodeResponseMap>;
-
 export interface EventsNode {
   custom_name?: string | null;
   /** The event or `null` for all events. */
@@ -1572,8 +1534,6 @@ export type EventsQueryPropertiesItem =
 export type EventsQueryPropertiesList = Array<EventsQueryPropertiesItem>;
 export type EventsQueryResponseColumnsList = Array<unknown>;
 export type QueryStatusLabelsList = Array<string>;
-const QueryStatusLabelsList = EventsNodeOrderByList as any as S.Schema<QueryStatusLabelsList>;
-
 export interface ClickhouseQueryProgress {
   active_cpu_time?: number;
   bytes_read?: number;
@@ -1581,22 +1541,13 @@ export interface ClickhouseQueryProgress {
   rows_read?: number;
   time_elapsed?: number;
 }
-const ClickhouseQueryProgress = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ClickhouseQueryProgress>;
-
 export type QueryScanFixLocation =
   | "query"
   | "subquery"
   | "view"
   | "insight_date_range"
   | "dashboard_date_filter";
-const QueryScanFixLocation = S.String;
-
 export type QueryScanFindingKind = "no_event_filter" | "no_start_date" | "persons_join";
-const QueryScanFindingKind = S.String;
-
 export interface QueryScanWarning {
   /** Whether the person can change the query so it reads less and still answers the same question. Surfaces show the full advice and "Fix with AI" only when a finding is actionable. */
   actionable: boolean;
@@ -1614,15 +1565,8 @@ export interface QueryScanWarning {
   /** Shown to the person: what happened and what to do. */
   message: string;
 }
-const QueryScanWarning = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<QueryScanWarning>;
-
 /** Every finding, fixable or not. Empty when the analysis found none. */
 export type QueryScanAnalysisFindingsList = Array<QueryScanWarning>;
-const QueryScanAnalysisFindingsList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<QueryScanAnalysisFindingsList>;
-
 export interface QueryScanAnalysis {
   /** The message the Fix with AI button sends to the assistant. Absent when no finding can be fixed in the query. */
   assistant_prompt?: string | null;
@@ -1633,8 +1577,6 @@ export interface QueryScanAnalysis {
   /** How much of the project's events in the query's date range the query read, 0 to 1. */
   range_share?: number | null;
 }
-const QueryScanAnalysis = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<QueryScanAnalysis>;
-
 export interface QueryScanSummary {
   /** The stored analysis, put on the response when it is served. Absent while the analysis runs, and when none was requested. */
   analysis?: QueryScanAnalysis | null;
@@ -1647,8 +1589,6 @@ export interface QueryScanSummary {
   /** Rows ClickHouse read for the last fresh run, all tables included. */
   rows_read: number;
 }
-const QueryScanSummary = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<QueryScanSummary>;
-
 export interface QueryStatus {
   budget_remaining_bytes?: number | null;
   bytes_read?: number | null;
@@ -1680,8 +1620,6 @@ export interface QueryStatus {
   task_id?: string | null;
   team_id?: number;
 }
-const QueryStatus = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<QueryStatus>;
-
 export interface ResolvedDateRangeResponse {
   date_from?: string;
   date_to?: string;
@@ -12619,8 +12557,6 @@ export type CreateQueryRequestQuery =
   | MCPToolNeighborsQuery
   | MCPMissingCapabilitiesQuery
   | PropertyValuesQuery;
-const CreateQueryRequestQuery = S.Unknown as any as S.Schema<CreateQueryRequestQuery>;
-
 export type RefreshType =
   | "async"
   | "async_except_on_cache_miss"
@@ -12629,20 +12565,10 @@ export type RefreshType =
   | "force_blocking"
   | "force_cache"
   | "lazy_async";
-const RefreshType = S.String;
-
 export type CreateQueryRequestVariablesOverrideValueMap = { [key: string]: unknown | undefined };
-const CreateQueryRequestVariablesOverrideValueMap =
-  EventsNodeResponseMap as any as S.Schema<CreateQueryRequestVariablesOverrideValueMap>;
-
 export type CreateQueryRequestVariablesOverrideMap = {
   [key: string]: CreateQueryRequestVariablesOverrideValueMap | undefined;
 };
-const CreateQueryRequestVariablesOverrideMap = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CreateQueryRequestVariablesOverrideMap>;
-
 export interface CreateQueryRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -12660,8 +12586,6 @@ export interface CreateQueryRequest {
   refresh?: RefreshType | (string & {}) | null;
   variables_override?: CreateQueryRequestVariablesOverrideMap | null;
 }
-const CreateQueryRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<CreateQueryRequest>;
-
 export type QueryResponseAlternativeCase0Map = { [key: string]: unknown | undefined };
 export type QueryResponseAlternative1ColumnsList = Array<unknown>;
 export type QueryResponseAlternative1ResultsItemList = Array<unknown>;
@@ -16329,30 +16253,13 @@ export type QueryResponseAlternative =
   | QueryResponseAlternative113
   | QueryResponseAlternative114
   | QueryResponseAlternative115;
-const QueryResponseAlternative = S.Unknown as any as S.Schema<QueryResponseAlternative>;
-
 export type CreateQueryResponse = QueryResponseAlternative;
-const CreateQueryResponse = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<CreateQueryResponse>;
-
 export interface CreateQueryCheckAuthForAsyncRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const CreateQueryCheckAuthForAsyncRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CreateQueryCheckAuthForAsyncRequest>;
-
 export type CreateQueryCheckAuthForAsyncResponseBodyMap = { [key: string]: unknown | undefined };
-const CreateQueryCheckAuthForAsyncResponseBodyMap =
-  EventsNodeResponseMap as any as S.Schema<CreateQueryCheckAuthForAsyncResponseBodyMap>;
-
 export type CreateQueryCheckAuthForAsyncResponse = CreateQueryCheckAuthForAsyncResponseBodyMap;
-const CreateQueryCheckAuthForAsyncResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CreateQueryCheckAuthForAsyncResponse>;
-
 export type CreateQueryUpgradeRequestQuery =
   | EventsNode
   | ActionsNode
@@ -16458,18 +16365,11 @@ export type CreateQueryUpgradeRequestQuery =
   | MCPToolNeighborsQuery
   | MCPMissingCapabilitiesQuery
   | PropertyValuesQuery;
-const CreateQueryUpgradeRequestQuery = S.Unknown as any as S.Schema<CreateQueryUpgradeRequestQuery>;
-
 export interface CreateQueryUpgradeRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   query?: CreateQueryUpgradeRequestQuery;
 }
-const CreateQueryUpgradeRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<CreateQueryUpgradeRequest>;
-
 export type QueryUpgradeResponseQuery =
   | EventsNode
   | ActionsNode
@@ -16575,93 +16475,50 @@ export type QueryUpgradeResponseQuery =
   | MCPToolNeighborsQuery
   | MCPMissingCapabilitiesQuery
   | PropertyValuesQuery;
-const QueryUpgradeResponseQuery = S.Unknown as any as S.Schema<QueryUpgradeResponseQuery>;
-
 export interface QueryUpgradeResponse {
   query?: QueryUpgradeResponseQuery;
 }
-const QueryUpgradeResponse = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<QueryUpgradeResponse>;
-
 export interface CreateQueryWithKindRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   query_kind: string;
 }
-const CreateQueryWithKindRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<CreateQueryWithKindRequest>;
-
 export interface CreateQueryWithKindResponse {}
-const CreateQueryWithKindResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<CreateQueryWithKindResponse>;
-
 export interface GetQueryRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
 }
-const GetQueryRequest = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<GetQueryRequest>;
-
 export interface QueryStatusResponse {
   query_status?: QueryStatus;
 }
-const QueryStatusResponse = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<QueryStatusResponse>;
-
 export interface GetQueryDraftSqlRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const GetQueryDraftSqlRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<GetQueryDraftSqlRequest>;
-
 export type GetQueryDraftSqlResponseBodyMap = { [key: string]: unknown | undefined };
-const GetQueryDraftSqlResponseBodyMap =
-  EventsNodeResponseMap as any as S.Schema<GetQueryDraftSqlResponseBodyMap>;
-
 export type GetQueryDraftSqlResponse = GetQueryDraftSqlResponseBodyMap;
-const GetQueryDraftSqlResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<GetQueryDraftSqlResponse>;
-
 export interface GetQueryLogRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
 }
-const GetQueryLogRequest = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<GetQueryLogRequest>;
-
 export type GetQueryLogResponseBodyMap = { [key: string]: unknown | undefined };
 export type GetQueryLogResponse = GetQueryLogResponseBodyMap;
-const GetQueryLogResponse = GetQueryDraftSqlResponse as any as S.Schema<GetQueryLogResponse>;
-
 export interface GetQueryScanRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   cache_key: string;
 }
-const GetQueryScanRequest = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<GetQueryScanRequest>;
-
 export interface QueryScanResponse {
   analysis?: QueryScanAnalysis | null;
 }
-const QueryScanResponse = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<QueryScanResponse>;
-
 export interface QueryDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
 }
-const QueryDestroyRequest = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<QueryDestroyRequest>;
-
 export interface QueryDestroyResponse {}
-const QueryDestroyResponse = CreateQueryWithKindResponse as any as S.Schema<QueryDestroyResponse>;
-
 export type CreateQueryError = BadRequest | Forbidden | NotFound | PosthogOpError;
 export const createQuery: API.OperationMethod<
   CreateQueryRequest,
@@ -16669,8 +16526,8 @@ export const createQuery: API.OperationMethod<
   CreateQueryError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateQueryRequest,
-  output: CreateQueryResponse,
+  input: __S(14, __c1, 6) as any as S.Schema<CreateQueryRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<CreateQueryResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -16683,8 +16540,8 @@ export const createQueryCheckAuthForAsync: API.OperationMethod<
   CreateQueryCheckAuthForAsyncError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateQueryCheckAuthForAsyncRequest,
-  output: CreateQueryCheckAuthForAsyncResponse,
+  input: __S(16, __c2, 0) as any as S.Schema<CreateQueryCheckAuthForAsyncRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<CreateQueryCheckAuthForAsyncResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -16698,8 +16555,8 @@ export const createQueryUpgrade: API.OperationMethod<
   CreateQueryUpgradeError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateQueryUpgradeRequest,
-  output: QueryUpgradeResponse,
+  input: __S(18, __c2, 2) as any as S.Schema<CreateQueryUpgradeRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<QueryUpgradeResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -16712,8 +16569,8 @@ export const createQueryWithKind: API.OperationMethod<
   CreateQueryWithKindError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateQueryWithKindRequest,
-  output: CreateQueryWithKindResponse,
+  input: __S(20, __c2, 4) as any as S.Schema<CreateQueryWithKindRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<CreateQueryWithKindResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -16727,8 +16584,8 @@ export const getQuery: API.OperationMethod<
   GetQueryError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetQueryRequest,
-  output: QueryStatusResponse,
+  input: __S(22, __c2, 6) as any as S.Schema<GetQueryRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<QueryStatusResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -16741,8 +16598,8 @@ export const getQueryDraftSql: API.OperationMethod<
   GetQueryDraftSqlError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetQueryDraftSqlRequest,
-  output: GetQueryDraftSqlResponse,
+  input: __S(24, __c3, 0) as any as S.Schema<GetQueryDraftSqlRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<GetQueryDraftSqlResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -16756,8 +16613,8 @@ export const getQueryLog: API.OperationMethod<
   GetQueryLogError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetQueryLogRequest,
-  output: GetQueryLogResponse,
+  input: __S(26, __c3, 2) as any as S.Schema<GetQueryLogRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<GetQueryLogResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -16771,8 +16628,8 @@ export const getQueryScan: API.OperationMethod<
   GetQueryScanError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetQueryScanRequest,
-  output: QueryScanResponse,
+  input: __S(27, __c3, 3) as any as S.Schema<GetQueryScanRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<QueryScanResponse>,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -16786,8 +16643,8 @@ export const queryDestroy: API.OperationMethod<
   QueryDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: QueryDestroyRequest,
-  output: QueryDestroyResponse,
+  input: __S(29, __c3, 5) as any as S.Schema<QueryDestroyRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<QueryDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -16802,38 +16659,38 @@ function __c0(j: number): any {
           group_type_index: S.optional(S.NullOr(S.Number)),
           histogram_bin_count: S.optional(S.NullOr(S.Number)),
           normalize_url: S.optional(S.NullOr(S.Boolean)),
-          property: S.optional(BreakdownProperty),
-          type: S.optional(S.NullOr(MultipleBreakdownType)),
+          property: S.optional(S.Unknown),
+          type: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "Breakdown" });
     case 1:
-      return S.Array(Breakdown);
+      return S.Array(__S(0, __c0, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          breakdown: S.optional(S.NullOr(BreakdownFilterBreakdown)),
+          breakdown: S.optional(S.NullOr(S.Unknown)),
           breakdown_group_type_index: S.optional(S.NullOr(S.Number)),
           breakdown_hide_other_aggregation: S.optional(S.NullOr(S.Boolean)),
           breakdown_histogram_bin_count: S.optional(S.NullOr(S.Number)),
           breakdown_limit: S.optional(S.NullOr(S.Number)),
           breakdown_normalize_url: S.optional(S.NullOr(S.Boolean)),
           breakdown_path_cleaning: S.optional(S.NullOr(S.Boolean)),
-          breakdown_type: S.optional(S.NullOr(BreakdownType)),
-          breakdowns: S.optional(S.NullOr(BreakdownFilterBreakdownsList)),
+          breakdown_type: S.optional(S.NullOr(S.String)),
+          breakdowns: S.optional(S.NullOr(__S(1, __c0, 1))),
         }),
       ).annotate({ identifier: "BreakdownFilter" });
     case 3:
-      return S.Array(DashboardFilterPropertiesItem);
+      return S.Array(S.Unknown);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          breakdown_filter: S.optional(S.NullOr(BreakdownFilter)),
+          breakdown_filter: S.optional(S.NullOr(__S(2, __c0, 2))),
           date_from: S.optional(S.NullOr(S.String)),
           date_to: S.optional(S.NullOr(S.String)),
           explicitDate: S.optional(S.NullOr(S.Boolean)),
           filterTestAccounts: S.optional(S.NullOr(S.Boolean)),
-          interval: S.optional(S.NullOr(IntervalType)),
-          properties: S.optional(S.NullOr(DashboardFilterPropertiesList)),
+          interval: S.optional(S.NullOr(S.String)),
+          properties: S.optional(S.NullOr(__S(3, __c0, 3))),
         }),
       ).annotate({ identifier: "DashboardFilter" });
     case 5:
@@ -16862,18 +16719,18 @@ function __c1(j: number): any {
           cause: S.optional(S.NullOr(S.String)),
           evidence: S.optional(S.NullOr(S.String)),
           fix: S.String,
-          fix_location: S.optional(S.NullOr(QueryScanFixLocation)),
-          kind: QueryScanFindingKind,
+          fix_location: S.optional(S.NullOr(S.String)),
+          kind: S.String,
           message: S.String,
         }),
       ).annotate({ identifier: "QueryScanWarning" });
     case 1:
-      return S.Array(QueryScanWarning);
+      return S.Array(__S(8, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           assistant_prompt: S.optional(S.NullOr(S.String)),
-          findings: QueryScanAnalysisFindingsList,
+          findings: __S(9, __c1, 1),
           project_share: S.optional(S.NullOr(S.Number)),
           range_share: S.optional(S.NullOr(S.Number)),
         }),
@@ -16881,7 +16738,7 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          analysis: S.optional(S.NullOr(QueryScanAnalysis)),
+          analysis: S.optional(S.NullOr(__S(10, __c1, 2))),
           analysis_requested: S.optional(S.NullOr(S.Boolean)),
           duration_ms: S.Number,
           killed: S.optional(S.NullOr(S.Boolean)),
@@ -16903,11 +16760,11 @@ function __c1(j: number): any {
           expiration_time: S.optional(S.NullOr(S.String)),
           id: S.optional(S.String),
           insight_id: S.optional(S.NullOr(S.Number)),
-          labels: S.optional(S.NullOr(QueryStatusLabelsList)),
+          labels: S.optional(S.NullOr(__S(5, __c0, 5))),
           pickup_time: S.optional(S.NullOr(S.String)),
           query_async: S.optional(S.Boolean),
-          query_progress: S.optional(S.NullOr(ClickhouseQueryProgress)),
-          query_scan: S.optional(S.NullOr(QueryScanSummary)),
+          query_progress: S.optional(S.NullOr(__S(7, __c0, 7))),
+          query_scan: S.optional(S.NullOr(__S(11, __c1, 3))),
           results: S.optional(S.Unknown),
           start_time: S.optional(S.NullOr(S.String)),
           task_id: S.optional(S.NullOr(S.String)),
@@ -16915,23 +16772,23 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "QueryStatus" });
     case 5:
-      return S.Record(S.String, CreateQueryRequestVariablesOverrideValueMap);
+      return S.Record(S.String, __S(6, __c0, 6));
     case 6:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           async: S.optional(S.NullOr(S.Boolean)),
           client_query_id: S.optional(S.NullOr(S.String)),
-          filters_override: S.optional(S.NullOr(DashboardFilter)),
-          limit_context: S.optional(S.NullOr(LimitContext)),
+          filters_override: S.optional(S.NullOr(__S(4, __c0, 4))),
+          limit_context: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
-          query: S.optional(CreateQueryRequestQuery),
-          refresh: S.optional(S.NullOr(RefreshType)),
-          variables_override: S.optional(S.NullOr(CreateQueryRequestVariablesOverrideMap)),
+          query: S.optional(S.Unknown),
+          refresh: S.optional(S.NullOr(S.String)),
+          variables_override: S.optional(S.NullOr(__S(13, __c1, 5))),
         }).pipe(T.Http({ method: "POST", uri: "/api/projects/{project_id}/query/", code: 200 })),
       ).annotate({ identifier: "CreateQueryRequest" });
     case 7:
-      return S.suspend(() => QueryResponseAlternative.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "CreateQueryResponse",
       });
   }
@@ -16953,16 +16810,14 @@ function __c2(j: number): any {
         identifier: "CreateQueryCheckAuthForAsyncRequest",
       });
     case 1:
-      return S.suspend(() =>
-        CreateQueryCheckAuthForAsyncResponseBodyMap.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(6, __c0, 6).pipe(T.RawResponseRoot())).annotate({
         identifier: "CreateQueryCheckAuthForAsyncResponse",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          query: S.optional(CreateQueryUpgradeRequestQuery),
+          query: S.optional(S.Unknown),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/projects/{project_id}/query/upgrade/", code: 200 }),
         ),
@@ -16972,7 +16827,7 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          query: S.optional(QueryUpgradeResponseQuery),
+          query: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "QueryUpgradeResponse" });
     case 4:
@@ -17006,7 +16861,7 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          query_status: S.optional(QueryStatus),
+          query_status: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({ identifier: "QueryStatusResponse" });
   }
@@ -17022,7 +16877,7 @@ function __c3(j: number): any {
         ),
       ).annotate({ identifier: "GetQueryDraftSqlRequest" });
     case 1:
-      return S.suspend(() => GetQueryDraftSqlResponseBodyMap.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(6, __c0, 6).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetQueryDraftSqlResponse",
       });
     case 2:
@@ -17050,7 +16905,7 @@ function __c3(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          analysis: S.optional(S.NullOr(QueryScanAnalysis)),
+          analysis: S.optional(S.NullOr(__S(10, __c1, 2))),
         }),
       ).annotate({ identifier: "QueryScanResponse" });
     case 5:
@@ -17063,4 +16918,9 @@ function __c3(j: number): any {
         ),
       ).annotate({ identifier: "QueryDestroyRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

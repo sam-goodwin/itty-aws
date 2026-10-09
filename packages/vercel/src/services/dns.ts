@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { VercelProtocol, type VercelOpError, type VercelOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { VercelOpError, VercelOpContext };
 
@@ -66,8 +68,6 @@ export type CreateRecordRequestType =
   | "SRV"
   | "TXT"
   | "NS";
-const CreateRecordRequestType = S.String;
-
 export interface CreateRecordRequest {
   /** The domain used to create the DNS record. */
   domain: string;
@@ -78,8 +78,6 @@ export interface CreateRecordRequest {
   /** The type of record, it could be one of the valid DNS records. */
   type: CreateRecordRequestType | (string & {});
 }
-const CreateRecordRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CreateRecordRequest>;
-
 export interface CreateRecordResponseBodyCase0 {
   uid?: string;
   updated: number;
@@ -91,20 +89,11 @@ export interface CreateRecordResponseBodyCase1 {
 export type CreateRecordResponseBody =
   | CreateRecordResponseBodyCase0
   | CreateRecordResponseBodyCase1;
-const CreateRecordResponseBody = S.Unknown as any as S.Schema<CreateRecordResponseBody>;
-
 export type CreateRecordResponse = CreateRecordResponseBody;
-const CreateRecordResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CreateRecordResponse>;
-
 export interface GetDomainsRecordRequest {
   /** The unique ID of the DNS record */
   recordId: string;
 }
-const GetDomainsRecordRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<GetDomainsRecordRequest>;
-
 export type GetDomainsRecordResponseRecordType =
   | "A"
   | "AAAA"
@@ -116,8 +105,6 @@ export type GetDomainsRecordResponseRecordType =
   | "NS"
   | "SRV"
   | "TXT";
-const GetDomainsRecordResponseRecordType = S.String;
-
 export type GetDomainsRecordResponseType =
   | "A"
   | "AAAA"
@@ -129,8 +116,6 @@ export type GetDomainsRecordResponseType =
   | "NS"
   | "SRV"
   | "TXT";
-const GetDomainsRecordResponseType = S.String;
-
 export interface GetDomainsRecordResponse {
   comment?: string;
   createdAt?: number | null;
@@ -143,11 +128,6 @@ export interface GetDomainsRecordResponse {
   type: GetDomainsRecordResponseType;
   value: string;
 }
-const GetDomainsRecordResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<GetDomainsRecordResponse>;
-
 export interface GetRecordsRequest {
   domain: string;
   /** Maximum number of records to list from a request. */
@@ -161,8 +141,6 @@ export interface GetRecordsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const GetRecordsRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<GetRecordsRequest>;
-
 export type GetRecordsResponseBodyCase1RecordsItemType =
   | "A"
   | "AAAA"
@@ -240,11 +218,7 @@ export type GetRecordsResponseBody =
   | string
   | GetRecordsResponseBodyCase1
   | GetRecordsResponseBodyCase2;
-const GetRecordsResponseBody = S.Unknown as any as S.Schema<GetRecordsResponseBody>;
-
 export type GetRecordsResponse = GetRecordsResponseBody;
-const GetRecordsResponse = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<GetRecordsResponse>;
-
 export interface RemoveRecordRequest {
   domain: string;
   recordId: string;
@@ -253,34 +227,15 @@ export interface RemoveRecordRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const RemoveRecordRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<RemoveRecordRequest>;
-
 export type RemoveRecordResponse = unknown;
-const RemoveRecordResponse = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<RemoveRecordResponse>;
-
 export interface ReplaceDomainsByDomainRecordsRequest {
   /** The domain name */
   domain: string;
 }
-const ReplaceDomainsByDomainRecordsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<ReplaceDomainsByDomainRecordsRequest>;
-
 export type ReplaceDomainsByDomainRecordsResponseRecordIdsList = Array<string>;
-const ReplaceDomainsByDomainRecordsResponseRecordIdsList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<ReplaceDomainsByDomainRecordsResponseRecordIdsList>;
-
 export interface ReplaceDomainsByDomainRecordsResponse {
   recordIds: ReplaceDomainsByDomainRecordsResponseRecordIdsList;
 }
-const ReplaceDomainsByDomainRecordsResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ReplaceDomainsByDomainRecordsResponse>;
-
 /** The type of the DNS record */
 export type UpdateRecordRequestType =
   | "A"
@@ -293,29 +248,17 @@ export type UpdateRecordRequestType =
   | "SRV"
   | "TXT"
   | "NS";
-const UpdateRecordRequestType = S.String;
-
 export interface UpdateRecordRequestSrv {
   target: string | null;
   weight: number | null;
   port: number | null;
   priority: number | null;
 }
-const UpdateRecordRequestSrv = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<UpdateRecordRequestSrv>;
-
 export interface UpdateRecordRequestHttps {
   priority: number | null;
   target: string | null;
   params?: string | null;
 }
-const UpdateRecordRequestHttps = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<UpdateRecordRequestHttps>;
-
 export interface UpdateRecordRequest {
   /** The id of the DNS record */
   recordId: string;
@@ -338,8 +281,6 @@ export interface UpdateRecordRequest {
   /** A comment to add context on what this DNS record is for */
   comment?: string;
 }
-const UpdateRecordRequest = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<UpdateRecordRequest>;
-
 export type UpdateRecordResponseRecordType =
   | "A"
   | "AAAA"
@@ -364,8 +305,6 @@ export interface UpdateRecordResponse {
   type: UpdateRecordResponseType;
   value: string;
 }
-const UpdateRecordResponse = GetDomainsRecordResponse as any as S.Schema<UpdateRecordResponse>;
-
 export type CreateRecordError =
   | BadRequest
   | PaymentRequired
@@ -380,8 +319,8 @@ export const createRecord: API.OperationMethod<
   CreateRecordError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRecordRequest,
-  output: CreateRecordResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateRecordRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CreateRecordResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -394,8 +333,8 @@ export const getDomainsRecord: API.OperationMethod<
   GetDomainsRecordError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDomainsRecordRequest,
-  output: GetDomainsRecordResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<GetDomainsRecordRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<GetDomainsRecordResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -409,8 +348,8 @@ export const getRecords: API.OperationMethod<
   GetRecordsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRecordsRequest,
-  output: GetRecordsResponse,
+  input: __S(4, __c0, 4) as any as S.Schema<GetRecordsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<GetRecordsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -424,8 +363,8 @@ export const removeRecord: API.OperationMethod<
   RemoveRecordError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveRecordRequest,
-  output: RemoveRecordResponse,
+  input: __S(6, __c0, 6) as any as S.Schema<RemoveRecordRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<RemoveRecordResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -443,8 +382,8 @@ export const replaceDomainsByDomainRecords: API.OperationMethod<
   ReplaceDomainsByDomainRecordsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceDomainsByDomainRecordsRequest,
-  output: ReplaceDomainsByDomainRecordsResponse,
+  input: __S(8, __c1, 0) as any as S.Schema<ReplaceDomainsByDomainRecordsRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<ReplaceDomainsByDomainRecordsResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -464,8 +403,8 @@ export const updateRecord: API.OperationMethod<
   UpdateRecordError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRecordRequest,
-  output: UpdateRecordResponse,
+  input: __S(13, __c1, 5) as any as S.Schema<UpdateRecordRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<UpdateRecordResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -480,11 +419,11 @@ function __c0(j: number): any {
           domain: S.String.pipe(T.Label()),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
-          type: CreateRecordRequestType,
+          type: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/v2/domains/{domain}/records", code: 200 })),
       ).annotate({ identifier: "CreateRecordRequest" });
     case 1:
-      return S.suspend(() => CreateRecordResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "CreateRecordResponse",
       });
     case 2:
@@ -502,9 +441,9 @@ function __c0(j: number): any {
           domain: S.String,
           id: S.String,
           name: S.String,
-          recordType: GetDomainsRecordResponseRecordType,
+          recordType: S.String,
           ttl: S.optional(S.Number),
-          type: GetDomainsRecordResponseType,
+          type: S.String,
           value: S.String,
         }),
       ).annotate({ identifier: "GetDomainsRecordResponse" });
@@ -520,7 +459,7 @@ function __c0(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/v5/domains/{domain}/records", code: 200 })),
       ).annotate({ identifier: "GetRecordsRequest" });
     case 5:
-      return S.suspend(() => GetRecordsResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetRecordsResponse",
       });
     case 6:
@@ -555,7 +494,7 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          recordIds: ReplaceDomainsByDomainRecordsResponseRecordIdsList,
+          recordIds: __S(9, __c1, 1),
         }),
       ).annotate({
         identifier: "ReplaceDomainsByDomainRecordsResponse",
@@ -585,13 +524,18 @@ function __c1(j: number): any {
           slug: S.optional(S.String.pipe(T.Query())),
           name: S.optional(S.NullOr(S.String)),
           value: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.NullOr(UpdateRecordRequestType)),
+          type: S.optional(S.NullOr(S.String)),
           ttl: S.optional(S.NullOr(S.Number)),
           mxPriority: S.optional(S.NullOr(S.Number)),
-          srv: S.optional(S.NullOr(UpdateRecordRequestSrv)),
-          https: S.optional(S.NullOr(UpdateRecordRequestHttps)),
+          srv: S.optional(S.NullOr(__S(11, __c1, 3))),
+          https: S.optional(S.NullOr(__S(12, __c1, 4))),
           comment: S.optional(S.String),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/domains/records/{recordId}", code: 200 })),
       ).annotate({ identifier: "UpdateRecordRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

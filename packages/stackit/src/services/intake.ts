@@ -8,6 +8,8 @@ import { UnknownStackitError } from "../errors.ts";
 import { StackitProtocol, type StackitOpError, type StackitOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { StackitOpError, StackitOpContext };
 
@@ -39,38 +41,23 @@ export class NotFound
   ) {}
 
 export type CreateIntakeRequestRegionId = "eu01" | "eu02";
-const CreateIntakeRequestRegionId = S.String;
-
 export interface DremioAuth {
   /** A Dremio personal access token for authentication */
   personalAccessToken: string;
   /** The URL to the Dremio instance's OAuth 2.0 token endpoint */
   tokenEndpoint: string;
 }
-const DremioAuth = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<DremioAuth>;
-
 /** Means of authentication for catalog requests */
 export type CatalogAuthType = "none" | "dremio";
-const CatalogAuthType = S.String;
-
 /** Configures authentication for the Iceberg catalog */
 export interface CatalogAuth {
   dremio?: DremioAuth;
   type: CatalogAuthType | (string & {});
 }
-const CatalogAuth = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CatalogAuth>;
-
 /** List of Iceberg partitioning expressions to use when creating the target table. This setting can only be used when `partitioning` is set to `manual`. Partitioning configuration of an Intake can be changed after creation, but will only take effect once the table has been changed as well. In case of not updating the table to a new one, the old partitioning configuration will remain. See the [Apache Iceberg spec](https://iceberg.apache.org/spec/#partitioning) for more details. */
 export type IntakeCatalogPartitionByList = Array<string>;
-const IntakeCatalogPartitionByList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<IntakeCatalogPartitionByList>;
-
 /** The target table's partitioning. * `none` disables partitioning, the default. * `intake-time` configures daily partitioning based on the automatically created ingestion time column `__intake_ts`. * `manual` allows arbitrary Iceberg partitioning expression to be set via `partitionBy`. */
 export type PartitioningType = "none" | "intake-time" | "manual";
-const PartitioningType = S.String;
-
 /** The Iceberg catalog configuration */
 export interface IntakeCatalog {
   auth?: CatalogAuth;
@@ -86,15 +73,8 @@ export interface IntakeCatalog {
   /** The Iceberg warehouse to connect to, required when the catalog has no default warehouse configured. */
   warehouse: string;
 }
-const IntakeCatalog = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<IntakeCatalog>;
-
 /** Labels are a set of key-value pairs assigned to resources. */
 export type CreateIntakeRequestLabelsMap = { [key: string]: string | undefined };
-const CreateIntakeRequestLabelsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateIntakeRequestLabelsMap>;
-
 export interface CreateIntakeRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
@@ -110,17 +90,10 @@ export interface CreateIntakeRequest {
   /** Labels are a set of key-value pairs assigned to resources. */
   labels?: CreateIntakeRequestLabelsMap | null;
 }
-const CreateIntakeRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<CreateIntakeRequest>;
-
 /** Labels are a set of key-value pairs assigned to resources. */
 export type IntakeResponseLabelsMap = { [key: string]: string | undefined };
-const IntakeResponseLabelsMap =
-  CreateIntakeRequestLabelsMap as any as S.Schema<IntakeResponseLabelsMap>;
-
 /** The current state of the resource. */
 export type IntakeResponseState = "reconciling" | "active" | "deleting" | "failed";
-const IntakeResponseState = S.String;
-
 export interface IntakeResponse {
   catalog: IntakeCatalog;
   /** The point in time the resource was created. */
@@ -148,16 +121,9 @@ export interface IntakeResponse {
   /** The URI for reaching the resource. */
   uri: string;
 }
-const IntakeResponse = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<IntakeResponse>;
-
 export type CreateIntakeRunnerRequestRegionId = "eu01" | "eu02";
-const CreateIntakeRunnerRequestRegionId = S.String;
-
 /** Labels are a set of key-value pairs assigned to resources. */
 export type CreateIntakeRunnerRequestLabelsMap = { [key: string]: string | undefined };
-const CreateIntakeRunnerRequestLabelsMap =
-  CreateIntakeRequestLabelsMap as any as S.Schema<CreateIntakeRunnerRequestLabelsMap>;
-
 export interface CreateIntakeRunnerRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
@@ -174,20 +140,10 @@ export interface CreateIntakeRunnerRequest {
   /** The maximum number of messages per hour. */
   maxMessagesPerHour: number;
 }
-const CreateIntakeRunnerRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateIntakeRunnerRequest>;
-
 /** Labels are a set of key-value pairs assigned to resources. */
 export type IntakeRunnerResponseLabelsMap = { [key: string]: string | undefined };
-const IntakeRunnerResponseLabelsMap =
-  CreateIntakeRequestLabelsMap as any as S.Schema<IntakeRunnerResponseLabelsMap>;
-
 /** The current state of the resource. */
 export type IntakeRunnerResponseState = "reconciling" | "active" | "deleting";
-const IntakeRunnerResponseState = S.String;
-
 export interface IntakeRunnerResponse {
   /** The point in time the resource was created. */
   create_time: string;
@@ -208,20 +164,11 @@ export interface IntakeRunnerResponse {
   /** The URI for reaching the resource. */
   uri: string;
 }
-const IntakeRunnerResponse = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<IntakeRunnerResponse>;
-
 export type CreateIntakeUserRequestRegionId = "eu01" | "eu02";
-const CreateIntakeUserRequestRegionId = S.String;
-
 /** Labels are key-value pairs associated with the resource. */
 export type CreateIntakeUserRequestLabelsMap = { [key: string]: string | undefined };
-const CreateIntakeUserRequestLabelsMap =
-  CreateIntakeRequestLabelsMap as any as S.Schema<CreateIntakeUserRequestLabelsMap>;
-
 /** Type of user, 'intake' allows writing to the Intake, 'dead-letter' allows reading from the dead-letter queue */
 export type UserType = "intake" | "dead-letter";
-const UserType = S.String;
-
 export interface CreateIntakeUserRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
@@ -239,11 +186,6 @@ export interface CreateIntakeUserRequest {
   password: string | Redacted.Redacted<string>;
   type?: UserType | (string & {});
 }
-const CreateIntakeUserRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateIntakeUserRequest>;
-
 /** Configuration properties for supported clients. */
 export interface ClientConfig {
   /** Configuration for Java Kafka clients. */
@@ -251,17 +193,10 @@ export interface ClientConfig {
   /** Configuration for Kafka clients using librdkafka */
   librdkafka: string;
 }
-const ClientConfig = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<ClientConfig>;
-
 /** Labels are a set of key-value pairs assigned to resources. */
 export type IntakeUserResponseLabelsMap = { [key: string]: string | undefined };
-const IntakeUserResponseLabelsMap =
-  CreateIntakeRequestLabelsMap as any as S.Schema<IntakeUserResponseLabelsMap>;
-
 /** The current state of the resource. */
 export type IntakeUserResponseState = "reconciling" | "active" | "deleting";
-const IntakeUserResponseState = S.String;
-
 export interface IntakeUserResponse {
   clientConfig?: ClientConfig;
   /** The point in time the resource was created. */
@@ -280,11 +215,7 @@ export interface IntakeUserResponse {
   /** The user to connect to the intake. */
   user: string;
 }
-const IntakeUserResponse = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<IntakeUserResponse>;
-
 export type DeleteIntakeRequestRegionId = "eu01" | "eu02";
-const DeleteIntakeRequestRegionId = S.String;
-
 export interface DeleteIntakeRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
@@ -295,14 +226,8 @@ export interface DeleteIntakeRequest {
   /** If true, deletes all child resources. If false, the resource remains in a 'deletion state' while child resources exist. */
   force?: boolean;
 }
-const DeleteIntakeRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<DeleteIntakeRequest>;
-
 export interface DeleteIntakeResponse {}
-const DeleteIntakeResponse = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<DeleteIntakeResponse>;
-
 export type DeleteIntakeRunnerRequestRegionId = "eu01" | "eu02";
-const DeleteIntakeRunnerRequestRegionId = S.String;
-
 export interface DeleteIntakeRunnerRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
@@ -313,18 +238,8 @@ export interface DeleteIntakeRunnerRequest {
   /** If true, deletes all child resources. If false, the resource remains in a 'deletion state' while child resources exist. */
   force?: boolean;
 }
-const DeleteIntakeRunnerRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<DeleteIntakeRunnerRequest>;
-
 export interface DeleteIntakeRunnerResponse {}
-const DeleteIntakeRunnerResponse =
-  DeleteIntakeResponse as any as S.Schema<DeleteIntakeRunnerResponse>;
-
 export type DeleteIntakeUserRequestRegionId = "eu01" | "eu02";
-const DeleteIntakeUserRequestRegionId = S.String;
-
 export interface DeleteIntakeUserRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
@@ -335,17 +250,8 @@ export interface DeleteIntakeUserRequest {
   /** The intake user UUID. */
   intakeUserId: string;
 }
-const DeleteIntakeUserRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<DeleteIntakeUserRequest>;
-
 export interface DeleteIntakeUserResponse {}
-const DeleteIntakeUserResponse = DeleteIntakeResponse as any as S.Schema<DeleteIntakeUserResponse>;
-
 export type GetIntakeRequestRegionId = "eu01" | "eu02";
-const GetIntakeRequestRegionId = S.String;
-
 export interface GetIntakeRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
@@ -354,11 +260,7 @@ export interface GetIntakeRequest {
   /** The intake UUID. */
   intakeId: string;
 }
-const GetIntakeRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<GetIntakeRequest>;
-
 export type GetIntakeRunnerRequestRegionId = "eu01" | "eu02";
-const GetIntakeRunnerRequestRegionId = S.String;
-
 export interface GetIntakeRunnerRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
@@ -367,14 +269,7 @@ export interface GetIntakeRunnerRequest {
   /** The intake runner UUID. */
   intakeRunnerId: string;
 }
-const GetIntakeRunnerRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<GetIntakeRunnerRequest>;
-
 export type GetIntakeUserRequestRegionId = "eu01" | "eu02";
-const GetIntakeUserRequestRegionId = S.String;
-
 export interface GetIntakeUserRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
@@ -385,11 +280,7 @@ export interface GetIntakeUserRequest {
   /** The intake user UUID. */
   intakeUserId: string;
 }
-const GetIntakeUserRequest = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<GetIntakeUserRequest>;
-
 export type ListIntakeRunnersRequestRegionId = "eu01" | "eu02";
-const ListIntakeRunnersRequestRegionId = S.String;
-
 export interface ListIntakeRunnersRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
@@ -400,30 +291,13 @@ export interface ListIntakeRunnersRequest {
   /** Maximum number of items to return */
   pageSize?: number;
 }
-const ListIntakeRunnersRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<ListIntakeRunnersRequest>;
-
 export type ListIntakeRunnersResponseIntakeRunnersList = Array<IntakeRunnerResponse>;
-const ListIntakeRunnersResponseIntakeRunnersList = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<ListIntakeRunnersResponseIntakeRunnersList>;
-
 export interface ListIntakeRunnersResponse {
   intakeRunners: ListIntakeRunnersResponseIntakeRunnersList;
   /** A token to retrieve the next page of results. */
   nextPageToken?: string;
 }
-const ListIntakeRunnersResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ListIntakeRunnersResponse>;
-
 export type ListIntakesRequestRegionId = "eu01" | "eu02";
-const ListIntakesRequestRegionId = S.String;
-
 export interface ListIntakesRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
@@ -434,24 +308,13 @@ export interface ListIntakesRequest {
   /** Maximum number of items to return */
   pageSize?: number;
 }
-const ListIntakesRequest = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<ListIntakesRequest>;
-
 export type ListIntakesResponseIntakesList = Array<IntakeResponse>;
-const ListIntakesResponseIntakesList = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ListIntakesResponseIntakesList>;
-
 export interface ListIntakesResponse {
   intakes: ListIntakesResponseIntakesList;
   /** A token to retrieve the next page of results. */
   nextPageToken?: string;
 }
-const ListIntakesResponse = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ListIntakesResponse>;
-
 export type ListIntakeUsersRequestRegionId = "eu01" | "eu02";
-const ListIntakeUsersRequestRegionId = S.String;
-
 export interface ListIntakeUsersRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
@@ -464,54 +327,28 @@ export interface ListIntakeUsersRequest {
   /** Maximum number of items to return */
   pageSize?: number;
 }
-const ListIntakeUsersRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ListIntakeUsersRequest>;
-
 export type ListIntakeUsersResponseIntakeUsersList = Array<IntakeUserResponse>;
-const ListIntakeUsersResponseIntakeUsersList = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ListIntakeUsersResponseIntakeUsersList>;
-
 export interface ListIntakeUsersResponse {
   intakeUsers: ListIntakeUsersResponseIntakeUsersList;
   /** A token to retrieve the next page of results. */
   nextPageToken?: string;
 }
-const ListIntakeUsersResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<ListIntakeUsersResponse>;
-
 export type UpdateIntakeRequestRegionId = "eu01" | "eu02";
-const UpdateIntakeRequestRegionId = S.String;
-
 export interface DremioAuthPatch {
   /** A Dremio personal access token for authentication */
   personalAccessToken?: string;
   /** The URL to the Dremio instance's OAuth 2.0 token endpoint */
   tokenEndpoint?: string;
 }
-const DremioAuthPatch = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<DremioAuthPatch>;
-
 /** Configures authentication for the Iceberg catalog */
 export interface CatalogAuthPatch {
   dremio?: DremioAuthPatch;
   type?: CatalogAuthType | (string & {});
 }
-const CatalogAuthPatch = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<CatalogAuthPatch>;
-
 /** List of Iceberg partitioning expressions to use when creating the target table. This setting can only be used when `partitioning` is set to `manual`. See the [Apache Iceberg spec](https://iceberg.apache.org/spec/#partitioning) for more details. */
 export type IntakeCatalogPatchPartitionByList = Array<string>;
-const IntakeCatalogPatchPartitionByList =
-  IntakeCatalogPartitionByList as any as S.Schema<IntakeCatalogPatchPartitionByList>;
-
 /** The target table's partitioning. * `none` disables partitioning. * `intake-time` configures daily partitioning based on the automatically created ingestion time column `__intake_ts`. * `manual` allows arbitrary Iceberg partitioning expression to be set via `partitionBy`. */
 export type PartitioningUpdateType = "none" | "intake-time" | "manual";
-const PartitioningUpdateType = S.String;
-
 /** The Iceberg catalog configuration */
 export interface IntakeCatalogPatch {
   auth?: CatalogAuthPatch;
@@ -527,13 +364,8 @@ export interface IntakeCatalogPatch {
   /** The Iceberg warehouse to connect to, required when the catalog has no default warehouse configured. */
   warehouse?: string;
 }
-const IntakeCatalogPatch = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<IntakeCatalogPatch>;
-
 /** Labels are key-value pairs associated with the resource. To update labels: - Provide a new set of key-value pairs to replace the existing labels. - Send empty object `{}` to remove all labels. - Omit this field to leave the labels unchanged. */
 export type UpdateIntakeRequestLabelsMap = { [key: string]: string | undefined };
-const UpdateIntakeRequestLabelsMap =
-  CreateIntakeRequestLabelsMap as any as S.Schema<UpdateIntakeRequestLabelsMap>;
-
 export interface UpdateIntakeRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
@@ -551,16 +383,9 @@ export interface UpdateIntakeRequest {
   /** Labels are key-value pairs associated with the resource. To update labels: - Provide a new set of key-value pairs to replace the existing labels. - Send empty object `{}` to remove all labels. - Omit this field to leave the labels unchanged. */
   labels?: UpdateIntakeRequestLabelsMap | null;
 }
-const UpdateIntakeRequest = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<UpdateIntakeRequest>;
-
 export type UpdateIntakeRunnerRequestRegionId = "eu01" | "eu02";
-const UpdateIntakeRunnerRequestRegionId = S.String;
-
 /** Labels are key-value pairs associated with the resource. To update labels: - Provide a new set of key-value pairs to replace the existing labels. - Send empty object `{}` to remove all labels. - Omit this field to leave the labels unchanged. */
 export type UpdateIntakeRunnerRequestLabelsMap = { [key: string]: string | undefined };
-const UpdateIntakeRunnerRequestLabelsMap =
-  CreateIntakeRequestLabelsMap as any as S.Schema<UpdateIntakeRunnerRequestLabelsMap>;
-
 export interface UpdateIntakeRunnerRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
@@ -579,19 +404,9 @@ export interface UpdateIntakeRunnerRequest {
   /** The maximum number of messages per hour. */
   maxMessagesPerHour?: number;
 }
-const UpdateIntakeRunnerRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<UpdateIntakeRunnerRequest>;
-
 export type UpdateIntakeUserRequestRegionId = "eu01" | "eu02";
-const UpdateIntakeUserRequestRegionId = S.String;
-
 /** Labels are key-value pairs associated with the resource. To update labels: - Provide a new set of key-value pairs to replace the existing labels. - Send empty object `{}` to remove all labels. - Omit this field to leave the labels unchanged. */
 export type UpdateIntakeUserRequestLabelsMap = { [key: string]: string | undefined };
-const UpdateIntakeUserRequestLabelsMap =
-  CreateIntakeRequestLabelsMap as any as S.Schema<UpdateIntakeUserRequestLabelsMap>;
-
 export interface UpdateIntakeUserRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
@@ -611,11 +426,6 @@ export interface UpdateIntakeUserRequest {
   password?: string | Redacted.Redacted<string>;
   type?: UserType | (string & {});
 }
-const UpdateIntakeUserRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<UpdateIntakeUserRequest>;
-
 export type CreateIntakeError = BadRequest | Conflict | StackitOpError;
 /** Creates a new intake within the project. */
 export const createIntake: API.OperationMethod<
@@ -624,8 +434,8 @@ export const createIntake: API.OperationMethod<
   CreateIntakeError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateIntakeRequest,
-  output: IntakeResponse,
+  input: __S(5, __c0, 5) as any as S.Schema<CreateIntakeRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<IntakeResponse>,
   errors: [BadRequest, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -639,8 +449,8 @@ export const createIntakeRunner: API.OperationMethod<
   CreateIntakeRunnerError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateIntakeRunnerRequest,
-  output: IntakeRunnerResponse,
+  input: __S(7, __c0, 7) as any as S.Schema<CreateIntakeRunnerRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<IntakeRunnerResponse>,
   errors: [BadRequest, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -654,8 +464,8 @@ export const createIntakeUser: API.OperationMethod<
   CreateIntakeUserError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateIntakeUserRequest,
-  output: IntakeUserResponse,
+  input: __S(9, __c1, 1) as any as S.Schema<CreateIntakeUserRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<IntakeUserResponse>,
   errors: [BadRequest, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -669,8 +479,8 @@ export const deleteIntake: API.OperationMethod<
   DeleteIntakeError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteIntakeRequest,
-  output: DeleteIntakeResponse,
+  input: __S(12, __c1, 4) as any as S.Schema<DeleteIntakeRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<DeleteIntakeResponse>,
   errors: [NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -684,8 +494,8 @@ export const deleteIntakeRunner: API.OperationMethod<
   DeleteIntakeRunnerError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteIntakeRunnerRequest,
-  output: DeleteIntakeRunnerResponse,
+  input: __S(14, __c1, 6) as any as S.Schema<DeleteIntakeRunnerRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<DeleteIntakeRunnerResponse>,
   errors: [NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -699,8 +509,8 @@ export const deleteIntakeUser: API.OperationMethod<
   DeleteIntakeUserError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteIntakeUserRequest,
-  output: DeleteIntakeUserResponse,
+  input: __S(15, __c1, 7) as any as S.Schema<DeleteIntakeUserRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<DeleteIntakeUserResponse>,
   errors: [NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -714,8 +524,8 @@ export const getIntake: API.OperationMethod<
   GetIntakeError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIntakeRequest,
-  output: IntakeResponse,
+  input: __S(16, __c2, 0) as any as S.Schema<GetIntakeRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<IntakeResponse>,
   errors: [NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -729,8 +539,8 @@ export const getIntakeRunner: API.OperationMethod<
   GetIntakeRunnerError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIntakeRunnerRequest,
-  output: IntakeRunnerResponse,
+  input: __S(17, __c2, 1) as any as S.Schema<GetIntakeRunnerRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<IntakeRunnerResponse>,
   errors: [NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -744,8 +554,8 @@ export const getIntakeUser: API.OperationMethod<
   GetIntakeUserError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIntakeUserRequest,
-  output: IntakeUserResponse,
+  input: __S(18, __c2, 2) as any as S.Schema<GetIntakeUserRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<IntakeUserResponse>,
   errors: [NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -759,8 +569,8 @@ export const listIntakeRunners: API.OperationMethod<
   ListIntakeRunnersError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIntakeRunnersRequest,
-  output: ListIntakeRunnersResponse,
+  input: __S(19, __c2, 3) as any as S.Schema<ListIntakeRunnersRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<ListIntakeRunnersResponse>,
   errors: [UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -774,8 +584,8 @@ export const listIntakes: API.OperationMethod<
   ListIntakesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIntakesRequest,
-  output: ListIntakesResponse,
+  input: __S(22, __c2, 6) as any as S.Schema<ListIntakesRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<ListIntakesResponse>,
   errors: [UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -789,8 +599,8 @@ export const listIntakeUsers: API.OperationMethod<
   ListIntakeUsersError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIntakeUsersRequest,
-  output: ListIntakeUsersResponse,
+  input: __S(25, __c3, 1) as any as S.Schema<ListIntakeUsersRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<ListIntakeUsersResponse>,
   errors: [UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -804,8 +614,8 @@ export const updateIntake: API.OperationMethod<
   UpdateIntakeError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateIntakeRequest,
-  output: IntakeResponse,
+  input: __S(31, __c3, 7) as any as S.Schema<UpdateIntakeRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<IntakeResponse>,
   errors: [NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -819,8 +629,8 @@ export const updateIntakeRunner: API.OperationMethod<
   UpdateIntakeRunnerError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateIntakeRunnerRequest,
-  output: IntakeRunnerResponse,
+  input: __S(32, __c4, 0) as any as S.Schema<UpdateIntakeRunnerRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<IntakeRunnerResponse>,
   errors: [BadRequest, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -834,8 +644,8 @@ export const updateIntakeUser: API.OperationMethod<
   UpdateIntakeUserError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateIntakeUserRequest,
-  output: IntakeUserResponse,
+  input: __S(33, __c4, 1) as any as S.Schema<UpdateIntakeUserRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<IntakeUserResponse>,
   errors: [NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -854,8 +664,8 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          dremio: S.optional(DremioAuth),
-          type: CatalogAuthType,
+          dremio: S.optional(__S(0, __c0, 0)),
+          type: S.String,
         }),
       ).annotate({ identifier: "CatalogAuth" });
     case 2:
@@ -863,10 +673,10 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          auth: S.optional(CatalogAuth),
+          auth: S.optional(__S(1, __c0, 1)),
           namespace: S.optional(S.String),
-          partitionBy: S.optional(S.NullOr(IntakeCatalogPartitionByList)),
-          partitioning: S.optional(PartitioningType),
+          partitionBy: S.optional(S.NullOr(__S(2, __c0, 2))),
+          partitioning: S.optional(S.String),
           tableName: S.optional(S.String),
           uri: S.String,
           warehouse: S.String,
@@ -878,12 +688,12 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: CreateIntakeRequestRegionId.pipe(T.Label()),
-          catalog: IntakeCatalog,
+          regionId: S.String.pipe(T.Label()),
+          catalog: __S(3, __c0, 3),
           description: S.optional(S.String),
           displayName: S.String,
           intakeRunnerId: S.String,
-          labels: S.optional(S.NullOr(CreateIntakeRequestLabelsMap)),
+          labels: S.optional(S.NullOr(__S(4, __c0, 4))),
         }).pipe(
           T.Http({
             method: "POST",
@@ -896,7 +706,7 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          catalog: IntakeCatalog,
+          catalog: __S(3, __c0, 3),
           create_time: S.String,
           deadLetterTopic: S.String,
           description: S.optional(S.String),
@@ -904,8 +714,8 @@ function __c0(j: number): any {
           failure_message: S.optional(S.String),
           id: S.String,
           intakeRunnerId: S.String,
-          labels: S.optional(S.NullOr(IntakeResponseLabelsMap)),
-          state: IntakeResponseState,
+          labels: S.optional(S.NullOr(__S(4, __c0, 4))),
+          state: S.String,
           topic: S.String,
           undeliveredMessageCount: S.optional(S.Number),
           uri: S.String,
@@ -915,10 +725,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: CreateIntakeRunnerRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           description: S.optional(S.String),
           displayName: S.String,
-          labels: S.optional(S.NullOr(CreateIntakeRunnerRequestLabelsMap)),
+          labels: S.optional(S.NullOr(__S(4, __c0, 4))),
           maxMessageSizeKiB: S.Number,
           maxMessagesPerHour: S.Number,
         }).pipe(
@@ -943,10 +753,10 @@ function __c1(j: number): any {
           description: S.optional(S.String),
           displayName: S.String,
           id: S.String,
-          labels: S.optional(S.NullOr(IntakeRunnerResponseLabelsMap)),
+          labels: S.optional(S.NullOr(__S(4, __c0, 4))),
           maxMessageSizeKiB: S.Number,
           maxMessagesPerHour: S.Number,
-          state: IntakeRunnerResponseState,
+          state: S.String,
           uri: S.String,
         }),
       ).annotate({ identifier: "IntakeRunnerResponse" });
@@ -954,13 +764,13 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: CreateIntakeUserRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           intakeId: S.String.pipe(T.Label()),
           description: S.optional(S.String),
           displayName: S.String,
-          labels: S.optional(S.NullOr(CreateIntakeUserRequestLabelsMap)),
+          labels: S.optional(S.NullOr(__S(4, __c0, 4))),
           password: S.String.pipe(T.SensitiveValue({})),
-          type: S.optional(UserType),
+          type: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -980,14 +790,14 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          clientConfig: S.optional(ClientConfig),
+          clientConfig: S.optional(__S(10, __c1, 2)),
           create_time: S.String,
           description: S.optional(S.String),
           displayName: S.String,
           id: S.String,
-          labels: S.optional(S.NullOr(IntakeUserResponseLabelsMap)),
-          state: IntakeUserResponseState,
-          type: UserType,
+          labels: S.optional(S.NullOr(__S(4, __c0, 4))),
+          state: S.String,
+          type: S.String,
           user: S.String,
         }),
       ).annotate({ identifier: "IntakeUserResponse" });
@@ -995,7 +805,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: DeleteIntakeRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           intakeId: S.String.pipe(T.Label()),
           force: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(
@@ -1015,7 +825,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: DeleteIntakeRunnerRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           intakeRunnerId: S.String.pipe(T.Label()),
           force: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(
@@ -1033,7 +843,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: DeleteIntakeUserRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           intakeId: S.String.pipe(T.Label()),
           intakeUserId: S.String.pipe(T.Label()),
         }).pipe(
@@ -1053,7 +863,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: GetIntakeRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           intakeId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -1068,7 +878,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: GetIntakeRunnerRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           intakeRunnerId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -1083,7 +893,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: GetIntakeUserRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           intakeId: S.String.pipe(T.Label()),
           intakeUserId: S.String.pipe(T.Label()),
         }).pipe(
@@ -1099,7 +909,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: ListIntakeRunnersRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           pageToken: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
@@ -1112,11 +922,11 @@ function __c2(j: number): any {
         ),
       ).annotate({ identifier: "ListIntakeRunnersRequest" });
     case 4:
-      return S.Array(IntakeRunnerResponse);
+      return S.Array(__S(8, __c1, 0));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          intakeRunners: ListIntakeRunnersResponseIntakeRunnersList,
+          intakeRunners: __S(20, __c2, 4),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1126,7 +936,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: ListIntakesRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           pageToken: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
@@ -1139,7 +949,7 @@ function __c2(j: number): any {
         ),
       ).annotate({ identifier: "ListIntakesRequest" });
     case 7:
-      return S.Array(IntakeResponse);
+      return S.Array(__S(6, __c0, 6));
   }
 }
 function __c3(j: number): any {
@@ -1147,7 +957,7 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          intakes: ListIntakesResponseIntakesList,
+          intakes: __S(23, __c2, 7),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListIntakesResponse" });
@@ -1155,7 +965,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: ListIntakeUsersRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           intakeId: S.String.pipe(T.Label()),
           pageToken: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1169,11 +979,11 @@ function __c3(j: number): any {
         ),
       ).annotate({ identifier: "ListIntakeUsersRequest" });
     case 2:
-      return S.Array(IntakeUserResponse);
+      return S.Array(__S(11, __c1, 3));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          intakeUsers: ListIntakeUsersResponseIntakeUsersList,
+          intakeUsers: __S(26, __c3, 2),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListIntakeUsersResponse" });
@@ -1187,17 +997,17 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          dremio: S.optional(DremioAuthPatch),
-          type: S.optional(CatalogAuthType),
+          dremio: S.optional(__S(28, __c3, 4)),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "CatalogAuthPatch" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          auth: S.optional(CatalogAuthPatch),
+          auth: S.optional(__S(29, __c3, 5)),
           namespace: S.optional(S.String),
-          partitionBy: S.optional(S.NullOr(IntakeCatalogPatchPartitionByList)),
-          partitioning: S.optional(PartitioningUpdateType),
+          partitionBy: S.optional(S.NullOr(__S(2, __c0, 2))),
+          partitioning: S.optional(S.String),
           tableName: S.optional(S.String),
           uri: S.optional(S.String),
           warehouse: S.optional(S.String),
@@ -1207,13 +1017,13 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: UpdateIntakeRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           intakeId: S.String.pipe(T.Label()),
-          catalog: S.optional(IntakeCatalogPatch),
+          catalog: S.optional(__S(30, __c3, 6)),
           description: S.optional(S.String),
           displayName: S.optional(S.String),
           intakeRunnerId: S.String,
-          labels: S.optional(S.NullOr(UpdateIntakeRequestLabelsMap)),
+          labels: S.optional(S.NullOr(__S(4, __c0, 4))),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1231,11 +1041,11 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: UpdateIntakeRunnerRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           intakeRunnerId: S.String.pipe(T.Label()),
           description: S.optional(S.String),
           displayName: S.optional(S.String),
-          labels: S.optional(S.NullOr(UpdateIntakeRunnerRequestLabelsMap)),
+          labels: S.optional(S.NullOr(__S(4, __c0, 4))),
           maxMessageSizeKiB: S.optional(S.Number),
           maxMessagesPerHour: S.optional(S.Number),
         }).pipe(
@@ -1253,14 +1063,14 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: UpdateIntakeUserRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           intakeId: S.String.pipe(T.Label()),
           intakeUserId: S.String.pipe(T.Label()),
           description: S.optional(S.String),
           displayName: S.optional(S.String),
-          labels: S.optional(S.NullOr(UpdateIntakeUserRequestLabelsMap)),
+          labels: S.optional(S.NullOr(__S(4, __c0, 4))),
           password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          type: S.optional(UserType),
+          type: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1271,4 +1081,9 @@ function __c4(j: number): any {
         ),
       ).annotate({ identifier: "UpdateIntakeUserRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

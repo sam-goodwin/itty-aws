@@ -12,6 +12,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -61,11 +63,6 @@ export interface CreateControlCmbConfigRequest {
   /** Name of the region. */
   regions?: string;
 }
-const CreateControlCmbConfigRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateControlCmbConfigRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateControlCmbConfigResponse {
   /** Allow out of region access */
@@ -73,50 +70,25 @@ export interface CreateControlCmbConfigResponse {
   /** Name of the region. */
   regions?: string | null;
 }
-const CreateControlCmbConfigResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateControlCmbConfigResponse>;
-
 export interface CreateControlRetentionRequest {
   /** Identifier. */
   zoneId: string;
   /** The log retention flag for Logpull API. */
   flag?: boolean;
 }
-const CreateControlRetentionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateControlRetentionRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateControlRetentionResponse {
   /** The log retention flag for Logpull API. */
   flag?: boolean | null;
 }
-const CreateControlRetentionResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateControlRetentionResponse>;
-
 export interface LogExplorerDatasetsCreateRequestFieldsItem {
   /** Whether the API includes this field in log ingest. */
   enabled: boolean;
   /** Field name in lowercase. */
   name: string;
 }
-const LogExplorerDatasetsCreateRequestFieldsItem = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<LogExplorerDatasetsCreateRequestFieldsItem>;
-
 export type LogExplorerDatasetsCreateRequestFieldsList =
   Array<LogExplorerDatasetsCreateRequestFieldsItem>;
-const LogExplorerDatasetsCreateRequestFieldsList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<LogExplorerDatasetsCreateRequestFieldsList>;
-
 export interface CreateLogExplorerDatasetForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
@@ -129,21 +101,11 @@ export interface CreateLogExplorerDatasetForAccountRequest {
   /** Whether to filter attack traffic from the Logpush job. Defaults to `true` for supported datasets when omitted. Supported datasets are `http_requests`, `firewall_events`, and `network_analytics_logs`. */
   filterAttackTraffic?: boolean;
 }
-const CreateLogExplorerDatasetForAccountRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateLogExplorerDatasetForAccountRequest>;
-
 export type LogExplorerDatasetsCreateResponseFieldsItem =
   LogExplorerDatasetsCreateRequestFieldsItem;
 export type LogExplorerDatasetsCreateResponseFieldsList =
   Array<LogExplorerDatasetsCreateRequestFieldsItem>;
-const LogExplorerDatasetsCreateResponseFieldsList =
-  LogExplorerDatasetsCreateRequestFieldsList as any as S.Schema<LogExplorerDatasetsCreateResponseFieldsList>;
-
 export type LogExplorerDatasetsCreateResponseObjectType = "account" | "zone";
-const LogExplorerDatasetsCreateResponseObjectType = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateLogExplorerDatasetResponse {
   /** RFC3339 timestamp recording when the API created this dataset. */
@@ -169,11 +131,6 @@ export interface CreateLogExplorerDatasetResponse {
   /** Whether the Logpush job filters attack traffic. Omitted for datasets that do not support this option. */
   filterAttackTraffic?: boolean | null;
 }
-const CreateLogExplorerDatasetResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateLogExplorerDatasetResponse>;
-
 export interface CreateLogExplorerDatasetForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
@@ -186,35 +143,15 @@ export interface CreateLogExplorerDatasetForZoneRequest {
   /** Whether to filter attack traffic from the Logpush job. Defaults to `true` for supported datasets when omitted. Supported datasets are `http_requests`, `firewall_events`, and `network_analytics_logs`. */
   filterAttackTraffic?: boolean;
 }
-const CreateLogExplorerDatasetForZoneRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateLogExplorerDatasetForZoneRequest>;
-
 export interface DeleteControlCmbConfigRequest {
   /** Identifier. */
   accountId: string;
 }
-const DeleteControlCmbConfigRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<DeleteControlCmbConfigRequest>;
-
 export type DeleteControlCmbConfigResponse = unknown;
-const DeleteControlCmbConfigResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<DeleteControlCmbConfigResponse>;
-
 export interface GetControlCmbConfigRequest {
   /** Identifier. */
   accountId: string;
 }
-const GetControlCmbConfigRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<GetControlCmbConfigRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetControlCmbConfigResponse {
   /** Allow out of region access */
@@ -222,45 +159,24 @@ export interface GetControlCmbConfigResponse {
   /** Name of the region. */
   regions?: string | null;
 }
-const GetControlCmbConfigResponse =
-  CreateControlCmbConfigResponse as any as S.Schema<GetControlCmbConfigResponse>;
-
 export interface GetControlRetentionRequest {
   /** Identifier. */
   zoneId: string;
 }
-const GetControlRetentionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<GetControlRetentionRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetControlRetentionResponse {
   /** The log retention flag for Logpull API. */
   flag?: boolean | null;
 }
-const GetControlRetentionResponse =
-  CreateControlRetentionResponse as any as S.Schema<GetControlRetentionResponse>;
-
 export interface GetLogExplorerDatasetForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
   datasetId: string;
 }
-const GetLogExplorerDatasetForAccountRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<GetLogExplorerDatasetForAccountRequest>;
-
 export type LogExplorerDatasetsGetResponseFieldsItem = LogExplorerDatasetsCreateRequestFieldsItem;
 export type LogExplorerDatasetsGetResponseFieldsList =
   Array<LogExplorerDatasetsCreateRequestFieldsItem>;
-const LogExplorerDatasetsGetResponseFieldsList =
-  LogExplorerDatasetsCreateRequestFieldsList as any as S.Schema<LogExplorerDatasetsGetResponseFieldsList>;
-
 export type LogExplorerDatasetsGetResponseObjectType = "account" | "zone";
-const LogExplorerDatasetsGetResponseObjectType = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetLogExplorerDatasetResponse {
   /** RFC3339 timestamp recording when the API created this dataset. */
@@ -286,24 +202,12 @@ export interface GetLogExplorerDatasetResponse {
   /** Whether the Logpush job filters attack traffic. Omitted for datasets that do not support this option. */
   filterAttackTraffic?: boolean | null;
 }
-const GetLogExplorerDatasetResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<GetLogExplorerDatasetResponse>;
-
 export interface GetLogExplorerDatasetForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
   datasetId: string;
 }
-const GetLogExplorerDatasetForZoneRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<GetLogExplorerDatasetForZoneRequest>;
-
 export type RayidGetRequestTimestamps = "unix" | "unixnano" | "rfc3339";
-const RayidGetRequestTimestamps = S.String;
-
 export interface GetRayidRequest {
   /** Identifier. */
   zoneId: string;
@@ -314,15 +218,9 @@ export interface GetRayidRequest {
   /** By default, timestamps in responses are returned as Unix nanosecond integers. The `?timestamps=` argument can be set to change the format in which response timestamps are returned. Possible values are: `unix`, `unixnano`, `rfc3339`. Note that `unix` and `unixnano` return timestamps as integers; `rfc3339` returns timestamps as strings. */
   timestamps?: RayidGetRequestTimestamps | (string & {});
 }
-const GetRayidRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<GetRayidRequest>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetRayidResponse {}
-const GetRayidResponse = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<GetRayidResponse>;
-
 export type ReceivedGetRequestTimestamps = "unix" | "unixnano" | "rfc3339";
-const ReceivedGetRequestTimestamps = S.String;
-
 export interface GetReceivedRequest {
   /** Identifier. */
   zoneId: string;
@@ -339,69 +237,31 @@ export interface GetReceivedRequest {
   /** By default, timestamps in responses are returned as Unix nanosecond integers. The `?timestamps=` argument can be set to change the format in which response timestamps are returned. Possible values are: `unix`, `unixnano`, `rfc3339`. Note that `unix` and `unixnano` return timestamps as integers; `rfc3339` returns timestamps as strings. */
   timestamps?: ReceivedGetRequestTimestamps | (string & {});
 }
-const GetReceivedRequest = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<GetReceivedRequest>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetReceivedResponse {}
-const GetReceivedResponse = GetRayidResponse as any as S.Schema<GetReceivedResponse>;
-
 export interface GetReceivedFieldRequest {
   /** Identifier. */
   zoneId: string;
 }
-const GetReceivedFieldRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<GetReceivedFieldRequest>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetReceivedFieldResponse {
   key?: string | null;
 }
-const GetReceivedFieldResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<GetReceivedFieldResponse>;
-
 export interface ListLogExplorerDatasetAvailablesForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
 }
-const ListLogExplorerDatasetAvailablesForAccountRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ListLogExplorerDatasetAvailablesForAccountRequest>;
-
 export type LogExplorerDatasetsAvailableListResultItemObjectType = "account" | "zone";
-const LogExplorerDatasetsAvailableListResultItemObjectType = S.String;
-
 export type LogExplorerDatasetsAvailableListResultItemSchemaPropertiesMap = {
   [key: string]: unknown | undefined;
 };
-const LogExplorerDatasetsAvailableListResultItemSchemaPropertiesMap = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<LogExplorerDatasetsAvailableListResultItemSchemaPropertiesMap>;
-
 export type LogExplorerDatasetsAvailableListResultItemSchemaRequiredList = Array<string>;
-const LogExplorerDatasetsAvailableListResultItemSchemaRequiredList = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<LogExplorerDatasetsAvailableListResultItemSchemaRequiredList>;
-
 export type LogExplorerDatasetsAvailableListResultItemSchemaType = "object";
-const LogExplorerDatasetsAvailableListResultItemSchemaType = S.String;
-
 export interface LogExplorerDatasetsAvailableListResultItemSchema {
   properties?: LogExplorerDatasetsAvailableListResultItemSchemaPropertiesMap | null;
   required?: LogExplorerDatasetsAvailableListResultItemSchemaRequiredList | null;
   type?: LogExplorerDatasetsAvailableListResultItemSchemaType | null;
 }
-const LogExplorerDatasetsAvailableListResultItemSchema = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<LogExplorerDatasetsAvailableListResultItemSchema>;
-
 export interface LogExplorerDatasetsAvailableListResultItem {
   /** Dataset type name (e.g. `http_requests`). */
   dataset: string;
@@ -412,52 +272,25 @@ export interface LogExplorerDatasetsAvailableListResultItem {
   /** The primary timestamp field name for this dataset. */
   timestampField: string;
 }
-const LogExplorerDatasetsAvailableListResultItem = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<LogExplorerDatasetsAvailableListResultItem>;
-
 export type LogExplorerDatasetsAvailableListResultList =
   Array<LogExplorerDatasetsAvailableListResultItem>;
-const LogExplorerDatasetsAvailableListResultList = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<LogExplorerDatasetsAvailableListResultList>;
-
 export interface ListLogExplorerDatasetAvailablesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: LogExplorerDatasetsAvailableListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListLogExplorerDatasetAvailablesResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<ListLogExplorerDatasetAvailablesResponse>;
-
 export interface ListLogExplorerDatasetAvailablesForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
 }
-const ListLogExplorerDatasetAvailablesForZoneRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<ListLogExplorerDatasetAvailablesForZoneRequest>;
-
 export interface ListLogExplorerDatasetsForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
   /** Set to true to include zone-scoped datasets belonging to this account. */
   includeZones?: boolean;
 }
-const ListLogExplorerDatasetsForAccountRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ListLogExplorerDatasetsForAccountRequest>;
-
 export type LogExplorerDatasetsListResultItemObjectType = "account" | "zone";
-const LogExplorerDatasetsListResultItemObjectType = S.String;
-
 export interface LogExplorerDatasetsListResultItem {
   /** RFC3339 timestamp recording when the API created this dataset. */
   createdAt: string;
@@ -476,59 +309,29 @@ export interface LogExplorerDatasetsListResultItem {
   /** RFC3339 timestamp recording when the API last updated this dataset. */
   updatedAt: string;
 }
-const LogExplorerDatasetsListResultItem = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<LogExplorerDatasetsListResultItem>;
-
 export type LogExplorerDatasetsListResultList = Array<LogExplorerDatasetsListResultItem>;
-const LogExplorerDatasetsListResultList = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<LogExplorerDatasetsListResultList>;
-
 export interface ListLogExplorerDatasetsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: LogExplorerDatasetsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListLogExplorerDatasetsResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<ListLogExplorerDatasetsResponse>;
-
 export interface ListLogExplorerDatasetsForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
   /** Set to true to include zone-scoped datasets belonging to this account. */
   includeZones?: boolean;
 }
-const ListLogExplorerDatasetsForZoneRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<ListLogExplorerDatasetsForZoneRequest>;
-
 export interface LogExplorerDatasetsDeleteForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
   datasetId: string;
 }
-const LogExplorerDatasetsDeleteForAccountRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<LogExplorerDatasetsDeleteForAccountRequest>;
-
 export type LogExplorerDatasetsDeleteResponseFieldsItem =
   LogExplorerDatasetsCreateRequestFieldsItem;
 export type LogExplorerDatasetsDeleteResponseFieldsList =
   Array<LogExplorerDatasetsCreateRequestFieldsItem>;
-const LogExplorerDatasetsDeleteResponseFieldsList =
-  LogExplorerDatasetsCreateRequestFieldsList as any as S.Schema<LogExplorerDatasetsDeleteResponseFieldsList>;
-
 export type LogExplorerDatasetsDeleteResponseObjectType = "account" | "zone";
-const LogExplorerDatasetsDeleteResponseObjectType = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface LogExplorerDatasetsDeleteResponse {
   /** RFC3339 timestamp recording when the API created this dataset. */
@@ -554,66 +357,30 @@ export interface LogExplorerDatasetsDeleteResponse {
   /** Whether the Logpush job filters attack traffic. Omitted for datasets that do not support this option. */
   filterAttackTraffic?: boolean | null;
 }
-const LogExplorerDatasetsDeleteResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<LogExplorerDatasetsDeleteResponse>;
-
 export interface LogExplorerDatasetsDeleteForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
   datasetId: string;
 }
-const LogExplorerDatasetsDeleteForZoneRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<LogExplorerDatasetsDeleteForZoneRequest>;
-
 export interface SqlLogExplorerQueryForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
 }
-const SqlLogExplorerQueryForAccountRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<SqlLogExplorerQueryForAccountRequest>;
-
 export type LogExplorerQuerySqlResultItemMap = { [key: string]: unknown | undefined };
-const LogExplorerQuerySqlResultItemMap =
-  LogExplorerDatasetsAvailableListResultItemSchemaPropertiesMap as any as S.Schema<LogExplorerQuerySqlResultItemMap>;
-
 export type LogExplorerQuerySqlResultList = Array<LogExplorerQuerySqlResultItemMap>;
-const LogExplorerQuerySqlResultList = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<LogExplorerQuerySqlResultList>;
-
 export interface SqlLogExplorerQueryResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: LogExplorerQuerySqlResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const SqlLogExplorerQueryResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<SqlLogExplorerQueryResponse>;
-
 export interface SqlLogExplorerQueryForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
 }
-const SqlLogExplorerQueryForZoneRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<SqlLogExplorerQueryForZoneRequest>;
-
 export type LogExplorerDatasetsUpdateRequestFieldsItem = LogExplorerDatasetsCreateRequestFieldsItem;
 export type LogExplorerDatasetsUpdateRequestFieldsList =
   Array<LogExplorerDatasetsCreateRequestFieldsItem>;
-const LogExplorerDatasetsUpdateRequestFieldsList =
-  LogExplorerDatasetsCreateRequestFieldsList as any as S.Schema<LogExplorerDatasetsUpdateRequestFieldsList>;
-
 export interface UpdateLogExplorerDatasetForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
@@ -629,21 +396,11 @@ export interface UpdateLogExplorerDatasetForAccountRequest {
   /** Whether to filter attack traffic from the Logpush job. If omitted, the existing setting is left unchanged. Supported datasets are `http_requests`, `firewall_events`, and `network_analytics_logs`. */
   filterAttackTraffic?: boolean;
 }
-const UpdateLogExplorerDatasetForAccountRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<UpdateLogExplorerDatasetForAccountRequest>;
-
 export type LogExplorerDatasetsUpdateResponseFieldsItem =
   LogExplorerDatasetsCreateRequestFieldsItem;
 export type LogExplorerDatasetsUpdateResponseFieldsList =
   Array<LogExplorerDatasetsCreateRequestFieldsItem>;
-const LogExplorerDatasetsUpdateResponseFieldsList =
-  LogExplorerDatasetsCreateRequestFieldsList as any as S.Schema<LogExplorerDatasetsUpdateResponseFieldsList>;
-
 export type LogExplorerDatasetsUpdateResponseObjectType = "account" | "zone";
-const LogExplorerDatasetsUpdateResponseObjectType = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateLogExplorerDatasetResponse {
   /** RFC3339 timestamp recording when the API created this dataset. */
@@ -669,11 +426,6 @@ export interface UpdateLogExplorerDatasetResponse {
   /** Whether the Logpush job filters attack traffic. Omitted for datasets that do not support this option. */
   filterAttackTraffic?: boolean | null;
 }
-const UpdateLogExplorerDatasetResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<UpdateLogExplorerDatasetResponse>;
-
 export interface UpdateLogExplorerDatasetForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
@@ -689,11 +441,6 @@ export interface UpdateLogExplorerDatasetForZoneRequest {
   /** Whether to filter attack traffic from the Logpush job. If omitted, the existing setting is left unchanged. Supported datasets are `http_requests`, `firewall_events`, and `network_analytics_logs`. */
   filterAttackTraffic?: boolean;
 }
-const UpdateLogExplorerDatasetForZoneRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<UpdateLogExplorerDatasetForZoneRequest>;
-
 export type CreateControlCmbConfigError = LogsControlNotAuthorized | Forbidden | CloudflareOpError;
 /** Updates CMB config. */
 export const createControlCmbConfig: API.OperationMethod<
@@ -702,8 +449,8 @@ export const createControlCmbConfig: API.OperationMethod<
   CreateControlCmbConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateControlCmbConfigRequest,
-  output: CreateControlCmbConfigResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateControlCmbConfigRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CreateControlCmbConfigResponse>,
   errors: [LogsControlNotAuthorized, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -717,8 +464,8 @@ export const createControlRetention: API.OperationMethod<
   CreateControlRetentionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateControlRetentionRequest,
-  output: CreateControlRetentionResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<CreateControlRetentionRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<CreateControlRetentionResponse>,
   errors: [LogsControlNotAuthorized, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -732,8 +479,8 @@ export const createLogExplorerDatasetForAccount: API.OperationMethod<
   CreateLogExplorerDatasetForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateLogExplorerDatasetForAccountRequest,
-  output: CreateLogExplorerDatasetResponse,
+  input: __S(6, __c0, 6) as any as S.Schema<CreateLogExplorerDatasetForAccountRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<CreateLogExplorerDatasetResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -747,8 +494,8 @@ export const createLogExplorerDatasetForZone: API.OperationMethod<
   CreateLogExplorerDatasetForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateLogExplorerDatasetForZoneRequest,
-  output: CreateLogExplorerDatasetResponse,
+  input: __S(8, __c1, 0) as any as S.Schema<CreateLogExplorerDatasetForZoneRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<CreateLogExplorerDatasetResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -766,8 +513,8 @@ export const deleteControlCmbConfig: API.OperationMethod<
   DeleteControlCmbConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteControlCmbConfigRequest,
-  output: DeleteControlCmbConfigResponse,
+  input: __S(9, __c1, 1) as any as S.Schema<DeleteControlCmbConfigRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<DeleteControlCmbConfigResponse>,
   errors: [
     LogsControlNotAuthorized,
     CmbConfigNotFound,
@@ -791,8 +538,8 @@ export const getControlCmbConfig: API.OperationMethod<
   GetControlCmbConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetControlCmbConfigRequest,
-  output: GetControlCmbConfigResponse,
+  input: __S(11, __c1, 3) as any as S.Schema<GetControlCmbConfigRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<GetControlCmbConfigResponse>,
   errors: [
     LogsControlNotAuthorized,
     CmbConfigNotFound,
@@ -812,8 +559,8 @@ export const getControlRetention: API.OperationMethod<
   GetControlRetentionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetControlRetentionRequest,
-  output: GetControlRetentionResponse,
+  input: __S(12, __c1, 4) as any as S.Schema<GetControlRetentionRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<GetControlRetentionResponse>,
   errors: [LogsControlNotAuthorized, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -827,8 +574,8 @@ export const getLogExplorerDatasetForAccount: API.OperationMethod<
   GetLogExplorerDatasetForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLogExplorerDatasetForAccountRequest,
-  output: GetLogExplorerDatasetResponse,
+  input: __S(13, __c1, 5) as any as S.Schema<GetLogExplorerDatasetForAccountRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<GetLogExplorerDatasetResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -842,8 +589,8 @@ export const getLogExplorerDatasetForZone: API.OperationMethod<
   GetLogExplorerDatasetForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLogExplorerDatasetForZoneRequest,
-  output: GetLogExplorerDatasetResponse,
+  input: __S(15, __c1, 7) as any as S.Schema<GetLogExplorerDatasetForZoneRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<GetLogExplorerDatasetResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -857,8 +604,8 @@ export const getRayid: API.OperationMethod<
   GetRayidError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRayidRequest,
-  output: GetRayidResponse,
+  input: __S(16, __c2, 0) as any as S.Schema<GetRayidRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<GetRayidResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -872,8 +619,8 @@ export const getReceived: API.OperationMethod<
   GetReceivedError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetReceivedRequest,
-  output: GetReceivedResponse,
+  input: __S(18, __c2, 2) as any as S.Schema<GetReceivedRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<GetReceivedResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -887,8 +634,8 @@ export const getReceivedField: API.OperationMethod<
   GetReceivedFieldError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetReceivedFieldRequest,
-  output: GetReceivedFieldResponse,
+  input: __S(19, __c2, 3) as any as S.Schema<GetReceivedFieldRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<GetReceivedFieldResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -904,8 +651,8 @@ export const listLogExplorerDatasetAvailablesForAccount: API.PaginatedOperationM
   LogExplorerDatasetsAvailableListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListLogExplorerDatasetAvailablesForAccountRequest,
-    output: ListLogExplorerDatasetAvailablesResponse,
+    input: __S(21, __c2, 5) as any as S.Schema<ListLogExplorerDatasetAvailablesForAccountRequest>,
+    output: __S(27, __c3, 3) as any as S.Schema<ListLogExplorerDatasetAvailablesResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -924,8 +671,8 @@ export const listLogExplorerDatasetAvailablesForZone: API.PaginatedOperationMeth
   LogExplorerDatasetsAvailableListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListLogExplorerDatasetAvailablesForZoneRequest,
-    output: ListLogExplorerDatasetAvailablesResponse,
+    input: __S(28, __c3, 4) as any as S.Schema<ListLogExplorerDatasetAvailablesForZoneRequest>,
+    output: __S(27, __c3, 3) as any as S.Schema<ListLogExplorerDatasetAvailablesResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -944,8 +691,8 @@ export const listLogExplorerDatasetsForAccount: API.PaginatedOperationMethod<
   LogExplorerDatasetsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListLogExplorerDatasetsForAccountRequest,
-    output: ListLogExplorerDatasetsResponse,
+    input: __S(29, __c3, 5) as any as S.Schema<ListLogExplorerDatasetsForAccountRequest>,
+    output: __S(32, __c4, 0) as any as S.Schema<ListLogExplorerDatasetsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -964,8 +711,8 @@ export const listLogExplorerDatasetsForZone: API.PaginatedOperationMethod<
   LogExplorerDatasetsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListLogExplorerDatasetsForZoneRequest,
-    output: ListLogExplorerDatasetsResponse,
+    input: __S(33, __c4, 1) as any as S.Schema<ListLogExplorerDatasetsForZoneRequest>,
+    output: __S(32, __c4, 0) as any as S.Schema<ListLogExplorerDatasetsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -982,8 +729,8 @@ export const logExplorerDatasetsDeleteForAccount: API.OperationMethod<
   LogExplorerDatasetsDeleteForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LogExplorerDatasetsDeleteForAccountRequest,
-  output: LogExplorerDatasetsDeleteResponse,
+  input: __S(34, __c4, 2) as any as S.Schema<LogExplorerDatasetsDeleteForAccountRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<LogExplorerDatasetsDeleteResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -997,8 +744,8 @@ export const logExplorerDatasetsDeleteForZone: API.OperationMethod<
   LogExplorerDatasetsDeleteForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LogExplorerDatasetsDeleteForZoneRequest,
-  output: LogExplorerDatasetsDeleteResponse,
+  input: __S(36, __c4, 4) as any as S.Schema<LogExplorerDatasetsDeleteForZoneRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<LogExplorerDatasetsDeleteResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1014,8 +761,8 @@ export const sqlLogExplorerQueryForAccount: API.PaginatedOperationMethod<
   LogExplorerQuerySqlResultItemMap
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: SqlLogExplorerQueryForAccountRequest,
-    output: SqlLogExplorerQueryResponse,
+    input: __S(37, __c4, 5) as any as S.Schema<SqlLogExplorerQueryForAccountRequest>,
+    output: __S(39, __c4, 7) as any as S.Schema<SqlLogExplorerQueryResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1034,8 +781,8 @@ export const sqlLogExplorerQueryForZone: API.PaginatedOperationMethod<
   LogExplorerQuerySqlResultItemMap
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: SqlLogExplorerQueryForZoneRequest,
-    output: SqlLogExplorerQueryResponse,
+    input: __S(40, __c5, 0) as any as S.Schema<SqlLogExplorerQueryForZoneRequest>,
+    output: __S(39, __c4, 7) as any as S.Schema<SqlLogExplorerQueryResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1052,8 +799,8 @@ export const updateLogExplorerDatasetForAccount: API.OperationMethod<
   UpdateLogExplorerDatasetForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateLogExplorerDatasetForAccountRequest,
-  output: UpdateLogExplorerDatasetResponse,
+  input: __S(41, __c5, 1) as any as S.Schema<UpdateLogExplorerDatasetForAccountRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<UpdateLogExplorerDatasetResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1067,8 +814,8 @@ export const updateLogExplorerDatasetForZone: API.OperationMethod<
   UpdateLogExplorerDatasetForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateLogExplorerDatasetForZoneRequest,
-  output: UpdateLogExplorerDatasetResponse,
+  input: __S(43, __c5, 3) as any as S.Schema<UpdateLogExplorerDatasetForZoneRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<UpdateLogExplorerDatasetResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1141,13 +888,13 @@ function __c0(j: number): any {
         identifier: "LogExplorerDatasetsCreateRequestFieldsItem",
       });
     case 5:
-      return S.Array(LogExplorerDatasetsCreateRequestFieldsItem);
+      return S.Array(__S(4, __c0, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           dataset: S.String,
-          fields: S.optional(LogExplorerDatasetsCreateRequestFieldsList),
+          fields: S.optional(__S(5, __c0, 5)),
           filter: S.optional(S.String),
           filterAttackTraffic: S.optional(S.Boolean.pipe(T.Body("filter_attack_traffic"))),
         })
@@ -1170,9 +917,9 @@ function __c0(j: number): any {
           datasetId: S.String.pipe(T.Body("dataset_id")),
           deletionProtection: S.Boolean.pipe(T.Body("deletion_protection")),
           enabled: S.Boolean,
-          fields: LogExplorerDatasetsCreateResponseFieldsList,
+          fields: __S(5, __c0, 5),
           objectId: S.String.pipe(T.Body("object_id")),
-          objectType: LogExplorerDatasetsCreateResponseObjectType.pipe(T.Body("object_type")),
+          objectType: S.String.pipe(T.Body("object_type")),
           updatedAt: S.String.pipe(T.Body("updated_at")),
           filter: S.optional(S.NullOr(S.String)),
           filterAttackTraffic: S.optional(
@@ -1191,7 +938,7 @@ function __c1(j: number): any {
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           dataset: S.String,
-          fields: S.optional(LogExplorerDatasetsCreateRequestFieldsList),
+          fields: S.optional(__S(5, __c0, 5)),
           filter: S.optional(S.String),
           filterAttackTraffic: S.optional(S.Boolean.pipe(T.Body("filter_attack_traffic"))),
         })
@@ -1281,9 +1028,9 @@ function __c1(j: number): any {
           datasetId: S.String.pipe(T.Body("dataset_id")),
           deletionProtection: S.Boolean.pipe(T.Body("deletion_protection")),
           enabled: S.Boolean,
-          fields: LogExplorerDatasetsGetResponseFieldsList,
+          fields: __S(5, __c0, 5),
           objectId: S.String.pipe(T.Body("object_id")),
-          objectType: LogExplorerDatasetsGetResponseObjectType.pipe(T.Body("object_type")),
+          objectType: S.String.pipe(T.Body("object_type")),
           updatedAt: S.String.pipe(T.Body("updated_at")),
           filter: S.optional(S.NullOr(S.String)),
           filterAttackTraffic: S.optional(
@@ -1320,7 +1067,7 @@ function __c2(j: number): any {
           zoneId: S.String.pipe(T.Label("zone_id")),
           rayId: S.String.pipe(T.Label("ray_id")),
           fields: S.optional(S.String.pipe(T.Query())),
-          timestamps: S.optional(RayidGetRequestTimestamps.pipe(T.Query())),
+          timestamps: S.optional(S.String.pipe(T.Query())),
         })
           .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/logs/rayids/{ray_id}", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -1338,7 +1085,7 @@ function __c2(j: number): any {
           fields: S.optional(S.String.pipe(T.Query())),
           sample: S.optional(S.Number.pipe(T.Query())),
           start: S.optional(S.String.pipe(T.Query())),
-          timestamps: S.optional(ReceivedGetRequestTimestamps.pipe(T.Query())),
+          timestamps: S.optional(S.String.pipe(T.Query())),
         })
           .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/logs/received", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -1384,13 +1131,9 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(
-            S.NullOr(LogExplorerDatasetsAvailableListResultItemSchemaPropertiesMap),
-          ),
-          required: S.optional(
-            S.NullOr(LogExplorerDatasetsAvailableListResultItemSchemaRequiredList),
-          ),
-          type: S.optional(S.NullOr(LogExplorerDatasetsAvailableListResultItemSchemaType)),
+          properties: S.optional(S.NullOr(__S(22, __c2, 6))),
+          required: S.optional(S.NullOr(__S(23, __c2, 7))),
+          type: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "LogExplorerDatasetsAvailableListResultItemSchema",
@@ -1399,21 +1142,19 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           dataset: S.String,
-          objectType: LogExplorerDatasetsAvailableListResultItemObjectType.pipe(
-            T.Body("object_type"),
-          ),
-          schema: LogExplorerDatasetsAvailableListResultItemSchema,
+          objectType: S.String.pipe(T.Body("object_type")),
+          schema: __S(24, __c3, 0),
           timestampField: S.String.pipe(T.Body("timestamp_field")),
         }),
       ).annotate({
         identifier: "LogExplorerDatasetsAvailableListResultItem",
       });
     case 2:
-      return S.Array(LogExplorerDatasetsAvailableListResultItem);
+      return S.Array(__S(25, __c3, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: LogExplorerDatasetsAvailableListResultList.pipe(T.EnvelopePayload()),
+          result: __S(26, __c3, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -1461,14 +1202,14 @@ function __c3(j: number): any {
           deletionProtection: S.Boolean.pipe(T.Body("deletion_protection")),
           enabled: S.Boolean,
           objectId: S.String.pipe(T.Body("object_id")),
-          objectType: LogExplorerDatasetsListResultItemObjectType.pipe(T.Body("object_type")),
+          objectType: S.String.pipe(T.Body("object_type")),
           updatedAt: S.String.pipe(T.Body("updated_at")),
         }),
       ).annotate({
         identifier: "LogExplorerDatasetsListResultItem",
       });
     case 7:
-      return S.Array(LogExplorerDatasetsListResultItem);
+      return S.Array(__S(30, __c3, 6));
   }
 }
 function __c4(j: number): any {
@@ -1476,7 +1217,7 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          result: LogExplorerDatasetsListResultList.pipe(T.EnvelopePayload()),
+          result: __S(31, __c3, 7).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -1520,9 +1261,9 @@ function __c4(j: number): any {
           datasetId: S.String.pipe(T.Body("dataset_id")),
           deletionProtection: S.Boolean.pipe(T.Body("deletion_protection")),
           enabled: S.Boolean,
-          fields: LogExplorerDatasetsDeleteResponseFieldsList,
+          fields: __S(5, __c0, 5),
           objectId: S.String.pipe(T.Body("object_id")),
-          objectType: LogExplorerDatasetsDeleteResponseObjectType.pipe(T.Body("object_type")),
+          objectType: S.String.pipe(T.Body("object_type")),
           updatedAt: S.String.pipe(T.Body("updated_at")),
           filter: S.optional(S.NullOr(S.String)),
           filterAttackTraffic: S.optional(
@@ -1566,11 +1307,11 @@ function __c4(j: number): any {
         identifier: "SqlLogExplorerQueryForAccountRequest",
       });
     case 6:
-      return S.Array(LogExplorerQuerySqlResultItemMap);
+      return S.Array(__S(22, __c2, 6));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          result: LogExplorerQuerySqlResultList.pipe(T.EnvelopePayload()),
+          result: __S(38, __c4, 6).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -1599,7 +1340,7 @@ function __c5(j: number): any {
           datasetId: S.String.pipe(T.Label("dataset_id")),
           enabled: S.Boolean,
           deletionProtection: S.optional(S.Boolean.pipe(T.Body("deletion_protection"))),
-          fields: S.optional(LogExplorerDatasetsUpdateRequestFieldsList),
+          fields: S.optional(__S(5, __c0, 5)),
           filter: S.optional(S.String),
           filterAttackTraffic: S.optional(S.Boolean.pipe(T.Body("filter_attack_traffic"))),
         })
@@ -1622,9 +1363,9 @@ function __c5(j: number): any {
           datasetId: S.String.pipe(T.Body("dataset_id")),
           deletionProtection: S.Boolean.pipe(T.Body("deletion_protection")),
           enabled: S.Boolean,
-          fields: LogExplorerDatasetsUpdateResponseFieldsList,
+          fields: __S(5, __c0, 5),
           objectId: S.String.pipe(T.Body("object_id")),
-          objectType: LogExplorerDatasetsUpdateResponseObjectType.pipe(T.Body("object_type")),
+          objectType: S.String.pipe(T.Body("object_type")),
           updatedAt: S.String.pipe(T.Body("updated_at")),
           filter: S.optional(S.NullOr(S.String)),
           filterAttackTraffic: S.optional(
@@ -1641,7 +1382,7 @@ function __c5(j: number): any {
           datasetId: S.String.pipe(T.Label("dataset_id")),
           enabled: S.Boolean,
           deletionProtection: S.optional(S.Boolean.pipe(T.Body("deletion_protection"))),
-          fields: S.optional(LogExplorerDatasetsUpdateRequestFieldsList),
+          fields: S.optional(__S(5, __c0, 5)),
           filter: S.optional(S.String),
           filterAttackTraffic: S.optional(S.Boolean.pipe(T.Body("filter_attack_traffic"))),
         })
@@ -1657,4 +1398,9 @@ function __c5(j: number): any {
         identifier: "UpdateLogExplorerDatasetForZoneRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

@@ -12,6 +12,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -219,14 +221,10 @@ export class ValidationError
   ) {}
 
 export type CreateRequestType = "standard" | "enterprise";
-const CreateRequestType = S.String;
-
 export interface CreateRequestUnit {
   /** Tenant unit ID */
   id?: string;
 }
-const CreateRequestUnit = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CreateRequestUnit>;
-
 export interface CreateAccountRequest {
   idempotencyKey?: string;
   /** Account name */
@@ -237,33 +235,19 @@ export interface CreateAccountRequest {
   /** Information related to the tenant unit. Provide its ID and omit `standalone` to create the Account within an Organization. See https://developers.cloudflare.com/tenant/how-to/manage-accounts/. */
   unit?: CreateRequestUnit;
 }
-const CreateAccountRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CreateAccountRequest>;
-
 export type CreateResponseType = "standard" | "enterprise";
-const CreateResponseType = S.String;
-
 export interface CreateResponseManagedBy {
   /** ID of the parent Organization, if one exists */
   parentOrgId?: string | null;
   /** Name of the parent Organization, if one exists */
   parentOrgName?: string | null;
 }
-const CreateResponseManagedBy = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateResponseManagedBy>;
-
 export interface CreateResponseSettings {
   /** Sets an abuse contact email to notify for abuse reports. */
   abuseContactEmail?: string | null;
   /** Indicates whether membership in this account requires that Two-Factor Authentication is enabled */
   enforceTwofactor?: boolean | null;
 }
-const CreateResponseSettings = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateResponseSettings>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateAccountResponse {
   /** Identifier */
@@ -278,86 +262,39 @@ export interface CreateAccountResponse {
   /** Account settings */
   settings?: CreateResponseSettings | null;
 }
-const CreateAccountResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateAccountResponse>;
-
 export interface CreateAccountOrganizationRequest {
   accountId: string;
   /** The ID of the organization to move the account into. */
   destinationOrganizationId: string;
 }
-const CreateAccountOrganizationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateAccountOrganizationRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateAccountOrganizationResponse {
   accountId: string;
   destinationOrganizationId: string;
   sourceOrganizationId: string;
 }
-const CreateAccountOrganizationResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateAccountOrganizationResponse>;
-
 export interface CreateClientSecretRequest {
   /** Identifier */
   accountId: string;
 }
-const CreateClientSecretRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateClientSecretRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateClientSecretResponse {
   /** The Stripe client secret for frontend payment confirmation. */
   clientSecret?: string | null;
 }
-const CreateClientSecretResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateClientSecretResponse>;
-
 export type MembersCreateRequestRolesList = Array<string>;
-const MembersCreateRequestRolesList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<MembersCreateRequestRolesList>;
-
 export type MembersCreateRequestStatus = "accepted" | "pending";
-const MembersCreateRequestStatus = S.String;
-
 export type MembersCreateRequestPoliciesItemAccess = "allow" | "deny";
-const MembersCreateRequestPoliciesItemAccess = S.String;
-
 export interface MembersCreateRequestPoliciesItemPermissionGroupsItem {
   /** Identifier of the group. */
   id: string;
 }
-const MembersCreateRequestPoliciesItemPermissionGroupsItem = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<MembersCreateRequestPoliciesItemPermissionGroupsItem>;
-
 export type MembersCreateRequestPoliciesItemPermissionGroupsList =
   Array<MembersCreateRequestPoliciesItemPermissionGroupsItem>;
-const MembersCreateRequestPoliciesItemPermissionGroupsList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<MembersCreateRequestPoliciesItemPermissionGroupsList>;
-
 export type MembersCreateRequestPoliciesItemResourceGroupsItem =
   MembersCreateRequestPoliciesItemPermissionGroupsItem;
 export type MembersCreateRequestPoliciesItemResourceGroupsList =
   Array<MembersCreateRequestPoliciesItemPermissionGroupsItem>;
-const MembersCreateRequestPoliciesItemResourceGroupsList =
-  MembersCreateRequestPoliciesItemPermissionGroupsList as any as S.Schema<MembersCreateRequestPoliciesItemResourceGroupsList>;
-
 export interface MembersCreateRequestPoliciesItem {
   /** Allow or deny operations against the resources. */
   access: MembersCreateRequestPoliciesItemAccess | (string & {});
@@ -366,17 +303,7 @@ export interface MembersCreateRequestPoliciesItem {
   /** A list of resource groups that the policy applies to. */
   resourceGroups: MembersCreateRequestPoliciesItemResourceGroupsList;
 }
-const MembersCreateRequestPoliciesItem = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<MembersCreateRequestPoliciesItem>;
-
 export type MembersCreateRequestPoliciesList = Array<MembersCreateRequestPoliciesItem>;
-const MembersCreateRequestPoliciesList = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<MembersCreateRequestPoliciesList>;
-
 export interface CreateMemberRequest {
   /** Account identifier tag. */
   accountId: string;
@@ -389,11 +316,7 @@ export interface CreateMemberRequest {
   /** Array of policies associated with this member. */
   policies?: MembersCreateRequestPoliciesList;
 }
-const CreateMemberRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<CreateMemberRequest>;
-
 export type MembersCreateResponsePoliciesItemAccess = "allow" | "deny";
-const MembersCreateResponsePoliciesItemAccess = S.String;
-
 export interface MembersCreateResponsePoliciesItemPermissionGroupsItemMeta {
   /** A category used to group permission groups. */
   category?: string | null;
@@ -412,11 +335,6 @@ export interface MembersCreateResponsePoliciesItemPermissionGroupsItemMeta {
   /** Indicates the permission group's availability or visibility. */
   visibility?: string | null;
 }
-const MembersCreateResponsePoliciesItemPermissionGroupsItemMeta = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<MembersCreateResponsePoliciesItemPermissionGroupsItemMeta>;
-
 export interface MembersCreateResponsePoliciesItemPermissionGroupsItem {
   /** Identifier of the permission group. */
   id: string;
@@ -425,54 +343,24 @@ export interface MembersCreateResponsePoliciesItemPermissionGroupsItem {
   /** Name of the permission group. */
   name?: string | null;
 }
-const MembersCreateResponsePoliciesItemPermissionGroupsItem = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<MembersCreateResponsePoliciesItemPermissionGroupsItem>;
-
 export type MembersCreateResponsePoliciesItemPermissionGroupsList =
   Array<MembersCreateResponsePoliciesItemPermissionGroupsItem>;
-const MembersCreateResponsePoliciesItemPermissionGroupsList = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<MembersCreateResponsePoliciesItemPermissionGroupsList>;
-
 export interface MembersCreateResponsePoliciesItemResourceGroupsItemScopeObjectsItem {
   /** This is a combination of pre-defined resource name and identifier (like Zone ID etc.) */
   key: string;
 }
-const MembersCreateResponsePoliciesItemResourceGroupsItemScopeObjectsItem = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<MembersCreateResponsePoliciesItemResourceGroupsItemScopeObjectsItem>;
-
 export type MembersCreateResponsePoliciesItemResourceGroupsItemScopeObjectsList =
   Array<MembersCreateResponsePoliciesItemResourceGroupsItemScopeObjectsItem>;
-const MembersCreateResponsePoliciesItemResourceGroupsItemScopeObjectsList = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<MembersCreateResponsePoliciesItemResourceGroupsItemScopeObjectsList>;
-
 export interface MembersCreateResponsePoliciesItemResourceGroupsItemScope {
   /** This is a combination of pre-defined resource name and identifier (like Account ID etc.) */
   key: string;
   /** A list of scope objects for additional context. */
   objects: MembersCreateResponsePoliciesItemResourceGroupsItemScopeObjectsList;
 }
-const MembersCreateResponsePoliciesItemResourceGroupsItemScope = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<MembersCreateResponsePoliciesItemResourceGroupsItemScope>;
-
 export interface MembersCreateResponsePoliciesItemResourceGroupsItemMeta {
   key?: string | null;
   value?: string | null;
 }
-const MembersCreateResponsePoliciesItemResourceGroupsItemMeta = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<MembersCreateResponsePoliciesItemResourceGroupsItemMeta>;
-
 export interface MembersCreateResponsePoliciesItemResourceGroupsItem {
   /** Identifier of the resource group. */
   id: string;
@@ -483,18 +371,8 @@ export interface MembersCreateResponsePoliciesItemResourceGroupsItem {
   /** Name of the resource group. */
   name?: string | null;
 }
-const MembersCreateResponsePoliciesItemResourceGroupsItem = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<MembersCreateResponsePoliciesItemResourceGroupsItem>;
-
 export type MembersCreateResponsePoliciesItemResourceGroupsList =
   Array<MembersCreateResponsePoliciesItemResourceGroupsItem>;
-const MembersCreateResponsePoliciesItemResourceGroupsList = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<MembersCreateResponsePoliciesItemResourceGroupsList>;
-
 export interface MembersCreateResponsePoliciesItem {
   /** Policy identifier. */
   id?: string | null;
@@ -505,26 +383,11 @@ export interface MembersCreateResponsePoliciesItem {
   /** A list of resource groups that the policy applies to. */
   resourceGroups?: MembersCreateResponsePoliciesItemResourceGroupsList | null;
 }
-const MembersCreateResponsePoliciesItem = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<MembersCreateResponsePoliciesItem>;
-
 export type MembersCreateResponsePoliciesList = Array<MembersCreateResponsePoliciesItem>;
-const MembersCreateResponsePoliciesList = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<MembersCreateResponsePoliciesList>;
-
 export interface MembersCreateResponseRolesItemPermissionsAnalytics {
   read?: boolean | null;
   write?: boolean | null;
 }
-const MembersCreateResponseRolesItemPermissionsAnalytics = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<MembersCreateResponseRolesItemPermissionsAnalytics>;
-
 export type MembersCreateResponseRolesItemPermissionsBilling =
   MembersCreateResponseRolesItemPermissionsAnalytics;
 export type MembersCreateResponseRolesItemPermissionsCachePurge =
@@ -561,11 +424,6 @@ export interface MembersCreateResponseRolesItemPermissions {
   zoneSettings?: MembersCreateResponseRolesItemPermissionsAnalytics | null;
   zones?: MembersCreateResponseRolesItemPermissionsAnalytics | null;
 }
-const MembersCreateResponseRolesItemPermissions = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<MembersCreateResponseRolesItemPermissions>;
-
 export interface MembersCreateResponseRolesItem {
   /** Role identifier tag. */
   id: string;
@@ -575,20 +433,8 @@ export interface MembersCreateResponseRolesItem {
   name: string;
   permissions: MembersCreateResponseRolesItemPermissions;
 }
-const MembersCreateResponseRolesItem = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<MembersCreateResponseRolesItem>;
-
 export type MembersCreateResponseRolesList = Array<MembersCreateResponseRolesItem>;
-const MembersCreateResponseRolesList = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<MembersCreateResponseRolesList>;
-
 export type MembersCreateResponseStatus = "accepted" | "pending";
-const MembersCreateResponseStatus = S.String;
-
 export interface MembersCreateResponseUser {
   /** The contact email address of the user. */
   email: string;
@@ -601,11 +447,6 @@ export interface MembersCreateResponseUser {
   /** Indicates whether two-factor authentication is enabled for the user account. Does not apply to API authentication. */
   twoFactorAuthenticationEnabled?: boolean | null;
 }
-const MembersCreateResponseUser = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<MembersCreateResponseUser>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateMemberResponse {
   /** Membership identifier tag. */
@@ -621,29 +462,17 @@ export interface CreateMemberResponse {
   /** Details of the user associated to the membership. */
   user?: MembersCreateResponseUser | null;
 }
-const CreateMemberResponse = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<CreateMemberResponse>;
-
 export interface CreatePayBadDebtRequest {
   /** Identifier */
   accountId: string;
   /** The payment method to use. If omitted, the default payment method is used. */
   paymentMethodId?: string;
 }
-const CreatePayBadDebtRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<CreatePayBadDebtRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreatePayBadDebtResponse {
   /** The Stripe client secret for frontend payment confirmation. */
   clientSecret?: string | null;
 }
-const CreatePayBadDebtResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<CreatePayBadDebtResponse>;
-
 export interface CreatePayInvoiceRequest {
   /** Identifier */
   accountId: string;
@@ -654,19 +483,11 @@ export interface CreatePayInvoiceRequest {
   /** Whether to validate the payment method before processing. */
   validatePaymentMethod?: boolean;
 }
-const CreatePayInvoiceRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<CreatePayInvoiceRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreatePayInvoiceResponse {
   /** The Stripe client secret for frontend payment confirmation. */
   clientSecret?: string | null;
 }
-const CreatePayInvoiceResponse =
-  CreatePayBadDebtResponse as any as S.Schema<CreatePayInvoiceResponse>;
-
 export type CreatePaymentMethodRequestType =
   | "CREDIT_CARD"
   | "PAYPAL"
@@ -674,8 +495,6 @@ export type CreatePaymentMethodRequestType =
   | "SEPA_DEBIT"
   | "LINK"
   | "ACH_DIRECT_DEBIT";
-const CreatePaymentMethodRequestType = S.String;
-
 export interface CreatePaymentMethodRequest {
   /** Identifier */
   accountId: string;
@@ -724,11 +543,6 @@ export interface CreatePaymentMethodRequest {
   /** Billing zip code. */
   zipcode?: string;
 }
-const CreatePaymentMethodRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<CreatePaymentMethodRequest>;
-
 export type CreatePaymentMethodResponseType =
   | "CREDIT_CARD"
   | "PAYPAL"
@@ -736,8 +550,6 @@ export type CreatePaymentMethodResponseType =
   | "SEPA_DEBIT"
   | "LINK"
   | "ACH_DIRECT_DEBIT";
-const CreatePaymentMethodResponseType = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreatePaymentMethodResponse {
   /** Payment method identifier. */
@@ -791,14 +603,7 @@ export interface CreatePaymentMethodResponse {
   /** Billing zip code. */
   zipcode?: string | null;
 }
-const CreatePaymentMethodResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<CreatePaymentMethodResponse>;
-
 export type SubscriptionsCreateRequestFrequency = "weekly" | "monthly" | "quarterly" | "yearly";
-const SubscriptionsCreateRequestFrequency = S.String;
-
 export type SubscriptionsCreateRequestRatePlanId =
   | "free"
   | "lite"
@@ -810,12 +615,7 @@ export type SubscriptionsCreateRequestRatePlanId =
   | "partners_pro"
   | "partners_business"
   | "partners_enterprise";
-const SubscriptionsCreateRequestRatePlanId = S.String;
-
 export type SubscriptionsCreateRequestRatePlanSetsList = Array<string>;
-const SubscriptionsCreateRequestRatePlanSetsList =
-  MembersCreateRequestRolesList as any as S.Schema<SubscriptionsCreateRequestRatePlanSetsList>;
-
 export interface SubscriptionsCreateRequestRatePlan {
   /** The ID of the rate plan. */
   id?: SubscriptionsCreateRequestRatePlanId | (string & {});
@@ -832,11 +632,6 @@ export interface SubscriptionsCreateRequestRatePlan {
   /** The list of sets this rate plan applies to. Returns array of strings. */
   sets?: SubscriptionsCreateRequestRatePlanSetsList;
 }
-const SubscriptionsCreateRequestRatePlan = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<SubscriptionsCreateRequestRatePlan>;
-
 export interface CreateSubscriptionRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
@@ -845,14 +640,7 @@ export interface CreateSubscriptionRequest {
   /** The rate plan applied to the subscription. */
   ratePlan?: SubscriptionsCreateRequestRatePlan;
 }
-const CreateSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<CreateSubscriptionRequest>;
-
 export type SubscriptionsCreateResponseFrequency = "weekly" | "monthly" | "quarterly" | "yearly";
-const SubscriptionsCreateResponseFrequency = S.String;
-
 export type SubscriptionsCreateResponseRatePlanId =
   | "free"
   | "lite"
@@ -864,12 +652,7 @@ export type SubscriptionsCreateResponseRatePlanId =
   | "partners_pro"
   | "partners_business"
   | "partners_enterprise";
-const SubscriptionsCreateResponseRatePlanId = S.String;
-
 export type SubscriptionsCreateResponseRatePlanSetsList = Array<string>;
-const SubscriptionsCreateResponseRatePlanSetsList =
-  MembersCreateRequestRolesList as any as S.Schema<SubscriptionsCreateResponseRatePlanSetsList>;
-
 export interface SubscriptionsCreateResponseRatePlan {
   /** The ID of the rate plan. */
   id?: SubscriptionsCreateResponseRatePlanId | null;
@@ -886,11 +669,6 @@ export interface SubscriptionsCreateResponseRatePlan {
   /** The list of sets this rate plan applies to. Returns array of strings. */
   sets?: SubscriptionsCreateResponseRatePlanSetsList | null;
 }
-const SubscriptionsCreateResponseRatePlan = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<SubscriptionsCreateResponseRatePlan>;
-
 export type SubscriptionsCreateResponseState =
   | "Trial"
   | "Provisioned"
@@ -899,8 +677,6 @@ export type SubscriptionsCreateResponseState =
   | "Cancelled"
   | "Failed"
   | "Expired";
-const SubscriptionsCreateResponseState = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateSubscriptionResponse {
   /** Subscription identifier tag. */
@@ -920,14 +696,7 @@ export interface CreateSubscriptionResponse {
   /** The state that the subscription is in. */
   state?: SubscriptionsCreateResponseState | null;
 }
-const CreateSubscriptionResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<CreateSubscriptionResponse>;
-
 export type TokensCreateRequestPoliciesItemEffect = "allow" | "deny";
-const TokensCreateRequestPoliciesItemEffect = S.String;
-
 export interface TokensCreateRequestPoliciesItemPermissionGroupsItemMeta {
   /** A category used to group permission groups. */
   category?: string;
@@ -946,11 +715,6 @@ export interface TokensCreateRequestPoliciesItemPermissionGroupsItemMeta {
   /** Indicates the permission group's availability or visibility. */
   visibility?: string;
 }
-const TokensCreateRequestPoliciesItemPermissionGroupsItemMeta = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<TokensCreateRequestPoliciesItemPermissionGroupsItemMeta>;
-
 export interface TokensCreateRequestPoliciesItemPermissionGroupsItem {
   /** Identifier of the permission group. */
   id: string;
@@ -959,34 +723,17 @@ export interface TokensCreateRequestPoliciesItemPermissionGroupsItem {
   /** Name of the permission group. */
   name?: string;
 }
-const TokensCreateRequestPoliciesItemPermissionGroupsItem = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<TokensCreateRequestPoliciesItemPermissionGroupsItem>;
-
 export type TokensCreateRequestPoliciesItemPermissionGroupsList =
   Array<TokensCreateRequestPoliciesItemPermissionGroupsItem>;
-const TokensCreateRequestPoliciesItemPermissionGroupsList = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<TokensCreateRequestPoliciesItemPermissionGroupsList>;
-
 export type TokensCreateRequestPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap = {
   [key: string]: string | undefined;
 };
 export type TokensCreateRequestPoliciesItemResourcesValue =
   | string
   | TokensCreateRequestPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap;
-const TokensCreateRequestPoliciesItemResourcesValue = /*@__PURE__*/ __L.at(__c5, 4);
-
 export type TokensCreateRequestPoliciesItemResourcesMap = {
   [key: string]: TokensCreateRequestPoliciesItemResourcesValue | undefined;
 };
-const TokensCreateRequestPoliciesItemResourcesMap = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<TokensCreateRequestPoliciesItemResourcesMap>;
-
 export interface TokensCreateRequestPoliciesItem {
   /** Allow or deny operations against the resources. */
   effect: TokensCreateRequestPoliciesItemEffect | (string & {});
@@ -995,45 +742,19 @@ export interface TokensCreateRequestPoliciesItem {
   /** A list of resource names that the policy applies to. */
   resources: TokensCreateRequestPoliciesItemResourcesMap;
 }
-const TokensCreateRequestPoliciesItem = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<TokensCreateRequestPoliciesItem>;
-
 export type TokensCreateRequestPoliciesList = Array<TokensCreateRequestPoliciesItem>;
-const TokensCreateRequestPoliciesList = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<TokensCreateRequestPoliciesList>;
-
 export type TokensCreateRequestConditionRequestIpInList = Array<string>;
-const TokensCreateRequestConditionRequestIpInList =
-  MembersCreateRequestRolesList as any as S.Schema<TokensCreateRequestConditionRequestIpInList>;
-
 export type TokensCreateRequestConditionRequestIpNotInList = Array<string>;
-const TokensCreateRequestConditionRequestIpNotInList =
-  MembersCreateRequestRolesList as any as S.Schema<TokensCreateRequestConditionRequestIpNotInList>;
-
 export interface TokensCreateRequestConditionRequestIp {
   /** List of IPv4/IPv6 CIDR addresses. */
   in?: TokensCreateRequestConditionRequestIpInList;
   /** List of IPv4/IPv6 CIDR addresses. */
   notIn?: TokensCreateRequestConditionRequestIpNotInList;
 }
-const TokensCreateRequestConditionRequestIp = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<TokensCreateRequestConditionRequestIp>;
-
 export interface TokensCreateRequestCondition {
   /** Client IP restrictions. */
   requestIp?: TokensCreateRequestConditionRequestIp;
 }
-const TokensCreateRequestCondition = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<TokensCreateRequestCondition>;
-
 export interface CreateTokenRequest {
   /** Account identifier tag. */
   accountId: string;
@@ -1047,64 +768,34 @@ export interface CreateTokenRequest {
   /** The time before which the token MUST NOT be accepted for processing. */
   notBefore?: string;
 }
-const CreateTokenRequest = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<CreateTokenRequest>;
-
 export type TokensCreateResponseConditionRequestIpInList = Array<string>;
-const TokensCreateResponseConditionRequestIpInList =
-  MembersCreateRequestRolesList as any as S.Schema<TokensCreateResponseConditionRequestIpInList>;
-
 export type TokensCreateResponseConditionRequestIpNotInList = Array<string>;
-const TokensCreateResponseConditionRequestIpNotInList =
-  MembersCreateRequestRolesList as any as S.Schema<TokensCreateResponseConditionRequestIpNotInList>;
-
 export interface TokensCreateResponseConditionRequestIp {
   /** List of IPv4/IPv6 CIDR addresses. */
   in?: TokensCreateResponseConditionRequestIpInList | null;
   /** List of IPv4/IPv6 CIDR addresses. */
   notIn?: TokensCreateResponseConditionRequestIpNotInList | null;
 }
-const TokensCreateResponseConditionRequestIp = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<TokensCreateResponseConditionRequestIp>;
-
 export interface TokensCreateResponseCondition {
   /** Client IP restrictions. */
   requestIp?: TokensCreateResponseConditionRequestIp | null;
 }
-const TokensCreateResponseCondition = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<TokensCreateResponseCondition>;
-
 export type TokensCreateResponsePoliciesItemEffect = "allow" | "deny";
-const TokensCreateResponsePoliciesItemEffect = S.String;
-
 export type TokensCreateResponsePoliciesItemPermissionGroupsItemMeta =
   MembersCreateResponsePoliciesItemPermissionGroupsItemMeta;
 export type TokensCreateResponsePoliciesItemPermissionGroupsItem =
   MembersCreateResponsePoliciesItemPermissionGroupsItem;
 export type TokensCreateResponsePoliciesItemPermissionGroupsList =
   Array<MembersCreateResponsePoliciesItemPermissionGroupsItem>;
-const TokensCreateResponsePoliciesItemPermissionGroupsList =
-  MembersCreateResponsePoliciesItemPermissionGroupsList as any as S.Schema<TokensCreateResponsePoliciesItemPermissionGroupsList>;
-
 export type TokensCreateResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap = {
   [key: string]: string | undefined;
 };
 export type TokensCreateResponsePoliciesItemResourcesValue =
   | string
   | TokensCreateResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap;
-const TokensCreateResponsePoliciesItemResourcesValue = /*@__PURE__*/ __L.at(__c6, 5);
-
 export type TokensCreateResponsePoliciesItemResourcesMap = {
   [key: string]: TokensCreateResponsePoliciesItemResourcesValue | undefined;
 };
-const TokensCreateResponsePoliciesItemResourcesMap = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<TokensCreateResponsePoliciesItemResourcesMap>;
-
 export interface TokensCreateResponsePoliciesItem {
   /** Policy identifier. */
   id: string;
@@ -1115,20 +806,8 @@ export interface TokensCreateResponsePoliciesItem {
   /** A list of resource names that the policy applies to. */
   resources: TokensCreateResponsePoliciesItemResourcesMap;
 }
-const TokensCreateResponsePoliciesItem = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<TokensCreateResponsePoliciesItem>;
-
 export type TokensCreateResponsePoliciesList = Array<TokensCreateResponsePoliciesItem>;
-const TokensCreateResponsePoliciesList = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<TokensCreateResponsePoliciesList>;
-
 export type TokensCreateResponseStatus = "active" | "disabled" | "expired";
-const TokensCreateResponseStatus = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateTokenResponse {
   /** Token identifier tag. */
@@ -1159,109 +838,66 @@ export interface CreateTokenResponse {
   /** The token value. */
   value?: string | null;
 }
-const CreateTokenResponse = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<CreateTokenResponse>;
-
 export interface DeleteAccountRequest {
   /** The account ID of the account to be deleted */
   accountId: string;
 }
-const DeleteAccountRequest = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<DeleteAccountRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteAccountResponse {
   /** Identifier */
   id: string;
 }
-const DeleteAccountResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<DeleteAccountResponse>;
-
 export interface DeleteMemberRequest {
   /** Account identifier tag. */
   accountId: string;
   /** Membership identifier tag. */
   memberId: string;
 }
-const DeleteMemberRequest = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<DeleteMemberRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteMemberResponse {
   /** Identifier */
   id: string;
 }
-const DeleteMemberResponse = DeleteAccountResponse as any as S.Schema<DeleteMemberResponse>;
-
 export interface DeletePaymentMethodRequest {
   /** Identifier */
   accountId: string;
   /** Identifier */
   paymentMethodId: string;
 }
-const DeletePaymentMethodRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<DeletePaymentMethodRequest>;
-
 export type DeletePaymentMethodResponse = unknown;
-const DeletePaymentMethodResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<DeletePaymentMethodResponse>;
-
 export interface DeleteSubscriptionRequest {
   /** Identifier */
   accountId: string;
   /** Subscription identifier tag. */
   subscriptionIdentifier: string;
 }
-const DeleteSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<DeleteSubscriptionRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteSubscriptionResponse {
   /** Subscription identifier tag. */
   subscriptionId?: string | null;
 }
-const DeleteSubscriptionResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<DeleteSubscriptionResponse>;
-
 export interface DeleteTokenRequest {
   /** Account identifier tag. */
   accountId: string;
   /** Token identifier tag. */
   tokenId: string;
 }
-const DeleteTokenRequest = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<DeleteTokenRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteTokenResponse {
   /** Identifier */
   id: string;
 }
-const DeleteTokenResponse = DeleteAccountResponse as any as S.Schema<DeleteTokenResponse>;
-
 export interface EditInvoiceRequest {
   /** Identifier */
   accountId: string;
   /** Whether to enable or disable PDF invoice generation. */
   toggle?: boolean;
 }
-const EditInvoiceRequest = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<EditInvoiceRequest>;
-
 export type EditInvoiceResponse = unknown;
-const EditInvoiceResponse = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<EditInvoiceResponse>;
-
 export interface GetAccountRequest {
   /** Account identifier tag. */
   accountId: string;
 }
-const GetAccountRequest = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<GetAccountRequest>;
-
 export type GetResponseType = "standard" | "enterprise";
 export type GetResponseManagedBy = CreateResponseManagedBy;
 export type GetResponseSettings = CreateResponseSettings;
@@ -1279,16 +915,9 @@ export interface GetAccountResponse {
   /** Account settings */
   settings?: CreateResponseSettings | null;
 }
-const GetAccountResponse = CreateAccountResponse as any as S.Schema<GetAccountResponse>;
-
 export interface GetAccountProfileRequest {
   accountId: string;
 }
-const GetAccountProfileRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<GetAccountProfileRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetAccountProfileResponse {
   businessAddress: string;
@@ -1297,49 +926,29 @@ export interface GetAccountProfileResponse {
   businessPhone: string;
   externalMetadata: string;
 }
-const GetAccountProfileResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<GetAccountProfileResponse>;
-
 export interface GetMemberRequest {
   /** Account identifier tag. */
   accountId: string;
   /** Membership identifier tag. */
   memberId: string;
 }
-const GetMemberRequest = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<GetMemberRequest>;
-
 export type MembersGetResponsePoliciesItemAccess = "allow" | "deny";
-const MembersGetResponsePoliciesItemAccess = S.String;
-
 export type MembersGetResponsePoliciesItemPermissionGroupsItemMeta =
   MembersCreateResponsePoliciesItemPermissionGroupsItemMeta;
 export type MembersGetResponsePoliciesItemPermissionGroupsItem =
   MembersCreateResponsePoliciesItemPermissionGroupsItem;
 export type MembersGetResponsePoliciesItemPermissionGroupsList =
   Array<MembersCreateResponsePoliciesItemPermissionGroupsItem>;
-const MembersGetResponsePoliciesItemPermissionGroupsList =
-  MembersCreateResponsePoliciesItemPermissionGroupsList as any as S.Schema<MembersGetResponsePoliciesItemPermissionGroupsList>;
-
 export type MembersGetResponsePoliciesItemResourceGroupsItemScopeObjectsItem =
   MembersCreateResponsePoliciesItemResourceGroupsItemScopeObjectsItem;
 export type MembersGetResponsePoliciesItemResourceGroupsItemScopeObjectsList =
   Array<MembersCreateResponsePoliciesItemResourceGroupsItemScopeObjectsItem>;
-const MembersGetResponsePoliciesItemResourceGroupsItemScopeObjectsList =
-  MembersCreateResponsePoliciesItemResourceGroupsItemScopeObjectsList as any as S.Schema<MembersGetResponsePoliciesItemResourceGroupsItemScopeObjectsList>;
-
 export interface MembersGetResponsePoliciesItemResourceGroupsItemScope {
   /** This is a combination of pre-defined resource name and identifier (like Account ID etc.) */
   key: string;
   /** A list of scope objects for additional context. */
   objects: MembersGetResponsePoliciesItemResourceGroupsItemScopeObjectsList;
 }
-const MembersGetResponsePoliciesItemResourceGroupsItemScope = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<MembersGetResponsePoliciesItemResourceGroupsItemScope>;
-
 export type MembersGetResponsePoliciesItemResourceGroupsItemMeta =
   MembersCreateResponsePoliciesItemResourceGroupsItemMeta;
 export interface MembersGetResponsePoliciesItemResourceGroupsItem {
@@ -1352,18 +961,8 @@ export interface MembersGetResponsePoliciesItemResourceGroupsItem {
   /** Name of the resource group. */
   name?: string | null;
 }
-const MembersGetResponsePoliciesItemResourceGroupsItem = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<MembersGetResponsePoliciesItemResourceGroupsItem>;
-
 export type MembersGetResponsePoliciesItemResourceGroupsList =
   Array<MembersGetResponsePoliciesItemResourceGroupsItem>;
-const MembersGetResponsePoliciesItemResourceGroupsList = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<MembersGetResponsePoliciesItemResourceGroupsList>;
-
 export interface MembersGetResponsePoliciesItem {
   /** Policy identifier. */
   id?: string | null;
@@ -1374,17 +973,7 @@ export interface MembersGetResponsePoliciesItem {
   /** A list of resource groups that the policy applies to. */
   resourceGroups?: MembersGetResponsePoliciesItemResourceGroupsList | null;
 }
-const MembersGetResponsePoliciesItem = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<MembersGetResponsePoliciesItem>;
-
 export type MembersGetResponsePoliciesList = Array<MembersGetResponsePoliciesItem>;
-const MembersGetResponsePoliciesList = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<MembersGetResponsePoliciesList>;
-
 export type MembersGetResponseRolesItemPermissionsAnalytics =
   MembersCreateResponseRolesItemPermissionsAnalytics;
 export type MembersGetResponseRolesItemPermissionsBilling =
@@ -1412,12 +1001,7 @@ export type MembersGetResponseRolesItemPermissionsZones =
 export type MembersGetResponseRolesItemPermissions = MembersCreateResponseRolesItemPermissions;
 export type MembersGetResponseRolesItem = MembersCreateResponseRolesItem;
 export type MembersGetResponseRolesList = Array<MembersCreateResponseRolesItem>;
-const MembersGetResponseRolesList =
-  MembersCreateResponseRolesList as any as S.Schema<MembersGetResponseRolesList>;
-
 export type MembersGetResponseStatus = "accepted" | "pending";
-const MembersGetResponseStatus = S.String;
-
 export type MembersGetResponseUser = MembersCreateResponseUser;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetMemberResponse {
@@ -1434,19 +1018,12 @@ export interface GetMemberResponse {
   /** Details of the user associated to the membership. */
   user?: MembersCreateResponseUser | null;
 }
-const GetMemberResponse = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<GetMemberResponse>;
-
 export interface GetPaymentMethodRequest {
   /** Identifier */
   accountId: string;
   /** Identifier */
   paymentMethodId: string;
 }
-const GetPaymentMethodRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<GetPaymentMethodRequest>;
-
 export type GetPaymentMethodResponseType =
   | "CREDIT_CARD"
   | "PAYPAL"
@@ -1454,8 +1031,6 @@ export type GetPaymentMethodResponseType =
   | "SEPA_DEBIT"
   | "LINK"
   | "ACH_DIRECT_DEBIT";
-const GetPaymentMethodResponseType = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetPaymentMethodResponse {
   /** Payment method identifier. */
@@ -1509,19 +1084,12 @@ export interface GetPaymentMethodResponse {
   /** Billing zip code. */
   zipcode?: string | null;
 }
-const GetPaymentMethodResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<GetPaymentMethodResponse>;
-
 export interface GetRoleRequest {
   /** Account identifier tag. */
   accountId: string;
   /** Role identifier tag. */
   roleId: string;
 }
-const GetRoleRequest = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<GetRoleRequest>;
-
 export type RolesGetResponsePermissionsAnalytics =
   MembersCreateResponseRolesItemPermissionsAnalytics;
 export type RolesGetResponsePermissionsBilling = MembersCreateResponseRolesItemPermissionsAnalytics;
@@ -1550,17 +1118,10 @@ export interface GetRoleResponse {
   name: string;
   permissions: MembersCreateResponseRolesItemPermissions;
 }
-const GetRoleResponse = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<GetRoleResponse>;
-
 export interface GetSpeedSettingsTransformationRequest {
   /** Identifier. */
   accountId: string;
 }
-const GetSpeedSettingsTransformationRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<GetSpeedSettingsTransformationRequest>;
-
 export interface GetSpeedSettingsTransformationResultItem {
   /** Feature identifier. */
   id?: string | null;
@@ -1573,36 +1134,14 @@ export interface GetSpeedSettingsTransformationResultItem {
   /** Current value of the feature setting. */
   value?: string | null;
 }
-const GetSpeedSettingsTransformationResultItem = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<GetSpeedSettingsTransformationResultItem>;
-
 export type GetSpeedSettingsTransformationResultList =
   Array<GetSpeedSettingsTransformationResultItem>;
-const GetSpeedSettingsTransformationResultList = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<GetSpeedSettingsTransformationResultList>;
-
 export type GetSpeedSettingsTransformationResponse = GetSpeedSettingsTransformationResultList;
-const GetSpeedSettingsTransformationResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<GetSpeedSettingsTransformationResponse>;
-
 export interface GetSubscriptionRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
 }
-const GetSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<GetSubscriptionRequest>;
-
 export type SubscriptionsGetResultItemFrequency = "weekly" | "monthly" | "quarterly" | "yearly";
-const SubscriptionsGetResultItemFrequency = S.String;
-
 export type SubscriptionsGetResultItemRatePlanId =
   | "free"
   | "lite"
@@ -1614,12 +1153,7 @@ export type SubscriptionsGetResultItemRatePlanId =
   | "partners_pro"
   | "partners_business"
   | "partners_enterprise";
-const SubscriptionsGetResultItemRatePlanId = S.String;
-
 export type SubscriptionsGetResultItemRatePlanSetsList = Array<string>;
-const SubscriptionsGetResultItemRatePlanSetsList =
-  MembersCreateRequestRolesList as any as S.Schema<SubscriptionsGetResultItemRatePlanSetsList>;
-
 export interface SubscriptionsGetResultItemRatePlan {
   /** The ID of the rate plan. */
   id?: SubscriptionsGetResultItemRatePlanId | null;
@@ -1636,11 +1170,6 @@ export interface SubscriptionsGetResultItemRatePlan {
   /** The list of sets this rate plan applies to. Returns array of strings. */
   sets?: SubscriptionsGetResultItemRatePlanSetsList | null;
 }
-const SubscriptionsGetResultItemRatePlan = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<SubscriptionsGetResultItemRatePlan>;
-
 export type SubscriptionsGetResultItemState =
   | "Trial"
   | "Provisioned"
@@ -1649,8 +1178,6 @@ export type SubscriptionsGetResultItemState =
   | "Cancelled"
   | "Failed"
   | "Expired";
-const SubscriptionsGetResultItemState = S.String;
-
 export interface SubscriptionsGetResultItem {
   /** Subscription identifier tag. */
   id?: string | null;
@@ -1669,36 +1196,19 @@ export interface SubscriptionsGetResultItem {
   /** The state that the subscription is in. */
   state?: SubscriptionsGetResultItemState | null;
 }
-const SubscriptionsGetResultItem = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<SubscriptionsGetResultItem>;
-
 export type SubscriptionsGetResultList = Array<SubscriptionsGetResultItem>;
-const SubscriptionsGetResultList = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<SubscriptionsGetResultList>;
-
 export interface GetSubscriptionResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: SubscriptionsGetResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const GetSubscriptionResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<GetSubscriptionResponse>;
-
 export interface GetTokenRequest {
   /** Account identifier tag. */
   accountId: string;
   /** Token identifier tag. */
   tokenId: string;
 }
-const GetTokenRequest = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<GetTokenRequest>;
-
 export type TokensGetResponseConditionRequestIpInList = Array<string>;
 export type TokensGetResponseConditionRequestIpNotInList = Array<string>;
 export interface TokensGetResponseConditionRequestIp {
@@ -1707,46 +1217,26 @@ export interface TokensGetResponseConditionRequestIp {
   /** List of IPv4/IPv6 CIDR addresses. */
   notIn?: TokensGetResponseConditionRequestIpNotInList | null;
 }
-const TokensGetResponseConditionRequestIp =
-  TokensCreateResponseConditionRequestIp as any as S.Schema<TokensGetResponseConditionRequestIp>;
-
 export interface TokensGetResponseCondition {
   /** Client IP restrictions. */
   requestIp?: TokensGetResponseConditionRequestIp | null;
 }
-const TokensGetResponseCondition = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<TokensGetResponseCondition>;
-
 export type TokensGetResponsePoliciesItemEffect = "allow" | "deny";
-const TokensGetResponsePoliciesItemEffect = S.String;
-
 export type TokensGetResponsePoliciesItemPermissionGroupsItemMeta =
   MembersCreateResponsePoliciesItemPermissionGroupsItemMeta;
 export type TokensGetResponsePoliciesItemPermissionGroupsItem =
   MembersCreateResponsePoliciesItemPermissionGroupsItem;
 export type TokensGetResponsePoliciesItemPermissionGroupsList =
   Array<MembersCreateResponsePoliciesItemPermissionGroupsItem>;
-const TokensGetResponsePoliciesItemPermissionGroupsList =
-  MembersCreateResponsePoliciesItemPermissionGroupsList as any as S.Schema<TokensGetResponsePoliciesItemPermissionGroupsList>;
-
 export type TokensGetResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap = {
   [key: string]: string | undefined;
 };
 export type TokensGetResponsePoliciesItemResourcesValue =
   | string
   | TokensGetResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap;
-const TokensGetResponsePoliciesItemResourcesValue = /*@__PURE__*/ __L.at(__c11, 5);
-
 export type TokensGetResponsePoliciesItemResourcesMap = {
   [key: string]: TokensGetResponsePoliciesItemResourcesValue | undefined;
 };
-const TokensGetResponsePoliciesItemResourcesMap = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<TokensGetResponsePoliciesItemResourcesMap>;
-
 export interface TokensGetResponsePoliciesItem {
   /** Policy identifier. */
   id: string;
@@ -1757,20 +1247,8 @@ export interface TokensGetResponsePoliciesItem {
   /** A list of resource names that the policy applies to. */
   resources: TokensGetResponsePoliciesItemResourcesMap;
 }
-const TokensGetResponsePoliciesItem = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<TokensGetResponsePoliciesItem>;
-
 export type TokensGetResponsePoliciesList = Array<TokensGetResponsePoliciesItem>;
-const TokensGetResponsePoliciesList = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<TokensGetResponsePoliciesList>;
-
 export type TokensGetResponseStatus = "active" | "disabled" | "expired";
-const TokensGetResponseStatus = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetTokenResponse {
   /** Token identifier tag. */
@@ -1799,8 +1277,6 @@ export interface GetTokenResponse {
   /** Status of the token. */
   status?: TokensGetResponseStatus | null;
 }
-const GetTokenResponse = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<GetTokenResponse>;
-
 export interface GetTokenPermissionGroupRequest {
   /** Account identifier tag. */
   accountId: string;
@@ -1809,11 +1285,6 @@ export interface GetTokenPermissionGroupRequest {
   /** Filter by the scope of the permission group. The value must be URL-encoded. */
   scope?: string;
 }
-const GetTokenPermissionGroupRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<GetTokenPermissionGroupRequest>;
-
 export type TokensPermissionGroupsGetResultItemCategory =
   | "developer_platform"
   | "ai_and_machine_learning"
@@ -1828,22 +1299,13 @@ export type TokensPermissionGroupsGetResultItemCategory =
   | "cache_and_performance"
   | "account_and_billing"
   | "other";
-const TokensPermissionGroupsGetResultItemCategory = S.String;
-
 export type TokensPermissionGroupsGetResultItemScopesItem =
   | "com.cloudflare.api.account"
   | "com.cloudflare.api.account.zone"
   | "com.cloudflare.api.user"
   | "com.cloudflare.edge.r2.bucket";
-const TokensPermissionGroupsGetResultItemScopesItem = S.String;
-
 export type TokensPermissionGroupsGetResultItemScopesList =
   Array<TokensPermissionGroupsGetResultItemScopesItem>;
-const TokensPermissionGroupsGetResultItemScopesList = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<TokensPermissionGroupsGetResultItemScopesList>;
-
 export interface TokensPermissionGroupsGetResultItem {
   /** Public ID. */
   id?: string | null;
@@ -1856,26 +1318,9 @@ export interface TokensPermissionGroupsGetResultItem {
   /** Resources to which the Permission Group is scoped */
   scopes?: TokensPermissionGroupsGetResultItemScopesList | null;
 }
-const TokensPermissionGroupsGetResultItem = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<TokensPermissionGroupsGetResultItem>;
-
 export type TokensPermissionGroupsGetResultList = Array<TokensPermissionGroupsGetResultItem>;
-const TokensPermissionGroupsGetResultList = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<TokensPermissionGroupsGetResultList>;
-
 export type GetTokenPermissionGroupResponse = TokensPermissionGroupsGetResultList;
-const GetTokenPermissionGroupResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<GetTokenPermissionGroupResponse>;
-
 export type ListRequestDirection = "asc" | "desc";
-const ListRequestDirection = S.String;
-
 export interface ListAccountsRequest {
   /** Direction to order results. */
   direction?: ListRequestDirection | (string & {});
@@ -1886,11 +1331,7 @@ export interface ListAccountsRequest {
   /** Maximum number of results per page. */
   perPage?: number;
 }
-const ListAccountsRequest = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<ListAccountsRequest>;
-
 export type ListResultItemType = "standard" | "enterprise";
-const ListResultItemType = S.String;
-
 export type ListResultItemManagedBy = CreateResponseManagedBy;
 export type ListResultItemSettings = CreateResponseSettings;
 export interface ListResultItem {
@@ -1906,45 +1347,24 @@ export interface ListResultItem {
   /** Account settings */
   settings?: CreateResponseSettings | null;
 }
-const ListResultItem = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<ListResultItem>;
-
 export type ListResultList = Array<ListResultItem>;
-const ListResultList = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<ListResultList>;
-
 export interface ListAccountsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: ListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListAccountsResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<ListAccountsResponse>;
-
 export interface ListEntitlementsRequest {
   /** Identifier tag. */
   accountId: string;
 }
-const ListEntitlementsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<ListEntitlementsRequest>;
-
 export type ListEntitlementsResultItemAllocationType =
   | "bool"
   | "max_count"
   | "enum_number"
   | "range"
   | "string";
-const ListEntitlementsResultItemAllocationType = S.String;
-
 export type ListEntitlementsResultItemAllocationValueCase3List = Array<number>;
-const ListEntitlementsResultItemAllocationValueCase3List = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<ListEntitlementsResultItemAllocationValueCase3List>;
-
 export interface ListEntitlementsResultItemAllocationValueCase4 {
   max: number;
   min: number;
@@ -1955,19 +1375,12 @@ export type ListEntitlementsResultItemAllocationValue =
   | boolean
   | ListEntitlementsResultItemAllocationValueCase3List
   | ListEntitlementsResultItemAllocationValueCase4;
-const ListEntitlementsResultItemAllocationValue = /*@__PURE__*/ __L.at(__c13, 5);
-
 export interface ListEntitlementsResultItemAllocation {
   /** Allocation type discriminator. */
   type: ListEntitlementsResultItemAllocationType;
   /** Contains the allocation value whose concrete type the `type` field determines: bool yields a boolean, max_count yields an integer, enum_number yields an array of numbers, range yields an object with `min` and `max`, and string yields a string. */
   value: ListEntitlementsResultItemAllocationValue;
 }
-const ListEntitlementsResultItemAllocation = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<ListEntitlementsResultItemAllocation>;
-
 export interface ListEntitlementsResultItemFeature {
   /** Numeric identifier of the feature. */
   id: number;
@@ -1978,11 +1391,6 @@ export interface ListEntitlementsResultItemFeature {
   /** Human-readable name of the feature. */
   name: string;
 }
-const ListEntitlementsResultItemFeature = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<ListEntitlementsResultItemFeature>;
-
 export interface ListEntitlementsResultItem {
   /** Entitlement identifier -- equal to the feature key. */
   id: string;
@@ -1997,65 +1405,26 @@ export interface ListEntitlementsResultItem {
   /** Describes a product feature associated with an entitlement. */
   feature: ListEntitlementsResultItemFeature;
 }
-const ListEntitlementsResultItem = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<ListEntitlementsResultItem>;
-
 export type ListEntitlementsResultList = Array<ListEntitlementsResultItem>;
-const ListEntitlementsResultList = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<ListEntitlementsResultList>;
-
 export type ListEntitlementsResponse = ListEntitlementsResultList;
-const ListEntitlementsResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<ListEntitlementsResponse>;
-
 export type LogsAuditListRequestIdNotList = Array<string>;
-const LogsAuditListRequestIdNotList =
-  MembersCreateRequestRolesList as any as S.Schema<LogsAuditListRequestIdNotList>;
-
 export interface LogsAuditListRequestId {
   /** Filters out audit logs by their IDs. */
   not?: LogsAuditListRequestIdNotList;
 }
-const LogsAuditListRequestId = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<LogsAuditListRequestId>;
-
 export type LogsAuditListRequestAccountNameNotList = Array<string>;
-const LogsAuditListRequestAccountNameNotList =
-  MembersCreateRequestRolesList as any as S.Schema<LogsAuditListRequestAccountNameNotList>;
-
 export interface LogsAuditListRequestAccountName {
   /** Filters out audit logs by the account name. */
   not?: LogsAuditListRequestAccountNameNotList;
 }
-const LogsAuditListRequestAccountName = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<LogsAuditListRequestAccountName>;
-
 export type LogsAuditListRequestActionResultNotItem = "success" | "failure";
 export type LogsAuditListRequestActionResultNotList = Array<
   LogsAuditListRequestActionResultNotItem | (string & {})
 >;
-const LogsAuditListRequestActionResultNotList =
-  TokensPermissionGroupsGetResultItemScopesList as any as S.Schema<LogsAuditListRequestActionResultNotList>;
-
 export interface LogsAuditListRequestActionResult {
   /** Filters out audit logs by whether the action was successful or not. */
   not?: LogsAuditListRequestActionResultNotList;
 }
-const LogsAuditListRequestActionResult = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<LogsAuditListRequestActionResult>;
-
 export type LogsAuditListRequestActionTypeNotItem = "create" | "delete" | "view" | "update";
 export type LogsAuditListRequestActionTypeNotList = Array<
   LogsAuditListRequestActionTypeNotItem | (string & {})
@@ -2064,9 +1433,6 @@ export interface LogsAuditListRequestActionType {
   /** Filters out audit logs by the action type. */
   not?: LogsAuditListRequestActionTypeNotList;
 }
-const LogsAuditListRequestActionType =
-  LogsAuditListRequestActionResult as any as S.Schema<LogsAuditListRequestActionType>;
-
 export type LogsAuditListRequestActorContextNotItem =
   | "api"
   | "api_key"
@@ -2081,49 +1447,31 @@ export interface LogsAuditListRequestActorContext {
   /** Filters out audit logs by the actor context. */
   not?: LogsAuditListRequestActorContextNotList;
 }
-const LogsAuditListRequestActorContext =
-  LogsAuditListRequestActionResult as any as S.Schema<LogsAuditListRequestActorContext>;
-
 export type LogsAuditListRequestActorEmailNotList = Array<string>;
 export interface LogsAuditListRequestActorEmail {
   /** Filters out audit logs by the actor's email address. */
   not?: LogsAuditListRequestActorEmailNotList;
 }
-const LogsAuditListRequestActorEmail =
-  LogsAuditListRequestAccountName as any as S.Schema<LogsAuditListRequestActorEmail>;
-
 export type LogsAuditListRequestActorIdNotList = Array<string>;
 export interface LogsAuditListRequestActorId {
   /** Filters out audit logs by the actor ID. This can be either the Account ID or User ID. */
   not?: LogsAuditListRequestActorIdNotList;
 }
-const LogsAuditListRequestActorId =
-  LogsAuditListRequestAccountName as any as S.Schema<LogsAuditListRequestActorId>;
-
 export type LogsAuditListRequestActorIpAddressNotList = Array<string>;
 export interface LogsAuditListRequestActorIpAddress {
   /** Filters out audit logs IP address where the action was initiated. */
   not?: LogsAuditListRequestActorIpAddressNotList;
 }
-const LogsAuditListRequestActorIpAddress =
-  LogsAuditListRequestAccountName as any as S.Schema<LogsAuditListRequestActorIpAddress>;
-
 export type LogsAuditListRequestActorTokenIdNotList = Array<string>;
 export interface LogsAuditListRequestActorTokenId {
   /** Filters out audit logs by the API token ID when the actor context is an api_token or oauth. */
   not?: LogsAuditListRequestActorTokenIdNotList;
 }
-const LogsAuditListRequestActorTokenId =
-  LogsAuditListRequestAccountName as any as S.Schema<LogsAuditListRequestActorTokenId>;
-
 export type LogsAuditListRequestActorTokenNameNotList = Array<string>;
 export interface LogsAuditListRequestActorTokenName {
   /** Filters out audit logs by the API token name when the actor context is an api_token or oauth. */
   not?: LogsAuditListRequestActorTokenNameNotList;
 }
-const LogsAuditListRequestActorTokenName =
-  LogsAuditListRequestAccountName as any as S.Schema<LogsAuditListRequestActorTokenName>;
-
 export type LogsAuditListRequestActorTypeNotItem =
   | "account"
   | "cloudflare_admin"
@@ -2137,77 +1485,43 @@ export interface LogsAuditListRequestActorType {
   /** Filters out audit logs by the actor type. */
   not?: LogsAuditListRequestActorTypeNotList;
 }
-const LogsAuditListRequestActorType =
-  LogsAuditListRequestActionResult as any as S.Schema<LogsAuditListRequestActorType>;
-
 export type LogsAuditListRequestAuditLogIdNotList = Array<string>;
 export interface LogsAuditListRequestAuditLogId {
   /** Filters out audit logs by their IDs. */
   not?: LogsAuditListRequestAuditLogIdNotList;
 }
-const LogsAuditListRequestAuditLogId =
-  LogsAuditListRequestAccountName as any as S.Schema<LogsAuditListRequestAuditLogId>;
-
 export type LogsAuditListRequestDirection = "desc" | "asc";
-const LogsAuditListRequestDirection = S.String;
-
 export type LogsAuditListRequestProductCategoryList = Array<string>;
-const LogsAuditListRequestProductCategoryList =
-  MembersCreateRequestRolesList as any as S.Schema<LogsAuditListRequestProductCategoryList>;
-
 export type LogsAuditListRequestRawCfRayIdNotList = Array<string>;
 export interface LogsAuditListRequestRawCfRayId {
   /** Filters out audit logs by the response CF Ray ID. */
   not?: LogsAuditListRequestRawCfRayIdNotList;
 }
-const LogsAuditListRequestRawCfRayId =
-  LogsAuditListRequestAccountName as any as S.Schema<LogsAuditListRequestRawCfRayId>;
-
 export type LogsAuditListRequestRawMethodNotList = Array<string>;
 export interface LogsAuditListRequestRawMethod {
   /** Filters out audit logs by the HTTP method for the API call. */
   not?: LogsAuditListRequestRawMethodNotList;
 }
-const LogsAuditListRequestRawMethod =
-  LogsAuditListRequestAccountName as any as S.Schema<LogsAuditListRequestRawMethod>;
-
 export type LogsAuditListRequestRawStatusCodeNotList = Array<number>;
-const LogsAuditListRequestRawStatusCodeNotList =
-  ListEntitlementsResultItemAllocationValueCase3List as any as S.Schema<LogsAuditListRequestRawStatusCodeNotList>;
-
 export interface LogsAuditListRequestRawStatusCode {
   /** Filters out audit logs by the response status code that was returned. */
   not?: LogsAuditListRequestRawStatusCodeNotList;
 }
-const LogsAuditListRequestRawStatusCode = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<LogsAuditListRequestRawStatusCode>;
-
 export type LogsAuditListRequestRawUriNotList = Array<string>;
 export interface LogsAuditListRequestRawUri {
   /** Filters out audit logs by the request URI. */
   not?: LogsAuditListRequestRawUriNotList;
 }
-const LogsAuditListRequestRawUri =
-  LogsAuditListRequestAccountName as any as S.Schema<LogsAuditListRequestRawUri>;
-
 export type LogsAuditListRequestResourceIdNotList = Array<string>;
 export interface LogsAuditListRequestResourceId {
   /** Filters out audit logs by the resource ID. */
   not?: LogsAuditListRequestResourceIdNotList;
 }
-const LogsAuditListRequestResourceId =
-  LogsAuditListRequestAccountName as any as S.Schema<LogsAuditListRequestResourceId>;
-
 export type LogsAuditListRequestResourceProductNotList = Array<string>;
 export interface LogsAuditListRequestResourceProduct {
   /** Filters out audit logs by the Cloudflare product associated with the changed resource. */
   not?: LogsAuditListRequestResourceProductNotList;
 }
-const LogsAuditListRequestResourceProduct =
-  LogsAuditListRequestAccountName as any as S.Schema<LogsAuditListRequestResourceProduct>;
-
 export type LogsAuditListRequestResourceScopeNotItem =
   | "accounts"
   | "user"
@@ -2220,33 +1534,21 @@ export interface LogsAuditListRequestResourceScope {
   /** Filters out audit logs by the resource scope, specifying whether the resource is associated with an user, an account, a zone, or a membership. */
   not?: LogsAuditListRequestResourceScopeNotList;
 }
-const LogsAuditListRequestResourceScope =
-  LogsAuditListRequestActionResult as any as S.Schema<LogsAuditListRequestResourceScope>;
-
 export type LogsAuditListRequestResourceTypeNotList = Array<string>;
 export interface LogsAuditListRequestResourceType {
   /** Filters out audit logs based on the unique type of resource changed by the action. */
   not?: LogsAuditListRequestResourceTypeNotList;
 }
-const LogsAuditListRequestResourceType =
-  LogsAuditListRequestAccountName as any as S.Schema<LogsAuditListRequestResourceType>;
-
 export type LogsAuditListRequestZoneIdNotList = Array<string>;
 export interface LogsAuditListRequestZoneId {
   /** Filters out audit logs by the zone ID. */
   not?: LogsAuditListRequestZoneIdNotList;
 }
-const LogsAuditListRequestZoneId =
-  LogsAuditListRequestAccountName as any as S.Schema<LogsAuditListRequestZoneId>;
-
 export type LogsAuditListRequestZoneNameNotList = Array<string>;
 export interface LogsAuditListRequestZoneName {
   /** Filters out audit logs by the zone name associated with the change. */
   not?: LogsAuditListRequestZoneNameNotList;
 }
-const LogsAuditListRequestZoneName =
-  LogsAuditListRequestAccountName as any as S.Schema<LogsAuditListRequestZoneName>;
-
 export interface ListLogAuditsRequest {
   /** The unique id that identifies the account. */
   accountId: string;
@@ -2285,22 +1587,12 @@ export interface ListLogAuditsRequest {
   zoneId?: LogsAuditListRequestZoneId;
   zoneName?: LogsAuditListRequestZoneName;
 }
-const ListLogAuditsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<ListLogAuditsRequest>;
-
 export interface LogsAuditListResultItemAccount {
   /** A unique identifier for the account. */
   id?: string | null;
   /** A string that identifies the account name. */
   name?: string | null;
 }
-const LogsAuditListResultItemAccount = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<LogsAuditListResultItemAccount>;
-
 export interface LogsAuditListResultItemAction {
   /** A short description of the action performed. */
   description?: string | null;
@@ -2311,11 +1603,6 @@ export interface LogsAuditListResultItemAction {
   /** A short string that describes the action that was performed. */
   type?: string | null;
 }
-const LogsAuditListResultItemAction = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<LogsAuditListResultItemAction>;
-
 export type LogsAuditListResultItemActorContext =
   | "api"
   | "api_key"
@@ -2323,16 +1610,12 @@ export type LogsAuditListResultItemActorContext =
   | "dash"
   | "oauth"
   | "origin_ca_key";
-const LogsAuditListResultItemActorContext = S.String;
-
 export type LogsAuditListResultItemActorType =
   | "account"
   | "cloudflare_admin"
   | "delegated_service"
   | "system"
   | "user";
-const LogsAuditListResultItemActorType = S.String;
-
 export interface LogsAuditListResultItemActor {
   /** The ID of the actor who performed the action. If a user performed the action, this will be their User ID. */
   id?: string | null;
@@ -2349,11 +1632,6 @@ export interface LogsAuditListResultItemActor {
   /** The type of actor. */
   type?: LogsAuditListResultItemActorType | null;
 }
-const LogsAuditListResultItemActor = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<LogsAuditListResultItemActor>;
-
 export interface LogsAuditListResultItemRaw {
   /** The Cloudflare Ray ID for the request. */
   cfRayId?: string | null;
@@ -2366,11 +1644,6 @@ export interface LogsAuditListResultItemRaw {
   /** The client's user agent string sent with the request. */
   userAgent?: string | null;
 }
-const LogsAuditListResultItemRaw = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<LogsAuditListResultItemRaw>;
-
 export interface LogsAuditListResultItemResource {
   /** The unique identifier for the affected resource. */
   id?: string | null;
@@ -2383,20 +1656,12 @@ export interface LogsAuditListResultItemResource {
   /** The type of the resource. */
   type?: string | null;
 }
-const LogsAuditListResultItemResource = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<LogsAuditListResultItemResource>;
-
 export interface LogsAuditListResultItemZone {
   /** A string that identifies the zone id. */
   id?: string | null;
   /** A string that identifies the zone name. */
   name?: string | null;
 }
-const LogsAuditListResultItemZone =
-  LogsAuditListResultItemAccount as any as S.Schema<LogsAuditListResultItemZone>;
-
 export interface LogsAuditListResultItem {
   /** A unique identifier for the audit log entry. */
   id?: string | null;
@@ -2413,41 +1678,20 @@ export interface LogsAuditListResultItem {
   /** Provides details about the zone affected by the action. */
   zone?: LogsAuditListResultItemZone | null;
 }
-const LogsAuditListResultItem = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<LogsAuditListResultItem>;
-
 export type LogsAuditListResultList = Array<LogsAuditListResultItem>;
-const LogsAuditListResultList = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<LogsAuditListResultList>;
-
 export interface ListLogAuditsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: LogsAuditListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListLogAuditsResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<ListLogAuditsResponse>;
-
 export type MembersListRequestDirection = "asc" | "desc";
-const MembersListRequestDirection = S.String;
-
 export type MembersListRequestOrder =
   | "user.first_name"
   | "user.last_name"
   | "user.email"
   | "status";
-const MembersListRequestOrder = S.String;
-
 export type MembersListRequestStatus = "accepted" | "pending" | "rejected";
-const MembersListRequestStatus = S.String;
-
 export interface ListMembersRequest {
   /** Account identifier tag. */
   accountId: string;
@@ -2462,20 +1706,13 @@ export interface ListMembersRequest {
   /** A member's status in the account. */
   status?: MembersListRequestStatus | (string & {});
 }
-const ListMembersRequest = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<ListMembersRequest>;
-
 export type MembersListResultItemPoliciesItemAccess = "allow" | "deny";
-const MembersListResultItemPoliciesItemAccess = S.String;
-
 export type MembersListResultItemPoliciesItemPermissionGroupsItemMeta =
   MembersCreateResponsePoliciesItemPermissionGroupsItemMeta;
 export type MembersListResultItemPoliciesItemPermissionGroupsItem =
   MembersCreateResponsePoliciesItemPermissionGroupsItem;
 export type MembersListResultItemPoliciesItemPermissionGroupsList =
   Array<MembersCreateResponsePoliciesItemPermissionGroupsItem>;
-const MembersListResultItemPoliciesItemPermissionGroupsList =
-  MembersCreateResponsePoliciesItemPermissionGroupsList as any as S.Schema<MembersListResultItemPoliciesItemPermissionGroupsList>;
-
 export type MembersListResultItemPoliciesItemResourceGroupsItemScopeObjectsItem =
   MembersCreateResponsePoliciesItemResourceGroupsItemScopeObjectsItem;
 export type MembersListResultItemPoliciesItemResourceGroupsItemScopeObjectsList =
@@ -2500,9 +1737,6 @@ export interface MembersListResultItemPoliciesItemResourceGroupsItem {
 }
 export type MembersListResultItemPoliciesItemResourceGroupsList =
   Array<MembersListResultItemPoliciesItemResourceGroupsItem>;
-const MembersListResultItemPoliciesItemResourceGroupsList =
-  MembersCreateResponsePoliciesItemResourceGroupsList as any as S.Schema<MembersListResultItemPoliciesItemResourceGroupsList>;
-
 export interface MembersListResultItemPoliciesItem {
   /** Policy identifier. */
   id?: string | null;
@@ -2513,17 +1747,7 @@ export interface MembersListResultItemPoliciesItem {
   /** A list of resource groups that the policy applies to. */
   resourceGroups?: MembersListResultItemPoliciesItemResourceGroupsList | null;
 }
-const MembersListResultItemPoliciesItem = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<MembersListResultItemPoliciesItem>;
-
 export type MembersListResultItemPoliciesList = Array<MembersListResultItemPoliciesItem>;
-const MembersListResultItemPoliciesList = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<MembersListResultItemPoliciesList>;
-
 export type MembersListResultItemRolesItemPermissionsAnalytics =
   MembersCreateResponseRolesItemPermissionsAnalytics;
 export type MembersListResultItemRolesItemPermissionsBilling =
@@ -2551,12 +1775,7 @@ export type MembersListResultItemRolesItemPermissionsZones =
 export type MembersListResultItemRolesItemPermissions = MembersCreateResponseRolesItemPermissions;
 export type MembersListResultItemRolesItem = MembersCreateResponseRolesItem;
 export type MembersListResultItemRolesList = Array<MembersCreateResponseRolesItem>;
-const MembersListResultItemRolesList =
-  MembersCreateResponseRolesList as any as S.Schema<MembersListResultItemRolesList>;
-
 export type MembersListResultItemStatus = "accepted" | "pending";
-const MembersListResultItemStatus = S.String;
-
 export type MembersListResultItemUser = MembersCreateResponseUser;
 export interface MembersListResultItem {
   /** Membership identifier tag. */
@@ -2572,25 +1791,13 @@ export interface MembersListResultItem {
   /** Details of the user associated to the membership. */
   user?: MembersCreateResponseUser | null;
 }
-const MembersListResultItem = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<MembersListResultItem>;
-
 export type MembersListResultList = Array<MembersListResultItem>;
-const MembersListResultList = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<MembersListResultList>;
-
 export interface ListMembersResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: MembersListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListMembersResponse = /*@__PURE__*/ __L.at(__c16, 5) as any as S.Schema<ListMembersResponse>;
-
 export interface ListPaymentMethodsRequest {
   /** Identifier */
   accountId: string;
@@ -2599,11 +1806,6 @@ export interface ListPaymentMethodsRequest {
   /** Number of items per page. */
   perPage?: number;
 }
-const ListPaymentMethodsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<ListPaymentMethodsRequest>;
-
 export type ListPaymentMethodsResultItemType =
   | "CREDIT_CARD"
   | "PAYPAL"
@@ -2611,8 +1813,6 @@ export type ListPaymentMethodsResultItemType =
   | "SEPA_DEBIT"
   | "LINK"
   | "ACH_DIRECT_DEBIT";
-const ListPaymentMethodsResultItemType = S.String;
-
 export interface ListPaymentMethodsResultItem {
   /** Payment method identifier. */
   id?: string | null;
@@ -2665,23 +1865,8 @@ export interface ListPaymentMethodsResultItem {
   /** Billing zip code. */
   zipcode?: string | null;
 }
-const ListPaymentMethodsResultItem = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<ListPaymentMethodsResultItem>;
-
 export type ListPaymentMethodsResultList = Array<ListPaymentMethodsResultItem>;
-const ListPaymentMethodsResultList = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<ListPaymentMethodsResultList>;
-
 export type ListPaymentMethodsResponse = ListPaymentMethodsResultList;
-const ListPaymentMethodsResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<ListPaymentMethodsResponse>;
-
 export interface ListRolesRequest {
   /** Account identifier tag. */
   accountId: string;
@@ -2690,8 +1875,6 @@ export interface ListRolesRequest {
   /** Number of roles per page. */
   perPage?: number;
 }
-const ListRolesRequest = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<ListRolesRequest>;
-
 export type RolesListResultItemPermissionsAnalytics =
   MembersCreateResponseRolesItemPermissionsAnalytics;
 export type RolesListResultItemPermissionsBilling =
@@ -2714,19 +1897,13 @@ export type RolesListResultItemPermissionsZones =
 export type RolesListResultItemPermissions = MembersCreateResponseRolesItemPermissions;
 export type RolesListResultItem = MembersCreateResponseRolesItem;
 export type RolesListResultList = Array<MembersCreateResponseRolesItem>;
-const RolesListResultList = MembersCreateResponseRolesList as any as S.Schema<RolesListResultList>;
-
 export interface ListRolesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: RolesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListRolesResponse = /*@__PURE__*/ __L.at(__c17, 3) as any as S.Schema<ListRolesResponse>;
-
 export type TokensListRequestDirection = "asc" | "desc";
-const TokensListRequestDirection = S.String;
-
 export interface ListTokensRequest {
   /** Account identifier tag. */
   accountId: string;
@@ -2739,8 +1916,6 @@ export interface ListTokensRequest {
   /** Maximum number of results per page. */
   perPage?: number;
 }
-const ListTokensRequest = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<ListTokensRequest>;
-
 export type TokensListResultItemConditionRequestIpInList = Array<string>;
 export type TokensListResultItemConditionRequestIpNotInList = Array<string>;
 export interface TokensListResultItemConditionRequestIp {
@@ -2753,37 +1928,22 @@ export interface TokensListResultItemCondition {
   /** Client IP restrictions. */
   requestIp?: TokensListResultItemConditionRequestIp | null;
 }
-const TokensListResultItemCondition =
-  TokensCreateResponseCondition as any as S.Schema<TokensListResultItemCondition>;
-
 export type TokensListResultItemPoliciesItemEffect = "allow" | "deny";
-const TokensListResultItemPoliciesItemEffect = S.String;
-
 export type TokensListResultItemPoliciesItemPermissionGroupsItemMeta =
   MembersCreateResponsePoliciesItemPermissionGroupsItemMeta;
 export type TokensListResultItemPoliciesItemPermissionGroupsItem =
   MembersCreateResponsePoliciesItemPermissionGroupsItem;
 export type TokensListResultItemPoliciesItemPermissionGroupsList =
   Array<MembersCreateResponsePoliciesItemPermissionGroupsItem>;
-const TokensListResultItemPoliciesItemPermissionGroupsList =
-  MembersCreateResponsePoliciesItemPermissionGroupsList as any as S.Schema<TokensListResultItemPoliciesItemPermissionGroupsList>;
-
 export type TokensListResultItemPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap = {
   [key: string]: string | undefined;
 };
 export type TokensListResultItemPoliciesItemResourcesValue =
   | string
   | TokensListResultItemPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap;
-const TokensListResultItemPoliciesItemResourcesValue = /*@__PURE__*/ __L.at(__c17, 5);
-
 export type TokensListResultItemPoliciesItemResourcesMap = {
   [key: string]: TokensListResultItemPoliciesItemResourcesValue | undefined;
 };
-const TokensListResultItemPoliciesItemResourcesMap = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<TokensListResultItemPoliciesItemResourcesMap>;
-
 export interface TokensListResultItemPoliciesItem {
   /** Policy identifier. */
   id: string;
@@ -2794,20 +1954,8 @@ export interface TokensListResultItemPoliciesItem {
   /** A list of resource names that the policy applies to. */
   resources: TokensListResultItemPoliciesItemResourcesMap;
 }
-const TokensListResultItemPoliciesItem = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<TokensListResultItemPoliciesItem>;
-
 export type TokensListResultItemPoliciesList = Array<TokensListResultItemPoliciesItem>;
-const TokensListResultItemPoliciesList = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<TokensListResultItemPoliciesList>;
-
 export type TokensListResultItemStatus = "active" | "disabled" | "expired";
-const TokensListResultItemStatus = S.String;
-
 export interface TokensListResultItem {
   /** Token identifier tag. */
   id?: string | null;
@@ -2835,25 +1983,13 @@ export interface TokensListResultItem {
   /** Status of the token. */
   status?: TokensListResultItemStatus | null;
 }
-const TokensListResultItem = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<TokensListResultItem>;
-
 export type TokensListResultList = Array<TokensListResultItem>;
-const TokensListResultList = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<TokensListResultList>;
-
 export interface ListTokensResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: TokensListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListTokensResponse = /*@__PURE__*/ __L.at(__c18, 3) as any as S.Schema<ListTokensResponse>;
-
 export interface ListTokensPermissionGroupsRequest {
   /** Account identifier tag. */
   accountId: string;
@@ -2862,11 +1998,6 @@ export interface ListTokensPermissionGroupsRequest {
   /** Filter by the scope of the permission group. The value must be URL-encoded. */
   scope?: string;
 }
-const ListTokensPermissionGroupsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<ListTokensPermissionGroupsRequest>;
-
 export type ListTokensPermissionGroupsResultItemCategory =
   | "developer_platform"
   | "ai_and_machine_learning"
@@ -2902,12 +2033,7 @@ export interface ListTokensPermissionGroupsResultItem {
 }
 export type ListTokensPermissionGroupsResultList = Array<ListTokensPermissionGroupsResultItem>;
 export type ListTokensPermissionGroupsResponse = ListTokensPermissionGroupsResultList;
-const ListTokensPermissionGroupsResponse =
-  GetTokenPermissionGroupResponse as any as S.Schema<ListTokensPermissionGroupsResponse>;
-
 export type LogsAuditHistoryRequestDirection = "desc" | "asc";
-const LogsAuditHistoryRequestDirection = S.String;
-
 export interface LogsAuditHistoryRequest {
   /** The unique ID that identifies the account. */
   accountId: string;
@@ -2926,11 +2052,6 @@ export interface LogsAuditHistoryRequest {
   /** The number limits the objects to return. The cursor attribute may be used to iterate over the next batch of objects if there are more than the limit. */
   limit?: number;
 }
-const LogsAuditHistoryRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<LogsAuditHistoryRequest>;
-
 export type LogsAuditHistoryResultItemAccount = LogsAuditListResultItemAccount;
 export type LogsAuditHistoryResultItemAction = LogsAuditListResultItemAction;
 export type LogsAuditHistoryResultItemActorContext =
@@ -2962,9 +2083,6 @@ export interface LogsAuditHistoryResultItemActor {
   /** The type of actor. */
   type?: LogsAuditHistoryResultItemActorType | null;
 }
-const LogsAuditHistoryResultItemActor =
-  LogsAuditListResultItemActor as any as S.Schema<LogsAuditHistoryResultItemActor>;
-
 export type LogsAuditHistoryResultItemRaw = LogsAuditListResultItemRaw;
 export type LogsAuditHistoryResultItemResource = LogsAuditListResultItemResource;
 export type LogsAuditHistoryResultItemZone = LogsAuditListResultItemZone;
@@ -2984,50 +2102,20 @@ export interface LogsAuditHistoryResultItem {
   /** Provides details about the zone affected by the action. */
   zone?: LogsAuditListResultItemZone | null;
 }
-const LogsAuditHistoryResultItem = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<LogsAuditHistoryResultItem>;
-
 export type LogsAuditHistoryResultList = Array<LogsAuditHistoryResultItem>;
-const LogsAuditHistoryResultList = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<LogsAuditHistoryResultList>;
-
 export type LogsAuditHistoryResponse = LogsAuditHistoryResultList;
-const LogsAuditHistoryResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<LogsAuditHistoryResponse>;
-
 export interface LogsAuditProductCategoriesRequest {
   /** The unique id that identifies the account. */
   accountId: string;
 }
-const LogsAuditProductCategoriesRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<LogsAuditProductCategoriesRequest>;
-
 export interface LogsAuditProductCategoriesResultItemProductsItem {
   /** A human-readable label for the product. */
   label?: string | null;
   /** The resource_product value that the product category expands to. */
   value?: string | null;
 }
-const LogsAuditProductCategoriesResultItemProductsItem = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<LogsAuditProductCategoriesResultItemProductsItem>;
-
 export type LogsAuditProductCategoriesResultItemProductsList =
   Array<LogsAuditProductCategoriesResultItemProductsItem>;
-const LogsAuditProductCategoriesResultItemProductsList = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<LogsAuditProductCategoriesResultItemProductsList>;
-
 export interface LogsAuditProductCategoriesResultItem {
   /** A human-readable label for the product category. */
   label?: string | null;
@@ -3036,52 +2124,22 @@ export interface LogsAuditProductCategoriesResultItem {
   /** The product category identifier used with the product_category filter. */
   value?: string | null;
 }
-const LogsAuditProductCategoriesResultItem = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<LogsAuditProductCategoriesResultItem>;
-
 export type LogsAuditProductCategoriesResultList = Array<LogsAuditProductCategoriesResultItem>;
-const LogsAuditProductCategoriesResultList = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<LogsAuditProductCategoriesResultList>;
-
 export type LogsAuditProductCategoriesResponse = LogsAuditProductCategoriesResultList;
-const LogsAuditProductCategoriesResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<LogsAuditProductCategoriesResponse>;
-
 export interface PaymentMethodsSetAsDefaultRequest {
   /** Identifier */
   accountId: string;
   /** Identifier */
   paymentMethodId: string;
 }
-const PaymentMethodsSetAsDefaultRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<PaymentMethodsSetAsDefaultRequest>;
-
 export type PaymentMethodsSetAsDefaultResponse = unknown;
-const PaymentMethodsSetAsDefaultResponse =
-  DeletePaymentMethodResponse as any as S.Schema<PaymentMethodsSetAsDefaultResponse>;
-
 export interface PutTokenValueRequest {
   /** Account identifier tag. */
   accountId: string;
   /** Token identifier tag. */
   tokenId: string;
 }
-const PutTokenValueRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<PutTokenValueRequest>;
-
 export type PutTokenValueResponse = unknown;
-const PutTokenValueResponse = EditInvoiceResponse as any as S.Schema<PutTokenValueResponse>;
-
 export interface ReceiptsPdfRequest {
   /** Identifier */
   accountId: string;
@@ -3090,18 +2148,12 @@ export interface ReceiptsPdfRequest {
   /** The document type to generate. */
   doctype?: string;
 }
-const ReceiptsPdfRequest = /*@__PURE__*/ __L.at(__c20, 1) as any as S.Schema<ReceiptsPdfRequest>;
-
 export interface ReceiptsPdfResponse {}
-const ReceiptsPdfResponse = /*@__PURE__*/ __L.at(__c20, 2) as any as S.Schema<ReceiptsPdfResponse>;
-
 export type SubscriptionsActionsAppendRequestFrequency =
   | "weekly"
   | "monthly"
   | "quarterly"
   | "yearly";
-const SubscriptionsActionsAppendRequestFrequency = S.String;
-
 export type SubscriptionsActionsAppendRequestRatePlanId =
   | "free"
   | "lite"
@@ -3113,12 +2165,7 @@ export type SubscriptionsActionsAppendRequestRatePlanId =
   | "partners_pro"
   | "partners_business"
   | "partners_enterprise";
-const SubscriptionsActionsAppendRequestRatePlanId = S.String;
-
 export type SubscriptionsActionsAppendRequestRatePlanSetsList = Array<string>;
-const SubscriptionsActionsAppendRequestRatePlanSetsList =
-  MembersCreateRequestRolesList as any as S.Schema<SubscriptionsActionsAppendRequestRatePlanSetsList>;
-
 export interface SubscriptionsActionsAppendRequestRatePlan {
   /** The ID of the rate plan. */
   id?: SubscriptionsActionsAppendRequestRatePlanId | (string & {});
@@ -3135,11 +2182,6 @@ export interface SubscriptionsActionsAppendRequestRatePlan {
   /** The list of sets this rate plan applies to. Returns array of strings. */
   sets?: SubscriptionsActionsAppendRequestRatePlanSetsList;
 }
-const SubscriptionsActionsAppendRequestRatePlan = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<SubscriptionsActionsAppendRequestRatePlan>;
-
 export interface SubscriptionsActionsAppendRequest {
   /** Identifier */
   accountId: string;
@@ -3150,18 +2192,11 @@ export interface SubscriptionsActionsAppendRequest {
   /** The rate plan applied to the subscription. */
   ratePlan?: SubscriptionsActionsAppendRequestRatePlan;
 }
-const SubscriptionsActionsAppendRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<SubscriptionsActionsAppendRequest>;
-
 export type SubscriptionsActionsAppendResponseFrequency =
   | "weekly"
   | "monthly"
   | "quarterly"
   | "yearly";
-const SubscriptionsActionsAppendResponseFrequency = S.String;
-
 export type SubscriptionsActionsAppendResponseRatePlanId =
   | "free"
   | "lite"
@@ -3173,12 +2208,7 @@ export type SubscriptionsActionsAppendResponseRatePlanId =
   | "partners_pro"
   | "partners_business"
   | "partners_enterprise";
-const SubscriptionsActionsAppendResponseRatePlanId = S.String;
-
 export type SubscriptionsActionsAppendResponseRatePlanSetsList = Array<string>;
-const SubscriptionsActionsAppendResponseRatePlanSetsList =
-  MembersCreateRequestRolesList as any as S.Schema<SubscriptionsActionsAppendResponseRatePlanSetsList>;
-
 export interface SubscriptionsActionsAppendResponseRatePlan {
   /** The ID of the rate plan. */
   id?: SubscriptionsActionsAppendResponseRatePlanId | null;
@@ -3195,11 +2225,6 @@ export interface SubscriptionsActionsAppendResponseRatePlan {
   /** The list of sets this rate plan applies to. Returns array of strings. */
   sets?: SubscriptionsActionsAppendResponseRatePlanSetsList | null;
 }
-const SubscriptionsActionsAppendResponseRatePlan = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<SubscriptionsActionsAppendResponseRatePlan>;
-
 export type SubscriptionsActionsAppendResponseState =
   | "Trial"
   | "Provisioned"
@@ -3208,8 +2233,6 @@ export type SubscriptionsActionsAppendResponseState =
   | "Cancelled"
   | "Failed"
   | "Expired";
-const SubscriptionsActionsAppendResponseState = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SubscriptionsActionsAppendResponse {
   /** Subscription identifier tag. */
@@ -3229,18 +2252,11 @@ export interface SubscriptionsActionsAppendResponse {
   /** The state that the subscription is in. */
   state?: SubscriptionsActionsAppendResponseState | null;
 }
-const SubscriptionsActionsAppendResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<SubscriptionsActionsAppendResponse>;
-
 export type SubscriptionsBulkCreateRequestSubscriptionsItemFrequency =
   | "weekly"
   | "monthly"
   | "quarterly"
   | "yearly";
-const SubscriptionsBulkCreateRequestSubscriptionsItemFrequency = S.String;
-
 export type SubscriptionsBulkCreateRequestSubscriptionsItemRatePlanId =
   | "free"
   | "lite"
@@ -3252,14 +2268,7 @@ export type SubscriptionsBulkCreateRequestSubscriptionsItemRatePlanId =
   | "partners_pro"
   | "partners_business"
   | "partners_enterprise";
-const SubscriptionsBulkCreateRequestSubscriptionsItemRatePlanId = S.String;
-
 export type SubscriptionsBulkCreateRequestSubscriptionsItemRatePlanSetsList = Array<string>;
-const SubscriptionsBulkCreateRequestSubscriptionsItemRatePlanSetsList = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<SubscriptionsBulkCreateRequestSubscriptionsItemRatePlanSetsList>;
-
 export interface SubscriptionsBulkCreateRequestSubscriptionsItemRatePlan {
   /** The ID of the rate plan. */
   id?: SubscriptionsBulkCreateRequestSubscriptionsItemRatePlanId | (string & {});
@@ -3276,11 +2285,6 @@ export interface SubscriptionsBulkCreateRequestSubscriptionsItemRatePlan {
   /** The list of sets this rate plan applies to. Returns array of strings. */
   sets?: SubscriptionsBulkCreateRequestSubscriptionsItemRatePlanSetsList;
 }
-const SubscriptionsBulkCreateRequestSubscriptionsItemRatePlan = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<SubscriptionsBulkCreateRequestSubscriptionsItemRatePlan>;
-
 export type SubscriptionsBulkCreateRequestSubscriptionsItemState =
   | "Trial"
   | "Provisioned"
@@ -3289,8 +2293,6 @@ export type SubscriptionsBulkCreateRequestSubscriptionsItemState =
   | "Cancelled"
   | "Failed"
   | "Expired";
-const SubscriptionsBulkCreateRequestSubscriptionsItemState = S.String;
-
 export interface SubscriptionsBulkCreateRequestSubscriptionsItem {
   /** Subscription identifier tag. */
   id?: string;
@@ -3309,18 +2311,8 @@ export interface SubscriptionsBulkCreateRequestSubscriptionsItem {
   /** The state that the subscription is in. */
   state?: SubscriptionsBulkCreateRequestSubscriptionsItemState | (string & {});
 }
-const SubscriptionsBulkCreateRequestSubscriptionsItem = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<SubscriptionsBulkCreateRequestSubscriptionsItem>;
-
 export type SubscriptionsBulkCreateRequestSubscriptionsList =
   Array<SubscriptionsBulkCreateRequestSubscriptionsItem>;
-const SubscriptionsBulkCreateRequestSubscriptionsList = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<SubscriptionsBulkCreateRequestSubscriptionsList>;
-
 export interface SubscriptionsBulkCreateRequest {
   /** Identifier */
   accountId: string;
@@ -3330,46 +2322,17 @@ export interface SubscriptionsBulkCreateRequest {
   subscriptions?: SubscriptionsBulkCreateRequestSubscriptionsList;
   userIsOnSession?: boolean;
 }
-const SubscriptionsBulkCreateRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<SubscriptionsBulkCreateRequest>;
-
 export type SubscriptionsBulkCreateResultList = Array<unknown>;
-const SubscriptionsBulkCreateResultList = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<SubscriptionsBulkCreateResultList>;
-
 export type SubscriptionsBulkCreateResponse = SubscriptionsBulkCreateResultList;
-const SubscriptionsBulkCreateResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<SubscriptionsBulkCreateResponse>;
-
 export type SubscriptionsCancelDowngradeRequestSubscriptionIdsList = Array<string>;
-const SubscriptionsCancelDowngradeRequestSubscriptionIdsList =
-  MembersCreateRequestRolesList as any as S.Schema<SubscriptionsCancelDowngradeRequestSubscriptionIdsList>;
-
 export interface SubscriptionsCancelDowngradeRequest {
   /** Identifier */
   accountId: string;
   /** List of subscription identifiers to cancel downgrades for. */
   subscriptionIds?: SubscriptionsCancelDowngradeRequestSubscriptionIdsList;
 }
-const SubscriptionsCancelDowngradeRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<SubscriptionsCancelDowngradeRequest>;
-
 export type SubscriptionsCancelDowngradeResponse = unknown;
-const SubscriptionsCancelDowngradeResponse =
-  DeletePaymentMethodResponse as any as S.Schema<SubscriptionsCancelDowngradeResponse>;
-
 export type SubscriptionsCancelReasonCreateRequestReasonCodeList = Array<string>;
-const SubscriptionsCancelReasonCreateRequestReasonCodeList =
-  MembersCreateRequestRolesList as any as S.Schema<SubscriptionsCancelReasonCreateRequestReasonCodeList>;
-
 export interface SubscriptionsCancelReasonCreateRequest {
   /** Identifier */
   accountId: string;
@@ -3380,15 +2343,7 @@ export interface SubscriptionsCancelReasonCreateRequest {
   /** The cancellation reason codes. */
   reasonCode?: SubscriptionsCancelReasonCreateRequestReasonCodeList;
 }
-const SubscriptionsCancelReasonCreateRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<SubscriptionsCancelReasonCreateRequest>;
-
 export type SubscriptionsCancelReasonCreateResponseReasonCodeList = Array<string>;
-const SubscriptionsCancelReasonCreateResponseReasonCodeList =
-  MembersCreateRequestRolesList as any as S.Schema<SubscriptionsCancelReasonCreateResponseReasonCodeList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SubscriptionsCancelReasonCreateResponse {
   /** The cancel reason identifier. */
@@ -3402,22 +2357,12 @@ export interface SubscriptionsCancelReasonCreateResponse {
   /** The subscription identifier. */
   subscriptionId?: string | null;
 }
-const SubscriptionsCancelReasonCreateResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<SubscriptionsCancelReasonCreateResponse>;
-
 export interface SubscriptionsCancelReasonGetRequest {
   /** Identifier */
   accountId: string;
   /** Subscription identifier tag. */
   subscriptionIdentifier: string;
 }
-const SubscriptionsCancelReasonGetRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<SubscriptionsCancelReasonGetRequest>;
-
 export type SubscriptionsCancelReasonGetResponseReasonCodeList = Array<string>;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SubscriptionsCancelReasonGetResponse {
@@ -3432,27 +2377,17 @@ export interface SubscriptionsCancelReasonGetResponse {
   /** The subscription identifier. */
   subscriptionId?: string | null;
 }
-const SubscriptionsCancelReasonGetResponse =
-  SubscriptionsCancelReasonCreateResponse as any as S.Schema<SubscriptionsCancelReasonGetResponse>;
-
 export interface SubscriptionsGetByIdentifierRequest {
   /** Identifier */
   accountId: string;
   /** Subscription identifier tag. */
   subscriptionIdentifier: string;
 }
-const SubscriptionsGetByIdentifierRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<SubscriptionsGetByIdentifierRequest>;
-
 export type SubscriptionsGetByIdentifierResponseFrequency =
   | "weekly"
   | "monthly"
   | "quarterly"
   | "yearly";
-const SubscriptionsGetByIdentifierResponseFrequency = S.String;
-
 export type SubscriptionsGetByIdentifierResponseRatePlanId =
   | "free"
   | "lite"
@@ -3464,12 +2399,7 @@ export type SubscriptionsGetByIdentifierResponseRatePlanId =
   | "partners_pro"
   | "partners_business"
   | "partners_enterprise";
-const SubscriptionsGetByIdentifierResponseRatePlanId = S.String;
-
 export type SubscriptionsGetByIdentifierResponseRatePlanSetsList = Array<string>;
-const SubscriptionsGetByIdentifierResponseRatePlanSetsList =
-  MembersCreateRequestRolesList as any as S.Schema<SubscriptionsGetByIdentifierResponseRatePlanSetsList>;
-
 export interface SubscriptionsGetByIdentifierResponseRatePlan {
   /** The ID of the rate plan. */
   id?: SubscriptionsGetByIdentifierResponseRatePlanId | null;
@@ -3486,11 +2416,6 @@ export interface SubscriptionsGetByIdentifierResponseRatePlan {
   /** The list of sets this rate plan applies to. Returns array of strings. */
   sets?: SubscriptionsGetByIdentifierResponseRatePlanSetsList | null;
 }
-const SubscriptionsGetByIdentifierResponseRatePlan = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<SubscriptionsGetByIdentifierResponseRatePlan>;
-
 export type SubscriptionsGetByIdentifierResponseState =
   | "Trial"
   | "Provisioned"
@@ -3499,8 +2424,6 @@ export type SubscriptionsGetByIdentifierResponseState =
   | "Cancelled"
   | "Failed"
   | "Expired";
-const SubscriptionsGetByIdentifierResponseState = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SubscriptionsGetByIdentifierResponse {
   /** Subscription identifier tag. */
@@ -3520,36 +2443,19 @@ export interface SubscriptionsGetByIdentifierResponse {
   /** The state that the subscription is in. */
   state?: SubscriptionsGetByIdentifierResponseState | null;
 }
-const SubscriptionsGetByIdentifierResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<SubscriptionsGetByIdentifierResponse>;
-
 export type UpdateRequestType = "standard" | "enterprise";
-const UpdateRequestType = S.String;
-
 export interface UpdateRequestManagedBy {
   /** ID of the parent Organization, if one exists */
   parentOrgId?: string;
   /** Name of the parent Organization, if one exists */
   parentOrgName?: string;
 }
-const UpdateRequestManagedBy = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<UpdateRequestManagedBy>;
-
 export interface UpdateRequestSettings {
   /** Sets an abuse contact email to notify for abuse reports. */
   abuseContactEmail?: string;
   /** Indicates whether membership in this account requires that Two-Factor Authentication is enabled */
   enforceTwofactor?: boolean;
 }
-const UpdateRequestSettings = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<UpdateRequestSettings>;
-
 export interface UpdateAccountRequest {
   /** Account identifier tag. */
   accountId: string;
@@ -3563,11 +2469,6 @@ export interface UpdateAccountRequest {
   /** Account settings */
   settings?: UpdateRequestSettings;
 }
-const UpdateAccountRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<UpdateAccountRequest>;
-
 export type UpdateResponseType = "standard" | "enterprise";
 export type UpdateResponseManagedBy = CreateResponseManagedBy;
 export type UpdateResponseSettings = CreateResponseSettings;
@@ -3585,8 +2486,6 @@ export interface UpdateAccountResponse {
   /** Account settings */
   settings?: CreateResponseSettings | null;
 }
-const UpdateAccountResponse = CreateAccountResponse as any as S.Schema<UpdateAccountResponse>;
-
 export interface UpdateAccountProfileRequest {
   accountId: string;
   businessAddress: string;
@@ -3595,26 +2494,11 @@ export interface UpdateAccountProfileRequest {
   businessPhone: string;
   externalMetadata: string;
 }
-const UpdateAccountProfileRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<UpdateAccountProfileRequest>;
-
 export interface UpdateAccountProfileResponse {}
-const UpdateAccountProfileResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<UpdateAccountProfileResponse>;
-
 export interface MembersUpdateRequestRolesItemPermissionsAnalytics {
   read?: boolean;
   write?: boolean;
 }
-const MembersUpdateRequestRolesItemPermissionsAnalytics = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<MembersUpdateRequestRolesItemPermissionsAnalytics>;
-
 export type MembersUpdateRequestRolesItemPermissionsBilling =
   MembersUpdateRequestRolesItemPermissionsAnalytics;
 export type MembersUpdateRequestRolesItemPermissionsCachePurge =
@@ -3651,11 +2535,6 @@ export interface MembersUpdateRequestRolesItemPermissions {
   zoneSettings?: MembersUpdateRequestRolesItemPermissionsAnalytics;
   zones?: MembersUpdateRequestRolesItemPermissionsAnalytics;
 }
-const MembersUpdateRequestRolesItemPermissions = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<MembersUpdateRequestRolesItemPermissions>;
-
 export interface MembersUpdateRequestRolesItem {
   /** Role identifier tag. */
   id: string;
@@ -3665,20 +2544,8 @@ export interface MembersUpdateRequestRolesItem {
   name?: string;
   permissions?: MembersUpdateRequestRolesItemPermissions;
 }
-const MembersUpdateRequestRolesItem = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<MembersUpdateRequestRolesItem>;
-
 export type MembersUpdateRequestRolesList = Array<MembersUpdateRequestRolesItem>;
-const MembersUpdateRequestRolesList = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<MembersUpdateRequestRolesList>;
-
 export type MembersUpdateRequestStatus = "accepted" | "pending";
-const MembersUpdateRequestStatus = S.String;
-
 export interface MembersUpdateRequestUser {
   /** The contact email address of the user. */
   email: string;
@@ -3691,28 +2558,15 @@ export interface MembersUpdateRequestUser {
   /** Indicates whether two-factor authentication is enabled for the user account. Does not apply to API authentication. */
   twoFactorAuthenticationEnabled?: boolean;
 }
-const MembersUpdateRequestUser = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<MembersUpdateRequestUser>;
-
 export type MembersUpdateRequestPoliciesItemAccess = "allow" | "deny";
-const MembersUpdateRequestPoliciesItemAccess = S.String;
-
 export type MembersUpdateRequestPoliciesItemPermissionGroupsItem =
   MembersCreateRequestPoliciesItemPermissionGroupsItem;
 export type MembersUpdateRequestPoliciesItemPermissionGroupsList =
   Array<MembersCreateRequestPoliciesItemPermissionGroupsItem>;
-const MembersUpdateRequestPoliciesItemPermissionGroupsList =
-  MembersCreateRequestPoliciesItemPermissionGroupsList as any as S.Schema<MembersUpdateRequestPoliciesItemPermissionGroupsList>;
-
 export type MembersUpdateRequestPoliciesItemResourceGroupsItem =
   MembersCreateRequestPoliciesItemPermissionGroupsItem;
 export type MembersUpdateRequestPoliciesItemResourceGroupsList =
   Array<MembersCreateRequestPoliciesItemPermissionGroupsItem>;
-const MembersUpdateRequestPoliciesItemResourceGroupsList =
-  MembersCreateRequestPoliciesItemPermissionGroupsList as any as S.Schema<MembersUpdateRequestPoliciesItemResourceGroupsList>;
-
 export interface MembersUpdateRequestPoliciesItem {
   /** Policy identifier. */
   id?: string;
@@ -3723,17 +2577,7 @@ export interface MembersUpdateRequestPoliciesItem {
   /** A list of resource groups that the policy applies to. */
   resourceGroups: MembersUpdateRequestPoliciesItemResourceGroupsList;
 }
-const MembersUpdateRequestPoliciesItem = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<MembersUpdateRequestPoliciesItem>;
-
 export type MembersUpdateRequestPoliciesList = Array<MembersUpdateRequestPoliciesItem>;
-const MembersUpdateRequestPoliciesList = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<MembersUpdateRequestPoliciesList>;
-
 export interface UpdateMemberRequest {
   /** Account identifier tag. */
   accountId: string;
@@ -3750,20 +2594,13 @@ export interface UpdateMemberRequest {
   /** Array of policies associated with this member. */
   policies?: MembersUpdateRequestPoliciesList;
 }
-const UpdateMemberRequest = /*@__PURE__*/ __L.at(__c24, 1) as any as S.Schema<UpdateMemberRequest>;
-
 export type MembersUpdateResponsePoliciesItemAccess = "allow" | "deny";
-const MembersUpdateResponsePoliciesItemAccess = S.String;
-
 export type MembersUpdateResponsePoliciesItemPermissionGroupsItemMeta =
   MembersCreateResponsePoliciesItemPermissionGroupsItemMeta;
 export type MembersUpdateResponsePoliciesItemPermissionGroupsItem =
   MembersCreateResponsePoliciesItemPermissionGroupsItem;
 export type MembersUpdateResponsePoliciesItemPermissionGroupsList =
   Array<MembersCreateResponsePoliciesItemPermissionGroupsItem>;
-const MembersUpdateResponsePoliciesItemPermissionGroupsList =
-  MembersCreateResponsePoliciesItemPermissionGroupsList as any as S.Schema<MembersUpdateResponsePoliciesItemPermissionGroupsList>;
-
 export type MembersUpdateResponsePoliciesItemResourceGroupsItemScopeObjectsItem =
   MembersCreateResponsePoliciesItemResourceGroupsItemScopeObjectsItem;
 export type MembersUpdateResponsePoliciesItemResourceGroupsItemScopeObjectsList =
@@ -3788,9 +2625,6 @@ export interface MembersUpdateResponsePoliciesItemResourceGroupsItem {
 }
 export type MembersUpdateResponsePoliciesItemResourceGroupsList =
   Array<MembersUpdateResponsePoliciesItemResourceGroupsItem>;
-const MembersUpdateResponsePoliciesItemResourceGroupsList =
-  MembersCreateResponsePoliciesItemResourceGroupsList as any as S.Schema<MembersUpdateResponsePoliciesItemResourceGroupsList>;
-
 export interface MembersUpdateResponsePoliciesItem {
   /** Policy identifier. */
   id?: string | null;
@@ -3801,17 +2635,7 @@ export interface MembersUpdateResponsePoliciesItem {
   /** A list of resource groups that the policy applies to. */
   resourceGroups?: MembersUpdateResponsePoliciesItemResourceGroupsList | null;
 }
-const MembersUpdateResponsePoliciesItem = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<MembersUpdateResponsePoliciesItem>;
-
 export type MembersUpdateResponsePoliciesList = Array<MembersUpdateResponsePoliciesItem>;
-const MembersUpdateResponsePoliciesList = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<MembersUpdateResponsePoliciesList>;
-
 export type MembersUpdateResponseRolesItemPermissionsAnalytics =
   MembersCreateResponseRolesItemPermissionsAnalytics;
 export type MembersUpdateResponseRolesItemPermissionsBilling =
@@ -3839,12 +2663,7 @@ export type MembersUpdateResponseRolesItemPermissionsZones =
 export type MembersUpdateResponseRolesItemPermissions = MembersCreateResponseRolesItemPermissions;
 export type MembersUpdateResponseRolesItem = MembersCreateResponseRolesItem;
 export type MembersUpdateResponseRolesList = Array<MembersCreateResponseRolesItem>;
-const MembersUpdateResponseRolesList =
-  MembersCreateResponseRolesList as any as S.Schema<MembersUpdateResponseRolesList>;
-
 export type MembersUpdateResponseStatus = "accepted" | "pending";
-const MembersUpdateResponseStatus = S.String;
-
 export type MembersUpdateResponseUser = MembersCreateResponseUser;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateMemberResponse {
@@ -3861,11 +2680,6 @@ export interface UpdateMemberResponse {
   /** Details of the user associated to the membership. */
   user?: MembersCreateResponseUser | null;
 }
-const UpdateMemberResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<UpdateMemberResponse>;
-
 export type UpdatePaymentMethodRequestType =
   | "CREDIT_CARD"
   | "PAYPAL"
@@ -3873,8 +2687,6 @@ export type UpdatePaymentMethodRequestType =
   | "SEPA_DEBIT"
   | "LINK"
   | "ACH_DIRECT_DEBIT";
-const UpdatePaymentMethodRequestType = S.String;
-
 export interface UpdatePaymentMethodRequest {
   /** Identifier */
   accountId: string;
@@ -3925,11 +2737,6 @@ export interface UpdatePaymentMethodRequest {
   /** Billing zip code. */
   zipcode?: string;
 }
-const UpdatePaymentMethodRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<UpdatePaymentMethodRequest>;
-
 export type UpdatePaymentMethodResponseType =
   | "CREDIT_CARD"
   | "PAYPAL"
@@ -3990,12 +2797,7 @@ export interface UpdatePaymentMethodResponse {
   /** Billing zip code. */
   zipcode?: string | null;
 }
-const UpdatePaymentMethodResponse =
-  CreatePaymentMethodResponse as any as S.Schema<UpdatePaymentMethodResponse>;
-
 export type SubscriptionsUpdateRequestFrequency = "weekly" | "monthly" | "quarterly" | "yearly";
-const SubscriptionsUpdateRequestFrequency = S.String;
-
 export type SubscriptionsUpdateRequestRatePlanId =
   | "free"
   | "lite"
@@ -4007,12 +2809,7 @@ export type SubscriptionsUpdateRequestRatePlanId =
   | "partners_pro"
   | "partners_business"
   | "partners_enterprise";
-const SubscriptionsUpdateRequestRatePlanId = S.String;
-
 export type SubscriptionsUpdateRequestRatePlanSetsList = Array<string>;
-const SubscriptionsUpdateRequestRatePlanSetsList =
-  MembersCreateRequestRolesList as any as S.Schema<SubscriptionsUpdateRequestRatePlanSetsList>;
-
 export interface SubscriptionsUpdateRequestRatePlan {
   /** The ID of the rate plan. */
   id?: SubscriptionsUpdateRequestRatePlanId | (string & {});
@@ -4029,11 +2826,6 @@ export interface SubscriptionsUpdateRequestRatePlan {
   /** The list of sets this rate plan applies to. Returns array of strings. */
   sets?: SubscriptionsUpdateRequestRatePlanSetsList;
 }
-const SubscriptionsUpdateRequestRatePlan = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<SubscriptionsUpdateRequestRatePlan>;
-
 export interface UpdateSubscriptionRequest {
   /** Identifier */
   accountId: string;
@@ -4044,14 +2836,7 @@ export interface UpdateSubscriptionRequest {
   /** The rate plan applied to the subscription. */
   ratePlan?: SubscriptionsUpdateRequestRatePlan;
 }
-const UpdateSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<UpdateSubscriptionRequest>;
-
 export type SubscriptionsUpdateResponseFrequency = "weekly" | "monthly" | "quarterly" | "yearly";
-const SubscriptionsUpdateResponseFrequency = S.String;
-
 export type SubscriptionsUpdateResponseRatePlanId =
   | "free"
   | "lite"
@@ -4063,12 +2848,7 @@ export type SubscriptionsUpdateResponseRatePlanId =
   | "partners_pro"
   | "partners_business"
   | "partners_enterprise";
-const SubscriptionsUpdateResponseRatePlanId = S.String;
-
 export type SubscriptionsUpdateResponseRatePlanSetsList = Array<string>;
-const SubscriptionsUpdateResponseRatePlanSetsList =
-  MembersCreateRequestRolesList as any as S.Schema<SubscriptionsUpdateResponseRatePlanSetsList>;
-
 export interface SubscriptionsUpdateResponseRatePlan {
   /** The ID of the rate plan. */
   id?: SubscriptionsUpdateResponseRatePlanId | null;
@@ -4085,11 +2865,6 @@ export interface SubscriptionsUpdateResponseRatePlan {
   /** The list of sets this rate plan applies to. Returns array of strings. */
   sets?: SubscriptionsUpdateResponseRatePlanSetsList | null;
 }
-const SubscriptionsUpdateResponseRatePlan = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<SubscriptionsUpdateResponseRatePlan>;
-
 export type SubscriptionsUpdateResponseState =
   | "Trial"
   | "Provisioned"
@@ -4098,8 +2873,6 @@ export type SubscriptionsUpdateResponseState =
   | "Cancelled"
   | "Failed"
   | "Expired";
-const SubscriptionsUpdateResponseState = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateSubscriptionResponse {
   /** Subscription identifier tag. */
@@ -4119,39 +2892,22 @@ export interface UpdateSubscriptionResponse {
   /** The state that the subscription is in. */
   state?: SubscriptionsUpdateResponseState | null;
 }
-const UpdateSubscriptionResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<UpdateSubscriptionResponse>;
-
 export type TokensUpdateRequestPoliciesItemEffect = "allow" | "deny";
-const TokensUpdateRequestPoliciesItemEffect = S.String;
-
 export type TokensUpdateRequestPoliciesItemPermissionGroupsItemMeta =
   TokensCreateRequestPoliciesItemPermissionGroupsItemMeta;
 export type TokensUpdateRequestPoliciesItemPermissionGroupsItem =
   TokensCreateRequestPoliciesItemPermissionGroupsItem;
 export type TokensUpdateRequestPoliciesItemPermissionGroupsList =
   Array<TokensCreateRequestPoliciesItemPermissionGroupsItem>;
-const TokensUpdateRequestPoliciesItemPermissionGroupsList =
-  TokensCreateRequestPoliciesItemPermissionGroupsList as any as S.Schema<TokensUpdateRequestPoliciesItemPermissionGroupsList>;
-
 export type TokensUpdateRequestPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap = {
   [key: string]: string | undefined;
 };
 export type TokensUpdateRequestPoliciesItemResourcesValue =
   | string
   | TokensUpdateRequestPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap;
-const TokensUpdateRequestPoliciesItemResourcesValue = /*@__PURE__*/ __L.at(__c25, 2);
-
 export type TokensUpdateRequestPoliciesItemResourcesMap = {
   [key: string]: TokensUpdateRequestPoliciesItemResourcesValue | undefined;
 };
-const TokensUpdateRequestPoliciesItemResourcesMap = /*@__PURE__*/ __L.at(
-  __c25,
-  3,
-) as any as S.Schema<TokensUpdateRequestPoliciesItemResourcesMap>;
-
 export interface TokensUpdateRequestPoliciesItem {
   /** Allow or deny operations against the resources. */
   effect: TokensUpdateRequestPoliciesItemEffect | (string & {});
@@ -4160,17 +2916,7 @@ export interface TokensUpdateRequestPoliciesItem {
   /** A list of resource names that the policy applies to. */
   resources: TokensUpdateRequestPoliciesItemResourcesMap;
 }
-const TokensUpdateRequestPoliciesItem = /*@__PURE__*/ __L.at(
-  __c25,
-  4,
-) as any as S.Schema<TokensUpdateRequestPoliciesItem>;
-
 export type TokensUpdateRequestPoliciesList = Array<TokensUpdateRequestPoliciesItem>;
-const TokensUpdateRequestPoliciesList = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<TokensUpdateRequestPoliciesList>;
-
 export type TokensUpdateRequestConditionRequestIpInList = Array<string>;
 export type TokensUpdateRequestConditionRequestIpNotInList = Array<string>;
 export interface TokensUpdateRequestConditionRequestIp {
@@ -4183,12 +2929,7 @@ export interface TokensUpdateRequestCondition {
   /** Client IP restrictions. */
   requestIp?: TokensUpdateRequestConditionRequestIp;
 }
-const TokensUpdateRequestCondition =
-  TokensCreateRequestCondition as any as S.Schema<TokensUpdateRequestCondition>;
-
 export type TokensUpdateRequestStatus = "active" | "disabled" | "expired";
-const TokensUpdateRequestStatus = S.String;
-
 export interface UpdateTokenRequest {
   /** Account identifier tag. */
   accountId: string;
@@ -4206,8 +2947,6 @@ export interface UpdateTokenRequest {
   /** Status of the token. */
   status?: TokensUpdateRequestStatus | (string & {});
 }
-const UpdateTokenRequest = /*@__PURE__*/ __L.at(__c25, 6) as any as S.Schema<UpdateTokenRequest>;
-
 export type TokensUpdateResponseConditionRequestIpInList = Array<string>;
 export type TokensUpdateResponseConditionRequestIpNotInList = Array<string>;
 export interface TokensUpdateResponseConditionRequestIp {
@@ -4220,37 +2959,22 @@ export interface TokensUpdateResponseCondition {
   /** Client IP restrictions. */
   requestIp?: TokensUpdateResponseConditionRequestIp | null;
 }
-const TokensUpdateResponseCondition =
-  TokensCreateResponseCondition as any as S.Schema<TokensUpdateResponseCondition>;
-
 export type TokensUpdateResponsePoliciesItemEffect = "allow" | "deny";
-const TokensUpdateResponsePoliciesItemEffect = S.String;
-
 export type TokensUpdateResponsePoliciesItemPermissionGroupsItemMeta =
   MembersCreateResponsePoliciesItemPermissionGroupsItemMeta;
 export type TokensUpdateResponsePoliciesItemPermissionGroupsItem =
   MembersCreateResponsePoliciesItemPermissionGroupsItem;
 export type TokensUpdateResponsePoliciesItemPermissionGroupsList =
   Array<MembersCreateResponsePoliciesItemPermissionGroupsItem>;
-const TokensUpdateResponsePoliciesItemPermissionGroupsList =
-  MembersCreateResponsePoliciesItemPermissionGroupsList as any as S.Schema<TokensUpdateResponsePoliciesItemPermissionGroupsList>;
-
 export type TokensUpdateResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap = {
   [key: string]: string | undefined;
 };
 export type TokensUpdateResponsePoliciesItemResourcesValue =
   | string
   | TokensUpdateResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap;
-const TokensUpdateResponsePoliciesItemResourcesValue = /*@__PURE__*/ __L.at(__c25, 7);
-
 export type TokensUpdateResponsePoliciesItemResourcesMap = {
   [key: string]: TokensUpdateResponsePoliciesItemResourcesValue | undefined;
 };
-const TokensUpdateResponsePoliciesItemResourcesMap = /*@__PURE__*/ __L.at(
-  __c26,
-  0,
-) as any as S.Schema<TokensUpdateResponsePoliciesItemResourcesMap>;
-
 export interface TokensUpdateResponsePoliciesItem {
   /** Policy identifier. */
   id: string;
@@ -4261,20 +2985,8 @@ export interface TokensUpdateResponsePoliciesItem {
   /** A list of resource names that the policy applies to. */
   resources: TokensUpdateResponsePoliciesItemResourcesMap;
 }
-const TokensUpdateResponsePoliciesItem = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<TokensUpdateResponsePoliciesItem>;
-
 export type TokensUpdateResponsePoliciesList = Array<TokensUpdateResponsePoliciesItem>;
-const TokensUpdateResponsePoliciesList = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<TokensUpdateResponsePoliciesList>;
-
 export type TokensUpdateResponseStatus = "active" | "disabled" | "expired";
-const TokensUpdateResponseStatus = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateTokenResponse {
   /** Token identifier tag. */
@@ -4303,17 +3015,11 @@ export interface UpdateTokenResponse {
   /** Status of the token. */
   status?: TokensUpdateResponseStatus | null;
 }
-const UpdateTokenResponse = /*@__PURE__*/ __L.at(__c26, 3) as any as S.Schema<UpdateTokenResponse>;
-
 export interface VerifyTokenRequest {
   /** Account identifier tag. */
   accountId: string;
 }
-const VerifyTokenRequest = /*@__PURE__*/ __L.at(__c26, 4) as any as S.Schema<VerifyTokenRequest>;
-
 export type TokensVerifyResponseStatus = "active" | "disabled" | "expired";
-const TokensVerifyResponseStatus = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface VerifyTokenResponse {
   /** Token identifier tag. */
@@ -4325,8 +3031,6 @@ export interface VerifyTokenResponse {
   /** The time before which the token MUST NOT be accepted for processing. */
   notBefore?: string | null;
 }
-const VerifyTokenResponse = /*@__PURE__*/ __L.at(__c26, 5) as any as S.Schema<VerifyTokenResponse>;
-
 export type CreateAccountError = AccountCreationForbidden | MissingName | CloudflareOpError;
 /** Create an Account. To create the Account within an Organization, provide `unit.id` and omit `standalone`. To create a standalone Free Account, provide `standalone: true` and omit `unit`. Providing both fields is invalid. If you omit both fields, Cloudflare can determine the destination only when the User is an administrator of exactly one Organization. Cloudflare creates the Account in that Organization; otherwise, the request returns an error. */
 export const createAccount: API.OperationMethod<
@@ -4335,8 +3039,8 @@ export const createAccount: API.OperationMethod<
   CreateAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAccountRequest,
-  output: CreateAccountResponse,
+  input: __S(1, __c0, 1) as any as S.Schema<CreateAccountRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<CreateAccountResponse>,
   errors: [AccountCreationForbidden, MissingName, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4350,8 +3054,8 @@ export const createAccountOrganization: API.OperationMethod<
   CreateAccountOrganizationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAccountOrganizationRequest,
-  output: CreateAccountOrganizationResponse,
+  input: __S(5, __c0, 5) as any as S.Schema<CreateAccountOrganizationRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<CreateAccountOrganizationResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4365,8 +3069,8 @@ export const createClientSecret: API.OperationMethod<
   CreateClientSecretError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateClientSecretRequest,
-  output: CreateClientSecretResponse,
+  input: __S(7, __c0, 7) as any as S.Schema<CreateClientSecretRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateClientSecretResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4384,8 +3088,8 @@ export const createMember: API.OperationMethod<
   CreateMemberError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateMemberRequest,
-  output: CreateMemberResponse,
+  input: __S(14, __c1, 6) as any as S.Schema<CreateMemberRequest>,
+  output: __S(31, __c3, 7) as any as S.Schema<CreateMemberResponse>,
   errors: [
     InvalidRoute,
     ValidationError,
@@ -4405,8 +3109,8 @@ export const createPayBadDebt: API.OperationMethod<
   CreatePayBadDebtError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePayBadDebtRequest,
-  output: CreatePayBadDebtResponse,
+  input: __S(32, __c4, 0) as any as S.Schema<CreatePayBadDebtRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<CreatePayBadDebtResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4420,8 +3124,8 @@ export const createPayInvoice: API.OperationMethod<
   CreatePayInvoiceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePayInvoiceRequest,
-  output: CreatePayInvoiceResponse,
+  input: __S(34, __c4, 2) as any as S.Schema<CreatePayInvoiceRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<CreatePayInvoiceResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4435,8 +3139,8 @@ export const createPaymentMethod: API.OperationMethod<
   CreatePaymentMethodError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePaymentMethodRequest,
-  output: CreatePaymentMethodResponse,
+  input: __S(35, __c4, 3) as any as S.Schema<CreatePaymentMethodRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<CreatePaymentMethodResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4450,8 +3154,8 @@ export const createSubscription: API.OperationMethod<
   CreateSubscriptionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSubscriptionRequest,
-  output: CreateSubscriptionResponse,
+  input: __S(38, __c4, 6) as any as S.Schema<CreateSubscriptionRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<CreateSubscriptionResponse>,
   errors: [JsonDecodeFailure, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4469,8 +3173,8 @@ export const createToken: API.OperationMethod<
   CreateTokenError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTokenRequest,
-  output: CreateTokenResponse,
+  input: __S(50, __c6, 2) as any as S.Schema<CreateTokenRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<CreateTokenResponse>,
   errors: [
     InvalidRoute,
     InvalidTokenName,
@@ -4490,8 +3194,8 @@ export const deleteAccount: API.OperationMethod<
   DeleteAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccountRequest,
-  output: DeleteAccountResponse,
+  input: __S(58, __c7, 2) as any as S.Schema<DeleteAccountRequest>,
+  output: __S(59, __c7, 3) as any as S.Schema<DeleteAccountResponse>,
   errors: [InvalidRoute, MethodNotAllowed, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4505,8 +3209,8 @@ export const deleteMember: API.OperationMethod<
   DeleteMemberError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteMemberRequest,
-  output: DeleteMemberResponse,
+  input: __S(60, __c7, 4) as any as S.Schema<DeleteMemberRequest>,
+  output: __S(59, __c7, 3) as any as S.Schema<DeleteMemberResponse>,
   errors: [MemberNotFound, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4520,8 +3224,8 @@ export const deletePaymentMethod: API.OperationMethod<
   DeletePaymentMethodError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePaymentMethodRequest,
-  output: DeletePaymentMethodResponse,
+  input: __S(61, __c7, 5) as any as S.Schema<DeletePaymentMethodRequest>,
+  output: __S(62, __c7, 6) as any as S.Schema<DeletePaymentMethodResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4535,8 +3239,8 @@ export const deleteSubscription: API.OperationMethod<
   DeleteSubscriptionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSubscriptionRequest,
-  output: DeleteSubscriptionResponse,
+  input: __S(63, __c7, 7) as any as S.Schema<DeleteSubscriptionRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<DeleteSubscriptionResponse>,
   errors: [InvalidRoute, EndpointNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4555,8 +3259,8 @@ export const deleteToken: API.OperationMethod<
   DeleteTokenError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTokenRequest,
-  output: DeleteTokenResponse,
+  input: __S(65, __c8, 1) as any as S.Schema<DeleteTokenRequest>,
+  output: __S(59, __c7, 3) as any as S.Schema<DeleteTokenResponse>,
   errors: [
     InvalidRoute,
     MethodNotAllowed,
@@ -4577,8 +3281,8 @@ export const editInvoice: API.OperationMethod<
   EditInvoiceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EditInvoiceRequest,
-  output: EditInvoiceResponse,
+  input: __S(66, __c8, 2) as any as S.Schema<EditInvoiceRequest>,
+  output: __S(67, __c8, 3) as any as S.Schema<EditInvoiceResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4592,8 +3296,8 @@ export const getAccount: API.OperationMethod<
   GetAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountRequest,
-  output: GetAccountResponse,
+  input: __S(68, __c8, 4) as any as S.Schema<GetAccountRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<GetAccountResponse>,
   errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4607,8 +3311,8 @@ export const getAccountProfile: API.OperationMethod<
   GetAccountProfileError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountProfileRequest,
-  output: GetAccountProfileResponse,
+  input: __S(69, __c8, 5) as any as S.Schema<GetAccountProfileRequest>,
+  output: __S(70, __c8, 6) as any as S.Schema<GetAccountProfileResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4622,8 +3326,8 @@ export const getMember: API.OperationMethod<
   GetMemberError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMemberRequest,
-  output: GetMemberResponse,
+  input: __S(71, __c8, 7) as any as S.Schema<GetMemberRequest>,
+  output: __S(77, __c9, 5) as any as S.Schema<GetMemberResponse>,
   errors: [MemberNotFound, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4637,8 +3341,8 @@ export const getPaymentMethod: API.OperationMethod<
   GetPaymentMethodError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPaymentMethodRequest,
-  output: GetPaymentMethodResponse,
+  input: __S(78, __c9, 6) as any as S.Schema<GetPaymentMethodRequest>,
+  output: __S(79, __c9, 7) as any as S.Schema<GetPaymentMethodResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4652,8 +3356,8 @@ export const getRole: API.OperationMethod<
   GetRoleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRoleRequest,
-  output: GetRoleResponse,
+  input: __S(80, __c10, 0) as any as S.Schema<GetRoleRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<GetRoleResponse>,
   errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4667,8 +3371,8 @@ export const getSpeedSettingsTransformation: API.OperationMethod<
   GetSpeedSettingsTransformationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSpeedSettingsTransformationRequest,
-  output: GetSpeedSettingsTransformationResponse,
+  input: __S(82, __c10, 2) as any as S.Schema<GetSpeedSettingsTransformationRequest>,
+  output: __S(85, __c10, 5) as any as S.Schema<GetSpeedSettingsTransformationResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4684,8 +3388,8 @@ export const getSubscription: API.PaginatedOperationMethod<
   SubscriptionsGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: GetSubscriptionRequest,
-    output: GetSubscriptionResponse,
+    input: __S(86, __c10, 6) as any as S.Schema<GetSubscriptionRequest>,
+    output: __S(90, __c11, 2) as any as S.Schema<GetSubscriptionResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -4702,8 +3406,8 @@ export const getToken: API.OperationMethod<
   GetTokenError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTokenRequest,
-  output: GetTokenResponse,
+  input: __S(91, __c11, 3) as any as S.Schema<GetTokenRequest>,
+  output: __S(97, __c12, 1) as any as S.Schema<GetTokenResponse>,
   errors: [InvalidRoute, TokenNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4717,8 +3421,8 @@ export const getTokenPermissionGroup: API.OperationMethod<
   GetTokenPermissionGroupError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTokenPermissionGroupRequest,
-  output: GetTokenPermissionGroupResponse,
+  input: __S(98, __c12, 2) as any as S.Schema<GetTokenPermissionGroupRequest>,
+  output: __S(102, __c12, 6) as any as S.Schema<GetTokenPermissionGroupResponse>,
   errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4734,8 +3438,8 @@ export const listAccounts: API.PaginatedOperationMethod<
   ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListAccountsRequest,
-    output: ListAccountsResponse,
+    input: __S(103, __c12, 7) as any as S.Schema<ListAccountsRequest>,
+    output: __S(106, __c13, 2) as any as S.Schema<ListAccountsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -4758,8 +3462,8 @@ export const listEntitlements: API.OperationMethod<
   ListEntitlementsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEntitlementsRequest,
-  output: ListEntitlementsResponse,
+  input: __S(107, __c13, 3) as any as S.Schema<ListEntitlementsRequest>,
+  output: __S(114, __c14, 2) as any as S.Schema<ListEntitlementsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4775,8 +3479,8 @@ export const listLogAudits: API.PaginatedOperationMethod<
   LogsAuditListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListLogAuditsRequest,
-    output: ListLogAuditsResponse,
+    input: __S(119, __c14, 7) as any as S.Schema<ListLogAuditsRequest>,
+    output: __S(127, __c15, 7) as any as S.Schema<ListLogAuditsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -4800,8 +3504,8 @@ export const listMembers: API.PaginatedOperationMethod<
   MembersListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListMembersRequest,
-    output: ListMembersResponse,
+    input: __S(128, __c16, 0) as any as S.Schema<ListMembersRequest>,
+    output: __S(133, __c16, 5) as any as S.Schema<ListMembersResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -4824,8 +3528,8 @@ export const listPaymentMethods: API.OperationMethod<
   ListPaymentMethodsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPaymentMethodsRequest,
-  output: ListPaymentMethodsResponse,
+  input: __S(134, __c16, 6) as any as S.Schema<ListPaymentMethodsRequest>,
+  output: __S(137, __c17, 1) as any as S.Schema<ListPaymentMethodsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4841,8 +3545,8 @@ export const listRoles: API.PaginatedOperationMethod<
   MembersCreateResponseRolesItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListRolesRequest,
-    output: ListRolesResponse,
+    input: __S(138, __c17, 2) as any as S.Schema<ListRolesRequest>,
+    output: __S(139, __c17, 3) as any as S.Schema<ListRolesResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -4867,8 +3571,8 @@ export const listTokens: API.PaginatedOperationMethod<
   TokensListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListTokensRequest,
-    output: ListTokensResponse,
+    input: __S(140, __c17, 4) as any as S.Schema<ListTokensRequest>,
+    output: __S(147, __c18, 3) as any as S.Schema<ListTokensResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -4891,8 +3595,8 @@ export const listTokensPermissionGroups: API.OperationMethod<
   ListTokensPermissionGroupsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTokensPermissionGroupsRequest,
-  output: ListTokensPermissionGroupsResponse,
+  input: __S(148, __c18, 4) as any as S.Schema<ListTokensPermissionGroupsRequest>,
+  output: __S(102, __c12, 6) as any as S.Schema<ListTokensPermissionGroupsResponse>,
   errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4906,8 +3610,8 @@ export const logsAuditHistory: API.OperationMethod<
   LogsAuditHistoryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LogsAuditHistoryRequest,
-  output: LogsAuditHistoryResponse,
+  input: __S(149, __c18, 5) as any as S.Schema<LogsAuditHistoryRequest>,
+  output: __S(152, __c19, 0) as any as S.Schema<LogsAuditHistoryResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4921,8 +3625,8 @@ export const logsAuditProductCategories: API.OperationMethod<
   LogsAuditProductCategoriesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LogsAuditProductCategoriesRequest,
-  output: LogsAuditProductCategoriesResponse,
+  input: __S(153, __c19, 1) as any as S.Schema<LogsAuditProductCategoriesRequest>,
+  output: __S(158, __c19, 6) as any as S.Schema<LogsAuditProductCategoriesResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4936,8 +3640,8 @@ export const paymentMethodsSetAsDefault: API.OperationMethod<
   PaymentMethodsSetAsDefaultError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PaymentMethodsSetAsDefaultRequest,
-  output: PaymentMethodsSetAsDefaultResponse,
+  input: __S(159, __c19, 7) as any as S.Schema<PaymentMethodsSetAsDefaultRequest>,
+  output: __S(62, __c7, 6) as any as S.Schema<PaymentMethodsSetAsDefaultResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4951,8 +3655,8 @@ export const putTokenValue: API.OperationMethod<
   PutTokenValueError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTokenValueRequest,
-  output: PutTokenValueResponse,
+  input: __S(160, __c20, 0) as any as S.Schema<PutTokenValueRequest>,
+  output: __S(67, __c8, 3) as any as S.Schema<PutTokenValueResponse>,
   errors: [InvalidRoute, TokenNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4966,8 +3670,8 @@ export const receiptsPdf: API.OperationMethod<
   ReceiptsPdfError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReceiptsPdfRequest,
-  output: ReceiptsPdfResponse,
+  input: __S(161, __c20, 1) as any as S.Schema<ReceiptsPdfRequest>,
+  output: __S(162, __c20, 2) as any as S.Schema<ReceiptsPdfResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4981,8 +3685,8 @@ export const subscriptionsActionsAppend: API.OperationMethod<
   SubscriptionsActionsAppendError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SubscriptionsActionsAppendRequest,
-  output: SubscriptionsActionsAppendResponse,
+  input: __S(164, __c20, 4) as any as S.Schema<SubscriptionsActionsAppendRequest>,
+  output: __S(166, __c20, 6) as any as S.Schema<SubscriptionsActionsAppendResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4996,8 +3700,8 @@ export const subscriptionsBulkCreate: API.OperationMethod<
   SubscriptionsBulkCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SubscriptionsBulkCreateRequest,
-  output: SubscriptionsBulkCreateResponse,
+  input: __S(171, __c21, 3) as any as S.Schema<SubscriptionsBulkCreateRequest>,
+  output: __S(173, __c21, 5) as any as S.Schema<SubscriptionsBulkCreateResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5011,8 +3715,8 @@ export const subscriptionsCancelDowngrade: API.OperationMethod<
   SubscriptionsCancelDowngradeError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SubscriptionsCancelDowngradeRequest,
-  output: SubscriptionsCancelDowngradeResponse,
+  input: __S(174, __c21, 6) as any as S.Schema<SubscriptionsCancelDowngradeRequest>,
+  output: __S(62, __c7, 6) as any as S.Schema<SubscriptionsCancelDowngradeResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5026,8 +3730,8 @@ export const subscriptionsCancelReasonCreate: API.OperationMethod<
   SubscriptionsCancelReasonCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SubscriptionsCancelReasonCreateRequest,
-  output: SubscriptionsCancelReasonCreateResponse,
+  input: __S(175, __c21, 7) as any as S.Schema<SubscriptionsCancelReasonCreateRequest>,
+  output: __S(176, __c22, 0) as any as S.Schema<SubscriptionsCancelReasonCreateResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5041,8 +3745,8 @@ export const subscriptionsCancelReasonGet: API.OperationMethod<
   SubscriptionsCancelReasonGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SubscriptionsCancelReasonGetRequest,
-  output: SubscriptionsCancelReasonGetResponse,
+  input: __S(177, __c22, 1) as any as S.Schema<SubscriptionsCancelReasonGetRequest>,
+  output: __S(176, __c22, 0) as any as S.Schema<SubscriptionsCancelReasonGetResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5056,8 +3760,8 @@ export const subscriptionsGetByIdentifier: API.OperationMethod<
   SubscriptionsGetByIdentifierError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SubscriptionsGetByIdentifierRequest,
-  output: SubscriptionsGetByIdentifierResponse,
+  input: __S(178, __c22, 2) as any as S.Schema<SubscriptionsGetByIdentifierRequest>,
+  output: __S(180, __c22, 4) as any as S.Schema<SubscriptionsGetByIdentifierResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5077,8 +3781,8 @@ export const updateAccount: API.OperationMethod<
   UpdateAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAccountRequest,
-  output: UpdateAccountResponse,
+  input: __S(183, __c22, 7) as any as S.Schema<UpdateAccountRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<UpdateAccountResponse>,
   errors: [
     InvalidAccountName,
     AccountNameTooLong,
@@ -5100,8 +3804,8 @@ export const updateAccountProfile: API.OperationMethod<
   UpdateAccountProfileError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAccountProfileRequest,
-  output: UpdateAccountProfileResponse,
+  input: __S(184, __c23, 0) as any as S.Schema<UpdateAccountProfileRequest>,
+  output: __S(185, __c23, 1) as any as S.Schema<UpdateAccountProfileResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5120,8 +3824,8 @@ export const updateMember: API.OperationMethod<
   UpdateMemberError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateMemberRequest,
-  output: UpdateMemberResponse,
+  input: __S(193, __c24, 1) as any as S.Schema<UpdateMemberRequest>,
+  output: __S(196, __c24, 4) as any as S.Schema<UpdateMemberResponse>,
   errors: [
     MemberNotFound,
     InvalidRoute,
@@ -5142,8 +3846,8 @@ export const updatePaymentMethod: API.OperationMethod<
   UpdatePaymentMethodError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePaymentMethodRequest,
-  output: UpdatePaymentMethodResponse,
+  input: __S(197, __c24, 5) as any as S.Schema<UpdatePaymentMethodRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<UpdatePaymentMethodResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5161,8 +3865,8 @@ export const updateSubscription: API.OperationMethod<
   UpdateSubscriptionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSubscriptionRequest,
-  output: UpdateSubscriptionResponse,
+  input: __S(199, __c24, 7) as any as S.Schema<UpdateSubscriptionRequest>,
+  output: __S(201, __c25, 1) as any as S.Schema<UpdateSubscriptionResponse>,
   errors: [
     JsonDecodeFailure,
     InvalidRoute,
@@ -5187,8 +3891,8 @@ export const updateToken: API.OperationMethod<
   UpdateTokenError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTokenRequest,
-  output: UpdateTokenResponse,
+  input: __S(206, __c25, 6) as any as S.Schema<UpdateTokenRequest>,
+  output: __S(211, __c26, 3) as any as S.Schema<UpdateTokenResponse>,
   errors: [
     InvalidRoute,
     MethodNotAllowed,
@@ -5209,8 +3913,8 @@ export const verifyToken: API.OperationMethod<
   VerifyTokenError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VerifyTokenRequest,
-  output: VerifyTokenResponse,
+  input: __S(212, __c26, 4) as any as S.Schema<VerifyTokenRequest>,
+  output: __S(213, __c26, 5) as any as S.Schema<VerifyTokenResponse>,
   errors: [MissingAuthenticationToken, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5236,8 +3940,8 @@ function __c0(j: number): any {
           idempotencyKey: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
           name: S.String,
           standalone: S.optional(S.Boolean),
-          type: S.optional(CreateRequestType),
-          unit: S.optional(CreateRequestUnit),
+          type: S.optional(S.String),
+          unit: S.optional(__S(0, __c0, 0)),
         })
           .pipe(T.Http({ method: "POST", uri: "/accounts", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -5261,10 +3965,10 @@ function __c0(j: number): any {
         S.Struct({
           id: S.String,
           name: S.String,
-          type: CreateResponseType,
+          type: S.String,
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-          managedBy: S.optional(S.NullOr(CreateResponseManagedBy).pipe(T.Body("managed_by"))),
-          settings: S.optional(S.NullOr(CreateResponseSettings)),
+          managedBy: S.optional(S.NullOr(__S(2, __c0, 2)).pipe(T.Body("managed_by"))),
+          settings: S.optional(S.NullOr(__S(3, __c0, 3))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateAccountResponse" });
     case 5:
@@ -5321,31 +4025,27 @@ function __c1(j: number): any {
         identifier: "MembersCreateRequestPoliciesItemPermissionGroupsItem",
       });
     case 3:
-      return S.Array(MembersCreateRequestPoliciesItemPermissionGroupsItem);
+      return S.Array(__S(10, __c1, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          access: MembersCreateRequestPoliciesItemAccess,
-          permissionGroups: MembersCreateRequestPoliciesItemPermissionGroupsList.pipe(
-            T.Body("permission_groups"),
-          ),
-          resourceGroups: MembersCreateRequestPoliciesItemResourceGroupsList.pipe(
-            T.Body("resource_groups"),
-          ),
+          access: S.String,
+          permissionGroups: __S(11, __c1, 3).pipe(T.Body("permission_groups")),
+          resourceGroups: __S(11, __c1, 3).pipe(T.Body("resource_groups")),
         }),
       ).annotate({
         identifier: "MembersCreateRequestPoliciesItem",
       });
     case 5:
-      return S.Array(MembersCreateRequestPoliciesItem);
+      return S.Array(__S(12, __c1, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           email: S.String,
-          roles: S.optional(MembersCreateRequestRolesList),
-          status: S.optional(MembersCreateRequestStatus),
-          policies: S.optional(MembersCreateRequestPoliciesList),
+          roles: S.optional(__S(9, __c1, 1)),
+          status: S.optional(S.String),
+          policies: S.optional(__S(13, __c1, 5)),
         })
           .pipe(T.Http({ method: "POST", uri: "/accounts/{account_id}/members", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -5373,14 +4073,14 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          meta: S.optional(S.NullOr(MembersCreateResponsePoliciesItemPermissionGroupsItemMeta)),
+          meta: S.optional(S.NullOr(__S(15, __c1, 7))),
           name: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "MembersCreateResponsePoliciesItemPermissionGroupsItem",
       });
     case 1:
-      return S.Array(MembersCreateResponsePoliciesItemPermissionGroupsItem);
+      return S.Array(__S(16, __c2, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -5390,12 +4090,12 @@ function __c2(j: number): any {
         identifier: "MembersCreateResponsePoliciesItemResourceGroupsItemScopeObjectsItem",
       });
     case 3:
-      return S.Array(MembersCreateResponsePoliciesItemResourceGroupsItemScopeObjectsItem);
+      return S.Array(__S(18, __c2, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
-          objects: MembersCreateResponsePoliciesItemResourceGroupsItemScopeObjectsList,
+          objects: __S(19, __c2, 3),
         }),
       ).annotate({
         identifier: "MembersCreateResponsePoliciesItemResourceGroupsItemScope",
@@ -5413,15 +4113,15 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          scope: MembersCreateResponsePoliciesItemResourceGroupsItemScope,
-          meta: S.optional(S.NullOr(MembersCreateResponsePoliciesItemResourceGroupsItemMeta)),
+          scope: __S(20, __c2, 4),
+          meta: S.optional(S.NullOr(__S(21, __c2, 5))),
           name: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "MembersCreateResponsePoliciesItemResourceGroupsItem",
       });
     case 7:
-      return S.Array(MembersCreateResponsePoliciesItemResourceGroupsItem);
+      return S.Array(__S(22, __c2, 6));
   }
 }
 function __c3(j: number): any {
@@ -5430,23 +4130,17 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          access: S.optional(S.NullOr(MembersCreateResponsePoliciesItemAccess)),
+          access: S.optional(S.NullOr(S.String)),
           permissionGroups: S.optional(
-            S.NullOr(MembersCreateResponsePoliciesItemPermissionGroupsList).pipe(
-              T.Body("permission_groups"),
-            ),
+            S.NullOr(__S(17, __c2, 1)).pipe(T.Body("permission_groups")),
           ),
-          resourceGroups: S.optional(
-            S.NullOr(MembersCreateResponsePoliciesItemResourceGroupsList).pipe(
-              T.Body("resource_groups"),
-            ),
-          ),
+          resourceGroups: S.optional(S.NullOr(__S(23, __c2, 7)).pipe(T.Body("resource_groups"))),
         }),
       ).annotate({
         identifier: "MembersCreateResponsePoliciesItem",
       });
     case 1:
-      return S.Array(MembersCreateResponsePoliciesItem);
+      return S.Array(__S(24, __c3, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -5459,30 +4153,18 @@ function __c3(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          analytics: S.optional(S.NullOr(MembersCreateResponseRolesItemPermissionsAnalytics)),
-          billing: S.optional(S.NullOr(MembersCreateResponseRolesItemPermissionsAnalytics)),
-          cachePurge: S.optional(
-            S.NullOr(MembersCreateResponseRolesItemPermissionsAnalytics).pipe(
-              T.Body("cache_purge"),
-            ),
-          ),
-          dns: S.optional(S.NullOr(MembersCreateResponseRolesItemPermissionsAnalytics)),
-          dnsRecords: S.optional(
-            S.NullOr(MembersCreateResponseRolesItemPermissionsAnalytics).pipe(
-              T.Body("dns_records"),
-            ),
-          ),
-          lb: S.optional(S.NullOr(MembersCreateResponseRolesItemPermissionsAnalytics)),
-          logs: S.optional(S.NullOr(MembersCreateResponseRolesItemPermissionsAnalytics)),
-          organization: S.optional(S.NullOr(MembersCreateResponseRolesItemPermissionsAnalytics)),
-          ssl: S.optional(S.NullOr(MembersCreateResponseRolesItemPermissionsAnalytics)),
-          waf: S.optional(S.NullOr(MembersCreateResponseRolesItemPermissionsAnalytics)),
-          zoneSettings: S.optional(
-            S.NullOr(MembersCreateResponseRolesItemPermissionsAnalytics).pipe(
-              T.Body("zone_settings"),
-            ),
-          ),
-          zones: S.optional(S.NullOr(MembersCreateResponseRolesItemPermissionsAnalytics)),
+          analytics: S.optional(S.NullOr(__S(26, __c3, 2))),
+          billing: S.optional(S.NullOr(__S(26, __c3, 2))),
+          cachePurge: S.optional(S.NullOr(__S(26, __c3, 2)).pipe(T.Body("cache_purge"))),
+          dns: S.optional(S.NullOr(__S(26, __c3, 2))),
+          dnsRecords: S.optional(S.NullOr(__S(26, __c3, 2)).pipe(T.Body("dns_records"))),
+          lb: S.optional(S.NullOr(__S(26, __c3, 2))),
+          logs: S.optional(S.NullOr(__S(26, __c3, 2))),
+          organization: S.optional(S.NullOr(__S(26, __c3, 2))),
+          ssl: S.optional(S.NullOr(__S(26, __c3, 2))),
+          waf: S.optional(S.NullOr(__S(26, __c3, 2))),
+          zoneSettings: S.optional(S.NullOr(__S(26, __c3, 2)).pipe(T.Body("zone_settings"))),
+          zones: S.optional(S.NullOr(__S(26, __c3, 2))),
         }),
       ).annotate({
         identifier: "MembersCreateResponseRolesItemPermissions",
@@ -5493,13 +4175,13 @@ function __c3(j: number): any {
           id: S.String,
           description: S.String,
           name: S.String,
-          permissions: MembersCreateResponseRolesItemPermissions,
+          permissions: __S(27, __c3, 3),
         }),
       ).annotate({
         identifier: "MembersCreateResponseRolesItem",
       });
     case 5:
-      return S.Array(MembersCreateResponseRolesItem);
+      return S.Array(__S(28, __c3, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -5519,10 +4201,10 @@ function __c3(j: number): any {
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           email: S.optional(S.NullOr(S.String)),
-          policies: S.optional(S.NullOr(MembersCreateResponsePoliciesList)),
-          roles: S.optional(S.NullOr(MembersCreateResponseRolesList)),
-          status: S.optional(S.NullOr(MembersCreateResponseStatus)),
-          user: S.optional(S.NullOr(MembersCreateResponseUser)),
+          policies: S.optional(S.NullOr(__S(25, __c3, 1))),
+          roles: S.optional(S.NullOr(__S(29, __c3, 5))),
+          status: S.optional(S.NullOr(S.String)),
+          user: S.optional(S.NullOr(__S(30, __c3, 6))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateMemberResponse" });
   }
@@ -5579,7 +4261,7 @@ function __c4(j: number): any {
           paymentGateway: S.optional(S.String.pipe(T.Body("payment_gateway"))),
           paymentNonce: S.optional(S.String.pipe(T.Body("payment_nonce"))),
           state: S.optional(S.String),
-          type: S.optional(CreatePaymentMethodRequestType),
+          type: S.optional(S.String),
           zipcode: S.optional(S.String),
         })
           .pipe(
@@ -5615,7 +4297,7 @@ function __c4(j: number): any {
           paymentGateway: S.optional(S.NullOr(S.String).pipe(T.Body("payment_gateway"))),
           paymentNonce: S.optional(S.NullOr(S.String).pipe(T.Body("payment_nonce"))),
           state: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.NullOr(CreatePaymentMethodResponseType)),
+          type: S.optional(S.NullOr(S.String)),
           zipcode: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -5624,13 +4306,13 @@ function __c4(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(SubscriptionsCreateRequestRatePlanId),
+          id: S.optional(S.String),
           currency: S.optional(S.String),
           externallyManaged: S.optional(S.Boolean.pipe(T.Body("externally_managed"))),
           isContract: S.optional(S.Boolean.pipe(T.Body("is_contract"))),
           publicName: S.optional(S.String.pipe(T.Body("public_name"))),
           scope: S.optional(S.String),
-          sets: S.optional(SubscriptionsCreateRequestRatePlanSetsList),
+          sets: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({
         identifier: "SubscriptionsCreateRequestRatePlan",
@@ -5639,8 +4321,8 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          frequency: S.optional(SubscriptionsCreateRequestFrequency),
-          ratePlan: S.optional(SubscriptionsCreateRequestRatePlan.pipe(T.Body("rate_plan"))),
+          frequency: S.optional(S.String),
+          ratePlan: S.optional(__S(37, __c4, 5).pipe(T.Body("rate_plan"))),
         })
           .pipe(T.Http({ method: "POST", uri: "/accounts/{account_id}/subscriptions", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -5650,13 +4332,13 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.NullOr(SubscriptionsCreateResponseRatePlanId)),
+          id: S.optional(S.NullOr(S.String)),
           currency: S.optional(S.NullOr(S.String)),
           externallyManaged: S.optional(S.NullOr(S.Boolean).pipe(T.Body("externally_managed"))),
           isContract: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_contract"))),
           publicName: S.optional(S.NullOr(S.String).pipe(T.Body("public_name"))),
           scope: S.optional(S.NullOr(S.String)),
-          sets: S.optional(S.NullOr(SubscriptionsCreateResponseRatePlanSetsList)),
+          sets: S.optional(S.NullOr(__S(9, __c1, 1))),
         }),
       ).annotate({
         identifier: "SubscriptionsCreateResponseRatePlan",
@@ -5672,12 +4354,10 @@ function __c5(j: number): any {
           currency: S.optional(S.NullOr(S.String)),
           currentPeriodEnd: S.optional(S.NullOr(S.String).pipe(T.Body("current_period_end"))),
           currentPeriodStart: S.optional(S.NullOr(S.String).pipe(T.Body("current_period_start"))),
-          frequency: S.optional(S.NullOr(SubscriptionsCreateResponseFrequency)),
+          frequency: S.optional(S.NullOr(S.String)),
           price: S.optional(S.NullOr(S.Number)),
-          ratePlan: S.optional(
-            S.NullOr(SubscriptionsCreateResponseRatePlan).pipe(T.Body("rate_plan")),
-          ),
-          state: S.optional(S.NullOr(SubscriptionsCreateResponseState)),
+          ratePlan: S.optional(S.NullOr(__S(39, __c4, 7)).pipe(T.Body("rate_plan"))),
+          state: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "CreateSubscriptionResponse",
@@ -5701,32 +4381,30 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          meta: S.optional(TokensCreateRequestPoliciesItemPermissionGroupsItemMeta),
+          meta: S.optional(__S(41, __c5, 1)),
           name: S.optional(S.String),
         }),
       ).annotate({
         identifier: "TokensCreateRequestPoliciesItemPermissionGroupsItem",
       });
     case 3:
-      return S.Array(TokensCreateRequestPoliciesItemPermissionGroupsItem);
+      return S.Array(__S(42, __c5, 2));
     case 4:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
     case 5:
-      return S.Record(S.String, TokensCreateRequestPoliciesItemResourcesValue);
+      return S.Record(S.String, __S(44, __c5, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          effect: TokensCreateRequestPoliciesItemEffect,
-          permissionGroups: TokensCreateRequestPoliciesItemPermissionGroupsList.pipe(
-            T.Body("permission_groups"),
-          ),
-          resources: TokensCreateRequestPoliciesItemResourcesMap,
+          effect: S.String,
+          permissionGroups: __S(43, __c5, 3).pipe(T.Body("permission_groups")),
+          resources: __S(45, __c5, 5),
         }),
       ).annotate({
         identifier: "TokensCreateRequestPoliciesItem",
       });
     case 7:
-      return S.Array(TokensCreateRequestPoliciesItem);
+      return S.Array(__S(46, __c5, 6));
   }
 }
 function __c6(j: number): any {
@@ -5734,8 +4412,8 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          in: S.optional(TokensCreateRequestConditionRequestIpInList),
-          notIn: S.optional(TokensCreateRequestConditionRequestIpNotInList.pipe(T.Body("not_in"))),
+          in: S.optional(__S(9, __c1, 1)),
+          notIn: S.optional(__S(9, __c1, 1).pipe(T.Body("not_in"))),
         }),
       ).annotate({
         identifier: "TokensCreateRequestConditionRequestIp",
@@ -5743,7 +4421,7 @@ function __c6(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          requestIp: S.optional(TokensCreateRequestConditionRequestIp.pipe(T.Body("request_ip"))),
+          requestIp: S.optional(__S(48, __c6, 0).pipe(T.Body("request_ip"))),
         }),
       ).annotate({
         identifier: "TokensCreateRequestCondition",
@@ -5753,8 +4431,8 @@ function __c6(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           name: S.String,
-          policies: TokensCreateRequestPoliciesList,
-          condition: S.optional(TokensCreateRequestCondition),
+          policies: __S(47, __c5, 7),
+          condition: S.optional(__S(49, __c6, 1)),
           expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
           notBefore: S.optional(S.String.pipe(T.Body("not_before"))),
         })
@@ -5764,10 +4442,8 @@ function __c6(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          in: S.optional(S.NullOr(TokensCreateResponseConditionRequestIpInList)),
-          notIn: S.optional(
-            S.NullOr(TokensCreateResponseConditionRequestIpNotInList).pipe(T.Body("not_in")),
-          ),
+          in: S.optional(S.NullOr(__S(9, __c1, 1))),
+          notIn: S.optional(S.NullOr(__S(9, __c1, 1)).pipe(T.Body("not_in"))),
         }),
       ).annotate({
         identifier: "TokensCreateResponseConditionRequestIp",
@@ -5775,9 +4451,7 @@ function __c6(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          requestIp: S.optional(
-            S.NullOr(TokensCreateResponseConditionRequestIp).pipe(T.Body("request_ip")),
-          ),
+          requestIp: S.optional(S.NullOr(__S(51, __c6, 3)).pipe(T.Body("request_ip"))),
         }),
       ).annotate({
         identifier: "TokensCreateResponseCondition",
@@ -5785,16 +4459,14 @@ function __c6(j: number): any {
     case 5:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
     case 6:
-      return S.Record(S.String, TokensCreateResponsePoliciesItemResourcesValue);
+      return S.Record(S.String, __S(53, __c6, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          effect: TokensCreateResponsePoliciesItemEffect,
-          permissionGroups: TokensCreateResponsePoliciesItemPermissionGroupsList.pipe(
-            T.Body("permission_groups"),
-          ),
-          resources: TokensCreateResponsePoliciesItemResourcesMap,
+          effect: S.String,
+          permissionGroups: __S(17, __c2, 1).pipe(T.Body("permission_groups")),
+          resources: __S(54, __c6, 6),
         }),
       ).annotate({
         identifier: "TokensCreateResponsePoliciesItem",
@@ -5804,12 +4476,12 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(TokensCreateResponsePoliciesItem);
+      return S.Array(__S(55, __c6, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          condition: S.optional(S.NullOr(TokensCreateResponseCondition)),
+          condition: S.optional(S.NullOr(__S(52, __c6, 4))),
           creatorEmailAtCreation: S.optional(
             S.NullOr(S.String).pipe(T.Body("creator_email_at_creation")),
           ),
@@ -5819,10 +4491,10 @@ function __c7(j: number): any {
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
           name: S.optional(S.NullOr(S.String)),
           notBefore: S.optional(S.NullOr(S.String).pipe(T.Body("not_before"))),
-          policies: S.optional(S.NullOr(TokensCreateResponsePoliciesList)),
+          policies: S.optional(S.NullOr(__S(56, __c7, 0))),
           provisionerId: S.optional(S.NullOr(S.String).pipe(T.Body("provisioner_id"))),
           provisionerType: S.optional(S.NullOr(S.String).pipe(T.Body("provisioner_type"))),
-          status: S.optional(S.NullOr(TokensCreateResponseStatus)),
+          status: S.optional(S.NullOr(S.String)),
           value: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateTokenResponse" });
@@ -5982,7 +4654,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           key: S.String,
-          objects: MembersGetResponsePoliciesItemResourceGroupsItemScopeObjectsList,
+          objects: __S(19, __c2, 3),
         }),
       ).annotate({
         identifier: "MembersGetResponsePoliciesItemResourceGroupsItemScope",
@@ -5991,45 +4663,39 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          scope: MembersGetResponsePoliciesItemResourceGroupsItemScope,
-          meta: S.optional(S.NullOr(MembersCreateResponsePoliciesItemResourceGroupsItemMeta)),
+          scope: __S(72, __c9, 0),
+          meta: S.optional(S.NullOr(__S(21, __c2, 5))),
           name: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "MembersGetResponsePoliciesItemResourceGroupsItem",
       });
     case 2:
-      return S.Array(MembersGetResponsePoliciesItemResourceGroupsItem);
+      return S.Array(__S(73, __c9, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          access: S.optional(S.NullOr(MembersGetResponsePoliciesItemAccess)),
+          access: S.optional(S.NullOr(S.String)),
           permissionGroups: S.optional(
-            S.NullOr(MembersGetResponsePoliciesItemPermissionGroupsList).pipe(
-              T.Body("permission_groups"),
-            ),
+            S.NullOr(__S(17, __c2, 1)).pipe(T.Body("permission_groups")),
           ),
-          resourceGroups: S.optional(
-            S.NullOr(MembersGetResponsePoliciesItemResourceGroupsList).pipe(
-              T.Body("resource_groups"),
-            ),
-          ),
+          resourceGroups: S.optional(S.NullOr(__S(74, __c9, 2)).pipe(T.Body("resource_groups"))),
         }),
       ).annotate({
         identifier: "MembersGetResponsePoliciesItem",
       });
     case 4:
-      return S.Array(MembersGetResponsePoliciesItem);
+      return S.Array(__S(75, __c9, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           email: S.optional(S.NullOr(S.String)),
-          policies: S.optional(S.NullOr(MembersGetResponsePoliciesList)),
-          roles: S.optional(S.NullOr(MembersGetResponseRolesList)),
-          status: S.optional(S.NullOr(MembersGetResponseStatus)),
-          user: S.optional(S.NullOr(MembersCreateResponseUser)),
+          policies: S.optional(S.NullOr(__S(76, __c9, 4))),
+          roles: S.optional(S.NullOr(__S(29, __c3, 5))),
+          status: S.optional(S.NullOr(S.String)),
+          user: S.optional(S.NullOr(__S(30, __c3, 6))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetMemberResponse" });
     case 6:
@@ -6073,7 +4739,7 @@ function __c9(j: number): any {
           paymentGateway: S.optional(S.NullOr(S.String).pipe(T.Body("payment_gateway"))),
           paymentNonce: S.optional(S.NullOr(S.String).pipe(T.Body("payment_nonce"))),
           state: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.NullOr(GetPaymentMethodResponseType)),
+          type: S.optional(S.NullOr(S.String)),
           zipcode: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetPaymentMethodResponse" });
@@ -6096,7 +4762,7 @@ function __c10(j: number): any {
           id: S.String,
           description: S.String,
           name: S.String,
-          permissions: MembersCreateResponseRolesItemPermissions,
+          permissions: __S(27, __c3, 3),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetRoleResponse" });
     case 2:
@@ -6128,13 +4794,10 @@ function __c10(j: number): any {
         identifier: "GetSpeedSettingsTransformationResultItem",
       });
     case 4:
-      return S.Array(GetSpeedSettingsTransformationResultItem);
+      return S.Array(__S(83, __c10, 3));
     case 5:
       return S.suspend(() =>
-        GetSpeedSettingsTransformationResultList.pipe(
-          T.EnvelopePayloadRoot(),
-          T.KeyDictionary(KEY_DICTIONARY),
-        ),
+        __S(84, __c10, 4).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetSpeedSettingsTransformationResponse",
       });
@@ -6149,13 +4812,13 @@ function __c10(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.NullOr(SubscriptionsGetResultItemRatePlanId)),
+          id: S.optional(S.NullOr(S.String)),
           currency: S.optional(S.NullOr(S.String)),
           externallyManaged: S.optional(S.NullOr(S.Boolean).pipe(T.Body("externally_managed"))),
           isContract: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_contract"))),
           publicName: S.optional(S.NullOr(S.String).pipe(T.Body("public_name"))),
           scope: S.optional(S.NullOr(S.String)),
-          sets: S.optional(S.NullOr(SubscriptionsGetResultItemRatePlanSetsList)),
+          sets: S.optional(S.NullOr(__S(9, __c1, 1))),
         }),
       ).annotate({
         identifier: "SubscriptionsGetResultItemRatePlan",
@@ -6171,22 +4834,20 @@ function __c11(j: number): any {
           currency: S.optional(S.NullOr(S.String)),
           currentPeriodEnd: S.optional(S.NullOr(S.String).pipe(T.Body("current_period_end"))),
           currentPeriodStart: S.optional(S.NullOr(S.String).pipe(T.Body("current_period_start"))),
-          frequency: S.optional(S.NullOr(SubscriptionsGetResultItemFrequency)),
+          frequency: S.optional(S.NullOr(S.String)),
           price: S.optional(S.NullOr(S.Number)),
-          ratePlan: S.optional(
-            S.NullOr(SubscriptionsGetResultItemRatePlan).pipe(T.Body("rate_plan")),
-          ),
-          state: S.optional(S.NullOr(SubscriptionsGetResultItemState)),
+          ratePlan: S.optional(S.NullOr(__S(87, __c10, 7)).pipe(T.Body("rate_plan"))),
+          state: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "SubscriptionsGetResultItem",
       });
     case 1:
-      return S.Array(SubscriptionsGetResultItem);
+      return S.Array(__S(88, __c11, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          result: SubscriptionsGetResultList.pipe(T.EnvelopePayload()),
+          result: __S(89, __c11, 1).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetSubscriptionResponse" });
@@ -6204,9 +4865,7 @@ function __c11(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          requestIp: S.optional(
-            S.NullOr(TokensGetResponseConditionRequestIp).pipe(T.Body("request_ip")),
-          ),
+          requestIp: S.optional(S.NullOr(__S(51, __c6, 3)).pipe(T.Body("request_ip"))),
         }),
       ).annotate({
         identifier: "TokensGetResponseCondition",
@@ -6214,16 +4873,14 @@ function __c11(j: number): any {
     case 5:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
     case 6:
-      return S.Record(S.String, TokensGetResponsePoliciesItemResourcesValue);
+      return S.Record(S.String, __S(93, __c11, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          effect: TokensGetResponsePoliciesItemEffect,
-          permissionGroups: TokensGetResponsePoliciesItemPermissionGroupsList.pipe(
-            T.Body("permission_groups"),
-          ),
-          resources: TokensGetResponsePoliciesItemResourcesMap,
+          effect: S.String,
+          permissionGroups: __S(17, __c2, 1).pipe(T.Body("permission_groups")),
+          resources: __S(94, __c11, 6),
         }),
       ).annotate({
         identifier: "TokensGetResponsePoliciesItem",
@@ -6233,12 +4890,12 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(TokensGetResponsePoliciesItem);
+      return S.Array(__S(95, __c11, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          condition: S.optional(S.NullOr(TokensGetResponseCondition)),
+          condition: S.optional(S.NullOr(__S(92, __c11, 4))),
           creatorEmailAtCreation: S.optional(
             S.NullOr(S.String).pipe(T.Body("creator_email_at_creation")),
           ),
@@ -6248,10 +4905,10 @@ function __c12(j: number): any {
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
           name: S.optional(S.NullOr(S.String)),
           notBefore: S.optional(S.NullOr(S.String).pipe(T.Body("not_before"))),
-          policies: S.optional(S.NullOr(TokensGetResponsePoliciesList)),
+          policies: S.optional(S.NullOr(__S(96, __c12, 0))),
           provisionerId: S.optional(S.NullOr(S.String).pipe(T.Body("provisioner_id"))),
           provisionerType: S.optional(S.NullOr(S.String).pipe(T.Body("provisioner_type"))),
-          status: S.optional(S.NullOr(TokensGetResponseStatus)),
+          status: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetTokenResponse" });
     case 2:
@@ -6273,34 +4930,31 @@ function __c12(j: number): any {
         identifier: "GetTokenPermissionGroupRequest",
       });
     case 3:
-      return S.Array(TokensPermissionGroupsGetResultItemScopesItem);
+      return S.Array(S.String);
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          category: S.optional(S.NullOr(TokensPermissionGroupsGetResultItemCategory)),
+          category: S.optional(S.NullOr(S.String)),
           isSelectable: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_selectable"))),
           name: S.optional(S.NullOr(S.String)),
-          scopes: S.optional(S.NullOr(TokensPermissionGroupsGetResultItemScopesList)),
+          scopes: S.optional(S.NullOr(__S(99, __c12, 3))),
         }),
       ).annotate({
         identifier: "TokensPermissionGroupsGetResultItem",
       });
     case 5:
-      return S.Array(TokensPermissionGroupsGetResultItem);
+      return S.Array(__S(100, __c12, 4));
     case 6:
       return S.suspend(() =>
-        TokensPermissionGroupsGetResultList.pipe(
-          T.EnvelopePayloadRoot(),
-          T.KeyDictionary(KEY_DICTIONARY),
-        ),
+        __S(101, __c12, 5).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetTokenPermissionGroupResponse",
       });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          direction: S.optional(ListRequestDirection.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
           name: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
@@ -6317,18 +4971,18 @@ function __c13(j: number): any {
         S.Struct({
           id: S.String,
           name: S.String,
-          type: ListResultItemType,
+          type: S.String,
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-          managedBy: S.optional(S.NullOr(CreateResponseManagedBy).pipe(T.Body("managed_by"))),
-          settings: S.optional(S.NullOr(CreateResponseSettings)),
+          managedBy: S.optional(S.NullOr(__S(2, __c0, 2)).pipe(T.Body("managed_by"))),
+          settings: S.optional(S.NullOr(__S(3, __c0, 3))),
         }),
       ).annotate({ identifier: "ListResultItem" });
     case 1:
-      return S.Array(ListResultItem);
+      return S.Array(__S(104, __c13, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          result: ListResultList.pipe(T.EnvelopePayload()),
+          result: __S(105, __c13, 1).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListAccountsResponse" });
@@ -6347,8 +5001,8 @@ function __c13(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          type: ListEntitlementsResultItemAllocationType,
-          value: ListEntitlementsResultItemAllocationValue,
+          type: S.String,
+          value: __S(109, __c13, 5),
         }),
       ).annotate({
         identifier: "ListEntitlementsResultItemAllocation",
@@ -6372,31 +5026,31 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          allocation: ListEntitlementsResultItemAllocation,
+          allocation: __S(110, __c13, 6),
           createdDate: S.String.pipe(T.Body("created_date")),
           deletedDate: S.String.pipe(T.Body("deleted_date")),
           editedDate: S.String.pipe(T.Body("edited_date")),
-          feature: ListEntitlementsResultItemFeature,
+          feature: __S(111, __c13, 7),
         }),
       ).annotate({
         identifier: "ListEntitlementsResultItem",
       });
     case 1:
-      return S.Array(ListEntitlementsResultItem);
+      return S.Array(__S(112, __c14, 0));
     case 2:
       return S.suspend(() =>
-        ListEntitlementsResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(113, __c14, 1).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListEntitlementsResponse" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          not: S.optional(LogsAuditListRequestIdNotList),
+          not: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({ identifier: "LogsAuditListRequestId" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          not: S.optional(LogsAuditListRequestAccountNameNotList),
+          not: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({
         identifier: "LogsAuditListRequestAccountName",
@@ -6404,7 +5058,7 @@ function __c14(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          not: S.optional(LogsAuditListRequestActionResultNotList),
+          not: S.optional(__S(99, __c12, 3)),
         }),
       ).annotate({
         identifier: "LogsAuditListRequestActionResult",
@@ -6412,7 +5066,7 @@ function __c14(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          not: S.optional(LogsAuditListRequestRawStatusCodeNotList),
+          not: S.optional(__S(108, __c13, 4)),
         }),
       ).annotate({
         identifier: "LogsAuditListRequestRawStatusCode",
@@ -6423,111 +5077,67 @@ function __c14(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           before: S.String.pipe(T.Query()),
           since: S.String.pipe(T.Query()),
-          id: S.optional(LogsAuditListRequestId.pipe(T.DeepQuery("id"))),
+          id: S.optional(__S(115, __c14, 3).pipe(T.DeepQuery("id"))),
           accountName: S.optional(
-            LogsAuditListRequestAccountName.pipe(
-              T.Body("account_name"),
-              T.DeepQuery("account_name"),
-            ),
+            __S(116, __c14, 4).pipe(T.Body("account_name"), T.DeepQuery("account_name")),
           ),
           actionResult: S.optional(
-            LogsAuditListRequestActionResult.pipe(
-              T.Body("action_result"),
-              T.DeepQuery("action_result"),
-            ),
+            __S(117, __c14, 5).pipe(T.Body("action_result"), T.DeepQuery("action_result")),
           ),
           actionType: S.optional(
-            LogsAuditListRequestActionType.pipe(T.Body("action_type"), T.DeepQuery("action_type")),
+            __S(117, __c14, 5).pipe(T.Body("action_type"), T.DeepQuery("action_type")),
           ),
           actorContext: S.optional(
-            LogsAuditListRequestActorContext.pipe(
-              T.Body("actor_context"),
-              T.DeepQuery("actor_context"),
-            ),
+            __S(117, __c14, 5).pipe(T.Body("actor_context"), T.DeepQuery("actor_context")),
           ),
           actorEmail: S.optional(
-            LogsAuditListRequestActorEmail.pipe(T.Body("actor_email"), T.DeepQuery("actor_email")),
+            __S(116, __c14, 4).pipe(T.Body("actor_email"), T.DeepQuery("actor_email")),
           ),
-          actorId: S.optional(
-            LogsAuditListRequestActorId.pipe(T.Body("actor_id"), T.DeepQuery("actor_id")),
-          ),
+          actorId: S.optional(__S(116, __c14, 4).pipe(T.Body("actor_id"), T.DeepQuery("actor_id"))),
           actorIpAddress: S.optional(
-            LogsAuditListRequestActorIpAddress.pipe(
-              T.Body("actor_ip_address"),
-              T.DeepQuery("actor_ip_address"),
-            ),
+            __S(116, __c14, 4).pipe(T.Body("actor_ip_address"), T.DeepQuery("actor_ip_address")),
           ),
           actorTokenId: S.optional(
-            LogsAuditListRequestActorTokenId.pipe(
-              T.Body("actor_token_id"),
-              T.DeepQuery("actor_token_id"),
-            ),
+            __S(116, __c14, 4).pipe(T.Body("actor_token_id"), T.DeepQuery("actor_token_id")),
           ),
           actorTokenName: S.optional(
-            LogsAuditListRequestActorTokenName.pipe(
-              T.Body("actor_token_name"),
-              T.DeepQuery("actor_token_name"),
-            ),
+            __S(116, __c14, 4).pipe(T.Body("actor_token_name"), T.DeepQuery("actor_token_name")),
           ),
           actorType: S.optional(
-            LogsAuditListRequestActorType.pipe(T.Body("actor_type"), T.DeepQuery("actor_type")),
+            __S(117, __c14, 5).pipe(T.Body("actor_type"), T.DeepQuery("actor_type")),
           ),
           auditLogId: S.optional(
-            LogsAuditListRequestAuditLogId.pipe(
-              T.Body("audit_log_id"),
-              T.DeepQuery("audit_log_id"),
-            ),
+            __S(116, __c14, 4).pipe(T.Body("audit_log_id"), T.DeepQuery("audit_log_id")),
           ),
           cursor: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(LogsAuditListRequestDirection.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          productCategory: S.optional(
-            LogsAuditListRequestProductCategoryList.pipe(T.Query("product_category")),
-          ),
+          productCategory: S.optional(__S(9, __c1, 1).pipe(T.Query("product_category"))),
           rawCfRayId: S.optional(
-            LogsAuditListRequestRawCfRayId.pipe(
-              T.Body("raw_cf_ray_id"),
-              T.DeepQuery("raw_cf_ray_id"),
-            ),
+            __S(116, __c14, 4).pipe(T.Body("raw_cf_ray_id"), T.DeepQuery("raw_cf_ray_id")),
           ),
           rawMethod: S.optional(
-            LogsAuditListRequestRawMethod.pipe(T.Body("raw_method"), T.DeepQuery("raw_method")),
+            __S(116, __c14, 4).pipe(T.Body("raw_method"), T.DeepQuery("raw_method")),
           ),
           rawStatusCode: S.optional(
-            LogsAuditListRequestRawStatusCode.pipe(
-              T.Body("raw_status_code"),
-              T.DeepQuery("raw_status_code"),
-            ),
+            __S(118, __c14, 6).pipe(T.Body("raw_status_code"), T.DeepQuery("raw_status_code")),
           ),
-          rawUri: S.optional(
-            LogsAuditListRequestRawUri.pipe(T.Body("raw_uri"), T.DeepQuery("raw_uri")),
-          ),
+          rawUri: S.optional(__S(116, __c14, 4).pipe(T.Body("raw_uri"), T.DeepQuery("raw_uri"))),
           resourceId: S.optional(
-            LogsAuditListRequestResourceId.pipe(T.Body("resource_id"), T.DeepQuery("resource_id")),
+            __S(116, __c14, 4).pipe(T.Body("resource_id"), T.DeepQuery("resource_id")),
           ),
           resourceProduct: S.optional(
-            LogsAuditListRequestResourceProduct.pipe(
-              T.Body("resource_product"),
-              T.DeepQuery("resource_product"),
-            ),
+            __S(116, __c14, 4).pipe(T.Body("resource_product"), T.DeepQuery("resource_product")),
           ),
           resourceScope: S.optional(
-            LogsAuditListRequestResourceScope.pipe(
-              T.Body("resource_scope"),
-              T.DeepQuery("resource_scope"),
-            ),
+            __S(117, __c14, 5).pipe(T.Body("resource_scope"), T.DeepQuery("resource_scope")),
           ),
           resourceType: S.optional(
-            LogsAuditListRequestResourceType.pipe(
-              T.Body("resource_type"),
-              T.DeepQuery("resource_type"),
-            ),
+            __S(116, __c14, 4).pipe(T.Body("resource_type"), T.DeepQuery("resource_type")),
           ),
-          zoneId: S.optional(
-            LogsAuditListRequestZoneId.pipe(T.Body("zone_id"), T.DeepQuery("zone_id")),
-          ),
+          zoneId: S.optional(__S(116, __c14, 4).pipe(T.Body("zone_id"), T.DeepQuery("zone_id"))),
           zoneName: S.optional(
-            LogsAuditListRequestZoneName.pipe(T.Body("zone_name"), T.DeepQuery("zone_name")),
+            __S(116, __c14, 4).pipe(T.Body("zone_name"), T.DeepQuery("zone_name")),
           ),
         })
           .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/logs/audit", code: 200 }))
@@ -6561,12 +5171,12 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          context: S.optional(S.NullOr(LogsAuditListResultItemActorContext)),
+          context: S.optional(S.NullOr(S.String)),
           email: S.optional(S.NullOr(S.String)),
           ipAddress: S.optional(S.NullOr(S.String).pipe(T.Body("ip_address"))),
           tokenId: S.optional(S.NullOr(S.String).pipe(T.Body("token_id"))),
           tokenName: S.optional(S.NullOr(S.String).pipe(T.Body("token_name"))),
-          type: S.optional(S.NullOr(LogsAuditListResultItemActorType)),
+          type: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "LogsAuditListResultItemActor",
@@ -6600,20 +5210,20 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          account: S.optional(S.NullOr(LogsAuditListResultItemAccount)),
-          action: S.optional(S.NullOr(LogsAuditListResultItemAction)),
-          actor: S.optional(S.NullOr(LogsAuditListResultItemActor)),
-          raw: S.optional(S.NullOr(LogsAuditListResultItemRaw)),
-          resource: S.optional(S.NullOr(LogsAuditListResultItemResource)),
-          zone: S.optional(S.NullOr(LogsAuditListResultItemZone)),
+          account: S.optional(S.NullOr(__S(120, __c15, 0))),
+          action: S.optional(S.NullOr(__S(121, __c15, 1))),
+          actor: S.optional(S.NullOr(__S(122, __c15, 2))),
+          raw: S.optional(S.NullOr(__S(123, __c15, 3))),
+          resource: S.optional(S.NullOr(__S(124, __c15, 4))),
+          zone: S.optional(S.NullOr(__S(120, __c15, 0))),
         }),
       ).annotate({ identifier: "LogsAuditListResultItem" });
     case 6:
-      return S.Array(LogsAuditListResultItem);
+      return S.Array(__S(125, __c15, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          result: LogsAuditListResultList.pipe(T.EnvelopePayload()),
+          result: __S(126, __c15, 6).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListLogAuditsResponse" });
@@ -6625,11 +5235,11 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          direction: S.optional(MembersListRequestDirection.pipe(T.Query())),
-          order: S.optional(MembersListRequestOrder.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-          status: S.optional(MembersListRequestStatus.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
         })
           .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/members", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -6638,40 +5248,34 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          access: S.optional(S.NullOr(MembersListResultItemPoliciesItemAccess)),
+          access: S.optional(S.NullOr(S.String)),
           permissionGroups: S.optional(
-            S.NullOr(MembersListResultItemPoliciesItemPermissionGroupsList).pipe(
-              T.Body("permission_groups"),
-            ),
+            S.NullOr(__S(17, __c2, 1)).pipe(T.Body("permission_groups")),
           ),
-          resourceGroups: S.optional(
-            S.NullOr(MembersListResultItemPoliciesItemResourceGroupsList).pipe(
-              T.Body("resource_groups"),
-            ),
-          ),
+          resourceGroups: S.optional(S.NullOr(__S(23, __c2, 7)).pipe(T.Body("resource_groups"))),
         }),
       ).annotate({
         identifier: "MembersListResultItemPoliciesItem",
       });
     case 2:
-      return S.Array(MembersListResultItemPoliciesItem);
+      return S.Array(__S(129, __c16, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           email: S.optional(S.NullOr(S.String)),
-          policies: S.optional(S.NullOr(MembersListResultItemPoliciesList)),
-          roles: S.optional(S.NullOr(MembersListResultItemRolesList)),
-          status: S.optional(S.NullOr(MembersListResultItemStatus)),
-          user: S.optional(S.NullOr(MembersCreateResponseUser)),
+          policies: S.optional(S.NullOr(__S(130, __c16, 2))),
+          roles: S.optional(S.NullOr(__S(29, __c3, 5))),
+          status: S.optional(S.NullOr(S.String)),
+          user: S.optional(S.NullOr(__S(30, __c3, 6))),
         }),
       ).annotate({ identifier: "MembersListResultItem" });
     case 4:
-      return S.Array(MembersListResultItem);
+      return S.Array(__S(131, __c16, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          result: MembersListResultList.pipe(T.EnvelopePayload()),
+          result: __S(132, __c16, 4).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListMembersResponse" });
@@ -6713,7 +5317,7 @@ function __c16(j: number): any {
           paymentGateway: S.optional(S.NullOr(S.String).pipe(T.Body("payment_gateway"))),
           paymentNonce: S.optional(S.NullOr(S.String).pipe(T.Body("payment_nonce"))),
           state: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.NullOr(ListPaymentMethodsResultItemType)),
+          type: S.optional(S.NullOr(S.String)),
           zipcode: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -6724,10 +5328,10 @@ function __c16(j: number): any {
 function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ListPaymentMethodsResultItem);
+      return S.Array(__S(135, __c16, 7));
     case 1:
       return S.suspend(() =>
-        ListPaymentMethodsResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(136, __c17, 0).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListPaymentMethodsResponse",
       });
@@ -6744,7 +5348,7 @@ function __c17(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: RolesListResultList.pipe(T.EnvelopePayload()),
+          result: __S(29, __c3, 5).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListRolesResponse" });
@@ -6752,7 +5356,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          direction: S.optional(TokensListRequestDirection.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
           includeExpired: S.optional(S.Boolean.pipe(T.Query("include_expired"))),
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
@@ -6763,16 +5367,14 @@ function __c17(j: number): any {
     case 5:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
     case 6:
-      return S.Record(S.String, TokensListResultItemPoliciesItemResourcesValue);
+      return S.Record(S.String, __S(141, __c17, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          effect: TokensListResultItemPoliciesItemEffect,
-          permissionGroups: TokensListResultItemPoliciesItemPermissionGroupsList.pipe(
-            T.Body("permission_groups"),
-          ),
-          resources: TokensListResultItemPoliciesItemResourcesMap,
+          effect: S.String,
+          permissionGroups: __S(17, __c2, 1).pipe(T.Body("permission_groups")),
+          resources: __S(142, __c17, 6),
         }),
       ).annotate({
         identifier: "TokensListResultItemPoliciesItem",
@@ -6782,12 +5384,12 @@ function __c17(j: number): any {
 function __c18(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(TokensListResultItemPoliciesItem);
+      return S.Array(__S(143, __c17, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          condition: S.optional(S.NullOr(TokensListResultItemCondition)),
+          condition: S.optional(S.NullOr(__S(52, __c6, 4))),
           creatorEmailAtCreation: S.optional(
             S.NullOr(S.String).pipe(T.Body("creator_email_at_creation")),
           ),
@@ -6797,18 +5399,18 @@ function __c18(j: number): any {
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
           name: S.optional(S.NullOr(S.String)),
           notBefore: S.optional(S.NullOr(S.String).pipe(T.Body("not_before"))),
-          policies: S.optional(S.NullOr(TokensListResultItemPoliciesList)),
+          policies: S.optional(S.NullOr(__S(144, __c18, 0))),
           provisionerId: S.optional(S.NullOr(S.String).pipe(T.Body("provisioner_id"))),
           provisionerType: S.optional(S.NullOr(S.String).pipe(T.Body("provisioner_type"))),
-          status: S.optional(S.NullOr(TokensListResultItemStatus)),
+          status: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "TokensListResultItem" });
     case 2:
-      return S.Array(TokensListResultItem);
+      return S.Array(__S(145, __c18, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: TokensListResultList.pipe(T.EnvelopePayload()),
+          result: __S(146, __c18, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListTokensResponse" });
@@ -6839,7 +5441,7 @@ function __c18(j: number): any {
           before: S.String.pipe(T.Query()),
           since: S.String.pipe(T.Query()),
           cursor: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(LogsAuditHistoryRequestDirection.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         })
           .pipe(
@@ -6855,25 +5457,25 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          account: S.optional(S.NullOr(LogsAuditListResultItemAccount)),
-          action: S.optional(S.NullOr(LogsAuditListResultItemAction)),
-          actor: S.optional(S.NullOr(LogsAuditHistoryResultItemActor)),
-          raw: S.optional(S.NullOr(LogsAuditListResultItemRaw)),
-          resource: S.optional(S.NullOr(LogsAuditListResultItemResource)),
-          zone: S.optional(S.NullOr(LogsAuditListResultItemZone)),
+          account: S.optional(S.NullOr(__S(120, __c15, 0))),
+          action: S.optional(S.NullOr(__S(121, __c15, 1))),
+          actor: S.optional(S.NullOr(__S(122, __c15, 2))),
+          raw: S.optional(S.NullOr(__S(123, __c15, 3))),
+          resource: S.optional(S.NullOr(__S(124, __c15, 4))),
+          zone: S.optional(S.NullOr(__S(120, __c15, 0))),
         }),
       ).annotate({
         identifier: "LogsAuditHistoryResultItem",
       });
     case 7:
-      return S.Array(LogsAuditHistoryResultItem);
+      return S.Array(__S(150, __c18, 6));
   }
 }
 function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        LogsAuditHistoryResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(151, __c18, 7).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "LogsAuditHistoryResponse" });
     case 1:
       return S.suspend(() =>
@@ -6901,25 +5503,22 @@ function __c19(j: number): any {
         identifier: "LogsAuditProductCategoriesResultItemProductsItem",
       });
     case 3:
-      return S.Array(LogsAuditProductCategoriesResultItemProductsItem);
+      return S.Array(__S(154, __c19, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           label: S.optional(S.NullOr(S.String)),
-          products: S.optional(S.NullOr(LogsAuditProductCategoriesResultItemProductsList)),
+          products: S.optional(S.NullOr(__S(155, __c19, 3))),
           value: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "LogsAuditProductCategoriesResultItem",
       });
     case 5:
-      return S.Array(LogsAuditProductCategoriesResultItem);
+      return S.Array(__S(156, __c19, 4));
     case 6:
       return S.suspend(() =>
-        LogsAuditProductCategoriesResultList.pipe(
-          T.EnvelopePayloadRoot(),
-          T.KeyDictionary(KEY_DICTIONARY),
-        ),
+        __S(157, __c19, 5).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "LogsAuditProductCategoriesResponse",
       });
@@ -6982,13 +5581,13 @@ function __c20(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(SubscriptionsActionsAppendRequestRatePlanId),
+          id: S.optional(S.String),
           currency: S.optional(S.String),
           externallyManaged: S.optional(S.Boolean.pipe(T.Body("externally_managed"))),
           isContract: S.optional(S.Boolean.pipe(T.Body("is_contract"))),
           publicName: S.optional(S.String.pipe(T.Body("public_name"))),
           scope: S.optional(S.String),
-          sets: S.optional(SubscriptionsActionsAppendRequestRatePlanSetsList),
+          sets: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({
         identifier: "SubscriptionsActionsAppendRequestRatePlan",
@@ -6998,8 +5597,8 @@ function __c20(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           subscriptionIdentifier: S.String.pipe(T.Label("subscription_identifier")),
-          frequency: S.optional(SubscriptionsActionsAppendRequestFrequency),
-          ratePlan: S.optional(SubscriptionsActionsAppendRequestRatePlan.pipe(T.Body("rate_plan"))),
+          frequency: S.optional(S.String),
+          ratePlan: S.optional(__S(163, __c20, 3).pipe(T.Body("rate_plan"))),
         })
           .pipe(
             T.Http({
@@ -7015,13 +5614,13 @@ function __c20(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.NullOr(SubscriptionsActionsAppendResponseRatePlanId)),
+          id: S.optional(S.NullOr(S.String)),
           currency: S.optional(S.NullOr(S.String)),
           externallyManaged: S.optional(S.NullOr(S.Boolean).pipe(T.Body("externally_managed"))),
           isContract: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_contract"))),
           publicName: S.optional(S.NullOr(S.String).pipe(T.Body("public_name"))),
           scope: S.optional(S.NullOr(S.String)),
-          sets: S.optional(S.NullOr(SubscriptionsActionsAppendResponseRatePlanSetsList)),
+          sets: S.optional(S.NullOr(__S(9, __c1, 1))),
         }),
       ).annotate({
         identifier: "SubscriptionsActionsAppendResponseRatePlan",
@@ -7033,12 +5632,10 @@ function __c20(j: number): any {
           currency: S.optional(S.NullOr(S.String)),
           currentPeriodEnd: S.optional(S.NullOr(S.String).pipe(T.Body("current_period_end"))),
           currentPeriodStart: S.optional(S.NullOr(S.String).pipe(T.Body("current_period_start"))),
-          frequency: S.optional(S.NullOr(SubscriptionsActionsAppendResponseFrequency)),
+          frequency: S.optional(S.NullOr(S.String)),
           price: S.optional(S.NullOr(S.Number)),
-          ratePlan: S.optional(
-            S.NullOr(SubscriptionsActionsAppendResponseRatePlan).pipe(T.Body("rate_plan")),
-          ),
-          state: S.optional(S.NullOr(SubscriptionsActionsAppendResponseState)),
+          ratePlan: S.optional(S.NullOr(__S(165, __c20, 5)).pipe(T.Body("rate_plan"))),
+          state: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "SubscriptionsActionsAppendResponse",
@@ -7052,13 +5649,13 @@ function __c21(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(SubscriptionsBulkCreateRequestSubscriptionsItemRatePlanId),
+          id: S.optional(S.String),
           currency: S.optional(S.String),
           externallyManaged: S.optional(S.Boolean.pipe(T.Body("externally_managed"))),
           isContract: S.optional(S.Boolean.pipe(T.Body("is_contract"))),
           publicName: S.optional(S.String.pipe(T.Body("public_name"))),
           scope: S.optional(S.String),
-          sets: S.optional(SubscriptionsBulkCreateRequestSubscriptionsItemRatePlanSetsList),
+          sets: S.optional(__S(167, __c20, 7)),
         }),
       ).annotate({
         identifier: "SubscriptionsBulkCreateRequestSubscriptionsItemRatePlan",
@@ -7070,18 +5667,16 @@ function __c21(j: number): any {
           currency: S.optional(S.String),
           currentPeriodEnd: S.optional(S.String.pipe(T.Body("current_period_end"))),
           currentPeriodStart: S.optional(S.String.pipe(T.Body("current_period_start"))),
-          frequency: S.optional(SubscriptionsBulkCreateRequestSubscriptionsItemFrequency),
+          frequency: S.optional(S.String),
           price: S.optional(S.Number),
-          ratePlan: S.optional(
-            SubscriptionsBulkCreateRequestSubscriptionsItemRatePlan.pipe(T.Body("rate_plan")),
-          ),
-          state: S.optional(SubscriptionsBulkCreateRequestSubscriptionsItemState),
+          ratePlan: S.optional(__S(168, __c21, 0).pipe(T.Body("rate_plan"))),
+          state: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SubscriptionsBulkCreateRequestSubscriptionsItem",
       });
     case 2:
-      return S.Array(SubscriptionsBulkCreateRequestSubscriptionsItem);
+      return S.Array(__S(169, __c21, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -7089,7 +5684,7 @@ function __c21(j: number): any {
           idempKey: S.optional(S.String.pipe(T.Query("idemp_key"))),
           couponCode: S.optional(S.String.pipe(T.Body("coupon_code"))),
           paymentHoldId: S.optional(S.Number.pipe(T.Body("payment_hold_id"))),
-          subscriptions: S.optional(SubscriptionsBulkCreateRequestSubscriptionsList),
+          subscriptions: S.optional(__S(170, __c21, 2)),
           userIsOnSession: S.optional(S.Boolean.pipe(T.Body("user_is_on_session"))),
         })
           .pipe(
@@ -7103,10 +5698,7 @@ function __c21(j: number): any {
       return S.Array(S.Unknown);
     case 5:
       return S.suspend(() =>
-        SubscriptionsBulkCreateResultList.pipe(
-          T.EnvelopePayloadRoot(),
-          T.KeyDictionary(KEY_DICTIONARY),
-        ),
+        __S(172, __c21, 4).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "SubscriptionsBulkCreateResponse",
       });
@@ -7114,9 +5706,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          subscriptionIds: S.optional(
-            SubscriptionsCancelDowngradeRequestSubscriptionIdsList.pipe(T.Body("subscription_ids")),
-          ),
+          subscriptionIds: S.optional(__S(9, __c1, 1).pipe(T.Body("subscription_ids"))),
         })
           .pipe(
             T.Http({
@@ -7135,9 +5725,7 @@ function __c21(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           subscriptionIdentifier: S.String.pipe(T.Label("subscription_identifier")),
           other: S.optional(S.String),
-          reasonCode: S.optional(
-            SubscriptionsCancelReasonCreateRequestReasonCodeList.pipe(T.Body("reason_code")),
-          ),
+          reasonCode: S.optional(__S(9, __c1, 1).pipe(T.Body("reason_code"))),
         })
           .pipe(
             T.Http({
@@ -7159,11 +5747,7 @@ function __c22(j: number): any {
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           other: S.optional(S.NullOr(S.String)),
-          reasonCode: S.optional(
-            S.NullOr(SubscriptionsCancelReasonCreateResponseReasonCodeList).pipe(
-              T.Body("reason_code"),
-            ),
-          ),
+          reasonCode: S.optional(S.NullOr(__S(9, __c1, 1)).pipe(T.Body("reason_code"))),
           submitted: S.optional(S.NullOr(S.String)),
           subscriptionId: S.optional(S.NullOr(S.String).pipe(T.Body("subscription_id"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -7207,13 +5791,13 @@ function __c22(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.NullOr(SubscriptionsGetByIdentifierResponseRatePlanId)),
+          id: S.optional(S.NullOr(S.String)),
           currency: S.optional(S.NullOr(S.String)),
           externallyManaged: S.optional(S.NullOr(S.Boolean).pipe(T.Body("externally_managed"))),
           isContract: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_contract"))),
           publicName: S.optional(S.NullOr(S.String).pipe(T.Body("public_name"))),
           scope: S.optional(S.NullOr(S.String)),
-          sets: S.optional(S.NullOr(SubscriptionsGetByIdentifierResponseRatePlanSetsList)),
+          sets: S.optional(S.NullOr(__S(9, __c1, 1))),
         }),
       ).annotate({
         identifier: "SubscriptionsGetByIdentifierResponseRatePlan",
@@ -7225,12 +5809,10 @@ function __c22(j: number): any {
           currency: S.optional(S.NullOr(S.String)),
           currentPeriodEnd: S.optional(S.NullOr(S.String).pipe(T.Body("current_period_end"))),
           currentPeriodStart: S.optional(S.NullOr(S.String).pipe(T.Body("current_period_start"))),
-          frequency: S.optional(S.NullOr(SubscriptionsGetByIdentifierResponseFrequency)),
+          frequency: S.optional(S.NullOr(S.String)),
           price: S.optional(S.NullOr(S.Number)),
-          ratePlan: S.optional(
-            S.NullOr(SubscriptionsGetByIdentifierResponseRatePlan).pipe(T.Body("rate_plan")),
-          ),
-          state: S.optional(S.NullOr(SubscriptionsGetByIdentifierResponseState)),
+          ratePlan: S.optional(S.NullOr(__S(179, __c22, 3)).pipe(T.Body("rate_plan"))),
+          state: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "SubscriptionsGetByIdentifierResponse",
@@ -7255,9 +5837,9 @@ function __c22(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           id: S.String,
           name: S.String,
-          type: S.optional(UpdateRequestType),
-          managedBy: S.optional(UpdateRequestManagedBy.pipe(T.Body("managed_by"))),
-          settings: S.optional(UpdateRequestSettings),
+          type: S.optional(S.String),
+          managedBy: S.optional(__S(181, __c22, 5).pipe(T.Body("managed_by"))),
+          settings: S.optional(__S(182, __c22, 6)),
         })
           .pipe(T.Http({ method: "PUT", uri: "/accounts/{account_id}", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -7297,24 +5879,18 @@ function __c23(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          analytics: S.optional(MembersUpdateRequestRolesItemPermissionsAnalytics),
-          billing: S.optional(MembersUpdateRequestRolesItemPermissionsAnalytics),
-          cachePurge: S.optional(
-            MembersUpdateRequestRolesItemPermissionsAnalytics.pipe(T.Body("cache_purge")),
-          ),
-          dns: S.optional(MembersUpdateRequestRolesItemPermissionsAnalytics),
-          dnsRecords: S.optional(
-            MembersUpdateRequestRolesItemPermissionsAnalytics.pipe(T.Body("dns_records")),
-          ),
-          lb: S.optional(MembersUpdateRequestRolesItemPermissionsAnalytics),
-          logs: S.optional(MembersUpdateRequestRolesItemPermissionsAnalytics),
-          organization: S.optional(MembersUpdateRequestRolesItemPermissionsAnalytics),
-          ssl: S.optional(MembersUpdateRequestRolesItemPermissionsAnalytics),
-          waf: S.optional(MembersUpdateRequestRolesItemPermissionsAnalytics),
-          zoneSettings: S.optional(
-            MembersUpdateRequestRolesItemPermissionsAnalytics.pipe(T.Body("zone_settings")),
-          ),
-          zones: S.optional(MembersUpdateRequestRolesItemPermissionsAnalytics),
+          analytics: S.optional(__S(186, __c23, 2)),
+          billing: S.optional(__S(186, __c23, 2)),
+          cachePurge: S.optional(__S(186, __c23, 2).pipe(T.Body("cache_purge"))),
+          dns: S.optional(__S(186, __c23, 2)),
+          dnsRecords: S.optional(__S(186, __c23, 2).pipe(T.Body("dns_records"))),
+          lb: S.optional(__S(186, __c23, 2)),
+          logs: S.optional(__S(186, __c23, 2)),
+          organization: S.optional(__S(186, __c23, 2)),
+          ssl: S.optional(__S(186, __c23, 2)),
+          waf: S.optional(__S(186, __c23, 2)),
+          zoneSettings: S.optional(__S(186, __c23, 2).pipe(T.Body("zone_settings"))),
+          zones: S.optional(__S(186, __c23, 2)),
         }),
       ).annotate({
         identifier: "MembersUpdateRequestRolesItemPermissions",
@@ -7325,13 +5901,13 @@ function __c23(j: number): any {
           id: S.String,
           description: S.optional(S.String),
           name: S.optional(S.String),
-          permissions: S.optional(MembersUpdateRequestRolesItemPermissions),
+          permissions: S.optional(__S(187, __c23, 3)),
         }),
       ).annotate({
         identifier: "MembersUpdateRequestRolesItem",
       });
     case 5:
-      return S.Array(MembersUpdateRequestRolesItem);
+      return S.Array(__S(188, __c23, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -7348,13 +5924,9 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          access: MembersUpdateRequestPoliciesItemAccess,
-          permissionGroups: MembersUpdateRequestPoliciesItemPermissionGroupsList.pipe(
-            T.Body("permission_groups"),
-          ),
-          resourceGroups: MembersUpdateRequestPoliciesItemResourceGroupsList.pipe(
-            T.Body("resource_groups"),
-          ),
+          access: S.String,
+          permissionGroups: __S(11, __c1, 3).pipe(T.Body("permission_groups")),
+          resourceGroups: __S(11, __c1, 3).pipe(T.Body("resource_groups")),
         }),
       ).annotate({
         identifier: "MembersUpdateRequestPoliciesItem",
@@ -7364,17 +5936,17 @@ function __c23(j: number): any {
 function __c24(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(MembersUpdateRequestPoliciesItem);
+      return S.Array(__S(191, __c23, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           memberId: S.String.pipe(T.Label("member_id")),
           id: S.optional(S.String),
-          roles: S.optional(MembersUpdateRequestRolesList),
-          status: S.optional(MembersUpdateRequestStatus),
-          user: S.optional(MembersUpdateRequestUser),
-          policies: S.optional(MembersUpdateRequestPoliciesList),
+          roles: S.optional(__S(189, __c23, 5)),
+          status: S.optional(S.String),
+          user: S.optional(__S(190, __c23, 6)),
+          policies: S.optional(__S(192, __c24, 0)),
         })
           .pipe(
             T.Http({ method: "PUT", uri: "/accounts/{account_id}/members/{member_id}", code: 200 }),
@@ -7385,32 +5957,26 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          access: S.optional(S.NullOr(MembersUpdateResponsePoliciesItemAccess)),
+          access: S.optional(S.NullOr(S.String)),
           permissionGroups: S.optional(
-            S.NullOr(MembersUpdateResponsePoliciesItemPermissionGroupsList).pipe(
-              T.Body("permission_groups"),
-            ),
+            S.NullOr(__S(17, __c2, 1)).pipe(T.Body("permission_groups")),
           ),
-          resourceGroups: S.optional(
-            S.NullOr(MembersUpdateResponsePoliciesItemResourceGroupsList).pipe(
-              T.Body("resource_groups"),
-            ),
-          ),
+          resourceGroups: S.optional(S.NullOr(__S(23, __c2, 7)).pipe(T.Body("resource_groups"))),
         }),
       ).annotate({
         identifier: "MembersUpdateResponsePoliciesItem",
       });
     case 3:
-      return S.Array(MembersUpdateResponsePoliciesItem);
+      return S.Array(__S(194, __c24, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           email: S.optional(S.NullOr(S.String)),
-          policies: S.optional(S.NullOr(MembersUpdateResponsePoliciesList)),
-          roles: S.optional(S.NullOr(MembersUpdateResponseRolesList)),
-          status: S.optional(S.NullOr(MembersUpdateResponseStatus)),
-          user: S.optional(S.NullOr(MembersCreateResponseUser)),
+          policies: S.optional(S.NullOr(__S(195, __c24, 3))),
+          roles: S.optional(S.NullOr(__S(29, __c3, 5))),
+          status: S.optional(S.NullOr(S.String)),
+          user: S.optional(S.NullOr(__S(30, __c3, 6))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateMemberResponse" });
     case 5:
@@ -7438,7 +6004,7 @@ function __c24(j: number): any {
           paymentGateway: S.optional(S.String.pipe(T.Body("payment_gateway"))),
           paymentNonce: S.optional(S.String.pipe(T.Body("payment_nonce"))),
           state: S.optional(S.String),
-          type: S.optional(UpdatePaymentMethodRequestType),
+          type: S.optional(S.String),
           zipcode: S.optional(S.String),
         })
           .pipe(
@@ -7455,13 +6021,13 @@ function __c24(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(SubscriptionsUpdateRequestRatePlanId),
+          id: S.optional(S.String),
           currency: S.optional(S.String),
           externallyManaged: S.optional(S.Boolean.pipe(T.Body("externally_managed"))),
           isContract: S.optional(S.Boolean.pipe(T.Body("is_contract"))),
           publicName: S.optional(S.String.pipe(T.Body("public_name"))),
           scope: S.optional(S.String),
-          sets: S.optional(SubscriptionsUpdateRequestRatePlanSetsList),
+          sets: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({
         identifier: "SubscriptionsUpdateRequestRatePlan",
@@ -7471,8 +6037,8 @@ function __c24(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           subscriptionIdentifier: S.String.pipe(T.Label("subscription_identifier")),
-          frequency: S.optional(SubscriptionsUpdateRequestFrequency),
-          ratePlan: S.optional(SubscriptionsUpdateRequestRatePlan.pipe(T.Body("rate_plan"))),
+          frequency: S.optional(S.String),
+          ratePlan: S.optional(__S(198, __c24, 6).pipe(T.Body("rate_plan"))),
         })
           .pipe(
             T.Http({
@@ -7492,13 +6058,13 @@ function __c25(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.NullOr(SubscriptionsUpdateResponseRatePlanId)),
+          id: S.optional(S.NullOr(S.String)),
           currency: S.optional(S.NullOr(S.String)),
           externallyManaged: S.optional(S.NullOr(S.Boolean).pipe(T.Body("externally_managed"))),
           isContract: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_contract"))),
           publicName: S.optional(S.NullOr(S.String).pipe(T.Body("public_name"))),
           scope: S.optional(S.NullOr(S.String)),
-          sets: S.optional(S.NullOr(SubscriptionsUpdateResponseRatePlanSetsList)),
+          sets: S.optional(S.NullOr(__S(9, __c1, 1))),
         }),
       ).annotate({
         identifier: "SubscriptionsUpdateResponseRatePlan",
@@ -7510,12 +6076,10 @@ function __c25(j: number): any {
           currency: S.optional(S.NullOr(S.String)),
           currentPeriodEnd: S.optional(S.NullOr(S.String).pipe(T.Body("current_period_end"))),
           currentPeriodStart: S.optional(S.NullOr(S.String).pipe(T.Body("current_period_start"))),
-          frequency: S.optional(S.NullOr(SubscriptionsUpdateResponseFrequency)),
+          frequency: S.optional(S.NullOr(S.String)),
           price: S.optional(S.NullOr(S.Number)),
-          ratePlan: S.optional(
-            S.NullOr(SubscriptionsUpdateResponseRatePlan).pipe(T.Body("rate_plan")),
-          ),
-          state: S.optional(S.NullOr(SubscriptionsUpdateResponseState)),
+          ratePlan: S.optional(S.NullOr(__S(200, __c25, 0)).pipe(T.Body("rate_plan"))),
+          state: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "UpdateSubscriptionResponse",
@@ -7523,32 +6087,30 @@ function __c25(j: number): any {
     case 2:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
     case 3:
-      return S.Record(S.String, TokensUpdateRequestPoliciesItemResourcesValue);
+      return S.Record(S.String, __S(202, __c25, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          effect: TokensUpdateRequestPoliciesItemEffect,
-          permissionGroups: TokensUpdateRequestPoliciesItemPermissionGroupsList.pipe(
-            T.Body("permission_groups"),
-          ),
-          resources: TokensUpdateRequestPoliciesItemResourcesMap,
+          effect: S.String,
+          permissionGroups: __S(43, __c5, 3).pipe(T.Body("permission_groups")),
+          resources: __S(203, __c25, 3),
         }),
       ).annotate({
         identifier: "TokensUpdateRequestPoliciesItem",
       });
     case 5:
-      return S.Array(TokensUpdateRequestPoliciesItem);
+      return S.Array(__S(204, __c25, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           tokenId: S.String.pipe(T.Label("token_id")),
           name: S.String,
-          policies: TokensUpdateRequestPoliciesList,
-          condition: S.optional(TokensUpdateRequestCondition),
+          policies: __S(205, __c25, 5),
+          condition: S.optional(__S(49, __c6, 1)),
           expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
           notBefore: S.optional(S.String.pipe(T.Body("not_before"))),
-          status: S.optional(TokensUpdateRequestStatus),
+          status: S.optional(S.String),
         })
           .pipe(
             T.Http({ method: "PUT", uri: "/accounts/{account_id}/tokens/{token_id}", code: 200 }),
@@ -7562,27 +6124,25 @@ function __c25(j: number): any {
 function __c26(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, TokensUpdateResponsePoliciesItemResourcesValue);
+      return S.Record(S.String, __S(207, __c25, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          effect: TokensUpdateResponsePoliciesItemEffect,
-          permissionGroups: TokensUpdateResponsePoliciesItemPermissionGroupsList.pipe(
-            T.Body("permission_groups"),
-          ),
-          resources: TokensUpdateResponsePoliciesItemResourcesMap,
+          effect: S.String,
+          permissionGroups: __S(17, __c2, 1).pipe(T.Body("permission_groups")),
+          resources: __S(208, __c26, 0),
         }),
       ).annotate({
         identifier: "TokensUpdateResponsePoliciesItem",
       });
     case 2:
-      return S.Array(TokensUpdateResponsePoliciesItem);
+      return S.Array(__S(209, __c26, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          condition: S.optional(S.NullOr(TokensUpdateResponseCondition)),
+          condition: S.optional(S.NullOr(__S(52, __c6, 4))),
           creatorEmailAtCreation: S.optional(
             S.NullOr(S.String).pipe(T.Body("creator_email_at_creation")),
           ),
@@ -7592,10 +6152,10 @@ function __c26(j: number): any {
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
           name: S.optional(S.NullOr(S.String)),
           notBefore: S.optional(S.NullOr(S.String).pipe(T.Body("not_before"))),
-          policies: S.optional(S.NullOr(TokensUpdateResponsePoliciesList)),
+          policies: S.optional(S.NullOr(__S(210, __c26, 2))),
           provisionerId: S.optional(S.NullOr(S.String).pipe(T.Body("provisioner_id"))),
           provisionerType: S.optional(S.NullOr(S.String).pipe(T.Body("provisioner_type"))),
-          status: S.optional(S.NullOr(TokensUpdateResponseStatus)),
+          status: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateTokenResponse" });
     case 4:
@@ -7610,10 +6170,15 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          status: TokensVerifyResponseStatus,
+          status: S.String,
           expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
           notBefore: S.optional(S.NullOr(S.String).pipe(T.Body("not_before"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "VerifyTokenResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -67,25 +69,14 @@ export interface AddPublicKeyRequest {
   /** Key that should be added to the environment. Supported formats are `ssh-dss` (see RFC4253), `ssh-rsa` (see RFC4253), `ecdsa-sha2-nistp256` (see RFC5656), `ecdsa-sha2-nistp384` (see RFC5656) and `ecdsa-sha2-nistp521` (see RFC5656). It should be structured as <format> <content>, where <content> part is encoded with Base64. */
   key?: string;
 }
-const AddPublicKeyRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<AddPublicKeyRequest>;
-
 export interface AddPublicKeyUsersEnvironmentsRequest {
   /** Environment this key should be added to, e.g. `users/me/environments/default`. */
   environment: string;
   /** Request body */
   body?: AddPublicKeyRequest;
 }
-const AddPublicKeyUsersEnvironmentsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AddPublicKeyUsersEnvironmentsRequest>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -95,8 +86,6 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-const Status = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Status>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
@@ -110,8 +99,6 @@ export interface Operation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: DocumentMap;
 }
-const Operation = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Operation>;
-
 /** Request message for AuthorizeEnvironment. */
 export interface AuthorizeEnvironmentRequest {
   /** The OAuth ID token that should be sent to the environment. */
@@ -121,53 +108,26 @@ export interface AuthorizeEnvironmentRequest {
   /** The time when the credentials expire. If not set, defaults to one hour from when the server received the request. */
   expireTime?: string;
 }
-const AuthorizeEnvironmentRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<AuthorizeEnvironmentRequest>;
-
 export interface AuthorizeUsersEnvironmentsRequest {
   /** Name of the resource that should receive the credentials, for example `users/me/environments/default` or `users/someone@example.com/environments/default`. */
   name: string;
   /** Request body */
   body?: AuthorizeEnvironmentRequest;
 }
-const AuthorizeUsersEnvironmentsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<AuthorizeUsersEnvironmentsRequest>;
-
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-const CancelOperationRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CancelOperationRequest>;
-
 export interface CancelOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-const CancelOperationsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CancelOperationsRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = CancelOperationRequest as any as S.Schema<Empty>;
-
 export interface DeleteOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-const DeleteOperationsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<DeleteOperationsRequest>;
-
 export interface GenerateAccessTokenUsersEnvironmentsRequest {
   /** Desired expiration time of the access token. This value must be at most 24 hours in the future. If a value is not specified, the token's expiration time will be set to a default value of 1 hour in the future. */
   expireTime?: string;
@@ -176,47 +136,26 @@ export interface GenerateAccessTokenUsersEnvironmentsRequest {
   /** Required. The environment to generate the access token for. */
   environment: string;
 }
-const GenerateAccessTokenUsersEnvironmentsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<GenerateAccessTokenUsersEnvironmentsRequest>;
-
 /** Response message for GenerateAccessToken. */
 export interface GenerateAccessTokenResponse {
   /** The access token. */
   accessToken?: string;
 }
-const GenerateAccessTokenResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<GenerateAccessTokenResponse>;
-
 export interface GetOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetOperationsRequest = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<GetOperationsRequest>;
-
 export interface GetUsersEnvironmentsRequest {
   /** Required. Name of the requested resource, for example `users/me/environments/default` or `users/someone@example.com/environments/default`. */
   name: string;
 }
-const GetUsersEnvironmentsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<GetUsersEnvironmentsRequest>;
-
 export type EnvironmentStateEnum =
   | "STATE_UNSPECIFIED"
   | "SUSPENDED"
   | "PENDING"
   | "RUNNING"
   | "DELETING";
-const EnvironmentStateEnum = S.String;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<StringList>;
-
 /** A Cloud Shell environment, which is defined as the combination of a Docker image specifying what is installed on the environment and a home directory containing the user's data that will remain across sessions. Each user has at least an environment with the ID "default". */
 export interface Environment {
   /** Output only. Host to which clients can connect to initiate SSH sessions with the environment. */
@@ -238,8 +177,6 @@ export interface Environment {
   /** Output only. Host to which clients can connect to initiate HTTPS or WSS connections with the environment. */
   webHost?: string;
 }
-const Environment = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Environment>;
-
 export interface ListOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
@@ -252,14 +189,7 @@ export interface ListOperationsRequest {
   /** The standard list filter. */
   filter?: string;
 }
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ListOperationsRequest>;
-
 export type OperationList = Array<Operation>;
-const OperationList = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<OperationList>;
-
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -269,29 +199,17 @@ export interface ListOperationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<ListOperationsResponse>;
-
 /** Request message for RemovePublicKey. */
 export interface RemovePublicKeyRequest {
   /** Key that should be removed from the environment. */
   key?: string;
 }
-const RemovePublicKeyRequest = AddPublicKeyRequest as any as S.Schema<RemovePublicKeyRequest>;
-
 export interface RemovePublicKeyUsersEnvironmentsRequest {
   /** Environment this key should be removed from, e.g. `users/me/environments/default`. */
   environment: string;
   /** Request body */
   body?: RemovePublicKeyRequest;
 }
-const RemovePublicKeyUsersEnvironmentsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<RemovePublicKeyUsersEnvironmentsRequest>;
-
 /** Request message for StartEnvironment. */
 export interface StartEnvironmentRequest {
   /** The initial access token passed to the environment. If this is present and valid, the environment will be pre-authenticated with gcloud so that the user can run gcloud commands in Cloud Shell without having to log in. This code can be updated later by calling AuthorizeEnvironment. */
@@ -299,22 +217,12 @@ export interface StartEnvironmentRequest {
   /** Public keys that should be added to the environment before it is started. */
   publicKeys?: StringList;
 }
-const StartEnvironmentRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<StartEnvironmentRequest>;
-
 export interface StartUsersEnvironmentsRequest {
   /** Name of the resource that should be started, for example `users/me/environments/default` or `users/someone@example.com/environments/default`. */
   name: string;
   /** Request body */
   body?: StartEnvironmentRequest;
 }
-const StartUsersEnvironmentsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<StartUsersEnvironmentsRequest>;
-
 export type AddPublicKeyUsersEnvironmentsError =
   | NotFound
   | Forbidden
@@ -328,8 +236,8 @@ export const addPublicKeyUsersEnvironments: API.OperationMethod<
   AddPublicKeyUsersEnvironmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddPublicKeyUsersEnvironmentsRequest,
-  output: Operation,
+  input: __S(1, __c0, 1) as any as S.Schema<AddPublicKeyUsersEnvironmentsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -348,8 +256,8 @@ export const authorizeUsersEnvironments: API.OperationMethod<
   AuthorizeUsersEnvironmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AuthorizeUsersEnvironmentsRequest,
-  output: Operation,
+  input: __S(7, __c0, 7) as any as S.Schema<AuthorizeUsersEnvironmentsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -363,8 +271,8 @@ export const cancelOperations: API.OperationMethod<
   CancelOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelOperationsRequest,
-  output: Empty,
+  input: __S(9, __c1, 1) as any as S.Schema<CancelOperationsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -378,8 +286,8 @@ export const deleteOperations: API.OperationMethod<
   DeleteOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOperationsRequest,
-  output: Empty,
+  input: __S(10, __c1, 2) as any as S.Schema<DeleteOperationsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -393,8 +301,8 @@ export const generateAccessTokenUsersEnvironments: API.OperationMethod<
   GenerateAccessTokenUsersEnvironmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GenerateAccessTokenUsersEnvironmentsRequest,
-  output: GenerateAccessTokenResponse,
+  input: __S(11, __c1, 3) as any as S.Schema<GenerateAccessTokenUsersEnvironmentsRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<GenerateAccessTokenResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -408,8 +316,8 @@ export const getOperations: API.OperationMethod<
   GetOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOperationsRequest,
-  output: Operation,
+  input: __S(13, __c1, 5) as any as S.Schema<GetOperationsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -423,8 +331,8 @@ export const getUsersEnvironments: API.OperationMethod<
   GetUsersEnvironmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUsersEnvironmentsRequest,
-  output: Environment,
+  input: __S(14, __c1, 6) as any as S.Schema<GetUsersEnvironmentsRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<Environment>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -439,8 +347,8 @@ export const listOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(17, __c2, 1) as any as S.Schema<ListOperationsRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -460,8 +368,8 @@ export const removePublicKeyUsersEnvironments: API.OperationMethod<
   RemovePublicKeyUsersEnvironmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemovePublicKeyUsersEnvironmentsRequest,
-  output: Operation,
+  input: __S(20, __c2, 4) as any as S.Schema<RemovePublicKeyUsersEnvironmentsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -475,8 +383,8 @@ export const startUsersEnvironments: API.OperationMethod<
   StartUsersEnvironmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartUsersEnvironmentsRequest,
-  output: Operation,
+  input: __S(22, __c2, 6) as any as S.Schema<StartUsersEnvironmentsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -495,7 +403,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           environment: S.String.pipe(T.Label()),
-          body: S.optional(AddPublicKeyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -509,23 +417,23 @@ function __c0(j: number): any {
     case 2:
       return S.Record(S.String, S.Unknown);
     case 3:
-      return S.Array(DocumentMap);
+      return S.Array(__S(2, __c0, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(3, __c0, 3)),
           code: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Status" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(DocumentMap),
+          metadata: S.optional(__S(2, __c0, 2)),
           done: S.optional(S.Boolean),
           name: S.optional(S.String),
-          error: S.optional(Status),
-          response: S.optional(DocumentMap),
+          error: S.optional(__S(4, __c0, 4)),
+          response: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({ identifier: "Operation" });
     case 6:
@@ -542,7 +450,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(AuthorizeEnvironmentRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -565,7 +473,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -650,9 +558,9 @@ function __c2(j: number): any {
           dockerImage: S.optional(S.String),
           name: S.optional(S.String),
           sshPort: S.optional(S.Number),
-          state: S.optional(EnvironmentStateEnum),
+          state: S.optional(S.String),
           sshUsername: S.optional(S.String),
-          publicKeys: S.optional(StringList),
+          publicKeys: S.optional(__S(15, __c1, 7)),
           webHost: S.optional(S.String),
         }),
       ).annotate({ identifier: "Environment" });
@@ -673,12 +581,12 @@ function __c2(j: number): any {
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
     case 2:
-      return S.Array(Operation);
+      return S.Array(__S(5, __c0, 5));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          operations: S.optional(OperationList),
-          unreachable: S.optional(StringList),
+          operations: S.optional(__S(18, __c2, 2)),
+          unreachable: S.optional(__S(15, __c1, 7)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -686,7 +594,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           environment: S.String.pipe(T.Label()),
-          body: S.optional(RemovePublicKeyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -701,14 +609,14 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accessToken: S.optional(S.String),
-          publicKeys: S.optional(StringList),
+          publicKeys: S.optional(__S(15, __c1, 7)),
         }),
       ).annotate({ identifier: "StartEnvironmentRequest" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(StartEnvironmentRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(21, __c2, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -720,4 +628,9 @@ function __c2(j: number): any {
         identifier: "StartUsersEnvironmentsRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

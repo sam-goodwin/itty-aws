@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { GithubProtocol, type GithubOpError, type GithubOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GithubOpError, GithubOpContext };
 
@@ -52,15 +54,8 @@ export type AttachConfigurationRequestScope =
   | "public"
   | "private_or_internal"
   | "selected";
-const AttachConfigurationRequestScope = S.String;
-
 /** An array of repository IDs to attach the configuration to. You can only provide a list of repository ids when the `scope` is set to `selected`. */
 export type AttachConfigurationRequestSelectedRepositoryIdsList = Array<number>;
-const AttachConfigurationRequestSelectedRepositoryIdsList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AttachConfigurationRequestSelectedRepositoryIdsList>;
-
 export interface AttachConfigurationRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -71,21 +66,9 @@ export interface AttachConfigurationRequest {
   /** An array of repository IDs to attach the configuration to. You can only provide a list of repository ids when the `scope` is set to `selected`. */
   selected_repository_ids?: AttachConfigurationRequestSelectedRepositoryIdsList;
 }
-const AttachConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AttachConfigurationRequest>;
-
 export interface AttachConfigurationResponse {}
-const AttachConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AttachConfigurationResponse>;
-
 /** The type of repositories to attach the configuration to. */
 export type AttachEnterpriseConfigurationRequestScope = "all" | "all_without_configurations";
-const AttachEnterpriseConfigurationRequestScope = S.String;
-
 export interface AttachEnterpriseConfigurationRequest {
   /** The slug version of the enterprise name. */
   enterprise: string;
@@ -94,83 +77,48 @@ export interface AttachEnterpriseConfigurationRequest {
   /** The type of repositories to attach the configuration to. */
   scope: AttachEnterpriseConfigurationRequestScope | (string & {});
 }
-const AttachEnterpriseConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<AttachEnterpriseConfigurationRequest>;
-
 export interface AttachEnterpriseConfigurationResponse {}
-const AttachEnterpriseConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<AttachEnterpriseConfigurationResponse>;
-
 /** The enablement status of GitHub Advanced Security features. `enabled` will enable both Code Security and Secret Protection features. > [!WARNING] > `code_security` and `secret_protection` are deprecated values for this field. Prefer the individual `code_security` and `secret_protection` fields to set the status of these features. */
 export type CreateConfigurationRequestAdvancedSecurity =
   | "enabled"
   | "disabled"
   | "code_security"
   | "secret_protection";
-const CreateConfigurationRequestAdvancedSecurity = S.String;
-
 /** The enablement status of GitHub Code Security features. */
 export type CreateConfigurationRequestCodeSecurity = "enabled" | "disabled" | "not_set";
-const CreateConfigurationRequestCodeSecurity = S.String;
-
 /** The enablement status of Dependency Graph */
 export type CreateConfigurationRequestDependencyGraph = "enabled" | "disabled" | "not_set";
-const CreateConfigurationRequestDependencyGraph = S.String;
-
 /** The enablement status of Automatic dependency submission */
 export type CreateConfigurationRequestDependencyGraphAutosubmitAction =
   | "enabled"
   | "disabled"
   | "not_set";
-const CreateConfigurationRequestDependencyGraphAutosubmitAction = S.String;
-
 /** Feature options for Automatic dependency submission */
 export interface CreateConfigurationRequestDependencyGraphAutosubmitActionOptions {
   /** Whether to use runners labeled with 'dependency-submission' or standard GitHub runners. */
   labeled_runners?: boolean;
 }
-const CreateConfigurationRequestDependencyGraphAutosubmitActionOptions = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateConfigurationRequestDependencyGraphAutosubmitActionOptions>;
-
 /** The enablement status of Dependabot alerts */
 export type CreateConfigurationRequestDependabotAlerts = "enabled" | "disabled" | "not_set";
-const CreateConfigurationRequestDependabotAlerts = S.String;
-
 /** The enablement status of Dependabot security updates */
 export type CreateConfigurationRequestDependabotSecurityUpdates =
   | "enabled"
   | "disabled"
   | "not_set";
-const CreateConfigurationRequestDependabotSecurityUpdates = S.String;
-
 /** The enablement status of Dependabot delegated alert dismissal. Requires Dependabot alerts to be enabled. */
 export type CreateConfigurationRequestDependabotDelegatedAlertDismissal =
   | "enabled"
   | "disabled"
   | "not_set";
-const CreateConfigurationRequestDependabotDelegatedAlertDismissal = S.String;
-
 /** Security Configuration feature options for code scanning */
 export interface CodeScanningOptions {
   /** Whether to allow repos which use advanced setup */
   allow_advanced?: boolean | null;
 }
-const CodeScanningOptions = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<CodeScanningOptions>;
-
 /** The enablement status of code scanning default setup */
 export type CreateConfigurationRequestCodeScanningDefaultSetup = "enabled" | "disabled" | "not_set";
-const CreateConfigurationRequestCodeScanningDefaultSetup = S.String;
-
 /** Whether to use labeled runners or standard GitHub runners. */
 export type CodeScanningDefaultSetupOptionsRunnerType = "standard" | "labeled" | "not_set";
-const CodeScanningDefaultSetupOptionsRunnerType = S.String;
-
 /** Feature options for code scanning default setup */
 export interface CodeScanningDefaultSetupOptions {
   /** Whether to use labeled runners or standard GitHub runners. */
@@ -178,53 +126,33 @@ export interface CodeScanningDefaultSetupOptions {
   /** The label of the runner to use for code scanning default setup when runner_type is 'labeled'. */
   runner_label?: string | null;
 }
-const CodeScanningDefaultSetupOptions = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CodeScanningDefaultSetupOptions>;
-
 /** The enablement status of code scanning delegated alert dismissal */
 export type CreateConfigurationRequestCodeScanningDelegatedAlertDismissal =
   | "enabled"
   | "disabled"
   | "not_set";
-const CreateConfigurationRequestCodeScanningDelegatedAlertDismissal = S.String;
-
 /** The enablement status of GitHub Secret Protection features. */
 export type CreateConfigurationRequestSecretProtection = "enabled" | "disabled" | "not_set";
-const CreateConfigurationRequestSecretProtection = S.String;
-
 /** The enablement status of secret scanning */
 export type CreateConfigurationRequestSecretScanning = "enabled" | "disabled" | "not_set";
-const CreateConfigurationRequestSecretScanning = S.String;
-
 /** The enablement status of secret scanning push protection */
 export type CreateConfigurationRequestSecretScanningPushProtection =
   | "enabled"
   | "disabled"
   | "not_set";
-const CreateConfigurationRequestSecretScanningPushProtection = S.String;
-
 /** The enablement status of secret scanning delegated bypass */
 export type CreateConfigurationRequestSecretScanningDelegatedBypass =
   | "enabled"
   | "disabled"
   | "not_set";
-const CreateConfigurationRequestSecretScanningDelegatedBypass = S.String;
-
 /** The type of the bypass reviewer */
 export type CreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
   | "TEAM"
   | "ROLE";
-const CreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
-  S.String;
-
 /** The bypass mode for the reviewer */
 export type CreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItemMode =
   | "ALWAYS"
   | "EXEMPT";
-const CreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItemMode = S.String;
-
 export interface CreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItem {
   /** The ID of the team or role selected as a bypass reviewer */
   reviewer_id: number;
@@ -237,77 +165,46 @@ export interface CreateConfigurationRequestSecretScanningDelegatedBypassOptionsR
     | CreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItemMode
     | (string & {});
 }
-const CreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItem =
-  /*@__PURE__*/ __L.at(
-    __c1,
-    0,
-  ) as any as S.Schema<CreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItem>;
-
 /** The bypass reviewers for secret scanning delegated bypass */
 export type CreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersList =
   Array<CreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItem>;
-const CreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersList =
-  /*@__PURE__*/ __L.at(
-    __c1,
-    1,
-  ) as any as S.Schema<CreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersList>;
-
 /** Feature options for secret scanning delegated bypass */
 export interface CreateConfigurationRequestSecretScanningDelegatedBypassOptions {
   /** The bypass reviewers for secret scanning delegated bypass */
   reviewers?: CreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersList;
 }
-const CreateConfigurationRequestSecretScanningDelegatedBypassOptions = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateConfigurationRequestSecretScanningDelegatedBypassOptions>;
-
 /** The enablement status of secret scanning validity checks */
 export type CreateConfigurationRequestSecretScanningValidityChecks =
   | "enabled"
   | "disabled"
   | "not_set";
-const CreateConfigurationRequestSecretScanningValidityChecks = S.String;
-
 /** The enablement status of secret scanning non provider patterns */
 export type CreateConfigurationRequestSecretScanningNonProviderPatterns =
   | "enabled"
   | "disabled"
   | "not_set";
-const CreateConfigurationRequestSecretScanningNonProviderPatterns = S.String;
-
 /** The enablement status of Copilot secret scanning */
 export type CreateConfigurationRequestSecretScanningGenericSecrets =
   | "enabled"
   | "disabled"
   | "not_set";
-const CreateConfigurationRequestSecretScanningGenericSecrets = S.String;
-
 /** The enablement status of secret scanning delegated alert dismissal */
 export type CreateConfigurationRequestSecretScanningDelegatedAlertDismissal =
   | "enabled"
   | "disabled"
   | "not_set";
-const CreateConfigurationRequestSecretScanningDelegatedAlertDismissal = S.String;
-
 /** The enablement status of secret scanning extended metadata */
 export type CreateConfigurationRequestSecretScanningExtendedMetadata =
   | "enabled"
   | "disabled"
   | "not_set";
-const CreateConfigurationRequestSecretScanningExtendedMetadata = S.String;
-
 /** The enablement status of private vulnerability reporting */
 export type CreateConfigurationRequestPrivateVulnerabilityReporting =
   | "enabled"
   | "disabled"
   | "not_set";
-const CreateConfigurationRequestPrivateVulnerabilityReporting = S.String;
-
 /** The enforcement status for a security configuration */
 export type CreateConfigurationRequestEnforcement = "enforced" | "unenforced";
-const CreateConfigurationRequestEnforcement = S.String;
-
 export interface CreateConfigurationRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -384,65 +281,42 @@ export interface CreateConfigurationRequest {
   /** The enforcement status for a security configuration */
   enforcement?: CreateConfigurationRequestEnforcement | (string & {});
 }
-const CreateConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateConfigurationRequest>;
-
 /** The type of the code security configuration. */
 export type CodeSecurityConfigurationTargetType = "global" | "organization" | "enterprise";
-const CodeSecurityConfigurationTargetType = S.String;
-
 /** The enablement status of GitHub Advanced Security */
 export type CodeSecurityConfigurationAdvancedSecurity =
   | "enabled"
   | "disabled"
   | "code_security"
   | "secret_protection";
-const CodeSecurityConfigurationAdvancedSecurity = S.String;
-
 /** The enablement status of Dependency Graph */
 export type CodeSecurityConfigurationDependencyGraph = "enabled" | "disabled" | "not_set";
-const CodeSecurityConfigurationDependencyGraph = S.String;
-
 /** The enablement status of Automatic dependency submission */
 export type CodeSecurityConfigurationDependencyGraphAutosubmitAction =
   | "enabled"
   | "disabled"
   | "not_set";
-const CodeSecurityConfigurationDependencyGraphAutosubmitAction = S.String;
-
 /** Feature options for Automatic dependency submission */
 export type CodeSecurityConfigurationDependencyGraphAutosubmitActionOptions =
   CreateConfigurationRequestDependencyGraphAutosubmitActionOptions;
 /** The enablement status of Dependabot alerts */
 export type CodeSecurityConfigurationDependabotAlerts = "enabled" | "disabled" | "not_set";
-const CodeSecurityConfigurationDependabotAlerts = S.String;
-
 /** The enablement status of Dependabot security updates */
 export type CodeSecurityConfigurationDependabotSecurityUpdates = "enabled" | "disabled" | "not_set";
-const CodeSecurityConfigurationDependabotSecurityUpdates = S.String;
-
 /** The enablement status of Dependabot delegated alert dismissal */
 export type CodeSecurityConfigurationDependabotDelegatedAlertDismissal =
   | "enabled"
   | "disabled"
   | "not_set";
-const CodeSecurityConfigurationDependabotDelegatedAlertDismissal = S.String;
-
 /** Feature options for code scanning */
 export type CodeSecurityConfigurationCodeScanningOptions = CodeScanningOptions;
 /** The enablement status of code scanning default setup */
 export type CodeSecurityConfigurationCodeScanningDefaultSetup = "enabled" | "disabled" | "not_set";
-const CodeSecurityConfigurationCodeScanningDefaultSetup = S.String;
-
 /** Whether to use labeled runners or standard GitHub runners. */
 export type CodeSecurityConfigurationCodeScanningDefaultSetupOptionsRunnerType =
   | "standard"
   | "labeled"
   | "not_set";
-const CodeSecurityConfigurationCodeScanningDefaultSetupOptionsRunnerType = S.String;
-
 /** Feature options for code scanning default setup */
 export interface CodeSecurityConfigurationCodeScanningDefaultSetupOptions {
   /** Whether to use labeled runners or standard GitHub runners. */
@@ -450,49 +324,31 @@ export interface CodeSecurityConfigurationCodeScanningDefaultSetupOptions {
   /** The label of the runner to use for code scanning when runner_type is 'labeled'. */
   runner_label?: string | null;
 }
-const CodeSecurityConfigurationCodeScanningDefaultSetupOptions = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CodeSecurityConfigurationCodeScanningDefaultSetupOptions>;
-
 /** The enablement status of code scanning delegated alert dismissal */
 export type CodeSecurityConfigurationCodeScanningDelegatedAlertDismissal =
   | "enabled"
   | "disabled"
   | "not_set";
-const CodeSecurityConfigurationCodeScanningDelegatedAlertDismissal = S.String;
-
 /** The enablement status of secret scanning */
 export type CodeSecurityConfigurationSecretScanning = "enabled" | "disabled" | "not_set";
-const CodeSecurityConfigurationSecretScanning = S.String;
-
 /** The enablement status of secret scanning push protection */
 export type CodeSecurityConfigurationSecretScanningPushProtection =
   | "enabled"
   | "disabled"
   | "not_set";
-const CodeSecurityConfigurationSecretScanningPushProtection = S.String;
-
 /** The enablement status of secret scanning delegated bypass */
 export type CodeSecurityConfigurationSecretScanningDelegatedBypass =
   | "enabled"
   | "disabled"
   | "not_set";
-const CodeSecurityConfigurationSecretScanningDelegatedBypass = S.String;
-
 /** The type of the bypass reviewer */
 export type CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
   | "TEAM"
   | "ROLE";
-const CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
-  S.String;
-
 /** The bypass mode for the reviewer */
 export type CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsReviewersItemMode =
   | "ALWAYS"
   | "EXEMPT";
-const CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsReviewersItemMode = S.String;
-
 export interface CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsReviewersItem {
   /** The ID of the team or role selected as a bypass reviewer */
   reviewer_id: number;
@@ -503,80 +359,49 @@ export interface CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsRe
   /** The ID of the security configuration associated with this bypass reviewer */
   security_configuration_id?: number;
 }
-const CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsReviewersItem =
-  /*@__PURE__*/ __L.at(
-    __c1,
-    5,
-  ) as any as S.Schema<CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsReviewersItem>;
-
 /** The bypass reviewers for secret scanning delegated bypass */
 export type CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsReviewersList =
   Array<CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsReviewersItem>;
-const CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsReviewersList =
-  /*@__PURE__*/ __L.at(
-    __c1,
-    6,
-  ) as any as S.Schema<CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsReviewersList>;
-
 /** Feature options for secret scanning delegated bypass */
 export interface CodeSecurityConfigurationSecretScanningDelegatedBypassOptions {
   /** The bypass reviewers for secret scanning delegated bypass */
   reviewers?: CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsReviewersList;
 }
-const CodeSecurityConfigurationSecretScanningDelegatedBypassOptions = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<CodeSecurityConfigurationSecretScanningDelegatedBypassOptions>;
-
 /** The enablement status of secret scanning validity checks */
 export type CodeSecurityConfigurationSecretScanningValidityChecks =
   | "enabled"
   | "disabled"
   | "not_set";
-const CodeSecurityConfigurationSecretScanningValidityChecks = S.String;
-
 /** The enablement status of secret scanning non-provider patterns */
 export type CodeSecurityConfigurationSecretScanningNonProviderPatterns =
   | "enabled"
   | "disabled"
   | "not_set";
-const CodeSecurityConfigurationSecretScanningNonProviderPatterns = S.String;
-
 /** The enablement status of Copilot secret scanning */
 export type CodeSecurityConfigurationSecretScanningGenericSecrets =
   | "enabled"
   | "disabled"
   | "not_set";
-const CodeSecurityConfigurationSecretScanningGenericSecrets = S.String;
-
 /** The enablement status of secret scanning delegated alert dismissal */
 export type CodeSecurityConfigurationSecretScanningDelegatedAlertDismissal =
   | "enabled"
   | "disabled"
   | "not_set";
-const CodeSecurityConfigurationSecretScanningDelegatedAlertDismissal = S.String;
-
 /** The enablement status of secret scanning extended metadata */
 export type CodeSecurityConfigurationSecretScanningExtendedMetadata =
   | "enabled"
   | "disabled"
   | "not_set";
-const CodeSecurityConfigurationSecretScanningExtendedMetadata = S.String;
-
 /** The enablement status of private vulnerability reporting */
 export type CodeSecurityConfigurationPrivateVulnerabilityReporting =
   | "enabled"
   | "disabled"
   | "not_set";
-const CodeSecurityConfigurationPrivateVulnerabilityReporting = S.String;
-
 /** The enforcement status for a security configuration */
 export type CodeSecurityConfigurationEnforcement =
   | "enforced"
   | "unenforced"
   | "enterprise_enforced";
-const CodeSecurityConfigurationEnforcement = S.String;
-
 /** A code security configuration */
 export interface CodeSecurityConfiguration {
   /** The ID of the code security configuration */
@@ -638,40 +463,27 @@ export interface CodeSecurityConfiguration {
   created_at?: string;
   updated_at?: string;
 }
-const CodeSecurityConfiguration = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CodeSecurityConfiguration>;
-
 /** The enablement status of GitHub Advanced Security features. `enabled` will enable both Code Security and Secret Protection features. > [!WARNING] > `code_security` and `secret_protection` are deprecated values for this field. Prefer the individual `code_security` and `secret_protection` fields to set the status of these features. */
 export type CreateConfigurationForEnterpriseRequestAdvancedSecurity =
   | "enabled"
   | "disabled"
   | "code_security"
   | "secret_protection";
-const CreateConfigurationForEnterpriseRequestAdvancedSecurity = S.String;
-
 /** The enablement status of GitHub Code Security features. */
 export type CreateConfigurationForEnterpriseRequestCodeSecurity =
   | "enabled"
   | "disabled"
   | "not_set";
-const CreateConfigurationForEnterpriseRequestCodeSecurity = S.String;
-
 /** The enablement status of Dependency Graph */
 export type CreateConfigurationForEnterpriseRequestDependencyGraph =
   | "enabled"
   | "disabled"
   | "not_set";
-const CreateConfigurationForEnterpriseRequestDependencyGraph = S.String;
-
 /** The enablement status of Automatic dependency submission */
 export type CreateConfigurationForEnterpriseRequestDependencyGraphAutosubmitAction =
   | "enabled"
   | "disabled"
   | "not_set";
-const CreateConfigurationForEnterpriseRequestDependencyGraphAutosubmitAction = S.String;
-
 /** Feature options for Automatic dependency submission */
 export type CreateConfigurationForEnterpriseRequestDependencyGraphAutosubmitActionOptions =
   CreateConfigurationRequestDependencyGraphAutosubmitActionOptions;
@@ -680,99 +492,71 @@ export type CreateConfigurationForEnterpriseRequestDependabotAlerts =
   | "enabled"
   | "disabled"
   | "not_set";
-const CreateConfigurationForEnterpriseRequestDependabotAlerts = S.String;
-
 /** The enablement status of Dependabot security updates */
 export type CreateConfigurationForEnterpriseRequestDependabotSecurityUpdates =
   | "enabled"
   | "disabled"
   | "not_set";
-const CreateConfigurationForEnterpriseRequestDependabotSecurityUpdates = S.String;
-
 /** The enablement status of code scanning default setup */
 export type CreateConfigurationForEnterpriseRequestCodeScanningDefaultSetup =
   | "enabled"
   | "disabled"
   | "not_set";
-const CreateConfigurationForEnterpriseRequestCodeScanningDefaultSetup = S.String;
-
 /** The enablement status of code scanning delegated alert dismissal */
 export type CreateConfigurationForEnterpriseRequestCodeScanningDelegatedAlertDismissal =
   | "enabled"
   | "disabled"
   | "not_set";
-const CreateConfigurationForEnterpriseRequestCodeScanningDelegatedAlertDismissal = S.String;
-
 /** The enablement status of GitHub Secret Protection features. */
 export type CreateConfigurationForEnterpriseRequestSecretProtection =
   | "enabled"
   | "disabled"
   | "not_set";
-const CreateConfigurationForEnterpriseRequestSecretProtection = S.String;
-
 /** The enablement status of secret scanning */
 export type CreateConfigurationForEnterpriseRequestSecretScanning =
   | "enabled"
   | "disabled"
   | "not_set";
-const CreateConfigurationForEnterpriseRequestSecretScanning = S.String;
-
 /** The enablement status of secret scanning push protection */
 export type CreateConfigurationForEnterpriseRequestSecretScanningPushProtection =
   | "enabled"
   | "disabled"
   | "not_set";
-const CreateConfigurationForEnterpriseRequestSecretScanningPushProtection = S.String;
-
 /** The enablement status of secret scanning validity checks */
 export type CreateConfigurationForEnterpriseRequestSecretScanningValidityChecks =
   | "enabled"
   | "disabled"
   | "not_set";
-const CreateConfigurationForEnterpriseRequestSecretScanningValidityChecks = S.String;
-
 /** The enablement status of secret scanning non provider patterns */
 export type CreateConfigurationForEnterpriseRequestSecretScanningNonProviderPatterns =
   | "enabled"
   | "disabled"
   | "not_set";
-const CreateConfigurationForEnterpriseRequestSecretScanningNonProviderPatterns = S.String;
-
 /** The enablement status of Copilot secret scanning */
 export type CreateConfigurationForEnterpriseRequestSecretScanningGenericSecrets =
   | "enabled"
   | "disabled"
   | "not_set";
-const CreateConfigurationForEnterpriseRequestSecretScanningGenericSecrets = S.String;
-
 /** The enablement status of secret scanning delegated alert dismissal */
 export type CreateConfigurationForEnterpriseRequestSecretScanningDelegatedAlertDismissal =
   | "enabled"
   | "disabled"
   | "not_set";
-const CreateConfigurationForEnterpriseRequestSecretScanningDelegatedAlertDismissal = S.String;
-
 /** The enablement status of secret scanning extended metadata */
 export type CreateConfigurationForEnterpriseRequestSecretScanningExtendedMetadata =
   | "enabled"
   | "disabled"
   | "not_set";
-const CreateConfigurationForEnterpriseRequestSecretScanningExtendedMetadata = S.String;
-
 /** The enablement status of private vulnerability reporting */
 export type CreateConfigurationForEnterpriseRequestPrivateVulnerabilityReporting =
   | "enabled"
   | "disabled"
   | "not_set";
-const CreateConfigurationForEnterpriseRequestPrivateVulnerabilityReporting = S.String;
-
 /** The enforcement status for a security configuration */
 export type CreateConfigurationForEnterpriseRequestEnforcement =
   | "enforced"
   | "unenforced"
   | "enterprise_enforced";
-const CreateConfigurationForEnterpriseRequestEnforcement = S.String;
-
 export interface CreateConfigurationForEnterpriseRequest {
   /** The slug version of the enterprise name. */
   enterprise: string;
@@ -843,83 +627,41 @@ export interface CreateConfigurationForEnterpriseRequest {
   /** The enforcement status for a security configuration */
   enforcement?: CreateConfigurationForEnterpriseRequestEnforcement | (string & {});
 }
-const CreateConfigurationForEnterpriseRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CreateConfigurationForEnterpriseRequest>;
-
 export interface DeleteConfigurationRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The unique identifier of the code security configuration. */
   configuration_id: number;
 }
-const DeleteConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<DeleteConfigurationRequest>;
-
 export interface DeleteConfigurationResponse {}
-const DeleteConfigurationResponse =
-  AttachConfigurationResponse as any as S.Schema<DeleteConfigurationResponse>;
-
 export interface DeleteConfigurationForEnterpriseRequest {
   /** The slug version of the enterprise name. */
   enterprise: string;
   /** The unique identifier of the code security configuration. */
   configuration_id: number;
 }
-const DeleteConfigurationForEnterpriseRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<DeleteConfigurationForEnterpriseRequest>;
-
 export interface DeleteConfigurationForEnterpriseResponse {}
-const DeleteConfigurationForEnterpriseResponse =
-  AttachEnterpriseConfigurationResponse as any as S.Schema<DeleteConfigurationForEnterpriseResponse>;
-
 /** An array of repository IDs to detach from configurations. Up to 250 IDs can be provided. */
 export type DetachConfigurationRequestSelectedRepositoryIdsList = Array<number>;
-const DetachConfigurationRequestSelectedRepositoryIdsList =
-  AttachConfigurationRequestSelectedRepositoryIdsList as any as S.Schema<DetachConfigurationRequestSelectedRepositoryIdsList>;
-
 export interface DetachConfigurationRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** An array of repository IDs to detach from configurations. Up to 250 IDs can be provided. */
   selected_repository_ids: DetachConfigurationRequestSelectedRepositoryIdsList;
 }
-const DetachConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<DetachConfigurationRequest>;
-
 export interface DetachConfigurationResponse {}
-const DetachConfigurationResponse =
-  AttachConfigurationResponse as any as S.Schema<DetachConfigurationResponse>;
-
 export interface GetConfigurationRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The unique identifier of the code security configuration. */
   configuration_id: number;
 }
-const GetConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<GetConfigurationRequest>;
-
 export interface GetConfigurationForRepositoryRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-const GetConfigurationForRepositoryRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<GetConfigurationForRepositoryRequest>;
-
 /** The attachment status of the code security configuration on the repository. */
 export type CodeSecurityConfigurationForRepositoryStatus =
   | "attached"
@@ -931,19 +673,12 @@ export type CodeSecurityConfigurationForRepositoryStatus =
   | "updating"
   | "removed_by_enterprise"
   | "enterprise_enforced";
-const CodeSecurityConfigurationForRepositoryStatus = S.String;
-
 /** Code security configuration associated with a repository and attachment status */
 export interface CodeSecurityConfigurationForRepository {
   /** The attachment status of the code security configuration on the repository. */
   status?: CodeSecurityConfigurationForRepositoryStatus;
   configuration?: CodeSecurityConfiguration;
 }
-const CodeSecurityConfigurationForRepository = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<CodeSecurityConfigurationForRepository>;
-
 export interface GetConfigurationsForEnterpriseRequest {
   /** The slug version of the enterprise name. */
   enterprise: string;
@@ -954,26 +689,9 @@ export interface GetConfigurationsForEnterpriseRequest {
   /** A cursor, as given in the [Link header](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api#using-link-headers). If specified, the query only searches for results after this cursor. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   after?: string;
 }
-const GetConfigurationsForEnterpriseRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<GetConfigurationsForEnterpriseRequest>;
-
 export type GetConfigurationsForEnterpriseResponseBodyList = Array<CodeSecurityConfiguration>;
-const GetConfigurationsForEnterpriseResponseBodyList = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<GetConfigurationsForEnterpriseResponseBodyList>;
-
 export type GetConfigurationsForEnterpriseResponse = GetConfigurationsForEnterpriseResponseBodyList;
-const GetConfigurationsForEnterpriseResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<GetConfigurationsForEnterpriseResponse>;
-
 export type GetConfigurationsForOrgRequestTargetType = "global" | "all";
-const GetConfigurationsForOrgRequestTargetType = S.String;
-
 export interface GetConfigurationsForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -986,68 +704,30 @@ export interface GetConfigurationsForOrgRequest {
   /** A cursor, as given in the [Link header](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api#using-link-headers). If specified, the query only searches for results after this cursor. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   after?: string;
 }
-const GetConfigurationsForOrgRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<GetConfigurationsForOrgRequest>;
-
 export type GetConfigurationsForOrgResponseBodyList = Array<CodeSecurityConfiguration>;
 export type GetConfigurationsForOrgResponse = GetConfigurationsForOrgResponseBodyList;
-const GetConfigurationsForOrgResponse =
-  GetConfigurationsForEnterpriseResponse as any as S.Schema<GetConfigurationsForOrgResponse>;
-
 export interface GetDefaultConfigurationsRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
-const GetDefaultConfigurationsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<GetDefaultConfigurationsRequest>;
-
 /** The visibility of newly created repositories for which the code security configuration will be applied to by default */
 export type CodeSecurityDefaultConfigurationsItemDefaultForNewRepos =
   | "public"
   | "private_and_internal"
   | "all";
-const CodeSecurityDefaultConfigurationsItemDefaultForNewRepos = S.String;
-
 export interface CodeSecurityDefaultConfigurationsItem {
   /** The visibility of newly created repositories for which the code security configuration will be applied to by default */
   default_for_new_repos?: CodeSecurityDefaultConfigurationsItemDefaultForNewRepos;
   configuration?: CodeSecurityConfiguration;
 }
-const CodeSecurityDefaultConfigurationsItem = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<CodeSecurityDefaultConfigurationsItem>;
-
 /** A list of default code security configurations */
 export type CodeSecurityDefaultConfigurations = Array<CodeSecurityDefaultConfigurationsItem>;
-const CodeSecurityDefaultConfigurations = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<CodeSecurityDefaultConfigurations>;
-
 export type GetDefaultConfigurationsResponse = CodeSecurityDefaultConfigurations;
-const GetDefaultConfigurationsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<GetDefaultConfigurationsResponse>;
-
 export interface GetDefaultConfigurationsForEnterpriseRequest {
   /** The slug version of the enterprise name. */
   enterprise: string;
 }
-const GetDefaultConfigurationsForEnterpriseRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<GetDefaultConfigurationsForEnterpriseRequest>;
-
 export type GetDefaultConfigurationsForEnterpriseResponse = CodeSecurityDefaultConfigurations;
-const GetDefaultConfigurationsForEnterpriseResponse =
-  GetDefaultConfigurationsResponse as any as S.Schema<GetDefaultConfigurationsForEnterpriseResponse>;
-
 export interface GetRepositoriesForConfigurationRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -1062,11 +742,6 @@ export interface GetRepositoriesForConfigurationRequest {
   /** A comma-separated list of statuses. If specified, only repositories with these attachment statuses will be returned. Can be: `all`, `attached`, `attaching`, `detached`, `removed`, `enforced`, `failed`, `updating`, `removed_by_enterprise`, `enterprise_enforced` */
   status?: string;
 }
-const GetRepositoriesForConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<GetRepositoriesForConfigurationRequest>;
-
 /** The attachment status of the code security configuration on the repository. */
 export type CodeSecurityConfigurationRepositoriesStatus =
   | "attached"
@@ -1078,8 +753,6 @@ export type CodeSecurityConfigurationRepositoriesStatus =
   | "updating"
   | "removed_by_enterprise"
   | "enterprise_enforced";
-const CodeSecurityConfigurationRepositoriesStatus = S.String;
-
 /** A GitHub user. */
 export interface SimpleUser {
   name?: string | null;
@@ -1105,8 +778,6 @@ export interface SimpleUser {
   starred_at?: string;
   user_view_type?: string;
 }
-const SimpleUser = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<SimpleUser>;
-
 /** A GitHub repository. */
 export interface SimpleRepository {
   /** A unique identifier of the repository. */
@@ -1201,33 +872,16 @@ export interface SimpleRepository {
   /** The API URL to list the hooks on the repository. */
   hooks_url: string;
 }
-const SimpleRepository = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<SimpleRepository>;
-
 /** Repositories associated with a code security configuration and attachment status */
 export interface CodeSecurityConfigurationRepositories {
   /** The attachment status of the code security configuration on the repository. */
   status?: CodeSecurityConfigurationRepositoriesStatus;
   repository?: SimpleRepository;
 }
-const CodeSecurityConfigurationRepositories = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<CodeSecurityConfigurationRepositories>;
-
 export type GetRepositoriesForConfigurationResponseBodyList =
   Array<CodeSecurityConfigurationRepositories>;
-const GetRepositoriesForConfigurationResponseBodyList = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<GetRepositoriesForConfigurationResponseBodyList>;
-
 export type GetRepositoriesForConfigurationResponse =
   GetRepositoriesForConfigurationResponseBodyList;
-const GetRepositoriesForConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<GetRepositoriesForConfigurationResponse>;
-
 export interface GetRepositoriesForEnterpriseConfigurationRequest {
   /** The slug version of the enterprise name. */
   enterprise: string;
@@ -1242,37 +896,22 @@ export interface GetRepositoriesForEnterpriseConfigurationRequest {
   /** A comma-separated list of statuses. If specified, only repositories with these attachment statuses will be returned. Can be: `all`, `attached`, `attaching`, `removed`, `enforced`, `failed`, `updating`, `removed_by_enterprise`, `enterprise_enforced` */
   status?: string;
 }
-const GetRepositoriesForEnterpriseConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<GetRepositoriesForEnterpriseConfigurationRequest>;
-
 export type GetRepositoriesForEnterpriseConfigurationResponseBodyList =
   Array<CodeSecurityConfigurationRepositories>;
 export type GetRepositoriesForEnterpriseConfigurationResponse =
   GetRepositoriesForEnterpriseConfigurationResponseBodyList;
-const GetRepositoriesForEnterpriseConfigurationResponse =
-  GetRepositoriesForConfigurationResponse as any as S.Schema<GetRepositoriesForEnterpriseConfigurationResponse>;
-
 export interface GetSingleConfigurationForEnterpriseRequest {
   /** The slug version of the enterprise name. */
   enterprise: string;
   /** The unique identifier of the code security configuration. */
   configuration_id: number;
 }
-const GetSingleConfigurationForEnterpriseRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<GetSingleConfigurationForEnterpriseRequest>;
-
 /** Specify which types of repository this security configuration should be applied to by default. */
 export type SetConfigurationAsDefaultRequestDefaultForNewRepos =
   | "all"
   | "none"
   | "private_and_internal"
   | "public";
-const SetConfigurationAsDefaultRequestDefaultForNewRepos = S.String;
-
 export interface SetConfigurationAsDefaultRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -1281,11 +920,6 @@ export interface SetConfigurationAsDefaultRequest {
   /** Specify which types of repository this security configuration should be applied to by default. */
   default_for_new_repos?: SetConfigurationAsDefaultRequestDefaultForNewRepos | (string & {});
 }
-const SetConfigurationAsDefaultRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<SetConfigurationAsDefaultRequest>;
-
 /** Specifies which types of repository this security configuration is applied to by default. */
 export type SetConfigurationAsDefaultResponseDefaultForNewRepos =
   | "all"
@@ -1297,17 +931,12 @@ export interface SetConfigurationAsDefaultResponse {
   default_for_new_repos?: SetConfigurationAsDefaultResponseDefaultForNewRepos;
   configuration?: CodeSecurityConfiguration;
 }
-const SetConfigurationAsDefaultResponse =
-  CodeSecurityDefaultConfigurationsItem as any as S.Schema<SetConfigurationAsDefaultResponse>;
-
 /** Specify which types of repository this security configuration should be applied to by default. */
 export type SetConfigurationAsDefaultForEnterpriseRequestDefaultForNewRepos =
   | "all"
   | "none"
   | "private_and_internal"
   | "public";
-const SetConfigurationAsDefaultForEnterpriseRequestDefaultForNewRepos = S.String;
-
 export interface SetConfigurationAsDefaultForEnterpriseRequest {
   /** The slug version of the enterprise name. */
   enterprise: string;
@@ -1318,106 +947,68 @@ export interface SetConfigurationAsDefaultForEnterpriseRequest {
     | SetConfigurationAsDefaultForEnterpriseRequestDefaultForNewRepos
     | (string & {});
 }
-const SetConfigurationAsDefaultForEnterpriseRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<SetConfigurationAsDefaultForEnterpriseRequest>;
-
 /** Specifies which types of repository this security configuration is applied to by default. */
 export type SetConfigurationAsDefaultForEnterpriseResponseDefaultForNewRepos =
   | "all"
   | "none"
   | "private_and_internal"
   | "public";
-const SetConfigurationAsDefaultForEnterpriseResponseDefaultForNewRepos = S.String;
-
 export interface SetConfigurationAsDefaultForEnterpriseResponse {
   /** Specifies which types of repository this security configuration is applied to by default. */
   default_for_new_repos?: SetConfigurationAsDefaultForEnterpriseResponseDefaultForNewRepos;
   configuration?: CodeSecurityConfiguration;
 }
-const SetConfigurationAsDefaultForEnterpriseResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<SetConfigurationAsDefaultForEnterpriseResponse>;
-
 /** The enablement status of GitHub Advanced Security features. `enabled` will enable both Code Security and Secret Protection features. > [!WARNING] > `code_security` and `secret_protection` are deprecated values for this field. Prefer the individual `code_security` and `secret_protection` fields to set the status of these features. */
 export type UpdateConfigurationRequestAdvancedSecurity =
   | "enabled"
   | "disabled"
   | "code_security"
   | "secret_protection";
-const UpdateConfigurationRequestAdvancedSecurity = S.String;
-
 /** The enablement status of GitHub Code Security features. */
 export type UpdateConfigurationRequestCodeSecurity = "enabled" | "disabled" | "not_set";
-const UpdateConfigurationRequestCodeSecurity = S.String;
-
 /** The enablement status of Dependency Graph */
 export type UpdateConfigurationRequestDependencyGraph = "enabled" | "disabled" | "not_set";
-const UpdateConfigurationRequestDependencyGraph = S.String;
-
 /** The enablement status of Automatic dependency submission */
 export type UpdateConfigurationRequestDependencyGraphAutosubmitAction =
   | "enabled"
   | "disabled"
   | "not_set";
-const UpdateConfigurationRequestDependencyGraphAutosubmitAction = S.String;
-
 /** Feature options for Automatic dependency submission */
 export type UpdateConfigurationRequestDependencyGraphAutosubmitActionOptions =
   CreateConfigurationRequestDependencyGraphAutosubmitActionOptions;
 /** The enablement status of Dependabot alerts */
 export type UpdateConfigurationRequestDependabotAlerts = "enabled" | "disabled" | "not_set";
-const UpdateConfigurationRequestDependabotAlerts = S.String;
-
 /** The enablement status of Dependabot security updates */
 export type UpdateConfigurationRequestDependabotSecurityUpdates =
   | "enabled"
   | "disabled"
   | "not_set";
-const UpdateConfigurationRequestDependabotSecurityUpdates = S.String;
-
 /** The enablement status of Dependabot delegated alert dismissal. Requires Dependabot alerts to be enabled. */
 export type UpdateConfigurationRequestDependabotDelegatedAlertDismissal =
   | "enabled"
   | "disabled"
   | "not_set";
-const UpdateConfigurationRequestDependabotDelegatedAlertDismissal = S.String;
-
 /** The enablement status of code scanning default setup */
 export type UpdateConfigurationRequestCodeScanningDefaultSetup = "enabled" | "disabled" | "not_set";
-const UpdateConfigurationRequestCodeScanningDefaultSetup = S.String;
-
 /** The enablement status of code scanning delegated alert dismissal */
 export type UpdateConfigurationRequestCodeScanningDelegatedAlertDismissal =
   | "enabled"
   | "disabled"
   | "not_set";
-const UpdateConfigurationRequestCodeScanningDelegatedAlertDismissal = S.String;
-
 /** The enablement status of GitHub Secret Protection features. */
 export type UpdateConfigurationRequestSecretProtection = "enabled" | "disabled" | "not_set";
-const UpdateConfigurationRequestSecretProtection = S.String;
-
 /** The enablement status of secret scanning */
 export type UpdateConfigurationRequestSecretScanning = "enabled" | "disabled" | "not_set";
-const UpdateConfigurationRequestSecretScanning = S.String;
-
 /** The enablement status of secret scanning push protection */
 export type UpdateConfigurationRequestSecretScanningPushProtection =
   | "enabled"
   | "disabled"
   | "not_set";
-const UpdateConfigurationRequestSecretScanningPushProtection = S.String;
-
 /** The enablement status of secret scanning delegated bypass */
 export type UpdateConfigurationRequestSecretScanningDelegatedBypass =
   | "enabled"
   | "disabled"
   | "not_set";
-const UpdateConfigurationRequestSecretScanningDelegatedBypass = S.String;
-
 /** The type of the bypass reviewer */
 export type UpdateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
   | "TEAM"
@@ -1446,55 +1037,38 @@ export interface UpdateConfigurationRequestSecretScanningDelegatedBypassOptions 
   /** The bypass reviewers for secret scanning delegated bypass */
   reviewers?: UpdateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersList;
 }
-const UpdateConfigurationRequestSecretScanningDelegatedBypassOptions =
-  CreateConfigurationRequestSecretScanningDelegatedBypassOptions as any as S.Schema<UpdateConfigurationRequestSecretScanningDelegatedBypassOptions>;
-
 /** The enablement status of secret scanning validity checks */
 export type UpdateConfigurationRequestSecretScanningValidityChecks =
   | "enabled"
   | "disabled"
   | "not_set";
-const UpdateConfigurationRequestSecretScanningValidityChecks = S.String;
-
 /** The enablement status of secret scanning non-provider patterns */
 export type UpdateConfigurationRequestSecretScanningNonProviderPatterns =
   | "enabled"
   | "disabled"
   | "not_set";
-const UpdateConfigurationRequestSecretScanningNonProviderPatterns = S.String;
-
 /** The enablement status of Copilot secret scanning */
 export type UpdateConfigurationRequestSecretScanningGenericSecrets =
   | "enabled"
   | "disabled"
   | "not_set";
-const UpdateConfigurationRequestSecretScanningGenericSecrets = S.String;
-
 /** The enablement status of secret scanning delegated alert dismissal */
 export type UpdateConfigurationRequestSecretScanningDelegatedAlertDismissal =
   | "enabled"
   | "disabled"
   | "not_set";
-const UpdateConfigurationRequestSecretScanningDelegatedAlertDismissal = S.String;
-
 /** The enablement status of secret scanning extended metadata */
 export type UpdateConfigurationRequestSecretScanningExtendedMetadata =
   | "enabled"
   | "disabled"
   | "not_set";
-const UpdateConfigurationRequestSecretScanningExtendedMetadata = S.String;
-
 /** The enablement status of private vulnerability reporting */
 export type UpdateConfigurationRequestPrivateVulnerabilityReporting =
   | "enabled"
   | "disabled"
   | "not_set";
-const UpdateConfigurationRequestPrivateVulnerabilityReporting = S.String;
-
 /** The enforcement status for a security configuration */
 export type UpdateConfigurationRequestEnforcement = "enforced" | "unenforced";
-const UpdateConfigurationRequestEnforcement = S.String;
-
 export interface UpdateConfigurationRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -1573,37 +1147,24 @@ export interface UpdateConfigurationRequest {
   /** The enforcement status for a security configuration */
   enforcement?: UpdateConfigurationRequestEnforcement | (string & {});
 }
-const UpdateConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<UpdateConfigurationRequest>;
-
 /** The enablement status of GitHub Advanced Security features. `enabled` will enable both Code Security and Secret Protection features. > [!WARNING] > `code_security` and `secret_protection` are deprecated values for this field. Prefer the individual `code_security` and `secret_protection` fields to set the status of these features. */
 export type UpdateEnterpriseConfigurationRequestAdvancedSecurity =
   | "enabled"
   | "disabled"
   | "code_security"
   | "secret_protection";
-const UpdateEnterpriseConfigurationRequestAdvancedSecurity = S.String;
-
 /** The enablement status of GitHub Code Security features. */
 export type UpdateEnterpriseConfigurationRequestCodeSecurity = "enabled" | "disabled" | "not_set";
-const UpdateEnterpriseConfigurationRequestCodeSecurity = S.String;
-
 /** The enablement status of Dependency Graph */
 export type UpdateEnterpriseConfigurationRequestDependencyGraph =
   | "enabled"
   | "disabled"
   | "not_set";
-const UpdateEnterpriseConfigurationRequestDependencyGraph = S.String;
-
 /** The enablement status of Automatic dependency submission */
 export type UpdateEnterpriseConfigurationRequestDependencyGraphAutosubmitAction =
   | "enabled"
   | "disabled"
   | "not_set";
-const UpdateEnterpriseConfigurationRequestDependencyGraphAutosubmitAction = S.String;
-
 /** Feature options for Automatic dependency submission */
 export type UpdateEnterpriseConfigurationRequestDependencyGraphAutosubmitActionOptions =
   CreateConfigurationRequestDependencyGraphAutosubmitActionOptions;
@@ -1612,96 +1173,68 @@ export type UpdateEnterpriseConfigurationRequestDependabotAlerts =
   | "enabled"
   | "disabled"
   | "not_set";
-const UpdateEnterpriseConfigurationRequestDependabotAlerts = S.String;
-
 /** The enablement status of Dependabot security updates */
 export type UpdateEnterpriseConfigurationRequestDependabotSecurityUpdates =
   | "enabled"
   | "disabled"
   | "not_set";
-const UpdateEnterpriseConfigurationRequestDependabotSecurityUpdates = S.String;
-
 /** The enablement status of code scanning default setup */
 export type UpdateEnterpriseConfigurationRequestCodeScanningDefaultSetup =
   | "enabled"
   | "disabled"
   | "not_set";
-const UpdateEnterpriseConfigurationRequestCodeScanningDefaultSetup = S.String;
-
 /** The enablement status of code scanning delegated alert dismissal */
 export type UpdateEnterpriseConfigurationRequestCodeScanningDelegatedAlertDismissal =
   | "enabled"
   | "disabled"
   | "not_set";
-const UpdateEnterpriseConfigurationRequestCodeScanningDelegatedAlertDismissal = S.String;
-
 /** The enablement status of GitHub Secret Protection features. */
 export type UpdateEnterpriseConfigurationRequestSecretProtection =
   | "enabled"
   | "disabled"
   | "not_set";
-const UpdateEnterpriseConfigurationRequestSecretProtection = S.String;
-
 /** The enablement status of secret scanning */
 export type UpdateEnterpriseConfigurationRequestSecretScanning = "enabled" | "disabled" | "not_set";
-const UpdateEnterpriseConfigurationRequestSecretScanning = S.String;
-
 /** The enablement status of secret scanning push protection */
 export type UpdateEnterpriseConfigurationRequestSecretScanningPushProtection =
   | "enabled"
   | "disabled"
   | "not_set";
-const UpdateEnterpriseConfigurationRequestSecretScanningPushProtection = S.String;
-
 /** The enablement status of secret scanning validity checks */
 export type UpdateEnterpriseConfigurationRequestSecretScanningValidityChecks =
   | "enabled"
   | "disabled"
   | "not_set";
-const UpdateEnterpriseConfigurationRequestSecretScanningValidityChecks = S.String;
-
 /** The enablement status of secret scanning non-provider patterns */
 export type UpdateEnterpriseConfigurationRequestSecretScanningNonProviderPatterns =
   | "enabled"
   | "disabled"
   | "not_set";
-const UpdateEnterpriseConfigurationRequestSecretScanningNonProviderPatterns = S.String;
-
 /** The enablement status of Copilot secret scanning */
 export type UpdateEnterpriseConfigurationRequestSecretScanningGenericSecrets =
   | "enabled"
   | "disabled"
   | "not_set";
-const UpdateEnterpriseConfigurationRequestSecretScanningGenericSecrets = S.String;
-
 /** The enablement status of secret scanning delegated alert dismissal */
 export type UpdateEnterpriseConfigurationRequestSecretScanningDelegatedAlertDismissal =
   | "enabled"
   | "disabled"
   | "not_set";
-const UpdateEnterpriseConfigurationRequestSecretScanningDelegatedAlertDismissal = S.String;
-
 /** The enablement status of secret scanning extended metadata */
 export type UpdateEnterpriseConfigurationRequestSecretScanningExtendedMetadata =
   | "enabled"
   | "disabled"
   | "not_set";
-const UpdateEnterpriseConfigurationRequestSecretScanningExtendedMetadata = S.String;
-
 /** The enablement status of private vulnerability reporting */
 export type UpdateEnterpriseConfigurationRequestPrivateVulnerabilityReporting =
   | "enabled"
   | "disabled"
   | "not_set";
-const UpdateEnterpriseConfigurationRequestPrivateVulnerabilityReporting = S.String;
-
 /** The enforcement status for a security configuration */
 export type UpdateEnterpriseConfigurationRequestEnforcement =
   | "enforced"
   | "unenforced"
   | "enterprise_enforced";
-const UpdateEnterpriseConfigurationRequestEnforcement = S.String;
-
 export interface UpdateEnterpriseConfigurationRequest {
   /** The slug version of the enterprise name. */
   enterprise: string;
@@ -1774,11 +1307,6 @@ export interface UpdateEnterpriseConfigurationRequest {
   /** The enforcement status for a security configuration */
   enforcement?: UpdateEnterpriseConfigurationRequestEnforcement | (string & {});
 }
-const UpdateEnterpriseConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<UpdateEnterpriseConfigurationRequest>;
-
 export type AttachConfigurationError = Forbidden | GithubOpError;
 /** Attach a configuration to repositories Attach a code security configuration to a set of repositories. If the repositories specified are already attached to a configuration, they will be re-attached to the provided configuration. If insufficient GHAS licenses are available to attach the configuration to a repository, only free features will be enabled. The authenticated user must be an administrator or security manager for the organization to use this endpoint. Directly applying an enterprise-enforced configuration also requires permission to manage the enterprise's code security settings. Without it, the request returns `403` and no repositories change. When applying a different configuration, repositories with active enterprise-enforced attachments are skipped unless the authenticated user can manage the enterprise's code security settings; the remaining repositories are updated. The request still returns `202` if every repository is skipped. OAuth app tokens and classic PATs require the `write:org` scope. Directly applying an enterprise-enforced configuration also requires `admin:enterprise` and is not supported by fine-grained PATs or GitHub App access tokens. */
 export const attachConfiguration: API.OperationMethod<
@@ -1787,8 +1315,8 @@ export const attachConfiguration: API.OperationMethod<
   AttachConfigurationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AttachConfigurationRequest,
-  output: AttachConfigurationResponse,
+  input: __S(1, __c0, 1) as any as S.Schema<AttachConfigurationRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<AttachConfigurationResponse>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1802,8 +1330,8 @@ export const attachEnterpriseConfiguration: API.OperationMethod<
   AttachEnterpriseConfigurationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AttachEnterpriseConfigurationRequest,
-  output: AttachEnterpriseConfigurationResponse,
+  input: __S(3, __c0, 3) as any as S.Schema<AttachEnterpriseConfigurationRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<AttachEnterpriseConfigurationResponse>,
   errors: [Forbidden, NotFound, Conflict],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1817,8 +1345,8 @@ export const createConfiguration: API.OperationMethod<
   CreateConfigurationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateConfigurationRequest,
-  output: CodeSecurityConfiguration,
+  input: __S(11, __c1, 3) as any as S.Schema<CreateConfigurationRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<CodeSecurityConfiguration>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1836,8 +1364,8 @@ export const createConfigurationForEnterprise: API.OperationMethod<
   CreateConfigurationForEnterpriseError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateConfigurationForEnterpriseRequest,
-  output: CodeSecurityConfiguration,
+  input: __S(17, __c2, 1) as any as S.Schema<CreateConfigurationForEnterpriseRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<CodeSecurityConfiguration>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1851,8 +1379,8 @@ export const deleteConfiguration: API.OperationMethod<
   DeleteConfigurationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteConfigurationRequest,
-  output: DeleteConfigurationResponse,
+  input: __S(18, __c2, 2) as any as S.Schema<DeleteConfigurationRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<DeleteConfigurationResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1871,8 +1399,8 @@ export const deleteConfigurationForEnterprise: API.OperationMethod<
   DeleteConfigurationForEnterpriseError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteConfigurationForEnterpriseRequest,
-  output: DeleteConfigurationForEnterpriseResponse,
+  input: __S(19, __c2, 3) as any as S.Schema<DeleteConfigurationForEnterpriseRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<DeleteConfigurationForEnterpriseResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1886,8 +1414,8 @@ export const detachConfiguration: API.OperationMethod<
   DetachConfigurationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DetachConfigurationRequest,
-  output: DetachConfigurationResponse,
+  input: __S(20, __c2, 4) as any as S.Schema<DetachConfigurationRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<DetachConfigurationResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1901,8 +1429,8 @@ export const getConfiguration: API.OperationMethod<
   GetConfigurationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConfigurationRequest,
-  output: CodeSecurityConfiguration,
+  input: __S(21, __c2, 5) as any as S.Schema<GetConfigurationRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<CodeSecurityConfiguration>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1916,8 +1444,8 @@ export const getConfigurationForRepository: API.OperationMethod<
   GetConfigurationForRepositoryError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConfigurationForRepositoryRequest,
-  output: CodeSecurityConfigurationForRepository,
+  input: __S(22, __c2, 6) as any as S.Schema<GetConfigurationForRepositoryRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<CodeSecurityConfigurationForRepository>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1931,8 +1459,8 @@ export const getConfigurationsForEnterprise: API.OperationMethod<
   GetConfigurationsForEnterpriseError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConfigurationsForEnterpriseRequest,
-  output: GetConfigurationsForEnterpriseResponse,
+  input: __S(24, __c3, 0) as any as S.Schema<GetConfigurationsForEnterpriseRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<GetConfigurationsForEnterpriseResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1946,8 +1474,8 @@ export const getConfigurationsForOrg: API.OperationMethod<
   GetConfigurationsForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConfigurationsForOrgRequest,
-  output: GetConfigurationsForOrgResponse,
+  input: __S(27, __c3, 3) as any as S.Schema<GetConfigurationsForOrgRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<GetConfigurationsForOrgResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1961,8 +1489,8 @@ export const getDefaultConfigurations: API.OperationMethod<
   GetDefaultConfigurationsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDefaultConfigurationsRequest,
-  output: GetDefaultConfigurationsResponse,
+  input: __S(28, __c3, 4) as any as S.Schema<GetDefaultConfigurationsRequest>,
+  output: __S(31, __c3, 7) as any as S.Schema<GetDefaultConfigurationsResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1976,8 +1504,8 @@ export const getDefaultConfigurationsForEnterprise: API.OperationMethod<
   GetDefaultConfigurationsForEnterpriseError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDefaultConfigurationsForEnterpriseRequest,
-  output: GetDefaultConfigurationsForEnterpriseResponse,
+  input: __S(32, __c4, 0) as any as S.Schema<GetDefaultConfigurationsForEnterpriseRequest>,
+  output: __S(31, __c3, 7) as any as S.Schema<GetDefaultConfigurationsForEnterpriseResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1991,8 +1519,8 @@ export const getRepositoriesForConfiguration: API.OperationMethod<
   GetRepositoriesForConfigurationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRepositoriesForConfigurationRequest,
-  output: GetRepositoriesForConfigurationResponse,
+  input: __S(33, __c4, 1) as any as S.Schema<GetRepositoriesForConfigurationRequest>,
+  output: __S(38, __c4, 6) as any as S.Schema<GetRepositoriesForConfigurationResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2006,8 +1534,8 @@ export const getRepositoriesForEnterpriseConfiguration: API.OperationMethod<
   GetRepositoriesForEnterpriseConfigurationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRepositoriesForEnterpriseConfigurationRequest,
-  output: GetRepositoriesForEnterpriseConfigurationResponse,
+  input: __S(39, __c4, 7) as any as S.Schema<GetRepositoriesForEnterpriseConfigurationRequest>,
+  output: __S(38, __c4, 6) as any as S.Schema<GetRepositoriesForEnterpriseConfigurationResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2021,8 +1549,8 @@ export const getSingleConfigurationForEnterprise: API.OperationMethod<
   GetSingleConfigurationForEnterpriseError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSingleConfigurationForEnterpriseRequest,
-  output: CodeSecurityConfiguration,
+  input: __S(40, __c5, 0) as any as S.Schema<GetSingleConfigurationForEnterpriseRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<CodeSecurityConfiguration>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2036,8 +1564,8 @@ export const setConfigurationAsDefault: API.OperationMethod<
   SetConfigurationAsDefaultError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetConfigurationAsDefaultRequest,
-  output: SetConfigurationAsDefaultResponse,
+  input: __S(41, __c5, 1) as any as S.Schema<SetConfigurationAsDefaultRequest>,
+  output: __S(29, __c3, 5) as any as S.Schema<SetConfigurationAsDefaultResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2051,8 +1579,8 @@ export const setConfigurationAsDefaultForEnterprise: API.OperationMethod<
   SetConfigurationAsDefaultForEnterpriseError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetConfigurationAsDefaultForEnterpriseRequest,
-  output: SetConfigurationAsDefaultForEnterpriseResponse,
+  input: __S(42, __c5, 2) as any as S.Schema<SetConfigurationAsDefaultForEnterpriseRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<SetConfigurationAsDefaultForEnterpriseResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2066,8 +1594,8 @@ export const updateConfiguration: API.OperationMethod<
   UpdateConfigurationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateConfigurationRequest,
-  output: CodeSecurityConfiguration,
+  input: __S(44, __c5, 4) as any as S.Schema<UpdateConfigurationRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<CodeSecurityConfiguration>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2081,8 +1609,8 @@ export const updateEnterpriseConfiguration: API.OperationMethod<
   UpdateEnterpriseConfigurationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateEnterpriseConfigurationRequest,
-  output: CodeSecurityConfiguration,
+  input: __S(45, __c5, 5) as any as S.Schema<UpdateEnterpriseConfigurationRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<CodeSecurityConfiguration>,
   errors: [Forbidden, NotFound, Conflict],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2098,8 +1626,8 @@ function __c0(j: number): any {
         S.Struct({
           org: S.String.pipe(T.Label()),
           configuration_id: S.Number.pipe(T.Label()),
-          scope: AttachConfigurationRequestScope,
-          selected_repository_ids: S.optional(AttachConfigurationRequestSelectedRepositoryIdsList),
+          scope: S.String,
+          selected_repository_ids: S.optional(__S(0, __c0, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2119,7 +1647,7 @@ function __c0(j: number): any {
         S.Struct({
           enterprise: S.String.pipe(T.Label()),
           configuration_id: S.Number.pipe(T.Label()),
-          scope: AttachEnterpriseConfigurationRequestScope,
+          scope: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -2151,7 +1679,7 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          runner_type: S.optional(CodeScanningDefaultSetupOptionsRunnerType),
+          runner_type: S.optional(S.String),
           runner_label: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -2165,23 +1693,18 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           reviewer_id: S.Number,
-          reviewer_type:
-            CreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItemReviewerType,
-          mode: S.optional(
-            CreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItemMode,
-          ),
+          reviewer_type: S.String,
+          mode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItem",
       });
     case 1:
-      return S.Array(CreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItem);
+      return S.Array(__S(8, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          reviewers: S.optional(
-            CreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersList,
-          ),
+          reviewers: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({
         identifier: "CreateConfigurationRequestSecretScanningDelegatedBypassOptions",
@@ -2192,62 +1715,30 @@ function __c1(j: number): any {
           org: S.String.pipe(T.Label()),
           name: S.String,
           description: S.optional(S.String),
-          advanced_security: S.optional(CreateConfigurationRequestAdvancedSecurity),
-          code_security: S.optional(CreateConfigurationRequestCodeSecurity),
-          dependency_graph: S.optional(CreateConfigurationRequestDependencyGraph),
-          dependency_graph_autosubmit_action: S.optional(
-            CreateConfigurationRequestDependencyGraphAutosubmitAction,
-          ),
-          dependency_graph_autosubmit_action_options: S.optional(
-            CreateConfigurationRequestDependencyGraphAutosubmitActionOptions,
-          ),
-          dependabot_alerts: S.optional(CreateConfigurationRequestDependabotAlerts),
-          dependabot_security_updates: S.optional(
-            CreateConfigurationRequestDependabotSecurityUpdates,
-          ),
-          dependabot_delegated_alert_dismissal: S.optional(
-            CreateConfigurationRequestDependabotDelegatedAlertDismissal,
-          ),
-          code_scanning_options: S.optional(S.NullOr(CodeScanningOptions)),
-          code_scanning_default_setup: S.optional(
-            CreateConfigurationRequestCodeScanningDefaultSetup,
-          ),
-          code_scanning_default_setup_options: S.optional(
-            S.NullOr(CodeScanningDefaultSetupOptions),
-          ),
-          code_scanning_delegated_alert_dismissal: S.optional(
-            CreateConfigurationRequestCodeScanningDelegatedAlertDismissal,
-          ),
-          secret_protection: S.optional(CreateConfigurationRequestSecretProtection),
-          secret_scanning: S.optional(CreateConfigurationRequestSecretScanning),
-          secret_scanning_push_protection: S.optional(
-            CreateConfigurationRequestSecretScanningPushProtection,
-          ),
-          secret_scanning_delegated_bypass: S.optional(
-            CreateConfigurationRequestSecretScanningDelegatedBypass,
-          ),
-          secret_scanning_delegated_bypass_options: S.optional(
-            CreateConfigurationRequestSecretScanningDelegatedBypassOptions,
-          ),
-          secret_scanning_validity_checks: S.optional(
-            CreateConfigurationRequestSecretScanningValidityChecks,
-          ),
-          secret_scanning_non_provider_patterns: S.optional(
-            CreateConfigurationRequestSecretScanningNonProviderPatterns,
-          ),
-          secret_scanning_generic_secrets: S.optional(
-            CreateConfigurationRequestSecretScanningGenericSecrets,
-          ),
-          secret_scanning_delegated_alert_dismissal: S.optional(
-            CreateConfigurationRequestSecretScanningDelegatedAlertDismissal,
-          ),
-          secret_scanning_extended_metadata: S.optional(
-            CreateConfigurationRequestSecretScanningExtendedMetadata,
-          ),
-          private_vulnerability_reporting: S.optional(
-            CreateConfigurationRequestPrivateVulnerabilityReporting,
-          ),
-          enforcement: S.optional(CreateConfigurationRequestEnforcement),
+          advanced_security: S.optional(S.String),
+          code_security: S.optional(S.String),
+          dependency_graph: S.optional(S.String),
+          dependency_graph_autosubmit_action: S.optional(S.String),
+          dependency_graph_autosubmit_action_options: S.optional(__S(5, __c0, 5)),
+          dependabot_alerts: S.optional(S.String),
+          dependabot_security_updates: S.optional(S.String),
+          dependabot_delegated_alert_dismissal: S.optional(S.String),
+          code_scanning_options: S.optional(S.NullOr(__S(6, __c0, 6))),
+          code_scanning_default_setup: S.optional(S.String),
+          code_scanning_default_setup_options: S.optional(S.NullOr(__S(7, __c0, 7))),
+          code_scanning_delegated_alert_dismissal: S.optional(S.String),
+          secret_protection: S.optional(S.String),
+          secret_scanning: S.optional(S.String),
+          secret_scanning_push_protection: S.optional(S.String),
+          secret_scanning_delegated_bypass: S.optional(S.String),
+          secret_scanning_delegated_bypass_options: S.optional(__S(10, __c1, 2)),
+          secret_scanning_validity_checks: S.optional(S.String),
+          secret_scanning_non_provider_patterns: S.optional(S.String),
+          secret_scanning_generic_secrets: S.optional(S.String),
+          secret_scanning_delegated_alert_dismissal: S.optional(S.String),
+          secret_scanning_extended_metadata: S.optional(S.String),
+          private_vulnerability_reporting: S.optional(S.String),
+          enforcement: S.optional(S.String),
         }).pipe(
           T.Http({ method: "POST", uri: "/orgs/{org}/code-security/configurations", code: 200 }),
         ),
@@ -2257,9 +1748,7 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          runner_type: S.optional(
-            S.NullOr(CodeSecurityConfigurationCodeScanningDefaultSetupOptionsRunnerType),
-          ),
+          runner_type: S.optional(S.NullOr(S.String)),
           runner_label: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -2269,24 +1758,19 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           reviewer_id: S.Number,
-          reviewer_type:
-            CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsReviewersItemReviewerType,
-          mode: S.optional(
-            CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsReviewersItemMode,
-          ),
+          reviewer_type: S.String,
+          mode: S.optional(S.String),
           security_configuration_id: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsReviewersItem",
       });
     case 6:
-      return S.Array(CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsReviewersItem);
+      return S.Array(__S(13, __c1, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          reviewers: S.optional(
-            CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsReviewersList,
-          ),
+          reviewers: S.optional(__S(14, __c1, 6)),
         }),
       ).annotate({
         identifier: "CodeSecurityConfigurationSecretScanningDelegatedBypassOptions",
@@ -2300,62 +1784,30 @@ function __c2(j: number): any {
         S.Struct({
           id: S.optional(S.Number),
           name: S.optional(S.String),
-          target_type: S.optional(CodeSecurityConfigurationTargetType),
+          target_type: S.optional(S.String),
           description: S.optional(S.NullOr(S.String)),
-          advanced_security: S.optional(CodeSecurityConfigurationAdvancedSecurity),
-          dependency_graph: S.optional(CodeSecurityConfigurationDependencyGraph),
-          dependency_graph_autosubmit_action: S.optional(
-            CodeSecurityConfigurationDependencyGraphAutosubmitAction,
-          ),
-          dependency_graph_autosubmit_action_options: S.optional(
-            CreateConfigurationRequestDependencyGraphAutosubmitActionOptions,
-          ),
-          dependabot_alerts: S.optional(CodeSecurityConfigurationDependabotAlerts),
-          dependabot_security_updates: S.optional(
-            CodeSecurityConfigurationDependabotSecurityUpdates,
-          ),
-          dependabot_delegated_alert_dismissal: S.optional(
-            S.NullOr(CodeSecurityConfigurationDependabotDelegatedAlertDismissal),
-          ),
-          code_scanning_options: S.optional(S.NullOr(CodeScanningOptions)),
-          code_scanning_default_setup: S.optional(
-            CodeSecurityConfigurationCodeScanningDefaultSetup,
-          ),
-          code_scanning_default_setup_options: S.optional(
-            S.NullOr(CodeSecurityConfigurationCodeScanningDefaultSetupOptions),
-          ),
-          code_scanning_delegated_alert_dismissal: S.optional(
-            CodeSecurityConfigurationCodeScanningDelegatedAlertDismissal,
-          ),
-          secret_scanning: S.optional(CodeSecurityConfigurationSecretScanning),
-          secret_scanning_push_protection: S.optional(
-            CodeSecurityConfigurationSecretScanningPushProtection,
-          ),
-          secret_scanning_delegated_bypass: S.optional(
-            CodeSecurityConfigurationSecretScanningDelegatedBypass,
-          ),
-          secret_scanning_delegated_bypass_options: S.optional(
-            CodeSecurityConfigurationSecretScanningDelegatedBypassOptions,
-          ),
-          secret_scanning_validity_checks: S.optional(
-            CodeSecurityConfigurationSecretScanningValidityChecks,
-          ),
-          secret_scanning_non_provider_patterns: S.optional(
-            CodeSecurityConfigurationSecretScanningNonProviderPatterns,
-          ),
-          secret_scanning_generic_secrets: S.optional(
-            CodeSecurityConfigurationSecretScanningGenericSecrets,
-          ),
-          secret_scanning_delegated_alert_dismissal: S.optional(
-            CodeSecurityConfigurationSecretScanningDelegatedAlertDismissal,
-          ),
-          secret_scanning_extended_metadata: S.optional(
-            CodeSecurityConfigurationSecretScanningExtendedMetadata,
-          ),
-          private_vulnerability_reporting: S.optional(
-            CodeSecurityConfigurationPrivateVulnerabilityReporting,
-          ),
-          enforcement: S.optional(CodeSecurityConfigurationEnforcement),
+          advanced_security: S.optional(S.String),
+          dependency_graph: S.optional(S.String),
+          dependency_graph_autosubmit_action: S.optional(S.String),
+          dependency_graph_autosubmit_action_options: S.optional(__S(5, __c0, 5)),
+          dependabot_alerts: S.optional(S.String),
+          dependabot_security_updates: S.optional(S.String),
+          dependabot_delegated_alert_dismissal: S.optional(S.NullOr(S.String)),
+          code_scanning_options: S.optional(S.NullOr(__S(6, __c0, 6))),
+          code_scanning_default_setup: S.optional(S.String),
+          code_scanning_default_setup_options: S.optional(S.NullOr(__S(12, __c1, 4))),
+          code_scanning_delegated_alert_dismissal: S.optional(S.String),
+          secret_scanning: S.optional(S.String),
+          secret_scanning_push_protection: S.optional(S.String),
+          secret_scanning_delegated_bypass: S.optional(S.String),
+          secret_scanning_delegated_bypass_options: S.optional(__S(15, __c1, 7)),
+          secret_scanning_validity_checks: S.optional(S.String),
+          secret_scanning_non_provider_patterns: S.optional(S.String),
+          secret_scanning_generic_secrets: S.optional(S.String),
+          secret_scanning_delegated_alert_dismissal: S.optional(S.String),
+          secret_scanning_extended_metadata: S.optional(S.String),
+          private_vulnerability_reporting: S.optional(S.String),
+          enforcement: S.optional(S.String),
           url: S.optional(S.String),
           html_url: S.optional(S.String),
           created_at: S.optional(S.String),
@@ -2370,53 +1822,27 @@ function __c2(j: number): any {
           enterprise: S.String.pipe(T.Label()),
           name: S.String,
           description: S.optional(S.String),
-          advanced_security: S.optional(CreateConfigurationForEnterpriseRequestAdvancedSecurity),
-          code_security: S.optional(CreateConfigurationForEnterpriseRequestCodeSecurity),
-          dependency_graph: S.optional(CreateConfigurationForEnterpriseRequestDependencyGraph),
-          dependency_graph_autosubmit_action: S.optional(
-            CreateConfigurationForEnterpriseRequestDependencyGraphAutosubmitAction,
-          ),
-          dependency_graph_autosubmit_action_options: S.optional(
-            CreateConfigurationRequestDependencyGraphAutosubmitActionOptions,
-          ),
-          dependabot_alerts: S.optional(CreateConfigurationForEnterpriseRequestDependabotAlerts),
-          dependabot_security_updates: S.optional(
-            CreateConfigurationForEnterpriseRequestDependabotSecurityUpdates,
-          ),
-          code_scanning_options: S.optional(S.NullOr(CodeScanningOptions)),
-          code_scanning_default_setup: S.optional(
-            CreateConfigurationForEnterpriseRequestCodeScanningDefaultSetup,
-          ),
-          code_scanning_default_setup_options: S.optional(
-            S.NullOr(CodeScanningDefaultSetupOptions),
-          ),
-          code_scanning_delegated_alert_dismissal: S.optional(
-            CreateConfigurationForEnterpriseRequestCodeScanningDelegatedAlertDismissal,
-          ),
-          secret_protection: S.optional(CreateConfigurationForEnterpriseRequestSecretProtection),
-          secret_scanning: S.optional(CreateConfigurationForEnterpriseRequestSecretScanning),
-          secret_scanning_push_protection: S.optional(
-            CreateConfigurationForEnterpriseRequestSecretScanningPushProtection,
-          ),
-          secret_scanning_validity_checks: S.optional(
-            CreateConfigurationForEnterpriseRequestSecretScanningValidityChecks,
-          ),
-          secret_scanning_non_provider_patterns: S.optional(
-            CreateConfigurationForEnterpriseRequestSecretScanningNonProviderPatterns,
-          ),
-          secret_scanning_generic_secrets: S.optional(
-            CreateConfigurationForEnterpriseRequestSecretScanningGenericSecrets,
-          ),
-          secret_scanning_delegated_alert_dismissal: S.optional(
-            CreateConfigurationForEnterpriseRequestSecretScanningDelegatedAlertDismissal,
-          ),
-          secret_scanning_extended_metadata: S.optional(
-            CreateConfigurationForEnterpriseRequestSecretScanningExtendedMetadata,
-          ),
-          private_vulnerability_reporting: S.optional(
-            CreateConfigurationForEnterpriseRequestPrivateVulnerabilityReporting,
-          ),
-          enforcement: S.optional(CreateConfigurationForEnterpriseRequestEnforcement),
+          advanced_security: S.optional(S.String),
+          code_security: S.optional(S.String),
+          dependency_graph: S.optional(S.String),
+          dependency_graph_autosubmit_action: S.optional(S.String),
+          dependency_graph_autosubmit_action_options: S.optional(__S(5, __c0, 5)),
+          dependabot_alerts: S.optional(S.String),
+          dependabot_security_updates: S.optional(S.String),
+          code_scanning_options: S.optional(S.NullOr(__S(6, __c0, 6))),
+          code_scanning_default_setup: S.optional(S.String),
+          code_scanning_default_setup_options: S.optional(S.NullOr(__S(7, __c0, 7))),
+          code_scanning_delegated_alert_dismissal: S.optional(S.String),
+          secret_protection: S.optional(S.String),
+          secret_scanning: S.optional(S.String),
+          secret_scanning_push_protection: S.optional(S.String),
+          secret_scanning_validity_checks: S.optional(S.String),
+          secret_scanning_non_provider_patterns: S.optional(S.String),
+          secret_scanning_generic_secrets: S.optional(S.String),
+          secret_scanning_delegated_alert_dismissal: S.optional(S.String),
+          secret_scanning_extended_metadata: S.optional(S.String),
+          private_vulnerability_reporting: S.optional(S.String),
+          enforcement: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2461,7 +1887,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
-          selected_repository_ids: DetachConfigurationRequestSelectedRepositoryIdsList,
+          selected_repository_ids: __S(0, __c0, 0),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -2503,8 +1929,8 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(CodeSecurityConfigurationForRepositoryStatus),
-          configuration: S.optional(CodeSecurityConfiguration),
+          status: S.optional(S.String),
+          configuration: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({
         identifier: "CodeSecurityConfigurationForRepository",
@@ -2531,18 +1957,16 @@ function __c3(j: number): any {
         identifier: "GetConfigurationsForEnterpriseRequest",
       });
     case 1:
-      return S.Array(CodeSecurityConfiguration);
+      return S.Array(__S(16, __c2, 0));
     case 2:
-      return S.suspend(() =>
-        GetConfigurationsForEnterpriseResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(25, __c3, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetConfigurationsForEnterpriseResponse",
       });
     case 3:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
-          target_type: S.optional(GetConfigurationsForOrgRequestTargetType.pipe(T.Query())),
+          target_type: S.optional(S.String.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
@@ -2569,18 +1993,16 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          default_for_new_repos: S.optional(
-            CodeSecurityDefaultConfigurationsItemDefaultForNewRepos,
-          ),
-          configuration: S.optional(CodeSecurityConfiguration),
+          default_for_new_repos: S.optional(S.String),
+          configuration: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({
         identifier: "CodeSecurityDefaultConfigurationsItem",
       });
     case 6:
-      return S.Array(CodeSecurityDefaultConfigurationsItem);
+      return S.Array(__S(29, __c3, 5));
     case 7:
-      return S.suspend(() => CodeSecurityDefaultConfigurations.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(30, __c3, 6).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetDefaultConfigurationsResponse",
       });
   }
@@ -2654,7 +2076,7 @@ function __c4(j: number): any {
           node_id: S.String,
           name: S.String,
           full_name: S.String,
-          owner: SimpleUser,
+          owner: __S(34, __c4, 2),
           private: S.Boolean,
           html_url: S.String,
           description: S.NullOr(S.String),
@@ -2701,18 +2123,16 @@ function __c4(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(CodeSecurityConfigurationRepositoriesStatus),
-          repository: S.optional(SimpleRepository),
+          status: S.optional(S.String),
+          repository: S.optional(__S(35, __c4, 3)),
         }),
       ).annotate({
         identifier: "CodeSecurityConfigurationRepositories",
       });
     case 5:
-      return S.Array(CodeSecurityConfigurationRepositories);
+      return S.Array(__S(36, __c4, 4));
     case 6:
-      return S.suspend(() =>
-        GetRepositoriesForConfigurationResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(37, __c4, 5).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetRepositoriesForConfigurationResponse",
       });
     case 7:
@@ -2758,7 +2178,7 @@ function __c5(j: number): any {
         S.Struct({
           org: S.String.pipe(T.Label()),
           configuration_id: S.Number.pipe(T.Label()),
-          default_for_new_repos: S.optional(SetConfigurationAsDefaultRequestDefaultForNewRepos),
+          default_for_new_repos: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2774,9 +2194,7 @@ function __c5(j: number): any {
         S.Struct({
           enterprise: S.String.pipe(T.Label()),
           configuration_id: S.Number.pipe(T.Label()),
-          default_for_new_repos: S.optional(
-            SetConfigurationAsDefaultForEnterpriseRequestDefaultForNewRepos,
-          ),
+          default_for_new_repos: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2790,10 +2208,8 @@ function __c5(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          default_for_new_repos: S.optional(
-            SetConfigurationAsDefaultForEnterpriseResponseDefaultForNewRepos,
-          ),
-          configuration: S.optional(CodeSecurityConfiguration),
+          default_for_new_repos: S.optional(S.String),
+          configuration: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({
         identifier: "SetConfigurationAsDefaultForEnterpriseResponse",
@@ -2805,62 +2221,30 @@ function __c5(j: number): any {
           configuration_id: S.Number.pipe(T.Label()),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          advanced_security: S.optional(UpdateConfigurationRequestAdvancedSecurity),
-          code_security: S.optional(UpdateConfigurationRequestCodeSecurity),
-          dependency_graph: S.optional(UpdateConfigurationRequestDependencyGraph),
-          dependency_graph_autosubmit_action: S.optional(
-            UpdateConfigurationRequestDependencyGraphAutosubmitAction,
-          ),
-          dependency_graph_autosubmit_action_options: S.optional(
-            CreateConfigurationRequestDependencyGraphAutosubmitActionOptions,
-          ),
-          dependabot_alerts: S.optional(UpdateConfigurationRequestDependabotAlerts),
-          dependabot_security_updates: S.optional(
-            UpdateConfigurationRequestDependabotSecurityUpdates,
-          ),
-          dependabot_delegated_alert_dismissal: S.optional(
-            UpdateConfigurationRequestDependabotDelegatedAlertDismissal,
-          ),
-          code_scanning_default_setup: S.optional(
-            UpdateConfigurationRequestCodeScanningDefaultSetup,
-          ),
-          code_scanning_default_setup_options: S.optional(
-            S.NullOr(CodeScanningDefaultSetupOptions),
-          ),
-          code_scanning_options: S.optional(S.NullOr(CodeScanningOptions)),
-          code_scanning_delegated_alert_dismissal: S.optional(
-            UpdateConfigurationRequestCodeScanningDelegatedAlertDismissal,
-          ),
-          secret_protection: S.optional(UpdateConfigurationRequestSecretProtection),
-          secret_scanning: S.optional(UpdateConfigurationRequestSecretScanning),
-          secret_scanning_push_protection: S.optional(
-            UpdateConfigurationRequestSecretScanningPushProtection,
-          ),
-          secret_scanning_delegated_bypass: S.optional(
-            UpdateConfigurationRequestSecretScanningDelegatedBypass,
-          ),
-          secret_scanning_delegated_bypass_options: S.optional(
-            UpdateConfigurationRequestSecretScanningDelegatedBypassOptions,
-          ),
-          secret_scanning_validity_checks: S.optional(
-            UpdateConfigurationRequestSecretScanningValidityChecks,
-          ),
-          secret_scanning_non_provider_patterns: S.optional(
-            UpdateConfigurationRequestSecretScanningNonProviderPatterns,
-          ),
-          secret_scanning_generic_secrets: S.optional(
-            UpdateConfigurationRequestSecretScanningGenericSecrets,
-          ),
-          secret_scanning_delegated_alert_dismissal: S.optional(
-            UpdateConfigurationRequestSecretScanningDelegatedAlertDismissal,
-          ),
-          secret_scanning_extended_metadata: S.optional(
-            UpdateConfigurationRequestSecretScanningExtendedMetadata,
-          ),
-          private_vulnerability_reporting: S.optional(
-            UpdateConfigurationRequestPrivateVulnerabilityReporting,
-          ),
-          enforcement: S.optional(UpdateConfigurationRequestEnforcement),
+          advanced_security: S.optional(S.String),
+          code_security: S.optional(S.String),
+          dependency_graph: S.optional(S.String),
+          dependency_graph_autosubmit_action: S.optional(S.String),
+          dependency_graph_autosubmit_action_options: S.optional(__S(5, __c0, 5)),
+          dependabot_alerts: S.optional(S.String),
+          dependabot_security_updates: S.optional(S.String),
+          dependabot_delegated_alert_dismissal: S.optional(S.String),
+          code_scanning_default_setup: S.optional(S.String),
+          code_scanning_default_setup_options: S.optional(S.NullOr(__S(7, __c0, 7))),
+          code_scanning_options: S.optional(S.NullOr(__S(6, __c0, 6))),
+          code_scanning_delegated_alert_dismissal: S.optional(S.String),
+          secret_protection: S.optional(S.String),
+          secret_scanning: S.optional(S.String),
+          secret_scanning_push_protection: S.optional(S.String),
+          secret_scanning_delegated_bypass: S.optional(S.String),
+          secret_scanning_delegated_bypass_options: S.optional(__S(10, __c1, 2)),
+          secret_scanning_validity_checks: S.optional(S.String),
+          secret_scanning_non_provider_patterns: S.optional(S.String),
+          secret_scanning_generic_secrets: S.optional(S.String),
+          secret_scanning_delegated_alert_dismissal: S.optional(S.String),
+          secret_scanning_extended_metadata: S.optional(S.String),
+          private_vulnerability_reporting: S.optional(S.String),
+          enforcement: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2878,53 +2262,27 @@ function __c5(j: number): any {
           configuration_id: S.Number.pipe(T.Label()),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          advanced_security: S.optional(UpdateEnterpriseConfigurationRequestAdvancedSecurity),
-          code_security: S.optional(UpdateEnterpriseConfigurationRequestCodeSecurity),
-          dependency_graph: S.optional(UpdateEnterpriseConfigurationRequestDependencyGraph),
-          dependency_graph_autosubmit_action: S.optional(
-            UpdateEnterpriseConfigurationRequestDependencyGraphAutosubmitAction,
-          ),
-          dependency_graph_autosubmit_action_options: S.optional(
-            CreateConfigurationRequestDependencyGraphAutosubmitActionOptions,
-          ),
-          dependabot_alerts: S.optional(UpdateEnterpriseConfigurationRequestDependabotAlerts),
-          dependabot_security_updates: S.optional(
-            UpdateEnterpriseConfigurationRequestDependabotSecurityUpdates,
-          ),
-          code_scanning_default_setup: S.optional(
-            UpdateEnterpriseConfigurationRequestCodeScanningDefaultSetup,
-          ),
-          code_scanning_default_setup_options: S.optional(
-            S.NullOr(CodeScanningDefaultSetupOptions),
-          ),
-          code_scanning_options: S.optional(S.NullOr(CodeScanningOptions)),
-          code_scanning_delegated_alert_dismissal: S.optional(
-            UpdateEnterpriseConfigurationRequestCodeScanningDelegatedAlertDismissal,
-          ),
-          secret_protection: S.optional(UpdateEnterpriseConfigurationRequestSecretProtection),
-          secret_scanning: S.optional(UpdateEnterpriseConfigurationRequestSecretScanning),
-          secret_scanning_push_protection: S.optional(
-            UpdateEnterpriseConfigurationRequestSecretScanningPushProtection,
-          ),
-          secret_scanning_validity_checks: S.optional(
-            UpdateEnterpriseConfigurationRequestSecretScanningValidityChecks,
-          ),
-          secret_scanning_non_provider_patterns: S.optional(
-            UpdateEnterpriseConfigurationRequestSecretScanningNonProviderPatterns,
-          ),
-          secret_scanning_generic_secrets: S.optional(
-            UpdateEnterpriseConfigurationRequestSecretScanningGenericSecrets,
-          ),
-          secret_scanning_delegated_alert_dismissal: S.optional(
-            UpdateEnterpriseConfigurationRequestSecretScanningDelegatedAlertDismissal,
-          ),
-          secret_scanning_extended_metadata: S.optional(
-            UpdateEnterpriseConfigurationRequestSecretScanningExtendedMetadata,
-          ),
-          private_vulnerability_reporting: S.optional(
-            UpdateEnterpriseConfigurationRequestPrivateVulnerabilityReporting,
-          ),
-          enforcement: S.optional(UpdateEnterpriseConfigurationRequestEnforcement),
+          advanced_security: S.optional(S.String),
+          code_security: S.optional(S.String),
+          dependency_graph: S.optional(S.String),
+          dependency_graph_autosubmit_action: S.optional(S.String),
+          dependency_graph_autosubmit_action_options: S.optional(__S(5, __c0, 5)),
+          dependabot_alerts: S.optional(S.String),
+          dependabot_security_updates: S.optional(S.String),
+          code_scanning_default_setup: S.optional(S.String),
+          code_scanning_default_setup_options: S.optional(S.NullOr(__S(7, __c0, 7))),
+          code_scanning_options: S.optional(S.NullOr(__S(6, __c0, 6))),
+          code_scanning_delegated_alert_dismissal: S.optional(S.String),
+          secret_protection: S.optional(S.String),
+          secret_scanning: S.optional(S.String),
+          secret_scanning_push_protection: S.optional(S.String),
+          secret_scanning_validity_checks: S.optional(S.String),
+          secret_scanning_non_provider_patterns: S.optional(S.String),
+          secret_scanning_generic_secrets: S.optional(S.String),
+          secret_scanning_delegated_alert_dismissal: S.optional(S.String),
+          secret_scanning_extended_metadata: S.optional(S.String),
+          private_vulnerability_reporting: S.optional(S.String),
+          enforcement: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2936,4 +2294,9 @@ function __c5(j: number): any {
         identifier: "UpdateEnterpriseConfigurationRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

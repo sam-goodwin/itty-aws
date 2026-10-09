@@ -7,16 +7,13 @@ import { paginatePageNumber } from "../pagination.ts";
 import { HetznerProtocol, type HetznerOpError, type HetznerOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { HetznerOpError, HetznerOpContext };
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type CreateSshKeyRequestLabelsMap = { [key: string]: string | undefined };
-const CreateSshKeyRequestLabelsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateSshKeyRequestLabelsMap>;
-
 export interface CreateSshKeyRequest {
   /** Name of the SSH key. */
   name: string;
@@ -25,13 +22,8 @@ export interface CreateSshKeyRequest {
   /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
   labels?: CreateSshKeyRequestLabelsMap;
 }
-const CreateSshKeyRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CreateSshKeyRequest>;
-
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type CreateSshKeyResponseSshKeyLabelsMap = { [key: string]: string | undefined };
-const CreateSshKeyResponseSshKeyLabelsMap =
-  CreateSshKeyRequestLabelsMap as any as S.Schema<CreateSshKeyResponseSshKeyLabelsMap>;
-
 export interface CreateSshKeyResponseSshKey {
   /** ID of the [SSH Key](#tag/ssh-keys). */
   id: number;
@@ -46,36 +38,20 @@ export interface CreateSshKeyResponseSshKey {
   /** Point in time when the Resource was created (in [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.6) format). */
   created: string;
 }
-const CreateSshKeyResponseSshKey = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateSshKeyResponseSshKey>;
-
 export interface CreateSshKeyResponse {
   ssh_key: CreateSshKeyResponseSshKey;
 }
-const CreateSshKeyResponse = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<CreateSshKeyResponse>;
-
 export interface DeleteSshKeyRequest {
   /** ID of the SSH Key. */
   id: number;
 }
-const DeleteSshKeyRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<DeleteSshKeyRequest>;
-
 export interface DeleteSshKeyResponse {}
-const DeleteSshKeyResponse = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<DeleteSshKeyResponse>;
-
 export interface GetSshKeyRequest {
   /** ID of the SSH Key. */
   id: number;
 }
-const GetSshKeyRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<GetSshKeyRequest>;
-
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type GetSshKeyResponseSshKeyLabelsMap = { [key: string]: string | undefined };
-const GetSshKeyResponseSshKeyLabelsMap =
-  CreateSshKeyRequestLabelsMap as any as S.Schema<GetSshKeyResponseSshKeyLabelsMap>;
-
 export interface GetSshKeyResponseSshKey {
   /** ID of the [SSH Key](#tag/ssh-keys). */
   id: number;
@@ -90,16 +66,9 @@ export interface GetSshKeyResponseSshKey {
   /** Point in time when the Resource was created (in [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.6) format). */
   created: string;
 }
-const GetSshKeyResponseSshKey = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<GetSshKeyResponseSshKey>;
-
 export interface GetSshKeyResponse {
   ssh_key: GetSshKeyResponseSshKey;
 }
-const GetSshKeyResponse = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<GetSshKeyResponse>;
-
 export type ListSshKeysRequestSortItem =
   | "id"
   | "id:asc"
@@ -107,14 +76,7 @@ export type ListSshKeysRequestSortItem =
   | "name"
   | "name:asc"
   | "name:desc";
-const ListSshKeysRequestSortItem = S.String;
-
 export type ListSshKeysRequestSortList = Array<ListSshKeysRequestSortItem | (string & {})>;
-const ListSshKeysRequestSortList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<ListSshKeysRequestSortList>;
-
 export interface ListSshKeysRequest {
   /** Sort resources by field and direction. May be used multiple times. For more information, see "[Sorting](#description/sorting)". */
   sort?: ListSshKeysRequestSortList;
@@ -129,8 +91,6 @@ export interface ListSshKeysRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
-const ListSshKeysRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<ListSshKeysRequest>;
-
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type ListSshKeysResponseSshKeysItemLabelsMap = { [key: string]: string | undefined };
 export interface ListSshKeysResponseSshKeysItem {
@@ -147,15 +107,7 @@ export interface ListSshKeysResponseSshKeysItem {
   /** Point in time when the Resource was created (in [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.6) format). */
   created: string;
 }
-const ListSshKeysResponseSshKeysItem =
-  CreateSshKeyResponseSshKey as any as S.Schema<ListSshKeysResponseSshKeysItem>;
-
 export type ListSshKeysResponseSshKeysList = Array<ListSshKeysResponseSshKeysItem>;
-const ListSshKeysResponseSshKeysList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ListSshKeysResponseSshKeysList>;
-
 /** See "[Pagination](#description/pagination)" for more information. */
 export interface ListSshKeysResponseMetaPagination {
   /** Current page number. */
@@ -171,31 +123,16 @@ export interface ListSshKeysResponseMetaPagination {
   /** Total number of entries that exist for this query. Can be null if unknown. */
   total_entries: number | null;
 }
-const ListSshKeysResponseMetaPagination = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ListSshKeysResponseMetaPagination>;
-
 export interface ListSshKeysResponseMeta {
   /** See "[Pagination](#description/pagination)" for more information. */
   pagination: ListSshKeysResponseMetaPagination;
 }
-const ListSshKeysResponseMeta = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<ListSshKeysResponseMeta>;
-
 export interface ListSshKeysResponse {
   ssh_keys: ListSshKeysResponseSshKeysList;
   meta: ListSshKeysResponseMeta;
 }
-const ListSshKeysResponse = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<ListSshKeysResponse>;
-
 /** User-defined labels (`key/value` pairs) for the Resource. Note that the set of [Labels](#description/labels) provided in the request will overwrite the existing one. For more information, see "[Labels](#description/labels)". */
 export type UpdateSshKeyRequestLabelsMap = { [key: string]: string | undefined };
-const UpdateSshKeyRequestLabelsMap =
-  CreateSshKeyRequestLabelsMap as any as S.Schema<UpdateSshKeyRequestLabelsMap>;
-
 export interface UpdateSshKeyRequest {
   /** ID of the SSH Key. */
   id: number;
@@ -204,8 +141,6 @@ export interface UpdateSshKeyRequest {
   /** User-defined labels (`key/value` pairs) for the Resource. Note that the set of [Labels](#description/labels) provided in the request will overwrite the existing one. For more information, see "[Labels](#description/labels)". */
   labels?: UpdateSshKeyRequestLabelsMap;
 }
-const UpdateSshKeyRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<UpdateSshKeyRequest>;
-
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type UpdateSshKeyResponseSshKeyLabelsMap = { [key: string]: string | undefined };
 export interface UpdateSshKeyResponseSshKey {
@@ -225,8 +160,6 @@ export interface UpdateSshKeyResponseSshKey {
 export interface UpdateSshKeyResponse {
   ssh_key: UpdateSshKeyResponseSshKey;
 }
-const UpdateSshKeyResponse = CreateSshKeyResponse as any as S.Schema<UpdateSshKeyResponse>;
-
 export type CreateSshKeyError = HetznerOpError;
 /** Create an SSH key Creates a new SSH key with the given `name` and `public_key`. Once an SSH key is created, it can be used in other calls such as creating Servers. */
 export const createSshKey: API.OperationMethod<
@@ -235,8 +168,8 @@ export const createSshKey: API.OperationMethod<
   CreateSshKeyError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSshKeyRequest,
-  output: CreateSshKeyResponse,
+  input: __S(1, __c0, 1) as any as S.Schema<CreateSshKeyRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<CreateSshKeyResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -250,8 +183,8 @@ export const deleteSshKey: API.OperationMethod<
   DeleteSshKeyError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSshKeyRequest,
-  output: DeleteSshKeyResponse,
+  input: __S(4, __c0, 4) as any as S.Schema<DeleteSshKeyRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<DeleteSshKeyResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -265,8 +198,8 @@ export const getSshKey: API.OperationMethod<
   GetSshKeyError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSshKeyRequest,
-  output: GetSshKeyResponse,
+  input: __S(6, __c0, 6) as any as S.Schema<GetSshKeyRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetSshKeyResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -282,8 +215,8 @@ export const listSshKeys: API.PaginatedOperationMethod<
   ListSshKeysResponseSshKeysItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListSshKeysRequest,
-    output: ListSshKeysResponse,
+    input: __S(10, __c1, 2) as any as S.Schema<ListSshKeysRequest>,
+    output: __S(14, __c1, 6) as any as S.Schema<ListSshKeysResponse>,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -306,8 +239,8 @@ export const updateSshKey: API.OperationMethod<
   UpdateSshKeyError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSshKeyRequest,
-  output: UpdateSshKeyResponse,
+  input: __S(15, __c1, 7) as any as S.Schema<UpdateSshKeyRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<UpdateSshKeyResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -323,7 +256,7 @@ function __c0(j: number): any {
         S.Struct({
           name: S.String,
           public_key: S.String,
-          labels: S.optional(CreateSshKeyRequestLabelsMap),
+          labels: S.optional(__S(0, __c0, 0)),
         }).pipe(T.Http({ method: "POST", uri: "/ssh_keys", code: 200 })),
       ).annotate({ identifier: "CreateSshKeyRequest" });
     case 2:
@@ -333,7 +266,7 @@ function __c0(j: number): any {
           name: S.String,
           fingerprint: S.String,
           public_key: S.String,
-          labels: CreateSshKeyResponseSshKeyLabelsMap,
+          labels: __S(0, __c0, 0),
           created: S.String,
         }),
       ).annotate({
@@ -342,7 +275,7 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ssh_key: CreateSshKeyResponseSshKey,
+          ssh_key: __S(2, __c0, 2),
         }),
       ).annotate({ identifier: "CreateSshKeyResponse" });
     case 4:
@@ -368,7 +301,7 @@ function __c0(j: number): any {
           name: S.String,
           fingerprint: S.String,
           public_key: S.String,
-          labels: GetSshKeyResponseSshKeyLabelsMap,
+          labels: __S(0, __c0, 0),
           created: S.String,
         }),
       ).annotate({ identifier: "GetSshKeyResponseSshKey" });
@@ -379,15 +312,15 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ssh_key: GetSshKeyResponseSshKey,
+          ssh_key: __S(7, __c0, 7),
         }),
       ).annotate({ identifier: "GetSshKeyResponse" });
     case 1:
-      return S.Array(ListSshKeysRequestSortItem);
+      return S.Array(S.String);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          sort: S.optional(ListSshKeysRequestSortList.pipe(T.Query())),
+          sort: S.optional(__S(9, __c1, 1).pipe(T.Query())),
           name: S.optional(S.String.pipe(T.Query())),
           fingerprint: S.optional(S.String.pipe(T.Query())),
           label_selector: S.optional(S.String.pipe(T.Query())),
@@ -396,7 +329,7 @@ function __c1(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/ssh_keys", code: 200 })),
       ).annotate({ identifier: "ListSshKeysRequest" });
     case 3:
-      return S.Array(ListSshKeysResponseSshKeysItem);
+      return S.Array(__S(2, __c0, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -413,14 +346,14 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          pagination: ListSshKeysResponseMetaPagination,
+          pagination: __S(12, __c1, 4),
         }),
       ).annotate({ identifier: "ListSshKeysResponseMeta" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ssh_keys: ListSshKeysResponseSshKeysList,
-          meta: ListSshKeysResponseMeta,
+          ssh_keys: __S(11, __c1, 3),
+          meta: __S(13, __c1, 5),
         }),
       ).annotate({ identifier: "ListSshKeysResponse" });
     case 7:
@@ -428,8 +361,13 @@ function __c1(j: number): any {
         S.Struct({
           id: S.Number.pipe(T.Label()),
           name: S.optional(S.String),
-          labels: S.optional(UpdateSshKeyRequestLabelsMap),
+          labels: S.optional(__S(0, __c0, 0)),
         }).pipe(T.Http({ method: "PUT", uri: "/ssh_keys/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateSshKeyRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

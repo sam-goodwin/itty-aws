@@ -7,6 +7,8 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -58,15 +60,8 @@ export type FeeMarkupTypes =
   | "bank_deposit_markup"
   | "crypto_swap_markup"
   | "payment_markup";
-const FeeMarkupTypes = S.String;
-
 /** Custom key-value metadata to attach to this fee markup. */
 export type CreateFeeMarkupRequestMetadataMap = { [key: string]: unknown | undefined };
-const CreateFeeMarkupRequestMetadataMap = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateFeeMarkupRequestMetadataMap>;
-
 export interface CreateFeeMarkupRequest {
   /** The unique identifier of the company to create or update the fee markup for. */
   account_id: string;
@@ -81,11 +76,6 @@ export interface CreateFeeMarkupRequest {
   /** The percentage fee to charge per transaction. Must be between 0 and 25. */
   percentage_fee?: number | null;
 }
-const CreateFeeMarkupRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateFeeMarkupRequest>;
-
 /** A fee markup configuration that defines additional charges applied to transactions for a platform's connected accounts. */
 export interface FeeMarkup {
   /** The datetime the fee markup was created. */
@@ -103,23 +93,11 @@ export interface FeeMarkup {
   /** The datetime the fee markup was last updated. */
   updated_at: string;
 }
-const FeeMarkup = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<FeeMarkup>;
-
 export interface DeleteFeeMarkupRequest {
   /** The unique identifier of the fee markup to delete. */
   id: string;
 }
-const DeleteFeeMarkupRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<DeleteFeeMarkupRequest>;
-
 export type DeleteFeeMarkupResponse = boolean;
-const DeleteFeeMarkupResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<DeleteFeeMarkupResponse>;
-
 export interface ListFeeMarkupRequest {
   after?: string;
   before?: string;
@@ -127,8 +105,6 @@ export interface ListFeeMarkupRequest {
   last?: number;
   account_id: string;
 }
-const ListFeeMarkupRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ListFeeMarkupRequest>;
-
 /** A fee markup configuration that defines additional charges applied to transactions for a platform's connected accounts. */
 export interface FeeMarkupListItem {
   /** The datetime the fee markup was created. */
@@ -146,15 +122,8 @@ export interface FeeMarkupListItem {
   /** The datetime the fee markup was last updated. */
   updated_at: string;
 }
-const FeeMarkupListItem = FeeMarkup as any as S.Schema<FeeMarkupListItem>;
-
 /** A list of nodes. */
 export type ListFeeMarkupResponseDataList = Array<FeeMarkupListItem>;
-const ListFeeMarkupResponseDataList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ListFeeMarkupResponseDataList>;
-
 /** Information about pagination in a connection. */
 export interface PageInfo {
   /** When paginating forwards, the cursor to continue. */
@@ -166,19 +135,12 @@ export interface PageInfo {
   /** When paginating backwards, the cursor to continue. */
   start_cursor: string | null;
 }
-const PageInfo = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<PageInfo>;
-
 export interface ListFeeMarkupResponse {
   /** A list of nodes. */
   data: ListFeeMarkupResponseDataList;
   /** Information to aid in pagination. */
   page_info: PageInfo;
 }
-const ListFeeMarkupResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<ListFeeMarkupResponse>;
-
 export type CreateFeeMarkupError =
   | BadRequest
   | Forbidden
@@ -192,8 +154,8 @@ export const createFeeMarkup: API.OperationMethod<
   CreateFeeMarkupError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateFeeMarkupRequest,
-  output: FeeMarkup,
+  input: __S(1, __c0, 1) as any as S.Schema<CreateFeeMarkupRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<FeeMarkup>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -212,8 +174,8 @@ export const deleteFeeMarkup: API.OperationMethod<
   DeleteFeeMarkupError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFeeMarkupRequest,
-  output: DeleteFeeMarkupResponse,
+  input: __S(3, __c0, 3) as any as S.Schema<DeleteFeeMarkupRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<DeleteFeeMarkupResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -234,8 +196,8 @@ export const listFeeMarkup: API.PaginatedOperationMethod<
   FeeMarkupListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListFeeMarkupRequest,
-    output: ListFeeMarkupResponse,
+    input: __S(5, __c0, 5) as any as S.Schema<ListFeeMarkupRequest>,
+    output: __S(8, __c1, 0) as any as S.Schema<ListFeeMarkupResponse>,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -260,9 +222,9 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           account_id: S.String,
-          fee_type: FeeMarkupTypes,
+          fee_type: S.String,
           fixed_fee_usd: S.optional(S.NullOr(S.Number)),
-          metadata: S.optional(S.NullOr(CreateFeeMarkupRequestMetadataMap)),
+          metadata: S.optional(S.NullOr(__S(0, __c0, 0))),
           notes: S.optional(S.NullOr(S.String)),
           percentage_fee: S.optional(S.NullOr(S.Number)),
         }).pipe(T.Http({ method: "POST", uri: "/fee_markups", code: 200 })),
@@ -271,7 +233,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           created_at: S.String,
-          fee_type: FeeMarkupTypes,
+          fee_type: S.String,
           fixed_fee_usd: S.NullOr(S.Number),
           id: S.String,
           notes: S.NullOr(S.String),
@@ -300,7 +262,7 @@ function __c0(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/fee_markups", code: 200 })),
       ).annotate({ identifier: "ListFeeMarkupRequest" });
     case 6:
-      return S.Array(FeeMarkupListItem);
+      return S.Array(__S(2, __c0, 2));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -317,9 +279,14 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          data: ListFeeMarkupResponseDataList,
-          page_info: PageInfo,
+          data: __S(6, __c0, 6),
+          page_info: __S(7, __c0, 7),
         }),
       ).annotate({ identifier: "ListFeeMarkupResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

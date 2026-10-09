@@ -10,6 +10,8 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "MWAA", serviceShapeName: "AmazonMWAA" });
 const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "airflow" });
 const ver = /*@__PURE__*/ T.ServiceVersion("2020-07-01");
@@ -125,41 +127,29 @@ export type EnvironmentName = string;
 export interface CreateCliTokenRequest {
   Name: string;
 }
-const CreateCliTokenRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateCliTokenRequest>;
 export type Token = string | redacted.Redacted<string>;
 export type Hostname = string;
 export interface CreateCliTokenResponse {
   CliToken?: string | redacted.Redacted<string>;
   WebServerHostname?: string;
 }
-const CreateCliTokenResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateCliTokenResponse>;
 export type IamRoleArn = string;
 export type S3BucketArn = string;
 export type RelativePath = string;
 export type SubnetId = string;
 export type SubnetList = string[];
-const SubnetList = /*@__PURE__*/ __L.at(__c0, 2);
 export type SecurityGroupId = string;
 export type SecurityGroupList = string[];
-const SecurityGroupList = SubnetList as any as S.Schema<SecurityGroupList>;
 export interface NetworkConfiguration {
   SubnetIds?: string[];
   SecurityGroupIds?: string[];
 }
-const NetworkConfiguration = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<NetworkConfiguration>;
 export type S3ObjectVersion = string;
 export type ConfigKey = string;
 export type ConfigValue = string | redacted.Redacted<string>;
 export type AirflowConfigurationOptions = {
   [key: string]: string | redacted.Redacted<string> | undefined;
 };
-const AirflowConfigurationOptions = /*@__PURE__*/ __L.at(__c0, 4);
 export type EnvironmentClass = string;
 export type MaxWorkers = number;
 export type KmsKey = string;
@@ -170,10 +160,6 @@ export interface ModuleLoggingConfigurationInput {
   Enabled: boolean;
   LogLevel: string;
 }
-const ModuleLoggingConfigurationInput = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ModuleLoggingConfigurationInput>;
 export interface LoggingConfigurationInput {
   DagProcessingLogs?: ModuleLoggingConfigurationInput;
   SchedulerLogs?: ModuleLoggingConfigurationInput;
@@ -181,15 +167,10 @@ export interface LoggingConfigurationInput {
   WorkerLogs?: ModuleLoggingConfigurationInput;
   TaskLogs?: ModuleLoggingConfigurationInput;
 }
-const LoggingConfigurationInput = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<LoggingConfigurationInput>;
 export type WeeklyMaintenanceWindowStart = string;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-const TagMap = /*@__PURE__*/ __L.at(__c0, 7);
 export type WebserverAccessMode = string;
 export type MinWorkers = number;
 export type Schedulers = number;
@@ -223,25 +204,13 @@ export interface CreateEnvironmentInput {
   MinWebservers?: number;
   MaxWebservers?: number;
 }
-const CreateEnvironmentInput = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateEnvironmentInput>;
 export type EnvironmentArn = string;
 export interface CreateEnvironmentOutput {
   Arn?: string;
 }
-const CreateEnvironmentOutput = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateEnvironmentOutput>;
 export interface CreateWebLoginTokenRequest {
   Name: string;
 }
-const CreateWebLoginTokenRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateWebLoginTokenRequest>;
 export type IamIdentity = string;
 export type AirflowIdentity = string;
 export interface CreateWebLoginTokenResponse {
@@ -250,26 +219,13 @@ export interface CreateWebLoginTokenResponse {
   IamIdentity?: string;
   AirflowIdentity?: string;
 }
-const CreateWebLoginTokenResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateWebLoginTokenResponse>;
 export interface DeleteEnvironmentInput {
   Name: string;
 }
-const DeleteEnvironmentInput = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<DeleteEnvironmentInput>;
 export interface DeleteEnvironmentOutput {}
-const DeleteEnvironmentOutput = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<DeleteEnvironmentOutput>;
 export interface GetEnvironmentInput {
   Name: string;
 }
-const GetEnvironmentInput = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<GetEnvironmentInput>;
 export type EnvironmentStatus = string;
 export type CreatedAt = Date;
 export type WebserverUrl = string;
@@ -279,10 +235,6 @@ export interface ModuleLoggingConfiguration {
   LogLevel?: string;
   CloudWatchLogGroupArn?: string;
 }
-const ModuleLoggingConfiguration = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ModuleLoggingConfiguration>;
 export interface LoggingConfiguration {
   DagProcessingLogs?: ModuleLoggingConfiguration;
   SchedulerLogs?: ModuleLoggingConfiguration;
@@ -290,7 +242,6 @@ export interface LoggingConfiguration {
   WorkerLogs?: ModuleLoggingConfiguration;
   TaskLogs?: ModuleLoggingConfiguration;
 }
-const LoggingConfiguration = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<LoggingConfiguration>;
 export type UpdateStatus = string;
 export type UpdateCreatedAt = Date;
 export type ErrorCode = string;
@@ -299,7 +250,6 @@ export interface UpdateError {
   ErrorCode?: string;
   ErrorMessage?: string;
 }
-const UpdateError = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<UpdateError>;
 export type UpdateSource = string;
 export type WorkerReplacementStrategy = string;
 export interface LastUpdate {
@@ -309,7 +259,6 @@ export interface LastUpdate {
   Source?: string;
   WorkerReplacementStrategy?: string;
 }
-const LastUpdate = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<LastUpdate>;
 export type VpcEndpointServiceName = string;
 export type CeleryExecutorQueue = string;
 export interface Environment {
@@ -348,11 +297,9 @@ export interface Environment {
   MinWebservers?: number;
   MaxWebservers?: number;
 }
-const Environment = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<Environment>;
 export interface GetEnvironmentOutput {
   Environment?: Environment;
 }
-const GetEnvironmentOutput = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<GetEnvironmentOutput>;
 export type RestApiPath = string;
 export type RestApiMethod = string;
 export type RestApiRequestBody = unknown;
@@ -363,56 +310,32 @@ export interface InvokeRestApiRequest {
   QueryParameters?: any;
   Body?: any;
 }
-const InvokeRestApiRequest = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<InvokeRestApiRequest>;
 export type RestApiResponse = unknown;
 export interface InvokeRestApiResponse {
   RestApiStatusCode?: number;
   RestApiResponse?: any;
 }
-const InvokeRestApiResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<InvokeRestApiResponse>;
 export type NextToken = string;
 export interface ListEnvironmentsInput {
   NextToken?: string;
   MaxResults?: number;
 }
-const ListEnvironmentsInput = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ListEnvironmentsInput>;
 export type EnvironmentList = string[];
-const EnvironmentList = SubnetList as any as S.Schema<EnvironmentList>;
 export interface ListEnvironmentsOutput {
   Environments: string[];
   NextToken?: string;
 }
-const ListEnvironmentsOutput = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ListEnvironmentsOutput>;
 export interface ListTagsForResourceInput {
   ResourceArn: string;
 }
-const ListTagsForResourceInput = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ListTagsForResourceInput>;
 export interface ListTagsForResourceOutput {
   Tags?: { [key: string]: string | undefined };
 }
-const ListTagsForResourceOutput = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ListTagsForResourceOutput>;
 export interface Dimension {
   Name: string;
   Value: string;
 }
-const Dimension = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<Dimension>;
 export type Dimensions = Dimension[];
-const Dimensions = /*@__PURE__*/ __L.at(__c3, 4);
 export type Unit = string;
 export interface StatisticSet {
   SampleCount?: number;
@@ -420,7 +343,6 @@ export interface StatisticSet {
   Minimum?: number;
   Maximum?: number;
 }
-const StatisticSet = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<StatisticSet>;
 export interface MetricDatum {
   MetricName: string;
   Timestamp: Date;
@@ -429,39 +351,26 @@ export interface MetricDatum {
   Unit?: string;
   StatisticValues?: StatisticSet;
 }
-const MetricDatum = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<MetricDatum>;
 export type MetricData = MetricDatum[];
-const MetricData = /*@__PURE__*/ __L.at(__c3, 7);
 export interface PublishMetricsInput {
   EnvironmentName: string;
   MetricData: MetricDatum[];
 }
-const PublishMetricsInput = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<PublishMetricsInput>;
 export interface PublishMetricsOutput {}
-const PublishMetricsOutput = DeleteEnvironmentOutput as any as S.Schema<PublishMetricsOutput>;
 export interface TagResourceInput {
   ResourceArn: string;
   Tags: { [key: string]: string | undefined };
 }
-const TagResourceInput = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {}
-const TagResourceOutput = DeleteEnvironmentOutput as any as S.Schema<TagResourceOutput>;
 export type TagKeyList = string[];
-const TagKeyList = SubnetList as any as S.Schema<TagKeyList>;
 export interface UntagResourceInput {
   ResourceArn: string;
   tagKeys: string[];
 }
-const UntagResourceInput = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
-const UntagResourceOutput = DeleteEnvironmentOutput as any as S.Schema<UntagResourceOutput>;
 export interface UpdateNetworkConfigurationInput {
   SecurityGroupIds: string[];
 }
-const UpdateNetworkConfigurationInput = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<UpdateNetworkConfigurationInput>;
 export interface UpdateEnvironmentInput {
   Name: string;
   ExecutionRoleArn?: string;
@@ -487,14 +396,9 @@ export interface UpdateEnvironmentInput {
   WebserverAccessMode?: string;
   WeeklyMaintenanceWindowStart?: string;
 }
-const UpdateEnvironmentInput = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<UpdateEnvironmentInput>;
 export interface UpdateEnvironmentOutput {
   Arn?: string;
 }
-const UpdateEnvironmentOutput = CreateEnvironmentOutput as any as S.Schema<UpdateEnvironmentOutput>;
 export type CreateCliTokenError = ResourceNotFoundException | CommonErrors;
 /**
  * Creates a CLI token for the Airflow CLI. To learn more, see Creating an Apache Airflow CLI token.
@@ -505,8 +409,8 @@ export const createCliToken: API.OperationMethod<
   CreateCliTokenError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCliTokenRequest,
-  output: CreateCliTokenResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateCliTokenRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CreateCliTokenResponse>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -528,8 +432,8 @@ export const createEnvironment: API.OperationMethod<
   CreateEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEnvironmentInput,
-  output: CreateEnvironmentOutput,
+  input: __S(8, __c1, 0) as any as S.Schema<CreateEnvironmentInput>,
+  output: __S(9, __c1, 1) as any as S.Schema<CreateEnvironmentOutput>,
   errors: [InternalServerException, ServiceUnavailableException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -552,8 +456,8 @@ export const createWebLoginToken: API.OperationMethod<
   CreateWebLoginTokenError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateWebLoginTokenRequest,
-  output: CreateWebLoginTokenResponse,
+  input: __S(10, __c1, 2) as any as S.Schema<CreateWebLoginTokenRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<CreateWebLoginTokenResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -581,8 +485,8 @@ export const deleteEnvironment: API.OperationMethod<
   DeleteEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEnvironmentInput,
-  output: DeleteEnvironmentOutput,
+  input: __S(12, __c1, 4) as any as S.Schema<DeleteEnvironmentInput>,
+  output: __S(13, __c1, 5) as any as S.Schema<DeleteEnvironmentOutput>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -609,8 +513,8 @@ export const getEnvironment: API.OperationMethod<
   GetEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEnvironmentInput,
-  output: GetEnvironmentOutput,
+  input: __S(14, __c1, 6) as any as S.Schema<GetEnvironmentInput>,
+  output: __S(20, __c2, 4) as any as S.Schema<GetEnvironmentOutput>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -635,8 +539,8 @@ export const invokeRestApi: API.OperationMethod<
   InvokeRestApiError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: InvokeRestApiRequest,
-  output: InvokeRestApiResponse,
+  input: __S(21, __c2, 5) as any as S.Schema<InvokeRestApiRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<InvokeRestApiResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -662,8 +566,8 @@ export const listEnvironments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EnvironmentName
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListEnvironmentsInput,
-  output: ListEnvironmentsOutput,
+  input: __S(23, __c2, 7) as any as S.Schema<ListEnvironmentsInput>,
+  output: __S(24, __c3, 0) as any as S.Schema<ListEnvironmentsOutput>,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -691,8 +595,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceInput,
-  output: ListTagsForResourceOutput,
+  input: __S(25, __c3, 1) as any as S.Schema<ListTagsForResourceInput>,
+  output: __S(26, __c3, 2) as any as S.Schema<ListTagsForResourceOutput>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -710,8 +614,8 @@ export const publishMetrics: API.OperationMethod<
   PublishMetricsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PublishMetricsInput,
-  output: PublishMetricsOutput,
+  input: __S(32, __c4, 0) as any as S.Schema<PublishMetricsInput>,
+  output: __S(13, __c1, 5) as any as S.Schema<PublishMetricsOutput>,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -733,8 +637,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceInput,
-  output: TagResourceOutput,
+  input: __S(33, __c4, 1) as any as S.Schema<TagResourceInput>,
+  output: __S(13, __c1, 5) as any as S.Schema<TagResourceOutput>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -756,8 +660,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceInput,
-  output: UntagResourceOutput,
+  input: __S(34, __c4, 2) as any as S.Schema<UntagResourceInput>,
+  output: __S(13, __c1, 5) as any as S.Schema<UntagResourceOutput>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -780,8 +684,8 @@ export const updateEnvironment: API.OperationMethod<
   UpdateEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateEnvironmentInput,
-  output: UpdateEnvironmentOutput,
+  input: __S(36, __c4, 4) as any as S.Schema<UpdateEnvironmentInput>,
+  output: __S(9, __c1, 1) as any as S.Schema<UpdateEnvironmentOutput>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -815,8 +719,8 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          SubnetIds: S.optional(SubnetList),
-          SecurityGroupIds: S.optional(SecurityGroupList),
+          SubnetIds: S.optional(__S(2, __c0, 2)),
+          SecurityGroupIds: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({ identifier: "NetworkConfiguration" });
     case 4:
@@ -828,11 +732,11 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          DagProcessingLogs: S.optional(ModuleLoggingConfigurationInput),
-          SchedulerLogs: S.optional(ModuleLoggingConfigurationInput),
-          WebserverLogs: S.optional(ModuleLoggingConfigurationInput),
-          WorkerLogs: S.optional(ModuleLoggingConfigurationInput),
-          TaskLogs: S.optional(ModuleLoggingConfigurationInput),
+          DagProcessingLogs: S.optional(__S(5, __c0, 5)),
+          SchedulerLogs: S.optional(__S(5, __c0, 5)),
+          WebserverLogs: S.optional(__S(5, __c0, 5)),
+          WorkerLogs: S.optional(__S(5, __c0, 5)),
+          TaskLogs: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({
         identifier: "LoggingConfigurationInput",
@@ -850,21 +754,21 @@ function __c1(j: number): any {
           ExecutionRoleArn: S.String,
           SourceBucketArn: S.String,
           DagS3Path: S.String,
-          NetworkConfiguration: NetworkConfiguration,
+          NetworkConfiguration: __S(3, __c0, 3),
           PluginsS3Path: S.optional(S.String),
           PluginsS3ObjectVersion: S.optional(S.String),
           RequirementsS3Path: S.optional(S.String),
           RequirementsS3ObjectVersion: S.optional(S.String),
           StartupScriptS3Path: S.optional(S.String),
           StartupScriptS3ObjectVersion: S.optional(S.String),
-          AirflowConfigurationOptions: S.optional(AirflowConfigurationOptions),
+          AirflowConfigurationOptions: S.optional(__S(4, __c0, 4)),
           EnvironmentClass: S.optional(S.String),
           MaxWorkers: S.optional(S.Number),
           KmsKey: S.optional(S.String),
           AirflowVersion: S.optional(S.String),
-          LoggingConfiguration: S.optional(LoggingConfigurationInput),
+          LoggingConfiguration: S.optional(__S(6, __c0, 6)),
           WeeklyMaintenanceWindowStart: S.optional(S.String),
-          Tags: S.optional(TagMap),
+          Tags: S.optional(__S(7, __c0, 7)),
           WebserverAccessMode: S.optional(S.String),
           MinWorkers: S.optional(S.Number),
           Schedulers: S.optional(S.Number),
@@ -952,11 +856,11 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          DagProcessingLogs: S.optional(ModuleLoggingConfiguration),
-          SchedulerLogs: S.optional(ModuleLoggingConfiguration),
-          WebserverLogs: S.optional(ModuleLoggingConfiguration),
-          WorkerLogs: S.optional(ModuleLoggingConfiguration),
-          TaskLogs: S.optional(ModuleLoggingConfiguration),
+          DagProcessingLogs: S.optional(__S(15, __c1, 7)),
+          SchedulerLogs: S.optional(__S(15, __c1, 7)),
+          WebserverLogs: S.optional(__S(15, __c1, 7)),
+          WorkerLogs: S.optional(__S(15, __c1, 7)),
+          TaskLogs: S.optional(__S(15, __c1, 7)),
         }),
       ).annotate({ identifier: "LoggingConfiguration" });
     case 1:
@@ -968,7 +872,7 @@ function __c2(j: number): any {
         S.Struct({
           Status: S.optional(S.String),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Error: S.optional(UpdateError),
+          Error: S.optional(__S(17, __c2, 1)),
           Source: S.optional(S.String),
           WorkerReplacementStrategy: S.optional(S.String),
         }),
@@ -993,14 +897,14 @@ function __c2(j: number): any {
           RequirementsS3ObjectVersion: S.optional(S.String),
           StartupScriptS3Path: S.optional(S.String),
           StartupScriptS3ObjectVersion: S.optional(S.String),
-          AirflowConfigurationOptions: S.optional(AirflowConfigurationOptions),
+          AirflowConfigurationOptions: S.optional(__S(4, __c0, 4)),
           EnvironmentClass: S.optional(S.String),
           MaxWorkers: S.optional(S.Number),
-          NetworkConfiguration: S.optional(NetworkConfiguration),
-          LoggingConfiguration: S.optional(LoggingConfiguration),
-          LastUpdate: S.optional(LastUpdate),
+          NetworkConfiguration: S.optional(__S(3, __c0, 3)),
+          LoggingConfiguration: S.optional(__S(16, __c2, 0)),
+          LastUpdate: S.optional(__S(18, __c2, 2)),
           WeeklyMaintenanceWindowStart: S.optional(S.String),
-          Tags: S.optional(TagMap),
+          Tags: S.optional(__S(7, __c0, 7)),
           WebserverAccessMode: S.optional(S.String),
           MinWorkers: S.optional(S.Number),
           Schedulers: S.optional(S.Number),
@@ -1013,7 +917,7 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "Environment" });
     case 4:
-      return S.suspend(() => S.Struct({ Environment: S.optional(Environment) })).annotate({
+      return S.suspend(() => S.Struct({ Environment: S.optional(__S(19, __c2, 3)) })).annotate({
         identifier: "GetEnvironmentOutput",
       });
     case 5:
@@ -1047,7 +951,7 @@ function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Environments: EnvironmentList, NextToken: S.optional(S.String) }),
+        S.Struct({ Environments: __S(2, __c0, 2), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListEnvironmentsOutput" });
     case 1:
       return S.suspend(() =>
@@ -1063,7 +967,7 @@ function __c3(j: number): any {
         ),
       ).annotate({ identifier: "ListTagsForResourceInput" });
     case 2:
-      return S.suspend(() => S.Struct({ Tags: S.optional(TagMap) })).annotate({
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(7, __c0, 7)) })).annotate({
         identifier: "ListTagsForResourceOutput",
       });
     case 3:
@@ -1071,7 +975,7 @@ function __c3(j: number): any {
         identifier: "Dimension",
       });
     case 4:
-      return S.Array(Dimension);
+      return S.Array(__S(27, __c3, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -1086,14 +990,14 @@ function __c3(j: number): any {
         S.Struct({
           MetricName: S.String,
           Timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          Dimensions: S.optional(Dimensions),
+          Dimensions: S.optional(__S(28, __c3, 4)),
           Value: S.optional(S.Number),
           Unit: S.optional(S.String),
-          StatisticValues: S.optional(StatisticSet),
+          StatisticValues: S.optional(__S(29, __c3, 5)),
         }),
       ).annotate({ identifier: "MetricDatum" });
     case 7:
-      return S.Array(MetricDatum);
+      return S.Array(__S(30, __c3, 6));
   }
 }
 function __c4(j: number): any {
@@ -1102,7 +1006,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           EnvironmentName: S.String.pipe(T.HttpLabel("EnvironmentName")),
-          MetricData: MetricData,
+          MetricData: __S(31, __c3, 7),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/metrics/environments/{EnvironmentName}" }),
@@ -1116,7 +1020,10 @@ function __c4(j: number): any {
       ).annotate({ identifier: "PublishMetricsInput" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")), Tags: TagMap }).pipe(
+        S.Struct({
+          ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
+          Tags: __S(7, __c0, 7),
+        }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }),
             svc,
@@ -1131,7 +1038,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(2, __c0, 2).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }),
@@ -1144,7 +1051,7 @@ function __c4(j: number): any {
         ),
       ).annotate({ identifier: "UntagResourceInput" });
     case 3:
-      return S.suspend(() => S.Struct({ SecurityGroupIds: SecurityGroupList })).annotate({
+      return S.suspend(() => S.Struct({ SecurityGroupIds: __S(2, __c0, 2) })).annotate({
         identifier: "UpdateNetworkConfigurationInput",
       });
     case 4:
@@ -1152,17 +1059,17 @@ function __c4(j: number): any {
         S.Struct({
           Name: S.String.pipe(T.HttpLabel("Name")),
           ExecutionRoleArn: S.optional(S.String),
-          AirflowConfigurationOptions: S.optional(AirflowConfigurationOptions),
+          AirflowConfigurationOptions: S.optional(__S(4, __c0, 4)),
           AirflowVersion: S.optional(S.String),
           DagS3Path: S.optional(S.String),
           EnvironmentClass: S.optional(S.String),
-          LoggingConfiguration: S.optional(LoggingConfigurationInput),
+          LoggingConfiguration: S.optional(__S(6, __c0, 6)),
           MaxWorkers: S.optional(S.Number),
           MinWorkers: S.optional(S.Number),
           MaxWebservers: S.optional(S.Number),
           MinWebservers: S.optional(S.Number),
           WorkerReplacementStrategy: S.optional(S.String),
-          NetworkConfiguration: S.optional(UpdateNetworkConfigurationInput),
+          NetworkConfiguration: S.optional(__S(35, __c4, 3)),
           PluginsS3Path: S.optional(S.String),
           PluginsS3ObjectVersion: S.optional(S.String),
           RequirementsS3Path: S.optional(S.String),
@@ -1185,4 +1092,9 @@ function __c4(j: number): any {
         ),
       ).annotate({ identifier: "UpdateEnvironmentInput" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

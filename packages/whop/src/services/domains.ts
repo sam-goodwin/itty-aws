@@ -7,6 +7,8 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -21,11 +23,6 @@ export class Conflict
 
 /** Custom string keys and values. */
 export type CreateDomainRequestMetadataMap = { [key: string]: string | undefined };
-const CreateDomainRequestMetadataMap = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateDomainRequestMetadataMap>;
-
 export interface CreateDomainRequest {
   /** Account ID, prefixed biz_. Required for user credentials; otherwise defaults to the credential's account. */
   account_id?: string;
@@ -40,12 +37,8 @@ export interface CreateDomainRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const CreateDomainRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CreateDomainRequest>;
-
 /** DNS record type. */
 export type DomainDnsRecordType = "TXT" | "CNAME" | "A" | "AAAA";
-const DomainDnsRecordType = S.String;
-
 export interface DomainDnsRecord {
   /** Full hostname where the record must be published. */
   name: string;
@@ -54,30 +47,18 @@ export interface DomainDnsRecord {
   /** DNS record content. */
   value: string;
 }
-const DomainDnsRecord = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DomainDnsRecord>;
-
 export type DomainDnsRecordsList = Array<DomainDnsRecord>;
-const DomainDnsRecordsList = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DomainDnsRecordsList>;
-
 /** Result of the most recent DNS routing check. Ownership is verified separately. */
 export type DomainDnsStatus = "pending" | "valid" | "invalid" | "unknown";
-const DomainDnsStatus = S.String;
-
 export interface DomainIssue {
   /** The source of the setup issue. */
   code: string;
   /** What needs attention before the domain can serve the website. */
   message: string;
 }
-const DomainIssue = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<DomainIssue>;
-
 export type DomainIssuesList = Array<DomainIssue>;
-const DomainIssuesList = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<DomainIssuesList>;
-
 /** Custom string keys and values attached to this domain. */
 export type DomainMetadataMap = { [key: string]: string | undefined };
-const DomainMetadataMap = CreateDomainRequestMetadataMap as any as S.Schema<DomainMetadataMap>;
-
 /** Domain lifecycle. Only active domains resolve to their app. */
 export type DomainStatus =
   | "pending_verification"
@@ -86,8 +67,6 @@ export type DomainStatus =
   | "action_required"
   | "deleting"
   | "removed";
-const DomainStatus = S.String;
-
 export interface Domain {
   /** ID of the account claiming or owning this domain, prefixed `biz_`. */
   account_id: string;
@@ -120,20 +99,14 @@ export interface Domain {
   /** When Whop verified the ownership TXT record, as an ISO 8601 timestamp. */
   verified_at: string | null;
 }
-const Domain = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Domain>;
-
 export interface DeleteDomainRequest {
   /** Domain ID, prefixed dom_. */
   id: string;
 }
-const DeleteDomainRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<DeleteDomainRequest>;
-
 export interface GetDomainRequest {
   /** Domain ID, prefixed dom_. */
   id: string;
 }
-const GetDomainRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<GetDomainRequest>;
-
 export type ListDomainsRequestStatus =
   | "pending_verification"
   | "provisioning"
@@ -141,14 +114,8 @@ export type ListDomainsRequestStatus =
   | "action_required"
   | "deleting"
   | "removed";
-const ListDomainsRequestStatus = S.String;
-
 export type ListDomainsRequestOrder = "created_at" | "updated_at";
-const ListDomainsRequestOrder = S.String;
-
 export type ListDomainsRequestDirection = "asc" | "desc";
-const ListDomainsRequestDirection = S.String;
-
 export interface ListDomainsRequest {
   /** Only domains belonging to this account, prefixed biz_. */
   account_id?: string;
@@ -169,36 +136,19 @@ export interface ListDomainsRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
-const ListDomainsRequest = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ListDomainsRequest>;
-
 export type ListDomainsResponseDataList = Array<Domain>;
-const ListDomainsResponseDataList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ListDomainsResponseDataList>;
-
 export interface ListDomainsResponsePageInfo {
   end_cursor: string | null;
   has_next_page: boolean;
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-const ListDomainsResponsePageInfo = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ListDomainsResponsePageInfo>;
-
 export interface ListDomainsResponse {
   data: ListDomainsResponseDataList;
   page_info: ListDomainsResponsePageInfo;
 }
-const ListDomainsResponse = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<ListDomainsResponse>;
-
 /** Replacement custom string keys and values. */
 export type UpdateDomainRequestMetadataMap = { [key: string]: string | undefined };
-const UpdateDomainRequestMetadataMap =
-  CreateDomainRequestMetadataMap as any as S.Schema<UpdateDomainRequestMetadataMap>;
-
 export interface UpdateDomainRequest {
   /** Domain ID, prefixed dom_. */
   id: string;
@@ -207,8 +157,6 @@ export interface UpdateDomainRequest {
   /** Replacement custom string keys and values. */
   metadata?: UpdateDomainRequestMetadataMap;
 }
-const UpdateDomainRequest = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<UpdateDomainRequest>;
-
 export type CreateDomainError = Conflict | WhopOpError;
 /** Create Domain Creates an unverified claim and returns DNS instructions. A claim does not reserve the hostname globally. Publish its unique TXT record; ownership verification, DNS checks, and certificate provisioning run automatically. Unverified claims are deleted after 48 hours. */
 export const createDomain: API.OperationMethod<
@@ -217,8 +165,8 @@ export const createDomain: API.OperationMethod<
   CreateDomainError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDomainRequest,
-  output: Domain,
+  input: __S(1, __c0, 1) as any as S.Schema<CreateDomainRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<Domain>,
   errors: [Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -232,8 +180,8 @@ export const deleteDomain: API.OperationMethod<
   DeleteDomainError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDomainRequest,
-  output: Domain,
+  input: __S(7, __c0, 7) as any as S.Schema<DeleteDomainRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<Domain>,
   errors: [],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -247,8 +195,8 @@ export const getDomain: API.OperationMethod<
   GetDomainError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDomainRequest,
-  output: Domain,
+  input: __S(8, __c1, 0) as any as S.Schema<GetDomainRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<Domain>,
   errors: [],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -264,8 +212,8 @@ export const listDomains: API.PaginatedOperationMethod<
   Domain
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListDomainsRequest,
-    output: ListDomainsResponse,
+    input: __S(9, __c1, 1) as any as S.Schema<ListDomainsRequest>,
+    output: __S(12, __c1, 4) as any as S.Schema<ListDomainsResponse>,
     errors: [],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -289,8 +237,8 @@ export const updateDomain: API.OperationMethod<
   UpdateDomainError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDomainRequest,
-  output: Domain,
+  input: __S(13, __c1, 5) as any as S.Schema<UpdateDomainRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<Domain>,
   errors: [],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -307,7 +255,7 @@ function __c0(j: number): any {
           account_id: S.optional(S.String),
           app_id: S.String,
           domain: S.String,
-          metadata: S.optional(CreateDomainRequestMetadataMap),
+          metadata: S.optional(__S(0, __c0, 0)),
           replace_existing: S.optional(S.Boolean),
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/domains", code: 200 })),
@@ -316,12 +264,12 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          type: DomainDnsRecordType,
+          type: S.String,
           value: S.String,
         }),
       ).annotate({ identifier: "DomainDnsRecord" });
     case 3:
-      return S.Array(DomainDnsRecord);
+      return S.Array(__S(2, __c0, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -330,7 +278,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "DomainIssue" });
     case 5:
-      return S.Array(DomainIssue);
+      return S.Array(__S(4, __c0, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -338,15 +286,15 @@ function __c0(j: number): any {
           app_id: S.String,
           certificate_status: S.NullOr(S.String),
           created_at: S.String,
-          dns_records: DomainDnsRecordsList,
-          dns_status: DomainDnsStatus,
+          dns_records: __S(3, __c0, 3),
+          dns_status: S.String,
           domain: S.String,
           hostname_status: S.NullOr(S.String),
           id: S.String,
-          issues: DomainIssuesList,
+          issues: __S(5, __c0, 5),
           last_checked_at: S.NullOr(S.String),
-          metadata: DomainMetadataMap,
-          status: DomainStatus,
+          metadata: __S(0, __c0, 0),
+          status: S.String,
           updated_at: S.String,
           verification_expires_at: S.NullOr(S.String),
           verified_at: S.NullOr(S.String),
@@ -373,9 +321,9 @@ function __c1(j: number): any {
         S.Struct({
           account_id: S.optional(S.String.pipe(T.Query())),
           app_id: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(ListDomainsRequestStatus.pipe(T.Query())),
-          order: S.optional(ListDomainsRequestOrder.pipe(T.Query())),
-          direction: S.optional(ListDomainsRequestDirection.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
           first: S.optional(S.Number.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           last: S.optional(S.Number.pipe(T.Query())),
@@ -383,7 +331,7 @@ function __c1(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/domains", code: 200 })),
       ).annotate({ identifier: "ListDomainsRequest" });
     case 2:
-      return S.Array(Domain);
+      return S.Array(__S(6, __c0, 6));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -398,8 +346,8 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: ListDomainsResponseDataList,
-          page_info: ListDomainsResponsePageInfo,
+          data: __S(10, __c1, 2),
+          page_info: __S(11, __c1, 3),
         }),
       ).annotate({ identifier: "ListDomainsResponse" });
     case 5:
@@ -407,8 +355,13 @@ function __c1(j: number): any {
         S.Struct({
           id: S.String.pipe(T.Label()),
           app_id: S.optional(S.String),
-          metadata: S.optional(UpdateDomainRequestMetadataMap),
+          metadata: S.optional(__S(0, __c0, 0)),
         }).pipe(T.Http({ method: "PATCH", uri: "/domains/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateDomainRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

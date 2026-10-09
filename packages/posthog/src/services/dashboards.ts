@@ -7,6 +7,8 @@ import * as Redacted from "effect/Redacted";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -38,12 +40,8 @@ export class NotFound
   ) {}
 
 export type CreateDashboardRequestFormat = "json" | "txt";
-const CreateDashboardRequestFormat = S.String;
-
 /** * `auto` - auto * `manual` - manual */
 export type BreakdownColorConfigSourceEnum = "auto" | "manual";
-const BreakdownColorConfigSourceEnum = S.String;
-
 export interface BreakdownColorConfig {
   /** The breakdown value this color applies to, as it appears in the chart legend. */
   breakdownValue: string;
@@ -56,40 +54,17 @@ export interface BreakdownColorConfig {
   /** `manual` for a color a person picked, `auto` for one the dashboard assigned. * `auto` - auto * `manual` - manual */
   source?: BreakdownColorConfigSourceEnum | (string & {}) | null;
 }
-const BreakdownColorConfig = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<BreakdownColorConfig>;
-
 /** Colors pinned to specific breakdown values across the dashboard's tiles. A list of entries, not an object keyed by breakdown value. Send an empty list to clear them. */
 export type CreateDashboardRequestBreakdownColorsList = Array<BreakdownColorConfig>;
-const CreateDashboardRequestBreakdownColorsList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateDashboardRequestBreakdownColorsList>;
-
 export type CreateDashboardRequestTagsList = Array<unknown>;
-const CreateDashboardRequestTagsList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateDashboardRequestTagsList>;
-
 /** * `21` - Everyone in the project can edit * `37` - Only those invited to this dashboard can edit */
 export type RestrictionLevelEnum = 21 | 37;
-const RestrictionLevelEnum = S.Number;
-
 /** List of quick filter IDs associated with this dashboard */
 export type CreateDashboardRequestQuickFilterIdsList = Array<string>;
-const CreateDashboardRequestQuickFilterIdsList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateDashboardRequestQuickFilterIdsList>;
-
 /** * `tight` - tight * `condensed` - condensed * `standard` - standard * `relaxed` - relaxed * `wide` - wide */
 export type TileSpacingEnum = "tight" | "condensed" | "standard" | "relaxed" | "wide";
-const TileSpacingEnum = S.String;
-
 /** * `vertical` - vertical * `horizontal` - horizontal * `stable` - stable */
 export type LayoutCompactionEnum = "vertical" | "horizontal" | "stable";
-const LayoutCompactionEnum = S.String;
-
 export interface CreateDashboardRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -122,17 +97,7 @@ export interface CreateDashboardRequest {
   delete_insights?: boolean;
   _create_in_folder?: string;
 }
-const CreateDashboardRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateDashboardRequest>;
-
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-const UserBasicHedgehogConfigMap = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<UserBasicHedgehogConfigMap>;
-
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
@@ -146,8 +111,6 @@ export type RoleAtOrganizationEnum =
   | "other";
 export type BlankEnum = "";
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
-
 export interface UserBasic {
   id?: number;
   uuid?: string;
@@ -159,67 +122,27 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-const UserBasic = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<UserBasic>;
-
 /** * `default` - Default * `template` - Template * `duplicate` - Duplicate * `unlisted` - Unlisted (product-embedded) */
 export type DashboardCreationModeEnum = "default" | "template" | "duplicate" | "unlisted";
-const DashboardCreationModeEnum = S.String;
-
 export type DashboardOutputFiltersMap = { [key: string]: unknown | undefined };
-const DashboardOutputFiltersMap =
-  UserBasicHedgehogConfigMap as any as S.Schema<DashboardOutputFiltersMap>;
-
 export type DashboardOutputVariablesMap = { [key: string]: unknown | undefined };
-const DashboardOutputVariablesMap =
-  UserBasicHedgehogConfigMap as any as S.Schema<DashboardOutputVariablesMap>;
-
 /** Colors pinned to specific breakdown values across the dashboard's tiles. A list of entries, not an object keyed by breakdown value. Send an empty list to clear them. */
 export type DashboardOutputBreakdownColorsList = Array<BreakdownColorConfig>;
-const DashboardOutputBreakdownColorsList =
-  CreateDashboardRequestBreakdownColorsList as any as S.Schema<DashboardOutputBreakdownColorsList>;
-
 export type DashboardOutputTagsList = Array<unknown>;
-const DashboardOutputTagsList =
-  CreateDashboardRequestTagsList as any as S.Schema<DashboardOutputTagsList>;
-
 /** * `21` - Can view dashboard * `37` - Can edit dashboard */
 export type PrivilegeLevelEnum = 21 | 37;
-const PrivilegeLevelEnum = S.Number;
-
 export type DashboardOutputPersistedFiltersMap = { [key: string]: unknown | undefined };
-const DashboardOutputPersistedFiltersMap =
-  UserBasicHedgehogConfigMap as any as S.Schema<DashboardOutputPersistedFiltersMap>;
-
 export type DashboardOutputPersistedVariablesMap = { [key: string]: unknown | undefined };
-const DashboardOutputPersistedVariablesMap =
-  UserBasicHedgehogConfigMap as any as S.Schema<DashboardOutputPersistedVariablesMap>;
-
 /** List of quick filter IDs associated with this dashboard */
 export type DashboardOutputQuickFilterIdsList = Array<string>;
-const DashboardOutputQuickFilterIdsList =
-  CreateDashboardRequestQuickFilterIdsList as any as S.Schema<DashboardOutputQuickFilterIdsList>;
-
 export interface DashboardCustomization {
   /** Named tile density preset. * `tight` - tight * `condensed` - condensed * `standard` - standard * `relaxed` - relaxed * `wide` - wide */
   tile_spacing?: TileSpacingEnum;
   /** How tiles rearrange after a move or resize. vertical stacks tiles upward, horizontal stacks tiles to the left, and stable preserves positions while moving colliding tiles. * `vertical` - vertical * `horizontal` - horizontal * `stable` - stable */
   layout_compaction?: LayoutCompactionEnum;
 }
-const DashboardCustomization = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<DashboardCustomization>;
-
 export type DashboardOutputTilesItemMap = { [key: string]: unknown | undefined };
-const DashboardOutputTilesItemMap =
-  UserBasicHedgehogConfigMap as any as S.Schema<DashboardOutputTilesItemMap>;
-
 export type DashboardOutputTilesList = Array<DashboardOutputTilesItemMap>;
-const DashboardOutputTilesList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<DashboardOutputTilesList>;
-
 /** Serializer mixin that handles tags for objects. */
 export interface DashboardOutput {
   id?: number;
@@ -262,8 +185,6 @@ export interface DashboardOutput {
   customization?: DashboardCustomization;
   tiles?: DashboardOutputTilesList | null;
 }
-const DashboardOutput = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<DashboardOutput>;
-
 export interface CreateDashboardsCollaboratorRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -271,11 +192,6 @@ export interface CreateDashboardsCollaboratorRequest {
   level?: RestrictionLevelEnum | (number & {});
   user_uuid?: string;
 }
-const CreateDashboardsCollaboratorRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateDashboardsCollaboratorRequest>;
-
 export interface DashboardCollaboratorOutput {
   id?: string;
   dashboard_id?: number;
@@ -284,25 +200,11 @@ export interface DashboardCollaboratorOutput {
   added_at?: string;
   updated_at?: string;
 }
-const DashboardCollaboratorOutput = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<DashboardCollaboratorOutput>;
-
 export type CreateDashboardsReorderTileRequestFormat = "json" | "txt";
-const CreateDashboardsReorderTileRequestFormat = S.String;
-
 /** Array of tile IDs in the desired display order (top to bottom, left to right). */
 export type CreateDashboardsReorderTileRequestTileOrderList = Array<number>;
-const CreateDashboardsReorderTileRequestTileOrderList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CreateDashboardsReorderTileRequestTileOrderList>;
-
 /** * `preserve` - preserve * `two_column` - two_column * `three_column` - three_column * `full_width` - full_width */
 export type LayoutEnum = "preserve" | "two_column" | "three_column" | "full_width";
-const LayoutEnum = S.String;
-
 export interface CreateDashboardsReorderTileRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -314,11 +216,6 @@ export interface CreateDashboardsReorderTileRequest {
   /** How to size tiles when reordering. 'preserve' (default) keeps each tile's existing width and height and only repacks positions in the new order. Use the other modes only when every tile should use the same size: 'two_column' makes every tile 6-wide × 5-tall, 'three_column' makes every tile 4-wide × 5-tall, and 'full_width' makes every tile 12-wide × 5-tall. * `preserve` - preserve * `two_column` - two_column * `three_column` - three_column * `full_width` - full_width */
   layout?: LayoutEnum | (string & {});
 }
-const CreateDashboardsReorderTileRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CreateDashboardsReorderTileRequest>;
-
 export interface CreateDashboardsSharingPasswordRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -327,11 +224,6 @@ export interface CreateDashboardsSharingPasswordRequest {
   settings?: unknown;
   password_required?: boolean;
 }
-const CreateDashboardsSharingPasswordRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateDashboardsSharingPasswordRequest>;
-
 export interface SharePassword {
   id?: number;
   created_at?: string;
@@ -339,14 +231,7 @@ export interface SharePassword {
   created_by_email?: string;
   is_active?: boolean;
 }
-const SharePassword = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<SharePassword>;
-
 export type SharingConfigurationSharePasswordsList = Array<SharePassword>;
-const SharingConfigurationSharePasswordsList = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<SharingConfigurationSharePasswordsList>;
-
 /** Mixin for serializers to add user access control fields */
 export interface SharingConfiguration {
   created_at?: string;
@@ -358,11 +243,7 @@ export interface SharingConfiguration {
   /** The effective access level the user has for this object */
   user_access_level?: string | null;
 }
-const SharingConfiguration = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<SharingConfiguration>;
-
 export type CreateDashboardsWidgetsBatchRequestFormat = "json" | "txt";
-const CreateDashboardsWidgetsBatchRequestFormat = S.String;
-
 export interface TileLayoutBoxOpenApi {
   /** Column position in the dashboard grid (0-indexed). */
   x?: number;
@@ -373,16 +254,12 @@ export interface TileLayoutBoxOpenApi {
   /** Height in grid rows. */
   h?: number;
 }
-const TileLayoutBoxOpenApi = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<TileLayoutBoxOpenApi>;
-
 export interface TileLayoutsOpenApi {
   /** Layout for the standard (desktop) breakpoint. The grid is 12 columns wide. */
   sm?: TileLayoutBoxOpenApi;
   /** Layout for the small (mobile) breakpoint, on a 1-column grid. The dashboard derives this layout from the sm order and heights, so a stored xs box does not change what renders. */
   xs?: TileLayoutBoxOpenApi;
 }
-const TileLayoutsOpenApi = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<TileLayoutsOpenApi>;
-
 /** * `notebook_widget` - notebook_widget */
 export type NotebookWidgetTypeEnum = "notebook_widget";
 export interface NotebookWidgetConfig {
@@ -813,15 +690,8 @@ export type AddDashboardWidgetRequest =
   | SurveyResultsWidgetAddRequestOpenApi
   | LogsListWidgetAddRequestOpenApi
   | ConversationsRecentTicketsWidgetAddRequestOpenApi;
-const AddDashboardWidgetRequest = S.Unknown as any as S.Schema<AddDashboardWidgetRequest>;
-
 /** Widget tiles to add atomically. Supported widget_type values: activity_events_list, conversations_recent_tickets, error_tracking_list, experiment_results, experiments_list, logs_list, notebook_widget, session_replay_list, survey_results. Use dashboard-widget-catalog-list for per-type config_schema documentation. (1-10 per request). */
 export type CreateDashboardsWidgetsBatchRequestWidgetsList = Array<AddDashboardWidgetRequest>;
-const CreateDashboardsWidgetsBatchRequestWidgetsList = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<CreateDashboardsWidgetsBatchRequestWidgetsList>;
-
 export interface CreateDashboardsWidgetsBatchRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -831,16 +701,9 @@ export interface CreateDashboardsWidgetsBatchRequest {
   /** Widget tiles to add atomically. Supported widget_type values: activity_events_list, conversations_recent_tickets, error_tracking_list, experiment_results, experiments_list, logs_list, notebook_widget, session_replay_list, survey_results. Use dashboard-widget-catalog-list for per-type config_schema documentation. (1-10 per request). */
   widgets: CreateDashboardsWidgetsBatchRequestWidgetsList;
 }
-const CreateDashboardsWidgetsBatchRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<CreateDashboardsWidgetsBatchRequest>;
-
 export type BreakdownFilterBreakdownCase1Item = string | number;
 export type BreakdownFilterBreakdownCase1List = Array<BreakdownFilterBreakdownCase1Item>;
 export type BreakdownFilterBreakdown = string | BreakdownFilterBreakdownCase1List | number;
-const BreakdownFilterBreakdown = S.Unknown as any as S.Schema<BreakdownFilterBreakdown>;
-
 export type BreakdownType =
   | "cohort"
   | "person"
@@ -852,11 +715,7 @@ export type BreakdownType =
   | "data_warehouse"
   | "data_warehouse_person_property"
   | "revenue_analytics";
-const BreakdownType = S.String;
-
 export type BreakdownProperty = string | number;
-const BreakdownProperty = S.Unknown as any as S.Schema<BreakdownProperty>;
-
 export type MultipleBreakdownType =
   | "person"
   | "event"
@@ -868,8 +727,6 @@ export type MultipleBreakdownType =
   | "revenue_analytics"
   | "data_warehouse"
   | "data_warehouse_person_property";
-const MultipleBreakdownType = S.String;
-
 export interface Breakdown {
   group_type_index?: number | null;
   histogram_bin_count?: number | null;
@@ -877,14 +734,7 @@ export interface Breakdown {
   property?: BreakdownProperty;
   type?: MultipleBreakdownType | null;
 }
-const Breakdown = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<Breakdown>;
-
 export type BreakdownFilterBreakdownsList = Array<Breakdown>;
-const BreakdownFilterBreakdownsList = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<BreakdownFilterBreakdownsList>;
-
 export interface BreakdownFilter {
   breakdown?: BreakdownFilterBreakdown | null;
   breakdown_group_type_index?: number | null;
@@ -896,8 +746,6 @@ export interface BreakdownFilter {
   breakdown_type?: BreakdownType | null;
   breakdowns?: BreakdownFilterBreakdownsList | null;
 }
-const BreakdownFilter = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<BreakdownFilter>;
-
 export interface CalendarHeatmapFilter {
   /** When true and the series math is `dau`/`unique_users`, each user contributes to the (day-of-week, hour) bucket of their session's first event only -- matching the web overview session-start attribution. When false (default), the user contributes to every bucket they have any event in. No effect on `total` math (event counts are unchanged either way). */
   bucketBySessionStart?: boolean | null;
@@ -1006,8 +854,6 @@ export type IntervalType =
   | "month"
   | "quarter"
   | "year";
-const IntervalType = S.String;
-
 export type BounceRatePageViewMode =
   | "count_pageviews"
   | "uniq_urls"
@@ -1632,11 +1478,6 @@ export interface ResolvedDateRangeResponse {
   date_from?: string;
   date_to?: string;
 }
-const ResolvedDateRangeResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ResolvedDateRangeResponse>;
-
 export type TrendsQueryResponseResultsItemMap = { [key: string]: unknown | undefined };
 export type TrendsQueryResponseResultsList = Array<TrendsQueryResponseResultsItemMap>;
 export interface QueryTiming {
@@ -8546,54 +8387,23 @@ export interface HogQuery {
 }
 /** The query definition for this insight. The `kind` field determines the query type: - `InsightVizNode` -- product analytics (trends, funnels, retention, paths, stickiness, lifecycle) - `DataVisualizationNode` -- SQL insights using HogQL - `DataTableNode` -- raw data tables - `HogQuery` -- Hog language queries */
 export type InsightQuerySchema = InsightVizNode | DataTableNode | DataVisualizationNode | HogQuery;
-const InsightQuerySchema = S.Unknown as any as S.Schema<InsightQuerySchema>;
-
 /** DEPRECATED. Will be removed in a future release. Use dashboard_tiles instead. A dashboard ID for each of the dashboards that this insight is displayed on. This field is omitted from session-authenticated responses unless `include_dashboards=true` is passed. Once opt-in enforcement is enabled, API-token callers (personal API keys, OAuth) must opt in the same way. Do not rely on it being present. */
 export type InsightOutputDashboardsList = Array<number>;
-const InsightOutputDashboardsList =
-  CreateDashboardsReorderTileRequestTileOrderList as any as S.Schema<InsightOutputDashboardsList>;
-
 export interface DashboardTileBasic {
   id?: number;
   dashboard_id?: number;
   deleted?: boolean | null;
 }
-const DashboardTileBasic = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<DashboardTileBasic>;
-
 /** A dashboard tile ID and dashboard_id for each of the dashboards that this insight is displayed on. */
 export type InsightOutputDashboardTilesList = Array<DashboardTileBasic>;
-const InsightOutputDashboardTilesList = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<InsightOutputDashboardTilesList>;
-
 export type InsightOutputColumnsList = Array<string>;
-const InsightOutputColumnsList =
-  CreateDashboardRequestQuickFilterIdsList as any as S.Schema<InsightOutputColumnsList>;
-
 export type InsightOutputTagsList = Array<unknown>;
-const InsightOutputTagsList =
-  CreateDashboardRequestTagsList as any as S.Schema<InsightOutputTagsList>;
-
 export type InsightOutputTypesList = Array<unknown>;
-const InsightOutputTypesList =
-  CreateDashboardRequestTagsList as any as S.Schema<InsightOutputTypesList>;
-
 export type InsightOutputResolvedDateRange = ResolvedDateRangeResponse;
 export type InsightResultWarningsItem = DataWarehouseSyncWarning | AccessControlFilterWarning;
-const InsightResultWarningsItem = S.Unknown as any as S.Schema<InsightResultWarningsItem>;
-
 /** Warnings attached to the query response that produced an insight's results. */
 export type InsightResultWarnings = Array<InsightResultWarningsItem>;
-const InsightResultWarnings = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<InsightResultWarnings>;
-
 export type InsightOutputAlertsList = Array<unknown>;
-const InsightOutputAlertsList =
-  CreateDashboardRequestTagsList as any as S.Schema<InsightOutputAlertsList>;
-
 export type DashboardFilterPropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
@@ -8619,14 +8429,7 @@ export type DashboardFilterPropertiesItem =
   | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter
   | BehavioralPropertyFilter;
-const DashboardFilterPropertiesItem = S.Unknown as any as S.Schema<DashboardFilterPropertiesItem>;
-
 export type DashboardFilterPropertiesList = Array<DashboardFilterPropertiesItem>;
-const DashboardFilterPropertiesList = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<DashboardFilterPropertiesList>;
-
 export interface DashboardFilter {
   breakdown_filter?: BreakdownFilter | null;
   date_from?: string | null;
@@ -8638,8 +8441,6 @@ export interface DashboardFilter {
   interval?: IntervalType | null;
   properties?: DashboardFilterPropertiesList | null;
 }
-const DashboardFilter = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<DashboardFilter>;
-
 export type TileFiltersPropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
@@ -8665,14 +8466,7 @@ export type TileFiltersPropertiesItem =
   | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter
   | BehavioralPropertyFilter;
-const TileFiltersPropertiesItem = S.Unknown as any as S.Schema<TileFiltersPropertiesItem>;
-
 export type TileFiltersPropertiesList = Array<TileFiltersPropertiesItem>;
-const TileFiltersPropertiesList = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<TileFiltersPropertiesList>;
-
 export interface TileFilters {
   breakdown_filter?: BreakdownFilter | null;
   date_from?: string | null;
@@ -8684,8 +8478,6 @@ export interface TileFilters {
   interval?: IntervalType | null;
   properties?: TileFiltersPropertiesList | null;
 }
-const TileFilters = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<TileFilters>;
-
 export interface InsightFilterOverrideContext {
   /** Dashboard filters that remain active after applying tile precedence. */
   dashboard?: DashboardFilter | null;
@@ -8694,14 +8486,7 @@ export interface InsightFilterOverrideContext {
   /** Dashboard filters replaced by the tile filters. */
   overridden_dashboard?: DashboardFilter | null;
 }
-const InsightFilterOverrideContext = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<InsightFilterOverrideContext>;
-
 export type SearchMatchTypeEnum = "exact" | "similar";
-const SearchMatchTypeEnum = S.String;
-
 /** Simplified serializer to speed response times when loading large amounts of objects. */
 export interface InsightOutput {
   id?: number;
@@ -8755,12 +8540,7 @@ export interface InsightOutput {
   /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`. */
   search_match_type?: SearchMatchTypeEnum | null;
 }
-const InsightOutput = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<InsightOutput>;
-
 export type TextDashboardTilesList = Array<DashboardTileBasic>;
-const TextDashboardTilesList =
-  InsightOutputDashboardTilesList as any as S.Schema<TextDashboardTilesList>;
-
 export interface Text {
   id: number;
   created_by: UserBasic;
@@ -8772,20 +8552,11 @@ export interface Text {
   last_modified_at: string;
   team: number;
 }
-const Text = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<Text>;
-
 /** * `left` - left * `right` - right */
 export type PlacementEnum = "left" | "right";
-const PlacementEnum = S.String;
-
 export type ButtonTileDashboardTilesList = Array<DashboardTileBasic>;
-const ButtonTileDashboardTilesList =
-  InsightOutputDashboardTilesList as any as S.Schema<ButtonTileDashboardTilesList>;
-
 /** * `primary` - Primary * `secondary` - Secondary */
 export type StyleEnum = "primary" | "secondary";
-const StyleEnum = S.String;
-
 export interface ButtonTile {
   id: string;
   created_by: UserBasic;
@@ -8798,8 +8569,6 @@ export interface ButtonTile {
   last_modified_at: string;
   team: number;
 }
-const ButtonTile = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<ButtonTile>;
-
 export type DashboardWidgetConfig =
   | NotebookWidgetConfig
   | ActivityEventsListWidgetConfig
@@ -8810,12 +8579,7 @@ export type DashboardWidgetConfig =
   | SurveyResultsWidgetConfig
   | LogsListWidgetConfig
   | ConversationsRecentTicketsWidgetConfig;
-const DashboardWidgetConfig = S.Unknown as any as S.Schema<DashboardWidgetConfig>;
-
 export type DashboardWidgetDashboardTilesList = Array<DashboardTileBasic>;
-const DashboardWidgetDashboardTilesList =
-  InsightOutputDashboardTilesList as any as S.Schema<DashboardWidgetDashboardTilesList>;
-
 export interface DashboardWidget {
   id: string;
   created_by: UserBasic;
@@ -8832,8 +8596,6 @@ export interface DashboardWidget {
   last_modified_at: string;
   team: number;
 }
-const DashboardWidget = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<DashboardWidget>;
-
 export interface DashboardTileOutput {
   id?: number;
   insight: InsightOutput;
@@ -8846,44 +8608,20 @@ export interface DashboardTileOutput {
   show_description?: boolean | null;
   transparent_background?: boolean | null;
 }
-const DashboardTileOutput = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<DashboardTileOutput>;
-
 /** Created dashboard widget tiles in request order. */
 export type AddDashboardWidgetsBatchResponseOutputTilesList = Array<DashboardTileOutput>;
-const AddDashboardWidgetsBatchResponseOutputTilesList = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<AddDashboardWidgetsBatchResponseOutputTilesList>;
-
 export interface AddDashboardWidgetsBatchResponseOutput {
   /** Created dashboard widget tiles in request order. */
   tiles: AddDashboardWidgetsBatchResponseOutputTilesList;
 }
-const AddDashboardWidgetsBatchResponseOutput = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<AddDashboardWidgetsBatchResponseOutput>;
-
 export interface DashboardsCollaboratorsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   dashboard_id: number;
   user__uuid: string;
 }
-const DashboardsCollaboratorsDestroyRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<DashboardsCollaboratorsDestroyRequest>;
-
 export interface DashboardsCollaboratorsDestroyResponse {}
-const DashboardsCollaboratorsDestroyResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<DashboardsCollaboratorsDestroyResponse>;
-
 export type DashboardsCopyTileCreateRequestFormat = "json" | "txt";
-const DashboardsCopyTileCreateRequestFormat = S.String;
-
 export interface DashboardsCopyTileCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -8895,18 +8633,9 @@ export interface DashboardsCopyTileCreateRequest {
   /** Dashboard tile id to copy. */
   tileId?: number;
 }
-const DashboardsCopyTileCreateRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<DashboardsCopyTileCreateRequest>;
-
 export type DashboardsCreateTextTileCreateRequestFormat = "json" | "txt";
-const DashboardsCreateTextTileCreateRequestFormat = S.String;
-
 /** * `text` - text * `image` - image */
 export type CreateTextTileRequestTypeEnum = "text" | "image";
-const CreateTextTileRequestTypeEnum = S.String;
-
 export type TileLayoutBox = TileLayoutBoxOpenApi;
 export interface TileLayouts {
   /** Layout for the standard (desktop) breakpoint. The grid is 12 columns wide. */
@@ -8914,8 +8643,6 @@ export interface TileLayouts {
   /** Layout for the small (mobile) breakpoint. The grid is 1 column wide. */
   xs?: TileLayoutBoxOpenApi;
 }
-const TileLayouts = TileLayoutsOpenApi as any as S.Schema<TileLayouts>;
-
 export interface DashboardsCreateTextTileCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -8933,14 +8660,7 @@ export interface DashboardsCreateTextTileCreateRequest {
   /** Optional accent color name (e.g. 'blue', 'green', 'purple', 'black'). */
   color?: string | null;
 }
-const DashboardsCreateTextTileCreateRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<DashboardsCreateTextTileCreateRequest>;
-
 export type DashboardsDestroyRequestFormat = "json" | "txt";
-const DashboardsDestroyRequestFormat = S.String;
-
 export interface DashboardsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -8948,26 +8668,12 @@ export interface DashboardsDestroyRequest {
   id: number;
   format?: DashboardsDestroyRequestFormat | (string & {});
 }
-const DashboardsDestroyRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<DashboardsDestroyRequest>;
-
 export interface DashboardsDestroyResponse {}
-const DashboardsDestroyResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<DashboardsDestroyResponse>;
-
 export type DashboardsMoveTileCreateRequestFormat = "json" | "txt";
-const DashboardsMoveTileCreateRequestFormat = S.String;
-
 export interface MoveTileTile {
   /** Dashboard tile ID to move. */
   id: number;
 }
-const MoveTileTile = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<MoveTileTile>;
-
 export interface DashboardsMoveTileCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -8979,26 +8685,13 @@ export interface DashboardsMoveTileCreateRequest {
   /** Tile to move, identified by its dashboard tile ID. */
   tile: MoveTileTile;
 }
-const DashboardsMoveTileCreateRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<DashboardsMoveTileCreateRequest>;
-
 export interface DashboardsSharingPasswordsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   dashboard_id: number;
   password_id: string;
 }
-const DashboardsSharingPasswordsDestroyRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<DashboardsSharingPasswordsDestroyRequest>;
-
 export interface DashboardsSharingPasswordsDestroyResponse {}
-const DashboardsSharingPasswordsDestroyResponse =
-  DashboardsCollaboratorsDestroyResponse as any as S.Schema<DashboardsSharingPasswordsDestroyResponse>;
-
 export interface DashboardsSharingRefreshCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -9007,14 +8700,7 @@ export interface DashboardsSharingRefreshCreateRequest {
   settings?: unknown;
   password_required?: boolean;
 }
-const DashboardsSharingRefreshCreateRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<DashboardsSharingRefreshCreateRequest>;
-
 export type DashboardsSubscribeNudgeCreateRequestFormat = "json" | "txt";
-const DashboardsSubscribeNudgeCreateRequestFormat = S.String;
-
 export interface DashboardsSubscribeNudgeCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -9022,23 +8708,11 @@ export interface DashboardsSubscribeNudgeCreateRequest {
   id: number;
   format?: DashboardsSubscribeNudgeCreateRequestFormat | (string & {});
 }
-const DashboardsSubscribeNudgeCreateRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<DashboardsSubscribeNudgeCreateRequest>;
-
 export interface DashboardSubscribeNudgeResponse {
   /** Whether a nudge notification was created. False when one was already sent recently for this user and dashboard, or when in-app notifications are unavailable. */
   created: boolean;
 }
-const DashboardSubscribeNudgeResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<DashboardSubscribeNudgeResponse>;
-
 export type DashboardsUpdateTextTileCreateRequestFormat = "json" | "txt";
-const DashboardsUpdateTextTileCreateRequestFormat = S.String;
-
 export interface DashboardsUpdateTextTileCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -9056,14 +8730,7 @@ export interface DashboardsUpdateTextTileCreateRequest {
   /** New accent color name, empty string or null to clear. Omit to leave unchanged. */
   color?: string | null;
 }
-const DashboardsUpdateTextTileCreateRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<DashboardsUpdateTextTileCreateRequest>;
-
 export type DeleteDashboardTileRequestFormat = "json" | "txt";
-const DeleteDashboardTileRequestFormat = S.String;
-
 export interface DeleteDashboardTileRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -9073,18 +8740,8 @@ export interface DeleteDashboardTileRequest {
   /** ID of the dashboard tile to delete. Use dashboard-get to look up tile IDs. */
   tile_id: number;
 }
-const DeleteDashboardTileRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<DeleteDashboardTileRequest>;
-
 export interface DeleteDashboardTileResponse {}
-const DeleteDashboardTileResponse =
-  DashboardsDestroyResponse as any as S.Schema<DeleteDashboardTileResponse>;
-
 export type GetDashboardRequestFormat = "json" | "txt";
-const GetDashboardRequestFormat = S.String;
-
 export interface GetDashboardRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -9098,17 +8755,9 @@ export interface GetDashboardRequest {
   /** Object (or pre-encoded JSON string) to override dashboard variables for this request only (not persisted). Format: {"<variable_id>": {"code_name": "<code_name>", "variableId": "<variable_id>", "value": <new_value>}}. Each entry must include `code_name` -- partial entries are silently dropped. The simplest workflow is to call `dashboard-get` first, copy the matching entry from the response, and mutate `value`. Top-level keys replace; nested values are not deep-merged. Ignored when accessed via a sharing token. */
   variables_override?: string;
 }
-const GetDashboardRequest = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<GetDashboardRequest>;
-
 export type GetDashboardsRunInsightRequestFormat = "json" | "txt";
-const GetDashboardsRunInsightRequestFormat = S.String;
-
 export type GetDashboardsRunInsightRequestOutputFormat = "json" | "optimized";
-const GetDashboardsRunInsightRequestOutputFormat = S.String;
-
 export type GetDashboardsRunInsightRequestRefresh = "blocking" | "force_blocking" | "force_cache";
-const GetDashboardsRunInsightRequestRefresh = S.String;
-
 export interface GetDashboardsRunInsightRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -9128,11 +8777,6 @@ export interface GetDashboardsRunInsightRequest {
   /** Object (or pre-encoded JSON string) to override dashboard variables for this request only (not persisted). Format: {"<variable_id>": {"code_name": "<code_name>", "variableId": "<variable_id>", "value": <new_value>}}. Each entry must include `code_name` -- partial entries are silently dropped. The simplest workflow is to call `dashboard-get` first, copy the matching entry from the response, and mutate `value`. Top-level keys replace; nested values are not deep-merged. Ignored when accessed via a sharing token. */
   variables_override?: string;
 }
-const GetDashboardsRunInsightRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<GetDashboardsRunInsightRequest>;
-
 /** InsightSerializer restricted to identifiers, the result, and the warnings about that result. */
 export interface InsightResult {
   id?: number;
@@ -9143,31 +8787,18 @@ export interface InsightResult {
   /** Warnings from the run that produced these results. A `warehouse_sync` warning means the query read a data warehouse table whose sync failed, is paused, or is overdue, so the results can be out of date. Reflects the sync state when the results were computed. Null for shared insights. */
   warnings?: InsightResultWarnings | null;
 }
-const InsightResult = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<InsightResult>;
-
 /** DashboardTileSerializer restricted to tile id + insight result fields. */
 export interface DashboardTileResult {
   id?: number;
   insight?: InsightResult;
 }
-const DashboardTileResult = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<DashboardTileResult>;
-
 /** Results for each insight tile on the dashboard. */
 export type RunInsightsResponseResultsList = Array<DashboardTileResult>;
-const RunInsightsResponseResultsList = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<RunInsightsResponseResultsList>;
-
 export interface RunInsightsResponse {
   /** Results for each insight tile on the dashboard. */
   results?: RunInsightsResponseResultsList;
 }
-const RunInsightsResponse = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<RunInsightsResponse>;
-
 export type GetDashboardsRunWidgetRequestFormat = "json" | "txt";
-const GetDashboardsRunWidgetRequestFormat = S.String;
-
 export interface GetDashboardsRunWidgetRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -9177,11 +8808,6 @@ export interface GetDashboardsRunWidgetRequest {
   /** Comma-separated dashboard tile IDs to run widgets for. */
   tile_ids: string;
 }
-const GetDashboardsRunWidgetRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<GetDashboardsRunWidgetRequest>;
-
 export interface DashboardWidgetRunResult {
   /** Dashboard tile ID for this widget result. */
   tile_id: number;
@@ -9192,30 +8818,14 @@ export interface DashboardWidgetRunResult {
   /** Error message when the widget could not be run. */
   error: string | null;
 }
-const DashboardWidgetRunResult = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<DashboardWidgetRunResult>;
-
 /** Per-tile widget run results. */
 export type RunWidgetsResponseResultsList = Array<DashboardWidgetRunResult>;
-const RunWidgetsResponseResultsList = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<RunWidgetsResponseResultsList>;
-
 export interface RunWidgetsResponse {
   /** Per-tile widget run results. */
   results: RunWidgetsResponseResultsList;
 }
-const RunWidgetsResponse = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<RunWidgetsResponse>;
-
 export type GetDashboardsStreamTileRequestFormat = "json" | "txt";
-const GetDashboardsStreamTileRequestFormat = S.String;
-
 export type GetDashboardsStreamTileRequestLayoutSize = "sm" | "xs";
-const GetDashboardsStreamTileRequestLayoutSize = S.String;
-
 export interface GetDashboardsStreamTileRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -9229,30 +8839,13 @@ export interface GetDashboardsStreamTileRequest {
   /** Object (or pre-encoded JSON string) to override dashboard variables for this request only (not persisted). Format: {"<variable_id>": {"code_name": "<code_name>", "variableId": "<variable_id>", "value": <new_value>}}. Each entry must include `code_name` -- partial entries are silently dropped. The simplest workflow is to call `dashboard-get` first, copy the matching entry from the response, and mutate `value`. Top-level keys replace; nested values are not deep-merged. Ignored when accessed via a sharing token. */
   variables_override?: string;
 }
-const GetDashboardsStreamTileRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<GetDashboardsStreamTileRequest>;
-
 export interface GetDashboardsStreamTileResponse {}
-const GetDashboardsStreamTileResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<GetDashboardsStreamTileResponse>;
-
 export type GetDashboardsWidgetCatalogRequestFormat = "json" | "txt";
-const GetDashboardsWidgetCatalogRequestFormat = S.String;
-
 export interface GetDashboardsWidgetCatalogRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   format?: GetDashboardsWidgetCatalogRequestFormat | (string & {});
 }
-const GetDashboardsWidgetCatalogRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<GetDashboardsWidgetCatalogRequest>;
-
 export interface NotebookWidgetCatalogEntryOpenApi {
   widget_type: NotebookWidgetTypeEnum;
   group_id: string;
@@ -9371,30 +8964,14 @@ export type WidgetCatalogEntry =
   | SurveyResultsWidgetCatalogEntryOpenApi
   | LogsListWidgetCatalogEntryOpenApi
   | ConversationsRecentTicketsWidgetCatalogEntryOpenApi;
-const WidgetCatalogEntry = S.Unknown as any as S.Schema<WidgetCatalogEntry>;
-
 /** Registered dashboard widget types available when dashboard-widgets is enabled. */
 export type WidgetCatalogResponseResultsList = Array<WidgetCatalogEntry>;
-const WidgetCatalogResponseResultsList = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<WidgetCatalogResponseResultsList>;
-
 export interface WidgetCatalogResponse {
   /** Registered dashboard widget types available when dashboard-widgets is enabled. */
   results: WidgetCatalogResponseResultsList;
 }
-const WidgetCatalogResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<WidgetCatalogResponse>;
-
 export type ListDashboardsRequestFormat = "json" | "txt";
-const ListDashboardsRequestFormat = S.String;
-
 export type ListDashboardsRequestOrdering = "-last_viewed_at";
-const ListDashboardsRequestOrdering = S.String;
-
 export interface ListDashboardsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -9414,15 +8991,7 @@ export interface ListDashboardsRequest {
   /** Optional. Match against dashboard `name`, `description`, and tag names. Returns exact (case-insensitive substring) matches only; if no exact match exists, returns similar (fuzzy trigram -- typos, transpositions, prefix-as-you-type) matches instead. Results are then ordered by relevance, then pinned status, then name; each result's `search_match_type` is `exact` or `similar`. When omitted, dashboards are ordered by pinned status then alphabetical name. Capped at 200 characters; longer queries return a 400 error. */
   search?: string;
 }
-const ListDashboardsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<ListDashboardsRequest>;
-
 export type DashboardBasicTagsList = Array<unknown>;
-const DashboardBasicTagsList =
-  CreateDashboardRequestTagsList as any as S.Schema<DashboardBasicTagsList>;
-
 /** Serializer mixin that handles tags for objects. */
 export interface DashboardBasic {
   id?: number;
@@ -9458,86 +9027,33 @@ export interface DashboardBasic {
   /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`. */
   search_match_type?: SearchMatchTypeEnum | null;
 }
-const DashboardBasic = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<DashboardBasic>;
-
 export type PaginatedDashboardBasicListResultsList = Array<DashboardBasic>;
-const PaginatedDashboardBasicListResultsList = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<PaginatedDashboardBasicListResultsList>;
-
 export interface PaginatedDashboardBasicList {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedDashboardBasicListResultsList;
 }
-const PaginatedDashboardBasicList = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<PaginatedDashboardBasicList>;
-
 export interface ListDashboardsCollaboratorsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   dashboard_id: number;
 }
-const ListDashboardsCollaboratorsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<ListDashboardsCollaboratorsRequest>;
-
 export type ListDashboardsCollaboratorsResponseBodyList = Array<DashboardCollaboratorOutput>;
-const ListDashboardsCollaboratorsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<ListDashboardsCollaboratorsResponseBodyList>;
-
 export type ListDashboardsCollaboratorsResponse = ListDashboardsCollaboratorsResponseBodyList;
-const ListDashboardsCollaboratorsResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<ListDashboardsCollaboratorsResponse>;
-
 export interface ListDashboardsSharingRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   dashboard_id: number;
 }
-const ListDashboardsSharingRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<ListDashboardsSharingRequest>;
-
 export type ListDashboardsSharingResponseBodyList = Array<SharingConfiguration>;
-const ListDashboardsSharingResponseBodyList = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<ListDashboardsSharingResponseBodyList>;
-
 export type ListDashboardsSharingResponse = ListDashboardsSharingResponseBodyList;
-const ListDashboardsSharingResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<ListDashboardsSharingResponse>;
-
 export type UpdateDashboardRequestFormat = "json" | "txt";
-const UpdateDashboardRequestFormat = S.String;
-
 /** Colors pinned to specific breakdown values across the dashboard's tiles. A list of entries, not an object keyed by breakdown value. Send an empty list to clear them. */
 export type UpdateDashboardRequestBreakdownColorsList = Array<BreakdownColorConfig>;
-const UpdateDashboardRequestBreakdownColorsList =
-  CreateDashboardRequestBreakdownColorsList as any as S.Schema<UpdateDashboardRequestBreakdownColorsList>;
-
 export type UpdateDashboardRequestTagsList = Array<unknown>;
-const UpdateDashboardRequestTagsList =
-  CreateDashboardRequestTagsList as any as S.Schema<UpdateDashboardRequestTagsList>;
-
 /** List of quick filter IDs associated with this dashboard */
 export type UpdateDashboardRequestQuickFilterIdsList = Array<string>;
-const UpdateDashboardRequestQuickFilterIdsList =
-  CreateDashboardRequestQuickFilterIdsList as any as S.Schema<UpdateDashboardRequestQuickFilterIdsList>;
-
 export interface UpdateDashboardRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -9572,14 +9088,7 @@ export interface UpdateDashboardRequest {
   delete_insights?: boolean;
   _create_in_folder?: string;
 }
-const UpdateDashboardRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<UpdateDashboardRequest>;
-
 export type UpdateDashboardsPartialRequestFormat = "json" | "txt";
-const UpdateDashboardsPartialRequestFormat = S.String;
-
 /** OpenAPI-only shape for a dashboard's filters object (agents/MCP). Documents the dashboard-level filters that act as the single source of truth for the dashboard's tiles. Runtime persistence reads the raw ``filters`` dict from the request body, so extra keys are accepted, but these are the ones agents should set. */
 export interface DashboardFiltersOpenApi {
   /** Dashboard-level start of the date range, e.g. '-30d', '-7d', or an ISO date. Applies to all tiles. */
@@ -9589,25 +9098,11 @@ export interface DashboardFiltersOpenApi {
   /** Dashboard-level property filters applied to every tile (PostHog property filter group). */
   properties?: unknown;
 }
-const DashboardFiltersOpenApi = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<DashboardFiltersOpenApi>;
-
 /** Colors pinned to specific breakdown values across the dashboard's tiles. A list of entries, not an object keyed by breakdown value. Send an empty list to clear them. */
 export type UpdateDashboardsPartialRequestBreakdownColorsList = Array<BreakdownColorConfig>;
-const UpdateDashboardsPartialRequestBreakdownColorsList =
-  CreateDashboardRequestBreakdownColorsList as any as S.Schema<UpdateDashboardsPartialRequestBreakdownColorsList>;
-
 export type UpdateDashboardsPartialRequestTagsList = Array<string>;
-const UpdateDashboardsPartialRequestTagsList =
-  CreateDashboardRequestQuickFilterIdsList as any as S.Schema<UpdateDashboardsPartialRequestTagsList>;
-
 /** List of quick filter IDs associated with this dashboard. */
 export type UpdateDashboardsPartialRequestQuickFilterIdsList = Array<string>;
-const UpdateDashboardsPartialRequestQuickFilterIdsList =
-  CreateDashboardRequestQuickFilterIdsList as any as S.Schema<UpdateDashboardsPartialRequestQuickFilterIdsList>;
-
 export interface DashboardPatchTileLayoutBoxOpenApi {
   /** Column position in the dashboard grid (0-indexed). */
   x: number;
@@ -9618,22 +9113,12 @@ export interface DashboardPatchTileLayoutBoxOpenApi {
   /** Height in grid rows. */
   h: number;
 }
-const DashboardPatchTileLayoutBoxOpenApi = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<DashboardPatchTileLayoutBoxOpenApi>;
-
 export interface DashboardPatchTileLayoutsOpenApi {
   /** Layout for the standard (desktop) breakpoint. The grid is 12 columns wide. A write replaces the tile's whole layout and the dashboard reads desktop placement from this box, so send it whenever you send layouts. */
   sm: DashboardPatchTileLayoutBoxOpenApi;
   /** Layout for the small (mobile) breakpoint, on a 1-column grid. The dashboard derives this layout from the sm order and heights, so a stored xs box does not change what renders. */
   xs?: DashboardPatchTileLayoutBoxOpenApi;
 }
-const DashboardPatchTileLayoutsOpenApi = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<DashboardPatchTileLayoutsOpenApi>;
-
 /** * `activity_events_list` - activity_events_list * `conversations_recent_tickets` - conversations_recent_tickets * `error_tracking_list` - error_tracking_list * `experiment_results` - experiment_results * `experiments_list` - experiments_list * `logs_list` - logs_list * `notebook_widget` - notebook_widget * `session_replay_list` - session_replay_list * `survey_results` - survey_results */
 export type DashboardPatchWidgetOpenApiWidgetTypeEnum =
   | "activity_events_list"
@@ -9645,8 +9130,6 @@ export type DashboardPatchWidgetOpenApiWidgetTypeEnum =
   | "notebook_widget"
   | "session_replay_list"
   | "survey_results";
-const DashboardPatchWidgetOpenApiWidgetTypeEnum = S.String;
-
 export interface DashboardPatchWidgetOpenApi {
   /** Existing widget row ID when updating a widget tile via dashboard PATCH. */
   id?: string;
@@ -9659,11 +9142,6 @@ export interface DashboardPatchWidgetOpenApi {
   /** Optional markdown description shown when show_description is enabled. */
   description?: string;
 }
-const DashboardPatchWidgetOpenApi = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<DashboardPatchWidgetOpenApi>;
-
 export interface DashboardPatchTileOpenApi {
   /** Dashboard tile ID to update. */
   id?: number;
@@ -9672,18 +9150,8 @@ export interface DashboardPatchTileOpenApi {
   /** Nested widget row updates. */
   widget?: DashboardPatchWidgetOpenApi;
 }
-const DashboardPatchTileOpenApi = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<DashboardPatchTileOpenApi>;
-
 /** Dashboard tiles to update, each identified by its tile id. Any tile type accepts `layouts` to set its grid position and size. Widget tiles also accept nested widget.config patches. */
 export type UpdateDashboardsPartialRequestTilesList = Array<DashboardPatchTileOpenApi>;
-const UpdateDashboardsPartialRequestTilesList = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<UpdateDashboardsPartialRequestTilesList>;
-
 export interface UpdateDashboardsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -9719,14 +9187,7 @@ export interface UpdateDashboardsPartialRequest {
   /** When deleting, also delete insights that are only on this dashboard. */
   delete_insights?: boolean;
 }
-const UpdateDashboardsPartialRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<UpdateDashboardsPartialRequest>;
-
 export type UpdateDashboardWidgetsBatchRequestFormat = "json" | "txt";
-const UpdateDashboardWidgetsBatchRequestFormat = S.String;
-
 export interface NotebookWidgetUpdateRequestOpenApi {
   /** ID of the widget tile to update. Use dashboard-get to look up widget tile IDs. */
   tile_id: number;
@@ -9836,15 +9297,8 @@ export type UpdateDashboardWidgetRequest =
   | SurveyResultsWidgetUpdateRequestOpenApi
   | LogsListWidgetUpdateRequestOpenApi
   | ConversationsRecentTicketsWidgetUpdateRequestOpenApi;
-const UpdateDashboardWidgetRequest = S.Unknown as any as S.Schema<UpdateDashboardWidgetRequest>;
-
 /** Widget tiles to update atomically, each identified by its tile_id. config shape is per widget_type; see dashboard-widget-catalog-list for per-type config_schema (1-10 per request). */
 export type UpdateDashboardWidgetsBatchRequestWidgetsList = Array<UpdateDashboardWidgetRequest>;
-const UpdateDashboardWidgetsBatchRequestWidgetsList = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<UpdateDashboardWidgetsBatchRequestWidgetsList>;
-
 export interface UpdateDashboardWidgetsBatchRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -9854,20 +9308,12 @@ export interface UpdateDashboardWidgetsBatchRequest {
   /** Widget tiles to update atomically, each identified by its tile_id. config shape is per widget_type; see dashboard-widget-catalog-list for per-type config_schema (1-10 per request). */
   widgets?: UpdateDashboardWidgetsBatchRequestWidgetsList;
 }
-const UpdateDashboardWidgetsBatchRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<UpdateDashboardWidgetsBatchRequest>;
-
 /** Updated dashboard widget tiles in request order. */
 export type UpdateDashboardWidgetsBatchResponseOutputTilesList = Array<DashboardTileOutput>;
 export interface UpdateDashboardWidgetsBatchResponseOutput {
   /** Updated dashboard widget tiles in request order. */
   tiles: UpdateDashboardWidgetsBatchResponseOutputTilesList;
 }
-const UpdateDashboardWidgetsBatchResponseOutput =
-  AddDashboardWidgetsBatchResponseOutput as any as S.Schema<UpdateDashboardWidgetsBatchResponseOutput>;
-
 export type CreateDashboardError = BadRequest | Forbidden | NotFound | PosthogOpError;
 export const createDashboard: API.OperationMethod<
   CreateDashboardRequest,
@@ -9875,8 +9321,8 @@ export const createDashboard: API.OperationMethod<
   CreateDashboardError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDashboardRequest,
-  output: DashboardOutput,
+  input: __S(4, __c0, 4) as any as S.Schema<CreateDashboardRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<DashboardOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9889,8 +9335,8 @@ export const createDashboardsCollaborator: API.OperationMethod<
   CreateDashboardsCollaboratorError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDashboardsCollaboratorRequest,
-  output: DashboardCollaboratorOutput,
+  input: __S(10, __c1, 2) as any as S.Schema<CreateDashboardsCollaboratorRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<DashboardCollaboratorOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9903,8 +9349,8 @@ export const createDashboardsReorderTile: API.OperationMethod<
   CreateDashboardsReorderTileError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDashboardsReorderTileRequest,
-  output: DashboardOutput,
+  input: __S(13, __c1, 5) as any as S.Schema<CreateDashboardsReorderTileRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<DashboardOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9922,8 +9368,8 @@ export const createDashboardsSharingPassword: API.OperationMethod<
   CreateDashboardsSharingPasswordError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDashboardsSharingPasswordRequest,
-  output: SharingConfiguration,
+  input: __S(14, __c1, 6) as any as S.Schema<CreateDashboardsSharingPasswordRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<SharingConfiguration>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9937,8 +9383,8 @@ export const createDashboardsWidgetsBatch: API.OperationMethod<
   CreateDashboardsWidgetsBatchError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDashboardsWidgetsBatchRequest,
-  output: AddDashboardWidgetsBatchResponseOutput,
+  input: __S(21, __c2, 5) as any as S.Schema<CreateDashboardsWidgetsBatchRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<AddDashboardWidgetsBatchResponseOutput>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9951,8 +9397,8 @@ export const dashboardsCollaboratorsDestroy: API.OperationMethod<
   DashboardsCollaboratorsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DashboardsCollaboratorsDestroyRequest,
-  output: DashboardsCollaboratorsDestroyResponse,
+  input: __S(41, __c5, 1) as any as S.Schema<DashboardsCollaboratorsDestroyRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<DashboardsCollaboratorsDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9966,8 +9412,8 @@ export const dashboardsCopyTileCreate: API.OperationMethod<
   DashboardsCopyTileCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DashboardsCopyTileCreateRequest,
-  output: DashboardOutput,
+  input: __S(43, __c5, 3) as any as S.Schema<DashboardsCopyTileCreateRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<DashboardOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9981,8 +9427,8 @@ export const dashboardsCreateTextTileCreate: API.OperationMethod<
   DashboardsCreateTextTileCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DashboardsCreateTextTileCreateRequest,
-  output: DashboardTileOutput,
+  input: __S(44, __c5, 4) as any as S.Schema<DashboardsCreateTextTileCreateRequest>,
+  output: __S(38, __c4, 6) as any as S.Schema<DashboardTileOutput>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9996,8 +9442,8 @@ export const dashboardsDestroy: API.OperationMethod<
   DashboardsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DashboardsDestroyRequest,
-  output: DashboardsDestroyResponse,
+  input: __S(45, __c5, 5) as any as S.Schema<DashboardsDestroyRequest>,
+  output: __S(46, __c5, 6) as any as S.Schema<DashboardsDestroyResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -10010,8 +9456,8 @@ export const dashboardsMoveTileCreate: API.OperationMethod<
   DashboardsMoveTileCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DashboardsMoveTileCreateRequest,
-  output: DashboardOutput,
+  input: __S(48, __c6, 0) as any as S.Schema<DashboardsMoveTileCreateRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<DashboardOutput>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -10025,8 +9471,8 @@ export const dashboardsSharingPasswordsDestroy: API.OperationMethod<
   DashboardsSharingPasswordsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DashboardsSharingPasswordsDestroyRequest,
-  output: DashboardsSharingPasswordsDestroyResponse,
+  input: __S(49, __c6, 1) as any as S.Schema<DashboardsSharingPasswordsDestroyRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<DashboardsSharingPasswordsDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -10043,8 +9489,8 @@ export const dashboardsSharingRefreshCreate: API.OperationMethod<
   DashboardsSharingRefreshCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DashboardsSharingRefreshCreateRequest,
-  output: SharingConfiguration,
+  input: __S(50, __c6, 2) as any as S.Schema<DashboardsSharingRefreshCreateRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<SharingConfiguration>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -10058,8 +9504,8 @@ export const dashboardsSubscribeNudgeCreate: API.OperationMethod<
   DashboardsSubscribeNudgeCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DashboardsSubscribeNudgeCreateRequest,
-  output: DashboardSubscribeNudgeResponse,
+  input: __S(51, __c6, 3) as any as S.Schema<DashboardsSubscribeNudgeCreateRequest>,
+  output: __S(52, __c6, 4) as any as S.Schema<DashboardSubscribeNudgeResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -10073,8 +9519,8 @@ export const dashboardsUpdateTextTileCreate: API.OperationMethod<
   DashboardsUpdateTextTileCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DashboardsUpdateTextTileCreateRequest,
-  output: DashboardTileOutput,
+  input: __S(53, __c6, 5) as any as S.Schema<DashboardsUpdateTextTileCreateRequest>,
+  output: __S(38, __c4, 6) as any as S.Schema<DashboardTileOutput>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -10088,8 +9534,8 @@ export const deleteDashboardTile: API.OperationMethod<
   DeleteDashboardTileError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDashboardTileRequest,
-  output: DeleteDashboardTileResponse,
+  input: __S(54, __c6, 6) as any as S.Schema<DeleteDashboardTileRequest>,
+  output: __S(46, __c5, 6) as any as S.Schema<DeleteDashboardTileResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -10102,8 +9548,8 @@ export const getDashboard: API.OperationMethod<
   GetDashboardError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDashboardRequest,
-  output: DashboardOutput,
+  input: __S(55, __c6, 7) as any as S.Schema<GetDashboardRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<DashboardOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -10117,8 +9563,8 @@ export const getDashboardsRunInsight: API.OperationMethod<
   GetDashboardsRunInsightError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDashboardsRunInsightRequest,
-  output: RunInsightsResponse,
+  input: __S(56, __c7, 0) as any as S.Schema<GetDashboardsRunInsightRequest>,
+  output: __S(60, __c7, 4) as any as S.Schema<RunInsightsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -10131,8 +9577,8 @@ export const getDashboardsRunWidget: API.OperationMethod<
   GetDashboardsRunWidgetError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDashboardsRunWidgetRequest,
-  output: RunWidgetsResponse,
+  input: __S(61, __c7, 5) as any as S.Schema<GetDashboardsRunWidgetRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<RunWidgetsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -10146,8 +9592,8 @@ export const getDashboardsStreamTile: API.OperationMethod<
   GetDashboardsStreamTileError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDashboardsStreamTileRequest,
-  output: GetDashboardsStreamTileResponse,
+  input: __S(65, __c8, 1) as any as S.Schema<GetDashboardsStreamTileRequest>,
+  output: __S(66, __c8, 2) as any as S.Schema<GetDashboardsStreamTileResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -10161,8 +9607,8 @@ export const getDashboardsWidgetCatalog: API.OperationMethod<
   GetDashboardsWidgetCatalogError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDashboardsWidgetCatalogRequest,
-  output: WidgetCatalogResponse,
+  input: __S(67, __c8, 3) as any as S.Schema<GetDashboardsWidgetCatalogRequest>,
+  output: __S(69, __c8, 5) as any as S.Schema<WidgetCatalogResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -10175,8 +9621,8 @@ export const listDashboards: API.OperationMethod<
   ListDashboardsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDashboardsRequest,
-  output: PaginatedDashboardBasicList,
+  input: __S(70, __c8, 6) as any as S.Schema<ListDashboardsRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<PaginatedDashboardBasicList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -10189,8 +9635,8 @@ export const listDashboardsCollaborators: API.OperationMethod<
   ListDashboardsCollaboratorsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDashboardsCollaboratorsRequest,
-  output: ListDashboardsCollaboratorsResponse,
+  input: __S(74, __c9, 2) as any as S.Schema<ListDashboardsCollaboratorsRequest>,
+  output: __S(76, __c9, 4) as any as S.Schema<ListDashboardsCollaboratorsResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -10203,8 +9649,8 @@ export const listDashboardsSharing: API.OperationMethod<
   ListDashboardsSharingError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDashboardsSharingRequest,
-  output: ListDashboardsSharingResponse,
+  input: __S(77, __c9, 5) as any as S.Schema<ListDashboardsSharingRequest>,
+  output: __S(79, __c9, 7) as any as S.Schema<ListDashboardsSharingResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -10217,8 +9663,8 @@ export const updateDashboard: API.OperationMethod<
   UpdateDashboardError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDashboardRequest,
-  output: DashboardOutput,
+  input: __S(80, __c10, 0) as any as S.Schema<UpdateDashboardRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<DashboardOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -10231,8 +9677,8 @@ export const updateDashboardsPartial: API.OperationMethod<
   UpdateDashboardsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDashboardsPartialRequest,
-  output: DashboardOutput,
+  input: __S(87, __c10, 7) as any as S.Schema<UpdateDashboardsPartialRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<DashboardOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -10246,8 +9692,8 @@ export const updateDashboardWidgetsBatch: API.OperationMethod<
   UpdateDashboardWidgetsBatchError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDashboardWidgetsBatchRequest,
-  output: UpdateDashboardWidgetsBatchResponseOutput,
+  input: __S(89, __c11, 1) as any as S.Schema<UpdateDashboardWidgetsBatchRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<UpdateDashboardWidgetsBatchResponseOutput>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -10263,11 +9709,11 @@ function __c0(j: number): any {
           colorToken: S.NullOr(S.String),
           breakdownType: S.optional(S.NullOr(S.String)),
           breakdownProperty: S.optional(S.NullOr(S.String)),
-          source: S.optional(S.NullOr(BreakdownColorConfigSourceEnum)),
+          source: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "BreakdownColorConfig" });
     case 1:
-      return S.Array(BreakdownColorConfig);
+      return S.Array(__S(0, __c0, 0));
     case 2:
       return S.Array(S.Unknown);
     case 3:
@@ -10276,21 +9722,21 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          format: S.optional(CreateDashboardRequestFormat.pipe(T.Query())),
+          format: S.optional(S.String.pipe(T.Query())),
           include_dashboards: S.optional(S.Boolean.pipe(T.Query())),
           name: S.optional(S.NullOr(S.String)),
           description: S.optional(S.String),
           pinned: S.optional(S.Boolean),
           last_accessed_at: S.optional(S.NullOr(S.String)),
           deleted: S.optional(S.Boolean),
-          breakdown_colors: S.optional(S.NullOr(CreateDashboardRequestBreakdownColorsList)),
+          breakdown_colors: S.optional(S.NullOr(__S(1, __c0, 1))),
           data_color_theme_id: S.optional(S.NullOr(S.Number)),
-          tags: S.optional(CreateDashboardRequestTagsList),
-          restriction_level: S.optional(RestrictionLevelEnum),
+          tags: S.optional(__S(2, __c0, 2)),
+          restriction_level: S.optional(S.Number),
           last_refresh: S.optional(S.NullOr(S.String)),
-          quick_filter_ids: S.optional(S.NullOr(CreateDashboardRequestQuickFilterIdsList)),
-          grid_spacing: S.optional(TileSpacingEnum),
-          layout_compaction: S.optional(LayoutCompactionEnum),
+          quick_filter_ids: S.optional(S.NullOr(__S(3, __c0, 3))),
+          grid_spacing: S.optional(S.String),
+          layout_compaction: S.optional(S.String),
           use_template: S.optional(S.String),
           use_dashboard: S.optional(S.NullOr(S.Number)),
           delete_insights: S.optional(S.Boolean),
@@ -10311,15 +9757,15 @@ function __c0(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
-          role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
+          hedgehog_config: S.optional(S.NullOr(__S(5, __c0, 5))),
+          role_at_organization: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "UserBasic" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          tile_spacing: S.optional(TileSpacingEnum),
-          layout_compaction: S.optional(LayoutCompactionEnum),
+          tile_spacing: S.optional(S.String),
+          layout_compaction: S.optional(S.String),
         }),
       ).annotate({ identifier: "DashboardCustomization" });
   }
@@ -10327,7 +9773,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DashboardOutputTilesItemMap);
+      return S.Array(__S(5, __c0, 5));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10336,7 +9782,7 @@ function __c1(j: number): any {
           description: S.optional(S.String),
           pinned: S.optional(S.Boolean),
           created_at: S.optional(S.String),
-          created_by: S.optional(S.NullOr(UserBasic)),
+          created_by: S.optional(S.NullOr(__S(6, __c0, 6))),
           last_accessed_at: S.optional(S.NullOr(S.String)),
           last_viewed_at: S.optional(S.NullOr(S.String)),
           folder: S.optional(S.NullOr(S.String)),
@@ -10344,24 +9790,24 @@ function __c1(j: number): any {
           file_system_path: S.optional(S.NullOr(S.String)),
           is_shared: S.optional(S.Boolean),
           deleted: S.optional(S.Boolean),
-          creation_mode: S.optional(DashboardCreationModeEnum),
-          filters: S.optional(DashboardOutputFiltersMap),
-          variables: S.optional(S.NullOr(DashboardOutputVariablesMap)),
-          breakdown_colors: S.optional(S.NullOr(DashboardOutputBreakdownColorsList)),
+          creation_mode: S.optional(S.String),
+          filters: S.optional(__S(5, __c0, 5)),
+          variables: S.optional(S.NullOr(__S(5, __c0, 5))),
+          breakdown_colors: S.optional(S.NullOr(__S(1, __c0, 1))),
           data_color_theme_id: S.optional(S.NullOr(S.Number)),
-          tags: S.optional(DashboardOutputTagsList),
-          restriction_level: S.optional(RestrictionLevelEnum),
-          effective_restriction_level: S.optional(RestrictionLevelEnum),
-          effective_privilege_level: S.optional(PrivilegeLevelEnum),
+          tags: S.optional(__S(2, __c0, 2)),
+          restriction_level: S.optional(S.Number),
+          effective_restriction_level: S.optional(S.Number),
+          effective_privilege_level: S.optional(S.Number),
           user_access_level: S.optional(S.NullOr(S.String)),
           access_control_version: S.optional(S.String),
           last_refresh: S.optional(S.NullOr(S.String)),
-          persisted_filters: S.optional(S.NullOr(DashboardOutputPersistedFiltersMap)),
-          persisted_variables: S.optional(S.NullOr(DashboardOutputPersistedVariablesMap)),
+          persisted_filters: S.optional(S.NullOr(__S(5, __c0, 5))),
+          persisted_variables: S.optional(S.NullOr(__S(5, __c0, 5))),
           team_id: S.optional(S.Number),
-          quick_filter_ids: S.optional(S.NullOr(DashboardOutputQuickFilterIdsList)),
-          customization: S.optional(DashboardCustomization),
-          tiles: S.optional(S.NullOr(DashboardOutputTilesList)),
+          quick_filter_ids: S.optional(S.NullOr(__S(3, __c0, 3))),
+          customization: S.optional(__S(7, __c0, 7)),
+          tiles: S.optional(S.NullOr(__S(8, __c1, 0))),
         }),
       ).annotate({ identifier: "DashboardOutput" });
     case 2:
@@ -10369,7 +9815,7 @@ function __c1(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           dashboard_id: S.Number.pipe(T.Label()),
-          level: S.optional(RestrictionLevelEnum),
+          level: S.optional(S.Number),
           user_uuid: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -10386,8 +9832,8 @@ function __c1(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           dashboard_id: S.optional(S.Number),
-          user: S.optional(S.NullOr(UserBasic)),
-          level: S.optional(RestrictionLevelEnum),
+          user: S.optional(S.NullOr(__S(6, __c0, 6))),
+          level: S.optional(S.Number),
           added_at: S.optional(S.String),
           updated_at: S.optional(S.String),
         }),
@@ -10401,9 +9847,9 @@ function __c1(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
-          format: S.optional(CreateDashboardsReorderTileRequestFormat.pipe(T.Query())),
-          tile_order: S.optional(CreateDashboardsReorderTileRequestTileOrderList),
-          layout: S.optional(LayoutEnum),
+          format: S.optional(S.String.pipe(T.Query())),
+          tile_order: S.optional(__S(12, __c1, 4)),
+          layout: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10447,7 +9893,7 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SharePassword);
+      return S.Array(__S(15, __c1, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10456,7 +9902,7 @@ function __c2(j: number): any {
           access_token: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
           settings: S.optional(S.Unknown),
           password_required: S.optional(S.Boolean),
-          share_passwords: S.optional(SharingConfigurationSharePasswordsList),
+          share_passwords: S.optional(__S(16, __c2, 0)),
           user_access_level: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "SharingConfiguration" });
@@ -10472,19 +9918,19 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          sm: S.optional(TileLayoutBoxOpenApi),
-          xs: S.optional(TileLayoutBoxOpenApi),
+          sm: S.optional(__S(18, __c2, 2)),
+          xs: S.optional(__S(18, __c2, 2)),
         }),
       ).annotate({ identifier: "TileLayoutsOpenApi" });
     case 4:
-      return S.Array(AddDashboardWidgetRequest);
+      return S.Array(S.Unknown);
     case 5:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
-          format: S.optional(CreateDashboardsWidgetsBatchRequestFormat.pipe(T.Query())),
-          widgets: CreateDashboardsWidgetsBatchRequestWidgetsList,
+          format: S.optional(S.String.pipe(T.Query())),
+          widgets: __S(20, __c2, 4),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10501,12 +9947,12 @@ function __c2(j: number): any {
           group_type_index: S.optional(S.NullOr(S.Number)),
           histogram_bin_count: S.optional(S.NullOr(S.Number)),
           normalize_url: S.optional(S.NullOr(S.Boolean)),
-          property: S.optional(BreakdownProperty),
-          type: S.optional(S.NullOr(MultipleBreakdownType)),
+          property: S.optional(S.Unknown),
+          type: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "Breakdown" });
     case 7:
-      return S.Array(Breakdown);
+      return S.Array(__S(22, __c2, 6));
   }
 }
 function __c3(j: number): any {
@@ -10514,15 +9960,15 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          breakdown: S.optional(S.NullOr(BreakdownFilterBreakdown)),
+          breakdown: S.optional(S.NullOr(S.Unknown)),
           breakdown_group_type_index: S.optional(S.NullOr(S.Number)),
           breakdown_hide_other_aggregation: S.optional(S.NullOr(S.Boolean)),
           breakdown_histogram_bin_count: S.optional(S.NullOr(S.Number)),
           breakdown_limit: S.optional(S.NullOr(S.Number)),
           breakdown_normalize_url: S.optional(S.NullOr(S.Boolean)),
           breakdown_path_cleaning: S.optional(S.NullOr(S.Boolean)),
-          breakdown_type: S.optional(S.NullOr(BreakdownType)),
-          breakdowns: S.optional(S.NullOr(BreakdownFilterBreakdownsList)),
+          breakdown_type: S.optional(S.NullOr(S.String)),
+          breakdowns: S.optional(S.NullOr(__S(23, __c2, 7))),
         }),
       ).annotate({ identifier: "BreakdownFilter" });
     case 1:
@@ -10543,25 +9989,25 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "DashboardTileBasic" });
     case 3:
-      return S.Array(DashboardTileBasic);
+      return S.Array(__S(26, __c3, 2));
     case 4:
-      return S.Array(InsightResultWarningsItem);
+      return S.Array(S.Unknown);
     case 5:
-      return S.Array(DashboardFilterPropertiesItem);
+      return S.Array(S.Unknown);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          breakdown_filter: S.optional(S.NullOr(BreakdownFilter)),
+          breakdown_filter: S.optional(S.NullOr(__S(24, __c3, 0))),
           date_from: S.optional(S.NullOr(S.String)),
           date_to: S.optional(S.NullOr(S.String)),
           explicitDate: S.optional(S.NullOr(S.Boolean)),
           filterTestAccounts: S.optional(S.NullOr(S.Boolean)),
-          interval: S.optional(S.NullOr(IntervalType)),
-          properties: S.optional(S.NullOr(DashboardFilterPropertiesList)),
+          interval: S.optional(S.NullOr(S.String)),
+          properties: S.optional(S.NullOr(__S(29, __c3, 5))),
         }),
       ).annotate({ identifier: "DashboardFilter" });
     case 7:
-      return S.Array(TileFiltersPropertiesItem);
+      return S.Array(S.Unknown);
   }
 }
 function __c4(j: number): any {
@@ -10569,22 +10015,22 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          breakdown_filter: S.optional(S.NullOr(BreakdownFilter)),
+          breakdown_filter: S.optional(S.NullOr(__S(24, __c3, 0))),
           date_from: S.optional(S.NullOr(S.String)),
           date_to: S.optional(S.NullOr(S.String)),
           explicitDate: S.optional(S.NullOr(S.Boolean)),
           filterTestAccounts: S.optional(S.NullOr(S.Boolean)),
           ignoreDashboardFilters: S.optional(S.NullOr(S.Boolean)),
-          interval: S.optional(S.NullOr(IntervalType)),
-          properties: S.optional(S.NullOr(TileFiltersPropertiesList)),
+          interval: S.optional(S.NullOr(S.String)),
+          properties: S.optional(S.NullOr(__S(31, __c3, 7))),
         }),
       ).annotate({ identifier: "TileFilters" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          dashboard: S.optional(S.NullOr(DashboardFilter)),
-          tile: S.optional(S.NullOr(TileFilters)),
-          overridden_dashboard: S.optional(S.NullOr(DashboardFilter)),
+          dashboard: S.optional(S.NullOr(__S(30, __c3, 6))),
+          tile: S.optional(S.NullOr(__S(32, __c4, 0))),
+          overridden_dashboard: S.optional(S.NullOr(__S(30, __c3, 6))),
         }),
       ).annotate({
         identifier: "InsightFilterOverrideContext",
@@ -10596,52 +10042,52 @@ function __c4(j: number): any {
           short_id: S.optional(S.String),
           name: S.optional(S.NullOr(S.String)),
           derived_name: S.optional(S.NullOr(S.String)),
-          query: S.optional(S.NullOr(InsightQuerySchema)),
+          query: S.optional(S.NullOr(S.Unknown)),
           order: S.optional(S.NullOr(S.Number)),
           deleted: S.optional(S.Boolean),
-          dashboards: S.optional(InsightOutputDashboardsList),
-          dashboard_tiles: S.optional(InsightOutputDashboardTilesList),
+          dashboards: S.optional(__S(12, __c1, 4)),
+          dashboard_tiles: S.optional(__S(27, __c3, 3)),
           last_refresh: S.optional(S.NullOr(S.String)),
           cache_target_age: S.optional(S.NullOr(S.String)),
           next_allowed_client_refresh: S.optional(S.NullOr(S.String)),
           result: S.optional(S.Unknown),
           hasMore: S.optional(S.NullOr(S.Boolean)),
-          columns: S.optional(S.NullOr(InsightOutputColumnsList)),
+          columns: S.optional(S.NullOr(__S(3, __c0, 3))),
           created_at: S.optional(S.NullOr(S.String)),
-          created_by: S.optional(S.NullOr(UserBasic)),
+          created_by: S.optional(S.NullOr(__S(6, __c0, 6))),
           description: S.optional(S.NullOr(S.String)),
           updated_at: S.optional(S.String),
-          tags: S.optional(InsightOutputTagsList),
+          tags: S.optional(__S(2, __c0, 2)),
           favorited: S.optional(S.Boolean),
           last_modified_at: S.optional(S.String),
-          last_modified_by: S.optional(S.NullOr(UserBasic)),
+          last_modified_by: S.optional(S.NullOr(__S(6, __c0, 6))),
           is_sample: S.optional(S.Boolean),
-          effective_restriction_level: S.optional(RestrictionLevelEnum),
-          effective_privilege_level: S.optional(PrivilegeLevelEnum),
+          effective_restriction_level: S.optional(S.Number),
+          effective_privilege_level: S.optional(S.Number),
           user_access_level: S.optional(S.NullOr(S.String)),
           timezone: S.optional(S.NullOr(S.String)),
           is_cached: S.optional(S.Boolean),
           query_status: S.optional(S.Unknown),
           hogql: S.optional(S.NullOr(S.String)),
-          types: S.optional(S.NullOr(InsightOutputTypesList)),
-          resolved_date_range: S.optional(S.NullOr(ResolvedDateRangeResponse)),
+          types: S.optional(S.NullOr(__S(2, __c0, 2))),
+          resolved_date_range: S.optional(S.NullOr(__S(25, __c3, 1))),
           query_scan: S.optional(S.Unknown),
-          warnings: S.optional(S.NullOr(InsightResultWarnings)),
-          alerts: S.optional(InsightOutputAlertsList),
-          filter_override_context: S.optional(S.NullOr(InsightFilterOverrideContext)),
+          warnings: S.optional(S.NullOr(__S(28, __c3, 4))),
+          alerts: S.optional(__S(2, __c0, 2)),
+          filter_override_context: S.optional(S.NullOr(__S(33, __c4, 1))),
           last_viewed_at: S.optional(S.NullOr(S.String)),
-          search_match_type: S.optional(S.NullOr(SearchMatchTypeEnum)),
+          search_match_type: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "InsightOutput" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
-          created_by: UserBasic,
-          last_modified_by: UserBasic,
+          created_by: __S(6, __c0, 6),
+          last_modified_by: __S(6, __c0, 6),
           body: S.optional(S.NullOr(S.String)),
           agent_context: S.optional(S.NullOr(S.String)),
-          dashboard_tiles: TextDashboardTilesList,
+          dashboard_tiles: __S(27, __c3, 3),
           last_modified_at: S.String,
           team: S.Number,
         }),
@@ -10650,13 +10096,13 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          created_by: UserBasic,
-          last_modified_by: UserBasic,
+          created_by: __S(6, __c0, 6),
+          last_modified_by: __S(6, __c0, 6),
           url: S.String,
           text: S.String,
-          placement: S.optional(PlacementEnum),
-          dashboard_tiles: ButtonTileDashboardTilesList,
-          style: S.optional(StyleEnum),
+          placement: S.optional(S.String),
+          dashboard_tiles: __S(27, __c3, 3),
+          style: S.optional(S.String),
           last_modified_at: S.String,
           team: S.Number,
         }),
@@ -10665,13 +10111,13 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          created_by: UserBasic,
-          last_modified_by: UserBasic,
+          created_by: __S(6, __c0, 6),
+          last_modified_by: __S(6, __c0, 6),
           widget_type: S.String,
           name: S.optional(S.NullOr(S.String)),
           description: S.optional(S.String),
-          config: S.optional(DashboardWidgetConfig),
-          dashboard_tiles: DashboardWidgetDashboardTilesList,
+          config: S.optional(S.Unknown),
+          dashboard_tiles: __S(27, __c3, 3),
           last_modified_at: S.String,
           team: S.Number,
         }),
@@ -10680,10 +10126,10 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
-          insight: InsightOutput,
-          text: Text,
-          button_tile: ButtonTile,
-          widget: S.optional(S.NullOr(DashboardWidget)),
+          insight: __S(34, __c4, 2),
+          text: __S(35, __c4, 3),
+          button_tile: __S(36, __c4, 4),
+          widget: S.optional(S.NullOr(__S(37, __c4, 5))),
           layouts: S.optional(S.Unknown),
           color: S.optional(S.NullOr(S.String)),
           filters_overrides: S.optional(S.Unknown),
@@ -10692,7 +10138,7 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "DashboardTileOutput" });
     case 7:
-      return S.Array(DashboardTileOutput);
+      return S.Array(__S(38, __c4, 6));
   }
 }
 function __c5(j: number): any {
@@ -10700,7 +10146,7 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          tiles: AddDashboardWidgetsBatchResponseOutputTilesList,
+          tiles: __S(39, __c4, 7),
         }),
       ).annotate({
         identifier: "AddDashboardWidgetsBatchResponseOutput",
@@ -10730,7 +10176,7 @@ function __c5(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
-          format: S.optional(DashboardsCopyTileCreateRequestFormat.pipe(T.Query())),
+          format: S.optional(S.String.pipe(T.Query())),
           fromDashboardId: S.optional(S.Number),
           tileId: S.optional(S.Number),
         }).pipe(
@@ -10748,11 +10194,11 @@ function __c5(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
-          format: S.optional(DashboardsCreateTextTileCreateRequestFormat.pipe(T.Query())),
-          type: S.optional(CreateTextTileRequestTypeEnum),
+          format: S.optional(S.String.pipe(T.Query())),
+          type: S.optional(S.String),
           body: S.String,
           agent_context: S.optional(S.NullOr(S.String)),
-          layouts: S.optional(TileLayouts),
+          layouts: S.optional(__S(19, __c2, 3)),
           color: S.optional(S.NullOr(S.String)),
         }).pipe(
           T.Http({
@@ -10769,7 +10215,7 @@ function __c5(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
-          format: S.optional(DashboardsDestroyRequestFormat.pipe(T.Query())),
+          format: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -10797,9 +10243,9 @@ function __c6(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
-          format: S.optional(DashboardsMoveTileCreateRequestFormat.pipe(T.Query())),
+          format: S.optional(S.String.pipe(T.Query())),
           to_dashboard: S.Number,
-          tile: MoveTileTile,
+          tile: __S(47, __c5, 7),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10849,7 +10295,7 @@ function __c6(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
-          format: S.optional(DashboardsSubscribeNudgeCreateRequestFormat.pipe(T.Query())),
+          format: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10873,11 +10319,11 @@ function __c6(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
-          format: S.optional(DashboardsUpdateTextTileCreateRequestFormat.pipe(T.Query())),
+          format: S.optional(S.String.pipe(T.Query())),
           tile_id: S.Number,
           body: S.optional(S.String),
           agent_context: S.optional(S.NullOr(S.String)),
-          layouts: S.optional(TileLayouts),
+          layouts: S.optional(__S(19, __c2, 3)),
           color: S.optional(S.NullOr(S.String)),
         }).pipe(
           T.Http({
@@ -10894,7 +10340,7 @@ function __c6(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
-          format: S.optional(DeleteDashboardTileRequestFormat.pipe(T.Query())),
+          format: S.optional(S.String.pipe(T.Query())),
           tile_id: S.Number,
         }).pipe(
           T.Http({
@@ -10912,7 +10358,7 @@ function __c6(j: number): any {
           project_id: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
           filters_override: S.optional(S.String.pipe(T.Query())),
-          format: S.optional(GetDashboardRequestFormat.pipe(T.Query())),
+          format: S.optional(S.String.pipe(T.Query())),
           include_dashboards: S.optional(S.Boolean.pipe(T.Query())),
           variables_override: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -10929,10 +10375,10 @@ function __c7(j: number): any {
           project_id: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
           filters_override: S.optional(S.String.pipe(T.Query())),
-          format: S.optional(GetDashboardsRunInsightRequestFormat.pipe(T.Query())),
+          format: S.optional(S.String.pipe(T.Query())),
           max_result_chars: S.optional(S.Number.pipe(T.Query())),
-          output_format: S.optional(GetDashboardsRunInsightRequestOutputFormat.pipe(T.Query())),
-          refresh: S.optional(GetDashboardsRunInsightRequestRefresh.pipe(T.Query())),
+          output_format: S.optional(S.String.pipe(T.Query())),
+          refresh: S.optional(S.String.pipe(T.Query())),
           tile_ids: S.optional(S.String.pipe(T.Query())),
           variables_override: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -10953,22 +10399,22 @@ function __c7(j: number): any {
           name: S.optional(S.NullOr(S.String)),
           derived_name: S.optional(S.NullOr(S.String)),
           result: S.optional(S.Unknown),
-          warnings: S.optional(S.NullOr(InsightResultWarnings)),
+          warnings: S.optional(S.NullOr(__S(28, __c3, 4))),
         }),
       ).annotate({ identifier: "InsightResult" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
-          insight: S.optional(InsightResult),
+          insight: S.optional(__S(57, __c7, 1)),
         }),
       ).annotate({ identifier: "DashboardTileResult" });
     case 3:
-      return S.Array(DashboardTileResult);
+      return S.Array(__S(58, __c7, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          results: S.optional(RunInsightsResponseResultsList),
+          results: S.optional(__S(59, __c7, 3)),
         }),
       ).annotate({ identifier: "RunInsightsResponse" });
     case 5:
@@ -10976,7 +10422,7 @@ function __c7(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
-          format: S.optional(GetDashboardsRunWidgetRequestFormat.pipe(T.Query())),
+          format: S.optional(S.String.pipe(T.Query())),
           tile_ids: S.String.pipe(T.Query()),
         }).pipe(
           T.Http({
@@ -10998,7 +10444,7 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "DashboardWidgetRunResult" });
     case 7:
-      return S.Array(DashboardWidgetRunResult);
+      return S.Array(__S(62, __c7, 6));
   }
 }
 function __c8(j: number): any {
@@ -11006,7 +10452,7 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          results: RunWidgetsResponseResultsList,
+          results: __S(63, __c7, 7),
         }),
       ).annotate({ identifier: "RunWidgetsResponse" });
     case 1:
@@ -11015,8 +10461,8 @@ function __c8(j: number): any {
           project_id: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
           filters_override: S.optional(S.String.pipe(T.Query())),
-          format: S.optional(GetDashboardsStreamTileRequestFormat.pipe(T.Query())),
-          layoutSize: S.optional(GetDashboardsStreamTileRequestLayoutSize.pipe(T.Query())),
+          format: S.optional(S.String.pipe(T.Query())),
+          layoutSize: S.optional(S.String.pipe(T.Query())),
           variables_override: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -11036,7 +10482,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          format: S.optional(GetDashboardsWidgetCatalogRequestFormat.pipe(T.Query())),
+          format: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -11048,11 +10494,11 @@ function __c8(j: number): any {
         identifier: "GetDashboardsWidgetCatalogRequest",
       });
     case 4:
-      return S.Array(WidgetCatalogEntry);
+      return S.Array(S.Unknown);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          results: WidgetCatalogResponseResultsList,
+          results: __S(68, __c8, 4),
         }),
       ).annotate({ identifier: "WidgetCatalogResponse" });
     case 6:
@@ -11061,10 +10507,10 @@ function __c8(j: number): any {
           project_id: S.String.pipe(T.Label()),
           exclude_generated: S.optional(S.Boolean.pipe(T.Query())),
           folder: S.optional(S.String.pipe(T.Query())),
-          format: S.optional(ListDashboardsRequestFormat.pipe(T.Query())),
+          format: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
-          ordering: S.optional(ListDashboardsRequestOrdering.pipe(T.Query())),
+          ordering: S.optional(S.String.pipe(T.Query())),
           pinned: S.optional(S.Boolean.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -11079,7 +10525,7 @@ function __c8(j: number): any {
           description: S.optional(S.String),
           pinned: S.optional(S.Boolean),
           created_at: S.optional(S.String),
-          created_by: S.optional(S.NullOr(UserBasic)),
+          created_by: S.optional(S.NullOr(__S(6, __c0, 6))),
           last_accessed_at: S.optional(S.NullOr(S.String)),
           last_viewed_at: S.optional(S.NullOr(S.String)),
           folder: S.optional(S.NullOr(S.String)),
@@ -11087,16 +10533,16 @@ function __c8(j: number): any {
           file_system_path: S.optional(S.NullOr(S.String)),
           is_shared: S.optional(S.Boolean),
           deleted: S.optional(S.Boolean),
-          creation_mode: S.optional(DashboardCreationModeEnum),
-          tags: S.optional(DashboardBasicTagsList),
-          restriction_level: S.optional(RestrictionLevelEnum),
-          effective_restriction_level: S.optional(RestrictionLevelEnum),
-          effective_privilege_level: S.optional(PrivilegeLevelEnum),
+          creation_mode: S.optional(S.String),
+          tags: S.optional(__S(2, __c0, 2)),
+          restriction_level: S.optional(S.Number),
+          effective_restriction_level: S.optional(S.Number),
+          effective_privilege_level: S.optional(S.Number),
           user_access_level: S.optional(S.NullOr(S.String)),
           access_control_version: S.optional(S.String),
           last_refresh: S.optional(S.NullOr(S.String)),
           team_id: S.optional(S.Number),
-          search_match_type: S.optional(S.NullOr(SearchMatchTypeEnum)),
+          search_match_type: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "DashboardBasic" });
   }
@@ -11104,14 +10550,14 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DashboardBasic);
+      return S.Array(__S(71, __c8, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(PaginatedDashboardBasicListResultsList),
+          results: S.optional(__S(72, __c9, 0)),
         }),
       ).annotate({
         identifier: "PaginatedDashboardBasicList",
@@ -11132,11 +10578,9 @@ function __c9(j: number): any {
         identifier: "ListDashboardsCollaboratorsRequest",
       });
     case 3:
-      return S.Array(DashboardCollaboratorOutput);
+      return S.Array(__S(11, __c1, 3));
     case 4:
-      return S.suspend(() =>
-        ListDashboardsCollaboratorsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(75, __c9, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListDashboardsCollaboratorsResponse",
       });
     case 5:
@@ -11155,11 +10599,9 @@ function __c9(j: number): any {
         identifier: "ListDashboardsSharingRequest",
       });
     case 6:
-      return S.Array(SharingConfiguration);
+      return S.Array(__S(17, __c2, 1));
     case 7:
-      return S.suspend(() =>
-        ListDashboardsSharingResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(78, __c9, 6).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListDashboardsSharingResponse",
       });
   }
@@ -11171,21 +10613,21 @@ function __c10(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
-          format: S.optional(UpdateDashboardRequestFormat.pipe(T.Query())),
+          format: S.optional(S.String.pipe(T.Query())),
           include_dashboards: S.optional(S.Boolean.pipe(T.Query())),
           name: S.optional(S.NullOr(S.String)),
           description: S.optional(S.String),
           pinned: S.optional(S.Boolean),
           last_accessed_at: S.optional(S.NullOr(S.String)),
           deleted: S.optional(S.Boolean),
-          breakdown_colors: S.optional(S.NullOr(UpdateDashboardRequestBreakdownColorsList)),
+          breakdown_colors: S.optional(S.NullOr(__S(1, __c0, 1))),
           data_color_theme_id: S.optional(S.NullOr(S.Number)),
-          tags: S.optional(UpdateDashboardRequestTagsList),
-          restriction_level: S.optional(RestrictionLevelEnum),
+          tags: S.optional(__S(2, __c0, 2)),
+          restriction_level: S.optional(S.Number),
           last_refresh: S.optional(S.NullOr(S.String)),
-          quick_filter_ids: S.optional(S.NullOr(UpdateDashboardRequestQuickFilterIdsList)),
-          grid_spacing: S.optional(TileSpacingEnum),
-          layout_compaction: S.optional(LayoutCompactionEnum),
+          quick_filter_ids: S.optional(S.NullOr(__S(3, __c0, 3))),
+          grid_spacing: S.optional(S.String),
+          layout_compaction: S.optional(S.String),
           use_template: S.optional(S.String),
           use_dashboard: S.optional(S.NullOr(S.Number)),
           delete_insights: S.optional(S.Boolean),
@@ -11216,8 +10658,8 @@ function __c10(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          sm: DashboardPatchTileLayoutBoxOpenApi,
-          xs: S.optional(DashboardPatchTileLayoutBoxOpenApi),
+          sm: __S(82, __c10, 2),
+          xs: S.optional(__S(82, __c10, 2)),
         }),
       ).annotate({
         identifier: "DashboardPatchTileLayoutsOpenApi",
@@ -11226,8 +10668,8 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          widget_type: S.optional(DashboardPatchWidgetOpenApiWidgetTypeEnum),
-          config: S.optional(DashboardWidgetConfig),
+          widget_type: S.optional(S.String),
+          config: S.optional(S.Unknown),
           name: S.optional(S.NullOr(S.String)),
           description: S.optional(S.String),
         }),
@@ -11238,33 +10680,33 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
-          layouts: S.optional(DashboardPatchTileLayoutsOpenApi),
-          widget: S.optional(DashboardPatchWidgetOpenApi),
+          layouts: S.optional(__S(83, __c10, 3)),
+          widget: S.optional(__S(84, __c10, 4)),
         }),
       ).annotate({
         identifier: "DashboardPatchTileOpenApi",
       });
     case 6:
-      return S.Array(DashboardPatchTileOpenApi);
+      return S.Array(__S(85, __c10, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
-          format: S.optional(UpdateDashboardsPartialRequestFormat.pipe(T.Query())),
+          format: S.optional(S.String.pipe(T.Query())),
           include_dashboards: S.optional(S.Boolean.pipe(T.Query())),
           name: S.optional(S.NullOr(S.String)),
           description: S.optional(S.String),
           pinned: S.optional(S.Boolean),
-          filters: S.optional(DashboardFiltersOpenApi),
-          breakdown_colors: S.optional(S.NullOr(UpdateDashboardsPartialRequestBreakdownColorsList)),
+          filters: S.optional(__S(81, __c10, 1)),
+          breakdown_colors: S.optional(S.NullOr(__S(1, __c0, 1))),
           data_color_theme_id: S.optional(S.NullOr(S.Number)),
-          tags: S.optional(UpdateDashboardsPartialRequestTagsList),
-          restriction_level: S.optional(RestrictionLevelEnum),
-          quick_filter_ids: S.optional(S.NullOr(UpdateDashboardsPartialRequestQuickFilterIdsList)),
-          grid_spacing: S.optional(TileSpacingEnum),
-          layout_compaction: S.optional(LayoutCompactionEnum),
-          tiles: S.optional(UpdateDashboardsPartialRequestTilesList),
+          tags: S.optional(__S(3, __c0, 3)),
+          restriction_level: S.optional(S.Number),
+          quick_filter_ids: S.optional(S.NullOr(__S(3, __c0, 3))),
+          grid_spacing: S.optional(S.String),
+          layout_compaction: S.optional(S.String),
+          tiles: S.optional(__S(86, __c10, 6)),
           use_template: S.optional(S.String),
           use_dashboard: S.optional(S.NullOr(S.Number)),
           delete_insights: S.optional(S.Boolean),
@@ -11283,14 +10725,14 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(UpdateDashboardWidgetRequest);
+      return S.Array(S.Unknown);
     case 1:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
-          format: S.optional(UpdateDashboardWidgetsBatchRequestFormat.pipe(T.Query())),
-          widgets: S.optional(UpdateDashboardWidgetsBatchRequestWidgetsList),
+          format: S.optional(S.String.pipe(T.Query())),
+          widgets: S.optional(__S(88, __c11, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -11302,4 +10744,9 @@ function __c11(j: number): any {
         identifier: "UpdateDashboardWidgetsBatchRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

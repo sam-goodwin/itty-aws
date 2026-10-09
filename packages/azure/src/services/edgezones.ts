@@ -6,6 +6,8 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -15,19 +17,10 @@ export interface GetExtendedZoneRequest {
   /** The name of the ExtendedZone */
   extendedZoneName: string;
 }
-const GetExtendedZoneRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GetExtendedZoneRequest>;
-
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -43,8 +36,6 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const SystemData = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<SystemData>;
-
 /** The status of the current operation. */
 export type ProvisioningState =
   | "Succeeded"
@@ -54,16 +45,12 @@ export type ProvisioningState =
   | "Updating"
   | "Deleting"
   | "Accepted";
-const ProvisioningState = S.String;
-
 /** The Azure Extended Zone registration status for a subscription */
 export type RegistrationState =
   | "NotRegistered"
   | "PendingRegister"
   | "Registered"
   | "PendingUnregister";
-const RegistrationState = S.String;
-
 /** The properties of an Extended Zone resource. */
 export interface ExtendedZoneProperties {
   /** Status of the last operation performed by the subscription on the Edge Zone resource */
@@ -89,11 +76,6 @@ export interface ExtendedZoneProperties {
   /** The Home Location of the Azure Extended Zone. */
   homeLocation: string;
 }
-const ExtendedZoneProperties = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<ExtendedZoneProperties>;
-
 export interface GetExtendedZoneResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -106,20 +88,10 @@ export interface GetExtendedZoneResponse {
   /** The resource-specific properties for this resource. */
   properties?: ExtendedZoneProperties;
 }
-const GetExtendedZoneResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<GetExtendedZoneResponse>;
-
 export interface ListExtendedZoneBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListExtendedZoneBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ListExtendedZoneBySubscriptionRequest>;
-
 /** Resource that represents an Azure Extended Zone available to a subscription for registering and unregistering. */
 export interface ExtendedZone {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -133,15 +105,8 @@ export interface ExtendedZone {
   /** The resource-specific properties for this resource. */
   properties?: ExtendedZoneProperties;
 }
-const ExtendedZone = GetExtendedZoneResponse as any as S.Schema<ExtendedZone>;
-
 /** The ExtendedZone items on this page */
 export type ExtendedZoneListResultValueList = Array<ExtendedZone>;
-const ExtendedZoneListResultValueList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ExtendedZoneListResultValueList>;
-
 /** The response of a ExtendedZone list operation. */
 export interface ExtendedZoneListResult {
   /** The ExtendedZone items on this page */
@@ -149,17 +114,7 @@ export interface ExtendedZoneListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ExtendedZoneListResult = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ExtendedZoneListResult>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -171,16 +126,10 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-const OperationDisplay = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<OperationDisplay>;
-
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-const OperationOrigin = S.String;
-
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-const OperationActionType = S.String;
-
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -194,37 +143,20 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-const Operation = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Operation>;
-
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ListOperationsResponseValueList>;
-
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ListOperationsResponse>;
-
 export interface RegisterExtendedZoneRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the ExtendedZone */
   extendedZoneName: string;
 }
-const RegisterExtendedZoneRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<RegisterExtendedZoneRequest>;
-
 export interface RegisterExtendedZoneResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -237,22 +169,12 @@ export interface RegisterExtendedZoneResponse {
   /** The resource-specific properties for this resource. */
   properties?: ExtendedZoneProperties;
 }
-const RegisterExtendedZoneResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<RegisterExtendedZoneResponse>;
-
 export interface UnregisterExtendedZoneRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the ExtendedZone */
   extendedZoneName: string;
 }
-const UnregisterExtendedZoneRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<UnregisterExtendedZoneRequest>;
-
 export interface UnregisterExtendedZoneResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -265,9 +187,6 @@ export interface UnregisterExtendedZoneResponse {
   /** The resource-specific properties for this resource. */
   properties?: ExtendedZoneProperties;
 }
-const UnregisterExtendedZoneResponse =
-  RegisterExtendedZoneResponse as any as S.Schema<UnregisterExtendedZoneResponse>;
-
 export type GetExtendedZoneError = AzureOpError;
 /** Gets an Azure Extended Zone for a subscription */
 export const GetExtendedZone: API.OperationMethod<
@@ -276,8 +195,8 @@ export const GetExtendedZone: API.OperationMethod<
   GetExtendedZoneError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetExtendedZoneRequest,
-  output: GetExtendedZoneResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<GetExtendedZoneRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<GetExtendedZoneResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -291,8 +210,8 @@ export const ListExtendedZoneBySubscription: API.OperationMethod<
   ListExtendedZoneBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListExtendedZoneBySubscriptionRequest,
-  output: ExtendedZoneListResult,
+  input: __S(4, __c0, 4) as any as S.Schema<ListExtendedZoneBySubscriptionRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<ExtendedZoneListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -306,8 +225,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(7, __c0, 7) as any as S.Schema<ListOperationsRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -321,8 +240,8 @@ export const RegisterExtendedZone: API.OperationMethod<
   RegisterExtendedZoneError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegisterExtendedZoneRequest,
-  output: RegisterExtendedZoneResponse,
+  input: __S(12, __c1, 4) as any as S.Schema<RegisterExtendedZoneRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<RegisterExtendedZoneResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -336,8 +255,8 @@ export const UnregisterExtendedZone: API.OperationMethod<
   UnregisterExtendedZoneError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UnregisterExtendedZoneRequest,
-  output: UnregisterExtendedZoneResponse,
+  input: __S(14, __c1, 6) as any as S.Schema<UnregisterExtendedZoneRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<UnregisterExtendedZoneResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -364,18 +283,18 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(SystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(ProvisioningState),
-          registrationState: S.optional(RegistrationState),
+          provisioningState: S.optional(S.String),
+          registrationState: S.optional(S.String),
           displayName: S.String,
           regionalDisplayName: S.String,
           regionType: S.String,
@@ -393,8 +312,8 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ExtendedZoneProperties),
+          systemData: S.optional(__S(1, __c0, 1)),
+          properties: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({ identifier: "GetExtendedZoneResponse" });
     case 4:
@@ -413,11 +332,11 @@ function __c0(j: number): any {
         identifier: "ListExtendedZoneBySubscriptionRequest",
       });
     case 5:
-      return S.Array(ExtendedZone);
+      return S.Array(__S(3, __c0, 3));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: ExtendedZoneListResultValueList,
+          value: __S(5, __c0, 5),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExtendedZoneListResult" });
@@ -450,17 +369,17 @@ function __c1(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(OperationDisplay),
-          origin: S.optional(OperationOrigin),
-          actionType: S.optional(OperationActionType),
+          display: S.optional(__S(8, __c1, 0)),
+          origin: S.optional(S.String),
+          actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 2:
-      return S.Array(Operation);
+      return S.Array(__S(9, __c1, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ListOperationsResponseValueList),
+          value: S.optional(__S(10, __c1, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -486,8 +405,8 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ExtendedZoneProperties),
+          systemData: S.optional(__S(1, __c0, 1)),
+          properties: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({
         identifier: "RegisterExtendedZoneResponse",
@@ -509,4 +428,9 @@ function __c1(j: number): any {
         identifier: "UnregisterExtendedZoneRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

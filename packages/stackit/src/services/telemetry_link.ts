@@ -8,6 +8,8 @@ import { UnknownStackitError } from "../errors.ts";
 import { StackitProtocol, type StackitOpError, type StackitOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { StackitOpError, StackitOpContext };
 
@@ -39,8 +41,6 @@ export class NotFound
   ) {}
 
 export type CreateFolderBackflushJobRequestRegionId = "eu01" | "eu02";
-const CreateFolderBackflushJobRequestRegionId = S.String;
-
 export interface CreateFolderBackflushJobRequest {
   /** The STACKIT portal folder UUID the resource is located in. */
   folderId: string;
@@ -51,15 +51,8 @@ export interface CreateFolderBackflushJobRequest {
   /** The display name is a short name chosen by the user to identify the resource. */
   displayName: string;
 }
-const CreateFolderBackflushJobRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateFolderBackflushJobRequest>;
-
 /** The STACKIT region name the resource is located in. */
 export type BackflushJobResponseRegionId = "eu01" | "eu02";
-const BackflushJobResponseRegionId = S.String;
-
 /** The current state of the link. */
 export type BackflushJobResponseStatus =
   | "active"
@@ -67,8 +60,6 @@ export type BackflushJobResponseStatus =
   | "failed"
   | "reconciling"
   | "deleting";
-const BackflushJobResponseStatus = S.String;
-
 export interface BackflushJobResponse {
   /** The point in time the resource was created. */
   createTime: string;
@@ -83,11 +74,7 @@ export interface BackflushJobResponse {
   /** The current state of the link. */
   status: BackflushJobResponseStatus;
 }
-const BackflushJobResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<BackflushJobResponse>;
-
 export type CreateOrganizationBackflushJobRequestRegionId = "eu01" | "eu02";
-const CreateOrganizationBackflushJobRequestRegionId = S.String;
-
 export interface CreateOrganizationBackflushJobRequest {
   /** The STACKIT portal organization UUID the resource is located in. */
   organizationId: string;
@@ -98,14 +85,7 @@ export interface CreateOrganizationBackflushJobRequest {
   /** The display name is a short name chosen by the user to identify the resource. */
   displayName: string;
 }
-const CreateOrganizationBackflushJobRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateOrganizationBackflushJobRequest>;
-
 export type CreateOrUpdateFolderTelemetryLinkRequestRegionId = "eu01" | "eu02";
-const CreateOrUpdateFolderTelemetryLinkRequestRegionId = S.String;
-
 export interface CreateOrUpdateFolderTelemetryLinkRequest {
   /** The STACKIT portal folder UUID the resource is located in. */
   folderId: string;
@@ -122,15 +102,8 @@ export interface CreateOrUpdateFolderTelemetryLinkRequest {
   /** The ID of the telemetry-router to route the telemetry data. */
   telemetryRouterId: string;
 }
-const CreateOrUpdateFolderTelemetryLinkRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateOrUpdateFolderTelemetryLinkRequest>;
-
 /** The STACKIT region name the resource is located in. */
 export type TelemetryLinkResponseRegionId = "eu01" | "eu02";
-const TelemetryLinkResponseRegionId = S.String;
-
 /** The current state of the link. */
 export type TelemetryLinkResponseStatus =
   | "active"
@@ -138,8 +111,6 @@ export type TelemetryLinkResponseStatus =
   | "failed"
   | "reconciling"
   | "deleting";
-const TelemetryLinkResponseStatus = S.String;
-
 export interface TelemetryLinkResponse {
   /** The access token. */
   accessToken?: string | Redacted.Redacted<string>;
@@ -160,14 +131,7 @@ export interface TelemetryLinkResponse {
   /** The ID of the telemetry-router to route the telemetry data. */
   telemetryRouterId: string;
 }
-const TelemetryLinkResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<TelemetryLinkResponse>;
-
 export type CreateOrUpdateOrganizationTelemetryLinkRequestRegionId = "eu01" | "eu02";
-const CreateOrUpdateOrganizationTelemetryLinkRequestRegionId = S.String;
-
 export interface CreateOrUpdateOrganizationTelemetryLinkRequest {
   /** The STACKIT portal organization UUID the resource is located in. */
   organizationId: string;
@@ -184,14 +148,7 @@ export interface CreateOrUpdateOrganizationTelemetryLinkRequest {
   /** The ID of the telemetry-router to route the telemetry data. */
   telemetryRouterId: string;
 }
-const CreateOrUpdateOrganizationTelemetryLinkRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateOrUpdateOrganizationTelemetryLinkRequest>;
-
 export type CreateOrUpdateProjectTelemetryLinkRequestRegionId = "eu01" | "eu02";
-const CreateOrUpdateProjectTelemetryLinkRequestRegionId = S.String;
-
 export interface CreateOrUpdateProjectTelemetryLinkRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
@@ -208,14 +165,7 @@ export interface CreateOrUpdateProjectTelemetryLinkRequest {
   /** The ID of the telemetry-router to route the telemetry data. */
   telemetryRouterId: string;
 }
-const CreateOrUpdateProjectTelemetryLinkRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateOrUpdateProjectTelemetryLinkRequest>;
-
 export type CreateProjectBackflushJobRequestRegionId = "eu01" | "eu02";
-const CreateProjectBackflushJobRequestRegionId = S.String;
-
 export interface CreateProjectBackflushJobRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
@@ -226,70 +176,31 @@ export interface CreateProjectBackflushJobRequest {
   /** The display name is a short name chosen by the user to identify the resource. */
   displayName: string;
 }
-const CreateProjectBackflushJobRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateProjectBackflushJobRequest>;
-
 export type DeleteFolderTelemetryLinkRequestRegionId = "eu01" | "eu02";
-const DeleteFolderTelemetryLinkRequestRegionId = S.String;
-
 export interface DeleteFolderTelemetryLinkRequest {
   /** The STACKIT portal folder UUID the resource is located in. */
   folderId: string;
   /** The STACKIT region name the resource is located in. */
   regionId: DeleteFolderTelemetryLinkRequestRegionId | (string & {});
 }
-const DeleteFolderTelemetryLinkRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<DeleteFolderTelemetryLinkRequest>;
-
 export interface DeleteFolderTelemetryLinkResponse {}
-const DeleteFolderTelemetryLinkResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<DeleteFolderTelemetryLinkResponse>;
-
 export type DeleteOrganizationTelemetryLinkRequestRegionId = "eu01" | "eu02";
-const DeleteOrganizationTelemetryLinkRequestRegionId = S.String;
-
 export interface DeleteOrganizationTelemetryLinkRequest {
   /** The STACKIT portal organization UUID the resource is located in. */
   organizationId: string;
   /** The STACKIT region name the resource is located in. */
   regionId: DeleteOrganizationTelemetryLinkRequestRegionId | (string & {});
 }
-const DeleteOrganizationTelemetryLinkRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<DeleteOrganizationTelemetryLinkRequest>;
-
 export interface DeleteOrganizationTelemetryLinkResponse {}
-const DeleteOrganizationTelemetryLinkResponse =
-  DeleteFolderTelemetryLinkResponse as any as S.Schema<DeleteOrganizationTelemetryLinkResponse>;
-
 export type DeleteProjectTelemetryLinkRequestRegionId = "eu01" | "eu02";
-const DeleteProjectTelemetryLinkRequestRegionId = S.String;
-
 export interface DeleteProjectTelemetryLinkRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
   /** The STACKIT region name the resource is located in. */
   regionId: DeleteProjectTelemetryLinkRequestRegionId | (string & {});
 }
-const DeleteProjectTelemetryLinkRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<DeleteProjectTelemetryLinkRequest>;
-
 export interface DeleteProjectTelemetryLinkResponse {}
-const DeleteProjectTelemetryLinkResponse =
-  DeleteFolderTelemetryLinkResponse as any as S.Schema<DeleteProjectTelemetryLinkResponse>;
-
 export type GetFolderBackflushJobRequestRegionId = "eu01" | "eu02";
-const GetFolderBackflushJobRequestRegionId = S.String;
-
 export interface GetFolderBackflushJobRequest {
   /** The STACKIT portal folder UUID the resource is located in. */
   folderId: string;
@@ -298,28 +209,14 @@ export interface GetFolderBackflushJobRequest {
   /** The Backflush Job UUID. */
   backflushJobId: string;
 }
-const GetFolderBackflushJobRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<GetFolderBackflushJobRequest>;
-
 export type GetFolderTelemetryLinkRequestRegionId = "eu01" | "eu02";
-const GetFolderTelemetryLinkRequestRegionId = S.String;
-
 export interface GetFolderTelemetryLinkRequest {
   /** The STACKIT portal folder UUID the resource is located in. */
   folderId: string;
   /** The STACKIT region name the resource is located in. */
   regionId: GetFolderTelemetryLinkRequestRegionId | (string & {});
 }
-const GetFolderTelemetryLinkRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<GetFolderTelemetryLinkRequest>;
-
 export type GetOrganizationBackflushJobRequestRegionId = "eu01" | "eu02";
-const GetOrganizationBackflushJobRequestRegionId = S.String;
-
 export interface GetOrganizationBackflushJobRequest {
   /** The STACKIT portal organization UUID the resource is located in. */
   organizationId: string;
@@ -328,28 +225,14 @@ export interface GetOrganizationBackflushJobRequest {
   /** The Backflush Job UUID. */
   backflushJobId: string;
 }
-const GetOrganizationBackflushJobRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<GetOrganizationBackflushJobRequest>;
-
 export type GetOrganizationTelemetryLinkRequestRegionId = "eu01" | "eu02";
-const GetOrganizationTelemetryLinkRequestRegionId = S.String;
-
 export interface GetOrganizationTelemetryLinkRequest {
   /** The STACKIT portal organization UUID the resource is located in. */
   organizationId: string;
   /** The STACKIT region name the resource is located in. */
   regionId: GetOrganizationTelemetryLinkRequestRegionId | (string & {});
 }
-const GetOrganizationTelemetryLinkRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<GetOrganizationTelemetryLinkRequest>;
-
 export type GetProjectBackflushJobRequestRegionId = "eu01" | "eu02";
-const GetProjectBackflushJobRequestRegionId = S.String;
-
 export interface GetProjectBackflushJobRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
@@ -358,28 +241,14 @@ export interface GetProjectBackflushJobRequest {
   /** The Backflush Job UUID. */
   backflushJobId: string;
 }
-const GetProjectBackflushJobRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<GetProjectBackflushJobRequest>;
-
 export type GetProjectTelemetryLinkRequestRegionId = "eu01" | "eu02";
-const GetProjectTelemetryLinkRequestRegionId = S.String;
-
 export interface GetProjectTelemetryLinkRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
   /** The STACKIT region name the resource is located in. */
   regionId: GetProjectTelemetryLinkRequestRegionId | (string & {});
 }
-const GetProjectTelemetryLinkRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<GetProjectTelemetryLinkRequest>;
-
 export type ListFolderBackflushJobsRequestRegionId = "eu01" | "eu02";
-const ListFolderBackflushJobsRequestRegionId = S.String;
-
 export interface ListFolderBackflushJobsRequest {
   /** The STACKIT portal folder UUID the resource is located in. */
   folderId: string;
@@ -390,30 +259,13 @@ export interface ListFolderBackflushJobsRequest {
   /** Maximum number of items to return */
   pageSize?: number;
 }
-const ListFolderBackflushJobsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ListFolderBackflushJobsRequest>;
-
 export type ListBackflushJobsResponseBackflushJobsList = Array<BackflushJobResponse>;
-const ListBackflushJobsResponseBackflushJobsList = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<ListBackflushJobsResponseBackflushJobsList>;
-
 export interface ListBackflushJobsResponse {
   backflushJobs: ListBackflushJobsResponseBackflushJobsList;
   /** A token to retrieve the next page of results. */
   nextPageToken?: string;
 }
-const ListBackflushJobsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<ListBackflushJobsResponse>;
-
 export type ListOrganizationBackflushJobsRequestRegionId = "eu01" | "eu02";
-const ListOrganizationBackflushJobsRequestRegionId = S.String;
-
 export interface ListOrganizationBackflushJobsRequest {
   /** The STACKIT portal organization UUID the resource is located in. */
   organizationId: string;
@@ -424,14 +276,7 @@ export interface ListOrganizationBackflushJobsRequest {
   /** Maximum number of items to return */
   pageSize?: number;
 }
-const ListOrganizationBackflushJobsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ListOrganizationBackflushJobsRequest>;
-
 export type ListProjectBackflushJobsRequestRegionId = "eu01" | "eu02";
-const ListProjectBackflushJobsRequestRegionId = S.String;
-
 export interface ListProjectBackflushJobsRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
@@ -442,14 +287,7 @@ export interface ListProjectBackflushJobsRequest {
   /** Maximum number of items to return */
   pageSize?: number;
 }
-const ListProjectBackflushJobsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<ListProjectBackflushJobsRequest>;
-
 export type PartialUpdateFolderTelemetryLinkRequestRegionId = "eu01" | "eu02";
-const PartialUpdateFolderTelemetryLinkRequestRegionId = S.String;
-
 export interface PartialUpdateFolderTelemetryLinkRequest {
   /** The STACKIT portal folder UUID the resource is located in. */
   folderId: string;
@@ -466,14 +304,7 @@ export interface PartialUpdateFolderTelemetryLinkRequest {
   /** The ID of the telemetry-router to route the telemetry data. */
   telemetryRouterId?: string;
 }
-const PartialUpdateFolderTelemetryLinkRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<PartialUpdateFolderTelemetryLinkRequest>;
-
 export type PartialUpdateOrganizationTelemetryLinkRequestRegionId = "eu01" | "eu02";
-const PartialUpdateOrganizationTelemetryLinkRequestRegionId = S.String;
-
 export interface PartialUpdateOrganizationTelemetryLinkRequest {
   /** The STACKIT portal organization UUID the resource is located in. */
   organizationId: string;
@@ -490,14 +321,7 @@ export interface PartialUpdateOrganizationTelemetryLinkRequest {
   /** The ID of the telemetry-router to route the telemetry data. */
   telemetryRouterId?: string;
 }
-const PartialUpdateOrganizationTelemetryLinkRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<PartialUpdateOrganizationTelemetryLinkRequest>;
-
 export type PartialUpdateProjectTelemetryLinkRequestRegionId = "eu01" | "eu02";
-const PartialUpdateProjectTelemetryLinkRequestRegionId = S.String;
-
 export interface PartialUpdateProjectTelemetryLinkRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
@@ -514,11 +338,6 @@ export interface PartialUpdateProjectTelemetryLinkRequest {
   /** The ID of the telemetry-router to route the telemetry data. */
   telemetryRouterId?: string;
 }
-const PartialUpdateProjectTelemetryLinkRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<PartialUpdateProjectTelemetryLinkRequest>;
-
 export type CreateFolderBackflushJobError = BadRequest | Conflict | StackitOpError;
 /** Creates a new Backflush Job for the folder. */
 export const createFolderBackflushJob: API.OperationMethod<
@@ -527,8 +346,8 @@ export const createFolderBackflushJob: API.OperationMethod<
   CreateFolderBackflushJobError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateFolderBackflushJobRequest,
-  output: BackflushJobResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateFolderBackflushJobRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<BackflushJobResponse>,
   errors: [BadRequest, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -542,8 +361,8 @@ export const createOrganizationBackflushJob: API.OperationMethod<
   CreateOrganizationBackflushJobError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOrganizationBackflushJobRequest,
-  output: BackflushJobResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<CreateOrganizationBackflushJobRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<BackflushJobResponse>,
   errors: [BadRequest, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -561,8 +380,8 @@ export const createOrUpdateFolderTelemetryLink: API.OperationMethod<
   CreateOrUpdateFolderTelemetryLinkError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOrUpdateFolderTelemetryLinkRequest,
-  output: TelemetryLinkResponse,
+  input: __S(3, __c0, 3) as any as S.Schema<CreateOrUpdateFolderTelemetryLinkRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<TelemetryLinkResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -580,8 +399,8 @@ export const createOrUpdateOrganizationTelemetryLink: API.OperationMethod<
   CreateOrUpdateOrganizationTelemetryLinkError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOrUpdateOrganizationTelemetryLinkRequest,
-  output: TelemetryLinkResponse,
+  input: __S(5, __c0, 5) as any as S.Schema<CreateOrUpdateOrganizationTelemetryLinkRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<TelemetryLinkResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -599,8 +418,8 @@ export const createOrUpdateProjectTelemetryLink: API.OperationMethod<
   CreateOrUpdateProjectTelemetryLinkError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOrUpdateProjectTelemetryLinkRequest,
-  output: TelemetryLinkResponse,
+  input: __S(6, __c0, 6) as any as S.Schema<CreateOrUpdateProjectTelemetryLinkRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<TelemetryLinkResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -614,8 +433,8 @@ export const createProjectBackflushJob: API.OperationMethod<
   CreateProjectBackflushJobError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectBackflushJobRequest,
-  output: BackflushJobResponse,
+  input: __S(7, __c0, 7) as any as S.Schema<CreateProjectBackflushJobRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<BackflushJobResponse>,
   errors: [BadRequest, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -629,8 +448,8 @@ export const deleteFolderTelemetryLink: API.OperationMethod<
   DeleteFolderTelemetryLinkError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFolderTelemetryLinkRequest,
-  output: DeleteFolderTelemetryLinkResponse,
+  input: __S(8, __c1, 0) as any as S.Schema<DeleteFolderTelemetryLinkRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<DeleteFolderTelemetryLinkResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -648,8 +467,8 @@ export const deleteOrganizationTelemetryLink: API.OperationMethod<
   DeleteOrganizationTelemetryLinkError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOrganizationTelemetryLinkRequest,
-  output: DeleteOrganizationTelemetryLinkResponse,
+  input: __S(10, __c1, 2) as any as S.Schema<DeleteOrganizationTelemetryLinkRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<DeleteOrganizationTelemetryLinkResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -663,8 +482,8 @@ export const deleteProjectTelemetryLink: API.OperationMethod<
   DeleteProjectTelemetryLinkError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectTelemetryLinkRequest,
-  output: DeleteProjectTelemetryLinkResponse,
+  input: __S(11, __c1, 3) as any as S.Schema<DeleteProjectTelemetryLinkRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<DeleteProjectTelemetryLinkResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -678,8 +497,8 @@ export const getFolderBackflushJob: API.OperationMethod<
   GetFolderBackflushJobError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFolderBackflushJobRequest,
-  output: BackflushJobResponse,
+  input: __S(12, __c1, 4) as any as S.Schema<GetFolderBackflushJobRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<BackflushJobResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -693,8 +512,8 @@ export const getFolderTelemetryLink: API.OperationMethod<
   GetFolderTelemetryLinkError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFolderTelemetryLinkRequest,
-  output: TelemetryLinkResponse,
+  input: __S(13, __c1, 5) as any as S.Schema<GetFolderTelemetryLinkRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<TelemetryLinkResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -708,8 +527,8 @@ export const getOrganizationBackflushJob: API.OperationMethod<
   GetOrganizationBackflushJobError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrganizationBackflushJobRequest,
-  output: BackflushJobResponse,
+  input: __S(14, __c1, 6) as any as S.Schema<GetOrganizationBackflushJobRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<BackflushJobResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -723,8 +542,8 @@ export const getOrganizationTelemetryLink: API.OperationMethod<
   GetOrganizationTelemetryLinkError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrganizationTelemetryLinkRequest,
-  output: TelemetryLinkResponse,
+  input: __S(15, __c1, 7) as any as S.Schema<GetOrganizationTelemetryLinkRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<TelemetryLinkResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -738,8 +557,8 @@ export const getProjectBackflushJob: API.OperationMethod<
   GetProjectBackflushJobError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectBackflushJobRequest,
-  output: BackflushJobResponse,
+  input: __S(16, __c2, 0) as any as S.Schema<GetProjectBackflushJobRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<BackflushJobResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -753,8 +572,8 @@ export const getProjectTelemetryLink: API.OperationMethod<
   GetProjectTelemetryLinkError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectTelemetryLinkRequest,
-  output: TelemetryLinkResponse,
+  input: __S(17, __c2, 1) as any as S.Schema<GetProjectTelemetryLinkRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<TelemetryLinkResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -768,8 +587,8 @@ export const listFolderBackflushJobs: API.OperationMethod<
   ListFolderBackflushJobsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFolderBackflushJobsRequest,
-  output: ListBackflushJobsResponse,
+  input: __S(18, __c2, 2) as any as S.Schema<ListFolderBackflushJobsRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<ListBackflushJobsResponse>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -783,8 +602,8 @@ export const listOrganizationBackflushJobs: API.OperationMethod<
   ListOrganizationBackflushJobsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOrganizationBackflushJobsRequest,
-  output: ListBackflushJobsResponse,
+  input: __S(21, __c2, 5) as any as S.Schema<ListOrganizationBackflushJobsRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<ListBackflushJobsResponse>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -798,8 +617,8 @@ export const listProjectBackflushJobs: API.OperationMethod<
   ListProjectBackflushJobsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProjectBackflushJobsRequest,
-  output: ListBackflushJobsResponse,
+  input: __S(22, __c2, 6) as any as S.Schema<ListProjectBackflushJobsRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<ListBackflushJobsResponse>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -817,8 +636,8 @@ export const partialUpdateFolderTelemetryLink: API.OperationMethod<
   PartialUpdateFolderTelemetryLinkError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PartialUpdateFolderTelemetryLinkRequest,
-  output: TelemetryLinkResponse,
+  input: __S(23, __c2, 7) as any as S.Schema<PartialUpdateFolderTelemetryLinkRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<TelemetryLinkResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -836,8 +655,8 @@ export const partialUpdateOrganizationTelemetryLink: API.OperationMethod<
   PartialUpdateOrganizationTelemetryLinkError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PartialUpdateOrganizationTelemetryLinkRequest,
-  output: TelemetryLinkResponse,
+  input: __S(24, __c3, 0) as any as S.Schema<PartialUpdateOrganizationTelemetryLinkRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<TelemetryLinkResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -855,8 +674,8 @@ export const partialUpdateProjectTelemetryLink: API.OperationMethod<
   PartialUpdateProjectTelemetryLinkError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PartialUpdateProjectTelemetryLinkRequest,
-  output: TelemetryLinkResponse,
+  input: __S(25, __c3, 1) as any as S.Schema<PartialUpdateProjectTelemetryLinkRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<TelemetryLinkResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -869,7 +688,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           folderId: S.String.pipe(T.Label()),
-          regionId: CreateFolderBackflushJobRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           description: S.optional(S.String),
           displayName: S.String,
         }).pipe(
@@ -890,15 +709,15 @@ function __c0(j: number): any {
           description: S.optional(S.String),
           displayName: S.String,
           id: S.String,
-          regionId: BackflushJobResponseRegionId,
-          status: BackflushJobResponseStatus,
+          regionId: S.String,
+          status: S.String,
         }),
       ).annotate({ identifier: "BackflushJobResponse" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           organizationId: S.String.pipe(T.Label()),
-          regionId: CreateOrganizationBackflushJobRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           description: S.optional(S.String),
           displayName: S.String,
         }).pipe(
@@ -916,7 +735,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           folderId: S.String.pipe(T.Label()),
-          regionId: CreateOrUpdateFolderTelemetryLinkRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           accessToken: S.String.pipe(T.SensitiveValue({})),
           description: S.optional(S.String),
           displayName: S.String,
@@ -942,8 +761,8 @@ function __c0(j: number): any {
           displayName: S.String,
           enabled: S.Boolean,
           id: S.String,
-          regionId: TelemetryLinkResponseRegionId,
-          status: TelemetryLinkResponseStatus,
+          regionId: S.String,
+          status: S.String,
           telemetryRouterId: S.String,
         }),
       ).annotate({ identifier: "TelemetryLinkResponse" });
@@ -951,7 +770,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           organizationId: S.String.pipe(T.Label()),
-          regionId: CreateOrUpdateOrganizationTelemetryLinkRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           accessToken: S.String.pipe(T.SensitiveValue({})),
           description: S.optional(S.String),
           displayName: S.String,
@@ -972,7 +791,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: CreateOrUpdateProjectTelemetryLinkRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           accessToken: S.String.pipe(T.SensitiveValue({})),
           description: S.optional(S.String),
           displayName: S.String,
@@ -993,7 +812,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: CreateProjectBackflushJobRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           description: S.optional(S.String),
           displayName: S.String,
         }).pipe(
@@ -1015,7 +834,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           folderId: S.String.pipe(T.Label()),
-          regionId: DeleteFolderTelemetryLinkRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -1035,7 +854,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           organizationId: S.String.pipe(T.Label()),
-          regionId: DeleteOrganizationTelemetryLinkRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -1051,7 +870,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: DeleteProjectTelemetryLinkRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -1067,7 +886,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           folderId: S.String.pipe(T.Label()),
-          regionId: GetFolderBackflushJobRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           backflushJobId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -1084,7 +903,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           folderId: S.String.pipe(T.Label()),
-          regionId: GetFolderTelemetryLinkRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1100,7 +919,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           organizationId: S.String.pipe(T.Label()),
-          regionId: GetOrganizationBackflushJobRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           backflushJobId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -1117,7 +936,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           organizationId: S.String.pipe(T.Label()),
-          regionId: GetOrganizationTelemetryLinkRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1137,7 +956,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: GetProjectBackflushJobRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           backflushJobId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -1154,7 +973,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: GetProjectTelemetryLinkRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1170,7 +989,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           folderId: S.String.pipe(T.Label()),
-          regionId: ListFolderBackflushJobsRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           pageToken: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
@@ -1185,11 +1004,11 @@ function __c2(j: number): any {
         identifier: "ListFolderBackflushJobsRequest",
       });
     case 3:
-      return S.Array(BackflushJobResponse);
+      return S.Array(__S(1, __c0, 1));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          backflushJobs: ListBackflushJobsResponseBackflushJobsList,
+          backflushJobs: __S(19, __c2, 3),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1199,7 +1018,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           organizationId: S.String.pipe(T.Label()),
-          regionId: ListOrganizationBackflushJobsRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           pageToken: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
@@ -1217,7 +1036,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: ListProjectBackflushJobsRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           pageToken: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
@@ -1235,7 +1054,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           folderId: S.String.pipe(T.Label()),
-          regionId: PartialUpdateFolderTelemetryLinkRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           accessToken: S.optional(S.String.pipe(T.SensitiveValue({}))),
           description: S.optional(S.String),
           displayName: S.optional(S.String),
@@ -1260,7 +1079,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           organizationId: S.String.pipe(T.Label()),
-          regionId: PartialUpdateOrganizationTelemetryLinkRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           accessToken: S.optional(S.String.pipe(T.SensitiveValue({}))),
           description: S.optional(S.String),
           displayName: S.optional(S.String),
@@ -1281,7 +1100,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: PartialUpdateProjectTelemetryLinkRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           accessToken: S.optional(S.String.pipe(T.SensitiveValue({}))),
           description: S.optional(S.String),
           displayName: S.optional(S.String),
@@ -1299,4 +1118,9 @@ function __c3(j: number): any {
         identifier: "PartialUpdateProjectTelemetryLinkRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

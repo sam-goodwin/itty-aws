@@ -12,6 +12,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -63,19 +65,13 @@ export class SpectrumProtocolNotAvailable
   ) {}
 
 export type AppsCreateRequestDnsType = "CNAME" | "ADDRESS";
-const AppsCreateRequestDnsType = S.String;
-
 export interface AppsCreateRequestDns {
   /** The name of the DNS record associated with the application. */
   name?: string;
   /** The type of DNS record associated with the application. */
   type?: AppsCreateRequestDnsType | (string & {});
 }
-const AppsCreateRequestDns = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<AppsCreateRequestDns>;
-
 export type AppsCreateRequestTrafficType = "direct" | "http" | "https" | "worker";
-const AppsCreateRequestTrafficType = S.String;
-
 export type AppsCreateRequestEdgeIpsDynamicConnectivity = "all" | "ipv4" | "ipv6";
 export type AppsCreateRequestEdgeIpsDynamicType = "dynamic";
 export interface AppsCreateRequestEdgeIpsDynamic {
@@ -85,11 +81,6 @@ export interface AppsCreateRequestEdgeIpsDynamic {
   type?: AppsCreateRequestEdgeIpsDynamicType | (string & {});
 }
 export type AppsCreateRequestEdgeIpsStaticIpsList = Array<string>;
-const AppsCreateRequestEdgeIpsStaticIpsList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AppsCreateRequestEdgeIpsStaticIpsList>;
-
 export type AppsCreateRequestEdgeIpsStaticType = "static";
 export interface AppsCreateRequestEdgeIpsStatic {
   /** The array of customer owned IPs we broadcast via anycast for this hostname and application. */
@@ -100,15 +91,8 @@ export interface AppsCreateRequestEdgeIpsStatic {
 export type AppsCreateRequestEdgeIps =
   | AppsCreateRequestEdgeIpsDynamic
   | AppsCreateRequestEdgeIpsStatic;
-const AppsCreateRequestEdgeIps = /*@__PURE__*/ __L.at(__c0, 2);
-
 export type AppsCreateRequestOriginDirectList = Array<string>;
-const AppsCreateRequestOriginDirectList =
-  AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AppsCreateRequestOriginDirectList>;
-
 export type AppsCreateRequestOriginDnsType = "" | "A" | "AAAA" | "SRV";
-const AppsCreateRequestOriginDnsType = S.String;
-
 export interface AppsCreateRequestOriginDns {
   /** The name of the DNS record associated with the origin. */
   name?: string;
@@ -117,20 +101,9 @@ export interface AppsCreateRequestOriginDns {
   /** The type of DNS record associated with the origin. "" is used to specify a combination of A/AAAA records. */
   type?: AppsCreateRequestOriginDnsType | (string & {});
 }
-const AppsCreateRequestOriginDns = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<AppsCreateRequestOriginDns>;
-
 export type AppsCreateRequestOriginPort = string | number;
-const AppsCreateRequestOriginPort = /*@__PURE__*/ __L.at(__c0, 4);
-
 export type AppsCreateRequestProxyProtocol = "off" | "v1" | "v2" | "simple";
-const AppsCreateRequestProxyProtocol = S.String;
-
 export type AppsCreateRequestTls = "off" | "flexible" | "full" | "strict";
-const AppsCreateRequestTls = S.String;
-
 export interface CreateAppRequest {
   /** Zone identifier. */
   zoneId: string;
@@ -161,8 +134,6 @@ export interface CreateAppRequest {
   /** Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks. */
   virtualNetworkId?: string;
 }
-const CreateAppRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<CreateAppRequest>;
-
 export type AppsCreateResultSpectrumConfigAppConfigDnsType = "CNAME" | "ADDRESS";
 export interface AppsCreateResultSpectrumConfigAppConfigDns {
   /** The name of the DNS record associated with the application. */
@@ -269,26 +240,18 @@ export interface AppsCreateResultSpectrumConfigPaygoAppConfig {
 export type AppsCreateResult =
   | AppsCreateResultSpectrumConfigAppConfig
   | AppsCreateResultSpectrumConfigPaygoAppConfig;
-const AppsCreateResult = /*@__PURE__*/ __L.at(__c0, 6);
-
 export type CreateAppResponse = AppsCreateResult;
-const CreateAppResponse = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<CreateAppResponse>;
-
 export interface DeleteAppRequest {
   /** Zone identifier. */
   zoneId: string;
   /** App identifier. */
   appId: string;
 }
-const DeleteAppRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<DeleteAppRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteAppResponse {
   /** Identifier. */
   id: string;
 }
-const DeleteAppResponse = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<DeleteAppResponse>;
-
 export interface GetAnalyticAggregateCurrentRequest {
   /** Identifier. */
   zoneId: string;
@@ -297,11 +260,6 @@ export interface GetAnalyticAggregateCurrentRequest {
   /** Co-location identifier. */
   coloName?: string;
 }
-const GetAnalyticAggregateCurrentRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<GetAnalyticAggregateCurrentRequest>;
-
 export interface AnalyticsAggregatesCurrentsGetResultItem {
   /** Application identifier. */
   appID: string;
@@ -314,24 +272,9 @@ export interface AnalyticsAggregatesCurrentsGetResultItem {
   /** Average duration of connections. */
   durationAvg: number;
 }
-const AnalyticsAggregatesCurrentsGetResultItem = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<AnalyticsAggregatesCurrentsGetResultItem>;
-
 export type AnalyticsAggregatesCurrentsGetResultList =
   Array<AnalyticsAggregatesCurrentsGetResultItem>;
-const AnalyticsAggregatesCurrentsGetResultList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<AnalyticsAggregatesCurrentsGetResultList>;
-
 export type GetAnalyticAggregateCurrentResponse = AnalyticsAggregatesCurrentsGetResultList;
-const GetAnalyticAggregateCurrentResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<GetAnalyticAggregateCurrentResponse>;
-
 export type AnalyticsEventsBytimesGetRequestTimeDelta =
   | "year"
   | "quarter"
@@ -341,12 +284,7 @@ export type AnalyticsEventsBytimesGetRequestTimeDelta =
   | "hour"
   | "dekaminute"
   | "minute";
-const AnalyticsEventsBytimesGetRequestTimeDelta = S.String;
-
 export type AnalyticsEventsBytimesGetRequestDimensionsList = Array<string>;
-const AnalyticsEventsBytimesGetRequestDimensionsList =
-  AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AnalyticsEventsBytimesGetRequestDimensionsList>;
-
 export type AnalyticsEventsBytimesGetRequestMetrics =
   | "count"
   | "bytesIngress"
@@ -355,20 +293,10 @@ export type AnalyticsEventsBytimesGetRequestMetrics =
   | "durationMedian"
   | "duration90th"
   | "duration99th";
-const AnalyticsEventsBytimesGetRequestMetrics = S.String;
-
 export type AnalyticsEventsBytimesGetRequestMetricsList = Array<
   AnalyticsEventsBytimesGetRequestMetrics | (string & {})
 >;
-const AnalyticsEventsBytimesGetRequestMetricsList = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<AnalyticsEventsBytimesGetRequestMetricsList>;
-
 export type AnalyticsEventsBytimesGetRequestSortList = Array<string>;
-const AnalyticsEventsBytimesGetRequestSortList =
-  AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AnalyticsEventsBytimesGetRequestSortList>;
-
 export interface GetAnalyticEventBytimeRequest {
   /** Identifier. */
   zoneId: string;
@@ -387,55 +315,22 @@ export interface GetAnalyticEventBytimeRequest {
   /** End of time interval to query, defaults to current time. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified. */
   until?: string;
 }
-const GetAnalyticEventBytimeRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<GetAnalyticEventBytimeRequest>;
-
 export type AnalyticsEventsBytimesGetResponseDataItemDimensionsList = Array<string>;
-const AnalyticsEventsBytimesGetResponseDataItemDimensionsList =
-  AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AnalyticsEventsBytimesGetResponseDataItemDimensionsList>;
-
 export type AnalyticsEventsBytimesGetResponseDataItemMetricsCase0List = Array<number>;
-const AnalyticsEventsBytimesGetResponseDataItemMetricsCase0List = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<AnalyticsEventsBytimesGetResponseDataItemMetricsCase0List>;
-
 export type AnalyticsEventsBytimesGetResponseDataItemMetricsCase1ItemList = Array<number>;
 export type AnalyticsEventsBytimesGetResponseDataItemMetricsCase1List =
   Array<AnalyticsEventsBytimesGetResponseDataItemMetricsCase1ItemList>;
 export type AnalyticsEventsBytimesGetResponseDataItemMetrics =
   | AnalyticsEventsBytimesGetResponseDataItemMetricsCase0List
   | AnalyticsEventsBytimesGetResponseDataItemMetricsCase1List;
-const AnalyticsEventsBytimesGetResponseDataItemMetrics = /*@__PURE__*/ __L.at(__c2, 1);
-
 export interface AnalyticsEventsBytimesGetResponseDataItem {
   dimensions?: AnalyticsEventsBytimesGetResponseDataItemDimensionsList | null;
   metrics?: AnalyticsEventsBytimesGetResponseDataItemMetrics | null;
 }
-const AnalyticsEventsBytimesGetResponseDataItem = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<AnalyticsEventsBytimesGetResponseDataItem>;
-
 export type AnalyticsEventsBytimesGetResponseDataList =
   Array<AnalyticsEventsBytimesGetResponseDataItem>;
-const AnalyticsEventsBytimesGetResponseDataList = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<AnalyticsEventsBytimesGetResponseDataList>;
-
 export type AnalyticsEventsBytimesGetResponseMaxMap = { [key: string]: number | undefined };
-const AnalyticsEventsBytimesGetResponseMaxMap = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<AnalyticsEventsBytimesGetResponseMaxMap>;
-
 export type AnalyticsEventsBytimesGetResponseMinMap = { [key: string]: number | undefined };
-const AnalyticsEventsBytimesGetResponseMinMap =
-  AnalyticsEventsBytimesGetResponseMaxMap as any as S.Schema<AnalyticsEventsBytimesGetResponseMinMap>;
-
 export type AnalyticsEventsBytimesGetResponseQueryDimensionsItem =
   | "event"
   | "appID"
@@ -443,9 +338,6 @@ export type AnalyticsEventsBytimesGetResponseQueryDimensionsItem =
   | "ipVersion";
 export type AnalyticsEventsBytimesGetResponseQueryDimensionsList =
   Array<AnalyticsEventsBytimesGetResponseQueryDimensionsItem>;
-const AnalyticsEventsBytimesGetResponseQueryDimensionsList =
-  AnalyticsEventsBytimesGetRequestMetricsList as any as S.Schema<AnalyticsEventsBytimesGetResponseQueryDimensionsList>;
-
 export type AnalyticsEventsBytimesGetResponseQueryMetricsItem =
   | "count"
   | "bytesIngress"
@@ -456,13 +348,7 @@ export type AnalyticsEventsBytimesGetResponseQueryMetricsItem =
   | "duration99th";
 export type AnalyticsEventsBytimesGetResponseQueryMetricsList =
   Array<AnalyticsEventsBytimesGetResponseQueryMetricsItem>;
-const AnalyticsEventsBytimesGetResponseQueryMetricsList =
-  AnalyticsEventsBytimesGetRequestMetricsList as any as S.Schema<AnalyticsEventsBytimesGetResponseQueryMetricsList>;
-
 export type AnalyticsEventsBytimesGetResponseQuerySortList = Array<string>;
-const AnalyticsEventsBytimesGetResponseQuerySortList =
-  AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AnalyticsEventsBytimesGetResponseQuerySortList>;
-
 export interface AnalyticsEventsBytimesGetResponseQuery {
   /** Can be used to break down the data by given attributes. Options are: */
   dimensions?: AnalyticsEventsBytimesGetResponseQueryDimensionsList | null;
@@ -479,26 +365,10 @@ export interface AnalyticsEventsBytimesGetResponseQuery {
   /** End of time interval to query, defaults to current time. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified. */
   until?: string | null;
 }
-const AnalyticsEventsBytimesGetResponseQuery = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<AnalyticsEventsBytimesGetResponseQuery>;
-
 export type AnalyticsEventsBytimesGetResponseTotalsMap = { [key: string]: number | undefined };
-const AnalyticsEventsBytimesGetResponseTotalsMap =
-  AnalyticsEventsBytimesGetResponseMaxMap as any as S.Schema<AnalyticsEventsBytimesGetResponseTotalsMap>;
-
 export type AnalyticsEventsBytimesGetResponseTimeIntervalsItemList = Array<string>;
-const AnalyticsEventsBytimesGetResponseTimeIntervalsItemList =
-  AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AnalyticsEventsBytimesGetResponseTimeIntervalsItemList>;
-
 export type AnalyticsEventsBytimesGetResponseTimeIntervalsList =
   Array<AnalyticsEventsBytimesGetResponseTimeIntervalsItemList>;
-const AnalyticsEventsBytimesGetResponseTimeIntervalsList = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<AnalyticsEventsBytimesGetResponseTimeIntervalsList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetAnalyticEventBytimeResponse {
   /** List of columns returned by the analytics query. */
@@ -517,15 +387,7 @@ export interface GetAnalyticEventBytimeResponse {
   /** List of time interval buckets: [start, end]. */
   timeIntervals?: AnalyticsEventsBytimesGetResponseTimeIntervalsList | null;
 }
-const GetAnalyticEventBytimeResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<GetAnalyticEventBytimeResponse>;
-
 export type AnalyticsEventsSummariesGetRequestDimensionsList = Array<string>;
-const AnalyticsEventsSummariesGetRequestDimensionsList =
-  AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AnalyticsEventsSummariesGetRequestDimensionsList>;
-
 export type AnalyticsEventsSummariesGetRequestMetrics =
   | "count"
   | "bytesIngress"
@@ -537,13 +399,7 @@ export type AnalyticsEventsSummariesGetRequestMetrics =
 export type AnalyticsEventsSummariesGetRequestMetricsList = Array<
   AnalyticsEventsSummariesGetRequestMetrics | (string & {})
 >;
-const AnalyticsEventsSummariesGetRequestMetricsList =
-  AnalyticsEventsBytimesGetRequestMetricsList as any as S.Schema<AnalyticsEventsSummariesGetRequestMetricsList>;
-
 export type AnalyticsEventsSummariesGetRequestSortList = Array<string>;
-const AnalyticsEventsSummariesGetRequestSortList =
-  AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AnalyticsEventsSummariesGetRequestSortList>;
-
 export interface GetAnalyticEventSummaryRequest {
   /** Identifier. */
   zoneId: string;
@@ -560,15 +416,7 @@ export interface GetAnalyticEventSummaryRequest {
   /** End of time interval to query, defaults to current time. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified. */
   until?: string;
 }
-const GetAnalyticEventSummaryRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<GetAnalyticEventSummaryRequest>;
-
 export type AnalyticsEventsSummariesGetResponseDataItemDimensionsList = Array<string>;
-const AnalyticsEventsSummariesGetResponseDataItemDimensionsList =
-  AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AnalyticsEventsSummariesGetResponseDataItemDimensionsList>;
-
 export type AnalyticsEventsSummariesGetResponseDataItemMetricsCase0List = Array<number>;
 export type AnalyticsEventsSummariesGetResponseDataItemMetricsCase1ItemList = Array<number>;
 export type AnalyticsEventsSummariesGetResponseDataItemMetricsCase1List =
@@ -576,32 +424,14 @@ export type AnalyticsEventsSummariesGetResponseDataItemMetricsCase1List =
 export type AnalyticsEventsSummariesGetResponseDataItemMetrics =
   | AnalyticsEventsSummariesGetResponseDataItemMetricsCase0List
   | AnalyticsEventsSummariesGetResponseDataItemMetricsCase1List;
-const AnalyticsEventsSummariesGetResponseDataItemMetrics = /*@__PURE__*/ __L.at(__c3, 1);
-
 export interface AnalyticsEventsSummariesGetResponseDataItem {
   dimensions?: AnalyticsEventsSummariesGetResponseDataItemDimensionsList | null;
   metrics?: AnalyticsEventsSummariesGetResponseDataItemMetrics | null;
 }
-const AnalyticsEventsSummariesGetResponseDataItem = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<AnalyticsEventsSummariesGetResponseDataItem>;
-
 export type AnalyticsEventsSummariesGetResponseDataList =
   Array<AnalyticsEventsSummariesGetResponseDataItem>;
-const AnalyticsEventsSummariesGetResponseDataList = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<AnalyticsEventsSummariesGetResponseDataList>;
-
 export type AnalyticsEventsSummariesGetResponseMaxMap = { [key: string]: number | undefined };
-const AnalyticsEventsSummariesGetResponseMaxMap =
-  AnalyticsEventsBytimesGetResponseMaxMap as any as S.Schema<AnalyticsEventsSummariesGetResponseMaxMap>;
-
 export type AnalyticsEventsSummariesGetResponseMinMap = { [key: string]: number | undefined };
-const AnalyticsEventsSummariesGetResponseMinMap =
-  AnalyticsEventsBytimesGetResponseMaxMap as any as S.Schema<AnalyticsEventsSummariesGetResponseMinMap>;
-
 export type AnalyticsEventsSummariesGetResponseQueryDimensionsItem =
   | "event"
   | "appID"
@@ -609,9 +439,6 @@ export type AnalyticsEventsSummariesGetResponseQueryDimensionsItem =
   | "ipVersion";
 export type AnalyticsEventsSummariesGetResponseQueryDimensionsList =
   Array<AnalyticsEventsSummariesGetResponseQueryDimensionsItem>;
-const AnalyticsEventsSummariesGetResponseQueryDimensionsList =
-  AnalyticsEventsBytimesGetRequestMetricsList as any as S.Schema<AnalyticsEventsSummariesGetResponseQueryDimensionsList>;
-
 export type AnalyticsEventsSummariesGetResponseQueryMetricsItem =
   | "count"
   | "bytesIngress"
@@ -622,13 +449,7 @@ export type AnalyticsEventsSummariesGetResponseQueryMetricsItem =
   | "duration99th";
 export type AnalyticsEventsSummariesGetResponseQueryMetricsList =
   Array<AnalyticsEventsSummariesGetResponseQueryMetricsItem>;
-const AnalyticsEventsSummariesGetResponseQueryMetricsList =
-  AnalyticsEventsBytimesGetRequestMetricsList as any as S.Schema<AnalyticsEventsSummariesGetResponseQueryMetricsList>;
-
 export type AnalyticsEventsSummariesGetResponseQuerySortList = Array<string>;
-const AnalyticsEventsSummariesGetResponseQuerySortList =
-  AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AnalyticsEventsSummariesGetResponseQuerySortList>;
-
 export interface AnalyticsEventsSummariesGetResponseQuery {
   /** Can be used to break down the data by given attributes. Options are: */
   dimensions?: AnalyticsEventsSummariesGetResponseQueryDimensionsList | null;
@@ -645,21 +466,10 @@ export interface AnalyticsEventsSummariesGetResponseQuery {
   /** End of time interval to query, defaults to current time. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified. */
   until?: string | null;
 }
-const AnalyticsEventsSummariesGetResponseQuery = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<AnalyticsEventsSummariesGetResponseQuery>;
-
 export type AnalyticsEventsSummariesGetResponseTotalsMap = { [key: string]: number | undefined };
-const AnalyticsEventsSummariesGetResponseTotalsMap =
-  AnalyticsEventsBytimesGetResponseMaxMap as any as S.Schema<AnalyticsEventsSummariesGetResponseTotalsMap>;
-
 export type AnalyticsEventsSummariesGetResponseTimeIntervalsItemList = Array<string>;
 export type AnalyticsEventsSummariesGetResponseTimeIntervalsList =
   Array<AnalyticsEventsSummariesGetResponseTimeIntervalsItemList>;
-const AnalyticsEventsSummariesGetResponseTimeIntervalsList =
-  AnalyticsEventsBytimesGetResponseTimeIntervalsList as any as S.Schema<AnalyticsEventsSummariesGetResponseTimeIntervalsList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetAnalyticEventSummaryResponse {
   /** List of columns returned by the analytics query. */
@@ -678,19 +488,12 @@ export interface GetAnalyticEventSummaryResponse {
   /** List of time interval buckets: [start, end]. */
   timeIntervals?: AnalyticsEventsSummariesGetResponseTimeIntervalsList | null;
 }
-const GetAnalyticEventSummaryResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<GetAnalyticEventSummaryResponse>;
-
 export interface GetAppRequest {
   /** Zone identifier. */
   zoneId: string;
   /** App identifier. */
   appId: string;
 }
-const GetAppRequest = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<GetAppRequest>;
-
 export type AppsGetResultSpectrumConfigAppConfigDnsType = "CNAME" | "ADDRESS";
 export interface AppsGetResultSpectrumConfigAppConfigDns {
   /** The name of the DNS record associated with the application. */
@@ -797,17 +600,9 @@ export interface AppsGetResultSpectrumConfigPaygoAppConfig {
 export type AppsGetResult =
   | AppsGetResultSpectrumConfigAppConfig
   | AppsGetResultSpectrumConfigPaygoAppConfig;
-const AppsGetResult = /*@__PURE__*/ __L.at(__c3, 7);
-
 export type GetAppResponse = AppsGetResult;
-const GetAppResponse = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<GetAppResponse>;
-
 export type AppsListRequestDirection = "asc" | "desc";
-const AppsListRequestDirection = S.String;
-
 export type AppsListRequestOrder = "protocol" | "app_id" | "created_on" | "modified_on" | "dns";
-const AppsListRequestOrder = S.String;
-
 export interface ListAppsRequest {
   /** Zone identifier. */
   zoneId: string;
@@ -820,8 +615,6 @@ export interface ListAppsRequest {
   /** Sets the maximum number of results per page. */
   perPage?: number;
 }
-const ListAppsRequest = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<ListAppsRequest>;
-
 export type AppsListResultCase0ItemDnsType = "CNAME" | "ADDRESS";
 export interface AppsListResultCase0ItemDns {
   /** The name of the DNS record associated with the application. */
@@ -921,26 +714,17 @@ export interface AppsListResultCase1Item {
 }
 export type AppsListResultCase1List = Array<AppsListResultCase1Item>;
 export type AppsListResult = AppsListResultCase0List | AppsListResultCase1List;
-const AppsListResult = /*@__PURE__*/ __L.at(__c4, 2);
-
 export interface ListAppsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: AppsListResult;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListAppsResponse = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<ListAppsResponse>;
-
 export interface ListProtocolsRequest {
   /** Zone identifier. */
   zoneId: string;
 }
-const ListProtocolsRequest = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<ListProtocolsRequest>;
-
 export type ListProtocolsResultItemPortsList = Array<number>;
-const ListProtocolsResultItemPortsList =
-  AnalyticsEventsBytimesGetResponseDataItemMetricsCase0List as any as S.Schema<ListProtocolsResultItemPortsList>;
-
 export interface ListProtocolsResultItem {
   /** The full name of the application protocol. */
   description: string;
@@ -951,23 +735,8 @@ export interface ListProtocolsResultItem {
   /** The transport layer protocol used by the application protocol */
   transport: string;
 }
-const ListProtocolsResultItem = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<ListProtocolsResultItem>;
-
 export type ListProtocolsResultList = Array<ListProtocolsResultItem>;
-const ListProtocolsResultList = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<ListProtocolsResultList>;
-
 export type ListProtocolsResponse = ListProtocolsResultList;
-const ListProtocolsResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<ListProtocolsResponse>;
-
 export type AppsUpdateRequestDnsType = "CNAME" | "ADDRESS";
 export interface AppsUpdateRequestDns {
   /** The name of the DNS record associated with the application. */
@@ -975,11 +744,7 @@ export interface AppsUpdateRequestDns {
   /** The type of DNS record associated with the application. */
   type?: AppsUpdateRequestDnsType | (string & {});
 }
-const AppsUpdateRequestDns = AppsCreateRequestDns as any as S.Schema<AppsUpdateRequestDns>;
-
 export type AppsUpdateRequestTrafficType = "direct" | "http" | "https" | "worker";
-const AppsUpdateRequestTrafficType = S.String;
-
 export type AppsUpdateRequestEdgeIpsDynamicConnectivity = "all" | "ipv4" | "ipv6";
 export type AppsUpdateRequestEdgeIpsDynamicType = "dynamic";
 export interface AppsUpdateRequestEdgeIpsDynamic {
@@ -999,12 +764,7 @@ export interface AppsUpdateRequestEdgeIpsStatic {
 export type AppsUpdateRequestEdgeIps =
   | AppsUpdateRequestEdgeIpsDynamic
   | AppsUpdateRequestEdgeIpsStatic;
-const AppsUpdateRequestEdgeIps = /*@__PURE__*/ __L.at(__c5, 0);
-
 export type AppsUpdateRequestOriginDirectList = Array<string>;
-const AppsUpdateRequestOriginDirectList =
-  AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AppsUpdateRequestOriginDirectList>;
-
 export type AppsUpdateRequestOriginDnsType = "" | "A" | "AAAA" | "SRV";
 export interface AppsUpdateRequestOriginDns {
   /** The name of the DNS record associated with the origin. */
@@ -1014,18 +774,9 @@ export interface AppsUpdateRequestOriginDns {
   /** The type of DNS record associated with the origin. "" is used to specify a combination of A/AAAA records. */
   type?: AppsUpdateRequestOriginDnsType | (string & {});
 }
-const AppsUpdateRequestOriginDns =
-  AppsCreateRequestOriginDns as any as S.Schema<AppsUpdateRequestOriginDns>;
-
 export type AppsUpdateRequestOriginPort = string | number;
-const AppsUpdateRequestOriginPort = /*@__PURE__*/ __L.at(__c5, 1);
-
 export type AppsUpdateRequestProxyProtocol = "off" | "v1" | "v2" | "simple";
-const AppsUpdateRequestProxyProtocol = S.String;
-
 export type AppsUpdateRequestTls = "off" | "flexible" | "full" | "strict";
-const AppsUpdateRequestTls = S.String;
-
 export interface UpdateAppRequest {
   /** Zone identifier. */
   zoneId: string;
@@ -1058,8 +809,6 @@ export interface UpdateAppRequest {
   /** Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks. */
   virtualNetworkId?: string;
 }
-const UpdateAppRequest = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<UpdateAppRequest>;
-
 export type AppsUpdateResultSpectrumConfigAppConfigDnsType = "CNAME" | "ADDRESS";
 export interface AppsUpdateResultSpectrumConfigAppConfigDns {
   /** The name of the DNS record associated with the application. */
@@ -1166,11 +915,7 @@ export interface AppsUpdateResultSpectrumConfigPaygoAppConfig {
 export type AppsUpdateResult =
   | AppsUpdateResultSpectrumConfigAppConfig
   | AppsUpdateResultSpectrumConfigPaygoAppConfig;
-const AppsUpdateResult = /*@__PURE__*/ __L.at(__c5, 3);
-
 export type UpdateAppResponse = AppsUpdateResult;
-const UpdateAppResponse = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<UpdateAppResponse>;
-
 export type CreateAppError = SpectrumProtocolNotAvailable | Forbidden | CloudflareOpError;
 /** Creates a new Spectrum application from a configuration using a name for the origin. */
 export const createApp: API.OperationMethod<
@@ -1179,8 +924,8 @@ export const createApp: API.OperationMethod<
   CreateAppError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAppRequest,
-  output: CreateAppResponse,
+  input: __S(5, __c0, 5) as any as S.Schema<CreateAppRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<CreateAppResponse>,
   errors: [SpectrumProtocolNotAvailable, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1194,8 +939,8 @@ export const deleteApp: API.OperationMethod<
   DeleteAppError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAppRequest,
-  output: DeleteAppResponse,
+  input: __S(8, __c1, 0) as any as S.Schema<DeleteAppRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<DeleteAppResponse>,
   errors: [SpectrumAppNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1209,8 +954,8 @@ export const getAnalyticAggregateCurrent: API.OperationMethod<
   GetAnalyticAggregateCurrentError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAnalyticAggregateCurrentRequest,
-  output: GetAnalyticAggregateCurrentResponse,
+  input: __S(10, __c1, 2) as any as S.Schema<GetAnalyticAggregateCurrentRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<GetAnalyticAggregateCurrentResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1224,8 +969,8 @@ export const getAnalyticEventBytime: API.OperationMethod<
   GetAnalyticEventBytimeError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAnalyticEventBytimeRequest,
-  output: GetAnalyticEventBytimeResponse,
+  input: __S(15, __c1, 7) as any as S.Schema<GetAnalyticEventBytimeRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<GetAnalyticEventBytimeResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1239,8 +984,8 @@ export const getAnalyticEventSummary: API.OperationMethod<
   GetAnalyticEventSummaryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAnalyticEventSummaryRequest,
-  output: GetAnalyticEventSummaryResponse,
+  input: __S(24, __c3, 0) as any as S.Schema<GetAnalyticEventSummaryRequest>,
+  output: __S(29, __c3, 5) as any as S.Schema<GetAnalyticEventSummaryResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1254,8 +999,8 @@ export const getApp: API.OperationMethod<
   GetAppError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAppRequest,
-  output: GetAppResponse,
+  input: __S(30, __c3, 6) as any as S.Schema<GetAppRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<GetAppResponse>,
   errors: [SpectrumAppNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1270,8 +1015,8 @@ export const listApps: API.PaginatedOperationMethod<
   CloudflareOpContext
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListAppsRequest,
-    output: ListAppsResponse,
+    input: __S(33, __c4, 1) as any as S.Schema<ListAppsRequest>,
+    output: __S(35, __c4, 3) as any as S.Schema<ListAppsResponse>,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1294,8 +1039,8 @@ export const listProtocols: API.OperationMethod<
   ListProtocolsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProtocolsRequest,
-  output: ListProtocolsResponse,
+  input: __S(36, __c4, 4) as any as S.Schema<ListProtocolsRequest>,
+  output: __S(39, __c4, 7) as any as S.Schema<ListProtocolsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1313,8 +1058,8 @@ export const updateApp: API.OperationMethod<
   UpdateAppError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAppRequest,
-  output: UpdateAppResponse,
+  input: __S(42, __c5, 2) as any as S.Schema<UpdateAppRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<UpdateAppResponse>,
   errors: [
     SpectrumAppNotFound,
     SpectrumProtocolNotAvailable,
@@ -1333,7 +1078,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          type: S.optional(AppsCreateRequestDnsType),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "AppsCreateRequestDns" });
     case 1:
@@ -1353,7 +1098,7 @@ function __c0(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           ttl: S.optional(S.Number),
-          type: S.optional(AppsCreateRequestOriginDnsType),
+          type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AppsCreateRequestOriginDns",
@@ -1364,18 +1109,18 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          dns: AppsCreateRequestDns,
+          dns: __S(0, __c0, 0),
           protocol: S.String,
-          trafficType: S.optional(AppsCreateRequestTrafficType.pipe(T.Body("traffic_type"))),
+          trafficType: S.optional(S.String.pipe(T.Body("traffic_type"))),
           argoSmartRouting: S.optional(S.Boolean.pipe(T.Body("argo_smart_routing"))),
-          edgeIps: S.optional(AppsCreateRequestEdgeIps.pipe(T.Body("edge_ips"))),
+          edgeIps: S.optional(__S(2, __c0, 2).pipe(T.Body("edge_ips"))),
           ipFirewall: S.optional(S.Boolean.pipe(T.Body("ip_firewall"))),
-          originDirect: S.optional(AppsCreateRequestOriginDirectList.pipe(T.Body("origin_direct"))),
-          originDns: S.optional(AppsCreateRequestOriginDns.pipe(T.Body("origin_dns"))),
-          originPort: S.optional(AppsCreateRequestOriginPort.pipe(T.Body("origin_port"))),
+          originDirect: S.optional(__S(1, __c0, 1).pipe(T.Body("origin_direct"))),
+          originDns: S.optional(__S(3, __c0, 3).pipe(T.Body("origin_dns"))),
+          originPort: S.optional(__S(4, __c0, 4).pipe(T.Body("origin_port"))),
           originWorkerId: S.optional(S.String.pipe(T.Body("origin_worker_id"))),
-          proxyProtocol: S.optional(AppsCreateRequestProxyProtocol.pipe(T.Body("proxy_protocol"))),
-          tls: S.optional(AppsCreateRequestTls),
+          proxyProtocol: S.optional(S.String.pipe(T.Body("proxy_protocol"))),
+          tls: S.optional(S.String),
           virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
         })
           .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/spectrum/apps", code: 200 }))
@@ -1407,7 +1152,7 @@ function __c0(j: number): any {
       );
     case 7:
       return S.suspend(() =>
-        AppsCreateResult.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(6, __c0, 6).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateAppResponse" });
   }
 }
@@ -1461,28 +1206,25 @@ function __c1(j: number): any {
         identifier: "AnalyticsAggregatesCurrentsGetResultItem",
       });
     case 4:
-      return S.Array(AnalyticsAggregatesCurrentsGetResultItem);
+      return S.Array(__S(11, __c1, 3));
     case 5:
       return S.suspend(() =>
-        AnalyticsAggregatesCurrentsGetResultList.pipe(
-          T.EnvelopePayloadRoot(),
-          T.KeyDictionary(KEY_DICTIONARY),
-        ),
+        __S(12, __c1, 4).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetAnalyticAggregateCurrentResponse",
       });
     case 6:
-      return S.Array(AnalyticsEventsBytimesGetRequestMetrics);
+      return S.Array(S.String);
     case 7:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          timeDelta: AnalyticsEventsBytimesGetRequestTimeDelta.pipe(T.Query("time_delta")),
-          dimensions: S.optional(AnalyticsEventsBytimesGetRequestDimensionsList.pipe(T.Query())),
+          timeDelta: S.String.pipe(T.Query("time_delta")),
+          dimensions: S.optional(__S(1, __c0, 1).pipe(T.Query())),
           filters: S.optional(S.String.pipe(T.Query())),
-          metrics: S.optional(AnalyticsEventsBytimesGetRequestMetricsList.pipe(T.Query())),
+          metrics: S.optional(__S(14, __c1, 6).pipe(T.Query())),
           since: S.optional(S.String.pipe(T.Query())),
-          sort: S.optional(AnalyticsEventsBytimesGetRequestSortList.pipe(T.Query())),
+          sort: S.optional(__S(1, __c0, 1).pipe(T.Query())),
           until: S.optional(S.String.pipe(T.Query())),
         })
           .pipe(
@@ -1507,47 +1249,43 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          dimensions: S.optional(S.NullOr(AnalyticsEventsBytimesGetResponseDataItemDimensionsList)),
-          metrics: S.optional(S.NullOr(AnalyticsEventsBytimesGetResponseDataItemMetrics)),
+          dimensions: S.optional(S.NullOr(__S(1, __c0, 1))),
+          metrics: S.optional(S.NullOr(__S(17, __c2, 1))),
         }),
       ).annotate({
         identifier: "AnalyticsEventsBytimesGetResponseDataItem",
       });
     case 3:
-      return S.Array(AnalyticsEventsBytimesGetResponseDataItem);
+      return S.Array(__S(18, __c2, 2));
     case 4:
       return S.Record(S.String, S.Number);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          dimensions: S.optional(S.NullOr(AnalyticsEventsBytimesGetResponseQueryDimensionsList)),
+          dimensions: S.optional(S.NullOr(__S(14, __c1, 6))),
           filters: S.optional(S.NullOr(S.String)),
           limit: S.optional(S.NullOr(S.Number)),
-          metrics: S.optional(S.NullOr(AnalyticsEventsBytimesGetResponseQueryMetricsList)),
+          metrics: S.optional(S.NullOr(__S(14, __c1, 6))),
           since: S.optional(S.NullOr(S.String)),
-          sort: S.optional(S.NullOr(AnalyticsEventsBytimesGetResponseQuerySortList)),
+          sort: S.optional(S.NullOr(__S(1, __c0, 1))),
           until: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "AnalyticsEventsBytimesGetResponseQuery",
       });
     case 6:
-      return S.Array(AnalyticsEventsBytimesGetResponseTimeIntervalsItemList);
+      return S.Array(__S(1, __c0, 1));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: AnalyticsEventsBytimesGetResponseDataList,
+          data: __S(19, __c2, 3),
           dataLag: S.Number.pipe(T.Body("data_lag")),
-          max: AnalyticsEventsBytimesGetResponseMaxMap,
-          min: AnalyticsEventsBytimesGetResponseMinMap,
-          query: AnalyticsEventsBytimesGetResponseQuery,
+          max: __S(20, __c2, 4),
+          min: __S(20, __c2, 4),
+          query: __S(21, __c2, 5),
           rows: S.Number,
-          totals: AnalyticsEventsBytimesGetResponseTotalsMap,
-          timeIntervals: S.optional(
-            S.NullOr(AnalyticsEventsBytimesGetResponseTimeIntervalsList).pipe(
-              T.Body("time_intervals"),
-            ),
-          ),
+          totals: __S(20, __c2, 4),
+          timeIntervals: S.optional(S.NullOr(__S(22, __c2, 6)).pipe(T.Body("time_intervals"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetAnalyticEventBytimeResponse",
@@ -1560,11 +1298,11 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          dimensions: S.optional(AnalyticsEventsSummariesGetRequestDimensionsList.pipe(T.Query())),
+          dimensions: S.optional(__S(1, __c0, 1).pipe(T.Query())),
           filters: S.optional(S.String.pipe(T.Query())),
-          metrics: S.optional(AnalyticsEventsSummariesGetRequestMetricsList.pipe(T.Query())),
+          metrics: S.optional(__S(14, __c1, 6).pipe(T.Query())),
           since: S.optional(S.String.pipe(T.Query())),
-          sort: S.optional(AnalyticsEventsSummariesGetRequestSortList.pipe(T.Query())),
+          sort: S.optional(__S(1, __c0, 1).pipe(T.Query())),
           until: S.optional(S.String.pipe(T.Query())),
         })
           .pipe(
@@ -1583,25 +1321,23 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          dimensions: S.optional(
-            S.NullOr(AnalyticsEventsSummariesGetResponseDataItemDimensionsList),
-          ),
-          metrics: S.optional(S.NullOr(AnalyticsEventsSummariesGetResponseDataItemMetrics)),
+          dimensions: S.optional(S.NullOr(__S(1, __c0, 1))),
+          metrics: S.optional(S.NullOr(__S(25, __c3, 1))),
         }),
       ).annotate({
         identifier: "AnalyticsEventsSummariesGetResponseDataItem",
       });
     case 3:
-      return S.Array(AnalyticsEventsSummariesGetResponseDataItem);
+      return S.Array(__S(26, __c3, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          dimensions: S.optional(S.NullOr(AnalyticsEventsSummariesGetResponseQueryDimensionsList)),
+          dimensions: S.optional(S.NullOr(__S(14, __c1, 6))),
           filters: S.optional(S.NullOr(S.String)),
           limit: S.optional(S.NullOr(S.Number)),
-          metrics: S.optional(S.NullOr(AnalyticsEventsSummariesGetResponseQueryMetricsList)),
+          metrics: S.optional(S.NullOr(__S(14, __c1, 6))),
           since: S.optional(S.NullOr(S.String)),
-          sort: S.optional(S.NullOr(AnalyticsEventsSummariesGetResponseQuerySortList)),
+          sort: S.optional(S.NullOr(__S(1, __c0, 1))),
           until: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -1610,18 +1346,14 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: AnalyticsEventsSummariesGetResponseDataList,
+          data: __S(27, __c3, 3),
           dataLag: S.Number.pipe(T.Body("data_lag")),
-          max: AnalyticsEventsSummariesGetResponseMaxMap,
-          min: AnalyticsEventsSummariesGetResponseMinMap,
-          query: AnalyticsEventsSummariesGetResponseQuery,
+          max: __S(20, __c2, 4),
+          min: __S(20, __c2, 4),
+          query: __S(28, __c3, 4),
           rows: S.Number,
-          totals: AnalyticsEventsSummariesGetResponseTotalsMap,
-          timeIntervals: S.optional(
-            S.NullOr(AnalyticsEventsSummariesGetResponseTimeIntervalsList).pipe(
-              T.Body("time_intervals"),
-            ),
-          ),
+          totals: __S(20, __c2, 4),
+          timeIntervals: S.optional(S.NullOr(__S(22, __c2, 6)).pipe(T.Body("time_intervals"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetAnalyticEventSummaryResponse",
@@ -1667,14 +1399,14 @@ function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        AppsGetResult.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(31, __c3, 7).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetAppResponse" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          direction: S.optional(AppsListRequestDirection.pipe(T.Query())),
-          order: S.optional(AppsListRequestOrder.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
         })
@@ -1686,7 +1418,7 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: AppsListResult.pipe(T.EnvelopePayload()),
+          result: __S(34, __c4, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListAppsResponse" });
@@ -1703,15 +1435,15 @@ function __c4(j: number): any {
         S.Struct({
           description: S.String,
           name: S.String,
-          ports: ListProtocolsResultItemPortsList,
+          ports: __S(16, __c2, 0),
           transport: S.String,
         }),
       ).annotate({ identifier: "ListProtocolsResultItem" });
     case 6:
-      return S.Array(ListProtocolsResultItem);
+      return S.Array(__S(37, __c4, 5));
     case 7:
       return S.suspend(() =>
-        ListProtocolsResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(38, __c4, 6).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListProtocolsResponse" });
   }
 }
@@ -1734,18 +1466,18 @@ function __c5(j: number): any {
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           appId: S.String.pipe(T.Label("app_id")),
-          dns: AppsUpdateRequestDns,
+          dns: __S(0, __c0, 0),
           protocol: S.String,
-          trafficType: S.optional(AppsUpdateRequestTrafficType.pipe(T.Body("traffic_type"))),
+          trafficType: S.optional(S.String.pipe(T.Body("traffic_type"))),
           argoSmartRouting: S.optional(S.Boolean.pipe(T.Body("argo_smart_routing"))),
-          edgeIps: S.optional(AppsUpdateRequestEdgeIps.pipe(T.Body("edge_ips"))),
+          edgeIps: S.optional(__S(40, __c5, 0).pipe(T.Body("edge_ips"))),
           ipFirewall: S.optional(S.Boolean.pipe(T.Body("ip_firewall"))),
-          originDirect: S.optional(AppsUpdateRequestOriginDirectList.pipe(T.Body("origin_direct"))),
-          originDns: S.optional(AppsUpdateRequestOriginDns.pipe(T.Body("origin_dns"))),
-          originPort: S.optional(AppsUpdateRequestOriginPort.pipe(T.Body("origin_port"))),
+          originDirect: S.optional(__S(1, __c0, 1).pipe(T.Body("origin_direct"))),
+          originDns: S.optional(__S(3, __c0, 3).pipe(T.Body("origin_dns"))),
+          originPort: S.optional(__S(41, __c5, 1).pipe(T.Body("origin_port"))),
           originWorkerId: S.optional(S.String.pipe(T.Body("origin_worker_id"))),
-          proxyProtocol: S.optional(AppsUpdateRequestProxyProtocol.pipe(T.Body("proxy_protocol"))),
-          tls: S.optional(AppsUpdateRequestTls),
+          proxyProtocol: S.optional(S.String.pipe(T.Body("proxy_protocol"))),
+          tls: S.optional(S.String),
           virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
         })
           .pipe(
@@ -1779,7 +1511,12 @@ function __c5(j: number): any {
       );
     case 4:
       return S.suspend(() =>
-        AppsUpdateResult.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(43, __c5, 3).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateAppResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

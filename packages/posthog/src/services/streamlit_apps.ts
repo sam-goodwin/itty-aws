@@ -5,6 +5,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -20,17 +22,7 @@ export interface CreateStreamlitAppRequest {
   /** Memory in GB allocated to the sandbox. */
   memory_gb?: number;
 }
-const CreateStreamlitAppRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateStreamlitAppRequest>;
-
 export type StreamlitAppUserInfoHedgehogConfigMap = { [key: string]: unknown | undefined };
-const StreamlitAppUserInfoHedgehogConfigMap = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<StreamlitAppUserInfoHedgehogConfigMap>;
-
 export interface StreamlitAppUserInfo {
   id: number;
   uuid: string;
@@ -42,8 +34,6 @@ export interface StreamlitAppUserInfo {
   hedgehog_config: StreamlitAppUserInfoHedgehogConfigMap | null;
   role_at_organization: string | null;
 }
-const StreamlitAppUserInfo = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<StreamlitAppUserInfo>;
-
 export interface AppVersionContract {
   /** User who uploaded this version. */
   created_by?: StreamlitAppUserInfo | null;
@@ -53,8 +43,6 @@ export interface AppVersionContract {
   snapshot_id: string | null;
   created_at: string;
 }
-const AppVersionContract = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<AppVersionContract>;
-
 export interface AppSandboxContract {
   status: string;
   restart_count: number;
@@ -63,8 +51,6 @@ export interface AppSandboxContract {
   last_activity_at: string | null;
   version_number: number | null;
 }
-const AppSandboxContract = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<AppSandboxContract>;
-
 export interface AppContract {
   /** User who created this app. */
   created_by?: StreamlitAppUserInfo | null;
@@ -82,28 +68,16 @@ export interface AppContract {
   created_at: string;
   updated_at: string;
 }
-const AppContract = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<AppContract>;
-
 export interface GetStreamlitAppRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   short_id: string;
 }
-const GetStreamlitAppRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<GetStreamlitAppRequest>;
-
 export interface GetStreamlitAppsStatusRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   short_id: string;
 }
-const GetStreamlitAppsStatusRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<GetStreamlitAppsStatusRequest>;
-
 export interface StreamlitAppStatus {
   /** Sandbox lifecycle status, or 'stopped' when no sandbox exists. */
   status: string;
@@ -118,34 +92,17 @@ export interface StreamlitAppStatus {
   /** Version number the running sandbox was booted from. */
   version_number?: number | null;
 }
-const StreamlitAppStatus = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<StreamlitAppStatus>;
-
 export interface GetStreamlitAppsVersionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   short_id: string;
 }
-const GetStreamlitAppsVersionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<GetStreamlitAppsVersionRequest>;
-
 /** Most recent versions of the app, newest first (capped at 50). */
 export type StreamlitAppVersionListResultsList = Array<AppVersionContract>;
-const StreamlitAppVersionListResultsList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<StreamlitAppVersionListResultsList>;
-
 export interface StreamlitAppVersionList {
   /** Most recent versions of the app, newest first (capped at 50). */
   results: StreamlitAppVersionListResultsList;
 }
-const StreamlitAppVersionList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<StreamlitAppVersionList>;
-
 export interface ListStreamlitAppsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -154,11 +111,6 @@ export interface ListStreamlitAppsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-const ListStreamlitAppsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ListStreamlitAppsRequest>;
-
 export interface AppSummaryContract {
   /** User who created this app. */
   created_by?: StreamlitAppUserInfo | null;
@@ -172,25 +124,13 @@ export interface AppSummaryContract {
   created_at: string;
   updated_at: string;
 }
-const AppSummaryContract = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<AppSummaryContract>;
-
 export type PaginatedAppSummaryContractListResultsList = Array<AppSummaryContract>;
-const PaginatedAppSummaryContractListResultsList = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<PaginatedAppSummaryContractListResultsList>;
-
 export interface PaginatedAppSummaryContractList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedAppSummaryContractListResultsList;
 }
-const PaginatedAppSummaryContractList = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<PaginatedAppSummaryContractList>;
-
 export interface StreamlitAppsActivateVersionCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -198,54 +138,29 @@ export interface StreamlitAppsActivateVersionCreateRequest {
   /** Version number to activate. Must reference an existing version of this app. */
   version_number: number;
 }
-const StreamlitAppsActivateVersionCreateRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<StreamlitAppsActivateVersionCreateRequest>;
-
 export interface ActivateVersionResponse {
   /** The version that is now active for the app. */
   active_version: AppVersionContract;
 }
-const ActivateVersionResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ActivateVersionResponse>;
-
 export interface StreamlitAppsConnectInfoRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   short_id: string;
 }
-const StreamlitAppsConnectInfoRetrieveRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<StreamlitAppsConnectInfoRetrieveRequest>;
-
 export interface StreamlitConnectInfo {
   /** Authenticated URL to embed the running app in an iframe. */
   iframe_url: string;
   /** Seconds until the embedded session credential expires. */
   expires_in: number;
 }
-const StreamlitConnectInfo = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<StreamlitConnectInfo>;
-
 /** Extra text files to ship next to app.py, keyed by project-relative path (for example 'utils.py' or 'data/config.json'), each as plain text (max 1 MB). */
 export type StreamlitAppsCreateVersionFromSourceCreateRequestFilesMap = {
   [key: string]: string | undefined;
 };
-const StreamlitAppsCreateVersionFromSourceCreateRequestFilesMap = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<StreamlitAppsCreateVersionFromSourceCreateRequestFilesMap>;
-
 /** Extra binary files to ship next to app.py, keyed by project-relative path (for example 'data/events.parquet'), each as standard base64 text. */
 export type StreamlitAppsCreateVersionFromSourceCreateRequestAssetsMap = {
   [key: string]: string | undefined;
 };
-const StreamlitAppsCreateVersionFromSourceCreateRequestAssetsMap =
-  StreamlitAppsCreateVersionFromSourceCreateRequestFilesMap as any as S.Schema<StreamlitAppsCreateVersionFromSourceCreateRequestAssetsMap>;
-
 export interface StreamlitAppsCreateVersionFromSourceCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -257,63 +172,28 @@ export interface StreamlitAppsCreateVersionFromSourceCreateRequest {
   /** Extra binary files to ship next to app.py, keyed by project-relative path (for example 'data/events.parquet'), each as standard base64 text. */
   assets?: StreamlitAppsCreateVersionFromSourceCreateRequestAssetsMap;
 }
-const StreamlitAppsCreateVersionFromSourceCreateRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<StreamlitAppsCreateVersionFromSourceCreateRequest>;
-
 export interface StreamlitAppsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   short_id: string;
 }
-const StreamlitAppsDestroyRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<StreamlitAppsDestroyRequest>;
-
 export interface StreamlitAppsDestroyResponse {}
-const StreamlitAppsDestroyResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<StreamlitAppsDestroyResponse>;
-
 export interface StreamlitAppsRestartCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   short_id: string;
 }
-const StreamlitAppsRestartCreateRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<StreamlitAppsRestartCreateRequest>;
-
 export interface StreamlitAppsRestartCreateResponse {}
-const StreamlitAppsRestartCreateResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<StreamlitAppsRestartCreateResponse>;
-
 export interface StreamlitAppsStartCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   short_id: string;
 }
-const StreamlitAppsStartCreateRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<StreamlitAppsStartCreateRequest>;
-
 export interface StreamlitAppsStopCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   short_id: string;
 }
-const StreamlitAppsStopCreateRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<StreamlitAppsStopCreateRequest>;
-
 export interface StreamlitAppsUploadVersionCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -321,11 +201,6 @@ export interface StreamlitAppsUploadVersionCreateRequest {
   /** Zip archive containing the Streamlit app sources (max 10 MB). */
   file: string;
 }
-const StreamlitAppsUploadVersionCreateRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<StreamlitAppsUploadVersionCreateRequest>;
-
 export interface UpdateStreamlitAppRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -339,11 +214,6 @@ export interface UpdateStreamlitAppRequest {
   /** New memory (GB) allocation for the sandbox. */
   memory_gb?: number;
 }
-const UpdateStreamlitAppRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<UpdateStreamlitAppRequest>;
-
 export interface UpdateStreamlitAppsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -357,11 +227,6 @@ export interface UpdateStreamlitAppsPartialRequest {
   /** New memory (GB) allocation for the sandbox. */
   memory_gb?: number;
 }
-const UpdateStreamlitAppsPartialRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<UpdateStreamlitAppsPartialRequest>;
-
 export type CreateStreamlitAppError = PosthogOpError;
 /** Create a streamlit app */
 export const createStreamlitApp: API.OperationMethod<
@@ -370,8 +235,8 @@ export const createStreamlitApp: API.OperationMethod<
   CreateStreamlitAppError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateStreamlitAppRequest,
-  output: AppContract,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateStreamlitAppRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<AppContract>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -385,8 +250,8 @@ export const getStreamlitApp: API.OperationMethod<
   GetStreamlitAppError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetStreamlitAppRequest,
-  output: AppContract,
+  input: __S(6, __c0, 6) as any as S.Schema<GetStreamlitAppRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<AppContract>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -400,8 +265,8 @@ export const getStreamlitAppsStatus: API.OperationMethod<
   GetStreamlitAppsStatusError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetStreamlitAppsStatusRequest,
-  output: StreamlitAppStatus,
+  input: __S(7, __c0, 7) as any as S.Schema<GetStreamlitAppsStatusRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<StreamlitAppStatus>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -415,8 +280,8 @@ export const getStreamlitAppsVersion: API.OperationMethod<
   GetStreamlitAppsVersionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetStreamlitAppsVersionRequest,
-  output: StreamlitAppVersionList,
+  input: __S(9, __c1, 1) as any as S.Schema<GetStreamlitAppsVersionRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<StreamlitAppVersionList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -430,8 +295,8 @@ export const listStreamlitApps: API.OperationMethod<
   ListStreamlitAppsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListStreamlitAppsRequest,
-  output: PaginatedAppSummaryContractList,
+  input: __S(12, __c1, 4) as any as S.Schema<ListStreamlitAppsRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<PaginatedAppSummaryContractList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -445,8 +310,8 @@ export const streamlitAppsActivateVersionCreate: API.OperationMethod<
   StreamlitAppsActivateVersionCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StreamlitAppsActivateVersionCreateRequest,
-  output: ActivateVersionResponse,
+  input: __S(16, __c2, 0) as any as S.Schema<StreamlitAppsActivateVersionCreateRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<ActivateVersionResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -460,8 +325,8 @@ export const streamlitAppsConnectInfoRetrieve: API.OperationMethod<
   StreamlitAppsConnectInfoRetrieveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StreamlitAppsConnectInfoRetrieveRequest,
-  output: StreamlitConnectInfo,
+  input: __S(18, __c2, 2) as any as S.Schema<StreamlitAppsConnectInfoRetrieveRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<StreamlitConnectInfo>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -475,8 +340,8 @@ export const streamlitAppsCreateVersionFromSourceCreate: API.OperationMethod<
   StreamlitAppsCreateVersionFromSourceCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StreamlitAppsCreateVersionFromSourceCreateRequest,
-  output: AppVersionContract,
+  input: __S(21, __c2, 5) as any as S.Schema<StreamlitAppsCreateVersionFromSourceCreateRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<AppVersionContract>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -490,8 +355,8 @@ export const streamlitAppsDestroy: API.OperationMethod<
   StreamlitAppsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StreamlitAppsDestroyRequest,
-  output: StreamlitAppsDestroyResponse,
+  input: __S(22, __c2, 6) as any as S.Schema<StreamlitAppsDestroyRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<StreamlitAppsDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -505,8 +370,8 @@ export const streamlitAppsRestartCreate: API.OperationMethod<
   StreamlitAppsRestartCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StreamlitAppsRestartCreateRequest,
-  output: StreamlitAppsRestartCreateResponse,
+  input: __S(24, __c3, 0) as any as S.Schema<StreamlitAppsRestartCreateRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<StreamlitAppsRestartCreateResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -520,8 +385,8 @@ export const streamlitAppsStartCreate: API.OperationMethod<
   StreamlitAppsStartCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StreamlitAppsStartCreateRequest,
-  output: AppContract,
+  input: __S(26, __c3, 2) as any as S.Schema<StreamlitAppsStartCreateRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<AppContract>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -535,8 +400,8 @@ export const streamlitAppsStopCreate: API.OperationMethod<
   StreamlitAppsStopCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StreamlitAppsStopCreateRequest,
-  output: AppContract,
+  input: __S(27, __c3, 3) as any as S.Schema<StreamlitAppsStopCreateRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<AppContract>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -550,8 +415,8 @@ export const streamlitAppsUploadVersionCreate: API.OperationMethod<
   StreamlitAppsUploadVersionCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StreamlitAppsUploadVersionCreateRequest,
-  output: AppVersionContract,
+  input: __S(28, __c3, 4) as any as S.Schema<StreamlitAppsUploadVersionCreateRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<AppVersionContract>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -565,8 +430,8 @@ export const updateStreamlitApp: API.OperationMethod<
   UpdateStreamlitAppError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateStreamlitAppRequest,
-  output: AppContract,
+  input: __S(29, __c3, 5) as any as S.Schema<UpdateStreamlitAppRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<AppContract>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -580,8 +445,8 @@ export const updateStreamlitAppsPartial: API.OperationMethod<
   UpdateStreamlitAppsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateStreamlitAppsPartialRequest,
-  output: AppContract,
+  input: __S(30, __c3, 6) as any as S.Schema<UpdateStreamlitAppsPartialRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<AppContract>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -616,14 +481,14 @@ function __c0(j: number): any {
           last_name: S.String,
           email: S.String,
           is_email_verified: S.NullOr(S.Boolean),
-          hedgehog_config: S.NullOr(StreamlitAppUserInfoHedgehogConfigMap),
+          hedgehog_config: S.NullOr(__S(1, __c0, 1)),
           role_at_organization: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "StreamlitAppUserInfo" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          created_by: S.optional(S.NullOr(StreamlitAppUserInfo)),
+          created_by: S.optional(S.NullOr(__S(2, __c0, 2))),
           id: S.String,
           version_number: S.Number,
           zip_hash: S.String,
@@ -645,9 +510,9 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          created_by: S.optional(S.NullOr(StreamlitAppUserInfo)),
-          active_version: S.optional(S.NullOr(AppVersionContract)),
-          sandbox: S.optional(S.NullOr(AppSandboxContract)),
+          created_by: S.optional(S.NullOr(__S(2, __c0, 2))),
+          active_version: S.optional(S.NullOr(__S(3, __c0, 3))),
+          sandbox: S.optional(S.NullOr(__S(4, __c0, 4))),
           id: S.String,
           short_id: S.String,
           name: S.String,
@@ -718,11 +583,11 @@ function __c1(j: number): any {
         identifier: "GetStreamlitAppsVersionRequest",
       });
     case 2:
-      return S.Array(AppVersionContract);
+      return S.Array(__S(3, __c0, 3));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          results: StreamlitAppVersionListResultsList,
+          results: __S(10, __c1, 2),
         }),
       ).annotate({ identifier: "StreamlitAppVersionList" });
     case 4:
@@ -738,7 +603,7 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          created_by: S.optional(S.NullOr(StreamlitAppUserInfo)),
+          created_by: S.optional(S.NullOr(__S(2, __c0, 2))),
           id: S.String,
           short_id: S.String,
           name: S.String,
@@ -751,14 +616,14 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "AppSummaryContract" });
     case 6:
-      return S.Array(AppSummaryContract);
+      return S.Array(__S(13, __c1, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: PaginatedAppSummaryContractListResultsList,
+          results: __S(14, __c1, 6),
         }),
       ).annotate({
         identifier: "PaginatedAppSummaryContractList",
@@ -786,7 +651,7 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          active_version: AppVersionContract,
+          active_version: __S(3, __c0, 3),
         }),
       ).annotate({ identifier: "ActivateVersionResponse" });
     case 2:
@@ -819,8 +684,8 @@ function __c2(j: number): any {
           project_id: S.String.pipe(T.Label()),
           short_id: S.String.pipe(T.Label()),
           source: S.String,
-          files: S.optional(StreamlitAppsCreateVersionFromSourceCreateRequestFilesMap),
-          assets: S.optional(StreamlitAppsCreateVersionFromSourceCreateRequestAssetsMap),
+          files: S.optional(__S(20, __c2, 4)),
+          assets: S.optional(__S(20, __c2, 4)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -958,4 +823,9 @@ function __c3(j: number): any {
         identifier: "UpdateStreamlitAppsPartialRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -37,22 +39,11 @@ export class NotFound
   ) {}
 
 export type CreateDashboardTemplateRequestTagsList = Array<string>;
-const CreateDashboardTemplateRequestTagsList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateDashboardTemplateRequestTagsList>;
-
 /** * `team` - Only team * `organization` - Organization * `global` - Global * `feature_flag` - Feature Flag */
 export type DashboardTemplateScopeEnum = "team" | "organization" | "global" | "feature_flag";
 export type BlankEnum = "";
 export type CreateDashboardTemplateRequestScope = DashboardTemplateScopeEnum | BlankEnum;
-const CreateDashboardTemplateRequestScope =
-  S.Unknown as any as S.Schema<CreateDashboardTemplateRequestScope>;
-
 export type CreateDashboardTemplateRequestAvailabilityContextsList = Array<string>;
-const CreateDashboardTemplateRequestAvailabilityContextsList =
-  CreateDashboardTemplateRequestTagsList as any as S.Schema<CreateDashboardTemplateRequestAvailabilityContextsList>;
-
 export interface CreateDashboardTemplateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -69,21 +60,8 @@ export interface CreateDashboardTemplateRequest {
   /** Manually curated; used to highlight templates in the UI. */
   is_featured?: boolean;
 }
-const CreateDashboardTemplateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateDashboardTemplateRequest>;
-
 export type DashboardTemplateTagsList = Array<string>;
-const DashboardTemplateTagsList =
-  CreateDashboardTemplateRequestTagsList as any as S.Schema<DashboardTemplateTagsList>;
-
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-const UserBasicHedgehogConfigMap = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<UserBasicHedgehogConfigMap>;
-
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
@@ -96,8 +74,6 @@ export type RoleAtOrganizationEnum =
   | "student"
   | "other";
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
-
 export interface UserBasic {
   id?: number;
   uuid?: string;
@@ -109,20 +85,10 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-const UserBasic = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<UserBasic>;
-
 export type DashboardTemplateScope = DashboardTemplateScopeEnum | BlankEnum;
-const DashboardTemplateScope = S.Unknown as any as S.Schema<DashboardTemplateScope>;
-
 export type DashboardTemplateAvailabilityContextsList = Array<string>;
-const DashboardTemplateAvailabilityContextsList =
-  CreateDashboardTemplateRequestTagsList as any as S.Schema<DashboardTemplateAvailabilityContextsList>;
-
 /** Names of data warehouse tables referenced by the template's tiles that are specific to the source project. */
 export type NonPortableReferencesWarehouseTablesList = Array<string>;
-const NonPortableReferencesWarehouseTablesList =
-  CreateDashboardTemplateRequestTagsList as any as S.Schema<NonPortableReferencesWarehouseTablesList>;
-
 export interface NonPortableReferences {
   /** Count of distinct action references in the template's tiles that are specific to the source project. */
   actions: number;
@@ -131,11 +97,6 @@ export interface NonPortableReferences {
   /** Names of data warehouse tables referenced by the template's tiles that are specific to the source project. */
   warehouse_tables: NonPortableReferencesWarehouseTablesList;
 }
-const NonPortableReferences = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<NonPortableReferences>;
-
 export interface DashboardTemplate {
   id?: string;
   template_name?: string | null;
@@ -156,61 +117,35 @@ export interface DashboardTemplate {
   /** Read-only. Project-specific references (actions, cohorts, data warehouse tables) embedded in this template's tiles that may not resolve when it is used in another project. Events and properties are matched by name and are portable, so they are not reported here. */
   non_portable_references?: NonPortableReferences;
 }
-const DashboardTemplate = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<DashboardTemplate>;
-
 export interface DashboardTemplatesCopyBetweenProjectsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** UUID of a team-scoped template in the same organization. Global and feature-flag templates cannot be copied with this endpoint. */
   source_template_id?: string;
 }
-const DashboardTemplatesCopyBetweenProjectsCreateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<DashboardTemplatesCopyBetweenProjectsCreateRequest>;
-
 export interface DashboardTemplatesDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this dashboard template. */
   id: string;
 }
-const DashboardTemplatesDestroyRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<DashboardTemplatesDestroyRequest>;
-
 export interface DashboardTemplatesDestroyResponse {}
-const DashboardTemplatesDestroyResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<DashboardTemplatesDestroyResponse>;
-
 export interface GetDashboardTemplateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this dashboard template. */
   id: string;
 }
-const GetDashboardTemplateRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<GetDashboardTemplateRequest>;
-
 export type ListDashboardTemplatesRequestOrdering =
   | "-created_at"
   | "-template_name"
   | "created_at"
   | "template_name";
-const ListDashboardTemplatesRequestOrdering = S.String;
-
 export type ListDashboardTemplatesRequestScope =
   | "feature_flag"
   | "global"
   | "organization"
   | "team";
-const ListDashboardTemplatesRequestScope = S.String;
-
 export interface ListDashboardTemplatesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -227,40 +162,16 @@ export interface ListDashboardTemplatesRequest {
   /** Optional. Full-text search across template name, tags, and description, ranked by relevance. Use it to find templates for a topic (e.g. `retention`, `revenue`, `product analytics`). */
   search?: string;
 }
-const ListDashboardTemplatesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ListDashboardTemplatesRequest>;
-
 export type PaginatedDashboardTemplateListResultsList = Array<DashboardTemplate>;
-const PaginatedDashboardTemplateListResultsList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<PaginatedDashboardTemplateListResultsList>;
-
 export interface PaginatedDashboardTemplateList {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedDashboardTemplateListResultsList;
 }
-const PaginatedDashboardTemplateList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<PaginatedDashboardTemplateList>;
-
 export type UpdateDashboardTemplateRequestTagsList = Array<string>;
-const UpdateDashboardTemplateRequestTagsList =
-  CreateDashboardTemplateRequestTagsList as any as S.Schema<UpdateDashboardTemplateRequestTagsList>;
-
 export type UpdateDashboardTemplateRequestScope = DashboardTemplateScopeEnum | BlankEnum;
-const UpdateDashboardTemplateRequestScope =
-  S.Unknown as any as S.Schema<UpdateDashboardTemplateRequestScope>;
-
 export type UpdateDashboardTemplateRequestAvailabilityContextsList = Array<string>;
-const UpdateDashboardTemplateRequestAvailabilityContextsList =
-  CreateDashboardTemplateRequestTagsList as any as S.Schema<UpdateDashboardTemplateRequestAvailabilityContextsList>;
-
 export interface UpdateDashboardTemplateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -279,23 +190,9 @@ export interface UpdateDashboardTemplateRequest {
   /** Manually curated; used to highlight templates in the UI. */
   is_featured?: boolean;
 }
-const UpdateDashboardTemplateRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<UpdateDashboardTemplateRequest>;
-
 export type UpdateDashboardTemplatesPartialRequestTagsList = Array<string>;
-const UpdateDashboardTemplatesPartialRequestTagsList =
-  CreateDashboardTemplateRequestTagsList as any as S.Schema<UpdateDashboardTemplatesPartialRequestTagsList>;
-
 export type UpdateDashboardTemplatesPartialRequestScope = DashboardTemplateScopeEnum | BlankEnum;
-const UpdateDashboardTemplatesPartialRequestScope =
-  S.Unknown as any as S.Schema<UpdateDashboardTemplatesPartialRequestScope>;
-
 export type UpdateDashboardTemplatesPartialRequestAvailabilityContextsList = Array<string>;
-const UpdateDashboardTemplatesPartialRequestAvailabilityContextsList =
-  CreateDashboardTemplateRequestTagsList as any as S.Schema<UpdateDashboardTemplatesPartialRequestAvailabilityContextsList>;
-
 export interface UpdateDashboardTemplatesPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -314,11 +211,6 @@ export interface UpdateDashboardTemplatesPartialRequest {
   /** Manually curated; used to highlight templates in the UI. */
   is_featured?: boolean;
 }
-const UpdateDashboardTemplatesPartialRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<UpdateDashboardTemplatesPartialRequest>;
-
 export type CreateDashboardTemplateError = BadRequest | Forbidden | NotFound | PosthogOpError;
 export const createDashboardTemplate: API.OperationMethod<
   CreateDashboardTemplateRequest,
@@ -326,8 +218,8 @@ export const createDashboardTemplate: API.OperationMethod<
   CreateDashboardTemplateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDashboardTemplateRequest,
-  output: DashboardTemplate,
+  input: __S(1, __c0, 1) as any as S.Schema<CreateDashboardTemplateRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<DashboardTemplate>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -345,8 +237,8 @@ export const dashboardTemplatesCopyBetweenProjectsCreate: API.OperationMethod<
   DashboardTemplatesCopyBetweenProjectsCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DashboardTemplatesCopyBetweenProjectsCreateRequest,
-  output: DashboardTemplate,
+  input: __S(6, __c0, 6) as any as S.Schema<DashboardTemplatesCopyBetweenProjectsCreateRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<DashboardTemplate>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -360,8 +252,8 @@ export const dashboardTemplatesDestroy: API.OperationMethod<
   DashboardTemplatesDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DashboardTemplatesDestroyRequest,
-  output: DashboardTemplatesDestroyResponse,
+  input: __S(7, __c0, 7) as any as S.Schema<DashboardTemplatesDestroyRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DashboardTemplatesDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -374,8 +266,8 @@ export const getDashboardTemplate: API.OperationMethod<
   GetDashboardTemplateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDashboardTemplateRequest,
-  output: DashboardTemplate,
+  input: __S(9, __c1, 1) as any as S.Schema<GetDashboardTemplateRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<DashboardTemplate>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -388,8 +280,8 @@ export const listDashboardTemplates: API.OperationMethod<
   ListDashboardTemplatesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDashboardTemplatesRequest,
-  output: PaginatedDashboardTemplateList,
+  input: __S(10, __c1, 2) as any as S.Schema<ListDashboardTemplatesRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<PaginatedDashboardTemplateList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -402,8 +294,8 @@ export const updateDashboardTemplate: API.OperationMethod<
   UpdateDashboardTemplateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDashboardTemplateRequest,
-  output: DashboardTemplate,
+  input: __S(13, __c1, 5) as any as S.Schema<UpdateDashboardTemplateRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<DashboardTemplate>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -420,8 +312,8 @@ export const updateDashboardTemplatesPartial: API.OperationMethod<
   UpdateDashboardTemplatesPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDashboardTemplatesPartialRequest,
-  output: DashboardTemplate,
+  input: __S(14, __c1, 6) as any as S.Schema<UpdateDashboardTemplatesPartialRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<DashboardTemplate>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -439,15 +331,13 @@ function __c0(j: number): any {
           template_name: S.optional(S.NullOr(S.String)),
           dashboard_description: S.optional(S.NullOr(S.String)),
           dashboard_filters: S.optional(S.Unknown),
-          tags: S.optional(S.NullOr(CreateDashboardTemplateRequestTagsList)),
+          tags: S.optional(S.NullOr(__S(0, __c0, 0))),
           tiles: S.optional(S.Unknown),
           variables: S.optional(S.Unknown),
           deleted: S.optional(S.NullOr(S.Boolean)),
           image_url: S.optional(S.NullOr(S.String)),
-          scope: S.optional(S.NullOr(CreateDashboardTemplateRequestScope)),
-          availability_contexts: S.optional(
-            S.NullOr(CreateDashboardTemplateRequestAvailabilityContextsList),
-          ),
+          scope: S.optional(S.NullOr(S.Unknown)),
+          availability_contexts: S.optional(S.NullOr(__S(0, __c0, 0))),
           is_featured: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -471,8 +361,8 @@ function __c0(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
-          role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
+          hedgehog_config: S.optional(S.NullOr(__S(2, __c0, 2))),
+          role_at_organization: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "UserBasic" });
     case 4:
@@ -480,7 +370,7 @@ function __c0(j: number): any {
         S.Struct({
           actions: S.Number,
           cohorts: S.Number,
-          warehouse_tables: NonPortableReferencesWarehouseTablesList,
+          warehouse_tables: __S(0, __c0, 0),
         }),
       ).annotate({ identifier: "NonPortableReferences" });
     case 5:
@@ -490,18 +380,18 @@ function __c0(j: number): any {
           template_name: S.optional(S.NullOr(S.String)),
           dashboard_description: S.optional(S.NullOr(S.String)),
           dashboard_filters: S.optional(S.Unknown),
-          tags: S.optional(S.NullOr(DashboardTemplateTagsList)),
+          tags: S.optional(S.NullOr(__S(0, __c0, 0))),
           tiles: S.optional(S.Unknown),
           variables: S.optional(S.Unknown),
           deleted: S.optional(S.NullOr(S.Boolean)),
           created_at: S.optional(S.NullOr(S.String)),
-          created_by: S.optional(S.NullOr(UserBasic)),
+          created_by: S.optional(S.NullOr(__S(3, __c0, 3))),
           image_url: S.optional(S.NullOr(S.String)),
           team_id: S.optional(S.NullOr(S.Number)),
-          scope: S.optional(S.NullOr(DashboardTemplateScope)),
-          availability_contexts: S.optional(S.NullOr(DashboardTemplateAvailabilityContextsList)),
+          scope: S.optional(S.NullOr(S.Unknown)),
+          availability_contexts: S.optional(S.NullOr(__S(0, __c0, 0))),
           is_featured: S.optional(S.Boolean),
-          non_portable_references: S.optional(NonPortableReferences),
+          non_portable_references: S.optional(__S(4, __c0, 4)),
         }),
       ).annotate({ identifier: "DashboardTemplate" });
     case 6:
@@ -564,8 +454,8 @@ function __c1(j: number): any {
           is_featured: S.optional(S.Boolean.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
-          ordering: S.optional(ListDashboardTemplatesRequestOrdering.pipe(T.Query())),
-          scope: S.optional(ListDashboardTemplatesRequestScope.pipe(T.Query())),
+          ordering: S.optional(S.String.pipe(T.Query())),
+          scope: S.optional(S.String.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -578,14 +468,14 @@ function __c1(j: number): any {
         identifier: "ListDashboardTemplatesRequest",
       });
     case 3:
-      return S.Array(DashboardTemplate);
+      return S.Array(__S(5, __c0, 5));
     case 4:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(PaginatedDashboardTemplateListResultsList),
+          results: S.optional(__S(11, __c1, 3)),
         }),
       ).annotate({
         identifier: "PaginatedDashboardTemplateList",
@@ -598,15 +488,13 @@ function __c1(j: number): any {
           template_name: S.optional(S.NullOr(S.String)),
           dashboard_description: S.optional(S.NullOr(S.String)),
           dashboard_filters: S.optional(S.Unknown),
-          tags: S.optional(S.NullOr(UpdateDashboardTemplateRequestTagsList)),
+          tags: S.optional(S.NullOr(__S(0, __c0, 0))),
           tiles: S.optional(S.Unknown),
           variables: S.optional(S.Unknown),
           deleted: S.optional(S.NullOr(S.Boolean)),
           image_url: S.optional(S.NullOr(S.String)),
-          scope: S.optional(S.NullOr(UpdateDashboardTemplateRequestScope)),
-          availability_contexts: S.optional(
-            S.NullOr(UpdateDashboardTemplateRequestAvailabilityContextsList),
-          ),
+          scope: S.optional(S.NullOr(S.Unknown)),
+          availability_contexts: S.optional(S.NullOr(__S(0, __c0, 0))),
           is_featured: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -626,15 +514,13 @@ function __c1(j: number): any {
           template_name: S.optional(S.NullOr(S.String)),
           dashboard_description: S.optional(S.NullOr(S.String)),
           dashboard_filters: S.optional(S.Unknown),
-          tags: S.optional(S.NullOr(UpdateDashboardTemplatesPartialRequestTagsList)),
+          tags: S.optional(S.NullOr(__S(0, __c0, 0))),
           tiles: S.optional(S.Unknown),
           variables: S.optional(S.Unknown),
           deleted: S.optional(S.NullOr(S.Boolean)),
           image_url: S.optional(S.NullOr(S.String)),
-          scope: S.optional(S.NullOr(UpdateDashboardTemplatesPartialRequestScope)),
-          availability_contexts: S.optional(
-            S.NullOr(UpdateDashboardTemplatesPartialRequestAvailabilityContextsList),
-          ),
+          scope: S.optional(S.NullOr(S.Unknown)),
+          availability_contexts: S.optional(S.NullOr(__S(0, __c0, 0))),
           is_featured: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -647,4 +533,9 @@ function __c1(j: number): any {
         identifier: "UpdateDashboardTemplatesPartialRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

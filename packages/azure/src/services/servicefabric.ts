@@ -6,53 +6,31 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 /** Azure resource tags. */
 export type ApplicationsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const ApplicationsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ApplicationsCreateOrUpdateRequestTagsMap>;
-
 /** The type of managed identity for the resource. */
 export type ManagedIdentityType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned"
   | "None";
-const ManagedIdentityType = S.String;
-
 export interface UserAssignedIdentityInput {}
-const UserAssignedIdentityInput = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<UserAssignedIdentityInput>;
-
 /** The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
 export type UserAssignedIdentityMapInput = { [key: string]: UserAssignedIdentityInput | undefined };
-const UserAssignedIdentityMapInput = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<UserAssignedIdentityMapInput>;
-
 /** Describes the managed identities for an Azure resource. */
 export interface ManagedIdentityInput {
   type?: ManagedIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentityMapInput;
 }
-const ManagedIdentityInput = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ManagedIdentityInput>;
-
 /** List of application parameters with overridden values from their default values specified in the application manifest. */
 export type ApplicationParameterList = { [key: string]: string | undefined };
-const ApplicationParameterList =
-  ApplicationsCreateOrUpdateRequestTagsMap as any as S.Schema<ApplicationParameterList>;
-
 /** The activation Mode of the service package */
 export type ArmRollingUpgradeMonitoringPolicyFailureAction = "Rollback" | "Manual";
-const ArmRollingUpgradeMonitoringPolicyFailureAction = S.String;
-
 /** The policy used for monitoring the application upgrade */
 export interface ArmRollingUpgradeMonitoringPolicy {
   /** The activation Mode of the service package */
@@ -63,11 +41,6 @@ export interface ArmRollingUpgradeMonitoringPolicy {
   upgradeTimeout?: string;
   upgradeDomainTimeout?: string;
 }
-const ArmRollingUpgradeMonitoringPolicy = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ArmRollingUpgradeMonitoringPolicy>;
-
 /** Represents the health policy used to evaluate the health of services belonging to a service type. */
 export interface ArmServiceTypeHealthPolicy {
   /** The maximum percentage of services allowed to be unhealthy before your application is considered in error. */
@@ -77,20 +50,10 @@ export interface ArmServiceTypeHealthPolicy {
   /** The maximum percentage of replicas per partition allowed to be unhealthy before your application is considered in error. */
   maxPercentUnhealthyReplicasPerPartition?: number;
 }
-const ArmServiceTypeHealthPolicy = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ArmServiceTypeHealthPolicy>;
-
 /** Defines a ServiceTypeHealthPolicy per service type name. The entries in the map replace the default service type health policy for each specified service type. For example, in an application that contains both a stateless gateway service type and a stateful engine service type, the health policies for the stateless and stateful services can be configured differently. With policy per service type, there's more granular control of the health of the service. If no policy is specified for a service type name, the DefaultServiceTypeHealthPolicy is used for evaluation. */
 export type ArmServiceTypeHealthPolicyMap = {
   [key: string]: ArmServiceTypeHealthPolicy | undefined;
 };
-const ArmServiceTypeHealthPolicyMap = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ArmServiceTypeHealthPolicyMap>;
-
 /** Defines a health policy used to evaluate the health of an application or one of its children entities. */
 export interface ArmApplicationHealthPolicy {
   /** Indicates whether warnings are treated with the same severity as errors. */
@@ -102,15 +65,8 @@ export interface ArmApplicationHealthPolicy {
   /** The map with service type health policy per service type name. The map is empty by default. */
   serviceTypeHealthPolicyMap?: ArmServiceTypeHealthPolicyMap;
 }
-const ArmApplicationHealthPolicy = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ArmApplicationHealthPolicy>;
-
 /** The mode used to monitor health during a rolling upgrade. The values are UnmonitoredAuto, UnmonitoredManual, and Monitored. */
 export type RollingUpgradeMode = "Invalid" | "UnmonitoredAuto" | "UnmonitoredManual" | "Monitored";
-const RollingUpgradeMode = S.String;
-
 /** Describes the policy for a monitored application upgrade. */
 export interface ApplicationUpgradePolicy {
   /** The maximum amount of time to block processing of an upgrade domain and prevent loss of availability when there are unexpected issues. When this timeout expires, processing of the upgrade domain will proceed regardless of availability loss issues. The timeout is reset at the start of each upgrade domain. Valid values are between 0 and 42949672925 inclusive. (unsigned 32-bit integer). */
@@ -122,11 +78,6 @@ export interface ApplicationUpgradePolicy {
   /** Determines whether the application should be recreated on update. If value=true, the rest of the upgrade policy parameters are not allowed and it will result in availability loss. */
   recreateApplication?: boolean;
 }
-const ApplicationUpgradePolicy = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<ApplicationUpgradePolicy>;
-
 /** Describes capacity information for a custom resource balancing metric. This can be used to limit the total consumption of this metric by the services of this application. */
 export interface ApplicationMetricDescription {
   /** The name of the metric. */
@@ -138,37 +89,17 @@ export interface ApplicationMetricDescription {
   /** The total metric capacity for Service Fabric application. This is the total metric capacity for this application in the cluster. Service Fabric will try to limit the sum of loads of services within the application to this value. When creating a new application with application capacity defined, the product of MaximumNodes and MaximumCapacity must always be smaller than or equal to this value. */
   totalApplicationCapacity?: number;
 }
-const ApplicationMetricDescription = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<ApplicationMetricDescription>;
-
 /** List of application capacity metric description. */
 export type ApplicationMetricDescriptionList = Array<ApplicationMetricDescription>;
-const ApplicationMetricDescriptionList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ApplicationMetricDescriptionList>;
-
 export interface ApplicationUserAssignedIdentity {
   /** The friendly name of user assigned identity. */
   name: string;
   /** The principal id of user assigned identity. */
   principalId: string;
 }
-const ApplicationUserAssignedIdentity = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ApplicationUserAssignedIdentity>;
-
 /** List of user assigned identities for the application, each mapped to a friendly name. */
 export type ApplicationResourcePropertiesInputManagedIdentitiesList =
   Array<ApplicationUserAssignedIdentity>;
-const ApplicationResourcePropertiesInputManagedIdentitiesList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ApplicationResourcePropertiesInputManagedIdentitiesList>;
-
 /** The application resource properties. */
 export interface ApplicationResourcePropertiesInput {
   typeVersion?: string;
@@ -185,11 +116,6 @@ export interface ApplicationResourcePropertiesInput {
   managedIdentities?: ApplicationResourcePropertiesInputManagedIdentitiesList;
   typeName?: string;
 }
-const ApplicationResourcePropertiesInput = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<ApplicationResourcePropertiesInput>;
-
 export interface ApplicationsCreateOrUpdateRequest {
   /** The customer subscription identifier. */
   subscriptionId: string;
@@ -206,22 +132,9 @@ export interface ApplicationsCreateOrUpdateRequest {
   identity?: ManagedIdentityInput;
   properties?: ApplicationResourcePropertiesInput;
 }
-const ApplicationsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<ApplicationsCreateOrUpdateRequest>;
-
 export interface ApplicationsCreateOrUpdateResponse {}
-const ApplicationsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ApplicationsCreateOrUpdateResponse>;
-
 /** Azure resource tags. */
 export type ApplicationTypesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const ApplicationTypesCreateOrUpdateRequestTagsMap =
-  ApplicationsCreateOrUpdateRequestTagsMap as any as S.Schema<ApplicationTypesCreateOrUpdateRequestTagsMap>;
-
 /** The application type name properties */
 export type ApplicationTypeResourcePropertiesInput = UserAssignedIdentityInput;
 export interface ApplicationTypesCreateOrUpdateRequest {
@@ -239,16 +152,8 @@ export interface ApplicationTypesCreateOrUpdateRequest {
   tags?: ApplicationTypesCreateOrUpdateRequestTagsMap;
   properties?: UserAssignedIdentityInput;
 }
-const ApplicationTypesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ApplicationTypesCreateOrUpdateRequest>;
-
 /** Azure resource tags. */
 export type ApplicationTypesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const ApplicationTypesCreateOrUpdateResponseTagsMap =
-  ApplicationsCreateOrUpdateRequestTagsMap as any as S.Schema<ApplicationTypesCreateOrUpdateResponseTagsMap>;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -264,18 +169,11 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC). */
   lastModifiedAt?: string;
 }
-const SystemData = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<SystemData>;
-
 /** The application type name properties */
 export interface ApplicationTypeResourceProperties {
   /** The current deployment or provisioning state, which only appears in the response. */
   provisioningState?: string;
 }
-const ApplicationTypeResourceProperties = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ApplicationTypeResourceProperties>;
-
 export interface ApplicationTypesCreateOrUpdateResponse {
   /** Azure resource identifier. */
   id?: string;
@@ -292,28 +190,15 @@ export interface ApplicationTypesCreateOrUpdateResponse {
   systemData?: SystemData;
   properties?: ApplicationTypeResourceProperties;
 }
-const ApplicationTypesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<ApplicationTypesCreateOrUpdateResponse>;
-
 /** Azure resource tags. */
 export type ApplicationTypeVersionsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-const ApplicationTypeVersionsCreateOrUpdateRequestTagsMap =
-  ApplicationsCreateOrUpdateRequestTagsMap as any as S.Schema<ApplicationTypeVersionsCreateOrUpdateRequestTagsMap>;
-
 /** The properties of the application type version resource. */
 export interface ApplicationTypeVersionResourcePropertiesInput {
   /** The URL to the application package */
   appPackageUrl: string;
 }
-const ApplicationTypeVersionResourcePropertiesInput = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<ApplicationTypeVersionResourcePropertiesInput>;
-
 export interface ApplicationTypeVersionsCreateOrUpdateRequest {
   /** The customer subscription identifier. */
   subscriptionId: string;
@@ -331,35 +216,17 @@ export interface ApplicationTypeVersionsCreateOrUpdateRequest {
   tags?: ApplicationTypeVersionsCreateOrUpdateRequestTagsMap;
   properties?: ApplicationTypeVersionResourcePropertiesInput;
 }
-const ApplicationTypeVersionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ApplicationTypeVersionsCreateOrUpdateRequest>;
-
 export interface ApplicationTypeVersionsCreateOrUpdateResponse {}
-const ApplicationTypeVersionsCreateOrUpdateResponse =
-  ApplicationsCreateOrUpdateResponse as any as S.Schema<ApplicationTypeVersionsCreateOrUpdateResponse>;
-
 /** Azure resource tags. */
 export type ClustersCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const ClustersCreateOrUpdateRequestTagsMap =
-  ApplicationsCreateOrUpdateRequestTagsMap as any as S.Schema<ClustersCreateOrUpdateRequestTagsMap>;
-
 /** Available cluster add-on features */
 export type AddOnFeatures =
   | "RepairManager"
   | "DnsService"
   | "BackupRestoreService"
   | "ResourceMonitorService";
-const AddOnFeatures = S.String;
-
 /** The list of add-on features to enable in the cluster. */
 export type ClusterPropertiesInputAddOnFeaturesList = Array<AddOnFeatures | (string & {})>;
-const ClusterPropertiesInputAddOnFeaturesList = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<ClusterPropertiesInputAddOnFeaturesList>;
-
 /** The settings to enable AAD authentication on the cluster. */
 export interface AzureActiveDirectory {
   /** Azure active directory tenant id. */
@@ -369,8 +236,6 @@ export interface AzureActiveDirectory {
   /** Azure active directory client application id. */
   clientApplication?: string;
 }
-const AzureActiveDirectory = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<AzureActiveDirectory>;
-
 /** The local certificate store location. */
 export type StoreName =
   | "AddressBook"
@@ -381,8 +246,6 @@ export type StoreName =
   | "Root"
   | "TrustedPeople"
   | "TrustedPublisher";
-const StoreName = S.String;
-
 /** Describes the certificate details. */
 export interface CertificateDescription {
   /** Thumbprint of the primary certificate. */
@@ -391,11 +254,6 @@ export interface CertificateDescription {
   thumbprintSecondary?: string;
   x509StoreName?: StoreName | (string & {});
 }
-const CertificateDescription = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<CertificateDescription>;
-
 /** Describes the server certificate details using common name. */
 export interface ServerCertificateCommonName {
   /** The common name of the server certificate. */
@@ -403,29 +261,14 @@ export interface ServerCertificateCommonName {
   /** The issuer thumbprint of the server certificate. */
   certificateIssuerThumbprint: string;
 }
-const ServerCertificateCommonName = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ServerCertificateCommonName>;
-
 /** The list of server certificates referenced by common name that are used to secure the cluster. */
 export type ServerCertificateCommonNamesCommonNamesList = Array<ServerCertificateCommonName>;
-const ServerCertificateCommonNamesCommonNamesList = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ServerCertificateCommonNamesCommonNamesList>;
-
 /** Describes a list of server certificates referenced by common name that are used to secure the cluster. */
 export interface ServerCertificateCommonNames {
   /** The list of server certificates referenced by common name that are used to secure the cluster. */
   commonNames?: ServerCertificateCommonNamesCommonNamesList;
   x509StoreName?: StoreName | (string & {});
 }
-const ServerCertificateCommonNames = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<ServerCertificateCommonNames>;
-
 /** Describes the client certificate details using common name. */
 export interface ClientCertificateCommonName {
   /** Indicates if the client certificate has admin access to the cluster. Non admin clients can perform only read only operations on the cluster. */
@@ -435,19 +278,9 @@ export interface ClientCertificateCommonName {
   /** The issuer thumbprint of the client certificate. */
   certificateIssuerThumbprint: string;
 }
-const ClientCertificateCommonName = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<ClientCertificateCommonName>;
-
 /** The list of client certificates referenced by common name that are allowed to manage the cluster. */
 export type ClusterPropertiesInputClientCertificateCommonNamesList =
   Array<ClientCertificateCommonName>;
-const ClusterPropertiesInputClientCertificateCommonNamesList = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ClusterPropertiesInputClientCertificateCommonNamesList>;
-
 /** Describes the client certificate details using thumbprint. */
 export interface ClientCertificateThumbprint {
   /** Indicates if the client certificate has admin access to the cluster. Non admin clients can perform only read only operations on the cluster. */
@@ -455,19 +288,9 @@ export interface ClientCertificateThumbprint {
   /** The thumbprint of the client certificate. */
   certificateThumbprint: string;
 }
-const ClientCertificateThumbprint = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<ClientCertificateThumbprint>;
-
 /** The list of client certificates referenced by thumbprint that are allowed to manage the cluster. */
 export type ClusterPropertiesInputClientCertificateThumbprintsList =
   Array<ClientCertificateThumbprint>;
-const ClusterPropertiesInputClientCertificateThumbprintsList = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<ClusterPropertiesInputClientCertificateThumbprintsList>;
-
 /** The storage account information for storing Service Fabric diagnostic logs. */
 export interface DiagnosticsStorageAccountConfig {
   /** The Azure storage account name. */
@@ -483,11 +306,6 @@ export interface DiagnosticsStorageAccountConfig {
   /** The table endpoint of the azure storage account. */
   tableEndpoint: string;
 }
-const DiagnosticsStorageAccountConfig = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<DiagnosticsStorageAccountConfig>;
-
 /** Describes a parameter in fabric settings of the cluster. */
 export interface SettingsParameterDescription {
   /** The parameter name of fabric setting. */
@@ -495,18 +313,8 @@ export interface SettingsParameterDescription {
   /** The parameter value of fabric setting. */
   value: string;
 }
-const SettingsParameterDescription = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<SettingsParameterDescription>;
-
 /** The collection of parameters in the section. */
 export type SettingsSectionDescriptionParametersList = Array<SettingsParameterDescription>;
-const SettingsSectionDescriptionParametersList = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<SettingsSectionDescriptionParametersList>;
-
 /** Describes a section in the fabric settings of the cluster. */
 export interface SettingsSectionDescription {
   /** The section name of the fabric settings. */
@@ -514,32 +322,14 @@ export interface SettingsSectionDescription {
   /** The collection of parameters in the section. */
   parameters: SettingsSectionDescriptionParametersList;
 }
-const SettingsSectionDescription = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<SettingsSectionDescription>;
-
 /** The list of custom fabric settings to configure the cluster. */
 export type ClusterPropertiesInputFabricSettingsList = Array<SettingsSectionDescription>;
-const ClusterPropertiesInputFabricSettingsList = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<ClusterPropertiesInputFabricSettingsList>;
-
 /** The placement tags applied to nodes in the node type, which can be used to indicate where certain services (workload) should run. */
 export type NodeTypeDescriptionPlacementPropertiesMap = { [key: string]: string | undefined };
-const NodeTypeDescriptionPlacementPropertiesMap =
-  ApplicationsCreateOrUpdateRequestTagsMap as any as S.Schema<NodeTypeDescriptionPlacementPropertiesMap>;
-
 /** The capacity tags applied to the nodes in the node type, the cluster resource manager uses these tags to understand how much resource a node has. */
 export type NodeTypeDescriptionCapacitiesMap = { [key: string]: string | undefined };
-const NodeTypeDescriptionCapacitiesMap =
-  ApplicationsCreateOrUpdateRequestTagsMap as any as S.Schema<NodeTypeDescriptionCapacitiesMap>;
-
 /** The durability level of the node type. Learn about [DurabilityLevel](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity). - Bronze - No privileges. This is the default. - Silver - The infrastructure jobs can be paused for a duration of 10 minutes per UD. - Gold - The infrastructure jobs can be paused for a duration of 2 hours per UD. Gold durability can be enabled only on full node VM skus like D15_V2, G5 etc. */
 export type DurabilityLevel = "Bronze" | "Silver" | "Gold";
-const DurabilityLevel = S.String;
-
 /** Port range details */
 export interface EndpointRangeDescription {
   /** Starting port of a range of ports */
@@ -547,11 +337,6 @@ export interface EndpointRangeDescription {
   /** End port of a range of ports */
   endPort: number;
 }
-const EndpointRangeDescription = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<EndpointRangeDescription>;
-
 /** Describes a node type in the cluster, each node type represents sub set of nodes in the cluster. */
 export interface NodeTypeDescription {
   /** The name of the node type. */
@@ -580,36 +365,17 @@ export interface NodeTypeDescription {
   /** Indicates if the node type is enabled to support multiple zones. */
   multipleAvailabilityZones?: boolean;
 }
-const NodeTypeDescription = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<NodeTypeDescription>;
-
 /** The list of node types in the cluster. */
 export type ClusterPropertiesInputNodeTypesList = Array<NodeTypeDescription>;
-const ClusterPropertiesInputNodeTypesList = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<ClusterPropertiesInputNodeTypesList>;
-
 /** The reliability level sets the replica set size of system services. Learn about [ReliabilityLevel](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity). - None - Run the System services with a target replica set count of 1. This should only be used for test clusters. - Bronze - Run the System services with a target replica set count of 3. This should only be used for test clusters. - Silver - Run the System services with a target replica set count of 5. - Gold - Run the System services with a target replica set count of 7. - Platinum - Run the System services with a target replica set count of 9. */
 export type ReliabilityLevel = "None" | "Bronze" | "Silver" | "Gold" | "Platinum";
-const ReliabilityLevel = S.String;
-
 /** Represents the health policy used to evaluate the health of services belonging to a service type. */
 export interface ServiceTypeHealthPolicy {
   /** The maximum percentage of services allowed to be unhealthy before your application is considered in error. */
   maxPercentUnhealthyServices?: number;
 }
-const ServiceTypeHealthPolicy = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<ServiceTypeHealthPolicy>;
-
 /** Defines a ServiceTypeHealthPolicy per service type name. The entries in the map replace the default service type health policy for each specified service type. For example, in an application that contains both a stateless gateway service type and a stateful engine service type, the health policies for the stateless and stateful services can be configured differently. With policy per service type, there's more granular control of the health of the service. If no policy is specified for a service type name, the DefaultServiceTypeHealthPolicy is used for evaluation. */
 export type ServiceTypeHealthPolicyMap = { [key: string]: ServiceTypeHealthPolicy | undefined };
-const ServiceTypeHealthPolicyMap = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<ServiceTypeHealthPolicyMap>;
-
 /** Defines a health policy used to evaluate the health of an application or one of its children entities. */
 export interface ApplicationHealthPolicy {
   /** The health policy used by default to evaluate the health of a service type. */
@@ -617,18 +383,8 @@ export interface ApplicationHealthPolicy {
   /** The map with service type health policy per service type name. The map is empty by default. */
   serviceTypeHealthPolicies?: ServiceTypeHealthPolicyMap;
 }
-const ApplicationHealthPolicy = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<ApplicationHealthPolicy>;
-
 /** Defines a map that contains specific application health policies for different applications. Each entry specifies as key the application name and as value an ApplicationHealthPolicy used to evaluate the application health. The application name should include the 'fabric:' URI scheme. The map is empty by default. */
 export type ApplicationHealthPolicyMap = { [key: string]: ApplicationHealthPolicy | undefined };
-const ApplicationHealthPolicyMap = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<ApplicationHealthPolicyMap>;
-
 /** Defines a health policy used to evaluate the health of the cluster or of a cluster node. */
 export interface ClusterHealthPolicy {
   /** The maximum allowed percentage of unhealthy nodes before reporting an error. For example, to allow 10% of nodes to be unhealthy, this value would be 10. The percentage represents the maximum tolerated percentage of nodes that can be unhealthy before the cluster is considered in error. If the percentage is respected but there is at least one unhealthy node, the health is evaluated as Warning. The percentage is calculated by dividing the number of unhealthy nodes over the total number of nodes in the cluster. The computation rounds up to tolerate one failure on small numbers of nodes. Default percentage is zero. In large clusters, some nodes will always be down or out for repairs, so this percentage should be configured to tolerate that. */
@@ -638,27 +394,15 @@ export interface ClusterHealthPolicy {
   /** Defines the application health policy map used to evaluate the health of an application or one of its children entities. */
   applicationHealthPolicies?: ApplicationHealthPolicyMap;
 }
-const ClusterHealthPolicy = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<ClusterHealthPolicy>;
-
 /** Represents the delta health policy used to evaluate the health of services belonging to a service type when upgrading the cluster. */
 export interface ServiceTypeDeltaHealthPolicy {
   /** The maximum allowed percentage of services health degradation allowed during cluster upgrades. The delta is measured between the state of the services at the beginning of upgrade and the state of the services at the time of the health evaluation. The check is performed after every upgrade domain upgrade completion to make sure the global state of the cluster is within tolerated limits. */
   maxPercentDeltaUnhealthyServices?: number;
 }
-const ServiceTypeDeltaHealthPolicy = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<ServiceTypeDeltaHealthPolicy>;
-
 /** Defines a map that contains specific delta health policies for different service types. Each entry specifies as key the service type name and as value a ServiceTypeDeltaHealthPolicy used to evaluate the service health when upgrading the cluster. The map is empty by default. */
 export type ServiceTypeDeltaHealthPolicyMap = {
   [key: string]: ServiceTypeDeltaHealthPolicy | undefined;
 };
-const ServiceTypeDeltaHealthPolicyMap = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<ServiceTypeDeltaHealthPolicyMap>;
-
 /** Defines a delta health policy used to evaluate the health of an application or one of its child entities when upgrading the cluster. */
 export interface ApplicationDeltaHealthPolicy {
   /** The delta health policy used by default to evaluate the health of a service type when upgrading the cluster. */
@@ -666,20 +410,10 @@ export interface ApplicationDeltaHealthPolicy {
   /** The map with service type delta health policy per service type name. The map is empty by default. */
   serviceTypeDeltaHealthPolicies?: ServiceTypeDeltaHealthPolicyMap;
 }
-const ApplicationDeltaHealthPolicy = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<ApplicationDeltaHealthPolicy>;
-
 /** Defines a map that contains specific application delta health policies for different applications. Each entry specifies as key the application name and as value an ApplicationDeltaHealthPolicy used to evaluate the application health when upgrading the cluster. The application name should include the 'fabric:' URI scheme. The map is empty by default. */
 export type ApplicationDeltaHealthPolicyMap = {
   [key: string]: ApplicationDeltaHealthPolicy | undefined;
 };
-const ApplicationDeltaHealthPolicyMap = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<ApplicationDeltaHealthPolicyMap>;
-
 /** Describes the delta health policies for the cluster upgrade. */
 export interface ClusterUpgradeDeltaHealthPolicy {
   /** The maximum allowed percentage of nodes health degradation allowed during cluster upgrades. The delta is measured between the state of the nodes at the beginning of upgrade and the state of the nodes at the time of the health evaluation. The check is performed after every upgrade domain upgrade completion to make sure the global state of the cluster is within tolerated limits. */
@@ -691,11 +425,6 @@ export interface ClusterUpgradeDeltaHealthPolicy {
   /** Defines the application delta health policy map used to evaluate the health of an application or one of its child entities when upgrading the cluster. */
   applicationDeltaHealthPolicies?: ApplicationDeltaHealthPolicyMap;
 }
-const ClusterUpgradeDeltaHealthPolicy = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<ClusterUpgradeDeltaHealthPolicy>;
-
 /** Describes the policy used when upgrading the cluster. */
 export interface ClusterUpgradePolicy {
   /** If true, then processes are forcefully restarted during upgrade even when the code version has not changed (the upgrade only changes configuration or data). */
@@ -717,52 +446,26 @@ export interface ClusterUpgradePolicy {
   /** The cluster delta health policy used when upgrading the cluster. */
   deltaHealthPolicy?: ClusterUpgradeDeltaHealthPolicy;
 }
-const ClusterUpgradePolicy = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<ClusterUpgradePolicy>;
-
 /** The upgrade mode of the cluster when new Service Fabric runtime version is available. */
 export type UpgradeMode = "Automatic" | "Manual";
-const UpgradeMode = S.String;
-
 export interface ApplicationTypeVersionsCleanupPolicy {
   /** Number of unused versions per application type to keep. */
   maxUnusedVersionsToKeep: number;
 }
-const ApplicationTypeVersionsCleanupPolicy = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<ApplicationTypeVersionsCleanupPolicy>;
-
 /** This property controls the logical grouping of VMs in upgrade domains (UDs). This property can't be modified if a node type with multiple Availability Zones is already present in the cluster. */
 export type SfZonalUpgradeMode = "Parallel" | "Hierarchical";
-const SfZonalUpgradeMode = S.String;
-
 /** This property defines the upgrade mode for the virtual machine scale set, it is mandatory if a node type with multiple Availability Zones is added. */
 export type VmssZonalUpgradeMode = "Parallel" | "Hierarchical";
-const VmssZonalUpgradeMode = S.String;
-
 /** Indicates when new cluster runtime version upgrades will be applied after they are released. By default is Wave0. */
 export type ClusterUpgradeCadence = "Wave0" | "Wave1" | "Wave2";
-const ClusterUpgradeCadence = S.String;
-
 /** The category of notification. */
 export type NotificationNotificationCategory = "WaveProgress";
-const NotificationNotificationCategory = S.String;
-
 /** The level of notification. */
 export type NotificationNotificationLevel = "Critical" | "All";
-const NotificationNotificationLevel = S.String;
-
 /** The notification channel indicates the type of receivers subscribed to the notification, either user or subscription. */
 export type NotificationTargetNotificationChannel = "EmailUser" | "EmailSubscription";
-const NotificationTargetNotificationChannel = S.String;
-
 /** List of targets that subscribe to the notification. */
 export type NotificationTargetReceiversList = Array<string>;
-const NotificationTargetReceiversList = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<NotificationTargetReceiversList>;
-
 /** Describes the notification target properties. */
 export interface NotificationTarget {
   /** The notification channel indicates the type of receivers subscribed to the notification, either user or subscription. */
@@ -770,15 +473,8 @@ export interface NotificationTarget {
   /** List of targets that subscribe to the notification. */
   receivers: NotificationTargetReceiversList;
 }
-const NotificationTarget = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<NotificationTarget>;
-
 /** List of targets that subscribe to the notification. */
 export type NotificationNotificationTargetsList = Array<NotificationTarget>;
-const NotificationNotificationTargetsList = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<NotificationNotificationTargetsList>;
-
 /** Describes the notification channel for cluster events. */
 export interface Notification {
   /** Indicates if the notification is enabled. */
@@ -790,15 +486,8 @@ export interface Notification {
   /** List of targets that subscribe to the notification. */
   notificationTargets: NotificationNotificationTargetsList;
 }
-const Notification = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<Notification>;
-
 /** Indicates a list of notification channels for cluster events. */
 export type ClusterPropertiesInputNotificationsList = Array<Notification>;
-const ClusterPropertiesInputNotificationsList = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<ClusterPropertiesInputNotificationsList>;
-
 /** Describes the cluster resource properties. */
 export interface ClusterPropertiesInput {
   /** The list of add-on features to enable in the cluster. */
@@ -850,11 +539,6 @@ export interface ClusterPropertiesInput {
   /** Indicates a list of notification channels for cluster events. */
   notifications?: ClusterPropertiesInputNotificationsList;
 }
-const ClusterPropertiesInput = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<ClusterPropertiesInput>;
-
 export interface ClustersCreateOrUpdateRequest {
   /** The customer subscription identifier. */
   subscriptionId: string;
@@ -869,25 +553,12 @@ export interface ClustersCreateOrUpdateRequest {
   /** The cluster resource properties */
   properties?: ClusterPropertiesInput;
 }
-const ClustersCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<ClustersCreateOrUpdateRequest>;
-
 /** Azure resource tags. */
 export type ClustersCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const ClustersCreateOrUpdateResponseTagsMap =
-  ApplicationsCreateOrUpdateRequestTagsMap as any as S.Schema<ClustersCreateOrUpdateResponseTagsMap>;
-
 /** The list of add-on features to enable in the cluster. */
 export type ClusterPropertiesAddOnFeaturesList = Array<AddOnFeatures>;
-const ClusterPropertiesAddOnFeaturesList =
-  ClusterPropertiesInputAddOnFeaturesList as any as S.Schema<ClusterPropertiesAddOnFeaturesList>;
-
 /** Cluster operating system, the default will be Windows */
 export type ClusterEnvironment = "Windows" | "Linux";
-const ClusterEnvironment = S.String;
-
 /** The detail of the Service Fabric runtime version result */
 export interface ClusterVersionDetails {
   /** The Service Fabric runtime version of the cluster. */
@@ -897,28 +568,12 @@ export interface ClusterVersionDetails {
   /** Indicates if this version is for Windows or Linux operating system. */
   environment?: ClusterEnvironment;
 }
-const ClusterVersionDetails = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<ClusterVersionDetails>;
-
 /** The Service Fabric runtime versions available for this cluster. */
 export type ClusterPropertiesAvailableClusterVersionsList = Array<ClusterVersionDetails>;
-const ClusterPropertiesAvailableClusterVersionsList = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<ClusterPropertiesAvailableClusterVersionsList>;
-
 /** The list of client certificates referenced by common name that are allowed to manage the cluster. */
 export type ClusterPropertiesClientCertificateCommonNamesList = Array<ClientCertificateCommonName>;
-const ClusterPropertiesClientCertificateCommonNamesList =
-  ClusterPropertiesInputClientCertificateCommonNamesList as any as S.Schema<ClusterPropertiesClientCertificateCommonNamesList>;
-
 /** The list of client certificates referenced by thumbprint that are allowed to manage the cluster. */
 export type ClusterPropertiesClientCertificateThumbprintsList = Array<ClientCertificateThumbprint>;
-const ClusterPropertiesClientCertificateThumbprintsList =
-  ClusterPropertiesInputClientCertificateThumbprintsList as any as S.Schema<ClusterPropertiesClientCertificateThumbprintsList>;
-
 /** The current state of the cluster. - WaitingForNodes - Indicates that the cluster resource is created and the resource provider is waiting for Service Fabric VM extension to boot up and report to it. - Deploying - Indicates that the Service Fabric runtime is being installed on the VMs. Cluster resource will be in this state until the cluster boots up and system services are up. - BaselineUpgrade - Indicates that the cluster is upgrading to establishes the cluster version. This upgrade is automatically initiated when the cluster boots up for the first time. - UpdatingUserConfiguration - Indicates that the cluster is being upgraded with the user provided configuration. - UpdatingUserCertificate - Indicates that the cluster is being upgraded with the user provided certificate. - UpdatingInfrastructure - Indicates that the cluster is being upgraded with the latest Service Fabric runtime version. This happens only when the **upgradeMode** is set to 'Automatic'. - EnforcingClusterVersion - Indicates that cluster is on a different version than expected and the cluster is being upgraded to the expected version. - UpgradeServiceUnreachable - Indicates that the system service in the cluster is no longer polling the Resource Provider. Clusters in this state cannot be managed by the Resource Provider. - AutoScale - Indicates that the ReliabilityLevel of the cluster is being adjusted. - Ready - Indicates that the cluster is in a stable state. */
 export type ClusterState =
   | "WaitingForNodes"
@@ -931,27 +586,14 @@ export type ClusterState =
   | "UpgradeServiceUnreachable"
   | "AutoScale"
   | "Ready";
-const ClusterState = S.String;
-
 /** The list of custom fabric settings to configure the cluster. */
 export type ClusterPropertiesFabricSettingsList = Array<SettingsSectionDescription>;
-const ClusterPropertiesFabricSettingsList =
-  ClusterPropertiesInputFabricSettingsList as any as S.Schema<ClusterPropertiesFabricSettingsList>;
-
 /** The list of node types in the cluster. */
 export type ClusterPropertiesNodeTypesList = Array<NodeTypeDescription>;
-const ClusterPropertiesNodeTypesList =
-  ClusterPropertiesInputNodeTypesList as any as S.Schema<ClusterPropertiesNodeTypesList>;
-
 /** The provisioning state of the cluster resource. */
 export type ClusterPropertiesProvisioningState = "Updating" | "Succeeded" | "Failed" | "Canceled";
-const ClusterPropertiesProvisioningState = S.String;
-
 /** Indicates a list of notification channels for cluster events. */
 export type ClusterPropertiesNotificationsList = Array<Notification>;
-const ClusterPropertiesNotificationsList =
-  ClusterPropertiesInputNotificationsList as any as S.Schema<ClusterPropertiesNotificationsList>;
-
 /** Describes the cluster resource properties. */
 export interface ClusterProperties {
   /** The list of add-on features to enable in the cluster. */
@@ -1012,8 +654,6 @@ export interface ClusterProperties {
   /** Indicates a list of notification channels for cluster events. */
   notifications?: ClusterPropertiesNotificationsList;
 }
-const ClusterProperties = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<ClusterProperties>;
-
 export interface ClustersCreateOrUpdateResponse {
   /** Azure resource identifier. */
   id?: string;
@@ -1031,11 +671,6 @@ export interface ClustersCreateOrUpdateResponse {
   /** The cluster resource properties */
   properties?: ClusterProperties;
 }
-const ClustersCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<ClustersCreateOrUpdateResponse>;
-
 export interface DeleteApplicationRequest {
   /** The customer subscription identifier. */
   subscriptionId: string;
@@ -1046,15 +681,7 @@ export interface DeleteApplicationRequest {
   /** The name of the application resource. */
   applicationName: string;
 }
-const DeleteApplicationRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<DeleteApplicationRequest>;
-
 export interface DeleteApplicationResponse {}
-const DeleteApplicationResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteApplicationResponse>;
-
 export interface DeleteApplicationTypeRequest {
   /** The customer subscription identifier. */
   subscriptionId: string;
@@ -1065,15 +692,7 @@ export interface DeleteApplicationTypeRequest {
   /** The name of the application type name resource. */
   applicationTypeName: string;
 }
-const DeleteApplicationTypeRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<DeleteApplicationTypeRequest>;
-
 export interface DeleteApplicationTypeResponse {}
-const DeleteApplicationTypeResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteApplicationTypeResponse>;
-
 export interface DeleteApplicationTypeVersionRequest {
   /** The customer subscription identifier. */
   subscriptionId: string;
@@ -1086,15 +705,7 @@ export interface DeleteApplicationTypeVersionRequest {
   /** The application type version. */
   version: string;
 }
-const DeleteApplicationTypeVersionRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<DeleteApplicationTypeVersionRequest>;
-
 export interface DeleteApplicationTypeVersionResponse {}
-const DeleteApplicationTypeVersionResponse =
-  ApplicationsCreateOrUpdateResponse as any as S.Schema<DeleteApplicationTypeVersionResponse>;
-
 export interface DeleteClusterRequest {
   /** The customer subscription identifier. */
   subscriptionId: string;
@@ -1103,11 +714,7 @@ export interface DeleteClusterRequest {
   /** The name of the cluster resource. */
   clusterName: string;
 }
-const DeleteClusterRequest = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<DeleteClusterRequest>;
-
 export interface DeleteClusterResponse {}
-const DeleteClusterResponse = UserAssignedIdentityInput as any as S.Schema<DeleteClusterResponse>;
-
 export interface DeleteServiceRequest {
   /** The customer subscription identifier. */
   subscriptionId: string;
@@ -1120,11 +727,7 @@ export interface DeleteServiceRequest {
   /** The name of the service resource in the format of {applicationName}~{serviceName}. */
   serviceName: string;
 }
-const DeleteServiceRequest = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<DeleteServiceRequest>;
-
 export interface DeleteServiceResponse {}
-const DeleteServiceResponse = UserAssignedIdentityInput as any as S.Schema<DeleteServiceResponse>;
-
 export interface GetApplicationRequest {
   /** The customer subscription identifier. */
   subscriptionId: string;
@@ -1135,31 +738,16 @@ export interface GetApplicationRequest {
   /** The name of the application resource. */
   applicationName: string;
 }
-const GetApplicationRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<GetApplicationRequest>;
-
 /** Azure resource tags. */
 export type GetApplicationResponseTagsMap = { [key: string]: string | undefined };
-const GetApplicationResponseTagsMap =
-  ApplicationsCreateOrUpdateRequestTagsMap as any as S.Schema<GetApplicationResponseTagsMap>;
-
 export interface UserAssignedIdentity {
   /** The principal id of user assigned identity. */
   principalId?: string;
   /** The client id of user assigned identity. */
   clientId?: string;
 }
-const UserAssignedIdentity = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<UserAssignedIdentity>;
-
 /** The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
 export type UserAssignedIdentityMap = { [key: string]: UserAssignedIdentity | undefined };
-const UserAssignedIdentityMap = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<UserAssignedIdentityMap>;
-
 /** Describes the managed identities for an Azure resource. */
 export interface ManagedIdentity {
   /** The principal id of the managed identity. This property will only be provided for a system assigned identity. */
@@ -1169,14 +757,9 @@ export interface ManagedIdentity {
   type?: ManagedIdentityType;
   userAssignedIdentities?: UserAssignedIdentityMap;
 }
-const ManagedIdentity = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<ManagedIdentity>;
-
 /** List of user assigned identities for the application, each mapped to a friendly name. */
 export type ApplicationResourcePropertiesManagedIdentitiesList =
   Array<ApplicationUserAssignedIdentity>;
-const ApplicationResourcePropertiesManagedIdentitiesList =
-  ApplicationResourcePropertiesInputManagedIdentitiesList as any as S.Schema<ApplicationResourcePropertiesManagedIdentitiesList>;
-
 /** The application resource properties. */
 export interface ApplicationResourceProperties {
   typeVersion?: string;
@@ -1195,11 +778,6 @@ export interface ApplicationResourceProperties {
   provisioningState?: string;
   typeName?: string;
 }
-const ApplicationResourceProperties = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<ApplicationResourceProperties>;
-
 export interface GetApplicationResponse {
   /** Azure resource identifier. */
   id?: string;
@@ -1217,11 +795,6 @@ export interface GetApplicationResponse {
   identity?: ManagedIdentity;
   properties?: ApplicationResourceProperties;
 }
-const GetApplicationResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<GetApplicationResponse>;
-
 export interface GetApplicationTypeRequest {
   /** The customer subscription identifier. */
   subscriptionId: string;
@@ -1232,11 +805,6 @@ export interface GetApplicationTypeRequest {
   /** The name of the application type name resource. */
   applicationTypeName: string;
 }
-const GetApplicationTypeRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<GetApplicationTypeRequest>;
-
 /** Azure resource tags. */
 export type GetApplicationTypeResponseTagsMap = { [key: string]: string | undefined };
 export interface GetApplicationTypeResponse {
@@ -1255,9 +823,6 @@ export interface GetApplicationTypeResponse {
   systemData?: SystemData;
   properties?: ApplicationTypeResourceProperties;
 }
-const GetApplicationTypeResponse =
-  ApplicationTypesCreateOrUpdateResponse as any as S.Schema<GetApplicationTypeResponse>;
-
 export interface GetApplicationTypeVersionRequest {
   /** The customer subscription identifier. */
   subscriptionId: string;
@@ -1270,21 +835,10 @@ export interface GetApplicationTypeVersionRequest {
   /** The application type version. */
   version: string;
 }
-const GetApplicationTypeVersionRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<GetApplicationTypeVersionRequest>;
-
 /** Azure resource tags. */
 export type GetApplicationTypeVersionResponseTagsMap = { [key: string]: string | undefined };
-const GetApplicationTypeVersionResponseTagsMap =
-  ApplicationsCreateOrUpdateRequestTagsMap as any as S.Schema<GetApplicationTypeVersionResponseTagsMap>;
-
 /** List of application type parameters that can be overridden when creating or updating the application. */
 export type ApplicationTypeParameterList = { [key: string]: string | undefined };
-const ApplicationTypeParameterList =
-  ApplicationsCreateOrUpdateRequestTagsMap as any as S.Schema<ApplicationTypeParameterList>;
-
 /** The properties of the application type version resource. */
 export interface ApplicationTypeVersionResourceProperties {
   /** The current deployment or provisioning state, which only appears in the response */
@@ -1293,11 +847,6 @@ export interface ApplicationTypeVersionResourceProperties {
   appPackageUrl: string;
   defaultParameterList?: ApplicationTypeParameterList;
 }
-const ApplicationTypeVersionResourceProperties = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<ApplicationTypeVersionResourceProperties>;
-
 export interface GetApplicationTypeVersionResponse {
   /** Azure resource identifier. */
   id?: string;
@@ -1314,11 +863,6 @@ export interface GetApplicationTypeVersionResponse {
   systemData?: SystemData;
   properties?: ApplicationTypeVersionResourceProperties;
 }
-const GetApplicationTypeVersionResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<GetApplicationTypeVersionResponse>;
-
 export interface GetClusterRequest {
   /** The customer subscription identifier. */
   subscriptionId: string;
@@ -1327,13 +871,8 @@ export interface GetClusterRequest {
   /** The name of the cluster resource. */
   clusterName: string;
 }
-const GetClusterRequest = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<GetClusterRequest>;
-
 /** Azure resource tags. */
 export type GetClusterResponseTagsMap = { [key: string]: string | undefined };
-const GetClusterResponseTagsMap =
-  ApplicationsCreateOrUpdateRequestTagsMap as any as S.Schema<GetClusterResponseTagsMap>;
-
 export interface GetClusterResponse {
   /** Azure resource identifier. */
   id?: string;
@@ -1351,8 +890,6 @@ export interface GetClusterResponse {
   /** The cluster resource properties */
   properties?: ClusterProperties;
 }
-const GetClusterResponse = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<GetClusterResponse>;
-
 export interface GetClusterVersionRequest {
   /** The customer subscription identifier. */
   subscriptionId: string;
@@ -1361,11 +898,6 @@ export interface GetClusterVersionRequest {
   /** The cluster code version. */
   clusterVersion: string;
 }
-const GetClusterVersionRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<GetClusterVersionRequest>;
-
 /** The result of the Service Fabric runtime versions */
 export interface ClusterCodeVersionsResult {
   /** The identification of the result */
@@ -1376,31 +908,14 @@ export interface ClusterCodeVersionsResult {
   type?: string;
   properties?: ClusterVersionDetails;
 }
-const ClusterCodeVersionsResult = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<ClusterCodeVersionsResult>;
-
 export type ClusterCodeVersionsListResultValueList = Array<ClusterCodeVersionsResult>;
-const ClusterCodeVersionsListResultValueList = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<ClusterCodeVersionsListResultValueList>;
-
 /** The list results of the Service Fabric runtime versions. */
 export interface ClusterCodeVersionsListResult {
   value?: ClusterCodeVersionsListResultValueList;
   /** The URL to use for getting the next set of results. */
   nextLink?: string;
 }
-const ClusterCodeVersionsListResult = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<ClusterCodeVersionsListResult>;
-
 export type GetClusterVersionByEnvironmentRequestEnvironment = "Windows" | "Linux";
-const GetClusterVersionByEnvironmentRequestEnvironment = S.String;
-
 export interface GetClusterVersionByEnvironmentRequest {
   /** The customer subscription identifier. */
   subscriptionId: string;
@@ -1411,11 +926,6 @@ export interface GetClusterVersionByEnvironmentRequest {
   /** The cluster code version. */
   clusterVersion: string;
 }
-const GetClusterVersionByEnvironmentRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<GetClusterVersionByEnvironmentRequest>;
-
 export interface GetServiceRequest {
   /** The customer subscription identifier. */
   subscriptionId: string;
@@ -1428,21 +938,14 @@ export interface GetServiceRequest {
   /** The name of the service resource in the format of {applicationName}~{serviceName}. */
   serviceName: string;
 }
-const GetServiceRequest = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<GetServiceRequest>;
-
 /** Azure resource tags. */
 export type GetServiceResponseTagsMap = { [key: string]: string | undefined };
-const GetServiceResponseTagsMap =
-  ApplicationsCreateOrUpdateRequestTagsMap as any as S.Schema<GetServiceResponseTagsMap>;
-
 /** The service correlation scheme. */
 export type ServiceCorrelationScheme =
   | "Invalid"
   | "Affinity"
   | "AlignedAffinity"
   | "NonAlignedAffinity";
-const ServiceCorrelationScheme = S.String;
-
 /** Creates a particular correlation between services. */
 export interface ServiceCorrelationDescription {
   /** The ServiceCorrelationScheme which describes the relationship between this service and the service specified via ServiceName. */
@@ -1450,22 +953,10 @@ export interface ServiceCorrelationDescription {
   /** The name of the service that the correlation relationship is established with. */
   serviceName: string;
 }
-const ServiceCorrelationDescription = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<ServiceCorrelationDescription>;
-
 /** A list that describes the correlation of the service with other services. */
 export type CorrelationSchemeList = Array<ServiceCorrelationDescription>;
-const CorrelationSchemeList = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<CorrelationSchemeList>;
-
 /** Determines the metric weight relative to the other metrics that are configured for this service. During runtime, if two metrics end up in conflict, the Cluster Resource Manager prefers the metric with the higher weight. */
 export type ServiceLoadMetricWeight = "Zero" | "Low" | "Medium" | "High";
-const ServiceLoadMetricWeight = S.String;
-
 /** Specifies a metric to load balance a service during runtime. */
 export interface ServiceLoadMetricDescription {
   /** The name of the metric. If the service chooses to report load during runtime, the load metric name should match the name that is specified in Name exactly. Note that metric names are case sensitive. */
@@ -1479,18 +970,8 @@ export interface ServiceLoadMetricDescription {
   /** Used only for Stateless services. The default amount of load, as a number, that this service creates for this metric. */
   defaultLoad?: number;
 }
-const ServiceLoadMetricDescription = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<ServiceLoadMetricDescription>;
-
 /** The service load metrics is given as an array of ServiceLoadMetricDescription objects. */
 export type ServiceLoadMetricsList = Array<ServiceLoadMetricDescription>;
-const ServiceLoadMetricsList = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<ServiceLoadMetricsList>;
-
 /** The type of placement policy for a service fabric service. Following are the possible values. */
 export type ServicePlacementPolicyType =
   | "Invalid"
@@ -1499,40 +980,20 @@ export type ServicePlacementPolicyType =
   | "PreferredPrimaryDomain"
   | "RequiredDomainDistribution"
   | "NonPartiallyPlaceService";
-const ServicePlacementPolicyType = S.String;
-
 /** Describes the policy to be used for placement of a Service Fabric service. */
 export interface ServicePlacementPolicyDescription {
   type: ServicePlacementPolicyType | (string & {});
 }
-const ServicePlacementPolicyDescription = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<ServicePlacementPolicyDescription>;
-
 /** A list that describes the correlation of the service with other services. */
 export type ServicePlacementPoliciesList = Array<ServicePlacementPolicyDescription>;
-const ServicePlacementPoliciesList = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<ServicePlacementPoliciesList>;
-
 /** Specifies the move cost for the service. */
 export type MoveCost = "Zero" | "Low" | "Medium" | "High";
-const MoveCost = S.String;
-
 /** The kind of service (Stateless or Stateful). */
 export type ServiceKind = "Invalid" | "Stateless" | "Stateful";
-const ServiceKind = S.String;
-
 /** Enumerates the ways that a service can be partitioned. */
 export type PartitionScheme = "Invalid" | "Singleton" | "UniformInt64Range" | "Named";
-const PartitionScheme = S.String;
-
 /** Partition names (Named scheme). */
 export type PartitionNamesList = Array<string>;
-const PartitionNamesList = NotificationTargetReceiversList as any as S.Schema<PartitionNamesList>;
-
 /** Describes how the service is partitioned. */
 export interface PartitionSchemeDescription {
   /** Specifies how the service is partitioned. */
@@ -1546,17 +1007,10 @@ export interface PartitionSchemeDescription {
   /** Partition names (Named). */
   names?: PartitionNamesList;
 }
-const PartitionSchemeDescription = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<PartitionSchemeDescription>;
-
 /** The activation Mode of the service package */
 export type ServiceResourcePropertiesServicePackageActivationMode =
   | "SharedProcess"
   | "ExclusiveProcess";
-const ServiceResourcePropertiesServicePackageActivationMode = S.String;
-
 /** The service resource properties. */
 export interface ServiceResourceProperties {
   /** The placement constraints as a string. Placement constraints are boolean expressions on node properties and allow for restricting a service to particular nodes based on the service requirements. For example, to place a service on nodes where NodeType is blue specify the following: "NodeColor == blue)". */
@@ -1592,11 +1046,6 @@ export interface ServiceResourceProperties {
   /** Stateful: whether the service persists state on local disk. */
   hasPersistedState?: boolean;
 }
-const ServiceResourceProperties = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<ServiceResourceProperties>;
-
 export interface GetServiceResponse {
   /** Azure resource identifier. */
   id?: string;
@@ -1613,8 +1062,6 @@ export interface GetServiceResponse {
   systemData?: SystemData;
   properties?: ServiceResourceProperties;
 }
-const GetServiceResponse = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<GetServiceResponse>;
-
 export interface ListApplicationsRequest {
   /** The customer subscription identifier. */
   subscriptionId: string;
@@ -1623,11 +1070,6 @@ export interface ListApplicationsRequest {
   /** The name of the cluster resource. */
   clusterName: string;
 }
-const ListApplicationsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<ListApplicationsRequest>;
-
 /** Azure resource tags. */
 export type ApplicationResourceTagsMap = { [key: string]: string | undefined };
 /** The application resource. */
@@ -1648,25 +1090,13 @@ export interface ApplicationResource {
   identity?: ManagedIdentity;
   properties?: ApplicationResourceProperties;
 }
-const ApplicationResource = GetApplicationResponse as any as S.Schema<ApplicationResource>;
-
 export type ApplicationResourceListValueList = Array<ApplicationResource>;
-const ApplicationResourceListValueList = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<ApplicationResourceListValueList>;
-
 /** The list of application resources. */
 export interface ApplicationResourceList {
   value?: ApplicationResourceListValueList;
   /** URL to get the next set of application list results if there are any. */
   nextLink?: string;
 }
-const ApplicationResourceList = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<ApplicationResourceList>;
-
 export interface ListApplicationTypesRequest {
   /** The customer subscription identifier. */
   subscriptionId: string;
@@ -1675,16 +1105,8 @@ export interface ListApplicationTypesRequest {
   /** The name of the cluster resource. */
   clusterName: string;
 }
-const ListApplicationTypesRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<ListApplicationTypesRequest>;
-
 /** Azure resource tags. */
 export type ApplicationTypeResourceTagsMap = { [key: string]: string | undefined };
-const ApplicationTypeResourceTagsMap =
-  ApplicationsCreateOrUpdateRequestTagsMap as any as S.Schema<ApplicationTypeResourceTagsMap>;
-
 /** The application type name resource */
 export interface ApplicationTypeResource {
   /** Azure resource identifier. */
@@ -1702,28 +1124,13 @@ export interface ApplicationTypeResource {
   systemData?: SystemData;
   properties?: ApplicationTypeResourceProperties;
 }
-const ApplicationTypeResource = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<ApplicationTypeResource>;
-
 export type ApplicationTypeResourceListValueList = Array<ApplicationTypeResource>;
-const ApplicationTypeResourceListValueList = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<ApplicationTypeResourceListValueList>;
-
 /** The list of application type names. */
 export interface ApplicationTypeResourceList {
   value?: ApplicationTypeResourceListValueList;
   /** URL to get the next set of application type list results if there are any. */
   nextLink?: string;
 }
-const ApplicationTypeResourceList = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<ApplicationTypeResourceList>;
-
 export interface ListApplicationTypeVersionsRequest {
   /** The customer subscription identifier. */
   subscriptionId: string;
@@ -1734,11 +1141,6 @@ export interface ListApplicationTypeVersionsRequest {
   /** The name of the application type name resource. */
   applicationTypeName: string;
 }
-const ListApplicationTypeVersionsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<ListApplicationTypeVersionsRequest>;
-
 /** Azure resource tags. */
 export type ApplicationTypeVersionResourceTagsMap = { [key: string]: string | undefined };
 /** An application type version resource for the specified application type name resource. */
@@ -1758,37 +1160,19 @@ export interface ApplicationTypeVersionResource {
   systemData?: SystemData;
   properties?: ApplicationTypeVersionResourceProperties;
 }
-const ApplicationTypeVersionResource =
-  GetApplicationTypeVersionResponse as any as S.Schema<ApplicationTypeVersionResource>;
-
 export type ApplicationTypeVersionResourceListValueList = Array<ApplicationTypeVersionResource>;
-const ApplicationTypeVersionResourceListValueList = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<ApplicationTypeVersionResourceListValueList>;
-
 /** The list of application type version resources for the specified application type name resource. */
 export interface ApplicationTypeVersionResourceList {
   value?: ApplicationTypeVersionResourceListValueList;
   /** URL to get the next set of application type version list results if there are any. */
   nextLink?: string;
 }
-const ApplicationTypeVersionResourceList = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<ApplicationTypeVersionResourceList>;
-
 export interface ListClusterByResourceGroupRequest {
   /** The customer subscription identifier. */
   subscriptionId: string;
   /** The name of the resource group. */
   resourceGroupName: string;
 }
-const ListClusterByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<ListClusterByResourceGroupRequest>;
-
 /** Azure resource tags. */
 export type ClusterTagsMap = { [key: string]: string | undefined };
 /** The cluster resource */
@@ -1809,28 +1193,17 @@ export interface Cluster {
   /** The cluster resource properties */
   properties?: ClusterProperties;
 }
-const Cluster = GetClusterResponse as any as S.Schema<Cluster>;
-
 export type ClusterListResultValueList = Array<Cluster>;
-const ClusterListResultValueList = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<ClusterListResultValueList>;
-
 /** Cluster list results */
 export interface ClusterListResult {
   value?: ClusterListResultValueList;
   /** The URL to use for getting the next set of results. */
   nextLink?: string;
 }
-const ClusterListResult = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<ClusterListResult>;
-
 export interface ListClustersRequest {
   /** The customer subscription identifier. */
   subscriptionId: string;
 }
-const ListClustersRequest = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<ListClustersRequest>;
-
 export interface ListClusterUpgradableVersionsRequest {
   /** The customer subscription identifier. */
   subscriptionId: string;
@@ -1841,27 +1214,12 @@ export interface ListClusterUpgradableVersionsRequest {
   /** The target code version. */
   targetVersion: string;
 }
-const ListClusterUpgradableVersionsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<ListClusterUpgradableVersionsRequest>;
-
 export type UpgradableVersionPathResultSupportedPathList = Array<string>;
-const UpgradableVersionPathResultSupportedPathList =
-  NotificationTargetReceiversList as any as S.Schema<UpgradableVersionPathResultSupportedPathList>;
-
 /** The list of intermediate cluster code versions for an upgrade or downgrade. Or minimum and maximum upgradable version if no target was given */
 export interface UpgradableVersionPathResult {
   supportedPath?: UpgradableVersionPathResultSupportedPathList;
 }
-const UpgradableVersionPathResult = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<UpgradableVersionPathResult>;
-
 export type ListClusterVersionByEnvironmentRequestEnvironment = "Windows" | "Linux";
-const ListClusterVersionByEnvironmentRequestEnvironment = S.String;
-
 export interface ListClusterVersionByEnvironmentRequest {
   /** The customer subscription identifier. */
   subscriptionId: string;
@@ -1870,28 +1228,13 @@ export interface ListClusterVersionByEnvironmentRequest {
   /** The operating system of the cluster. The default means all. */
   environment: ListClusterVersionByEnvironmentRequestEnvironment | (string & {});
 }
-const ListClusterVersionByEnvironmentRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<ListClusterVersionByEnvironmentRequest>;
-
 export interface ListClusterVersionsRequest {
   /** The customer subscription identifier. */
   subscriptionId: string;
   /** The location for the cluster code versions. This is different from cluster location. */
   location: string;
 }
-const ListClusterVersionsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<ListClusterVersionsRequest>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** Operation supported by the Service Fabric resource provider */
 export interface AvailableOperationDisplay {
   /** The name of the provider. */
@@ -1903,11 +1246,6 @@ export interface AvailableOperationDisplay {
   /** Operation description */
   description?: string;
 }
-const AvailableOperationDisplay = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<AvailableOperationDisplay>;
-
 /** Available operation list result */
 export interface OperationResult {
   /** The name of the operation. */
@@ -1921,15 +1259,8 @@ export interface OperationResult {
   /** The URL to use for getting the next set of results. */
   nextLink?: string;
 }
-const OperationResult = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<OperationResult>;
-
 /** List of operations supported by the Service Fabric resource provider. */
 export type OperationListResultValueList = Array<OperationResult>;
-const OperationListResultValueList = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<OperationListResultValueList>;
-
 /** Describes the result of the request to list Service Fabric resource provider operations. */
 export interface OperationListResult {
   /** List of operations supported by the Service Fabric resource provider. */
@@ -1937,8 +1268,6 @@ export interface OperationListResult {
   /** URL to get the next set of operation list results if there are any. */
   nextLink?: string;
 }
-const OperationListResult = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<OperationListResult>;
-
 export interface ListServicesRequest {
   /** The customer subscription identifier. */
   subscriptionId: string;
@@ -1949,8 +1278,6 @@ export interface ListServicesRequest {
   /** The name of the application resource. */
   applicationName: string;
 }
-const ListServicesRequest = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<ListServicesRequest>;
-
 /** Azure resource tags. */
 export type ServiceResourceTagsMap = { [key: string]: string | undefined };
 /** The service resource. */
@@ -1970,33 +1297,19 @@ export interface ServiceResource {
   systemData?: SystemData;
   properties?: ServiceResourceProperties;
 }
-const ServiceResource = GetServiceResponse as any as S.Schema<ServiceResource>;
-
 export type ServiceResourceListValueList = Array<ServiceResource>;
-const ServiceResourceListValueList = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<ServiceResourceListValueList>;
-
 /** The list of service resources. */
 export interface ServiceResourceList {
   value?: ServiceResourceListValueList;
   /** URL to get the next set of service list results if there are any. */
   nextLink?: string;
 }
-const ServiceResourceList = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<ServiceResourceList>;
-
 /** Azure resource tags. */
 export type ServicesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const ServicesCreateOrUpdateRequestTagsMap =
-  ApplicationsCreateOrUpdateRequestTagsMap as any as S.Schema<ServicesCreateOrUpdateRequestTagsMap>;
-
 /** The activation Mode of the service package */
 export type ServiceResourcePropertiesInputServicePackageActivationMode =
   | "SharedProcess"
   | "ExclusiveProcess";
-const ServiceResourcePropertiesInputServicePackageActivationMode = S.String;
-
 /** The service resource properties. */
 export interface ServiceResourcePropertiesInput {
   /** The placement constraints as a string. Placement constraints are boolean expressions on node properties and allow for restricting a service to particular nodes based on the service requirements. For example, to place a service on nodes where NodeType is blue specify the following: "NodeColor == blue)". */
@@ -2032,11 +1345,6 @@ export interface ServiceResourcePropertiesInput {
   /** Stateful: whether the service persists state on local disk. */
   hasPersistedState?: boolean;
 }
-const ServiceResourcePropertiesInput = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<ServiceResourcePropertiesInput>;
-
 export interface ServicesCreateOrUpdateRequest {
   /** The customer subscription identifier. */
   subscriptionId: string;
@@ -2054,26 +1362,12 @@ export interface ServicesCreateOrUpdateRequest {
   tags?: ServicesCreateOrUpdateRequestTagsMap;
   properties?: ServiceResourcePropertiesInput;
 }
-const ServicesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<ServicesCreateOrUpdateRequest>;
-
 export interface ServicesCreateOrUpdateResponse {}
-const ServicesCreateOrUpdateResponse =
-  UserAssignedIdentityInput as any as S.Schema<ServicesCreateOrUpdateResponse>;
-
 /** Azure resource tags. */
 export type UpdateApplicationRequestTagsMap = { [key: string]: string | undefined };
-const UpdateApplicationRequestTagsMap =
-  ApplicationsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateApplicationRequestTagsMap>;
-
 /** List of user assigned identities for the application, each mapped to a friendly name. */
 export type ApplicationResourceUpdatePropertiesManagedIdentitiesList =
   Array<ApplicationUserAssignedIdentity>;
-const ApplicationResourceUpdatePropertiesManagedIdentitiesList =
-  ApplicationResourcePropertiesInputManagedIdentitiesList as any as S.Schema<ApplicationResourceUpdatePropertiesManagedIdentitiesList>;
-
 /** The application resource properties for patch operations. */
 export interface ApplicationResourceUpdateProperties {
   typeVersion?: string;
@@ -2089,11 +1383,6 @@ export interface ApplicationResourceUpdateProperties {
   /** List of user assigned identities for the application, each mapped to a friendly name. */
   managedIdentities?: ApplicationResourceUpdatePropertiesManagedIdentitiesList;
 }
-const ApplicationResourceUpdateProperties = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<ApplicationResourceUpdateProperties>;
-
 export interface UpdateApplicationRequest {
   /** The customer subscription identifier. */
   subscriptionId: string;
@@ -2109,53 +1398,23 @@ export interface UpdateApplicationRequest {
   tags?: UpdateApplicationRequestTagsMap;
   properties?: ApplicationResourceUpdateProperties;
 }
-const UpdateApplicationRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<UpdateApplicationRequest>;
-
 export interface UpdateApplicationResponse {}
-const UpdateApplicationResponse =
-  UserAssignedIdentityInput as any as S.Schema<UpdateApplicationResponse>;
-
 /** The list of add-on features to enable in the cluster. */
 export type ClusterPropertiesUpdateParametersAddOnFeaturesList = Array<
   AddOnFeatures | (string & {})
 >;
-const ClusterPropertiesUpdateParametersAddOnFeaturesList =
-  ClusterPropertiesInputAddOnFeaturesList as any as S.Schema<ClusterPropertiesUpdateParametersAddOnFeaturesList>;
-
 /** The list of client certificates referenced by common name that are allowed to manage the cluster. This will overwrite the existing list. */
 export type ClusterPropertiesUpdateParametersClientCertificateCommonNamesList =
   Array<ClientCertificateCommonName>;
-const ClusterPropertiesUpdateParametersClientCertificateCommonNamesList = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<ClusterPropertiesUpdateParametersClientCertificateCommonNamesList>;
-
 /** The list of client certificates referenced by thumbprint that are allowed to manage the cluster. This will overwrite the existing list. */
 export type ClusterPropertiesUpdateParametersClientCertificateThumbprintsList =
   Array<ClientCertificateThumbprint>;
-const ClusterPropertiesUpdateParametersClientCertificateThumbprintsList = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<ClusterPropertiesUpdateParametersClientCertificateThumbprintsList>;
-
 /** The list of custom fabric settings to configure the cluster. This will overwrite the existing list. */
 export type ClusterPropertiesUpdateParametersFabricSettingsList = Array<SettingsSectionDescription>;
-const ClusterPropertiesUpdateParametersFabricSettingsList =
-  ClusterPropertiesInputFabricSettingsList as any as S.Schema<ClusterPropertiesUpdateParametersFabricSettingsList>;
-
 /** The list of node types in the cluster. This will overwrite the existing list. */
 export type ClusterPropertiesUpdateParametersNodeTypesList = Array<NodeTypeDescription>;
-const ClusterPropertiesUpdateParametersNodeTypesList =
-  ClusterPropertiesInputNodeTypesList as any as S.Schema<ClusterPropertiesUpdateParametersNodeTypesList>;
-
 /** Indicates a list of notification channels for cluster events. */
 export type ClusterPropertiesUpdateParametersNotificationsList = Array<Notification>;
-const ClusterPropertiesUpdateParametersNotificationsList =
-  ClusterPropertiesInputNotificationsList as any as S.Schema<ClusterPropertiesUpdateParametersNotificationsList>;
-
 /** Describes the cluster resource properties that can be updated during PATCH operation. */
 export interface ClusterPropertiesUpdateParameters {
   /** The list of add-on features to enable in the cluster. */
@@ -2198,16 +1457,8 @@ export interface ClusterPropertiesUpdateParameters {
   /** Indicates a list of notification channels for cluster events. */
   notifications?: ClusterPropertiesUpdateParametersNotificationsList;
 }
-const ClusterPropertiesUpdateParameters = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<ClusterPropertiesUpdateParameters>;
-
 /** Cluster update parameters */
 export type UpdateClusterRequestTagsMap = { [key: string]: string | undefined };
-const UpdateClusterRequestTagsMap =
-  ApplicationsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateClusterRequestTagsMap>;
-
 export interface UpdateClusterRequest {
   /** The customer subscription identifier. */
   subscriptionId: string;
@@ -2219,11 +1470,6 @@ export interface UpdateClusterRequest {
   /** Cluster update parameters */
   tags?: UpdateClusterRequestTagsMap;
 }
-const UpdateClusterRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<UpdateClusterRequest>;
-
 /** Azure resource tags. */
 export type UpdateClusterResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateClusterResponse {
@@ -2243,13 +1489,8 @@ export interface UpdateClusterResponse {
   /** The cluster resource properties */
   properties?: ClusterProperties;
 }
-const UpdateClusterResponse = GetClusterResponse as any as S.Schema<UpdateClusterResponse>;
-
 /** Azure resource tags. */
 export type UpdateServiceRequestTagsMap = { [key: string]: string | undefined };
-const UpdateServiceRequestTagsMap =
-  ApplicationsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateServiceRequestTagsMap>;
-
 /** The service resource properties for patch operations. */
 export interface ServiceResourceUpdateProperties {
   /** The placement constraints as a string. Placement constraints are boolean expressions on node properties and allow for restricting a service to particular nodes based on the service requirements. For example, to place a service on nodes where NodeType is blue specify the following: "NodeColor == blue)". */
@@ -2274,11 +1515,6 @@ export interface ServiceResourceUpdateProperties {
   /** Stateful: how long standby replicas are kept (ISO 8601 duration). */
   standByReplicaKeepDuration?: string;
 }
-const ServiceResourceUpdateProperties = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<ServiceResourceUpdateProperties>;
-
 export interface UpdateServiceRequest {
   /** The customer subscription identifier. */
   subscriptionId: string;
@@ -2296,14 +1532,7 @@ export interface UpdateServiceRequest {
   tags?: UpdateServiceRequestTagsMap;
   properties?: ServiceResourceUpdateProperties;
 }
-const UpdateServiceRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<UpdateServiceRequest>;
-
 export interface UpdateServiceResponse {}
-const UpdateServiceResponse = UserAssignedIdentityInput as any as S.Schema<UpdateServiceResponse>;
-
 export type ApplicationsCreateOrUpdateError = AzureOpError;
 /** Creates or updates a Service Fabric application resource. Create or update a Service Fabric application resource with the specified name. */
 export const ApplicationsCreateOrUpdate: API.OperationMethod<
@@ -2312,8 +1541,8 @@ export const ApplicationsCreateOrUpdate: API.OperationMethod<
   ApplicationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ApplicationsCreateOrUpdateRequest,
-  output: ApplicationsCreateOrUpdateResponse,
+  input: __S(14, __c1, 6) as any as S.Schema<ApplicationsCreateOrUpdateRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<ApplicationsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2327,8 +1556,8 @@ export const ApplicationTypesCreateOrUpdate: API.OperationMethod<
   ApplicationTypesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ApplicationTypesCreateOrUpdateRequest,
-  output: ApplicationTypesCreateOrUpdateResponse,
+  input: __S(16, __c2, 0) as any as S.Schema<ApplicationTypesCreateOrUpdateRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<ApplicationTypesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2342,8 +1571,8 @@ export const ApplicationTypeVersionsCreateOrUpdate: API.OperationMethod<
   ApplicationTypeVersionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ApplicationTypeVersionsCreateOrUpdateRequest,
-  output: ApplicationTypeVersionsCreateOrUpdateResponse,
+  input: __S(21, __c2, 5) as any as S.Schema<ApplicationTypeVersionsCreateOrUpdateRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<ApplicationTypeVersionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2357,8 +1586,8 @@ export const ClustersCreateOrUpdate: API.OperationMethod<
   ClustersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ClustersCreateOrUpdateRequest,
-  output: ClustersCreateOrUpdateResponse,
+  input: __S(58, __c7, 2) as any as S.Schema<ClustersCreateOrUpdateRequest>,
+  output: __S(62, __c7, 6) as any as S.Schema<ClustersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2372,8 +1601,8 @@ export const DeleteApplication: API.OperationMethod<
   DeleteApplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteApplicationRequest,
-  output: DeleteApplicationResponse,
+  input: __S(63, __c7, 7) as any as S.Schema<DeleteApplicationRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteApplicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2387,8 +1616,8 @@ export const DeleteApplicationType: API.OperationMethod<
   DeleteApplicationTypeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteApplicationTypeRequest,
-  output: DeleteApplicationTypeResponse,
+  input: __S(64, __c8, 0) as any as S.Schema<DeleteApplicationTypeRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteApplicationTypeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2402,8 +1631,8 @@ export const DeleteApplicationTypeVersion: API.OperationMethod<
   DeleteApplicationTypeVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteApplicationTypeVersionRequest,
-  output: DeleteApplicationTypeVersionResponse,
+  input: __S(65, __c8, 1) as any as S.Schema<DeleteApplicationTypeVersionRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<DeleteApplicationTypeVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2417,8 +1646,8 @@ export const DeleteCluster: API.OperationMethod<
   DeleteClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteClusterRequest,
-  output: DeleteClusterResponse,
+  input: __S(66, __c8, 2) as any as S.Schema<DeleteClusterRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2432,8 +1661,8 @@ export const DeleteService: API.OperationMethod<
   DeleteServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteServiceRequest,
-  output: DeleteServiceResponse,
+  input: __S(67, __c8, 3) as any as S.Schema<DeleteServiceRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2447,8 +1676,8 @@ export const GetApplication: API.OperationMethod<
   GetApplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApplicationRequest,
-  output: GetApplicationResponse,
+  input: __S(68, __c8, 4) as any as S.Schema<GetApplicationRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<GetApplicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2462,8 +1691,8 @@ export const GetApplicationType: API.OperationMethod<
   GetApplicationTypeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApplicationTypeRequest,
-  output: GetApplicationTypeResponse,
+  input: __S(74, __c9, 2) as any as S.Schema<GetApplicationTypeRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<GetApplicationTypeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2477,8 +1706,8 @@ export const GetApplicationTypeVersion: API.OperationMethod<
   GetApplicationTypeVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApplicationTypeVersionRequest,
-  output: GetApplicationTypeVersionResponse,
+  input: __S(75, __c9, 3) as any as S.Schema<GetApplicationTypeVersionRequest>,
+  output: __S(77, __c9, 5) as any as S.Schema<GetApplicationTypeVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2492,8 +1721,8 @@ export const GetCluster: API.OperationMethod<
   GetClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetClusterRequest,
-  output: GetClusterResponse,
+  input: __S(78, __c9, 6) as any as S.Schema<GetClusterRequest>,
+  output: __S(79, __c9, 7) as any as S.Schema<GetClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2507,8 +1736,8 @@ export const GetClusterVersion: API.OperationMethod<
   GetClusterVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetClusterVersionRequest,
-  output: ClusterCodeVersionsListResult,
+  input: __S(80, __c10, 0) as any as S.Schema<GetClusterVersionRequest>,
+  output: __S(83, __c10, 3) as any as S.Schema<ClusterCodeVersionsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2522,8 +1751,8 @@ export const GetClusterVersionByEnvironment: API.OperationMethod<
   GetClusterVersionByEnvironmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetClusterVersionByEnvironmentRequest,
-  output: ClusterCodeVersionsListResult,
+  input: __S(84, __c10, 4) as any as S.Schema<GetClusterVersionByEnvironmentRequest>,
+  output: __S(83, __c10, 3) as any as S.Schema<ClusterCodeVersionsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2537,8 +1766,8 @@ export const GetService: API.OperationMethod<
   GetServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetServiceRequest,
-  output: GetServiceResponse,
+  input: __S(85, __c10, 5) as any as S.Schema<GetServiceRequest>,
+  output: __S(94, __c11, 6) as any as S.Schema<GetServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2552,8 +1781,8 @@ export const ListApplications: API.OperationMethod<
   ListApplicationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListApplicationsRequest,
-  output: ApplicationResourceList,
+  input: __S(95, __c11, 7) as any as S.Schema<ListApplicationsRequest>,
+  output: __S(97, __c12, 1) as any as S.Schema<ApplicationResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2567,8 +1796,8 @@ export const ListApplicationTypes: API.OperationMethod<
   ListApplicationTypesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListApplicationTypesRequest,
-  output: ApplicationTypeResourceList,
+  input: __S(98, __c12, 2) as any as S.Schema<ListApplicationTypesRequest>,
+  output: __S(101, __c12, 5) as any as S.Schema<ApplicationTypeResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2582,8 +1811,8 @@ export const ListApplicationTypeVersions: API.OperationMethod<
   ListApplicationTypeVersionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListApplicationTypeVersionsRequest,
-  output: ApplicationTypeVersionResourceList,
+  input: __S(102, __c12, 6) as any as S.Schema<ListApplicationTypeVersionsRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<ApplicationTypeVersionResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2597,8 +1826,8 @@ export const ListClusterByResourceGroup: API.OperationMethod<
   ListClusterByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListClusterByResourceGroupRequest,
-  output: ClusterListResult,
+  input: __S(105, __c13, 1) as any as S.Schema<ListClusterByResourceGroupRequest>,
+  output: __S(107, __c13, 3) as any as S.Schema<ClusterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2612,8 +1841,8 @@ export const ListClusters: API.OperationMethod<
   ListClustersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListClustersRequest,
-  output: ClusterListResult,
+  input: __S(108, __c13, 4) as any as S.Schema<ListClustersRequest>,
+  output: __S(107, __c13, 3) as any as S.Schema<ClusterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2627,8 +1856,8 @@ export const ListClusterUpgradableVersions: API.OperationMethod<
   ListClusterUpgradableVersionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListClusterUpgradableVersionsRequest,
-  output: UpgradableVersionPathResult,
+  input: __S(109, __c13, 5) as any as S.Schema<ListClusterUpgradableVersionsRequest>,
+  output: __S(110, __c13, 6) as any as S.Schema<UpgradableVersionPathResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2642,8 +1871,8 @@ export const ListClusterVersionByEnvironment: API.OperationMethod<
   ListClusterVersionByEnvironmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListClusterVersionByEnvironmentRequest,
-  output: ClusterCodeVersionsListResult,
+  input: __S(111, __c13, 7) as any as S.Schema<ListClusterVersionByEnvironmentRequest>,
+  output: __S(83, __c10, 3) as any as S.Schema<ClusterCodeVersionsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2657,8 +1886,8 @@ export const ListClusterVersions: API.OperationMethod<
   ListClusterVersionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListClusterVersionsRequest,
-  output: ClusterCodeVersionsListResult,
+  input: __S(112, __c14, 0) as any as S.Schema<ListClusterVersionsRequest>,
+  output: __S(83, __c10, 3) as any as S.Schema<ClusterCodeVersionsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2672,8 +1901,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: OperationListResult,
+  input: __S(113, __c14, 1) as any as S.Schema<ListOperationsRequest>,
+  output: __S(117, __c14, 5) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2687,8 +1916,8 @@ export const ListServices: API.OperationMethod<
   ListServicesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListServicesRequest,
-  output: ServiceResourceList,
+  input: __S(118, __c14, 6) as any as S.Schema<ListServicesRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<ServiceResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2702,8 +1931,8 @@ export const ServicesCreateOrUpdate: API.OperationMethod<
   ServicesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ServicesCreateOrUpdateRequest,
-  output: ServicesCreateOrUpdateResponse,
+  input: __S(122, __c15, 2) as any as S.Schema<ServicesCreateOrUpdateRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<ServicesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2717,8 +1946,8 @@ export const UpdateApplication: API.OperationMethod<
   UpdateApplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateApplicationRequest,
-  output: UpdateApplicationResponse,
+  input: __S(124, __c15, 4) as any as S.Schema<UpdateApplicationRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<UpdateApplicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2732,8 +1961,8 @@ export const UpdateCluster: API.OperationMethod<
   UpdateClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateClusterRequest,
-  output: UpdateClusterResponse,
+  input: __S(128, __c16, 0) as any as S.Schema<UpdateClusterRequest>,
+  output: __S(79, __c9, 7) as any as S.Schema<UpdateClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2747,8 +1976,8 @@ export const UpdateService: API.OperationMethod<
   UpdateServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateServiceRequest,
-  output: UpdateServiceResponse,
+  input: __S(130, __c16, 2) as any as S.Schema<UpdateServiceRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<UpdateServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2764,18 +1993,18 @@ function __c0(j: number): any {
         identifier: "UserAssignedIdentityInput",
       });
     case 2:
-      return S.Record(S.String, UserAssignedIdentityInput);
+      return S.Record(S.String, __S(1, __c0, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(ManagedIdentityType),
-          userAssignedIdentities: S.optional(UserAssignedIdentityMapInput),
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({ identifier: "ManagedIdentityInput" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          failureAction: S.optional(ArmRollingUpgradeMonitoringPolicyFailureAction),
+          failureAction: S.optional(S.String),
           healthCheckWaitDuration: S.optional(S.String),
           healthCheckStableDuration: S.optional(S.String),
           healthCheckRetryTimeout: S.optional(S.String),
@@ -2796,14 +2025,14 @@ function __c0(j: number): any {
         identifier: "ArmServiceTypeHealthPolicy",
       });
     case 6:
-      return S.Record(S.String, ArmServiceTypeHealthPolicy);
+      return S.Record(S.String, __S(5, __c0, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           considerWarningAsError: S.optional(S.Boolean),
           maxPercentUnhealthyDeployedApplications: S.optional(S.Number),
-          defaultServiceTypeHealthPolicy: S.optional(ArmServiceTypeHealthPolicy),
-          serviceTypeHealthPolicyMap: S.optional(ArmServiceTypeHealthPolicyMap),
+          defaultServiceTypeHealthPolicy: S.optional(__S(5, __c0, 5)),
+          serviceTypeHealthPolicyMap: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({
         identifier: "ArmApplicationHealthPolicy",
@@ -2817,9 +2046,9 @@ function __c1(j: number): any {
         S.Struct({
           upgradeReplicaSetCheckTimeout: S.optional(S.String),
           forceRestart: S.optional(S.Boolean),
-          rollingUpgradeMonitoringPolicy: S.optional(ArmRollingUpgradeMonitoringPolicy),
-          applicationHealthPolicy: S.optional(ArmApplicationHealthPolicy),
-          upgradeMode: S.optional(RollingUpgradeMode),
+          rollingUpgradeMonitoringPolicy: S.optional(__S(4, __c0, 4)),
+          applicationHealthPolicy: S.optional(__S(7, __c0, 7)),
+          upgradeMode: S.optional(S.String),
           recreateApplication: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ApplicationUpgradePolicy" });
@@ -2835,7 +2064,7 @@ function __c1(j: number): any {
         identifier: "ApplicationMetricDescription",
       });
     case 2:
-      return S.Array(ApplicationMetricDescription);
+      return S.Array(__S(9, __c1, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -2846,18 +2075,18 @@ function __c1(j: number): any {
         identifier: "ApplicationUserAssignedIdentity",
       });
     case 4:
-      return S.Array(ApplicationUserAssignedIdentity);
+      return S.Array(__S(11, __c1, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           typeVersion: S.optional(S.String),
-          parameters: S.optional(ApplicationParameterList),
-          upgradePolicy: S.optional(ApplicationUpgradePolicy),
+          parameters: S.optional(__S(0, __c0, 0)),
+          upgradePolicy: S.optional(__S(8, __c1, 0)),
           minimumNodes: S.optional(S.Number),
           maximumNodes: S.optional(S.Number),
           removeApplicationCapacity: S.optional(S.Boolean),
-          metrics: S.optional(ApplicationMetricDescriptionList),
-          managedIdentities: S.optional(ApplicationResourcePropertiesInputManagedIdentitiesList),
+          metrics: S.optional(__S(10, __c1, 2)),
+          managedIdentities: S.optional(__S(12, __c1, 4)),
           typeName: S.optional(S.String),
         }),
       ).annotate({
@@ -2871,9 +2100,9 @@ function __c1(j: number): any {
           clusterName: S.String.pipe(T.Label()),
           applicationName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(ApplicationsCreateOrUpdateRequestTagsMap),
-          identity: S.optional(ManagedIdentityInput),
-          properties: S.optional(ApplicationResourcePropertiesInput),
+          tags: S.optional(__S(0, __c0, 0)),
+          identity: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(13, __c1, 5)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2901,8 +2130,8 @@ function __c2(j: number): any {
           clusterName: S.String.pipe(T.Label()),
           applicationTypeName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(ApplicationTypesCreateOrUpdateRequestTagsMap),
-          properties: S.optional(UserAssignedIdentityInput),
+          tags: S.optional(__S(0, __c0, 0)),
+          properties: S.optional(__S(1, __c0, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2940,10 +2169,10 @@ function __c2(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(ApplicationTypesCreateOrUpdateResponseTagsMap),
+          tags: S.optional(__S(0, __c0, 0)),
           etag: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ApplicationTypeResourceProperties),
+          systemData: S.optional(__S(17, __c2, 1)),
+          properties: S.optional(__S(18, __c2, 2)),
         }),
       ).annotate({
         identifier: "ApplicationTypesCreateOrUpdateResponse",
@@ -2965,8 +2194,8 @@ function __c2(j: number): any {
           applicationTypeName: S.String.pipe(T.Label()),
           version: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(ApplicationTypeVersionsCreateOrUpdateRequestTagsMap),
-          properties: S.optional(ApplicationTypeVersionResourcePropertiesInput),
+          tags: S.optional(__S(0, __c0, 0)),
+          properties: S.optional(__S(20, __c2, 4)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2979,7 +2208,7 @@ function __c2(j: number): any {
         identifier: "ApplicationTypeVersionsCreateOrUpdateRequest",
       });
     case 6:
-      return S.Array(AddOnFeatures);
+      return S.Array(S.String);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -2997,7 +2226,7 @@ function __c3(j: number): any {
         S.Struct({
           thumbprint: S.String,
           thumbprintSecondary: S.optional(S.String),
-          x509StoreName: S.optional(StoreName),
+          x509StoreName: S.optional(S.String),
         }),
       ).annotate({ identifier: "CertificateDescription" });
     case 1:
@@ -3010,12 +2239,12 @@ function __c3(j: number): any {
         identifier: "ServerCertificateCommonName",
       });
     case 2:
-      return S.Array(ServerCertificateCommonName);
+      return S.Array(__S(25, __c3, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          commonNames: S.optional(ServerCertificateCommonNamesCommonNamesList),
-          x509StoreName: S.optional(StoreName),
+          commonNames: S.optional(__S(26, __c3, 2)),
+          x509StoreName: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ServerCertificateCommonNames",
@@ -3031,7 +2260,7 @@ function __c3(j: number): any {
         identifier: "ClientCertificateCommonName",
       });
     case 5:
-      return S.Array(ClientCertificateCommonName);
+      return S.Array(__S(28, __c3, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -3042,7 +2271,7 @@ function __c3(j: number): any {
         identifier: "ClientCertificateThumbprint",
       });
     case 7:
-      return S.Array(ClientCertificateThumbprint);
+      return S.Array(__S(30, __c3, 6));
   }
 }
 function __c4(j: number): any {
@@ -3070,18 +2299,18 @@ function __c4(j: number): any {
         identifier: "SettingsParameterDescription",
       });
     case 2:
-      return S.Array(SettingsParameterDescription);
+      return S.Array(__S(33, __c4, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          parameters: SettingsSectionDescriptionParametersList,
+          parameters: __S(34, __c4, 2),
         }),
       ).annotate({
         identifier: "SettingsSectionDescription",
       });
     case 4:
-      return S.Array(SettingsSectionDescription);
+      return S.Array(__S(35, __c4, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -3093,13 +2322,13 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          placementProperties: S.optional(NodeTypeDescriptionPlacementPropertiesMap),
-          capacities: S.optional(NodeTypeDescriptionCapacitiesMap),
+          placementProperties: S.optional(__S(0, __c0, 0)),
+          capacities: S.optional(__S(0, __c0, 0)),
           clientConnectionEndpointPort: S.Number,
           httpGatewayEndpointPort: S.Number,
-          durabilityLevel: S.optional(DurabilityLevel),
-          applicationPorts: S.optional(EndpointRangeDescription),
-          ephemeralPorts: S.optional(EndpointRangeDescription),
+          durabilityLevel: S.optional(S.String),
+          applicationPorts: S.optional(__S(37, __c4, 5)),
+          ephemeralPorts: S.optional(__S(37, __c4, 5)),
           isPrimary: S.Boolean,
           vmInstanceCount: S.Number,
           reverseProxyEndpointPort: S.optional(S.Number),
@@ -3108,7 +2337,7 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "NodeTypeDescription" });
     case 7:
-      return S.Array(NodeTypeDescription);
+      return S.Array(__S(38, __c4, 6));
   }
 }
 function __c5(j: number): any {
@@ -3120,22 +2349,22 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "ServiceTypeHealthPolicy" });
     case 1:
-      return S.Record(S.String, ServiceTypeHealthPolicy);
+      return S.Record(S.String, __S(40, __c5, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          defaultServiceTypeHealthPolicy: S.optional(ServiceTypeHealthPolicy),
-          serviceTypeHealthPolicies: S.optional(ServiceTypeHealthPolicyMap),
+          defaultServiceTypeHealthPolicy: S.optional(__S(40, __c5, 0)),
+          serviceTypeHealthPolicies: S.optional(__S(41, __c5, 1)),
         }),
       ).annotate({ identifier: "ApplicationHealthPolicy" });
     case 3:
-      return S.Record(S.String, ApplicationHealthPolicy);
+      return S.Record(S.String, __S(42, __c5, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           maxPercentUnhealthyNodes: S.optional(S.Number),
           maxPercentUnhealthyApplications: S.optional(S.Number),
-          applicationHealthPolicies: S.optional(ApplicationHealthPolicyMap),
+          applicationHealthPolicies: S.optional(__S(43, __c5, 3)),
         }),
       ).annotate({ identifier: "ClusterHealthPolicy" });
     case 5:
@@ -3147,12 +2376,12 @@ function __c5(j: number): any {
         identifier: "ServiceTypeDeltaHealthPolicy",
       });
     case 6:
-      return S.Record(S.String, ServiceTypeDeltaHealthPolicy);
+      return S.Record(S.String, __S(45, __c5, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          defaultServiceTypeDeltaHealthPolicy: S.optional(ServiceTypeDeltaHealthPolicy),
-          serviceTypeDeltaHealthPolicies: S.optional(ServiceTypeDeltaHealthPolicyMap),
+          defaultServiceTypeDeltaHealthPolicy: S.optional(__S(45, __c5, 5)),
+          serviceTypeDeltaHealthPolicies: S.optional(__S(46, __c5, 6)),
         }),
       ).annotate({
         identifier: "ApplicationDeltaHealthPolicy",
@@ -3162,14 +2391,14 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, ApplicationDeltaHealthPolicy);
+      return S.Record(S.String, __S(47, __c5, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           maxPercentDeltaUnhealthyNodes: S.Number,
           maxPercentUpgradeDomainDeltaUnhealthyNodes: S.Number,
           maxPercentDeltaUnhealthyApplications: S.Number,
-          applicationDeltaHealthPolicies: S.optional(ApplicationDeltaHealthPolicyMap),
+          applicationDeltaHealthPolicies: S.optional(__S(48, __c6, 0)),
         }),
       ).annotate({
         identifier: "ClusterUpgradeDeltaHealthPolicy",
@@ -3184,8 +2413,8 @@ function __c6(j: number): any {
           healthCheckRetryTimeout: S.String,
           upgradeTimeout: S.String,
           upgradeDomainTimeout: S.String,
-          healthPolicy: ClusterHealthPolicy,
-          deltaHealthPolicy: S.optional(ClusterUpgradeDeltaHealthPolicy),
+          healthPolicy: __S(44, __c5, 4),
+          deltaHealthPolicy: S.optional(__S(49, __c6, 1)),
         }),
       ).annotate({ identifier: "ClusterUpgradePolicy" });
     case 3:
@@ -3201,19 +2430,19 @@ function __c6(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          notificationChannel: NotificationTargetNotificationChannel,
-          receivers: NotificationTargetReceiversList,
+          notificationChannel: S.String,
+          receivers: __S(52, __c6, 4),
         }),
       ).annotate({ identifier: "NotificationTarget" });
     case 6:
-      return S.Array(NotificationTarget);
+      return S.Array(__S(53, __c6, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           isEnabled: S.Boolean,
-          notificationCategory: NotificationNotificationCategory,
-          notificationLevel: NotificationNotificationLevel,
-          notificationTargets: NotificationNotificationTargetsList,
+          notificationCategory: S.String,
+          notificationLevel: S.String,
+          notificationTargets: __S(54, __c6, 6),
         }),
       ).annotate({ identifier: "Notification" });
   }
@@ -3221,41 +2450,37 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Notification);
+      return S.Array(__S(55, __c6, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          addOnFeatures: S.optional(ClusterPropertiesInputAddOnFeaturesList),
-          azureActiveDirectory: S.optional(AzureActiveDirectory),
-          certificate: S.optional(CertificateDescription),
-          certificateCommonNames: S.optional(ServerCertificateCommonNames),
-          clientCertificateCommonNames: S.optional(
-            ClusterPropertiesInputClientCertificateCommonNamesList,
-          ),
-          clientCertificateThumbprints: S.optional(
-            ClusterPropertiesInputClientCertificateThumbprintsList,
-          ),
+          addOnFeatures: S.optional(__S(22, __c2, 6)),
+          azureActiveDirectory: S.optional(__S(23, __c2, 7)),
+          certificate: S.optional(__S(24, __c3, 0)),
+          certificateCommonNames: S.optional(__S(27, __c3, 3)),
+          clientCertificateCommonNames: S.optional(__S(29, __c3, 5)),
+          clientCertificateThumbprints: S.optional(__S(31, __c3, 7)),
           clusterCodeVersion: S.optional(S.String),
-          diagnosticsStorageAccountConfig: S.optional(DiagnosticsStorageAccountConfig),
+          diagnosticsStorageAccountConfig: S.optional(__S(32, __c4, 0)),
           eventStoreServiceEnabled: S.optional(S.Boolean),
-          fabricSettings: S.optional(ClusterPropertiesInputFabricSettingsList),
+          fabricSettings: S.optional(__S(36, __c4, 4)),
           managementEndpoint: S.String,
-          nodeTypes: ClusterPropertiesInputNodeTypesList,
-          reliabilityLevel: S.optional(ReliabilityLevel),
-          reverseProxyCertificate: S.optional(CertificateDescription),
-          reverseProxyCertificateCommonNames: S.optional(ServerCertificateCommonNames),
-          upgradeDescription: S.optional(ClusterUpgradePolicy),
-          upgradeMode: S.optional(UpgradeMode),
-          applicationTypeVersionsCleanupPolicy: S.optional(ApplicationTypeVersionsCleanupPolicy),
+          nodeTypes: __S(39, __c4, 7),
+          reliabilityLevel: S.optional(S.String),
+          reverseProxyCertificate: S.optional(__S(24, __c3, 0)),
+          reverseProxyCertificateCommonNames: S.optional(__S(27, __c3, 3)),
+          upgradeDescription: S.optional(__S(50, __c6, 2)),
+          upgradeMode: S.optional(S.String),
+          applicationTypeVersionsCleanupPolicy: S.optional(__S(51, __c6, 3)),
           vmImage: S.optional(S.String),
-          sfZonalUpgradeMode: S.optional(SfZonalUpgradeMode),
-          vmssZonalUpgradeMode: S.optional(VmssZonalUpgradeMode),
+          sfZonalUpgradeMode: S.optional(S.String),
+          vmssZonalUpgradeMode: S.optional(S.String),
           infrastructureServiceManager: S.optional(S.Boolean),
-          upgradeWave: S.optional(ClusterUpgradeCadence),
+          upgradeWave: S.optional(S.String),
           upgradePauseStartTimestampUtc: S.optional(S.String),
           upgradePauseEndTimestampUtc: S.optional(S.String),
           waveUpgradePaused: S.optional(S.Boolean),
-          notifications: S.optional(ClusterPropertiesInputNotificationsList),
+          notifications: S.optional(__S(56, __c7, 0)),
         }),
       ).annotate({ identifier: "ClusterPropertiesInput" });
     case 2:
@@ -3265,8 +2490,8 @@ function __c7(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           location: S.String,
-          tags: S.optional(ClustersCreateOrUpdateRequestTagsMap),
-          properties: S.optional(ClusterPropertiesInput),
+          tags: S.optional(__S(0, __c0, 0)),
+          properties: S.optional(__S(57, __c7, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3283,50 +2508,46 @@ function __c7(j: number): any {
         S.Struct({
           codeVersion: S.optional(S.String),
           supportExpiryUtc: S.optional(S.String),
-          environment: S.optional(ClusterEnvironment),
+          environment: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClusterVersionDetails" });
     case 4:
-      return S.Array(ClusterVersionDetails);
+      return S.Array(__S(59, __c7, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          addOnFeatures: S.optional(ClusterPropertiesAddOnFeaturesList),
-          availableClusterVersions: S.optional(ClusterPropertiesAvailableClusterVersionsList),
-          azureActiveDirectory: S.optional(AzureActiveDirectory),
-          certificate: S.optional(CertificateDescription),
-          certificateCommonNames: S.optional(ServerCertificateCommonNames),
-          clientCertificateCommonNames: S.optional(
-            ClusterPropertiesClientCertificateCommonNamesList,
-          ),
-          clientCertificateThumbprints: S.optional(
-            ClusterPropertiesClientCertificateThumbprintsList,
-          ),
+          addOnFeatures: S.optional(__S(22, __c2, 6)),
+          availableClusterVersions: S.optional(__S(60, __c7, 4)),
+          azureActiveDirectory: S.optional(__S(23, __c2, 7)),
+          certificate: S.optional(__S(24, __c3, 0)),
+          certificateCommonNames: S.optional(__S(27, __c3, 3)),
+          clientCertificateCommonNames: S.optional(__S(29, __c3, 5)),
+          clientCertificateThumbprints: S.optional(__S(31, __c3, 7)),
           clusterCodeVersion: S.optional(S.String),
           clusterEndpoint: S.optional(S.String),
           clusterId: S.optional(S.String),
-          clusterState: S.optional(ClusterState),
-          diagnosticsStorageAccountConfig: S.optional(DiagnosticsStorageAccountConfig),
+          clusterState: S.optional(S.String),
+          diagnosticsStorageAccountConfig: S.optional(__S(32, __c4, 0)),
           eventStoreServiceEnabled: S.optional(S.Boolean),
-          fabricSettings: S.optional(ClusterPropertiesFabricSettingsList),
+          fabricSettings: S.optional(__S(36, __c4, 4)),
           managementEndpoint: S.String,
-          nodeTypes: ClusterPropertiesNodeTypesList,
-          provisioningState: S.optional(ClusterPropertiesProvisioningState),
-          reliabilityLevel: S.optional(ReliabilityLevel),
-          reverseProxyCertificate: S.optional(CertificateDescription),
-          reverseProxyCertificateCommonNames: S.optional(ServerCertificateCommonNames),
-          upgradeDescription: S.optional(ClusterUpgradePolicy),
-          upgradeMode: S.optional(UpgradeMode),
-          applicationTypeVersionsCleanupPolicy: S.optional(ApplicationTypeVersionsCleanupPolicy),
+          nodeTypes: __S(39, __c4, 7),
+          provisioningState: S.optional(S.String),
+          reliabilityLevel: S.optional(S.String),
+          reverseProxyCertificate: S.optional(__S(24, __c3, 0)),
+          reverseProxyCertificateCommonNames: S.optional(__S(27, __c3, 3)),
+          upgradeDescription: S.optional(__S(50, __c6, 2)),
+          upgradeMode: S.optional(S.String),
+          applicationTypeVersionsCleanupPolicy: S.optional(__S(51, __c6, 3)),
           vmImage: S.optional(S.String),
-          sfZonalUpgradeMode: S.optional(SfZonalUpgradeMode),
-          vmssZonalUpgradeMode: S.optional(VmssZonalUpgradeMode),
+          sfZonalUpgradeMode: S.optional(S.String),
+          vmssZonalUpgradeMode: S.optional(S.String),
           infrastructureServiceManager: S.optional(S.Boolean),
-          upgradeWave: S.optional(ClusterUpgradeCadence),
+          upgradeWave: S.optional(S.String),
           upgradePauseStartTimestampUtc: S.optional(S.String),
           upgradePauseEndTimestampUtc: S.optional(S.String),
           waveUpgradePaused: S.optional(S.Boolean),
-          notifications: S.optional(ClusterPropertiesNotificationsList),
+          notifications: S.optional(__S(56, __c7, 0)),
         }),
       ).annotate({ identifier: "ClusterProperties" });
     case 6:
@@ -3336,10 +2557,10 @@ function __c7(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.String,
-          tags: S.optional(ClustersCreateOrUpdateResponseTagsMap),
+          tags: S.optional(__S(0, __c0, 0)),
           etag: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ClusterProperties),
+          systemData: S.optional(__S(17, __c2, 1)),
+          properties: S.optional(__S(61, __c7, 5)),
         }),
       ).annotate({
         identifier: "ClustersCreateOrUpdateResponse",
@@ -3457,14 +2678,14 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 6:
-      return S.Record(S.String, UserAssignedIdentity);
+      return S.Record(S.String, __S(69, __c8, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: S.optional(ManagedIdentityType),
-          userAssignedIdentities: S.optional(UserAssignedIdentityMap),
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(70, __c8, 6)),
         }),
       ).annotate({ identifier: "ManagedIdentity" });
   }
@@ -3475,13 +2696,13 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           typeVersion: S.optional(S.String),
-          parameters: S.optional(ApplicationParameterList),
-          upgradePolicy: S.optional(ApplicationUpgradePolicy),
+          parameters: S.optional(__S(0, __c0, 0)),
+          upgradePolicy: S.optional(__S(8, __c1, 0)),
           minimumNodes: S.optional(S.Number),
           maximumNodes: S.optional(S.Number),
           removeApplicationCapacity: S.optional(S.Boolean),
-          metrics: S.optional(ApplicationMetricDescriptionList),
-          managedIdentities: S.optional(ApplicationResourcePropertiesManagedIdentitiesList),
+          metrics: S.optional(__S(10, __c1, 2)),
+          managedIdentities: S.optional(__S(12, __c1, 4)),
           provisioningState: S.optional(S.String),
           typeName: S.optional(S.String),
         }),
@@ -3495,11 +2716,11 @@ function __c9(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(GetApplicationResponseTagsMap),
+          tags: S.optional(__S(0, __c0, 0)),
           etag: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          identity: S.optional(ManagedIdentity),
-          properties: S.optional(ApplicationResourceProperties),
+          systemData: S.optional(__S(17, __c2, 1)),
+          identity: S.optional(__S(71, __c8, 7)),
+          properties: S.optional(__S(72, __c9, 0)),
         }),
       ).annotate({ identifier: "GetApplicationResponse" });
     case 2:
@@ -3544,7 +2765,7 @@ function __c9(j: number): any {
         S.Struct({
           provisioningState: S.optional(S.String),
           appPackageUrl: S.String,
-          defaultParameterList: S.optional(ApplicationTypeParameterList),
+          defaultParameterList: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({
         identifier: "ApplicationTypeVersionResourceProperties",
@@ -3556,10 +2777,10 @@ function __c9(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(GetApplicationTypeVersionResponseTagsMap),
+          tags: S.optional(__S(0, __c0, 0)),
           etag: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ApplicationTypeVersionResourceProperties),
+          systemData: S.optional(__S(17, __c2, 1)),
+          properties: S.optional(__S(76, __c9, 4)),
         }),
       ).annotate({
         identifier: "GetApplicationTypeVersionResponse",
@@ -3586,10 +2807,10 @@ function __c9(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.String,
-          tags: S.optional(GetClusterResponseTagsMap),
+          tags: S.optional(__S(0, __c0, 0)),
           etag: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ClusterProperties),
+          systemData: S.optional(__S(17, __c2, 1)),
+          properties: S.optional(__S(61, __c7, 5)),
         }),
       ).annotate({ identifier: "GetClusterResponse" });
   }
@@ -3617,17 +2838,17 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(ClusterVersionDetails),
+          properties: S.optional(__S(59, __c7, 3)),
         }),
       ).annotate({
         identifier: "ClusterCodeVersionsResult",
       });
     case 2:
-      return S.Array(ClusterCodeVersionsResult);
+      return S.Array(__S(81, __c10, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ClusterCodeVersionsListResultValueList),
+          value: S.optional(__S(82, __c10, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -3638,7 +2859,7 @@ function __c10(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
-          environment: GetClusterVersionByEnvironmentRequestEnvironment.pipe(T.Label()),
+          environment: S.String.pipe(T.Label()),
           clusterVersion: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -3671,14 +2892,14 @@ function __c10(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          scheme: ServiceCorrelationScheme,
+          scheme: S.String,
           serviceName: S.String,
         }),
       ).annotate({
         identifier: "ServiceCorrelationDescription",
       });
     case 7:
-      return S.Array(ServiceCorrelationDescription);
+      return S.Array(__S(86, __c10, 6));
   }
 }
 function __c11(j: number): any {
@@ -3687,7 +2908,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          weight: S.optional(ServiceLoadMetricWeight),
+          weight: S.optional(S.String),
           primaryDefaultLoad: S.optional(S.Number),
           secondaryDefaultLoad: S.optional(S.Number),
           defaultLoad: S.optional(S.Number),
@@ -3696,25 +2917,25 @@ function __c11(j: number): any {
         identifier: "ServiceLoadMetricDescription",
       });
     case 1:
-      return S.Array(ServiceLoadMetricDescription);
+      return S.Array(__S(88, __c11, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: ServicePlacementPolicyType,
+          type: S.String,
         }),
       ).annotate({
         identifier: "ServicePlacementPolicyDescription",
       });
     case 3:
-      return S.Array(ServicePlacementPolicyDescription);
+      return S.Array(__S(90, __c11, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          partitionScheme: PartitionScheme,
+          partitionScheme: S.String,
           count: S.optional(S.Number),
           lowKey: S.optional(S.String),
           highKey: S.optional(S.String),
-          names: S.optional(PartitionNamesList),
+          names: S.optional(__S(52, __c6, 4)),
         }),
       ).annotate({
         identifier: "PartitionSchemeDescription",
@@ -3723,17 +2944,15 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           placementConstraints: S.optional(S.String),
-          correlationScheme: S.optional(CorrelationSchemeList),
-          serviceLoadMetrics: S.optional(ServiceLoadMetricsList),
-          servicePlacementPolicies: S.optional(ServicePlacementPoliciesList),
-          defaultMoveCost: S.optional(MoveCost),
+          correlationScheme: S.optional(__S(87, __c10, 7)),
+          serviceLoadMetrics: S.optional(__S(89, __c11, 1)),
+          servicePlacementPolicies: S.optional(__S(91, __c11, 3)),
+          defaultMoveCost: S.optional(S.String),
           provisioningState: S.optional(S.String),
-          serviceKind: ServiceKind,
+          serviceKind: S.String,
           serviceTypeName: S.optional(S.String),
-          partitionDescription: S.optional(PartitionSchemeDescription),
-          servicePackageActivationMode: S.optional(
-            ServiceResourcePropertiesServicePackageActivationMode,
-          ),
+          partitionDescription: S.optional(__S(92, __c11, 4)),
+          servicePackageActivationMode: S.optional(S.String),
           serviceDnsName: S.optional(S.String),
           instanceCount: S.optional(S.Number),
           instanceCloseDelayDuration: S.optional(S.String),
@@ -3754,10 +2973,10 @@ function __c11(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(GetServiceResponseTagsMap),
+          tags: S.optional(__S(0, __c0, 0)),
           etag: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ServiceResourceProperties),
+          systemData: S.optional(__S(17, __c2, 1)),
+          properties: S.optional(__S(93, __c11, 5)),
         }),
       ).annotate({ identifier: "GetServiceResponse" });
     case 7:
@@ -3780,11 +2999,11 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ApplicationResource);
+      return S.Array(__S(73, __c9, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ApplicationResourceListValueList),
+          value: S.optional(__S(96, __c12, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApplicationResourceList" });
@@ -3812,18 +3031,18 @@ function __c12(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(ApplicationTypeResourceTagsMap),
+          tags: S.optional(__S(0, __c0, 0)),
           etag: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ApplicationTypeResourceProperties),
+          systemData: S.optional(__S(17, __c2, 1)),
+          properties: S.optional(__S(18, __c2, 2)),
         }),
       ).annotate({ identifier: "ApplicationTypeResource" });
     case 4:
-      return S.Array(ApplicationTypeResource);
+      return S.Array(__S(99, __c12, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ApplicationTypeResourceListValueList),
+          value: S.optional(__S(100, __c12, 4)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -3848,7 +3067,7 @@ function __c12(j: number): any {
         identifier: "ListApplicationTypeVersionsRequest",
       });
     case 7:
-      return S.Array(ApplicationTypeVersionResource);
+      return S.Array(__S(77, __c9, 5));
   }
 }
 function __c13(j: number): any {
@@ -3856,7 +3075,7 @@ function __c13(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ApplicationTypeVersionResourceListValueList),
+          value: S.optional(__S(103, __c12, 7)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -3879,11 +3098,11 @@ function __c13(j: number): any {
         identifier: "ListClusterByResourceGroupRequest",
       });
     case 2:
-      return S.Array(Cluster);
+      return S.Array(__S(79, __c9, 7));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ClusterListResultValueList),
+          value: S.optional(__S(106, __c13, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClusterListResult" });
@@ -3921,7 +3140,7 @@ function __c13(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          supportedPath: S.optional(UpgradableVersionPathResultSupportedPathList),
+          supportedPath: S.optional(__S(52, __c6, 4)),
         }),
       ).annotate({
         identifier: "UpgradableVersionPathResult",
@@ -3931,7 +3150,7 @@ function __c13(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
-          environment: ListClusterVersionByEnvironmentRequestEnvironment.pipe(T.Label()),
+          environment: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -3990,17 +3209,17 @@ function __c14(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(AvailableOperationDisplay),
+          display: S.optional(__S(114, __c14, 2)),
           origin: S.optional(S.String),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationResult" });
     case 4:
-      return S.Array(OperationResult);
+      return S.Array(__S(115, __c14, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(OperationListResultValueList),
+          value: S.optional(__S(116, __c14, 4)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
@@ -4021,7 +3240,7 @@ function __c14(j: number): any {
         ),
       ).annotate({ identifier: "ListServicesRequest" });
     case 7:
-      return S.Array(ServiceResource);
+      return S.Array(__S(94, __c11, 6));
   }
 }
 function __c15(j: number): any {
@@ -4029,7 +3248,7 @@ function __c15(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ServiceResourceListValueList),
+          value: S.optional(__S(119, __c14, 7)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServiceResourceList" });
@@ -4037,16 +3256,14 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           placementConstraints: S.optional(S.String),
-          correlationScheme: S.optional(CorrelationSchemeList),
-          serviceLoadMetrics: S.optional(ServiceLoadMetricsList),
-          servicePlacementPolicies: S.optional(ServicePlacementPoliciesList),
-          defaultMoveCost: S.optional(MoveCost),
-          serviceKind: ServiceKind,
+          correlationScheme: S.optional(__S(87, __c10, 7)),
+          serviceLoadMetrics: S.optional(__S(89, __c11, 1)),
+          servicePlacementPolicies: S.optional(__S(91, __c11, 3)),
+          defaultMoveCost: S.optional(S.String),
+          serviceKind: S.String,
           serviceTypeName: S.optional(S.String),
-          partitionDescription: S.optional(PartitionSchemeDescription),
-          servicePackageActivationMode: S.optional(
-            ServiceResourcePropertiesInputServicePackageActivationMode,
-          ),
+          partitionDescription: S.optional(__S(92, __c11, 4)),
+          servicePackageActivationMode: S.optional(S.String),
           serviceDnsName: S.optional(S.String),
           instanceCount: S.optional(S.Number),
           instanceCloseDelayDuration: S.optional(S.String),
@@ -4069,8 +3286,8 @@ function __c15(j: number): any {
           applicationName: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(ServicesCreateOrUpdateRequestTagsMap),
-          properties: S.optional(ServiceResourcePropertiesInput),
+          tags: S.optional(__S(0, __c0, 0)),
+          properties: S.optional(__S(121, __c15, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4086,13 +3303,13 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           typeVersion: S.optional(S.String),
-          parameters: S.optional(ApplicationParameterList),
-          upgradePolicy: S.optional(ApplicationUpgradePolicy),
+          parameters: S.optional(__S(0, __c0, 0)),
+          upgradePolicy: S.optional(__S(8, __c1, 0)),
           minimumNodes: S.optional(S.Number),
           maximumNodes: S.optional(S.Number),
           removeApplicationCapacity: S.optional(S.Boolean),
-          metrics: S.optional(ApplicationMetricDescriptionList),
-          managedIdentities: S.optional(ApplicationResourceUpdatePropertiesManagedIdentitiesList),
+          metrics: S.optional(__S(10, __c1, 2)),
+          managedIdentities: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({
         identifier: "ApplicationResourceUpdateProperties",
@@ -4105,8 +3322,8 @@ function __c15(j: number): any {
           clusterName: S.String.pipe(T.Label()),
           applicationName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(UpdateApplicationRequestTagsMap),
-          properties: S.optional(ApplicationResourceUpdateProperties),
+          tags: S.optional(__S(0, __c0, 0)),
+          properties: S.optional(__S(123, __c15, 3)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4117,38 +3334,34 @@ function __c15(j: number): any {
         ),
       ).annotate({ identifier: "UpdateApplicationRequest" });
     case 5:
-      return S.Array(ClientCertificateCommonName);
+      return S.Array(__S(28, __c3, 4));
     case 6:
-      return S.Array(ClientCertificateThumbprint);
+      return S.Array(__S(30, __c3, 6));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          addOnFeatures: S.optional(ClusterPropertiesUpdateParametersAddOnFeaturesList),
-          certificate: S.optional(CertificateDescription),
-          certificateCommonNames: S.optional(ServerCertificateCommonNames),
-          clientCertificateCommonNames: S.optional(
-            ClusterPropertiesUpdateParametersClientCertificateCommonNamesList,
-          ),
-          clientCertificateThumbprints: S.optional(
-            ClusterPropertiesUpdateParametersClientCertificateThumbprintsList,
-          ),
+          addOnFeatures: S.optional(__S(22, __c2, 6)),
+          certificate: S.optional(__S(24, __c3, 0)),
+          certificateCommonNames: S.optional(__S(27, __c3, 3)),
+          clientCertificateCommonNames: S.optional(__S(125, __c15, 5)),
+          clientCertificateThumbprints: S.optional(__S(126, __c15, 6)),
           clusterCodeVersion: S.optional(S.String),
           eventStoreServiceEnabled: S.optional(S.Boolean),
-          fabricSettings: S.optional(ClusterPropertiesUpdateParametersFabricSettingsList),
-          nodeTypes: S.optional(ClusterPropertiesUpdateParametersNodeTypesList),
-          reliabilityLevel: S.optional(ReliabilityLevel),
-          reverseProxyCertificate: S.optional(CertificateDescription),
-          upgradeDescription: S.optional(ClusterUpgradePolicy),
-          applicationTypeVersionsCleanupPolicy: S.optional(ApplicationTypeVersionsCleanupPolicy),
-          upgradeMode: S.optional(UpgradeMode),
-          sfZonalUpgradeMode: S.optional(SfZonalUpgradeMode),
-          vmssZonalUpgradeMode: S.optional(VmssZonalUpgradeMode),
+          fabricSettings: S.optional(__S(36, __c4, 4)),
+          nodeTypes: S.optional(__S(39, __c4, 7)),
+          reliabilityLevel: S.optional(S.String),
+          reverseProxyCertificate: S.optional(__S(24, __c3, 0)),
+          upgradeDescription: S.optional(__S(50, __c6, 2)),
+          applicationTypeVersionsCleanupPolicy: S.optional(__S(51, __c6, 3)),
+          upgradeMode: S.optional(S.String),
+          sfZonalUpgradeMode: S.optional(S.String),
+          vmssZonalUpgradeMode: S.optional(S.String),
           infrastructureServiceManager: S.optional(S.Boolean),
-          upgradeWave: S.optional(ClusterUpgradeCadence),
+          upgradeWave: S.optional(S.String),
           upgradePauseStartTimestampUtc: S.optional(S.String),
           upgradePauseEndTimestampUtc: S.optional(S.String),
           waveUpgradePaused: S.optional(S.Boolean),
-          notifications: S.optional(ClusterPropertiesUpdateParametersNotificationsList),
+          notifications: S.optional(__S(56, __c7, 0)),
         }),
       ).annotate({
         identifier: "ClusterPropertiesUpdateParameters",
@@ -4163,8 +3376,8 @@ function __c16(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
-          properties: S.optional(ClusterPropertiesUpdateParameters),
-          tags: S.optional(UpdateClusterRequestTagsMap),
+          properties: S.optional(__S(127, __c15, 7)),
+          tags: S.optional(__S(0, __c0, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4178,11 +3391,11 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           placementConstraints: S.optional(S.String),
-          correlationScheme: S.optional(CorrelationSchemeList),
-          serviceLoadMetrics: S.optional(ServiceLoadMetricsList),
-          servicePlacementPolicies: S.optional(ServicePlacementPoliciesList),
-          defaultMoveCost: S.optional(MoveCost),
-          serviceKind: ServiceKind,
+          correlationScheme: S.optional(__S(87, __c10, 7)),
+          serviceLoadMetrics: S.optional(__S(89, __c11, 1)),
+          servicePlacementPolicies: S.optional(__S(91, __c11, 3)),
+          defaultMoveCost: S.optional(S.String),
+          serviceKind: S.String,
           instanceCount: S.optional(S.Number),
           instanceCloseDelayDuration: S.optional(S.String),
           targetReplicaSetSize: S.optional(S.Number),
@@ -4203,8 +3416,8 @@ function __c16(j: number): any {
           applicationName: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(UpdateServiceRequestTagsMap),
-          properties: S.optional(ServiceResourceUpdateProperties),
+          tags: S.optional(__S(0, __c0, 0)),
+          properties: S.optional(__S(129, __c16, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4215,4 +3428,9 @@ function __c16(j: number): any {
         ),
       ).annotate({ identifier: "UpdateServiceRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

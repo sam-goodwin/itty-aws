@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -66,15 +68,8 @@ export interface AcceptInvitationsRequest {
   /** Identifier of the invitation to accept. */
   id: string;
 }
-const AcceptInvitationsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AcceptInvitationsRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<Empty>;
-
 /** URL item. */
 export interface Link {
   /** URL to link to. This must be a valid UTF-8 string containing between 1 and 2024 characters. */
@@ -84,8 +79,6 @@ export interface Link {
   /** URL of a thumbnail image of the target URL. Read-only. */
   thumbnailUrl?: string;
 }
-const Link = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Link>;
-
 /** YouTube video item. */
 export interface YouTubeVideo {
   /** Title of the YouTube video. Read-only. */
@@ -97,8 +90,6 @@ export interface YouTubeVideo {
   /** URL of a thumbnail image of the YouTube video. Read-only. */
   thumbnailUrl?: string;
 }
-const YouTubeVideo = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<YouTubeVideo>;
-
 /** Google Forms item. */
 export interface Form {
   /** URL of the form. */
@@ -110,8 +101,6 @@ export interface Form {
   /** URL of the form responses document. Only set if responses have been recorded and only when the requesting user is an editor of the form. Read-only. */
   responseUrl?: string;
 }
-const Form = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Form>;
-
 /** Representation of a Google Drive file. */
 export interface DriveFile {
   /** Drive API resource ID. */
@@ -123,8 +112,6 @@ export interface DriveFile {
   /** URL that can be used to access the Drive item. Read-only. */
   alternateLink?: string;
 }
-const DriveFile = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<DriveFile>;
-
 /** A material attached to a course as part of a material set. */
 export interface CourseMaterial {
   /** Link atatchment. */
@@ -136,11 +123,7 @@ export interface CourseMaterial {
   /** Google Drive file attachment. */
   driveFile?: DriveFile;
 }
-const CourseMaterial = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<CourseMaterial>;
-
 export type CourseMaterialList = Array<CourseMaterial>;
-const CourseMaterialList = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<CourseMaterialList>;
-
 /** A set of materials that appears on the "About" page of the course. These materials might include a syllabus, schedule, or other background information relating to the course as a whole. */
 export interface CourseMaterialSet {
   /** Title for this set. */
@@ -148,14 +131,7 @@ export interface CourseMaterialSet {
   /** Materials attached to this set. */
   materials?: CourseMaterialList;
 }
-const CourseMaterialSet = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<CourseMaterialSet>;
-
 export type CourseMaterialSetList = Array<CourseMaterialSet>;
-const CourseMaterialSetList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CourseMaterialSetList>;
-
 export type CourseCourseStateEnum =
   | "COURSE_STATE_UNSPECIFIED"
   | "ACTIVE"
@@ -163,8 +139,6 @@ export type CourseCourseStateEnum =
   | "PROVISIONED"
   | "DECLINED"
   | "SUSPENDED";
-const CourseCourseStateEnum = S.String;
-
 /** Representation of a Google Drive folder. */
 export interface DriveFolder {
   /** URL that can be used to access the Drive folder. Read-only. */
@@ -174,8 +148,6 @@ export interface DriveFolder {
   /** Title of the Drive folder. Read-only. */
   title?: string;
 }
-const DriveFolder = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<DriveFolder>;
-
 /** Details for a grade category in a course. Coursework may have zero or one grade category, and the category may be used in computing the overall grade. See the [help center article](https://support.google.com/edu/classroom/answer/9184995) for details. */
 export interface GradeCategory {
   /** Default value of denominator. Only applicable when grade calculation type is TOTAL_POINTS. */
@@ -187,24 +159,16 @@ export interface GradeCategory {
   /** The weight of the category average as part of overall average. A weight of 12.34% is represented as 123400 (100% is 1,000,000). The last two digits should always be zero since we use two decimal precision. Only applicable when grade calculation type is WEIGHTED_CATEGORIES. */
   weight?: number;
 }
-const GradeCategory = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<GradeCategory>;
-
 export type GradeCategoryList = Array<GradeCategory>;
-const GradeCategoryList = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<GradeCategoryList>;
-
 export type GradebookSettingsCalculationTypeEnum =
   | "CALCULATION_TYPE_UNSPECIFIED"
   | "TOTAL_POINTS"
   | "WEIGHTED_CATEGORIES";
-const GradebookSettingsCalculationTypeEnum = S.String;
-
 export type GradebookSettingsDisplaySettingEnum =
   | "DISPLAY_SETTING_UNSPECIFIED"
   | "SHOW_OVERALL_GRADE"
   | "HIDE_OVERALL_GRADE"
   | "SHOW_TEACHERS_ONLY";
-const GradebookSettingsDisplaySettingEnum = S.String;
-
 /** The gradebook settings for a course. See the [help center article](https://support.google.com/edu/classroom/answer/9184995) for details. */
 export interface GradebookSettings {
   /** Grade categories that are available for coursework in the course. */
@@ -214,8 +178,6 @@ export interface GradebookSettings {
   /** Indicates who can see the overall grade.. */
   displaySetting?: GradebookSettingsDisplaySettingEnum | (string & {});
 }
-const GradebookSettings = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<GradebookSettings>;
-
 /** A Course in Classroom. */
 export interface Course {
   /** Absolute link to this course in the Classroom web UI. Read-only. */
@@ -261,32 +223,21 @@ export interface Course {
   /** The email address of a Google group containing all teachers of the course. This group does not accept email and can only be used for permissions. Read-only. */
   teacherGroupEmail?: string;
 }
-const Course = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<Course>;
-
 export interface CreateCoursesRequest {
   /** Request body */
   body?: Course;
 }
-const CreateCoursesRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<CreateCoursesRequest>;
-
 /** Alternative identifier for a course. An alias uniquely identifies a course. It must be unique within one of the following scopes: * domain: A domain-scoped alias is visible to all users within the alias creator's domain and can be created only by a domain admin. A domain-scoped alias is often used when a course has an identifier external to Classroom. * project: A project-scoped alias is visible to any request from an application using the Developer Console project ID that created the alias and can be created by any project. A project-scoped alias is often used when an application has alternative identifiers. A random value can also be used to avoid duplicate courses in the event of transmission failures, as retrying a request will return `ALREADY_EXISTS` if a previous one has succeeded. */
 export interface CourseAlias {
   /** Alias string. The format of the string indicates the desired alias scoping. * `d:` indicates a domain-scoped alias. Example: `d:math_101` * `p:` indicates a project-scoped alias. Example: `p:abc123` This field has a maximum length of 256 characters. */
   alias?: string;
 }
-const CourseAlias = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<CourseAlias>;
-
 export interface CreateCoursesAliasesRequest {
   /** Identifier of the course to alias. This identifier can be either the Classroom-assigned identifier or an alias. */
   courseId: string;
   /** Request body */
   body?: CourseAlias;
 }
-const CreateCoursesAliasesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CreateCoursesAliasesRequest>;
-
 /** Gemini Gem link. */
 export interface GeminiGem {
   /** Title of the Gem. */
@@ -296,11 +247,7 @@ export interface GeminiGem {
   /** Gems resource id. */
   id?: string;
 }
-const GeminiGem = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<GeminiGem>;
-
 export type SharedDriveFileShareModeEnum = "UNKNOWN_SHARE_MODE" | "VIEW" | "EDIT" | "STUDENT_COPY";
-const SharedDriveFileShareModeEnum = S.String;
-
 /** Drive file that is used as material for course work. */
 export interface SharedDriveFile {
   /** Mechanism by which students access the Drive item. */
@@ -308,8 +255,6 @@ export interface SharedDriveFile {
   /** Drive file details. */
   driveFile?: DriveFile;
 }
-const SharedDriveFile = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<SharedDriveFile>;
-
 /** NotebookLM Notebook link. */
 export interface NotebookLmNotebook {
   /** URL that can be used to access the Notebook. */
@@ -319,8 +264,6 @@ export interface NotebookLmNotebook {
   /** Notebook resource id. */
   id?: string;
 }
-const NotebookLmNotebook = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<NotebookLmNotebook>;
-
 /** Material attached to course work. When creating attachments, setting the `form`, `gem`, or `notebook` field is not supported. */
 export interface Material {
   /** Link material. On creation, this is upgraded to a more appropriate type if possible, and this is reflected in the response. */
@@ -336,37 +279,22 @@ export interface Material {
   /** Google Forms material. Read-only. */
   form?: Form;
 }
-const Material = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<Material>;
-
 export type MaterialList = Array<Material>;
-const MaterialList = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<MaterialList>;
-
 export type AnnouncementAssigneeModeEnum =
   | "ASSIGNEE_MODE_UNSPECIFIED"
   | "ALL_STUDENTS"
   | "INDIVIDUAL_STUDENTS";
-const AnnouncementAssigneeModeEnum = S.String;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<StringList>;
-
 /** Assignee details about a coursework/announcement. This field is set if and only if `assigneeMode` is `INDIVIDUAL_STUDENTS`. */
 export interface IndividualStudentsOptions {
   /** Identifiers for the students that have access to the coursework/announcement. */
   studentIds?: StringList;
 }
-const IndividualStudentsOptions = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<IndividualStudentsOptions>;
-
 export type AnnouncementStateEnum =
   | "ANNOUNCEMENT_STATE_UNSPECIFIED"
   | "PUBLISHED"
   | "DRAFT"
   | "DELETED";
-const AnnouncementStateEnum = S.String;
-
 /** Announcement created by a teacher for students of the course */
 export interface Announcement {
   /** Timestamp of the most recent change to this announcement. Read-only. */
@@ -394,19 +322,12 @@ export interface Announcement {
   /** Status of this announcement. If unspecified, the default state is `DRAFT`. */
   state?: AnnouncementStateEnum | (string & {});
 }
-const Announcement = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<Announcement>;
-
 export interface CreateCoursesAnnouncementsRequest {
   /** Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. */
   courseId: string;
   /** Request body */
   body?: Announcement;
 }
-const CreateCoursesAnnouncementsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<CreateCoursesAnnouncementsRequest>;
-
 /** Identifier of a previous copy of a given attachment. */
 export interface CopyHistory {
   /** Immutable. Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. */
@@ -418,18 +339,12 @@ export interface CopyHistory {
   /** Immutable. Deprecated, use `item_id` instead. */
   postId?: string;
 }
-const CopyHistory = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<CopyHistory>;
-
 export type CopyHistoryList = Array<CopyHistory>;
-const CopyHistoryList = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<CopyHistoryList>;
-
 /** URI to be iframed after being populated with query parameters. */
 export interface EmbedUri {
   /** Required. URI to be iframed after being populated with query parameters. This must be a valid UTF-8 string containing between 1 and 1800 characters. */
   uri?: string;
 }
-const EmbedUri = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<EmbedUri>;
-
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
 export interface Classroom_Date {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
@@ -439,8 +354,6 @@ export interface Classroom_Date {
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
   month?: number;
 }
-const Classroom_Date = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<Classroom_Date>;
-
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
 export interface TimeOfDay {
   /** Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time. */
@@ -452,8 +365,6 @@ export interface TimeOfDay {
   /** Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds. */
   seconds?: number;
 }
-const TimeOfDay = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<TimeOfDay>;
-
 /** An add-on attachment on a post. */
 export interface AddOnAttachment {
   /** Output only. Identifiers of attachments that were previous copies of this attachment. If the attachment was previously copied by virtue of its parent post being copied, this enumerates the identifiers of attachments that were its previous copies in ascending chronological order of copy. */
@@ -481,8 +392,6 @@ export interface AddOnAttachment {
   /** Immutable. Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. Unique per course. */
   itemId?: string;
 }
-const AddOnAttachment = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<AddOnAttachment>;
-
 export interface CreateCoursesAnnouncementsAddOnAttachmentsRequest {
   /** Required. Identifier of the course. */
   courseId: string;
@@ -495,54 +404,34 @@ export interface CreateCoursesAnnouncementsAddOnAttachmentsRequest {
   /** Request body */
   body?: AddOnAttachment;
 }
-const CreateCoursesAnnouncementsAddOnAttachmentsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<CreateCoursesAnnouncementsAddOnAttachmentsRequest>;
-
 export type CourseWorkWorkTypeEnum =
   | "COURSE_WORK_TYPE_UNSPECIFIED"
   | "ASSIGNMENT"
   | "SHORT_ANSWER_QUESTION"
   | "MULTIPLE_CHOICE_QUESTION";
-const CourseWorkWorkTypeEnum = S.String;
-
 export type CourseWorkStateEnum =
   | "COURSE_WORK_STATE_UNSPECIFIED"
   | "PUBLISHED"
   | "DRAFT"
   | "DELETED";
-const CourseWorkStateEnum = S.String;
-
 export type CourseWorkSubmissionModificationModeEnum =
   | "SUBMISSION_MODIFICATION_MODE_UNSPECIFIED"
   | "MODIFIABLE_UNTIL_TURNED_IN"
   | "MODIFIABLE";
-const CourseWorkSubmissionModificationModeEnum = S.String;
-
 /** Additional details for multiple-choice questions. */
 export interface MultipleChoiceQuestion {
   /** Possible choices. */
   choices?: StringList;
 }
-const MultipleChoiceQuestion = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<MultipleChoiceQuestion>;
-
 export type CourseWorkAssigneeModeEnum =
   | "ASSIGNEE_MODE_UNSPECIFIED"
   | "ALL_STUDENTS"
   | "INDIVIDUAL_STUDENTS";
-const CourseWorkAssigneeModeEnum = S.String;
-
 /** Additional details for assignments. */
 export interface Assignment {
   /** Drive folder where attachments from student submissions are placed. This is only populated for course teachers and administrators. */
   studentWorkFolder?: DriveFolder;
 }
-const Assignment = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<Assignment>;
-
 /** Course work created by a teacher for students of the course. */
 export interface CourseWork {
   /** Identifier for the topic that this coursework is associated with. Must match an existing topic in the course. */
@@ -594,19 +483,12 @@ export interface CourseWork {
   /** Assignment details. This is populated only when `work_type` is `ASSIGNMENT`. Read-only. */
   assignment?: Assignment;
 }
-const CourseWork = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<CourseWork>;
-
 export interface CreateCoursesCourseWorkRequest {
   /** Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. */
   courseId: string;
   /** Request body */
   body?: CourseWork;
 }
-const CreateCoursesCourseWorkRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<CreateCoursesCourseWorkRequest>;
-
 export interface CreateCoursesCourseWorkAddOnAttachmentsRequest {
   /** Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which to create the attachment. This field is required, but is not marked as such while we are migrating from post_id. */
   itemId: string;
@@ -619,24 +501,15 @@ export interface CreateCoursesCourseWorkAddOnAttachmentsRequest {
   /** Request body */
   body?: AddOnAttachment;
 }
-const CreateCoursesCourseWorkAddOnAttachmentsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<CreateCoursesCourseWorkAddOnAttachmentsRequest>;
-
 export type CourseWorkMaterialAssigneeModeEnum =
   | "ASSIGNEE_MODE_UNSPECIFIED"
   | "ALL_STUDENTS"
   | "INDIVIDUAL_STUDENTS";
-const CourseWorkMaterialAssigneeModeEnum = S.String;
-
 export type CourseWorkMaterialStateEnum =
   | "COURSEWORK_MATERIAL_STATE_UNSPECIFIED"
   | "PUBLISHED"
   | "DRAFT"
   | "DELETED";
-const CourseWorkMaterialStateEnum = S.String;
-
 /** Course work material created by a teacher for students of the course */
 export interface CourseWorkMaterial {
   /** Timestamp of the most recent change to this course work material. Read-only. */
@@ -668,19 +541,12 @@ export interface CourseWorkMaterial {
   /** Identifiers of students with access to the course work material. This field is set only if `assigneeMode` is `INDIVIDUAL_STUDENTS`. If the `assigneeMode` is `INDIVIDUAL_STUDENTS`, then only students specified in this field can see the course work material. */
   individualStudentsOptions?: IndividualStudentsOptions;
 }
-const CourseWorkMaterial = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<CourseWorkMaterial>;
-
 export interface CreateCoursesCourseWorkMaterialsRequest {
   /** Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. */
   courseId: string;
   /** Request body */
   body?: CourseWorkMaterial;
 }
-const CreateCoursesCourseWorkMaterialsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<CreateCoursesCourseWorkMaterialsRequest>;
-
 export interface CreateCoursesCourseWorkMaterialsAddOnAttachmentsRequest {
   /** Optional. Deprecated, use `item_id` instead. */
   postId?: string;
@@ -693,11 +559,6 @@ export interface CreateCoursesCourseWorkMaterialsAddOnAttachmentsRequest {
   /** Request body */
   body?: AddOnAttachment;
 }
-const CreateCoursesCourseWorkMaterialsAddOnAttachmentsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<CreateCoursesCourseWorkMaterialsAddOnAttachmentsRequest>;
-
 /** A level of the criterion. */
 export interface Level {
   /** The level ID. On creation, an ID is assigned. */
@@ -709,11 +570,7 @@ export interface Level {
   /** Optional points associated with this level. If set, all levels within the rubric must specify points and the value must be distinct across all levels within a single criterion. 0 is distinct from no points. */
   points?: number;
 }
-const Level = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<Level>;
-
 export type LevelList = Array<Level>;
-const LevelList = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<LevelList>;
-
 /** A rubric criterion. Each criterion is a dimension on which performance is rated. */
 export interface Criterion {
   /** The list of levels within this criterion. */
@@ -725,11 +582,7 @@ export interface Criterion {
   /** The criterion ID. On creation, an ID is assigned. */
   id?: string;
 }
-const Criterion = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<Criterion>;
-
 export type CriterionList = Array<Criterion>;
-const CriterionList = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<CriterionList>;
-
 /** The rubric of the course work. A rubric is a scoring guide used to evaluate student work and give feedback. For further details, see [Rubrics structure and known limitations](/classroom/rubrics/limitations). */
 export interface Rubric {
   /** List of criteria. Each criterion is a dimension on which performance is rated. */
@@ -747,8 +600,6 @@ export interface Rubric {
   /** Input only. Immutable. Google Sheets ID of the spreadsheet. This spreadsheet must contain formatted rubric settings. See [Create or reuse a rubric for an assignment](https://support.google.com/edu/classroom/answer/9335069). Use of this field requires the `https://www.googleapis.com/auth/spreadsheets.readonly` or `https://www.googleapis.com/auth/spreadsheets` scope. */
   sourceSpreadsheetId?: string;
 }
-const Rubric = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<Rubric>;
-
 export interface CreateCoursesCourseWorkRubricsRequest {
   /** Required. Identifier of the course work. */
   courseWorkId: string;
@@ -757,11 +608,6 @@ export interface CreateCoursesCourseWorkRubricsRequest {
   /** Request body */
   body?: Rubric;
 }
-const CreateCoursesCourseWorkRubricsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<CreateCoursesCourseWorkRubricsRequest>;
-
 export interface CreateCoursesPostsAddOnAttachmentsRequest {
   /** Optional. Token that authorizes the request. The token is passed as a query parameter when the user is redirected from Classroom to the add-on's URL. This authorization token is required for in-Classroom attachment creation but optional for partner-first attachment creation. Returns an error if not provided for partner-first attachment creation and the developer projects that created the attachment and its parent stream item do not match. */
   addOnToken?: string;
@@ -774,11 +620,6 @@ export interface CreateCoursesPostsAddOnAttachmentsRequest {
   /** Request body */
   body?: AddOnAttachment;
 }
-const CreateCoursesPostsAddOnAttachmentsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<CreateCoursesPostsAddOnAttachmentsRequest>;
-
 /** A student group in a course. */
 export interface StudentGroup {
   /** The identifier of the student group. */
@@ -788,19 +629,12 @@ export interface StudentGroup {
   /** The title of the student group. */
   title?: string;
 }
-const StudentGroup = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<StudentGroup>;
-
 export interface CreateCoursesStudentGroupsRequest {
   /** Required. The identifier of the course. */
   courseId: string;
   /** Request body */
   body?: StudentGroup;
 }
-const CreateCoursesStudentGroupsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<CreateCoursesStudentGroupsRequest>;
-
 /** A student member in a student group. */
 export interface StudentGroupMember {
   /** The identifier of the course. */
@@ -810,8 +644,6 @@ export interface StudentGroupMember {
   /** Identifier of the student. */
   userId?: string;
 }
-const StudentGroupMember = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<StudentGroupMember>;
-
 export interface CreateCoursesStudentGroupsStudentGroupMembersRequest {
   /** Required. The identifier of the course. */
   courseId: string;
@@ -820,24 +652,13 @@ export interface CreateCoursesStudentGroupsStudentGroupMembersRequest {
   /** Request body */
   body?: StudentGroupMember;
 }
-const CreateCoursesStudentGroupsStudentGroupMembersRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<CreateCoursesStudentGroupsStudentGroupMembersRequest>;
-
 export type GlobalPermissionPermissionEnum = "PERMISSION_UNSPECIFIED" | "CREATE_COURSE";
-const GlobalPermissionPermissionEnum = S.String;
-
 /** Global user permission description. */
 export interface GlobalPermission {
   /** Permission value. */
   permission?: GlobalPermissionPermissionEnum | (string & {});
 }
-const GlobalPermission = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<GlobalPermission>;
-
 export type GlobalPermissionList = Array<GlobalPermission>;
-const GlobalPermissionList = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<GlobalPermissionList>;
-
 /** Details of the user's name. */
 export interface Name {
   /** The user's full name formed by concatenating the first and last name values. Read-only. */
@@ -847,8 +668,6 @@ export interface Name {
   /** The user's first name. Read-only. */
   givenName?: string;
 }
-const Name = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<Name>;
-
 /** Global information for a user. */
 export interface UserProfile {
   /** URL of user's profile photo. Must request `https://www.googleapis.com/auth/classroom.profile.photos` scope for this field to be populated in a response body. Read-only. */
@@ -864,8 +683,6 @@ export interface UserProfile {
   /** Represents whether a Google Workspace for Education user's domain administrator has explicitly verified them as being a teacher. This field is always false if the user is not a member of a Google Workspace for Education domain. Read-only */
   verifiedTeacher?: boolean;
 }
-const UserProfile = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<UserProfile>;
-
 /** Student in a course. */
 export interface Student {
   /** Identifier of the user. When specified as a parameter of a request, this identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user */
@@ -877,8 +694,6 @@ export interface Student {
   /** Identifier of the course. Read-only. */
   courseId?: string;
 }
-const Student = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<Student>;
-
 export interface CreateCoursesStudentsRequest {
   /** Identifier of the course to create the student in. This identifier can be either the Classroom-assigned identifier or an alias. */
   courseId: string;
@@ -887,11 +702,6 @@ export interface CreateCoursesStudentsRequest {
   /** Request body */
   body?: Student;
 }
-const CreateCoursesStudentsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<CreateCoursesStudentsRequest>;
-
 /** Teacher of a course. */
 export interface Teacher {
   /** Identifier of the course. Read-only. */
@@ -901,19 +711,12 @@ export interface Teacher {
   /** Global user information for the teacher. Read-only. */
   profile?: UserProfile;
 }
-const Teacher = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<Teacher>;
-
 export interface CreateCoursesTeachersRequest {
   /** Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. */
   courseId: string;
   /** Request body */
   body?: Teacher;
 }
-const CreateCoursesTeachersRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<CreateCoursesTeachersRequest>;
-
 /** Topic created by a teacher for the course */
 export interface Topic {
   /** Unique identifier for the topic. Read-only. */
@@ -925,22 +728,13 @@ export interface Topic {
   /** The name of the topic, generated by the user. Leading and trailing whitespaces, if any, are trimmed. Also, multiple consecutive whitespaces are collapsed into one inside the name. The result must be a non-empty string. Topic names are case sensitive, and must be no longer than 100 characters. */
   name?: string;
 }
-const Topic = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<Topic>;
-
 export interface CreateCoursesTopicsRequest {
   /** Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. */
   courseId: string;
   /** Request body */
   body?: Topic;
 }
-const CreateCoursesTopicsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<CreateCoursesTopicsRequest>;
-
 export type InvitationRoleEnum = "COURSE_ROLE_UNSPECIFIED" | "STUDENT" | "TEACHER" | "OWNER";
-const InvitationRoleEnum = S.String;
-
 /** An invitation to join a course. */
 export interface Invitation {
   /** Identifier of the course to invite the user to. */
@@ -952,48 +746,30 @@ export interface Invitation {
   /** Identifier assigned by Classroom. Read-only. */
   id?: string;
 }
-const Invitation = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<Invitation>;
-
 export interface CreateInvitationsRequest {
   /** Request body */
   body?: Invitation;
 }
-const CreateInvitationsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<CreateInvitationsRequest>;
-
 /** A reference to a Cloud Pub/Sub topic. To register for notifications, the owner of the topic must grant `classroom-notifications@system.gserviceaccount.com` the `projects.topics.publish` permission. */
 export interface CloudPubsubTopic {
   /** The `name` field of a Cloud Pub/Sub [Topic](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics#Topic). */
   topicName?: string;
 }
-const CloudPubsubTopic = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<CloudPubsubTopic>;
-
 /** Information about a `Feed` with a `feed_type` of `COURSE_WORK_CHANGES`. */
 export interface CourseWorkChangesInfo {
   /** The `course_id` of the course to subscribe to work changes for. */
   courseId?: string;
 }
-const CourseWorkChangesInfo = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<CourseWorkChangesInfo>;
-
 export type FeedFeedTypeEnum =
   | "FEED_TYPE_UNSPECIFIED"
   | "DOMAIN_ROSTER_CHANGES"
   | "COURSE_ROSTER_CHANGES"
   | "COURSE_WORK_CHANGES";
-const FeedFeedTypeEnum = S.String;
-
 /** Information about a `Feed` with a `feed_type` of `COURSE_ROSTER_CHANGES`. */
 export interface CourseRosterChangesInfo {
   /** The `course_id` of the course to subscribe to roster changes for. */
   courseId?: string;
 }
-const CourseRosterChangesInfo = CourseWorkChangesInfo as any as S.Schema<CourseRosterChangesInfo>;
-
 /** A class of notifications that an application can register to receive. For example: "all roster changes for a domain". */
 export interface Feed {
   /** Information about a `Feed` with a `feed_type` of `COURSE_WORK_CHANGES`. This field must be specified if `feed_type` is `COURSE_WORK_CHANGES`. */
@@ -1003,8 +779,6 @@ export interface Feed {
   /** Information about a `Feed` with a `feed_type` of `COURSE_ROSTER_CHANGES`. This field must be specified if `feed_type` is `COURSE_ROSTER_CHANGES`. */
   courseRosterChangesInfo?: CourseRosterChangesInfo;
 }
-const Feed = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<Feed>;
-
 /** An instruction to Classroom to send notifications from the `feed` to the provided destination. */
 export interface Registration {
   /** The Cloud Pub/Sub topic that notifications are to be sent to. */
@@ -1016,23 +790,14 @@ export interface Registration {
   /** Specification for the class of notifications that Classroom should deliver to the destination. */
   feed?: Feed;
 }
-const Registration = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<Registration>;
-
 export interface CreateRegistrationsRequest {
   /** Request body */
   body?: Registration;
 }
-const CreateRegistrationsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<CreateRegistrationsRequest>;
-
 export type GuardianInvitationStateEnum =
   | "GUARDIAN_INVITATION_STATE_UNSPECIFIED"
   | "PENDING"
   | "COMPLETE";
-const GuardianInvitationStateEnum = S.String;
-
 /** An invitation to become the guardian of a specified user, sent to a specified email address. */
 export interface GuardianInvitation {
   /** ID of the student (in standard format) */
@@ -1046,47 +811,28 @@ export interface GuardianInvitation {
   /** Email address that the invitation was sent to. This field is only visible to domain administrators. */
   invitedEmailAddress?: string;
 }
-const GuardianInvitation = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<GuardianInvitation>;
-
 export interface CreateUserProfilesGuardianInvitationsRequest {
   /** ID of the student (in standard format) */
   studentId: string;
   /** Request body */
   body?: GuardianInvitation;
 }
-const CreateUserProfilesGuardianInvitationsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<CreateUserProfilesGuardianInvitationsRequest>;
-
 export interface DeleteCoursesRequest {
   /** Identifier of the course to delete. This identifier can be either the Classroom-assigned identifier or an alias. */
   id: string;
 }
-const DeleteCoursesRequest = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<DeleteCoursesRequest>;
-
 export interface DeleteCoursesAliasesRequest {
   /** Identifier of the course whose alias should be deleted. This identifier can be either the Classroom-assigned identifier or an alias. */
   courseId: string;
   /** Alias to delete. This may not be the Classroom-assigned identifier. */
   alias: string;
 }
-const DeleteCoursesAliasesRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<DeleteCoursesAliasesRequest>;
-
 export interface DeleteCoursesAnnouncementsRequest {
   /** Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. */
   courseId: string;
   /** Identifier of the announcement to delete. This identifier is a Classroom-assigned identifier. */
   id: string;
 }
-const DeleteCoursesAnnouncementsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<DeleteCoursesAnnouncementsRequest>;
-
 export interface DeleteCoursesAnnouncementsAddOnAttachmentsRequest {
   /** Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id. */
   itemId: string;
@@ -1097,22 +843,12 @@ export interface DeleteCoursesAnnouncementsAddOnAttachmentsRequest {
   /** Optional. Deprecated, use `item_id` instead. */
   postId?: string;
 }
-const DeleteCoursesAnnouncementsAddOnAttachmentsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<DeleteCoursesAnnouncementsAddOnAttachmentsRequest>;
-
 export interface DeleteCoursesCourseWorkRequest {
   /** Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. */
   courseId: string;
   /** Identifier of the course work to delete. This identifier is a Classroom-assigned identifier. */
   id: string;
 }
-const DeleteCoursesCourseWorkRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<DeleteCoursesCourseWorkRequest>;
-
 export interface DeleteCoursesCourseWorkAddOnAttachmentsRequest {
   /** Required. Identifier of the course. */
   courseId: string;
@@ -1123,22 +859,12 @@ export interface DeleteCoursesCourseWorkAddOnAttachmentsRequest {
   /** Optional. Deprecated, use `item_id` instead. */
   postId?: string;
 }
-const DeleteCoursesCourseWorkAddOnAttachmentsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<DeleteCoursesCourseWorkAddOnAttachmentsRequest>;
-
 export interface DeleteCoursesCourseWorkMaterialsRequest {
   /** Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. */
   courseId: string;
   /** Identifier of the course work material to delete. This identifier is a Classroom-assigned identifier. */
   id: string;
 }
-const DeleteCoursesCourseWorkMaterialsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<DeleteCoursesCourseWorkMaterialsRequest>;
-
 export interface DeleteCoursesCourseWorkMaterialsAddOnAttachmentsRequest {
   /** Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id. */
   itemId: string;
@@ -1149,11 +875,6 @@ export interface DeleteCoursesCourseWorkMaterialsAddOnAttachmentsRequest {
   /** Optional. Deprecated, use `item_id` instead. */
   postId?: string;
 }
-const DeleteCoursesCourseWorkMaterialsAddOnAttachmentsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<DeleteCoursesCourseWorkMaterialsAddOnAttachmentsRequest>;
-
 export interface DeleteCoursesCourseWorkRubricsRequest {
   /** Required. Identifier of the course. */
   courseId: string;
@@ -1162,11 +883,6 @@ export interface DeleteCoursesCourseWorkRubricsRequest {
   /** Required. Identifier of the course work. */
   courseWorkId: string;
 }
-const DeleteCoursesCourseWorkRubricsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<DeleteCoursesCourseWorkRubricsRequest>;
-
 export interface DeleteCoursesPostsAddOnAttachmentsRequest {
   /** Required. Identifier of the attachment. */
   attachmentId: string;
@@ -1177,22 +893,12 @@ export interface DeleteCoursesPostsAddOnAttachmentsRequest {
   /** Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id. */
   itemId?: string;
 }
-const DeleteCoursesPostsAddOnAttachmentsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<DeleteCoursesPostsAddOnAttachmentsRequest>;
-
 export interface DeleteCoursesStudentGroupsRequest {
   /** Required. The identifier of the student group to delete. */
   id: string;
   /** Required. The identifier of the course containing the student group to delete. */
   courseId: string;
 }
-const DeleteCoursesStudentGroupsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<DeleteCoursesStudentGroupsRequest>;
-
 export interface DeleteCoursesStudentGroupsStudentGroupMembersRequest {
   /** Required. The identifier of the course containing the relevant student group. */
   courseId: string;
@@ -1201,73 +907,38 @@ export interface DeleteCoursesStudentGroupsStudentGroupMembersRequest {
   /** Required. The identifier of the student group member to delete. */
   userId: string;
 }
-const DeleteCoursesStudentGroupsStudentGroupMembersRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<DeleteCoursesStudentGroupsStudentGroupMembersRequest>;
-
 export interface DeleteCoursesStudentsRequest {
   /** Identifier of the student to delete. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user */
   userId: string;
   /** Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. */
   courseId: string;
 }
-const DeleteCoursesStudentsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<DeleteCoursesStudentsRequest>;
-
 export interface DeleteCoursesTeachersRequest {
   /** Identifier of the teacher to delete. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user */
   userId: string;
   /** Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. */
   courseId: string;
 }
-const DeleteCoursesTeachersRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<DeleteCoursesTeachersRequest>;
-
 export interface DeleteCoursesTopicsRequest {
   /** Identifier of the topic to delete. */
   id: string;
   /** Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. */
   courseId: string;
 }
-const DeleteCoursesTopicsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<DeleteCoursesTopicsRequest>;
-
 export interface DeleteInvitationsRequest {
   /** Identifier of the invitation to delete. */
   id: string;
 }
-const DeleteInvitationsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<DeleteInvitationsRequest>;
-
 export interface DeleteRegistrationsRequest {
   /** The `registration_id` of the `Registration` to be deleted. */
   registrationId: string;
 }
-const DeleteRegistrationsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<DeleteRegistrationsRequest>;
-
 export interface DeleteUserProfilesGuardiansRequest {
   /** The student whose guardian is to be deleted. One of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user */
   studentId: string;
   /** The `id` field from a `Guardian`. */
   guardianId: string;
 }
-const DeleteUserProfilesGuardiansRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<DeleteUserProfilesGuardiansRequest>;
-
 export interface GetAddOnContextCoursesAnnouncementsRequest {
   /** Optional. The identifier of the attachment. This field is required for all requests except when the user is in the [Attachment Discovery iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/attachment-discovery-iframe). */
   attachmentId?: string;
@@ -1280,22 +951,13 @@ export interface GetAddOnContextCoursesAnnouncementsRequest {
   /** Optional. Deprecated, use `item_id` instead. */
   postId?: string;
 }
-const GetAddOnContextCoursesAnnouncementsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<GetAddOnContextCoursesAnnouncementsRequest>;
-
 /** Role-specific context if the requesting user is a student. */
 export interface StudentContext {
   /** Requesting user's submission id to be used for grade passback and to identify the student when showing student work to the teacher. This is set exactly when `supportsStudentWork` is `true`. */
   submissionId?: string;
 }
-const StudentContext = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<StudentContext>;
-
 /** Role-specific context if the requesting user is a teacher. */
 export interface TeacherContext {}
-const TeacherContext = Empty as any as S.Schema<TeacherContext>;
-
 /** Attachment-relevant metadata for Classroom add-ons in the context of a specific post. */
 export interface AddOnContext {
   /** Immutable. Identifier of the course. */
@@ -1311,8 +973,6 @@ export interface AddOnContext {
   /** Add-on context corresponding to the requesting user's role as a teacher. Its presence implies that the requesting user is a teacher in the course. */
   teacherContext?: TeacherContext;
 }
-const AddOnContext = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<AddOnContext>;
-
 export interface GetAddOnContextCoursesCourseWorkRequest {
   /** Optional. The identifier of the attachment. This field is required for all requests except when the user is in the [Attachment Discovery iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/attachment-discovery-iframe). */
   attachmentId?: string;
@@ -1325,11 +985,6 @@ export interface GetAddOnContextCoursesCourseWorkRequest {
   /** Optional. Deprecated, use `item_id` instead. */
   postId?: string;
 }
-const GetAddOnContextCoursesCourseWorkRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<GetAddOnContextCoursesCourseWorkRequest>;
-
 export interface GetAddOnContextCoursesCourseWorkMaterialsRequest {
   /** Optional. The identifier of the attachment. This field is required for all requests except when the user is in the [Attachment Discovery iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/attachment-discovery-iframe). */
   attachmentId?: string;
@@ -1342,11 +997,6 @@ export interface GetAddOnContextCoursesCourseWorkMaterialsRequest {
   /** Optional. Deprecated, use `item_id` instead. */
   postId?: string;
 }
-const GetAddOnContextCoursesCourseWorkMaterialsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<GetAddOnContextCoursesCourseWorkMaterialsRequest>;
-
 export interface GetAddOnContextCoursesPostsRequest {
   /** Optional. Deprecated, use `item_id` instead. */
   postId: string;
@@ -1359,28 +1009,16 @@ export interface GetAddOnContextCoursesPostsRequest {
   /** Optional. Token that authorizes the request. The token is passed as a query parameter when the user is redirected from Classroom to the add-on's URL. The authorization token is required when neither of the following is true: * The add-on has attachments on the post. * The developer project issuing the request is the same project that created the post. */
   addOnToken?: string;
 }
-const GetAddOnContextCoursesPostsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<GetAddOnContextCoursesPostsRequest>;
-
 export interface GetCoursesRequest {
   /** Identifier of the course to return. This identifier can be either the Classroom-assigned identifier or an alias. */
   id: string;
 }
-const GetCoursesRequest = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<GetCoursesRequest>;
-
 export interface GetCoursesAnnouncementsRequest {
   /** Identifier of the announcement. */
   id: string;
   /** Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. */
   courseId: string;
 }
-const GetCoursesAnnouncementsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<GetCoursesAnnouncementsRequest>;
-
 export interface GetCoursesAnnouncementsAddOnAttachmentsRequest {
   /** Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id. */
   itemId: string;
@@ -1391,22 +1029,12 @@ export interface GetCoursesAnnouncementsAddOnAttachmentsRequest {
   /** Optional. Deprecated, use `item_id` instead. */
   postId?: string;
 }
-const GetCoursesAnnouncementsAddOnAttachmentsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<GetCoursesAnnouncementsAddOnAttachmentsRequest>;
-
 export interface GetCoursesCourseWorkRequest {
   /** Identifier of the course work. */
   id: string;
   /** Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. */
   courseId: string;
 }
-const GetCoursesCourseWorkRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<GetCoursesCourseWorkRequest>;
-
 export interface GetCoursesCourseWorkAddOnAttachmentsRequest {
   /** Optional. Deprecated, use `item_id` instead. */
   postId?: string;
@@ -1417,11 +1045,6 @@ export interface GetCoursesCourseWorkAddOnAttachmentsRequest {
   /** Required. Identifier of the course. */
   courseId: string;
 }
-const GetCoursesCourseWorkAddOnAttachmentsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<GetCoursesCourseWorkAddOnAttachmentsRequest>;
-
 export interface GetCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest {
   /** Optional. Deprecated, use `item_id` instead. */
   postId?: string;
@@ -1434,11 +1057,6 @@ export interface GetCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest {
   /** Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id. */
   itemId: string;
 }
-const GetCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<GetCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest>;
-
 export type AddOnAttachmentStudentSubmissionPostSubmissionStateEnum =
   | "SUBMISSION_STATE_UNSPECIFIED"
   | "NEW"
@@ -1446,8 +1064,6 @@ export type AddOnAttachmentStudentSubmissionPostSubmissionStateEnum =
   | "TURNED_IN"
   | "RETURNED"
   | "RECLAIMED_BY_STUDENT";
-const AddOnAttachmentStudentSubmissionPostSubmissionStateEnum = S.String;
-
 /** Payload for grade update requests. */
 export interface AddOnAttachmentStudentSubmission {
   /** Output only. Identifier of the course work submission under which this attachment submission was made. */
@@ -1461,22 +1077,12 @@ export interface AddOnAttachmentStudentSubmission {
   /** Submission state of add-on attachment's parent post (i.e. assignment). */
   postSubmissionState?: AddOnAttachmentStudentSubmissionPostSubmissionStateEnum | (string & {});
 }
-const AddOnAttachmentStudentSubmission = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<AddOnAttachmentStudentSubmission>;
-
 export interface GetCoursesCourseWorkMaterialsRequest {
   /** Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. */
   courseId: string;
   /** Identifier of the course work material. */
   id: string;
 }
-const GetCoursesCourseWorkMaterialsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<GetCoursesCourseWorkMaterialsRequest>;
-
 export interface GetCoursesCourseWorkMaterialsAddOnAttachmentsRequest {
   /** Required. Identifier of the course. */
   courseId: string;
@@ -1487,11 +1093,6 @@ export interface GetCoursesCourseWorkMaterialsAddOnAttachmentsRequest {
   /** Required. Identifier of the attachment. */
   attachmentId: string;
 }
-const GetCoursesCourseWorkMaterialsAddOnAttachmentsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<GetCoursesCourseWorkMaterialsAddOnAttachmentsRequest>;
-
 export interface GetCoursesCourseWorkRubricsRequest {
   /** Required. Identifier of the rubric. */
   id: string;
@@ -1500,11 +1101,6 @@ export interface GetCoursesCourseWorkRubricsRequest {
   /** Required. Identifier of the course work. */
   courseWorkId: string;
 }
-const GetCoursesCourseWorkRubricsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<GetCoursesCourseWorkRubricsRequest>;
-
 export interface GetCoursesCourseWorkStudentSubmissionsRequest {
   /** Identifier of the course work. */
   courseWorkId: string;
@@ -1513,35 +1109,21 @@ export interface GetCoursesCourseWorkStudentSubmissionsRequest {
   /** Identifier of the student submission. */
   id: string;
 }
-const GetCoursesCourseWorkStudentSubmissionsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<GetCoursesCourseWorkStudentSubmissionsRequest>;
-
 /** Student work for a short answer question. */
 export interface ShortAnswerSubmission {
   /** Student response to a short-answer question. */
   answer?: string;
 }
-const ShortAnswerSubmission = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<ShortAnswerSubmission>;
-
 /** Student work for a multiple-choice question. */
 export interface MultipleChoiceSubmission {
   /** Student's select choice. */
   answer?: string;
 }
-const MultipleChoiceSubmission = ShortAnswerSubmission as any as S.Schema<MultipleChoiceSubmission>;
-
 export type GradeHistoryGradeChangeTypeEnum =
   | "UNKNOWN_GRADE_CHANGE_TYPE"
   | "DRAFT_GRADE_POINTS_EARNED_CHANGE"
   | "ASSIGNED_GRADE_POINTS_EARNED_CHANGE"
   | "MAX_POINTS_CHANGE";
-const GradeHistoryGradeChangeTypeEnum = S.String;
-
 /** The history of each grade on this submission. */
 export interface GradeHistory {
   /** The type of grade change at this time in the submission grade history. */
@@ -1555,8 +1137,6 @@ export interface GradeHistory {
   /** The denominator of the grade at this time in the submission grade history. */
   maxPoints?: number;
 }
-const GradeHistory = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<GradeHistory>;
-
 export type StateHistoryStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATED"
@@ -1564,8 +1144,6 @@ export type StateHistoryStateEnum =
   | "RETURNED"
   | "RECLAIMED_BY_STUDENT"
   | "STUDENT_EDITED_AFTER_TURN_IN";
-const StateHistoryStateEnum = S.String;
-
 /** The history of each state this submission has been in. */
 export interface StateHistory {
   /** The teacher or student who made the change. */
@@ -1575,8 +1153,6 @@ export interface StateHistory {
   /** When the submission entered this state. */
   stateTimestamp?: string;
 }
-const StateHistory = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<StateHistory>;
-
 /** The history of the submission. This currently includes state and grade histories. */
 export interface SubmissionHistory {
   /** The grade history information of the submission, if present. */
@@ -1584,14 +1160,7 @@ export interface SubmissionHistory {
   /** The state history information of the submission, if present. */
   stateHistory?: StateHistory;
 }
-const SubmissionHistory = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<SubmissionHistory>;
-
 export type SubmissionHistoryList = Array<SubmissionHistory>;
-const SubmissionHistoryList = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<SubmissionHistoryList>;
-
 /** A rubric grade set for the student submission. There is at most one entry per rubric criterion. */
 export interface RubricGrade {
   /** Optional. Optional level ID of the selected level. If empty, no level was selected. */
@@ -1601,11 +1170,7 @@ export interface RubricGrade {
   /** Optional. Criterion ID. */
   criterionId?: string;
 }
-const RubricGrade = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<RubricGrade>;
-
 export type RubricGradeMap = { [key: string]: RubricGrade | undefined };
-const RubricGradeMap = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<RubricGradeMap>;
-
 /** Attachment added to student assignment work. When creating attachments, setting the `form` field is not supported. */
 export interface Attachment {
   /** Google Forms attachment. */
@@ -1617,28 +1182,17 @@ export interface Attachment {
   /** Youtube video attachment. */
   youTubeVideo?: YouTubeVideo;
 }
-const Attachment = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<Attachment>;
-
 export type AttachmentList = Array<Attachment>;
-const AttachmentList = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<AttachmentList>;
-
 /** Student work for an assignment. */
 export interface AssignmentSubmission {
   /** Attachments added by the student. Drive files that correspond to materials with a share mode of STUDENT_COPY may not exist yet if the student has not accessed the assignment in Classroom. Some attachment metadata is only populated if the requesting user has permission to access it. Identifier and alternate_link fields are always available, but others (for example, title) may not be. */
   attachments?: AttachmentList;
 }
-const AssignmentSubmission = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<AssignmentSubmission>;
-
 export type StudentSubmissionCourseWorkTypeEnum =
   | "COURSE_WORK_TYPE_UNSPECIFIED"
   | "ASSIGNMENT"
   | "SHORT_ANSWER_QUESTION"
   | "MULTIPLE_CHOICE_QUESTION";
-const StudentSubmissionCourseWorkTypeEnum = S.String;
-
 export type StudentSubmissionStateEnum =
   | "SUBMISSION_STATE_UNSPECIFIED"
   | "NEW"
@@ -1646,8 +1200,6 @@ export type StudentSubmissionStateEnum =
   | "TURNED_IN"
   | "RETURNED"
   | "RECLAIMED_BY_STUDENT";
-const StudentSubmissionStateEnum = S.String;
-
 /** Student submission for course work. `StudentSubmission` items are generated when a `CourseWork` item is created. Student submissions that have never been accessed (i.e. with `state` = NEW) may not have a creation time or update time. */
 export interface StudentSubmission {
   /** Submission content when course_work_type is SHORT_ANSWER_QUESTION. */
@@ -1689,8 +1241,6 @@ export interface StudentSubmission {
   /** State of this submission. Read-only. */
   state?: StudentSubmissionStateEnum | (string & {});
 }
-const StudentSubmission = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<StudentSubmission>;
-
 export interface GetCoursesPostsAddOnAttachmentsRequest {
   /** Required. Identifier of the attachment. */
   attachmentId: string;
@@ -1701,11 +1251,6 @@ export interface GetCoursesPostsAddOnAttachmentsRequest {
   /** Optional. Deprecated, use `item_id` instead. */
   postId: string;
 }
-const GetCoursesPostsAddOnAttachmentsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<GetCoursesPostsAddOnAttachmentsRequest>;
-
 export interface GetCoursesPostsAddOnAttachmentsStudentSubmissionsRequest {
   /** Required. Identifier of the course. */
   courseId: string;
@@ -1718,53 +1263,28 @@ export interface GetCoursesPostsAddOnAttachmentsStudentSubmissionsRequest {
   /** Optional. Deprecated, use `item_id` instead. */
   postId: string;
 }
-const GetCoursesPostsAddOnAttachmentsStudentSubmissionsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<GetCoursesPostsAddOnAttachmentsStudentSubmissionsRequest>;
-
 export interface GetCoursesStudentsRequest {
   /** Identifier of the student to return. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user */
   userId: string;
   /** Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. */
   courseId: string;
 }
-const GetCoursesStudentsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<GetCoursesStudentsRequest>;
-
 export interface GetCoursesTeachersRequest {
   /** Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. */
   courseId: string;
   /** Identifier of the teacher to return. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user */
   userId: string;
 }
-const GetCoursesTeachersRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<GetCoursesTeachersRequest>;
-
 export interface GetCoursesTopicsRequest {
   /** Identifier of the course. */
   courseId: string;
   /** Identifier of the topic. */
   id: string;
 }
-const GetCoursesTopicsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<GetCoursesTopicsRequest>;
-
 export interface GetGradingPeriodSettingsCoursesRequest {
   /** Required. The identifier of the course. */
   courseId: string;
 }
-const GetGradingPeriodSettingsCoursesRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<GetGradingPeriodSettingsCoursesRequest>;
-
 /** An individual grading period. Grading periods must not have overlapping date ranges and must be listed in chronological order. For example, if the end_date of a grading period is 2024-01-25, then the start_date of the next grading period must be 2024-01-26 or later. Each grading period must have a unique title within a course. */
 export interface GradingPeriod {
   /** Output only. System generated grading period ID. Read-only. */
@@ -1776,11 +1296,7 @@ export interface GradingPeriod {
   /** Required. End date, in UTC, of the grading period. Inclusive. */
   endDate?: Classroom_Date;
 }
-const GradingPeriod = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<GradingPeriod>;
-
 export type GradingPeriodList = Array<GradingPeriod>;
-const GradingPeriodList = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<GradingPeriodList>;
-
 /** Grading period settings that include all the individual grading periods in a course. */
 export interface GradingPeriodSettings {
   /** Supports toggling the application of grading periods on existing stream items. Once set, this value is persisted meaning that it does not need to be set in every request to update `GradingPeriodSettings`. If not previously set, the default is False. */
@@ -1788,51 +1304,26 @@ export interface GradingPeriodSettings {
   /** The list of grading periods in a specific course. Grading periods must not have overlapping date ranges and must be listed in chronological order. Each grading period must have a unique title within a course. */
   gradingPeriods?: GradingPeriodList;
 }
-const GradingPeriodSettings = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<GradingPeriodSettings>;
-
 export interface GetInvitationsRequest {
   /** Identifier of the invitation to return. */
   id: string;
 }
-const GetInvitationsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<GetInvitationsRequest>;
-
 export interface GetUserProfilesRequest {
   /** Identifier of the profile to return. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user */
   userId: string;
 }
-const GetUserProfilesRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<GetUserProfilesRequest>;
-
 export interface GetUserProfilesGuardianInvitationsRequest {
   /** The `id` field of the `GuardianInvitation` being requested. */
   invitationId: string;
   /** The ID of the student whose guardian invitation is being requested. */
   studentId: string;
 }
-const GetUserProfilesGuardianInvitationsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<GetUserProfilesGuardianInvitationsRequest>;
-
 export interface GetUserProfilesGuardiansRequest {
   /** The `id` field from a `Guardian`. */
   guardianId: string;
   /** The student whose guardian is being requested. One of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user */
   studentId: string;
 }
-const GetUserProfilesGuardiansRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<GetUserProfilesGuardiansRequest>;
-
 /** Association between a student and a guardian of that student. The guardian may receive information about the student's course work. */
 export interface Guardian {
   /** Identifier for the student to whom the guardian relationship applies. */
@@ -1844,8 +1335,6 @@ export interface Guardian {
   /** The email address to which the initial guardian invitation was sent. This field is only visible to domain administrators. */
   invitedEmailAddress?: string;
 }
-const Guardian = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<Guardian>;
-
 export type ListCoursesCourseStatesEnum =
   | "COURSE_STATE_UNSPECIFIED"
   | "ACTIVE"
@@ -1853,14 +1342,7 @@ export type ListCoursesCourseStatesEnum =
   | "PROVISIONED"
   | "DECLINED"
   | "SUSPENDED";
-const ListCoursesCourseStatesEnum = S.String;
-
 export type ListCoursesCourseStatesEnumList = Array<ListCoursesCourseStatesEnum | (string & {})>;
-const ListCoursesCourseStatesEnumList = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<ListCoursesCourseStatesEnumList>;
-
 export interface ListCoursesRequest {
   /** Restricts returned courses to those having a student with the specified identifier. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user If specified, `teacher_id` must be empty. */
   studentId?: string;
@@ -1873,11 +1355,7 @@ export interface ListCoursesRequest {
   /** Restricts returned courses to those having a teacher with the specified identifier. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user If specified, `student_id` must be empty. */
   teacherId?: string;
 }
-const ListCoursesRequest = /*@__PURE__*/ __L.at(__c16, 5) as any as S.Schema<ListCoursesRequest>;
-
 export type CourseList = Array<Course>;
-const CourseList = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<CourseList>;
-
 /** Response when listing courses. */
 export interface ListCoursesResponse {
   /** Token identifying the next page of results to return. If empty, no further results are available. */
@@ -1885,8 +1363,6 @@ export interface ListCoursesResponse {
   /** Courses that match the list request. */
   courses?: CourseList;
 }
-const ListCoursesResponse = /*@__PURE__*/ __L.at(__c16, 7) as any as S.Schema<ListCoursesResponse>;
-
 export interface ListCoursesAliasesRequest {
   /** Maximum number of items to return. Zero or unspecified indicates that the server may assign a maximum. The server may return fewer than the specified number of results. */
   pageSize?: number;
@@ -1895,14 +1371,7 @@ export interface ListCoursesAliasesRequest {
   /** The identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. */
   courseId: string;
 }
-const ListCoursesAliasesRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<ListCoursesAliasesRequest>;
-
 export type CourseAliasList = Array<CourseAlias>;
-const CourseAliasList = /*@__PURE__*/ __L.at(__c17, 1) as any as S.Schema<CourseAliasList>;
-
 /** Response when listing course aliases. */
 export interface ListCourseAliasesResponse {
   /** The course aliases. */
@@ -1910,11 +1379,6 @@ export interface ListCourseAliasesResponse {
   /** Token identifying the next page of results to return. If empty, no further results are available. */
   nextPageToken?: string;
 }
-const ListCourseAliasesResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<ListCourseAliasesResponse>;
-
 export type ListCoursesAnnouncementsAnnouncementStatesEnum =
   | "ANNOUNCEMENT_STATE_UNSPECIFIED"
   | "PUBLISHED"
@@ -1923,9 +1387,6 @@ export type ListCoursesAnnouncementsAnnouncementStatesEnum =
 export type ListCoursesAnnouncementsAnnouncementStatesEnumList = Array<
   ListCoursesAnnouncementsAnnouncementStatesEnum | (string & {})
 >;
-const ListCoursesAnnouncementsAnnouncementStatesEnumList =
-  ListCoursesCourseStatesEnumList as any as S.Schema<ListCoursesAnnouncementsAnnouncementStatesEnumList>;
-
 export interface ListCoursesAnnouncementsRequest {
   /** Optional sort ordering for results. A comma-separated list of fields with an optional sort direction keyword. Supported field is `updateTime`. Supported direction keywords are `asc` and `desc`. If not specified, `updateTime desc` is the default behavior. Examples: `updateTime asc`, `updateTime` */
   orderBy?: string;
@@ -1938,14 +1399,7 @@ export interface ListCoursesAnnouncementsRequest {
   /** nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token. */
   pageToken?: string;
 }
-const ListCoursesAnnouncementsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<ListCoursesAnnouncementsRequest>;
-
 export type AnnouncementList = Array<Announcement>;
-const AnnouncementList = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<AnnouncementList>;
-
 /** Response when listing course work. */
 export interface ListAnnouncementsResponse {
   /** Announcement items that match the request. */
@@ -1953,11 +1407,6 @@ export interface ListAnnouncementsResponse {
   /** Token identifying the next page of results to return. If empty, no further results are available. */
   nextPageToken?: string;
 }
-const ListAnnouncementsResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<ListAnnouncementsResponse>;
-
 export interface ListCoursesAnnouncementsAddOnAttachmentsRequest {
   /** Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` whose attachments should be enumerated. This field is required, but is not marked as such while we are migrating from post_id. */
   itemId: string;
@@ -1970,14 +1419,7 @@ export interface ListCoursesAnnouncementsAddOnAttachmentsRequest {
   /** Optional. Identifier of the post under the course whose attachments to enumerate. Deprecated, use `item_id` instead. */
   postId?: string;
 }
-const ListCoursesAnnouncementsAddOnAttachmentsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<ListCoursesAnnouncementsAddOnAttachmentsRequest>;
-
 export type AddOnAttachmentList = Array<AddOnAttachment>;
-const AddOnAttachmentList = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<AddOnAttachmentList>;
-
 /** Response when listing add-on attachments. */
 export interface ListAddOnAttachmentsResponse {
   /** Attachments under the given post. */
@@ -1985,11 +1427,6 @@ export interface ListAddOnAttachmentsResponse {
   /** A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const ListAddOnAttachmentsResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<ListAddOnAttachmentsResponse>;
-
 export type ListCoursesCourseWorkCourseWorkStatesEnum =
   | "COURSE_WORK_STATE_UNSPECIFIED"
   | "PUBLISHED"
@@ -1998,9 +1435,6 @@ export type ListCoursesCourseWorkCourseWorkStatesEnum =
 export type ListCoursesCourseWorkCourseWorkStatesEnumList = Array<
   ListCoursesCourseWorkCourseWorkStatesEnum | (string & {})
 >;
-const ListCoursesCourseWorkCourseWorkStatesEnumList =
-  ListCoursesCourseStatesEnumList as any as S.Schema<ListCoursesCourseWorkCourseWorkStatesEnumList>;
-
 export interface ListCoursesCourseWorkRequest {
   /** Maximum number of items to return. Zero or unspecified indicates that the server may assign a maximum. The server may return fewer than the specified number of results. */
   pageSize?: number;
@@ -2013,14 +1447,7 @@ export interface ListCoursesCourseWorkRequest {
   /** nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token. */
   pageToken?: string;
 }
-const ListCoursesCourseWorkRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<ListCoursesCourseWorkRequest>;
-
 export type CourseWorkList = Array<CourseWork>;
-const CourseWorkList = /*@__PURE__*/ __L.at(__c18, 2) as any as S.Schema<CourseWorkList>;
-
 /** Response when listing course work. */
 export interface ListCourseWorkResponse {
   /** Token identifying the next page of results to return. If empty, no further results are available. */
@@ -2028,11 +1455,6 @@ export interface ListCourseWorkResponse {
   /** Course work items that match the request. */
   courseWork?: CourseWorkList;
 }
-const ListCourseWorkResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<ListCourseWorkResponse>;
-
 export interface ListCoursesCourseWorkAddOnAttachmentsRequest {
   /** Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` whose attachments should be enumerated. This field is required, but is not marked as such while we are migrating from post_id. */
   itemId: string;
@@ -2045,11 +1467,6 @@ export interface ListCoursesCourseWorkAddOnAttachmentsRequest {
   /** The maximum number of attachments to return. The service may return fewer than this value. If unspecified, at most 20 attachments will be returned. The maximum value is 20; values above 20 will be coerced to 20. */
   pageSize?: number;
 }
-const ListCoursesCourseWorkAddOnAttachmentsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<ListCoursesCourseWorkAddOnAttachmentsRequest>;
-
 export type ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnum =
   | "COURSEWORK_MATERIAL_STATE_UNSPECIFIED"
   | "PUBLISHED"
@@ -2058,9 +1475,6 @@ export type ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnum =
 export type ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnumList = Array<
   ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnum | (string & {})
 >;
-const ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnumList =
-  ListCoursesCourseStatesEnumList as any as S.Schema<ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnumList>;
-
 export interface ListCoursesCourseWorkMaterialsRequest {
   /** Optional filtering for course work material with at least one Drive material whose ID matches the provided string. If `material_link` is also specified, course work material must have materials matching both filters. */
   materialDriveId?: string;
@@ -2077,17 +1491,7 @@ export interface ListCoursesCourseWorkMaterialsRequest {
   /** Optional sort ordering for results. A comma-separated list of fields with an optional sort direction keyword. Supported field is `updateTime`. Supported direction keywords are `asc` and `desc`. If not specified, `updateTime desc` is the default behavior. Examples: `updateTime asc`, `updateTime` */
   orderBy?: string;
 }
-const ListCoursesCourseWorkMaterialsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<ListCoursesCourseWorkMaterialsRequest>;
-
 export type CourseWorkMaterialList = Array<CourseWorkMaterial>;
-const CourseWorkMaterialList = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<CourseWorkMaterialList>;
-
 /** Response when listing course work material. */
 export interface ListCourseWorkMaterialResponse {
   /** Token identifying the next page of results to return. If empty, no further results are available. */
@@ -2095,11 +1499,6 @@ export interface ListCourseWorkMaterialResponse {
   /** Course work material items that match the request. */
   courseWorkMaterial?: CourseWorkMaterialList;
 }
-const ListCourseWorkMaterialResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<ListCourseWorkMaterialResponse>;
-
 export interface ListCoursesCourseWorkMaterialsAddOnAttachmentsRequest {
   /** A page token, received from a previous `ListAddOnAttachments` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAddOnAttachments` must match the call that provided the page token. */
   pageToken?: string;
@@ -2112,11 +1511,6 @@ export interface ListCoursesCourseWorkMaterialsAddOnAttachmentsRequest {
   /** The maximum number of attachments to return. The service may return fewer than this value. If unspecified, at most 20 attachments will be returned. The maximum value is 20; values above 20 will be coerced to 20. */
   pageSize?: number;
 }
-const ListCoursesCourseWorkMaterialsAddOnAttachmentsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<ListCoursesCourseWorkMaterialsAddOnAttachmentsRequest>;
-
 export interface ListCoursesCourseWorkRubricsRequest {
   /** The maximum number of rubrics to return. If unspecified, at most 1 rubric is returned. The maximum value is 1; values above 1 are coerced to 1. */
   pageSize?: number;
@@ -2127,14 +1521,7 @@ export interface ListCoursesCourseWorkRubricsRequest {
   /** nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token. */
   pageToken?: string;
 }
-const ListCoursesCourseWorkRubricsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<ListCoursesCourseWorkRubricsRequest>;
-
 export type RubricList = Array<Rubric>;
-const RubricList = /*@__PURE__*/ __L.at(__c19, 2) as any as S.Schema<RubricList>;
-
 /** Response when listing rubrics. */
 export interface ListRubricsResponse {
   /** Token identifying the next page of results to return. If empty, no further results are available. */
@@ -2142,8 +1529,6 @@ export interface ListRubricsResponse {
   /** Rubrics that match the request. */
   rubrics?: RubricList;
 }
-const ListRubricsResponse = /*@__PURE__*/ __L.at(__c19, 3) as any as S.Schema<ListRubricsResponse>;
-
 export type ListCoursesCourseWorkStudentSubmissionsStatesEnum =
   | "SUBMISSION_STATE_UNSPECIFIED"
   | "NEW"
@@ -2154,15 +1539,10 @@ export type ListCoursesCourseWorkStudentSubmissionsStatesEnum =
 export type ListCoursesCourseWorkStudentSubmissionsStatesEnumList = Array<
   ListCoursesCourseWorkStudentSubmissionsStatesEnum | (string & {})
 >;
-const ListCoursesCourseWorkStudentSubmissionsStatesEnumList =
-  ListCoursesCourseStatesEnumList as any as S.Schema<ListCoursesCourseWorkStudentSubmissionsStatesEnumList>;
-
 export type ListCoursesCourseWorkStudentSubmissionsLateEnum =
   | "LATE_VALUES_UNSPECIFIED"
   | "LATE_ONLY"
   | "NOT_LATE_ONLY";
-const ListCoursesCourseWorkStudentSubmissionsLateEnum = S.String;
-
 export interface ListCoursesCourseWorkStudentSubmissionsRequest {
   /** Maximum number of items to return. Zero or unspecified indicates that the server may assign a maximum. The server may return fewer than the specified number of results. */
   pageSize?: number;
@@ -2179,17 +1559,7 @@ export interface ListCoursesCourseWorkStudentSubmissionsRequest {
   /** nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token. */
   pageToken?: string;
 }
-const ListCoursesCourseWorkStudentSubmissionsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<ListCoursesCourseWorkStudentSubmissionsRequest>;
-
 export type StudentSubmissionList = Array<StudentSubmission>;
-const StudentSubmissionList = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<StudentSubmissionList>;
-
 /** Response when listing student submissions. */
 export interface ListStudentSubmissionsResponse {
   /** Token identifying the next page of results to return. If empty, no further results are available. */
@@ -2197,11 +1567,6 @@ export interface ListStudentSubmissionsResponse {
   /** Student work that matches the request. */
   studentSubmissions?: StudentSubmissionList;
 }
-const ListStudentSubmissionsResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<ListStudentSubmissionsResponse>;
-
 export interface ListCoursesPostsAddOnAttachmentsRequest {
   /** Required. Identifier of the course. */
   courseId: string;
@@ -2214,11 +1579,6 @@ export interface ListCoursesPostsAddOnAttachmentsRequest {
   /** Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` whose attachments should be enumerated. This field is required, but is not marked as such while we are migrating from post_id. */
   itemId?: string;
 }
-const ListCoursesPostsAddOnAttachmentsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<ListCoursesPostsAddOnAttachmentsRequest>;
-
 export interface ListCoursesStudentGroupsRequest {
   /** Required. The identifier of the course. */
   courseId: string;
@@ -2227,14 +1587,7 @@ export interface ListCoursesStudentGroupsRequest {
   /** Maximum number of items to return. Zero or unspecified indicates that the server may assign a maximum, which is currently set to 75 items. The server may return fewer than the specified number of results. */
   pageSize?: number;
 }
-const ListCoursesStudentGroupsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<ListCoursesStudentGroupsRequest>;
-
 export type StudentGroupList = Array<StudentGroup>;
-const StudentGroupList = /*@__PURE__*/ __L.at(__c20, 1) as any as S.Schema<StudentGroupList>;
-
 /** Response when listing student groups. */
 export interface ListStudentGroupsResponse {
   /** The student groups. */
@@ -2242,11 +1595,6 @@ export interface ListStudentGroupsResponse {
   /** Token identifying the next page of results to return. If empty, no further results are available. */
   nextPageToken?: string;
 }
-const ListStudentGroupsResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<ListStudentGroupsResponse>;
-
 export interface ListCoursesStudentGroupsStudentGroupMembersRequest {
   /** Maximum number of items to return. Zero or unspecified indicates that the server may assign a maximum. The server may return fewer than the specified number of results. */
   pageSize?: number;
@@ -2257,17 +1605,7 @@ export interface ListCoursesStudentGroupsStudentGroupMembersRequest {
   /** Required. The identifier of the student group. */
   studentGroupId: string;
 }
-const ListCoursesStudentGroupsStudentGroupMembersRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<ListCoursesStudentGroupsStudentGroupMembersRequest>;
-
 export type StudentGroupMemberList = Array<StudentGroupMember>;
-const StudentGroupMemberList = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<StudentGroupMemberList>;
-
 /** Response when listing students in a group. */
 export interface ListStudentGroupMembersResponse {
   /** Token identifying the next page of results to return. If empty, no further results are available. */
@@ -2275,11 +1613,6 @@ export interface ListStudentGroupMembersResponse {
   /** The student group members. */
   studentGroupMembers?: StudentGroupMemberList;
 }
-const ListStudentGroupMembersResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<ListStudentGroupMembersResponse>;
-
 export interface ListCoursesStudentsRequest {
   /** nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token. */
   pageToken?: string;
@@ -2288,14 +1621,7 @@ export interface ListCoursesStudentsRequest {
   /** Maximum number of items to return. The default is 30 if unspecified or `0`. The server may return fewer than the specified number of results. */
   pageSize?: number;
 }
-const ListCoursesStudentsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<ListCoursesStudentsRequest>;
-
 export type StudentList = Array<Student>;
-const StudentList = /*@__PURE__*/ __L.at(__c20, 7) as any as S.Schema<StudentList>;
-
 /** Response when listing students. */
 export interface ListStudentsResponse {
   /** Token identifying the next page of results to return. If empty, no further results are available. */
@@ -2303,11 +1629,6 @@ export interface ListStudentsResponse {
   /** Students who match the list request. */
   students?: StudentList;
 }
-const ListStudentsResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<ListStudentsResponse>;
-
 export interface ListCoursesTeachersRequest {
   /** Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. */
   courseId: string;
@@ -2316,14 +1637,7 @@ export interface ListCoursesTeachersRequest {
   /** nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token. */
   pageToken?: string;
 }
-const ListCoursesTeachersRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<ListCoursesTeachersRequest>;
-
 export type TeacherList = Array<Teacher>;
-const TeacherList = /*@__PURE__*/ __L.at(__c21, 2) as any as S.Schema<TeacherList>;
-
 /** Response when listing teachers. */
 export interface ListTeachersResponse {
   /** Token identifying the next page of results to return. If empty, no further results are available. */
@@ -2331,11 +1645,6 @@ export interface ListTeachersResponse {
   /** Teachers who match the list request. */
   teachers?: TeacherList;
 }
-const ListTeachersResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<ListTeachersResponse>;
-
 export interface ListCoursesTopicsRequest {
   /** nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token. */
   pageToken?: string;
@@ -2344,14 +1653,7 @@ export interface ListCoursesTopicsRequest {
   /** Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. */
   courseId: string;
 }
-const ListCoursesTopicsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<ListCoursesTopicsRequest>;
-
 export type TopicList = Array<Topic>;
-const TopicList = /*@__PURE__*/ __L.at(__c21, 5) as any as S.Schema<TopicList>;
-
 /** Response when listing topics. */
 export interface ListTopicResponse {
   /** Topic items that match the request. */
@@ -2359,8 +1661,6 @@ export interface ListTopicResponse {
   /** Token identifying the next page of results to return. If empty, no further results are available. */
   nextPageToken?: string;
 }
-const ListTopicResponse = /*@__PURE__*/ __L.at(__c21, 6) as any as S.Schema<ListTopicResponse>;
-
 export interface ListInvitationsRequest {
   /** Restricts returned invitations to those for a course with the specified identifier. */
   courseId?: string;
@@ -2371,14 +1671,7 @@ export interface ListInvitationsRequest {
   /** Maximum number of items to return. The default is 500 if unspecified or `0`. The server may return fewer than the specified number of results. */
   pageSize?: number;
 }
-const ListInvitationsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<ListInvitationsRequest>;
-
 export type InvitationList = Array<Invitation>;
-const InvitationList = /*@__PURE__*/ __L.at(__c22, 0) as any as S.Schema<InvitationList>;
-
 /** Response when listing invitations. */
 export interface ListInvitationsResponse {
   /** Token identifying the next page of results to return. If empty, no further results are available. */
@@ -2386,11 +1679,6 @@ export interface ListInvitationsResponse {
   /** Invitations that match the list request. */
   invitations?: InvitationList;
 }
-const ListInvitationsResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<ListInvitationsResponse>;
-
 export type ListUserProfilesGuardianInvitationsStatesEnum =
   | "GUARDIAN_INVITATION_STATE_UNSPECIFIED"
   | "PENDING"
@@ -2398,9 +1686,6 @@ export type ListUserProfilesGuardianInvitationsStatesEnum =
 export type ListUserProfilesGuardianInvitationsStatesEnumList = Array<
   ListUserProfilesGuardianInvitationsStatesEnum | (string & {})
 >;
-const ListUserProfilesGuardianInvitationsStatesEnumList =
-  ListCoursesCourseStatesEnumList as any as S.Schema<ListUserProfilesGuardianInvitationsStatesEnumList>;
-
 export interface ListUserProfilesGuardianInvitationsRequest {
   /** The ID of the student whose guardian invitations are to be returned. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user * the string literal `"-"`, indicating that results should be returned for all students that the requesting user is permitted to view guardian invitations. */
   studentId: string;
@@ -2413,17 +1698,7 @@ export interface ListUserProfilesGuardianInvitationsRequest {
   /** If specified, only results with the specified `invited_email_address` are returned. */
   invitedEmailAddress?: string;
 }
-const ListUserProfilesGuardianInvitationsRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<ListUserProfilesGuardianInvitationsRequest>;
-
 export type GuardianInvitationList = Array<GuardianInvitation>;
-const GuardianInvitationList = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<GuardianInvitationList>;
-
 /** Response when listing guardian invitations. */
 export interface ListGuardianInvitationsResponse {
   /** Guardian invitations that matched the list request. */
@@ -2431,11 +1706,6 @@ export interface ListGuardianInvitationsResponse {
   /** Token identifying the next page of results to return. If empty, no further results are available. */
   nextPageToken?: string;
 }
-const ListGuardianInvitationsResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<ListGuardianInvitationsResponse>;
-
 export interface ListUserProfilesGuardiansRequest {
   /** Filter results by the email address that the original invitation was sent to, resulting in this guardian link. This filter can only be used by domain administrators. */
   invitedEmailAddress?: string;
@@ -2446,14 +1716,7 @@ export interface ListUserProfilesGuardiansRequest {
   /** Maximum number of items to return. Zero or unspecified indicates that the server may assign a maximum. The server may return fewer than the specified number of results. */
   pageSize?: number;
 }
-const ListUserProfilesGuardiansRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<ListUserProfilesGuardiansRequest>;
-
 export type GuardianList = Array<Guardian>;
-const GuardianList = /*@__PURE__*/ __L.at(__c22, 6) as any as S.Schema<GuardianList>;
-
 /** Response when listing guardians. */
 export interface ListGuardiansResponse {
   /** Guardians on this page of results that met the criteria specified in the request. */
@@ -2461,17 +1724,10 @@ export interface ListGuardiansResponse {
   /** Token identifying the next page of results to return. If empty, no further results are available. */
   nextPageToken?: string;
 }
-const ListGuardiansResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<ListGuardiansResponse>;
-
 export type ModifyAnnouncementAssigneesRequestAssigneeModeEnum =
   | "ASSIGNEE_MODE_UNSPECIFIED"
   | "ALL_STUDENTS"
   | "INDIVIDUAL_STUDENTS";
-const ModifyAnnouncementAssigneesRequestAssigneeModeEnum = S.String;
-
 /** Contains fields to add or remove students from a course work or announcement where the `assigneeMode` is set to `INDIVIDUAL_STUDENTS`. */
 export interface ModifyIndividualStudentsOptions {
   /** IDs of students to be added as having access to this coursework/announcement. */
@@ -2479,11 +1735,6 @@ export interface ModifyIndividualStudentsOptions {
   /** IDs of students to be removed from having access to this coursework/announcement. */
   removeStudentIds?: StringList;
 }
-const ModifyIndividualStudentsOptions = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<ModifyIndividualStudentsOptions>;
-
 /** Request to modify assignee mode and options of an announcement. */
 export interface ModifyAnnouncementAssigneesRequest {
   /** Mode of the announcement describing whether it is accessible by all students or specified individual students. */
@@ -2491,11 +1742,6 @@ export interface ModifyAnnouncementAssigneesRequest {
   /** Set which students can view or cannot view the announcement. Must be specified only when `assigneeMode` is `INDIVIDUAL_STUDENTS`. */
   modifyIndividualStudentsOptions?: ModifyIndividualStudentsOptions;
 }
-const ModifyAnnouncementAssigneesRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<ModifyAnnouncementAssigneesRequest>;
-
 export interface ModifyAssigneesCoursesAnnouncementsRequest {
   /** Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. */
   courseId: string;
@@ -2504,17 +1750,10 @@ export interface ModifyAssigneesCoursesAnnouncementsRequest {
   /** Request body */
   body?: ModifyAnnouncementAssigneesRequest;
 }
-const ModifyAssigneesCoursesAnnouncementsRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<ModifyAssigneesCoursesAnnouncementsRequest>;
-
 export type ModifyCourseWorkAssigneesRequestAssigneeModeEnum =
   | "ASSIGNEE_MODE_UNSPECIFIED"
   | "ALL_STUDENTS"
   | "INDIVIDUAL_STUDENTS";
-const ModifyCourseWorkAssigneesRequestAssigneeModeEnum = S.String;
-
 /** Request to modify assignee mode and options of a coursework. */
 export interface ModifyCourseWorkAssigneesRequest {
   /** Set which students are assigned or not assigned to the coursework. Must be specified only when `assigneeMode` is `INDIVIDUAL_STUDENTS`. */
@@ -2522,11 +1761,6 @@ export interface ModifyCourseWorkAssigneesRequest {
   /** Mode of the coursework describing whether it will be assigned to all students or specified individual students. */
   assigneeMode?: ModifyCourseWorkAssigneesRequestAssigneeModeEnum | (string & {});
 }
-const ModifyCourseWorkAssigneesRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<ModifyCourseWorkAssigneesRequest>;
-
 export interface ModifyAssigneesCoursesCourseWorkRequest {
   /** Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. */
   courseId: string;
@@ -2535,21 +1769,11 @@ export interface ModifyAssigneesCoursesCourseWorkRequest {
   /** Request body */
   body?: ModifyCourseWorkAssigneesRequest;
 }
-const ModifyAssigneesCoursesCourseWorkRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<ModifyAssigneesCoursesCourseWorkRequest>;
-
 /** Request to modify the attachments of a student submission. */
 export interface ModifyAttachmentsRequest {
   /** Attachments to add. A student submission may not have more than 20 attachments. Form attachments are not supported. */
   addAttachments?: AttachmentList;
 }
-const ModifyAttachmentsRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<ModifyAttachmentsRequest>;
-
 export interface ModifyAttachmentsCoursesCourseWorkStudentSubmissionsRequest {
   /** Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. */
   courseId: string;
@@ -2560,11 +1784,6 @@ export interface ModifyAttachmentsCoursesCourseWorkStudentSubmissionsRequest {
   /** Request body */
   body?: ModifyAttachmentsRequest;
 }
-const ModifyAttachmentsCoursesCourseWorkStudentSubmissionsRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<ModifyAttachmentsCoursesCourseWorkStudentSubmissionsRequest>;
-
 export interface PatchCoursesRequest {
   /** Identifier of the course to update. This identifier can be either the Classroom-assigned identifier or an alias. */
   id: string;
@@ -2573,8 +1792,6 @@ export interface PatchCoursesRequest {
   /** Request body */
   body?: Course;
 }
-const PatchCoursesRequest = /*@__PURE__*/ __L.at(__c23, 7) as any as S.Schema<PatchCoursesRequest>;
-
 export interface PatchCoursesAnnouncementsRequest {
   /** Mask that identifies which fields on the announcement to update. This field is required to do an update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the Announcement object. If a field that does not support empty values is included in the update mask and not set in the Announcement object, an `INVALID_ARGUMENT` error is returned. The following fields may be specified by teachers: * `text` * `state` * `scheduled_time` */
   updateMask?: string;
@@ -2585,11 +1802,6 @@ export interface PatchCoursesAnnouncementsRequest {
   /** Request body */
   body?: Announcement;
 }
-const PatchCoursesAnnouncementsRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<PatchCoursesAnnouncementsRequest>;
-
 export interface PatchCoursesAnnouncementsAddOnAttachmentsRequest {
   /** Required. Identifier of the post under which the attachment is attached. */
   postId?: string;
@@ -2604,11 +1816,6 @@ export interface PatchCoursesAnnouncementsAddOnAttachmentsRequest {
   /** Request body */
   body?: AddOnAttachment;
 }
-const PatchCoursesAnnouncementsAddOnAttachmentsRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<PatchCoursesAnnouncementsAddOnAttachmentsRequest>;
-
 export interface PatchCoursesCourseWorkRequest {
   /** Mask that identifies which fields on the course work to update. This field is required to do an update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the `CourseWork` object. If a field that does not support empty values is included in the update mask and not set in the `CourseWork` object, an `INVALID_ARGUMENT` error is returned. The following fields may be specified by teachers: * `title` * `description` * `state` * `due_date` * `due_time` * `max_points` * `scheduled_time` * `submission_modification_mode` * `topic_id` * `grading_period_id` * `learning_goals` */
   updateMask?: string;
@@ -2619,11 +1826,6 @@ export interface PatchCoursesCourseWorkRequest {
   /** Request body */
   body?: CourseWork;
 }
-const PatchCoursesCourseWorkRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<PatchCoursesCourseWorkRequest>;
-
 export interface PatchCoursesCourseWorkAddOnAttachmentsRequest {
   /** Required. Identifier of the post under which the attachment is attached. */
   postId?: string;
@@ -2638,11 +1840,6 @@ export interface PatchCoursesCourseWorkAddOnAttachmentsRequest {
   /** Request body */
   body?: AddOnAttachment;
 }
-const PatchCoursesCourseWorkAddOnAttachmentsRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<PatchCoursesCourseWorkAddOnAttachmentsRequest>;
-
 export interface PatchCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest {
   /** Optional. Deprecated, use `item_id` instead. */
   postId?: string;
@@ -2659,11 +1856,6 @@ export interface PatchCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest
   /** Request body */
   body?: AddOnAttachmentStudentSubmission;
 }
-const PatchCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<PatchCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest>;
-
 export interface PatchCoursesCourseWorkMaterialsRequest {
   /** Identifier of the course work material. */
   id: string;
@@ -2674,11 +1866,6 @@ export interface PatchCoursesCourseWorkMaterialsRequest {
   /** Request body */
   body?: CourseWorkMaterial;
 }
-const PatchCoursesCourseWorkMaterialsRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<PatchCoursesCourseWorkMaterialsRequest>;
-
 export interface PatchCoursesCourseWorkMaterialsAddOnAttachmentsRequest {
   /** Required. Mask that identifies which fields on the attachment to update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the `AddOnAttachment` object. If a field that does not support empty values is included in the update mask and not set in the `AddOnAttachment` object, an `INVALID_ARGUMENT` error is returned. The following fields may be specified by teachers: * `title` * `teacher_view_uri` * `student_view_uri` * `student_work_review_uri` * `due_date` * `due_time` * `max_points` */
   updateMask?: string;
@@ -2693,11 +1880,6 @@ export interface PatchCoursesCourseWorkMaterialsAddOnAttachmentsRequest {
   /** Request body */
   body?: AddOnAttachment;
 }
-const PatchCoursesCourseWorkMaterialsAddOnAttachmentsRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<PatchCoursesCourseWorkMaterialsAddOnAttachmentsRequest>;
-
 export interface PatchCoursesCourseWorkRubricsRequest {
   /** Required. Identifier of the course. */
   courseId: string;
@@ -2710,11 +1892,6 @@ export interface PatchCoursesCourseWorkRubricsRequest {
   /** Request body */
   body?: Rubric;
 }
-const PatchCoursesCourseWorkRubricsRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<PatchCoursesCourseWorkRubricsRequest>;
-
 export interface PatchCoursesCourseWorkStudentSubmissionsRequest {
   /** Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. */
   courseId: string;
@@ -2727,11 +1904,6 @@ export interface PatchCoursesCourseWorkStudentSubmissionsRequest {
   /** Request body */
   body?: StudentSubmission;
 }
-const PatchCoursesCourseWorkStudentSubmissionsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<PatchCoursesCourseWorkStudentSubmissionsRequest>;
-
 export interface PatchCoursesPostsAddOnAttachmentsRequest {
   /** Identifier of the post under which the attachment is attached. */
   itemId?: string;
@@ -2746,11 +1918,6 @@ export interface PatchCoursesPostsAddOnAttachmentsRequest {
   /** Request body */
   body?: AddOnAttachment;
 }
-const PatchCoursesPostsAddOnAttachmentsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<PatchCoursesPostsAddOnAttachmentsRequest>;
-
 export interface PatchCoursesPostsAddOnAttachmentsStudentSubmissionsRequest {
   /** Optional. Deprecated, use `item_id` instead. */
   postId: string;
@@ -2767,11 +1934,6 @@ export interface PatchCoursesPostsAddOnAttachmentsStudentSubmissionsRequest {
   /** Request body */
   body?: AddOnAttachmentStudentSubmission;
 }
-const PatchCoursesPostsAddOnAttachmentsStudentSubmissionsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<PatchCoursesPostsAddOnAttachmentsStudentSubmissionsRequest>;
-
 export interface PatchCoursesStudentGroupsRequest {
   /** Required. Mask that identifies which fields on the student group to update. This field is required to do an update. The update fails if invalid fields are specified. The following fields can be specified by teachers: * `title` */
   updateMask?: string;
@@ -2782,11 +1944,6 @@ export interface PatchCoursesStudentGroupsRequest {
   /** Request body */
   body?: StudentGroup;
 }
-const PatchCoursesStudentGroupsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  3,
-) as any as S.Schema<PatchCoursesStudentGroupsRequest>;
-
 export interface PatchCoursesTopicsRequest {
   /** Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. */
   courseId: string;
@@ -2797,11 +1954,6 @@ export interface PatchCoursesTopicsRequest {
   /** Request body */
   body?: Topic;
 }
-const PatchCoursesTopicsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  4,
-) as any as S.Schema<PatchCoursesTopicsRequest>;
-
 export interface PatchUserProfilesGuardianInvitationsRequest {
   /** The `id` field of the `GuardianInvitation` to be modified. */
   invitationId: string;
@@ -2812,11 +1964,6 @@ export interface PatchUserProfilesGuardianInvitationsRequest {
   /** Request body */
   body?: GuardianInvitation;
 }
-const PatchUserProfilesGuardianInvitationsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<PatchUserProfilesGuardianInvitationsRequest>;
-
 /** Request to reclaim a student submission. */
 export type ReclaimStudentSubmissionRequest = TeacherContext;
 export interface ReclaimCoursesCourseWorkStudentSubmissionsRequest {
@@ -2829,11 +1976,6 @@ export interface ReclaimCoursesCourseWorkStudentSubmissionsRequest {
   /** Request body */
   body?: TeacherContext;
 }
-const ReclaimCoursesCourseWorkStudentSubmissionsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  6,
-) as any as S.Schema<ReclaimCoursesCourseWorkStudentSubmissionsRequest>;
-
 /** Request to return a student submission. */
 export type ReturnStudentSubmissionRequest = TeacherContext;
 export interface ReturnCoursesCourseWorkStudentSubmissionsRequest {
@@ -2846,11 +1988,6 @@ export interface ReturnCoursesCourseWorkStudentSubmissionsRequest {
   /** Request body */
   body?: TeacherContext;
 }
-const ReturnCoursesCourseWorkStudentSubmissionsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<ReturnCoursesCourseWorkStudentSubmissionsRequest>;
-
 /** Request to turn in a student submission. */
 export type TurnInStudentSubmissionRequest = TeacherContext;
 export interface TurnInCoursesCourseWorkStudentSubmissionsRequest {
@@ -2863,22 +2000,12 @@ export interface TurnInCoursesCourseWorkStudentSubmissionsRequest {
   /** Request body */
   body?: TeacherContext;
 }
-const TurnInCoursesCourseWorkStudentSubmissionsRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  0,
-) as any as S.Schema<TurnInCoursesCourseWorkStudentSubmissionsRequest>;
-
 export interface UpdateCoursesRequest {
   /** Identifier of the course to update. This identifier can be either the Classroom-assigned identifier or an alias. */
   id: string;
   /** Request body */
   body?: Course;
 }
-const UpdateCoursesRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<UpdateCoursesRequest>;
-
 export interface UpdateGradingPeriodSettingsCoursesRequest {
   /** Mask that identifies which fields in the GradingPeriodSettings to update. The GradingPeriodSettings `grading_periods` list will be fully replaced by the grading periods specified in the update request. For example: * Grading periods included in the list without an ID are considered additions, and a new ID will be assigned when the request is made. * Grading periods that currently exist, but are missing from the request will be considered deletions. * Grading periods with an existing ID and modified data are considered edits. Unmodified data will be left as is. * Grading periods included with an unknown ID will result in an error. The following fields may be specified: * `grading_periods` * `apply_to_existing_coursework` */
   updateMask?: string;
@@ -2887,11 +2014,6 @@ export interface UpdateGradingPeriodSettingsCoursesRequest {
   /** Request body */
   body?: GradingPeriodSettings;
 }
-const UpdateGradingPeriodSettingsCoursesRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<UpdateGradingPeriodSettingsCoursesRequest>;
-
 export interface UpdateRubricCoursesCourseWorkRequest {
   /** Optional. Mask that identifies which fields on the rubric to update. This field is required to do an update. The update fails if invalid fields are specified. There are multiple options to define the criteria of a rubric: the `source_spreadsheet_id` and the `criteria` list. Only one of these can be used at a time to define a rubric. The rubric `criteria` list is fully replaced by the rubric criteria specified in the update request. For example, if a criterion or level is missing from the request, it is deleted. New criteria and levels are added and an ID is assigned. Existing criteria and levels retain the previously assigned ID if the ID is specified in the request. The following fields can be specified by teachers: * `criteria` * `source_spreadsheet_id` */
   updateMask?: string;
@@ -2904,11 +2026,6 @@ export interface UpdateRubricCoursesCourseWorkRequest {
   /** Request body */
   body?: Rubric;
 }
-const UpdateRubricCoursesCourseWorkRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  3,
-) as any as S.Schema<UpdateRubricCoursesCourseWorkRequest>;
-
 export type AcceptInvitationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Accepts an invitation, removing it and adding the invited user to the teachers or students (as appropriate) of the specified course. Only the invited user may accept an invitation. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to accept the requested invitation or for access errors. * `FAILED_PRECONDITION` for the following request errors: * CourseMemberLimitReached * CourseNotModifiable * CourseTeacherLimitReached * UserGroupsMembershipLimitReached * `NOT_FOUND` if no invitation exists with the requested ID. */
 export const acceptInvitations: API.OperationMethod<
@@ -2917,8 +2034,8 @@ export const acceptInvitations: API.OperationMethod<
   AcceptInvitationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AcceptInvitationsRequest,
-  output: Empty,
+  input: __S(0, __c0, 0) as any as S.Schema<AcceptInvitationsRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2932,8 +2049,8 @@ export const createCourses: API.OperationMethod<
   CreateCoursesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCoursesRequest,
-  output: Course,
+  input: __S(15, __c1, 7) as any as S.Schema<CreateCoursesRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<Course>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2947,8 +2064,8 @@ export const createCoursesAliases: API.OperationMethod<
   CreateCoursesAliasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCoursesAliasesRequest,
-  output: CourseAlias,
+  input: __S(17, __c2, 1) as any as S.Schema<CreateCoursesAliasesRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<CourseAlias>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2967,8 +2084,8 @@ export const createCoursesAnnouncements: API.OperationMethod<
   CreateCoursesAnnouncementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCoursesAnnouncementsRequest,
-  output: Announcement,
+  input: __S(26, __c3, 2) as any as S.Schema<CreateCoursesAnnouncementsRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<Announcement>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2987,8 +2104,8 @@ export const createCoursesAnnouncementsAddOnAttachments: API.OperationMethod<
   CreateCoursesAnnouncementsAddOnAttachmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCoursesAnnouncementsAddOnAttachmentsRequest,
-  output: AddOnAttachment,
+  input: __S(33, __c4, 1) as any as S.Schema<CreateCoursesAnnouncementsAddOnAttachmentsRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<AddOnAttachment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3007,8 +2124,8 @@ export const createCoursesCourseWork: API.OperationMethod<
   CreateCoursesCourseWorkError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCoursesCourseWorkRequest,
-  output: CourseWork,
+  input: __S(37, __c4, 5) as any as S.Schema<CreateCoursesCourseWorkRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<CourseWork>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3027,8 +2144,8 @@ export const createCoursesCourseWorkAddOnAttachments: API.OperationMethod<
   CreateCoursesCourseWorkAddOnAttachmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCoursesCourseWorkAddOnAttachmentsRequest,
-  output: AddOnAttachment,
+  input: __S(38, __c4, 6) as any as S.Schema<CreateCoursesCourseWorkAddOnAttachmentsRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<AddOnAttachment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3047,8 +2164,8 @@ export const createCoursesCourseWorkMaterials: API.OperationMethod<
   CreateCoursesCourseWorkMaterialsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCoursesCourseWorkMaterialsRequest,
-  output: CourseWorkMaterial,
+  input: __S(40, __c5, 0) as any as S.Schema<CreateCoursesCourseWorkMaterialsRequest>,
+  output: __S(39, __c4, 7) as any as S.Schema<CourseWorkMaterial>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3067,8 +2184,12 @@ export const createCoursesCourseWorkMaterialsAddOnAttachments: API.OperationMeth
   CreateCoursesCourseWorkMaterialsAddOnAttachmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCoursesCourseWorkMaterialsAddOnAttachmentsRequest,
-  output: AddOnAttachment,
+  input: __S(
+    41,
+    __c5,
+    1,
+  ) as any as S.Schema<CreateCoursesCourseWorkMaterialsAddOnAttachmentsRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<AddOnAttachment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3087,8 +2208,8 @@ export const createCoursesCourseWorkRubrics: API.OperationMethod<
   CreateCoursesCourseWorkRubricsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCoursesCourseWorkRubricsRequest,
-  output: Rubric,
+  input: __S(47, __c5, 7) as any as S.Schema<CreateCoursesCourseWorkRubricsRequest>,
+  output: __S(46, __c5, 6) as any as S.Schema<Rubric>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3107,8 +2228,8 @@ export const createCoursesPostsAddOnAttachments: API.OperationMethod<
   CreateCoursesPostsAddOnAttachmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCoursesPostsAddOnAttachmentsRequest,
-  output: AddOnAttachment,
+  input: __S(48, __c6, 0) as any as S.Schema<CreateCoursesPostsAddOnAttachmentsRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<AddOnAttachment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3127,8 +2248,8 @@ export const createCoursesStudentGroups: API.OperationMethod<
   CreateCoursesStudentGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCoursesStudentGroupsRequest,
-  output: StudentGroup,
+  input: __S(50, __c6, 2) as any as S.Schema<CreateCoursesStudentGroupsRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<StudentGroup>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3147,8 +2268,8 @@ export const createCoursesStudentGroupsStudentGroupMembers: API.OperationMethod<
   CreateCoursesStudentGroupsStudentGroupMembersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCoursesStudentGroupsStudentGroupMembersRequest,
-  output: StudentGroupMember,
+  input: __S(52, __c6, 4) as any as S.Schema<CreateCoursesStudentGroupsStudentGroupMembersRequest>,
+  output: __S(51, __c6, 3) as any as S.Schema<StudentGroupMember>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3162,8 +2283,8 @@ export const createCoursesStudents: API.OperationMethod<
   CreateCoursesStudentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCoursesStudentsRequest,
-  output: Student,
+  input: __S(58, __c7, 2) as any as S.Schema<CreateCoursesStudentsRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<Student>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3177,8 +2298,8 @@ export const createCoursesTeachers: API.OperationMethod<
   CreateCoursesTeachersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCoursesTeachersRequest,
-  output: Teacher,
+  input: __S(60, __c7, 4) as any as S.Schema<CreateCoursesTeachersRequest>,
+  output: __S(59, __c7, 3) as any as S.Schema<Teacher>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3192,8 +2313,8 @@ export const createCoursesTopics: API.OperationMethod<
   CreateCoursesTopicsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCoursesTopicsRequest,
-  output: Topic,
+  input: __S(62, __c7, 6) as any as S.Schema<CreateCoursesTopicsRequest>,
+  output: __S(61, __c7, 5) as any as S.Schema<Topic>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3207,8 +2328,8 @@ export const createInvitations: API.OperationMethod<
   CreateInvitationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateInvitationsRequest,
-  output: Invitation,
+  input: __S(64, __c8, 0) as any as S.Schema<CreateInvitationsRequest>,
+  output: __S(63, __c7, 7) as any as S.Schema<Invitation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3222,8 +2343,8 @@ export const createRegistrations: API.OperationMethod<
   CreateRegistrationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRegistrationsRequest,
-  output: Registration,
+  input: __S(69, __c8, 5) as any as S.Schema<CreateRegistrationsRequest>,
+  output: __S(68, __c8, 4) as any as S.Schema<Registration>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3242,8 +2363,8 @@ export const createUserProfilesGuardianInvitations: API.OperationMethod<
   CreateUserProfilesGuardianInvitationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateUserProfilesGuardianInvitationsRequest,
-  output: GuardianInvitation,
+  input: __S(71, __c8, 7) as any as S.Schema<CreateUserProfilesGuardianInvitationsRequest>,
+  output: __S(70, __c8, 6) as any as S.Schema<GuardianInvitation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3257,8 +2378,8 @@ export const deleteCourses: API.OperationMethod<
   DeleteCoursesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCoursesRequest,
-  output: Empty,
+  input: __S(72, __c9, 0) as any as S.Schema<DeleteCoursesRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3272,8 +2393,8 @@ export const deleteCoursesAliases: API.OperationMethod<
   DeleteCoursesAliasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCoursesAliasesRequest,
-  output: Empty,
+  input: __S(73, __c9, 1) as any as S.Schema<DeleteCoursesAliasesRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3292,8 +2413,8 @@ export const deleteCoursesAnnouncements: API.OperationMethod<
   DeleteCoursesAnnouncementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCoursesAnnouncementsRequest,
-  output: Empty,
+  input: __S(74, __c9, 2) as any as S.Schema<DeleteCoursesAnnouncementsRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3312,8 +2433,8 @@ export const deleteCoursesAnnouncementsAddOnAttachments: API.OperationMethod<
   DeleteCoursesAnnouncementsAddOnAttachmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCoursesAnnouncementsAddOnAttachmentsRequest,
-  output: Empty,
+  input: __S(75, __c9, 3) as any as S.Schema<DeleteCoursesAnnouncementsAddOnAttachmentsRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3332,8 +2453,8 @@ export const deleteCoursesCourseWork: API.OperationMethod<
   DeleteCoursesCourseWorkError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCoursesCourseWorkRequest,
-  output: Empty,
+  input: __S(76, __c9, 4) as any as S.Schema<DeleteCoursesCourseWorkRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3352,8 +2473,8 @@ export const deleteCoursesCourseWorkAddOnAttachments: API.OperationMethod<
   DeleteCoursesCourseWorkAddOnAttachmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCoursesCourseWorkAddOnAttachmentsRequest,
-  output: Empty,
+  input: __S(77, __c9, 5) as any as S.Schema<DeleteCoursesCourseWorkAddOnAttachmentsRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3372,8 +2493,8 @@ export const deleteCoursesCourseWorkMaterials: API.OperationMethod<
   DeleteCoursesCourseWorkMaterialsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCoursesCourseWorkMaterialsRequest,
-  output: Empty,
+  input: __S(78, __c9, 6) as any as S.Schema<DeleteCoursesCourseWorkMaterialsRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3392,8 +2513,12 @@ export const deleteCoursesCourseWorkMaterialsAddOnAttachments: API.OperationMeth
   DeleteCoursesCourseWorkMaterialsAddOnAttachmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCoursesCourseWorkMaterialsAddOnAttachmentsRequest,
-  output: Empty,
+  input: __S(
+    79,
+    __c9,
+    7,
+  ) as any as S.Schema<DeleteCoursesCourseWorkMaterialsAddOnAttachmentsRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3412,8 +2537,8 @@ export const deleteCoursesCourseWorkRubrics: API.OperationMethod<
   DeleteCoursesCourseWorkRubricsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCoursesCourseWorkRubricsRequest,
-  output: Empty,
+  input: __S(80, __c10, 0) as any as S.Schema<DeleteCoursesCourseWorkRubricsRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3432,8 +2557,8 @@ export const deleteCoursesPostsAddOnAttachments: API.OperationMethod<
   DeleteCoursesPostsAddOnAttachmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCoursesPostsAddOnAttachmentsRequest,
-  output: Empty,
+  input: __S(81, __c10, 1) as any as S.Schema<DeleteCoursesPostsAddOnAttachmentsRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3452,8 +2577,8 @@ export const deleteCoursesStudentGroups: API.OperationMethod<
   DeleteCoursesStudentGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCoursesStudentGroupsRequest,
-  output: Empty,
+  input: __S(82, __c10, 2) as any as S.Schema<DeleteCoursesStudentGroupsRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3472,8 +2597,8 @@ export const deleteCoursesStudentGroupsStudentGroupMembers: API.OperationMethod<
   DeleteCoursesStudentGroupsStudentGroupMembersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCoursesStudentGroupsStudentGroupMembersRequest,
-  output: Empty,
+  input: __S(83, __c10, 3) as any as S.Schema<DeleteCoursesStudentGroupsStudentGroupMembersRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3487,8 +2612,8 @@ export const deleteCoursesStudents: API.OperationMethod<
   DeleteCoursesStudentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCoursesStudentsRequest,
-  output: Empty,
+  input: __S(84, __c10, 4) as any as S.Schema<DeleteCoursesStudentsRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3502,8 +2627,8 @@ export const deleteCoursesTeachers: API.OperationMethod<
   DeleteCoursesTeachersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCoursesTeachersRequest,
-  output: Empty,
+  input: __S(85, __c10, 5) as any as S.Schema<DeleteCoursesTeachersRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3517,8 +2642,8 @@ export const deleteCoursesTopics: API.OperationMethod<
   DeleteCoursesTopicsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCoursesTopicsRequest,
-  output: Empty,
+  input: __S(86, __c10, 6) as any as S.Schema<DeleteCoursesTopicsRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3532,8 +2657,8 @@ export const deleteInvitations: API.OperationMethod<
   DeleteInvitationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteInvitationsRequest,
-  output: Empty,
+  input: __S(87, __c10, 7) as any as S.Schema<DeleteInvitationsRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3547,8 +2672,8 @@ export const deleteRegistrations: API.OperationMethod<
   DeleteRegistrationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRegistrationsRequest,
-  output: Empty,
+  input: __S(88, __c11, 0) as any as S.Schema<DeleteRegistrationsRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3567,8 +2692,8 @@ export const deleteUserProfilesGuardians: API.OperationMethod<
   DeleteUserProfilesGuardiansError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteUserProfilesGuardiansRequest,
-  output: Empty,
+  input: __S(89, __c11, 1) as any as S.Schema<DeleteUserProfilesGuardiansRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3582,8 +2707,8 @@ export const getAddOnContextCoursesAnnouncements: API.OperationMethod<
   GetAddOnContextCoursesAnnouncementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAddOnContextCoursesAnnouncementsRequest,
-  output: AddOnContext,
+  input: __S(90, __c11, 2) as any as S.Schema<GetAddOnContextCoursesAnnouncementsRequest>,
+  output: __S(92, __c11, 4) as any as S.Schema<AddOnContext>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3597,8 +2722,8 @@ export const getAddOnContextCoursesCourseWork: API.OperationMethod<
   GetAddOnContextCoursesCourseWorkError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAddOnContextCoursesCourseWorkRequest,
-  output: AddOnContext,
+  input: __S(93, __c11, 5) as any as S.Schema<GetAddOnContextCoursesCourseWorkRequest>,
+  output: __S(92, __c11, 4) as any as S.Schema<AddOnContext>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3612,8 +2737,8 @@ export const getAddOnContextCoursesCourseWorkMaterials: API.OperationMethod<
   GetAddOnContextCoursesCourseWorkMaterialsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAddOnContextCoursesCourseWorkMaterialsRequest,
-  output: AddOnContext,
+  input: __S(94, __c11, 6) as any as S.Schema<GetAddOnContextCoursesCourseWorkMaterialsRequest>,
+  output: __S(92, __c11, 4) as any as S.Schema<AddOnContext>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3627,8 +2752,8 @@ export const getAddOnContextCoursesPosts: API.OperationMethod<
   GetAddOnContextCoursesPostsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAddOnContextCoursesPostsRequest,
-  output: AddOnContext,
+  input: __S(95, __c11, 7) as any as S.Schema<GetAddOnContextCoursesPostsRequest>,
+  output: __S(92, __c11, 4) as any as S.Schema<AddOnContext>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3642,8 +2767,8 @@ export const getCourses: API.OperationMethod<
   GetCoursesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCoursesRequest,
-  output: Course,
+  input: __S(96, __c12, 0) as any as S.Schema<GetCoursesRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<Course>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3657,8 +2782,8 @@ export const getCoursesAnnouncements: API.OperationMethod<
   GetCoursesAnnouncementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCoursesAnnouncementsRequest,
-  output: Announcement,
+  input: __S(97, __c12, 1) as any as S.Schema<GetCoursesAnnouncementsRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<Announcement>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3672,8 +2797,8 @@ export const getCoursesAnnouncementsAddOnAttachments: API.OperationMethod<
   GetCoursesAnnouncementsAddOnAttachmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCoursesAnnouncementsAddOnAttachmentsRequest,
-  output: AddOnAttachment,
+  input: __S(98, __c12, 2) as any as S.Schema<GetCoursesAnnouncementsAddOnAttachmentsRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<AddOnAttachment>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3687,8 +2812,8 @@ export const getCoursesCourseWork: API.OperationMethod<
   GetCoursesCourseWorkError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCoursesCourseWorkRequest,
-  output: CourseWork,
+  input: __S(99, __c12, 3) as any as S.Schema<GetCoursesCourseWorkRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<CourseWork>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3702,8 +2827,8 @@ export const getCoursesCourseWorkAddOnAttachments: API.OperationMethod<
   GetCoursesCourseWorkAddOnAttachmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCoursesCourseWorkAddOnAttachmentsRequest,
-  output: AddOnAttachment,
+  input: __S(100, __c12, 4) as any as S.Schema<GetCoursesCourseWorkAddOnAttachmentsRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<AddOnAttachment>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3720,8 +2845,12 @@ export const getCoursesCourseWorkAddOnAttachmentsStudentSubmissions: API.Operati
   GetCoursesCourseWorkAddOnAttachmentsStudentSubmissionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest,
-  output: AddOnAttachmentStudentSubmission,
+  input: __S(
+    101,
+    __c12,
+    5,
+  ) as any as S.Schema<GetCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest>,
+  output: __S(102, __c12, 6) as any as S.Schema<AddOnAttachmentStudentSubmission>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3735,8 +2864,8 @@ export const getCoursesCourseWorkMaterials: API.OperationMethod<
   GetCoursesCourseWorkMaterialsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCoursesCourseWorkMaterialsRequest,
-  output: CourseWorkMaterial,
+  input: __S(103, __c12, 7) as any as S.Schema<GetCoursesCourseWorkMaterialsRequest>,
+  output: __S(39, __c4, 7) as any as S.Schema<CourseWorkMaterial>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3750,8 +2879,12 @@ export const getCoursesCourseWorkMaterialsAddOnAttachments: API.OperationMethod<
   GetCoursesCourseWorkMaterialsAddOnAttachmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCoursesCourseWorkMaterialsAddOnAttachmentsRequest,
-  output: AddOnAttachment,
+  input: __S(
+    104,
+    __c13,
+    0,
+  ) as any as S.Schema<GetCoursesCourseWorkMaterialsAddOnAttachmentsRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<AddOnAttachment>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3765,8 +2898,8 @@ export const getCoursesCourseWorkRubrics: API.OperationMethod<
   GetCoursesCourseWorkRubricsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCoursesCourseWorkRubricsRequest,
-  output: Rubric,
+  input: __S(105, __c13, 1) as any as S.Schema<GetCoursesCourseWorkRubricsRequest>,
+  output: __S(46, __c5, 6) as any as S.Schema<Rubric>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3780,8 +2913,8 @@ export const getCoursesCourseWorkStudentSubmissions: API.OperationMethod<
   GetCoursesCourseWorkStudentSubmissionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCoursesCourseWorkStudentSubmissionsRequest,
-  output: StudentSubmission,
+  input: __S(106, __c13, 2) as any as S.Schema<GetCoursesCourseWorkStudentSubmissionsRequest>,
+  output: __S(117, __c14, 5) as any as S.Schema<StudentSubmission>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3795,8 +2928,8 @@ export const getCoursesPostsAddOnAttachments: API.OperationMethod<
   GetCoursesPostsAddOnAttachmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCoursesPostsAddOnAttachmentsRequest,
-  output: AddOnAttachment,
+  input: __S(118, __c14, 6) as any as S.Schema<GetCoursesPostsAddOnAttachmentsRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<AddOnAttachment>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3813,8 +2946,12 @@ export const getCoursesPostsAddOnAttachmentsStudentSubmissions: API.OperationMet
   GetCoursesPostsAddOnAttachmentsStudentSubmissionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCoursesPostsAddOnAttachmentsStudentSubmissionsRequest,
-  output: AddOnAttachmentStudentSubmission,
+  input: __S(
+    119,
+    __c14,
+    7,
+  ) as any as S.Schema<GetCoursesPostsAddOnAttachmentsStudentSubmissionsRequest>,
+  output: __S(102, __c12, 6) as any as S.Schema<AddOnAttachmentStudentSubmission>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3828,8 +2965,8 @@ export const getCoursesStudents: API.OperationMethod<
   GetCoursesStudentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCoursesStudentsRequest,
-  output: Student,
+  input: __S(120, __c15, 0) as any as S.Schema<GetCoursesStudentsRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<Student>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3843,8 +2980,8 @@ export const getCoursesTeachers: API.OperationMethod<
   GetCoursesTeachersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCoursesTeachersRequest,
-  output: Teacher,
+  input: __S(121, __c15, 1) as any as S.Schema<GetCoursesTeachersRequest>,
+  output: __S(59, __c7, 3) as any as S.Schema<Teacher>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3858,8 +2995,8 @@ export const getCoursesTopics: API.OperationMethod<
   GetCoursesTopicsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCoursesTopicsRequest,
-  output: Topic,
+  input: __S(122, __c15, 2) as any as S.Schema<GetCoursesTopicsRequest>,
+  output: __S(61, __c7, 5) as any as S.Schema<Topic>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3873,8 +3010,8 @@ export const getGradingPeriodSettingsCourses: API.OperationMethod<
   GetGradingPeriodSettingsCoursesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGradingPeriodSettingsCoursesRequest,
-  output: GradingPeriodSettings,
+  input: __S(123, __c15, 3) as any as S.Schema<GetGradingPeriodSettingsCoursesRequest>,
+  output: __S(126, __c15, 6) as any as S.Schema<GradingPeriodSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3888,8 +3025,8 @@ export const getInvitations: API.OperationMethod<
   GetInvitationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetInvitationsRequest,
-  output: Invitation,
+  input: __S(127, __c15, 7) as any as S.Schema<GetInvitationsRequest>,
+  output: __S(63, __c7, 7) as any as S.Schema<Invitation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3903,8 +3040,8 @@ export const getUserProfiles: API.OperationMethod<
   GetUserProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUserProfilesRequest,
-  output: UserProfile,
+  input: __S(128, __c16, 0) as any as S.Schema<GetUserProfilesRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<UserProfile>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3918,8 +3055,8 @@ export const getUserProfilesGuardianInvitations: API.OperationMethod<
   GetUserProfilesGuardianInvitationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUserProfilesGuardianInvitationsRequest,
-  output: GuardianInvitation,
+  input: __S(129, __c16, 1) as any as S.Schema<GetUserProfilesGuardianInvitationsRequest>,
+  output: __S(70, __c8, 6) as any as S.Schema<GuardianInvitation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3933,8 +3070,8 @@ export const getUserProfilesGuardians: API.OperationMethod<
   GetUserProfilesGuardiansError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUserProfilesGuardiansRequest,
-  output: Guardian,
+  input: __S(130, __c16, 2) as any as S.Schema<GetUserProfilesGuardiansRequest>,
+  output: __S(131, __c16, 3) as any as S.Schema<Guardian>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3949,8 +3086,8 @@ export const listCourses: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCoursesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCoursesRequest,
-  output: ListCoursesResponse,
+  input: __S(133, __c16, 5) as any as S.Schema<ListCoursesRequest>,
+  output: __S(135, __c16, 7) as any as S.Schema<ListCoursesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3966,8 +3103,8 @@ export const listCoursesAliases: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCourseAliasesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCoursesAliasesRequest,
-  output: ListCourseAliasesResponse,
+  input: __S(136, __c17, 0) as any as S.Schema<ListCoursesAliasesRequest>,
+  output: __S(138, __c17, 2) as any as S.Schema<ListCourseAliasesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3983,8 +3120,8 @@ export const listCoursesAnnouncements: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAnnouncementsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCoursesAnnouncementsRequest,
-  output: ListAnnouncementsResponse,
+  input: __S(139, __c17, 3) as any as S.Schema<ListCoursesAnnouncementsRequest>,
+  output: __S(141, __c17, 5) as any as S.Schema<ListAnnouncementsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4000,8 +3137,8 @@ export const listCoursesAnnouncementsAddOnAttachments: API.PaginatedOperationMet
   GcpOpContext,
   ListAddOnAttachmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCoursesAnnouncementsAddOnAttachmentsRequest,
-  output: ListAddOnAttachmentsResponse,
+  input: __S(142, __c17, 6) as any as S.Schema<ListCoursesAnnouncementsAddOnAttachmentsRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<ListAddOnAttachmentsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4017,8 +3154,8 @@ export const listCoursesCourseWork: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCourseWorkResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCoursesCourseWorkRequest,
-  output: ListCourseWorkResponse,
+  input: __S(145, __c18, 1) as any as S.Schema<ListCoursesCourseWorkRequest>,
+  output: __S(147, __c18, 3) as any as S.Schema<ListCourseWorkResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4034,8 +3171,8 @@ export const listCoursesCourseWorkAddOnAttachments: API.PaginatedOperationMethod
   GcpOpContext,
   ListAddOnAttachmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCoursesCourseWorkAddOnAttachmentsRequest,
-  output: ListAddOnAttachmentsResponse,
+  input: __S(148, __c18, 4) as any as S.Schema<ListCoursesCourseWorkAddOnAttachmentsRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<ListAddOnAttachmentsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4051,8 +3188,8 @@ export const listCoursesCourseWorkMaterials: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCourseWorkMaterialResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCoursesCourseWorkMaterialsRequest,
-  output: ListCourseWorkMaterialResponse,
+  input: __S(149, __c18, 5) as any as S.Schema<ListCoursesCourseWorkMaterialsRequest>,
+  output: __S(151, __c18, 7) as any as S.Schema<ListCourseWorkMaterialResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4068,8 +3205,12 @@ export const listCoursesCourseWorkMaterialsAddOnAttachments: API.PaginatedOperat
   GcpOpContext,
   ListAddOnAttachmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCoursesCourseWorkMaterialsAddOnAttachmentsRequest,
-  output: ListAddOnAttachmentsResponse,
+  input: __S(
+    152,
+    __c19,
+    0,
+  ) as any as S.Schema<ListCoursesCourseWorkMaterialsAddOnAttachmentsRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<ListAddOnAttachmentsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4085,8 +3226,8 @@ export const listCoursesCourseWorkRubrics: API.PaginatedOperationMethod<
   GcpOpContext,
   ListRubricsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCoursesCourseWorkRubricsRequest,
-  output: ListRubricsResponse,
+  input: __S(153, __c19, 1) as any as S.Schema<ListCoursesCourseWorkRubricsRequest>,
+  output: __S(155, __c19, 3) as any as S.Schema<ListRubricsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4102,8 +3243,8 @@ export const listCoursesCourseWorkStudentSubmissions: API.PaginatedOperationMeth
   GcpOpContext,
   ListStudentSubmissionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCoursesCourseWorkStudentSubmissionsRequest,
-  output: ListStudentSubmissionsResponse,
+  input: __S(156, __c19, 4) as any as S.Schema<ListCoursesCourseWorkStudentSubmissionsRequest>,
+  output: __S(158, __c19, 6) as any as S.Schema<ListStudentSubmissionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4119,8 +3260,8 @@ export const listCoursesPostsAddOnAttachments: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAddOnAttachmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCoursesPostsAddOnAttachmentsRequest,
-  output: ListAddOnAttachmentsResponse,
+  input: __S(159, __c19, 7) as any as S.Schema<ListCoursesPostsAddOnAttachmentsRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<ListAddOnAttachmentsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4136,8 +3277,8 @@ export const listCoursesStudentGroups: API.PaginatedOperationMethod<
   GcpOpContext,
   ListStudentGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCoursesStudentGroupsRequest,
-  output: ListStudentGroupsResponse,
+  input: __S(160, __c20, 0) as any as S.Schema<ListCoursesStudentGroupsRequest>,
+  output: __S(162, __c20, 2) as any as S.Schema<ListStudentGroupsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4153,8 +3294,8 @@ export const listCoursesStudentGroupsStudentGroupMembers: API.PaginatedOperation
   GcpOpContext,
   ListStudentGroupMembersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCoursesStudentGroupsStudentGroupMembersRequest,
-  output: ListStudentGroupMembersResponse,
+  input: __S(163, __c20, 3) as any as S.Schema<ListCoursesStudentGroupsStudentGroupMembersRequest>,
+  output: __S(165, __c20, 5) as any as S.Schema<ListStudentGroupMembersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4170,8 +3311,8 @@ export const listCoursesStudents: API.PaginatedOperationMethod<
   GcpOpContext,
   ListStudentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCoursesStudentsRequest,
-  output: ListStudentsResponse,
+  input: __S(166, __c20, 6) as any as S.Schema<ListCoursesStudentsRequest>,
+  output: __S(168, __c21, 0) as any as S.Schema<ListStudentsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4187,8 +3328,8 @@ export const listCoursesTeachers: API.PaginatedOperationMethod<
   GcpOpContext,
   ListTeachersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCoursesTeachersRequest,
-  output: ListTeachersResponse,
+  input: __S(169, __c21, 1) as any as S.Schema<ListCoursesTeachersRequest>,
+  output: __S(171, __c21, 3) as any as S.Schema<ListTeachersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4204,8 +3345,8 @@ export const listCoursesTopics: API.PaginatedOperationMethod<
   GcpOpContext,
   ListTopicResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCoursesTopicsRequest,
-  output: ListTopicResponse,
+  input: __S(172, __c21, 4) as any as S.Schema<ListCoursesTopicsRequest>,
+  output: __S(174, __c21, 6) as any as S.Schema<ListTopicResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4221,8 +3362,8 @@ export const listInvitations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListInvitationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListInvitationsRequest,
-  output: ListInvitationsResponse,
+  input: __S(175, __c21, 7) as any as S.Schema<ListInvitationsRequest>,
+  output: __S(177, __c22, 1) as any as S.Schema<ListInvitationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4238,8 +3379,8 @@ export const listUserProfilesGuardianInvitations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListGuardianInvitationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListUserProfilesGuardianInvitationsRequest,
-  output: ListGuardianInvitationsResponse,
+  input: __S(178, __c22, 2) as any as S.Schema<ListUserProfilesGuardianInvitationsRequest>,
+  output: __S(180, __c22, 4) as any as S.Schema<ListGuardianInvitationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4255,8 +3396,8 @@ export const listUserProfilesGuardians: API.PaginatedOperationMethod<
   GcpOpContext,
   ListGuardiansResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListUserProfilesGuardiansRequest,
-  output: ListGuardiansResponse,
+  input: __S(181, __c22, 5) as any as S.Schema<ListUserProfilesGuardiansRequest>,
+  output: __S(183, __c22, 7) as any as S.Schema<ListGuardiansResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4276,8 +3417,8 @@ export const modifyAssigneesCoursesAnnouncements: API.OperationMethod<
   ModifyAssigneesCoursesAnnouncementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ModifyAssigneesCoursesAnnouncementsRequest,
-  output: Announcement,
+  input: __S(186, __c23, 2) as any as S.Schema<ModifyAssigneesCoursesAnnouncementsRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<Announcement>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4296,8 +3437,8 @@ export const modifyAssigneesCoursesCourseWork: API.OperationMethod<
   ModifyAssigneesCoursesCourseWorkError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ModifyAssigneesCoursesCourseWorkRequest,
-  output: CourseWork,
+  input: __S(188, __c23, 4) as any as S.Schema<ModifyAssigneesCoursesCourseWorkRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<CourseWork>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4316,8 +3457,12 @@ export const modifyAttachmentsCoursesCourseWorkStudentSubmissions: API.Operation
   ModifyAttachmentsCoursesCourseWorkStudentSubmissionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ModifyAttachmentsCoursesCourseWorkStudentSubmissionsRequest,
-  output: StudentSubmission,
+  input: __S(
+    190,
+    __c23,
+    6,
+  ) as any as S.Schema<ModifyAttachmentsCoursesCourseWorkStudentSubmissionsRequest>,
+  output: __S(117, __c14, 5) as any as S.Schema<StudentSubmission>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4331,8 +3476,8 @@ export const patchCourses: API.OperationMethod<
   PatchCoursesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchCoursesRequest,
-  output: Course,
+  input: __S(191, __c23, 7) as any as S.Schema<PatchCoursesRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<Course>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4351,8 +3496,8 @@ export const patchCoursesAnnouncements: API.OperationMethod<
   PatchCoursesAnnouncementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchCoursesAnnouncementsRequest,
-  output: Announcement,
+  input: __S(192, __c24, 0) as any as S.Schema<PatchCoursesAnnouncementsRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<Announcement>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4371,8 +3516,8 @@ export const patchCoursesAnnouncementsAddOnAttachments: API.OperationMethod<
   PatchCoursesAnnouncementsAddOnAttachmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchCoursesAnnouncementsAddOnAttachmentsRequest,
-  output: AddOnAttachment,
+  input: __S(193, __c24, 1) as any as S.Schema<PatchCoursesAnnouncementsAddOnAttachmentsRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<AddOnAttachment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4386,8 +3531,8 @@ export const patchCoursesCourseWork: API.OperationMethod<
   PatchCoursesCourseWorkError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchCoursesCourseWorkRequest,
-  output: CourseWork,
+  input: __S(194, __c24, 2) as any as S.Schema<PatchCoursesCourseWorkRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<CourseWork>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4406,8 +3551,8 @@ export const patchCoursesCourseWorkAddOnAttachments: API.OperationMethod<
   PatchCoursesCourseWorkAddOnAttachmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchCoursesCourseWorkAddOnAttachmentsRequest,
-  output: AddOnAttachment,
+  input: __S(195, __c24, 3) as any as S.Schema<PatchCoursesCourseWorkAddOnAttachmentsRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<AddOnAttachment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4426,8 +3571,12 @@ export const patchCoursesCourseWorkAddOnAttachmentsStudentSubmissions: API.Opera
   PatchCoursesCourseWorkAddOnAttachmentsStudentSubmissionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest,
-  output: AddOnAttachmentStudentSubmission,
+  input: __S(
+    196,
+    __c24,
+    4,
+  ) as any as S.Schema<PatchCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest>,
+  output: __S(102, __c12, 6) as any as S.Schema<AddOnAttachmentStudentSubmission>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4446,8 +3595,8 @@ export const patchCoursesCourseWorkMaterials: API.OperationMethod<
   PatchCoursesCourseWorkMaterialsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchCoursesCourseWorkMaterialsRequest,
-  output: CourseWorkMaterial,
+  input: __S(197, __c24, 5) as any as S.Schema<PatchCoursesCourseWorkMaterialsRequest>,
+  output: __S(39, __c4, 7) as any as S.Schema<CourseWorkMaterial>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4466,8 +3615,12 @@ export const patchCoursesCourseWorkMaterialsAddOnAttachments: API.OperationMetho
   PatchCoursesCourseWorkMaterialsAddOnAttachmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchCoursesCourseWorkMaterialsAddOnAttachmentsRequest,
-  output: AddOnAttachment,
+  input: __S(
+    198,
+    __c24,
+    6,
+  ) as any as S.Schema<PatchCoursesCourseWorkMaterialsAddOnAttachmentsRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<AddOnAttachment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4486,8 +3639,8 @@ export const patchCoursesCourseWorkRubrics: API.OperationMethod<
   PatchCoursesCourseWorkRubricsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchCoursesCourseWorkRubricsRequest,
-  output: Rubric,
+  input: __S(199, __c24, 7) as any as S.Schema<PatchCoursesCourseWorkRubricsRequest>,
+  output: __S(46, __c5, 6) as any as S.Schema<Rubric>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4506,8 +3659,8 @@ export const patchCoursesCourseWorkStudentSubmissions: API.OperationMethod<
   PatchCoursesCourseWorkStudentSubmissionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchCoursesCourseWorkStudentSubmissionsRequest,
-  output: StudentSubmission,
+  input: __S(200, __c25, 0) as any as S.Schema<PatchCoursesCourseWorkStudentSubmissionsRequest>,
+  output: __S(117, __c14, 5) as any as S.Schema<StudentSubmission>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4526,8 +3679,8 @@ export const patchCoursesPostsAddOnAttachments: API.OperationMethod<
   PatchCoursesPostsAddOnAttachmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchCoursesPostsAddOnAttachmentsRequest,
-  output: AddOnAttachment,
+  input: __S(201, __c25, 1) as any as S.Schema<PatchCoursesPostsAddOnAttachmentsRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<AddOnAttachment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4546,8 +3699,12 @@ export const patchCoursesPostsAddOnAttachmentsStudentSubmissions: API.OperationM
   PatchCoursesPostsAddOnAttachmentsStudentSubmissionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchCoursesPostsAddOnAttachmentsStudentSubmissionsRequest,
-  output: AddOnAttachmentStudentSubmission,
+  input: __S(
+    202,
+    __c25,
+    2,
+  ) as any as S.Schema<PatchCoursesPostsAddOnAttachmentsStudentSubmissionsRequest>,
+  output: __S(102, __c12, 6) as any as S.Schema<AddOnAttachmentStudentSubmission>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4566,8 +3723,8 @@ export const patchCoursesStudentGroups: API.OperationMethod<
   PatchCoursesStudentGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchCoursesStudentGroupsRequest,
-  output: StudentGroup,
+  input: __S(203, __c25, 3) as any as S.Schema<PatchCoursesStudentGroupsRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<StudentGroup>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4581,8 +3738,8 @@ export const patchCoursesTopics: API.OperationMethod<
   PatchCoursesTopicsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchCoursesTopicsRequest,
-  output: Topic,
+  input: __S(204, __c25, 4) as any as S.Schema<PatchCoursesTopicsRequest>,
+  output: __S(61, __c7, 5) as any as S.Schema<Topic>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4601,8 +3758,8 @@ export const patchUserProfilesGuardianInvitations: API.OperationMethod<
   PatchUserProfilesGuardianInvitationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchUserProfilesGuardianInvitationsRequest,
-  output: GuardianInvitation,
+  input: __S(205, __c25, 5) as any as S.Schema<PatchUserProfilesGuardianInvitationsRequest>,
+  output: __S(70, __c8, 6) as any as S.Schema<GuardianInvitation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4621,8 +3778,8 @@ export const reclaimCoursesCourseWorkStudentSubmissions: API.OperationMethod<
   ReclaimCoursesCourseWorkStudentSubmissionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReclaimCoursesCourseWorkStudentSubmissionsRequest,
-  output: Empty,
+  input: __S(206, __c25, 6) as any as S.Schema<ReclaimCoursesCourseWorkStudentSubmissionsRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4641,8 +3798,8 @@ export const returnCoursesCourseWorkStudentSubmissions: API.OperationMethod<
   ReturnCoursesCourseWorkStudentSubmissionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReturnCoursesCourseWorkStudentSubmissionsRequest,
-  output: Empty,
+  input: __S(207, __c25, 7) as any as S.Schema<ReturnCoursesCourseWorkStudentSubmissionsRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4661,8 +3818,8 @@ export const turnInCoursesCourseWorkStudentSubmissions: API.OperationMethod<
   TurnInCoursesCourseWorkStudentSubmissionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TurnInCoursesCourseWorkStudentSubmissionsRequest,
-  output: Empty,
+  input: __S(208, __c26, 0) as any as S.Schema<TurnInCoursesCourseWorkStudentSubmissionsRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4676,8 +3833,8 @@ export const updateCourses: API.OperationMethod<
   UpdateCoursesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCoursesRequest,
-  output: Course,
+  input: __S(209, __c26, 1) as any as S.Schema<UpdateCoursesRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<Course>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4696,8 +3853,8 @@ export const updateGradingPeriodSettingsCourses: API.OperationMethod<
   UpdateGradingPeriodSettingsCoursesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateGradingPeriodSettingsCoursesRequest,
-  output: GradingPeriodSettings,
+  input: __S(210, __c26, 2) as any as S.Schema<UpdateGradingPeriodSettingsCoursesRequest>,
+  output: __S(126, __c15, 6) as any as S.Schema<GradingPeriodSettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4716,8 +3873,8 @@ export const updateRubricCoursesCourseWork: API.OperationMethod<
   UpdateRubricCoursesCourseWorkError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRubricCoursesCourseWorkRequest,
-  output: Rubric,
+  input: __S(211, __c26, 3) as any as S.Schema<UpdateRubricCoursesCourseWorkRequest>,
+  output: __S(46, __c5, 6) as any as S.Schema<Rubric>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4780,14 +3937,14 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          link: S.optional(Link),
-          youTubeVideo: S.optional(YouTubeVideo),
-          form: S.optional(Form),
-          driveFile: S.optional(DriveFile),
+          link: S.optional(__S(2, __c0, 2)),
+          youTubeVideo: S.optional(__S(3, __c0, 3)),
+          form: S.optional(__S(4, __c0, 4)),
+          driveFile: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "CourseMaterial" });
     case 7:
-      return S.Array(CourseMaterial);
+      return S.Array(__S(6, __c0, 6));
   }
 }
 function __c1(j: number): any {
@@ -4796,11 +3953,11 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           title: S.optional(S.String),
-          materials: S.optional(CourseMaterialList),
+          materials: S.optional(__S(7, __c0, 7)),
         }),
       ).annotate({ identifier: "CourseMaterialSet" });
     case 1:
-      return S.Array(CourseMaterialSet);
+      return S.Array(__S(8, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -4819,13 +3976,13 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "GradeCategory" });
     case 4:
-      return S.Array(GradeCategory);
+      return S.Array(__S(11, __c1, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          gradeCategories: S.optional(GradeCategoryList),
-          calculationType: S.optional(GradebookSettingsCalculationTypeEnum),
-          displaySetting: S.optional(GradebookSettingsDisplaySettingEnum),
+          gradeCategories: S.optional(__S(12, __c1, 4)),
+          calculationType: S.optional(S.String),
+          displaySetting: S.optional(S.String),
         }),
       ).annotate({ identifier: "GradebookSettings" });
     case 6:
@@ -4839,17 +3996,17 @@ function __c1(j: number): any {
           name: S.optional(S.String),
           room: S.optional(S.String),
           descriptionHeading: S.optional(S.String),
-          courseMaterialSets: S.optional(CourseMaterialSetList),
+          courseMaterialSets: S.optional(__S(9, __c1, 1)),
           guardiansEnabled: S.optional(S.Boolean),
-          courseState: S.optional(CourseCourseStateEnum),
+          courseState: S.optional(S.String),
           enrollmentCode: S.optional(S.String),
           updateTime: S.optional(S.String),
-          teacherFolder: S.optional(DriveFolder),
+          teacherFolder: S.optional(__S(10, __c1, 2)),
           creationTime: S.optional(S.String),
           subject: S.optional(S.String),
           calendarId: S.optional(S.String),
           description: S.optional(S.String),
-          gradebookSettings: S.optional(GradebookSettings),
+          gradebookSettings: S.optional(__S(13, __c1, 5)),
           courseGroupEmail: S.optional(S.String),
           teacherGroupEmail: S.optional(S.String),
         }),
@@ -4857,7 +4014,7 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(Course.pipe(T.HttpBody())),
+          body: S.optional(__S(14, __c1, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4880,7 +4037,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           courseId: S.String.pipe(T.Label()),
-          body: S.optional(CourseAlias.pipe(T.HttpBody())),
+          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4902,8 +4059,8 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          shareMode: S.optional(SharedDriveFileShareModeEnum),
-          driveFile: S.optional(DriveFile),
+          shareMode: S.optional(S.String),
+          driveFile: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "SharedDriveFile" });
     case 4:
@@ -4917,16 +4074,16 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          link: S.optional(Link),
-          gem: S.optional(GeminiGem),
-          driveFile: S.optional(SharedDriveFile),
-          notebook: S.optional(NotebookLmNotebook),
-          youtubeVideo: S.optional(YouTubeVideo),
-          form: S.optional(Form),
+          link: S.optional(__S(2, __c0, 2)),
+          gem: S.optional(__S(18, __c2, 2)),
+          driveFile: S.optional(__S(19, __c2, 3)),
+          notebook: S.optional(__S(20, __c2, 4)),
+          youtubeVideo: S.optional(__S(3, __c0, 3)),
+          form: S.optional(__S(4, __c0, 4)),
         }),
       ).annotate({ identifier: "Material" });
     case 6:
-      return S.Array(Material);
+      return S.Array(__S(21, __c2, 5));
     case 7:
       return S.Array(S.String);
   }
@@ -4936,7 +4093,7 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          studentIds: S.optional(StringList),
+          studentIds: S.optional(__S(23, __c2, 7)),
         }),
       ).annotate({
         identifier: "IndividualStudentsOptions",
@@ -4945,24 +4102,24 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           updateTime: S.optional(S.String),
-          materials: S.optional(MaterialList),
+          materials: S.optional(__S(22, __c2, 6)),
           alternateLink: S.optional(S.String),
-          assigneeMode: S.optional(AnnouncementAssigneeModeEnum),
+          assigneeMode: S.optional(S.String),
           courseId: S.optional(S.String),
           text: S.optional(S.String),
           scheduledTime: S.optional(S.String),
           creatorUserId: S.optional(S.String),
           id: S.optional(S.String),
-          individualStudentsOptions: S.optional(IndividualStudentsOptions),
+          individualStudentsOptions: S.optional(__S(24, __c3, 0)),
           creationTime: S.optional(S.String),
-          state: S.optional(AnnouncementStateEnum),
+          state: S.optional(S.String),
         }),
       ).annotate({ identifier: "Announcement" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           courseId: S.String.pipe(T.Label()),
-          body: S.optional(Announcement.pipe(T.HttpBody())),
+          body: S.optional(__S(25, __c3, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4983,7 +4140,7 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "CopyHistory" });
     case 4:
-      return S.Array(CopyHistory);
+      return S.Array(__S(27, __c3, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -5014,16 +4171,16 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          copyHistory: S.optional(CopyHistoryList),
+          copyHistory: S.optional(__S(28, __c3, 4)),
           courseId: S.optional(S.String),
-          teacherViewUri: S.optional(EmbedUri),
-          dueDate: S.optional(Classroom_Date),
+          teacherViewUri: S.optional(__S(29, __c3, 5)),
+          dueDate: S.optional(__S(30, __c3, 6)),
           title: S.optional(S.String),
           maxPoints: S.optional(S.Number),
           postId: S.optional(S.String),
-          studentViewUri: S.optional(EmbedUri),
-          studentWorkReviewUri: S.optional(EmbedUri),
-          dueTime: S.optional(TimeOfDay),
+          studentViewUri: S.optional(__S(29, __c3, 5)),
+          studentWorkReviewUri: S.optional(__S(29, __c3, 5)),
+          dueTime: S.optional(__S(31, __c3, 7)),
           id: S.optional(S.String),
           itemId: S.optional(S.String),
         }),
@@ -5035,7 +4192,7 @@ function __c4(j: number): any {
           itemId: S.String.pipe(T.Label()),
           postId: S.optional(S.String.pipe(T.Query())),
           addOnToken: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(AddOnAttachment.pipe(T.HttpBody())),
+          body: S.optional(__S(32, __c4, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5049,13 +4206,13 @@ function __c4(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          choices: S.optional(StringList),
+          choices: S.optional(__S(23, __c2, 7)),
         }),
       ).annotate({ identifier: "MultipleChoiceQuestion" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          studentWorkFolder: S.optional(DriveFolder),
+          studentWorkFolder: S.optional(__S(10, __c1, 2)),
         }),
       ).annotate({ identifier: "Assignment" });
     case 4:
@@ -5063,35 +4220,35 @@ function __c4(j: number): any {
         S.Struct({
           topicId: S.optional(S.String),
           scheduledTime: S.optional(S.String),
-          workType: S.optional(CourseWorkWorkTypeEnum),
-          gradeCategory: S.optional(GradeCategory),
-          state: S.optional(CourseWorkStateEnum),
+          workType: S.optional(S.String),
+          gradeCategory: S.optional(__S(11, __c1, 3)),
+          state: S.optional(S.String),
           creationTime: S.optional(S.String),
           associatedWithDeveloper: S.optional(S.Boolean),
           id: S.optional(S.String),
           courseId: S.optional(S.String),
           title: S.optional(S.String),
-          dueTime: S.optional(TimeOfDay),
+          dueTime: S.optional(__S(31, __c3, 7)),
           gradingPeriodId: S.optional(S.String),
-          submissionModificationMode: S.optional(CourseWorkSubmissionModificationModeEnum),
+          submissionModificationMode: S.optional(S.String),
           updateTime: S.optional(S.String),
-          multipleChoiceQuestion: S.optional(MultipleChoiceQuestion),
-          dueDate: S.optional(Classroom_Date),
-          materials: S.optional(MaterialList),
+          multipleChoiceQuestion: S.optional(__S(34, __c4, 2)),
+          dueDate: S.optional(__S(30, __c3, 6)),
+          materials: S.optional(__S(22, __c2, 6)),
           alternateLink: S.optional(S.String),
           maxPoints: S.optional(S.Number),
           creatorUserId: S.optional(S.String),
           description: S.optional(S.String),
-          assigneeMode: S.optional(CourseWorkAssigneeModeEnum),
-          individualStudentsOptions: S.optional(IndividualStudentsOptions),
-          assignment: S.optional(Assignment),
+          assigneeMode: S.optional(S.String),
+          individualStudentsOptions: S.optional(__S(24, __c3, 0)),
+          assignment: S.optional(__S(35, __c4, 3)),
         }),
       ).annotate({ identifier: "CourseWork" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           courseId: S.String.pipe(T.Label()),
-          body: S.optional(CourseWork.pipe(T.HttpBody())),
+          body: S.optional(__S(36, __c4, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5109,7 +4266,7 @@ function __c4(j: number): any {
           courseId: S.String.pipe(T.Label()),
           addOnToken: S.optional(S.String.pipe(T.Query())),
           postId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(AddOnAttachment.pipe(T.HttpBody())),
+          body: S.optional(__S(32, __c4, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5125,18 +4282,18 @@ function __c4(j: number): any {
         S.Struct({
           updateTime: S.optional(S.String),
           alternateLink: S.optional(S.String),
-          assigneeMode: S.optional(CourseWorkMaterialAssigneeModeEnum),
+          assigneeMode: S.optional(S.String),
           description: S.optional(S.String),
           creatorUserId: S.optional(S.String),
           id: S.optional(S.String),
           creationTime: S.optional(S.String),
           title: S.optional(S.String),
           courseId: S.optional(S.String),
-          state: S.optional(CourseWorkMaterialStateEnum),
+          state: S.optional(S.String),
           topicId: S.optional(S.String),
-          materials: S.optional(MaterialList),
+          materials: S.optional(__S(22, __c2, 6)),
           scheduledTime: S.optional(S.String),
-          individualStudentsOptions: S.optional(IndividualStudentsOptions),
+          individualStudentsOptions: S.optional(__S(24, __c3, 0)),
         }),
       ).annotate({ identifier: "CourseWorkMaterial" });
   }
@@ -5147,7 +4304,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           courseId: S.String.pipe(T.Label()),
-          body: S.optional(CourseWorkMaterial.pipe(T.HttpBody())),
+          body: S.optional(__S(39, __c4, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5165,7 +4322,7 @@ function __c5(j: number): any {
           itemId: S.String.pipe(T.Label()),
           addOnToken: S.optional(S.String.pipe(T.Query())),
           courseId: S.String.pipe(T.Label()),
-          body: S.optional(AddOnAttachment.pipe(T.HttpBody())),
+          body: S.optional(__S(32, __c4, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5186,22 +4343,22 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "Level" });
     case 3:
-      return S.Array(Level);
+      return S.Array(__S(42, __c5, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          levels: S.optional(LevelList),
+          levels: S.optional(__S(43, __c5, 3)),
           description: S.optional(S.String),
           title: S.optional(S.String),
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "Criterion" });
     case 5:
-      return S.Array(Criterion);
+      return S.Array(__S(44, __c5, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          criteria: S.optional(CriterionList),
+          criteria: S.optional(__S(45, __c5, 5)),
           id: S.optional(S.String),
           courseWorkId: S.optional(S.String),
           courseId: S.optional(S.String),
@@ -5215,7 +4372,7 @@ function __c5(j: number): any {
         S.Struct({
           courseWorkId: S.String.pipe(T.Label()),
           courseId: S.String.pipe(T.Label()),
-          body: S.optional(Rubric.pipe(T.HttpBody())),
+          body: S.optional(__S(46, __c5, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5237,7 +4394,7 @@ function __c6(j: number): any {
           postId: S.String.pipe(T.Label()),
           itemId: S.optional(S.String.pipe(T.Query())),
           courseId: S.String.pipe(T.Label()),
-          body: S.optional(AddOnAttachment.pipe(T.HttpBody())),
+          body: S.optional(__S(32, __c4, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5260,7 +4417,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           courseId: S.String.pipe(T.Label()),
-          body: S.optional(StudentGroup.pipe(T.HttpBody())),
+          body: S.optional(__S(49, __c6, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5284,7 +4441,7 @@ function __c6(j: number): any {
         S.Struct({
           courseId: S.String.pipe(T.Label()),
           studentGroupId: S.String.pipe(T.Label()),
-          body: S.optional(StudentGroupMember.pipe(T.HttpBody())),
+          body: S.optional(__S(51, __c6, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5298,11 +4455,11 @@ function __c6(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          permission: S.optional(GlobalPermissionPermissionEnum),
+          permission: S.optional(S.String),
         }),
       ).annotate({ identifier: "GlobalPermission" });
     case 6:
-      return S.Array(GlobalPermission);
+      return S.Array(__S(53, __c6, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -5319,10 +4476,10 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           photoUrl: S.optional(S.String),
-          permissions: S.optional(GlobalPermissionList),
+          permissions: S.optional(__S(54, __c6, 6)),
           id: S.optional(S.String),
           emailAddress: S.optional(S.String),
-          name: S.optional(Name),
+          name: S.optional(__S(55, __c6, 7)),
           verifiedTeacher: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "UserProfile" });
@@ -5330,8 +4487,8 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           userId: S.optional(S.String),
-          profile: S.optional(UserProfile),
-          studentWorkFolder: S.optional(DriveFolder),
+          profile: S.optional(__S(56, __c7, 0)),
+          studentWorkFolder: S.optional(__S(10, __c1, 2)),
           courseId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Student" });
@@ -5340,7 +4497,7 @@ function __c7(j: number): any {
         S.Struct({
           courseId: S.String.pipe(T.Label()),
           enrollmentCode: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Student.pipe(T.HttpBody())),
+          body: S.optional(__S(57, __c7, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5356,14 +4513,14 @@ function __c7(j: number): any {
         S.Struct({
           courseId: S.optional(S.String),
           userId: S.optional(S.String),
-          profile: S.optional(UserProfile),
+          profile: S.optional(__S(56, __c7, 0)),
         }),
       ).annotate({ identifier: "Teacher" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           courseId: S.String.pipe(T.Label()),
-          body: S.optional(Teacher.pipe(T.HttpBody())),
+          body: S.optional(__S(59, __c7, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5387,7 +4544,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           courseId: S.String.pipe(T.Label()),
-          body: S.optional(Topic.pipe(T.HttpBody())),
+          body: S.optional(__S(61, __c7, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5402,7 +4559,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           courseId: S.optional(S.String),
-          role: S.optional(InvitationRoleEnum),
+          role: S.optional(S.String),
           userId: S.optional(S.String),
           id: S.optional(S.String),
         }),
@@ -5414,7 +4571,7 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(Invitation.pipe(T.HttpBody())),
+          body: S.optional(__S(63, __c7, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5438,24 +4595,24 @@ function __c8(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          courseWorkChangesInfo: S.optional(CourseWorkChangesInfo),
-          feedType: S.optional(FeedFeedTypeEnum),
-          courseRosterChangesInfo: S.optional(CourseRosterChangesInfo),
+          courseWorkChangesInfo: S.optional(__S(66, __c8, 2)),
+          feedType: S.optional(S.String),
+          courseRosterChangesInfo: S.optional(__S(66, __c8, 2)),
         }),
       ).annotate({ identifier: "Feed" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          cloudPubsubTopic: S.optional(CloudPubsubTopic),
+          cloudPubsubTopic: S.optional(__S(65, __c8, 1)),
           registrationId: S.optional(S.String),
           expiryTime: S.optional(S.String),
-          feed: S.optional(Feed),
+          feed: S.optional(__S(67, __c8, 3)),
         }),
       ).annotate({ identifier: "Registration" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(Registration.pipe(T.HttpBody())),
+          body: S.optional(__S(68, __c8, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5471,7 +4628,7 @@ function __c8(j: number): any {
         S.Struct({
           studentId: S.optional(S.String),
           invitationId: S.optional(S.String),
-          state: S.optional(GuardianInvitationStateEnum),
+          state: S.optional(S.String),
           creationTime: S.optional(S.String),
           invitedEmailAddress: S.optional(S.String),
         }),
@@ -5480,7 +4637,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           studentId: S.String.pipe(T.Label()),
-          body: S.optional(GuardianInvitation.pipe(T.HttpBody())),
+          body: S.optional(__S(70, __c8, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5806,9 +4963,9 @@ function __c11(j: number): any {
           courseId: S.optional(S.String),
           postId: S.optional(S.String),
           supportsStudentWork: S.optional(S.Boolean),
-          studentContext: S.optional(StudentContext),
+          studentContext: S.optional(__S(91, __c11, 3)),
           itemId: S.optional(S.String),
-          teacherContext: S.optional(TeacherContext),
+          teacherContext: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({ identifier: "AddOnContext" });
     case 5:
@@ -5970,7 +5127,7 @@ function __c12(j: number): any {
           userId: S.optional(S.String),
           id: S.optional(S.String),
           pointsEarned: S.optional(S.Number),
-          postSubmissionState: S.optional(AddOnAttachmentStudentSubmissionPostSubmissionStateEnum),
+          postSubmissionState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AddOnAttachmentStudentSubmission",
@@ -6052,7 +5209,7 @@ function __c13(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          gradeChangeType: S.optional(GradeHistoryGradeChangeTypeEnum),
+          gradeChangeType: S.optional(S.String),
           pointsEarned: S.optional(S.Number),
           actorUserId: S.optional(S.String),
           gradeTimestamp: S.optional(S.String),
@@ -6063,19 +5220,19 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           actorUserId: S.optional(S.String),
-          state: S.optional(StateHistoryStateEnum),
+          state: S.optional(S.String),
           stateTimestamp: S.optional(S.String),
         }),
       ).annotate({ identifier: "StateHistory" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          gradeHistory: S.optional(GradeHistory),
-          stateHistory: S.optional(StateHistory),
+          gradeHistory: S.optional(__S(108, __c13, 4)),
+          stateHistory: S.optional(__S(109, __c13, 5)),
         }),
       ).annotate({ identifier: "SubmissionHistory" });
     case 7:
-      return S.Array(SubmissionHistory);
+      return S.Array(__S(110, __c13, 6));
   }
 }
 function __c14(j: number): any {
@@ -6089,46 +5246,46 @@ function __c14(j: number): any {
         }),
       ).annotate({ identifier: "RubricGrade" });
     case 1:
-      return S.Record(S.String, RubricGrade);
+      return S.Record(S.String, __S(112, __c14, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          form: S.optional(Form),
-          driveFile: S.optional(DriveFile),
-          link: S.optional(Link),
-          youTubeVideo: S.optional(YouTubeVideo),
+          form: S.optional(__S(4, __c0, 4)),
+          driveFile: S.optional(__S(5, __c0, 5)),
+          link: S.optional(__S(2, __c0, 2)),
+          youTubeVideo: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({ identifier: "Attachment" });
     case 3:
-      return S.Array(Attachment);
+      return S.Array(__S(114, __c14, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          attachments: S.optional(AttachmentList),
+          attachments: S.optional(__S(115, __c14, 3)),
         }),
       ).annotate({ identifier: "AssignmentSubmission" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          shortAnswerSubmission: S.optional(ShortAnswerSubmission),
-          multipleChoiceSubmission: S.optional(MultipleChoiceSubmission),
-          submissionHistory: S.optional(SubmissionHistoryList),
+          shortAnswerSubmission: S.optional(__S(107, __c13, 3)),
+          multipleChoiceSubmission: S.optional(__S(107, __c13, 3)),
+          submissionHistory: S.optional(__S(111, __c13, 7)),
           userId: S.optional(S.String),
           associatedWithDeveloper: S.optional(S.Boolean),
           updateTime: S.optional(S.String),
           alternateLink: S.optional(S.String),
-          assignedRubricGrades: S.optional(RubricGradeMap),
+          assignedRubricGrades: S.optional(__S(113, __c14, 1)),
           late: S.optional(S.Boolean),
           creationTime: S.optional(S.String),
           id: S.optional(S.String),
           assignedGrade: S.optional(S.Number),
           courseWorkId: S.optional(S.String),
-          assignmentSubmission: S.optional(AssignmentSubmission),
+          assignmentSubmission: S.optional(__S(116, __c14, 4)),
           courseId: S.optional(S.String),
-          courseWorkType: S.optional(StudentSubmissionCourseWorkTypeEnum),
+          courseWorkType: S.optional(S.String),
           draftGrade: S.optional(S.Number),
-          draftRubricGrades: S.optional(RubricGradeMap),
-          state: S.optional(StudentSubmissionStateEnum),
+          draftRubricGrades: S.optional(__S(113, __c14, 1)),
+          state: S.optional(S.String),
         }),
       ).annotate({ identifier: "StudentSubmission" });
     case 6:
@@ -6232,17 +5389,17 @@ function __c15(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           title: S.optional(S.String),
-          startDate: S.optional(Classroom_Date),
-          endDate: S.optional(Classroom_Date),
+          startDate: S.optional(__S(30, __c3, 6)),
+          endDate: S.optional(__S(30, __c3, 6)),
         }),
       ).annotate({ identifier: "GradingPeriod" });
     case 5:
-      return S.Array(GradingPeriod);
+      return S.Array(__S(124, __c15, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           applyToExistingCoursework: S.optional(S.Boolean),
-          gradingPeriods: S.optional(GradingPeriodList),
+          gradingPeriods: S.optional(__S(125, __c15, 5)),
         }),
       ).annotate({ identifier: "GradingPeriodSettings" });
     case 7:
@@ -6307,19 +5464,19 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           studentId: S.optional(S.String),
-          guardianProfile: S.optional(UserProfile),
+          guardianProfile: S.optional(__S(56, __c7, 0)),
           guardianId: S.optional(S.String),
           invitedEmailAddress: S.optional(S.String),
         }),
       ).annotate({ identifier: "Guardian" });
     case 4:
-      return S.Array(ListCoursesCourseStatesEnum);
+      return S.Array(S.String);
     case 5:
       return S.suspend(() =>
         S.Struct({
           studentId: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          courseStates: S.optional(ListCoursesCourseStatesEnumList.pipe(T.Query())),
+          courseStates: S.optional(__S(132, __c16, 4).pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           teacherId: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -6331,12 +5488,12 @@ function __c16(j: number): any {
         ),
       ).annotate({ identifier: "ListCoursesRequest" });
     case 6:
-      return S.Array(Course);
+      return S.Array(__S(14, __c1, 6));
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          courses: S.optional(CourseList),
+          courses: S.optional(__S(134, __c16, 6)),
         }),
       ).annotate({ identifier: "ListCoursesResponse" });
   }
@@ -6360,11 +5517,11 @@ function __c17(j: number): any {
         identifier: "ListCoursesAliasesRequest",
       });
     case 1:
-      return S.Array(CourseAlias);
+      return S.Array(__S(16, __c2, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          aliases: S.optional(CourseAliasList),
+          aliases: S.optional(__S(137, __c17, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -6374,9 +5531,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           orderBy: S.optional(S.String.pipe(T.Query())),
-          announcementStates: S.optional(
-            ListCoursesAnnouncementsAnnouncementStatesEnumList.pipe(T.Query()),
-          ),
+          announcementStates: S.optional(__S(132, __c16, 4).pipe(T.Query())),
           courseId: S.String.pipe(T.Label()),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -6391,11 +5546,11 @@ function __c17(j: number): any {
         identifier: "ListCoursesAnnouncementsRequest",
       });
     case 4:
-      return S.Array(Announcement);
+      return S.Array(__S(25, __c3, 1));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          announcements: S.optional(AnnouncementList),
+          announcements: S.optional(__S(140, __c17, 4)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -6420,7 +5575,7 @@ function __c17(j: number): any {
         identifier: "ListCoursesAnnouncementsAddOnAttachmentsRequest",
       });
     case 7:
-      return S.Array(AddOnAttachment);
+      return S.Array(__S(32, __c4, 0));
   }
 }
 function __c18(j: number): any {
@@ -6428,7 +5583,7 @@ function __c18(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          addOnAttachments: S.optional(AddOnAttachmentList),
+          addOnAttachments: S.optional(__S(143, __c17, 7)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -6440,9 +5595,7 @@ function __c18(j: number): any {
           pageSize: S.optional(S.Number.pipe(T.Query())),
           courseId: S.String.pipe(T.Label()),
           orderBy: S.optional(S.String.pipe(T.Query())),
-          courseWorkStates: S.optional(
-            ListCoursesCourseWorkCourseWorkStatesEnumList.pipe(T.Query()),
-          ),
+          courseWorkStates: S.optional(__S(132, __c16, 4).pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -6455,12 +5608,12 @@ function __c18(j: number): any {
         identifier: "ListCoursesCourseWorkRequest",
       });
     case 2:
-      return S.Array(CourseWork);
+      return S.Array(__S(36, __c4, 4));
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          courseWork: S.optional(CourseWorkList),
+          courseWork: S.optional(__S(146, __c18, 2)),
         }),
       ).annotate({ identifier: "ListCourseWorkResponse" });
     case 4:
@@ -6486,9 +5639,7 @@ function __c18(j: number): any {
         S.Struct({
           materialDriveId: S.optional(S.String.pipe(T.Query())),
           materialLink: S.optional(S.String.pipe(T.Query())),
-          courseWorkMaterialStates: S.optional(
-            ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnumList.pipe(T.Query()),
-          ),
+          courseWorkMaterialStates: S.optional(__S(132, __c16, 4).pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           courseId: S.String.pipe(T.Label()),
@@ -6504,12 +5655,12 @@ function __c18(j: number): any {
         identifier: "ListCoursesCourseWorkMaterialsRequest",
       });
     case 6:
-      return S.Array(CourseWorkMaterial);
+      return S.Array(__S(39, __c4, 7));
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          courseWorkMaterial: S.optional(CourseWorkMaterialList),
+          courseWorkMaterial: S.optional(__S(150, __c18, 6)),
         }),
       ).annotate({
         identifier: "ListCourseWorkMaterialResponse",
@@ -6554,12 +5705,12 @@ function __c19(j: number): any {
         identifier: "ListCoursesCourseWorkRubricsRequest",
       });
     case 2:
-      return S.Array(Rubric);
+      return S.Array(__S(46, __c5, 6));
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          rubrics: S.optional(RubricList),
+          rubrics: S.optional(__S(154, __c19, 2)),
         }),
       ).annotate({ identifier: "ListRubricsResponse" });
     case 4:
@@ -6569,8 +5720,8 @@ function __c19(j: number): any {
           userId: S.optional(S.String.pipe(T.Query())),
           courseId: S.String.pipe(T.Label()),
           courseWorkId: S.String.pipe(T.Label()),
-          states: S.optional(ListCoursesCourseWorkStudentSubmissionsStatesEnumList.pipe(T.Query())),
-          late: S.optional(ListCoursesCourseWorkStudentSubmissionsLateEnum.pipe(T.Query())),
+          states: S.optional(__S(132, __c16, 4).pipe(T.Query())),
+          late: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -6583,12 +5734,12 @@ function __c19(j: number): any {
         identifier: "ListCoursesCourseWorkStudentSubmissionsRequest",
       });
     case 5:
-      return S.Array(StudentSubmission);
+      return S.Array(__S(117, __c14, 5));
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          studentSubmissions: S.optional(StudentSubmissionList),
+          studentSubmissions: S.optional(__S(157, __c19, 5)),
         }),
       ).annotate({
         identifier: "ListStudentSubmissionsResponse",
@@ -6632,11 +5783,11 @@ function __c20(j: number): any {
         identifier: "ListCoursesStudentGroupsRequest",
       });
     case 1:
-      return S.Array(StudentGroup);
+      return S.Array(__S(49, __c6, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          studentGroups: S.optional(StudentGroupList),
+          studentGroups: S.optional(__S(161, __c20, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -6660,12 +5811,12 @@ function __c20(j: number): any {
         identifier: "ListCoursesStudentGroupsStudentGroupMembersRequest",
       });
     case 4:
-      return S.Array(StudentGroupMember);
+      return S.Array(__S(51, __c6, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          studentGroupMembers: S.optional(StudentGroupMemberList),
+          studentGroupMembers: S.optional(__S(164, __c20, 4)),
         }),
       ).annotate({
         identifier: "ListStudentGroupMembersResponse",
@@ -6687,7 +5838,7 @@ function __c20(j: number): any {
         identifier: "ListCoursesStudentsRequest",
       });
     case 7:
-      return S.Array(Student);
+      return S.Array(__S(57, __c7, 1));
   }
 }
 function __c21(j: number): any {
@@ -6696,7 +5847,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          students: S.optional(StudentList),
+          students: S.optional(__S(167, __c20, 7)),
         }),
       ).annotate({ identifier: "ListStudentsResponse" });
     case 1:
@@ -6716,12 +5867,12 @@ function __c21(j: number): any {
         identifier: "ListCoursesTeachersRequest",
       });
     case 2:
-      return S.Array(Teacher);
+      return S.Array(__S(59, __c7, 3));
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          teachers: S.optional(TeacherList),
+          teachers: S.optional(__S(170, __c21, 2)),
         }),
       ).annotate({ identifier: "ListTeachersResponse" });
     case 4:
@@ -6739,11 +5890,11 @@ function __c21(j: number): any {
         ),
       ).annotate({ identifier: "ListCoursesTopicsRequest" });
     case 5:
-      return S.Array(Topic);
+      return S.Array(__S(61, __c7, 5));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          topic: S.optional(TopicList),
+          topic: S.optional(__S(173, __c21, 5)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListTopicResponse" });
@@ -6767,12 +5918,12 @@ function __c21(j: number): any {
 function __c22(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Invitation);
+      return S.Array(__S(63, __c7, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          invitations: S.optional(InvitationList),
+          invitations: S.optional(__S(176, __c22, 0)),
         }),
       ).annotate({ identifier: "ListInvitationsResponse" });
     case 2:
@@ -6781,7 +5932,7 @@ function __c22(j: number): any {
           studentId: S.String.pipe(T.Label()),
           pageToken: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
-          states: S.optional(ListUserProfilesGuardianInvitationsStatesEnumList.pipe(T.Query())),
+          states: S.optional(__S(132, __c16, 4).pipe(T.Query())),
           invitedEmailAddress: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -6794,11 +5945,11 @@ function __c22(j: number): any {
         identifier: "ListUserProfilesGuardianInvitationsRequest",
       });
     case 3:
-      return S.Array(GuardianInvitation);
+      return S.Array(__S(70, __c8, 6));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          guardianInvitations: S.optional(GuardianInvitationList),
+          guardianInvitations: S.optional(__S(179, __c22, 3)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -6822,11 +5973,11 @@ function __c22(j: number): any {
         identifier: "ListUserProfilesGuardiansRequest",
       });
     case 6:
-      return S.Array(Guardian);
+      return S.Array(__S(131, __c16, 3));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          guardians: S.optional(GuardianList),
+          guardians: S.optional(__S(182, __c22, 6)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListGuardiansResponse" });
@@ -6837,8 +5988,8 @@ function __c23(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          addStudentIds: S.optional(StringList),
-          removeStudentIds: S.optional(StringList),
+          addStudentIds: S.optional(__S(23, __c2, 7)),
+          removeStudentIds: S.optional(__S(23, __c2, 7)),
         }),
       ).annotate({
         identifier: "ModifyIndividualStudentsOptions",
@@ -6846,8 +5997,8 @@ function __c23(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          assigneeMode: S.optional(ModifyAnnouncementAssigneesRequestAssigneeModeEnum),
-          modifyIndividualStudentsOptions: S.optional(ModifyIndividualStudentsOptions),
+          assigneeMode: S.optional(S.String),
+          modifyIndividualStudentsOptions: S.optional(__S(184, __c23, 0)),
         }),
       ).annotate({
         identifier: "ModifyAnnouncementAssigneesRequest",
@@ -6857,7 +6008,7 @@ function __c23(j: number): any {
         S.Struct({
           courseId: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          body: S.optional(ModifyAnnouncementAssigneesRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(185, __c23, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6871,8 +6022,8 @@ function __c23(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          modifyIndividualStudentsOptions: S.optional(ModifyIndividualStudentsOptions),
-          assigneeMode: S.optional(ModifyCourseWorkAssigneesRequestAssigneeModeEnum),
+          modifyIndividualStudentsOptions: S.optional(__S(184, __c23, 0)),
+          assigneeMode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ModifyCourseWorkAssigneesRequest",
@@ -6882,7 +6033,7 @@ function __c23(j: number): any {
         S.Struct({
           courseId: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          body: S.optional(ModifyCourseWorkAssigneesRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(187, __c23, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6896,7 +6047,7 @@ function __c23(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          addAttachments: S.optional(AttachmentList),
+          addAttachments: S.optional(__S(115, __c14, 3)),
         }),
       ).annotate({ identifier: "ModifyAttachmentsRequest" });
     case 6:
@@ -6905,7 +6056,7 @@ function __c23(j: number): any {
           courseId: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           courseWorkId: S.String.pipe(T.Label()),
-          body: S.optional(ModifyAttachmentsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(189, __c23, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6921,7 +6072,7 @@ function __c23(j: number): any {
         S.Struct({
           id: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Course.pipe(T.HttpBody())),
+          body: S.optional(__S(14, __c1, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6940,7 +6091,7 @@ function __c24(j: number): any {
           updateMask: S.optional(S.String.pipe(T.Query())),
           courseId: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          body: S.optional(Announcement.pipe(T.HttpBody())),
+          body: S.optional(__S(25, __c3, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6959,7 +6110,7 @@ function __c24(j: number): any {
           itemId: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           attachmentId: S.String.pipe(T.Label()),
-          body: S.optional(AddOnAttachment.pipe(T.HttpBody())),
+          body: S.optional(__S(32, __c4, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6976,7 +6127,7 @@ function __c24(j: number): any {
           updateMask: S.optional(S.String.pipe(T.Query())),
           courseId: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          body: S.optional(CourseWork.pipe(T.HttpBody())),
+          body: S.optional(__S(36, __c4, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6995,7 +6146,7 @@ function __c24(j: number): any {
           attachmentId: S.String.pipe(T.Label()),
           courseId: S.String.pipe(T.Label()),
           itemId: S.String.pipe(T.Label()),
-          body: S.optional(AddOnAttachment.pipe(T.HttpBody())),
+          body: S.optional(__S(32, __c4, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7015,7 +6166,7 @@ function __c24(j: number): any {
           attachmentId: S.String.pipe(T.Label()),
           submissionId: S.String.pipe(T.Label()),
           itemId: S.String.pipe(T.Label()),
-          body: S.optional(AddOnAttachmentStudentSubmission.pipe(T.HttpBody())),
+          body: S.optional(__S(102, __c12, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7032,7 +6183,7 @@ function __c24(j: number): any {
           id: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           courseId: S.String.pipe(T.Label()),
-          body: S.optional(CourseWorkMaterial.pipe(T.HttpBody())),
+          body: S.optional(__S(39, __c4, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7051,7 +6202,7 @@ function __c24(j: number): any {
           attachmentId: S.String.pipe(T.Label()),
           postId: S.optional(S.String.pipe(T.Query())),
           courseId: S.String.pipe(T.Label()),
-          body: S.optional(AddOnAttachment.pipe(T.HttpBody())),
+          body: S.optional(__S(32, __c4, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7069,7 +6220,7 @@ function __c24(j: number): any {
           courseWorkId: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Rubric.pipe(T.HttpBody())),
+          body: S.optional(__S(46, __c5, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7091,7 +6242,7 @@ function __c25(j: number): any {
           updateMask: S.optional(S.String.pipe(T.Query())),
           id: S.String.pipe(T.Label()),
           courseWorkId: S.String.pipe(T.Label()),
-          body: S.optional(StudentSubmission.pipe(T.HttpBody())),
+          body: S.optional(__S(117, __c14, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7110,7 +6261,7 @@ function __c25(j: number): any {
           updateMask: S.optional(S.String.pipe(T.Query())),
           postId: S.String.pipe(T.Label()),
           attachmentId: S.String.pipe(T.Label()),
-          body: S.optional(AddOnAttachment.pipe(T.HttpBody())),
+          body: S.optional(__S(32, __c4, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7130,7 +6281,7 @@ function __c25(j: number): any {
           itemId: S.optional(S.String.pipe(T.Query())),
           attachmentId: S.String.pipe(T.Label()),
           submissionId: S.String.pipe(T.Label()),
-          body: S.optional(AddOnAttachmentStudentSubmission.pipe(T.HttpBody())),
+          body: S.optional(__S(102, __c12, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7147,7 +6298,7 @@ function __c25(j: number): any {
           updateMask: S.optional(S.String.pipe(T.Query())),
           id: S.String.pipe(T.Label()),
           courseId: S.String.pipe(T.Label()),
-          body: S.optional(StudentGroup.pipe(T.HttpBody())),
+          body: S.optional(__S(49, __c6, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7164,7 +6315,7 @@ function __c25(j: number): any {
           courseId: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Topic.pipe(T.HttpBody())),
+          body: S.optional(__S(61, __c7, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7181,7 +6332,7 @@ function __c25(j: number): any {
           invitationId: S.String.pipe(T.Label()),
           studentId: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(GuardianInvitation.pipe(T.HttpBody())),
+          body: S.optional(__S(70, __c8, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7198,7 +6349,7 @@ function __c25(j: number): any {
           courseId: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           courseWorkId: S.String.pipe(T.Label()),
-          body: S.optional(TeacherContext.pipe(T.HttpBody())),
+          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7215,7 +6366,7 @@ function __c25(j: number): any {
           courseId: S.String.pipe(T.Label()),
           courseWorkId: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          body: S.optional(TeacherContext.pipe(T.HttpBody())),
+          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7236,7 +6387,7 @@ function __c26(j: number): any {
           id: S.String.pipe(T.Label()),
           courseId: S.String.pipe(T.Label()),
           courseWorkId: S.String.pipe(T.Label()),
-          body: S.optional(TeacherContext.pipe(T.HttpBody())),
+          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7251,7 +6402,7 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          body: S.optional(Course.pipe(T.HttpBody())),
+          body: S.optional(__S(14, __c1, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7265,7 +6416,7 @@ function __c26(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           courseId: S.String.pipe(T.Label()),
-          body: S.optional(GradingPeriodSettings.pipe(T.HttpBody())),
+          body: S.optional(__S(126, __c15, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7283,7 +6434,7 @@ function __c26(j: number): any {
           courseId: S.String.pipe(T.Label()),
           courseWorkId: S.String.pipe(T.Label()),
           id: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Rubric.pipe(T.HttpBody())),
+          body: S.optional(__S(46, __c5, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7295,4 +6446,9 @@ function __c26(j: number): any {
         identifier: "UpdateRubricCoursesCourseWorkRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

@@ -11,6 +11,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GoogleWorkspaceOpError, GoogleWorkspaceOpContext };
 
@@ -70,14 +72,7 @@ export interface GetApplicationsRequest {
   /** ID of the application resource to be retrieved. */
   applicationId: string;
 }
-const GetApplicationsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GetApplicationsRequest>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<StringList>;
-
 /** Template for application transfer parameters. */
 export interface ApplicationTransferParam {
   /** The type of the transfer parameter, such as `PRIVACY_LEVEL`. */
@@ -85,17 +80,7 @@ export interface ApplicationTransferParam {
   /** The value of the transfer parameter, such as `PRIVATE` or `SHARED`. */
   value?: StringList;
 }
-const ApplicationTransferParam = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<ApplicationTransferParam>;
-
 export type ApplicationTransferParamList = Array<ApplicationTransferParam>;
-const ApplicationTransferParamList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ApplicationTransferParamList>;
-
 /** Application resources represent applications installed on the domain that support transferring ownership of user data. */
 export interface Application {
   /** Etag of the resource. */
@@ -109,14 +94,10 @@ export interface Application {
   /** Identifies the resource as a DataTransfer Application Resource. */
   kind?: string;
 }
-const Application = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Application>;
-
 export interface GetTransfersRequest {
   /** ID of the resource to be retrieved. This is returned in the response from the insert method. */
   dataTransferId: string;
 }
-const GetTransfersRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<GetTransfersRequest>;
-
 /** Template to map fields of ApplicationDataTransfer resource. */
 export interface ApplicationDataTransfer {
   /** The transfer parameters for the application. These parameters are used to select the data which will get transferred in context of this application. For more information about the specific values available for each application, see the [Transfer parameters](https://developers.google.com/workspace/admin/data-transfer/v1/parameters) reference. */
@@ -126,17 +107,7 @@ export interface ApplicationDataTransfer {
   /** The application's ID. */
   applicationId?: string;
 }
-const ApplicationDataTransfer = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ApplicationDataTransfer>;
-
 export type ApplicationDataTransferList = Array<ApplicationDataTransfer>;
-const ApplicationDataTransferList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ApplicationDataTransferList>;
-
 /** A Transfer resource represents the transfer of the ownership of user data between users. */
 export interface DataTransfer {
   /** Identifies the resource as a DataTransfer request. */
@@ -156,17 +127,10 @@ export interface DataTransfer {
   /** Read-only. The transfer's ID. */
   id?: string;
 }
-const DataTransfer = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<DataTransfer>;
-
 export interface InsertTransfersRequest {
   /** Request body */
   body?: DataTransfer;
 }
-const InsertTransfersRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<InsertTransfersRequest>;
-
 export interface ListApplicationsRequest {
   /** Immutable ID of the Google Workspace account. */
   customerId?: string;
@@ -175,14 +139,7 @@ export interface ListApplicationsRequest {
   /** Token to specify next page in the list. */
   pageToken?: string;
 }
-const ListApplicationsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ListApplicationsRequest>;
-
 export type ApplicationList = Array<Application>;
-const ApplicationList = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ApplicationList>;
-
 /** Template for a collection of Applications. */
 export interface ApplicationsListResponse {
   /** Identifies the resource as a collection of Applications. */
@@ -194,11 +151,6 @@ export interface ApplicationsListResponse {
   /** The list of applications that support data transfer and are also installed for the customer. */
   applications?: ApplicationList;
 }
-const ApplicationsListResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ApplicationsListResponse>;
-
 export interface ListTransfersRequest {
   /** Destination user's profile ID. */
   newOwnerUserId?: string;
@@ -213,11 +165,7 @@ export interface ListTransfersRequest {
   /** Status of the transfer. */
   status?: string;
 }
-const ListTransfersRequest = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<ListTransfersRequest>;
-
 export type DataTransferList = Array<DataTransfer>;
-const DataTransferList = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<DataTransferList>;
-
 /** Template for a collection of DataTransfer resources. */
 export interface DataTransfersListResponse {
   /** Identifies the resource as a collection of data transfer requests. */
@@ -229,11 +177,6 @@ export interface DataTransfersListResponse {
   /** Token to specify the next page in the list. */
   nextPageToken?: string;
 }
-const DataTransfersListResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<DataTransfersListResponse>;
-
 export type GetApplicationsError = NotFound | Forbidden | GoogleWorkspaceOpError;
 /** Retrieves information about an application for the given application ID. */
 export const getApplications: API.OperationMethod<
@@ -242,8 +185,8 @@ export const getApplications: API.OperationMethod<
   GetApplicationsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApplicationsRequest,
-  output: Application,
+  input: __S(0, __c0, 0) as any as S.Schema<GetApplicationsRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<Application>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -257,8 +200,8 @@ export const getTransfers: API.OperationMethod<
   GetTransfersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTransfersRequest,
-  output: DataTransfer,
+  input: __S(5, __c0, 5) as any as S.Schema<GetTransfersRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DataTransfer>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -277,8 +220,8 @@ export const insertTransfers: API.OperationMethod<
   InsertTransfersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InsertTransfersRequest,
-  output: DataTransfer,
+  input: __S(9, __c1, 1) as any as S.Schema<InsertTransfersRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DataTransfer>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -293,8 +236,8 @@ export const listApplications: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   ApplicationsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListApplicationsRequest,
-  output: ApplicationsListResponse,
+  input: __S(10, __c1, 2) as any as S.Schema<ListApplicationsRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<ApplicationsListResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -310,8 +253,8 @@ export const listTransfers: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   DataTransfersListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListTransfersRequest,
-  output: DataTransfersListResponse,
+  input: __S(13, __c1, 5) as any as S.Schema<ListTransfersRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<DataTransfersListResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -339,16 +282,16 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.String),
-          value: S.optional(StringList),
+          value: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({ identifier: "ApplicationTransferParam" });
     case 3:
-      return S.Array(ApplicationTransferParam);
+      return S.Array(__S(2, __c0, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
-          transferParams: S.optional(ApplicationTransferParamList),
+          transferParams: S.optional(__S(3, __c0, 3)),
           id: S.optional(S.String),
           name: S.optional(S.String),
           kind: S.optional(S.String),
@@ -369,13 +312,13 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          applicationTransferParams: S.optional(ApplicationTransferParamList),
+          applicationTransferParams: S.optional(__S(3, __c0, 3)),
           applicationTransferStatus: S.optional(S.String),
           applicationId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApplicationDataTransfer" });
     case 7:
-      return S.Array(ApplicationDataTransfer);
+      return S.Array(__S(6, __c0, 6));
   }
 }
 function __c1(j: number): any {
@@ -387,7 +330,7 @@ function __c1(j: number): any {
           overallTransferStatusCode: S.optional(S.String),
           oldOwnerUserId: S.optional(S.String),
           newOwnerUserId: S.optional(S.String),
-          applicationDataTransfers: S.optional(ApplicationDataTransferList),
+          applicationDataTransfers: S.optional(__S(7, __c0, 7)),
           requestTime: S.optional(S.String),
           etag: S.optional(S.String),
           id: S.optional(S.String),
@@ -396,7 +339,7 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(DataTransfer.pipe(T.HttpBody())),
+          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -420,14 +363,14 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "ListApplicationsRequest" });
     case 3:
-      return S.Array(Application);
+      return S.Array(__S(4, __c0, 4));
     case 4:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           etag: S.optional(S.String),
           nextPageToken: S.optional(S.String),
-          applications: S.optional(ApplicationList),
+          applications: S.optional(__S(11, __c1, 3)),
         }),
       ).annotate({ identifier: "ApplicationsListResponse" });
     case 5:
@@ -448,17 +391,22 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "ListTransfersRequest" });
     case 6:
-      return S.Array(DataTransfer);
+      return S.Array(__S(8, __c1, 0));
     case 7:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           etag: S.optional(S.String),
-          dataTransfers: S.optional(DataTransferList),
+          dataTransfers: S.optional(__S(14, __c1, 6)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DataTransfersListResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

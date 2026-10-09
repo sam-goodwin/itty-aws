@@ -6,6 +6,8 @@ import { UnknownDaytonaError } from "../errors.ts";
 import { DaytonaProtocol, type DaytonaOpError, type DaytonaOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { DaytonaOpError, DaytonaOpContext };
 
@@ -13,11 +15,6 @@ export interface CreateInterpreterContextRequest {
   cwd?: string;
   language?: string;
 }
-const CreateInterpreterContextRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateInterpreterContextRequest>;
-
 export interface InterpreterContext {
   active: boolean;
   createdAt: string;
@@ -25,58 +22,19 @@ export interface InterpreterContext {
   id: string;
   language: string;
 }
-const InterpreterContext = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<InterpreterContext>;
-
 export interface DeleteInterpreterContextRequest {
   /** Context ID */
   id: string;
 }
-const DeleteInterpreterContextRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<DeleteInterpreterContextRequest>;
-
 export type DeleteInterpreterContextResponseBodyMap = { [key: string]: string | undefined };
-const DeleteInterpreterContextResponseBodyMap = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<DeleteInterpreterContextResponseBodyMap>;
-
 export type DeleteInterpreterContextResponse = DeleteInterpreterContextResponseBodyMap;
-const DeleteInterpreterContextResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<DeleteInterpreterContextResponse>;
-
 export interface ExecuteInterpreterCodeRequest {}
-const ExecuteInterpreterCodeRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ExecuteInterpreterCodeRequest>;
-
 export interface ExecuteInterpreterCodeResponse {}
-const ExecuteInterpreterCodeResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ExecuteInterpreterCodeResponse>;
-
 export interface ListInterpreterContextsRequest {}
-const ListInterpreterContextsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ListInterpreterContextsRequest>;
-
 export type ListContextsResponseContextsList = Array<InterpreterContext>;
-const ListContextsResponseContextsList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<ListContextsResponseContextsList>;
-
 export interface ListContextsResponse {
   contexts: ListContextsResponseContextsList;
 }
-const ListContextsResponse = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ListContextsResponse>;
-
 export type CreateInterpreterContextError = DaytonaOpError;
 /** Create a new interpreter context Creates a new isolated interpreter context with optional working directory and language */
 export const createInterpreterContext: API.OperationMethod<
@@ -85,8 +43,8 @@ export const createInterpreterContext: API.OperationMethod<
   CreateInterpreterContextError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateInterpreterContextRequest,
-  output: InterpreterContext,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateInterpreterContextRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<InterpreterContext>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -100,8 +58,8 @@ export const deleteInterpreterContext: API.OperationMethod<
   DeleteInterpreterContextError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteInterpreterContextRequest,
-  output: DeleteInterpreterContextResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<DeleteInterpreterContextRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<DeleteInterpreterContextResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -115,8 +73,8 @@ export const executeInterpreterCode: API.OperationMethod<
   ExecuteInterpreterCodeError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExecuteInterpreterCodeRequest,
-  output: ExecuteInterpreterCodeResponse,
+  input: __S(5, __c0, 5) as any as S.Schema<ExecuteInterpreterCodeRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<ExecuteInterpreterCodeResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -130,8 +88,8 @@ export const listInterpreterContexts: API.OperationMethod<
   ListInterpreterContextsError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListInterpreterContextsRequest,
-  output: ListContextsResponse,
+  input: __S(7, __c0, 7) as any as S.Schema<ListInterpreterContextsRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<ListContextsResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -170,9 +128,7 @@ function __c0(j: number): any {
     case 3:
       return S.Record(S.String, S.String);
     case 4:
-      return S.suspend(() =>
-        DeleteInterpreterContextResponseBodyMap.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(3, __c0, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "DeleteInterpreterContextResponse",
       });
     case 5:
@@ -200,12 +156,17 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(InterpreterContext);
+      return S.Array(__S(1, __c0, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          contexts: ListContextsResponseContextsList,
+          contexts: __S(8, __c1, 0),
         }),
       ).annotate({ identifier: "ListContextsResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -75,11 +77,7 @@ export interface PropertyValue {
   /** A double value. */
   doubleValue?: number;
 }
-const PropertyValue = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<PropertyValue>;
-
 export type PropertyValueMap = { [key: string]: PropertyValue | undefined };
-const PropertyValueMap = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<PropertyValueMap>;
-
 /** A representation of a single player game event triggered by a player's event in a game. This might be completing a level, unlocking an item, or finishing a match. */
 export interface PlayerGameEvent {
   /** Required. A unique client-generated UUID for this specific event instance. Used for server-side idempotency and deduplication. Submitting an event with a previously recorded event_id for the same player will be ignored. */
@@ -91,11 +89,7 @@ export interface PlayerGameEvent {
   /** Optional. Key-value properties providing details about the event. - Maximum number of properties: 25. - Property key maximum length: 100 characters. - String values within PropertyValue maximum length: 1024 characters. */
   eventProperties?: PropertyValueMap;
 }
-const PlayerGameEvent = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<PlayerGameEvent>;
-
 export type PlayerGameEventList = Array<PlayerGameEvent>;
-const PlayerGameEventList = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<PlayerGameEventList>;
-
 /** Request message for PlayerGameEvents.BatchRecordEvents Next ID: 7 */
 export interface BatchRecordEventsRequest {
   /** Optional. The salt used to generate content binding for the DroidGuard blob. This is used to prevent replay attacks. */
@@ -109,28 +103,14 @@ export interface BatchRecordEventsRequest {
   /** Required. Application package name (e.g., "com.example.game"). */
   packageName?: string;
 }
-const BatchRecordEventsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<BatchRecordEventsRequest>;
-
 export interface BatchRecordEventsGameStatsRequest {
   /** Required. The player ID of the player that performed the events. */
   playerId: string;
   /** Request body */
   body?: BatchRecordEventsRequest;
 }
-const BatchRecordEventsGameStatsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<BatchRecordEventsGameStatsRequest>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
@@ -140,33 +120,17 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-const Status = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Status>;
-
 export type StatusMap = { [key: string]: Status | undefined };
-const StatusMap = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<StatusMap>;
-
 /** A successful response indicates that the batch of events has been processed. */
 export interface BatchRecordEventsResponse {
   /** Map of failed events, keyed by their zero-based index in `BatchRecordEventsRequest.events`. Omitted keys indicate successful recording. */
   failedRequests?: StatusMap;
 }
-const BatchRecordEventsResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<BatchRecordEventsResponse>;
-
 export interface CheckRevisionsRequest {
   /** Required. The revision of the client SDK used by your application. Format: `[PLATFORM_TYPE]:[VERSION_NUMBER]`. Possible values of `PLATFORM_TYPE` are: * `ANDROID` - Client is running the Android SDK. * `IOS` - Client is running the iOS SDK. * `WEB_APP` - Client is running as a Web App. */
   clientRevision: string;
 }
-const CheckRevisionsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CheckRevisionsRequest>;
-
 export type RevisionCheckResponseRevisionStatusEnum = "OK" | "DEPRECATED" | "INVALID";
-const RevisionCheckResponseRevisionStatusEnum = S.String;
-
 /** A third party checking a revision response. */
 export interface RevisionCheckResponse {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#revisionCheckResponse`. */
@@ -176,25 +140,13 @@ export interface RevisionCheckResponse {
   /** The result of the revision check. */
   revisionStatus?: RevisionCheckResponseRevisionStatusEnum;
 }
-const RevisionCheckResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<RevisionCheckResponse>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<StringList>;
-
 export interface GamesPlayerTokensRecallRequest {
   /** Required. The application IDs from the Google Play developer console for the games to return scoped ids for. */
   applicationIds?: StringList;
   /** Required. Opaque server-generated string that encodes all the necessary information to identify the PGS player / Google user and application. */
   sessionId: string;
 }
-const GamesPlayerTokensRecallRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<GamesPlayerTokensRecallRequest>;
-
 /** Recall token data returned from RetrievePlayerTokens RPC */
 export interface RecallToken {
   /** Required. Value of the Recall token as it is provided by the client via LinkPersona RPC */
@@ -204,8 +156,6 @@ export interface RecallToken {
   /** Required. Whether the persona identified by the token is linked to multiple PGS Players */
   multiPlayerPersona?: boolean;
 }
-const RecallToken = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<RecallToken>;
-
 /** Recall tokens for a game. */
 export interface GamePlayerToken {
   /** Recall token data. */
@@ -213,49 +163,28 @@ export interface GamePlayerToken {
   /** The application that this player identifier is for. */
   applicationId?: string;
 }
-const GamePlayerToken = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<GamePlayerToken>;
-
 export type GamePlayerTokenList = Array<GamePlayerToken>;
-const GamePlayerTokenList = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<GamePlayerTokenList>;
-
 /** A list of recall token data returned from the RetrieveGamesPlayerTokens RPC */
 export interface RetrieveGamesPlayerTokensResponse {
   /** The requested applications along with the recall tokens for the player. If the player does not have recall tokens for an application, that application is not included in the response. */
   gamePlayerTokens?: GamePlayerTokenList;
 }
-const RetrieveGamesPlayerTokensResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<RetrieveGamesPlayerTokensResponse>;
-
 export interface GeneratePlayGroupingApiTokenAccesstokensRequest {
   /** Required. Persona to associate with the token. Persona is a developer-provided stable identifier of the user. Must be deterministically generated (e.g. as a one-way hash) from the user account ID and user profile ID (if the app has the concept), according to the developer's own user identity system. */
   persona?: string;
   /** Required. App package name to generate the token for (e.g. com.example.mygame). */
   packageName?: string;
 }
-const GeneratePlayGroupingApiTokenAccesstokensRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<GeneratePlayGroupingApiTokenAccesstokensRequest>;
-
 /** Token data returned from GeneratePlayGroupingApiToken RPC. */
 export interface PlayGroupingApiToken {
   /** Value of the token. */
   tokenValue?: string;
 }
-const PlayGroupingApiToken = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<PlayGroupingApiToken>;
-
 /** Response for the GeneratePlayGroupingApiToken RPC. */
 export interface GeneratePlayGroupingApiTokenResponse {
   /** Token for accessing the Play Grouping API. */
   token?: PlayGroupingApiToken;
 }
-const GeneratePlayGroupingApiTokenResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<GeneratePlayGroupingApiTokenResponse>;
-
 export interface GenerateRecallPlayGroupingApiTokenAccesstokensRequest {
   /** Required. Opaque server-generated string that encodes all the necessary information to identify the PGS player / Google user and application. See https://developer.android.com/games/pgs/recall/recall-setup on how to integrate with Recall and get session ID. */
   recallSessionId?: string;
@@ -264,22 +193,12 @@ export interface GenerateRecallPlayGroupingApiTokenAccesstokensRequest {
   /** Required. Persona to associate with the token. Persona is a developer-provided stable identifier of the user. Must be deterministically generated (e.g. as a one-way hash) from the user account ID and user profile ID (if the app has the concept), according to the developer's own user identity system. */
   persona?: string;
 }
-const GenerateRecallPlayGroupingApiTokenAccesstokensRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<GenerateRecallPlayGroupingApiTokenAccesstokensRequest>;
-
 /** Response for the GenerateRecallPlayGroupingApiToken RPC. */
 export interface GenerateRecallPlayGroupingApiTokenResponse {
   /** Token for accessing the Play Grouping API. */
   token?: PlayGroupingApiToken;
 }
-const GenerateRecallPlayGroupingApiTokenResponse =
-  GeneratePlayGroupingApiTokenResponse as any as S.Schema<GenerateRecallPlayGroupingApiTokenResponse>;
-
 export type GetApplicationsPlatformTypeEnum = "ANDROID" | "IOS" | "WEB_APP";
-const GetApplicationsPlatformTypeEnum = S.String;
-
 export interface GetApplicationsRequest {
   /** The application ID from the Google Play developer console. */
   applicationId: string;
@@ -288,11 +207,6 @@ export interface GetApplicationsRequest {
   /** The preferred language to use for strings returned by this method. */
   language?: string;
 }
-const GetApplicationsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<GetApplicationsRequest>;
-
 /** An application category object. */
 export interface ApplicationCategory {
   /** The primary category. */
@@ -302,20 +216,9 @@ export interface ApplicationCategory {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#applicationCategory`. */
   kind?: string;
 }
-const ApplicationCategory = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ApplicationCategory>;
-
 export type ApplicationEnabledFeaturesItemEnum = "SNAPSHOTS";
-const ApplicationEnabledFeaturesItemEnum = S.String;
-
 export type ApplicationEnabledFeaturesItemEnumList = Array<ApplicationEnabledFeaturesItemEnum>;
-const ApplicationEnabledFeaturesItemEnumList = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ApplicationEnabledFeaturesItemEnumList>;
-
 export type InstancePlatformTypeEnum = "ANDROID" | "IOS" | "WEB_APP";
-const InstancePlatformTypeEnum = S.String;
-
 /** The Android instance details resource. */
 export interface InstanceAndroidDetails {
   /** Indicates that this instance is the default for new installations. */
@@ -327,11 +230,6 @@ export interface InstanceAndroidDetails {
   /** Android package name which maps to Google Play URL. */
   packageName?: string;
 }
-const InstanceAndroidDetails = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<InstanceAndroidDetails>;
-
 /** The Web details resource. */
 export interface InstanceWebDetails {
   /** Launch URL for the game. */
@@ -341,8 +239,6 @@ export interface InstanceWebDetails {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#instanceWebDetails`. */
   kind?: string;
 }
-const InstanceWebDetails = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<InstanceWebDetails>;
-
 /** The iOS details resource. */
 export interface InstanceIosDetails {
   /** Flag to indicate if this instance supports iPad. */
@@ -360,8 +256,6 @@ export interface InstanceIosDetails {
   /** iTunes App ID. */
   itunesAppId?: string;
 }
-const InstanceIosDetails = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<InstanceIosDetails>;
-
 /** The Instance resource. */
 export interface Instance {
   /** The platform type. */
@@ -383,11 +277,7 @@ export interface Instance {
   /** Flag to show if this game instance supports realtime play. */
   realtimePlay?: boolean;
 }
-const Instance = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<Instance>;
-
 export type InstanceList = Array<Instance>;
-const InstanceList = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<InstanceList>;
-
 /** An image asset object. */
 export interface ImageAsset {
   /** The name of the asset. */
@@ -401,11 +291,7 @@ export interface ImageAsset {
   /** The width of the asset. */
   width?: number;
 }
-const ImageAsset = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<ImageAsset>;
-
 export type ImageAssetList = Array<ImageAsset>;
-const ImageAssetList = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<ImageAssetList>;
-
 /** The Application resource. */
 export interface Application {
   /** The category of the application. */
@@ -435,43 +321,25 @@ export interface Application {
   /** The last updated timestamp of the application. */
   lastUpdatedTimestamp?: string;
 }
-const Application = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<Application>;
-
 export type GetEndPointApplicationsEndPointTypeEnum = "PROFILE_CREATION" | "PROFILE_SETTINGS";
-const GetEndPointApplicationsEndPointTypeEnum = S.String;
-
 export interface GetEndPointApplicationsRequest {
   /** The application ID from the Google Play developer console. */
   applicationId?: string;
   /** Type of endpoint being requested. */
   endPointType?: GetEndPointApplicationsEndPointTypeEnum | (string & {});
 }
-const GetEndPointApplicationsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<GetEndPointApplicationsRequest>;
-
 /** Container for a URL end point of the requested type. */
 export interface EndPoint {
   /** A URL suitable for loading in a web browser for the requested endpoint. */
   url?: string;
 }
-const EndPoint = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<EndPoint>;
-
 export interface GetLeaderboardsRequest {
   /** The preferred language to use for strings returned by this method. */
   language?: string;
   /** The ID of the leaderboard. */
   leaderboardId: string;
 }
-const GetLeaderboardsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<GetLeaderboardsRequest>;
-
 export type LeaderboardOrderEnum = "LARGER_IS_BETTER" | "SMALLER_IS_BETTER";
-const LeaderboardOrderEnum = S.String;
-
 /** The Leaderboard resource. */
 export interface Leaderboard {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#leaderboard`. */
@@ -487,14 +355,7 @@ export interface Leaderboard {
   /** Indicates whether the icon image being returned is a default image, or is game-provided. */
   isIconUrlDefault?: boolean;
 }
-const Leaderboard = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<Leaderboard>;
-
 export interface GetMetagameConfigMetagameRequest {}
-const GetMetagameConfigMetagameRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<GetMetagameConfigMetagameRequest>;
-
 /** 1P/3P metadata about a user's level. */
 export interface PlayerLevel {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#playerLevel`. */
@@ -506,11 +367,7 @@ export interface PlayerLevel {
   /** The minimum experience points for this level. */
   minExperiencePoints?: string;
 }
-const PlayerLevel = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<PlayerLevel>;
-
 export type PlayerLevelList = Array<PlayerLevel>;
-const PlayerLevelList = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<PlayerLevelList>;
-
 /** The metagame config resource */
 export interface MetagameConfig {
   /** The list of player levels. */
@@ -520,17 +377,10 @@ export interface MetagameConfig {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#metagameConfig`. */
   kind?: string;
 }
-const MetagameConfig = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<MetagameConfig>;
-
 export interface GetMultipleApplicationPlayerIdsPlayersRequest {
   /** Required. The application IDs from the Google Play developer console for the games to return scoped ids for. */
   applicationIds?: StringList;
 }
-const GetMultipleApplicationPlayerIdsPlayersRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<GetMultipleApplicationPlayerIdsPlayersRequest>;
-
 /** Primary scoped player identifier for an application. */
 export interface ApplicationPlayerId {
   /** The player identifier for the application. */
@@ -538,24 +388,12 @@ export interface ApplicationPlayerId {
   /** The application that this player identifier is for. */
   applicationId?: string;
 }
-const ApplicationPlayerId = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<ApplicationPlayerId>;
-
 export type ApplicationPlayerIdList = Array<ApplicationPlayerId>;
-const ApplicationPlayerIdList = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<ApplicationPlayerIdList>;
-
 /** Response message for GetMultipleApplicationPlayerIds rpc. */
 export interface GetMultipleApplicationPlayerIdsResponse {
   /** Output only. The requested applications along with the scoped ids for tha player, if that player has an id for the application. If not, the application is not included in the response. */
   playerIds?: ApplicationPlayerIdList;
 }
-const GetMultipleApplicationPlayerIdsResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<GetMultipleApplicationPlayerIdsResponse>;
-
 export interface GetPlayersRequest {
   /** Consistency token of the player id. The call returns a 'not found' result when the token is present and invalid. Empty value is ignored. See also GlobalPlayerIdConsistencyTokenProto */
   playerIdConsistencyToken?: string;
@@ -564,8 +402,6 @@ export interface GetPlayersRequest {
   /** The preferred language to use for strings returned by this method. */
   language?: string;
 }
-const GetPlayersRequest = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<GetPlayersRequest>;
-
 /** 1P/3P metadata about the player's experience. */
 export interface PlayerExperienceInfo {
   /** The current number of experience points for the player. */
@@ -579,25 +415,17 @@ export interface PlayerExperienceInfo {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#playerExperienceInfo`. */
   kind?: string;
 }
-const PlayerExperienceInfo = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<PlayerExperienceInfo>;
-
 export interface PlayerName {
   /** The family name of this player. In some places, this is known as the last name. */
   familyName?: string;
   /** The given name of this player. In some places, this is known as the first name. */
   givenName?: string;
 }
-const PlayerName = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<PlayerName>;
-
 export type PlayerFriendStatusEnum = "NO_RELATIONSHIP" | "FRIEND";
-const PlayerFriendStatusEnum = S.String;
-
 export type ProfileSettingsFriendsListVisibilityEnum =
   | "VISIBLE"
   | "REQUEST_REQUIRED"
   | "UNAVAILABLE";
-const ProfileSettingsFriendsListVisibilityEnum = S.String;
-
 /** Profile settings */
 export interface ProfileSettings {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#profileSettings`. */
@@ -606,8 +434,6 @@ export interface ProfileSettings {
   profileVisible?: boolean;
   friendsListVisibility?: ProfileSettingsFriendsListVisibilityEnum;
 }
-const ProfileSettings = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<ProfileSettings>;
-
 /** A Player resource. */
 export interface Player {
   /** An object to represent Play Game experience information for the player. */
@@ -637,14 +463,7 @@ export interface Player {
   /** The ID of the player. */
   playerId?: string;
 }
-const Player = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<Player>;
-
 export interface GetScopedPlayerIdsPlayersRequest {}
-const GetScopedPlayerIdsPlayersRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<GetScopedPlayerIdsPlayersRequest>;
-
 /** Scoped player identifiers. */
 export interface ScopedPlayerIds {
   /** Game-scoped player identifier. This is the same id that is returned in GetPlayer game_player_id field. */
@@ -652,14 +471,8 @@ export interface ScopedPlayerIds {
   /** Identifier of the player across all games of the given developer. Every player has the same developer_player_key in all games of one developer. Developer player key changes for the game if the game is transferred to another developer. Note that game_player_id will stay unchanged. */
   developerPlayerKey?: string;
 }
-const ScopedPlayerIds = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<ScopedPlayerIds>;
-
 export type GetScoresIncludeRankTypeEnum = "ALL" | "PUBLIC" | "SOCIAL" | "FRIENDS";
-const GetScoresIncludeRankTypeEnum = S.String;
-
 export type GetScoresTimeSpanEnum = "ALL" | "ALL_TIME" | "WEEKLY" | "DAILY";
-const GetScoresTimeSpanEnum = S.String;
-
 export interface GetScoresRequest {
   /** The types of ranks to return. If the parameter is omitted, no ranks will be returned. */
   includeRankType?: GetScoresIncludeRankTypeEnum | (string & {});
@@ -676,8 +489,6 @@ export interface GetScoresRequest {
   /** The maximum number of leaderboard scores to return in the response. For any response, the actual number of leaderboard scores returned may be less than the specified `maxResults`. */
   maxResults?: number;
 }
-const GetScoresRequest = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<GetScoresRequest>;
-
 /** A score rank in a leaderboard. */
 export interface LeaderboardScoreRank {
   /** The rank in the leaderboard as a string. */
@@ -691,11 +502,7 @@ export interface LeaderboardScoreRank {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#leaderboardScoreRank`. */
   kind?: string;
 }
-const LeaderboardScoreRank = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<LeaderboardScoreRank>;
-
 export type PlayerLeaderboardScoreTimeSpanEnum = "ALL_TIME" | "WEEKLY" | "DAILY";
-const PlayerLeaderboardScoreTimeSpanEnum = S.String;
-
 /** A player leaderboard score object. */
 export interface PlayerLeaderboardScore {
   /** Additional information about the score. Values must contain no more than 64 URI-safe characters as defined by section 2.3 of RFC 3986. */
@@ -719,17 +526,7 @@ export interface PlayerLeaderboardScore {
   /** The rank of the score in the friends collection for this leaderboard. */
   friendsRank?: LeaderboardScoreRank;
 }
-const PlayerLeaderboardScore = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<PlayerLeaderboardScore>;
-
 export type PlayerLeaderboardScoreList = Array<PlayerLeaderboardScore>;
-const PlayerLeaderboardScoreList = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<PlayerLeaderboardScoreList>;
-
 /** A list of player leaderboard scores. */
 export interface PlayerLeaderboardScoreListResponse {
   /** The pagination token for the next page of results. */
@@ -741,19 +538,12 @@ export interface PlayerLeaderboardScoreListResponse {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#playerLeaderboardScoreListResponse`. */
   kind?: string;
 }
-const PlayerLeaderboardScoreListResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<PlayerLeaderboardScoreListResponse>;
-
 export interface GetSnapshotsRequest {
   /** The ID of the snapshot. */
   snapshotId: string;
   /** The preferred language to use for strings returned by this method. */
   language?: string;
 }
-const GetSnapshotsRequest = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<GetSnapshotsRequest>;
-
 /** An image of a snapshot. */
 export interface SnapshotImage {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#snapshotImage`. */
@@ -767,11 +557,7 @@ export interface SnapshotImage {
   /** The URL of the image. This URL may be invalidated at any time and should not be cached. */
   url?: string;
 }
-const SnapshotImage = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<SnapshotImage>;
-
 export type SnapshotTypeEnum = "SAVE_GAME";
-const SnapshotTypeEnum = S.String;
-
 /** An snapshot object. */
 export interface Snapshot {
   /** The ID of the file underlying this snapshot in the Drive API. Only present if the snapshot is a view on a Drive file and the file is owned by the caller. */
@@ -797,11 +583,7 @@ export interface Snapshot {
   /** The progress value (64-bit integer set by developer) associated with this snapshot. */
   progressValue?: string;
 }
-const Snapshot = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<Snapshot>;
-
 export interface GetStatsRequest {}
-const GetStatsRequest = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<GetStatsRequest>;
-
 /** A third party stats resource. */
 export interface StatsResponse {
   /** The probability of the player not returning to play the game in the next day. E.g., 0, 0.1, 0.5, ..., 1.0. Not populated if there is not enough information. */
@@ -827,30 +609,16 @@ export interface StatsResponse {
   /** Average session length in minutes of the player. E.g., 1, 30, 60, ... . Not populated if there is not enough information. */
   avg_session_length_minutes?: number;
 }
-const StatsResponse = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<StatsResponse>;
-
 export interface GetTokensRecallRequest {
   /** Required. Opaque server-generated string that encodes all the necessary information to identify the PGS player / Google user and application. */
   sessionId: string;
 }
-const GetTokensRecallRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<GetTokensRecallRequest>;
-
 export type RecallTokenList = Array<RecallToken>;
-const RecallTokenList = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<RecallTokenList>;
-
 /** Response for the RetrievePlayerTokens RPC */
 export interface RetrievePlayerTokensResponse {
   /** Required. Recall tokens associated with the requested PGS Player principal */
   tokens?: RecallTokenList;
 }
-const RetrievePlayerTokensResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<RetrievePlayerTokensResponse>;
-
 export interface IncrementAchievementsRequest {
   /** Required. The number of steps to increment. */
   stepsToIncrement: number;
@@ -859,11 +627,6 @@ export interface IncrementAchievementsRequest {
   /** A randomly generated numeric ID for each request specified by the caller. This number is used at the server to ensure that the request is handled correctly across retries. */
   requestId?: string;
 }
-const IncrementAchievementsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<IncrementAchievementsRequest>;
-
 /** An achievement increment response */
 export interface AchievementIncrementResponse {
   /** The current steps recorded for this incremental achievement. */
@@ -873,38 +636,19 @@ export interface AchievementIncrementResponse {
   /** Whether the current steps for the achievement has reached the number of steps required to unlock. */
   newlyUnlocked?: boolean;
 }
-const AchievementIncrementResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<AchievementIncrementResponse>;
-
 export interface LastTokenFromAllDeveloperGamesRecallRequest {
   /** Required. Opaque server-generated string that encodes all the necessary information to identify the PGS player / Google user and application. */
   sessionId: string;
 }
-const LastTokenFromAllDeveloperGamesRecallRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<LastTokenFromAllDeveloperGamesRecallRequest>;
-
 /** Recall token data returned from for the RetrieveDeveloperGamesLastPlayerToken RPC */
 export interface RetrieveDeveloperGamesLastPlayerTokenResponse {
   /** The recall token associated with the requested PGS Player principal. It can be unset if there is no recall token associated with the requested principal. */
   gamePlayerToken?: GamePlayerToken;
 }
-const RetrieveDeveloperGamesLastPlayerTokenResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<RetrieveDeveloperGamesLastPlayerTokenResponse>;
-
 export type LinkPersonaRequestConflictingLinksResolutionPolicyEnum =
   | "KEEP_EXISTING_LINKS"
   | "CREATE_NEW_LINK";
-const LinkPersonaRequestConflictingLinksResolutionPolicyEnum = S.String;
-
 export type LinkPersonaRequestCardinalityConstraintEnum = "ONE_PERSONA_TO_ONE_PLAYER";
-const LinkPersonaRequestCardinalityConstraintEnum = S.String;
-
 /** Request to link an in-game account with a PGS principal (encoded in the session id). */
 export interface LinkPersonaRequest {
   /** Input only. Optional time-to-live. */
@@ -924,27 +668,16 @@ export interface LinkPersonaRequest {
   /** Required. Stable identifier of the in-game account. Please refrain from re-using the same persona for different games. */
   persona?: string;
 }
-const LinkPersonaRequest = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<LinkPersonaRequest>;
-
 export interface LinkPersonaRecallRequest {
   /** Request body */
   body?: LinkPersonaRequest;
 }
-const LinkPersonaRecallRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<LinkPersonaRecallRequest>;
-
 export type LinkPersonaResponseStateEnum = "LINK_CREATED" | "PERSONA_OR_PLAYER_ALREADY_LINKED";
-const LinkPersonaResponseStateEnum = S.String;
-
 /** Outcome of a persona linking attempt. */
 export interface LinkPersonaResponse {
   /** Output only. State of a persona linking attempt. */
   state?: LinkPersonaResponseStateEnum;
 }
-const LinkPersonaResponse = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<LinkPersonaResponse>;
-
 export interface ListAchievementDefinitionsRequest {
   /** The maximum number of achievement resources to return in the response, used for paging. For any response, the actual number of achievement resources returned may be less than the specified `maxResults`. */
   maxResults?: number;
@@ -953,23 +686,12 @@ export interface ListAchievementDefinitionsRequest {
   /** The token returned by the previous request. */
   pageToken?: string;
 }
-const ListAchievementDefinitionsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<ListAchievementDefinitionsRequest>;
-
 export type AchievementDefinitionInitialStateEnum = "HIDDEN" | "REVEALED" | "UNLOCKED";
-const AchievementDefinitionInitialStateEnum = S.String;
-
 export type AchievementDefinitionAchievementTypeEnum = "STANDARD" | "INCREMENTAL";
-const AchievementDefinitionAchievementTypeEnum = S.String;
-
 export type AchievementDefinitionAchievementLifecycleStateEnum =
   | "ACHIEVEMENT_LIFECYCLE_STATE_UNSPECIFIED"
   | "ACHIEVEMENT_LIFECYCLE_STATE_ACTIVE"
   | "ACHIEVEMENT_LIFECYCLE_STATE_ARCHIVED";
-const AchievementDefinitionAchievementLifecycleStateEnum = S.String;
-
 /** An achievement definition object. */
 export interface AchievementDefinition {
   /** The image URL for the unlocked achievement icon. */
@@ -1001,17 +723,7 @@ export interface AchievementDefinition {
   /** The name of the achievement. */
   name?: string;
 }
-const AchievementDefinition = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<AchievementDefinition>;
-
 export type AchievementDefinitionList = Array<AchievementDefinition>;
-const AchievementDefinitionList = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<AchievementDefinitionList>;
-
 /** A list of achievement definition objects. */
 export interface AchievementDefinitionsListResponse {
   /** The achievement definitions. */
@@ -1021,14 +733,7 @@ export interface AchievementDefinitionsListResponse {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#achievementDefinitionsListResponse`. */
   kind?: string;
 }
-const AchievementDefinitionsListResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<AchievementDefinitionsListResponse>;
-
 export type ListAchievementsStateEnum = "ALL" | "HIDDEN" | "REVEALED" | "UNLOCKED";
-const ListAchievementsStateEnum = S.String;
-
 export interface ListAchievementsRequest {
   /** The token returned by the previous request. */
   pageToken?: string;
@@ -1041,14 +746,7 @@ export interface ListAchievementsRequest {
   /** A player ID. A value of `me` may be used in place of the authenticated player's ID. */
   playerId: string;
 }
-const ListAchievementsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<ListAchievementsRequest>;
-
 export type PlayerAchievementAchievementStateEnum = "HIDDEN" | "REVEALED" | "UNLOCKED";
-const PlayerAchievementAchievementStateEnum = S.String;
-
 /** An achievement object. */
 export interface PlayerAchievement {
   /** The ID of the achievement. */
@@ -1066,14 +764,7 @@ export interface PlayerAchievement {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#playerAchievement`. */
   kind?: string;
 }
-const PlayerAchievement = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<PlayerAchievement>;
-
 export type PlayerAchievementList = Array<PlayerAchievement>;
-const PlayerAchievementList = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<PlayerAchievementList>;
-
 /** A list of achievement objects. */
 export interface PlayerAchievementListResponse {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#playerAchievementListResponse`. */
@@ -1083,11 +774,6 @@ export interface PlayerAchievementListResponse {
   /** The achievements. */
   items: PlayerAchievementList;
 }
-const PlayerAchievementListResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<PlayerAchievementListResponse>;
-
 export interface ListByPlayerEventsRequest {
   /** The preferred language to use for strings returned by this method. */
   language?: string;
@@ -1096,11 +782,6 @@ export interface ListByPlayerEventsRequest {
   /** The maximum number of events to return in the response, used for paging. For any response, the actual number of events to return may be less than the specified maxResults. */
   maxResults?: number;
 }
-const ListByPlayerEventsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<ListByPlayerEventsRequest>;
-
 /** An event status resource. */
 export interface PlayerEvent {
   /** The current number of times this event has occurred. */
@@ -1114,11 +795,7 @@ export interface PlayerEvent {
   /** The current number of times this event has occurred, as a string. The formatting of this string depends on the configuration of your event in the Play Games Developer Console. */
   formattedNumEvents?: string;
 }
-const PlayerEvent = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<PlayerEvent>;
-
 export type PlayerEventList = Array<PlayerEvent>;
-const PlayerEventList = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<PlayerEventList>;
-
 /** A ListByPlayer response. */
 export interface PlayerEventListResponse {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#playerEventListResponse`. */
@@ -1128,14 +805,7 @@ export interface PlayerEventListResponse {
   /** The player events. */
   items: PlayerEventList;
 }
-const PlayerEventListResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<PlayerEventListResponse>;
-
 export type ListCategoriesByPlayerMetagameCollectionEnum = "ALL";
-const ListCategoriesByPlayerMetagameCollectionEnum = S.String;
-
 export interface ListCategoriesByPlayerMetagameRequest {
   /** The collection of categories for which data will be returned. */
   collection: ListCategoriesByPlayerMetagameCollectionEnum | (string & {});
@@ -1148,11 +818,6 @@ export interface ListCategoriesByPlayerMetagameRequest {
   /** The token returned by the previous request. */
   pageToken?: string;
 }
-const ListCategoriesByPlayerMetagameRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<ListCategoriesByPlayerMetagameRequest>;
-
 /** Data related to individual game categories. */
 export interface Category {
   /** The category name. */
@@ -1162,11 +827,7 @@ export interface Category {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#category`. */
   kind?: string;
 }
-const Category = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<Category>;
-
 export type CategoryList = Array<Category>;
-const CategoryList = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<CategoryList>;
-
 /** A third party list metagame categories response. */
 export interface CategoryListResponse {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#categoryListResponse`. */
@@ -1176,11 +837,6 @@ export interface CategoryListResponse {
   /** Token corresponding to the next page of results. */
   nextPageToken?: string;
 }
-const CategoryListResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<CategoryListResponse>;
-
 export interface ListDefinitionsEventsRequest {
   /** The maximum number of event definitions to return in the response, used for paging. For any response, the actual number of event definitions to return may be less than the specified `maxResults`. */
   maxResults?: number;
@@ -1189,11 +845,6 @@ export interface ListDefinitionsEventsRequest {
   /** The token returned by the previous request. */
   pageToken?: string;
 }
-const ListDefinitionsEventsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<ListDefinitionsEventsRequest>;
-
 /** An event child relationship resource. */
 export interface EventChild {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#eventChild`. */
@@ -1201,14 +852,8 @@ export interface EventChild {
   /** The ID of the child event. */
   childId?: string;
 }
-const EventChild = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<EventChild>;
-
 export type EventChildList = Array<EventChild>;
-const EventChildList = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<EventChildList>;
-
 export type EventDefinitionVisibilityEnum = "REVEALED" | "HIDDEN";
-const EventDefinitionVisibilityEnum = S.String;
-
 /** An event definition resource. */
 export interface EventDefinition {
   /** The base URL for the image that represents the event. */
@@ -1228,11 +873,7 @@ export interface EventDefinition {
   /** The visibility of event being tracked in this definition. */
   visibility?: EventDefinitionVisibilityEnum;
 }
-const EventDefinition = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<EventDefinition>;
-
 export type EventDefinitionList = Array<EventDefinition>;
-const EventDefinitionList = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<EventDefinitionList>;
-
 /** A ListDefinitions response. */
 export interface EventDefinitionListResponse {
   /** The event definitions. */
@@ -1242,11 +883,6 @@ export interface EventDefinitionListResponse {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#eventDefinitionListResponse`. */
   kind?: string;
 }
-const EventDefinitionListResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<EventDefinitionListResponse>;
-
 export interface ListLeaderboardsRequest {
   /** The token returned by the previous request. */
   pageToken?: string;
@@ -1255,14 +891,7 @@ export interface ListLeaderboardsRequest {
   /** The preferred language to use for strings returned by this method. */
   language?: string;
 }
-const ListLeaderboardsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<ListLeaderboardsRequest>;
-
 export type LeaderboardList = Array<Leaderboard>;
-const LeaderboardList = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<LeaderboardList>;
-
 /** A list of leaderboard objects. */
 export interface LeaderboardListResponse {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#leaderboardListResponse`. */
@@ -1272,14 +901,7 @@ export interface LeaderboardListResponse {
   /** The leaderboards. */
   items: LeaderboardList;
 }
-const LeaderboardListResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<LeaderboardListResponse>;
-
 export type ListPlayersCollectionEnum = "CONNECTED" | "VISIBLE" | "FRIENDS_ALL";
-const ListPlayersCollectionEnum = S.String;
-
 export interface ListPlayersRequest {
   /** The maximum number of player resources to return in the response, used for paging. For any response, the actual number of player resources returned may be less than the specified `maxResults`. */
   maxResults?: number;
@@ -1290,11 +912,7 @@ export interface ListPlayersRequest {
   /** The token returned by the previous request. */
   pageToken?: string;
 }
-const ListPlayersRequest = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<ListPlayersRequest>;
-
 export type PlayerList = Array<Player>;
-const PlayerList = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<PlayerList>;
-
 /** A third party player list response. */
 export interface PlayerListResponse {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#playerListResponse`. */
@@ -1304,14 +922,8 @@ export interface PlayerListResponse {
   /** The players. */
   items: PlayerList;
 }
-const PlayerListResponse = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<PlayerListResponse>;
-
 export type ListScoresCollectionEnum = "PUBLIC" | "SOCIAL" | "FRIENDS";
-const ListScoresCollectionEnum = S.String;
-
 export type ListScoresTimeSpanEnum = "ALL_TIME" | "WEEKLY" | "DAILY";
-const ListScoresTimeSpanEnum = S.String;
-
 export interface ListScoresRequest {
   /** The collection of scores you're requesting. */
   collection: ListScoresCollectionEnum | (string & {});
@@ -1326,11 +938,7 @@ export interface ListScoresRequest {
   /** The token returned by the previous request. */
   pageToken?: string;
 }
-const ListScoresRequest = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<ListScoresRequest>;
-
 export type LeaderboardEntryTimeSpanEnum = "ALL_TIME" | "WEEKLY" | "DAILY";
-const LeaderboardEntryTimeSpanEnum = S.String;
-
 /** The Leaderboard Entry resource. */
 export interface LeaderboardEntry {
   /** The player who holds this score. */
@@ -1352,14 +960,7 @@ export interface LeaderboardEntry {
   /** The time span of this high score. */
   timeSpan?: LeaderboardEntryTimeSpanEnum;
 }
-const LeaderboardEntry = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<LeaderboardEntry>;
-
 export type LeaderboardEntryList = Array<LeaderboardEntry>;
-const LeaderboardEntryList = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<LeaderboardEntryList>;
-
 /** A ListScores response. */
 export interface LeaderboardScores {
   /** The pagination token for the previous page of results. */
@@ -1375,8 +976,6 @@ export interface LeaderboardScores {
   /** The score of the requesting player on the leaderboard. The player's score may appear both here and in the list of scores above. If you are viewing a public leaderboard and the player is not sharing their gameplay information publicly, the `scoreRank`and `formattedScoreRank` values will not be present. */
   playerScore?: LeaderboardEntry;
 }
-const LeaderboardScores = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<LeaderboardScores>;
-
 export interface ListSnapshotsRequest {
   /** A player ID. A value of `me` may be used in place of the authenticated player's ID. */
   playerId: string;
@@ -1387,14 +986,7 @@ export interface ListSnapshotsRequest {
   /** The token returned by the previous request. */
   pageToken?: string;
 }
-const ListSnapshotsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<ListSnapshotsRequest>;
-
 export type SnapshotList = Array<Snapshot>;
-const SnapshotList = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<SnapshotList>;
-
 /** A third party list snapshots response. */
 export interface SnapshotListResponse {
   /** The snapshots. */
@@ -1404,17 +996,8 @@ export interface SnapshotListResponse {
   /** Token corresponding to the next page of results. If there are no more results, the token is omitted. */
   nextPageToken?: string;
 }
-const SnapshotListResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<SnapshotListResponse>;
-
 export type ListWindowScoresTimeSpanEnum = "ALL_TIME" | "WEEKLY" | "DAILY";
-const ListWindowScoresTimeSpanEnum = S.String;
-
 export type ListWindowScoresCollectionEnum = "PUBLIC" | "SOCIAL" | "FRIENDS";
-const ListWindowScoresCollectionEnum = S.String;
-
 export interface ListWindowScoresRequest {
   /** The preferred number of scores to return above the player's score. More scores may be returned if the player is at the bottom of the leaderboard; fewer may be returned if the player is at the top. Must be less than or equal to maxResults. */
   resultsAbove?: number;
@@ -1433,23 +1016,8 @@ export interface ListWindowScoresRequest {
   /** The maximum number of leaderboard scores to return in the response. For any response, the actual number of leaderboard scores returned may be less than the specified `maxResults`. */
   maxResults?: number;
 }
-const ListWindowScoresRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<ListWindowScoresRequest>;
-
 export interface PlayedApplicationsRequest {}
-const PlayedApplicationsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<PlayedApplicationsRequest>;
-
 export interface PlayedApplicationsResponse {}
-const PlayedApplicationsResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<PlayedApplicationsResponse>;
-
 /** An event period update resource. */
 export interface EventUpdateRequest {
   /** The ID of the event being modified in this update. */
@@ -1459,14 +1027,7 @@ export interface EventUpdateRequest {
   /** The number of times this event occurred in this time period. */
   updateCount?: string;
 }
-const EventUpdateRequest = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<EventUpdateRequest>;
-
 export type EventUpdateRequestList = Array<EventUpdateRequest>;
-const EventUpdateRequestList = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<EventUpdateRequestList>;
-
 /** An event period time range. */
 export interface EventPeriodRange {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#eventPeriodRange`. */
@@ -1476,8 +1037,6 @@ export interface EventPeriodRange {
   /** The time when this update period begins, in millis, since 1970 UTC (Unix Epoch). */
   periodStartMillis?: string;
 }
-const EventPeriodRange = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<EventPeriodRange>;
-
 /** An event period update resource. */
 export interface EventPeriodUpdate {
   /** The updates being made for this time period. */
@@ -1487,14 +1046,7 @@ export interface EventPeriodUpdate {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#eventPeriodUpdate`. */
   kind?: string;
 }
-const EventPeriodUpdate = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<EventPeriodUpdate>;
-
 export type EventPeriodUpdateList = Array<EventPeriodUpdate>;
-const EventPeriodUpdateList = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<EventPeriodUpdateList>;
-
 /** An event period update resource. */
 export interface EventRecordRequest {
   /** A list of the time period updates being made in this request. */
@@ -1506,16 +1058,12 @@ export interface EventRecordRequest {
   /** The current time when this update was sent, in milliseconds, since 1970 UTC (Unix Epoch). */
   currentTimeMillis?: string;
 }
-const EventRecordRequest = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<EventRecordRequest>;
-
 export interface RecordEventsRequest {
   /** The preferred language to use for strings returned by this method. */
   language?: string;
   /** Request body */
   body?: EventRecordRequest;
 }
-const RecordEventsRequest = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<RecordEventsRequest>;
-
 export type EventBatchRecordFailureFailureCauseEnum =
   | "TOO_LARGE"
   | "TIME_PERIOD_EXPIRED"
@@ -1523,8 +1071,6 @@ export type EventBatchRecordFailureFailureCauseEnum =
   | "TIME_PERIOD_LONG"
   | "ALREADY_UPDATED"
   | "RECORD_RATE_HIGH";
-const EventBatchRecordFailureFailureCauseEnum = S.String;
-
 /** A batch update failure resource. */
 export interface EventBatchRecordFailure {
   /** The cause for the update failure. */
@@ -1534,20 +1080,8 @@ export interface EventBatchRecordFailure {
   /** The time range which was rejected; empty for a request-wide failure. */
   range?: EventPeriodRange;
 }
-const EventBatchRecordFailure = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<EventBatchRecordFailure>;
-
 export type EventBatchRecordFailureList = Array<EventBatchRecordFailure>;
-const EventBatchRecordFailureList = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<EventBatchRecordFailureList>;
-
 export type EventRecordFailureFailureCauseEnum = "NOT_FOUND" | "INVALID_UPDATE_VALUE";
-const EventRecordFailureFailureCauseEnum = S.String;
-
 /** An event update failure resource. */
 export interface EventRecordFailure {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#eventRecordFailure`. */
@@ -1557,14 +1091,7 @@ export interface EventRecordFailure {
   /** The cause for the update failure. */
   failureCause?: EventRecordFailureFailureCauseEnum;
 }
-const EventRecordFailure = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<EventRecordFailure>;
-
 export type EventRecordFailureList = Array<EventRecordFailure>;
-const EventRecordFailureList = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<EventRecordFailureList>;
-
 /** An event period update resource. */
 export interface EventUpdateResponse {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#eventUpdateResponse`. */
@@ -1576,46 +1103,25 @@ export interface EventUpdateResponse {
   /** Any failures updating a particular event. */
   eventFailures?: EventRecordFailureList;
 }
-const EventUpdateResponse = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<EventUpdateResponse>;
-
 /** Request to remove all Recall tokens associated with a persona for an app. */
 export interface ResetPersonaRequest {
   /** Value of the 'persona' field as it was provided by the client in LinkPersona RPC */
   persona?: string;
 }
-const ResetPersonaRequest = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<ResetPersonaRequest>;
-
 export interface ResetPersonaRecallRequest {
   /** Request body */
   body?: ResetPersonaRequest;
 }
-const ResetPersonaRecallRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<ResetPersonaRecallRequest>;
-
 /** Response for the ResetPersona RPC */
 export interface ResetPersonaResponse {
   /** Required. Whether any tokens were unlinked as a result of this request. */
   unlinked?: boolean;
 }
-const ResetPersonaResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<ResetPersonaResponse>;
-
 export interface RevealAchievementsRequest {
   /** The ID of the achievement used by this method. */
   achievementId: string;
 }
-const RevealAchievementsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<RevealAchievementsRequest>;
-
 export type AchievementRevealResponseCurrentStateEnum = "REVEALED" | "UNLOCKED";
-const AchievementRevealResponseCurrentStateEnum = S.String;
-
 /** An achievement reveal response */
 export interface AchievementRevealResponse {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#achievementRevealResponse`. */
@@ -1623,22 +1129,12 @@ export interface AchievementRevealResponse {
   /** The current state of the achievement for which a reveal was attempted. This might be `UNLOCKED` if the achievement was already unlocked. */
   currentState?: AchievementRevealResponseCurrentStateEnum;
 }
-const AchievementRevealResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<AchievementRevealResponse>;
-
 export interface SetStepsAtLeastAchievementsRequest {
   /** Required. The minimum value to set the steps to. */
   steps: number;
   /** The ID of the achievement used by this method. */
   achievementId: string;
 }
-const SetStepsAtLeastAchievementsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<SetStepsAtLeastAchievementsRequest>;
-
 /** An achievement set steps at least response. */
 export interface AchievementSetStepsAtLeastResponse {
   /** The current steps recorded for this incremental achievement. */
@@ -1648,9 +1144,6 @@ export interface AchievementSetStepsAtLeastResponse {
   /** Whether the current steps for the achievement has reached the number of steps required to unlock. */
   newlyUnlocked?: boolean;
 }
-const AchievementSetStepsAtLeastResponse =
-  AchievementIncrementResponse as any as S.Schema<AchievementSetStepsAtLeastResponse>;
-
 /** A request to submit a score to leaderboards. */
 export interface ScoreSubmission {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#scoreSubmission`. */
@@ -1664,11 +1157,7 @@ export interface ScoreSubmission {
   /** The new score being submitted. */
   score?: string;
 }
-const ScoreSubmission = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<ScoreSubmission>;
-
 export type ScoreSubmissionList = Array<ScoreSubmission>;
-const ScoreSubmissionList = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<ScoreSubmissionList>;
-
 /** A list of score submission requests. */
 export interface PlayerScoreSubmissionList {
   /** The score submissions. */
@@ -1676,25 +1165,13 @@ export interface PlayerScoreSubmissionList {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#playerScoreSubmissionList`. */
   kind?: string;
 }
-const PlayerScoreSubmissionList = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<PlayerScoreSubmissionList>;
-
 export interface SubmitMultipleScoresRequest {
   /** The preferred language to use for strings returned by this method. */
   language?: string;
   /** Request body */
   body?: PlayerScoreSubmissionList;
 }
-const SubmitMultipleScoresRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<SubmitMultipleScoresRequest>;
-
 export type PlayerScoreTimeSpanEnum = "ALL_TIME" | "WEEKLY" | "DAILY";
-const PlayerScoreTimeSpanEnum = S.String;
-
 /** A player score. */
 export interface PlayerScore {
   /** Additional information about this score. Values will contain no more than 64 URI-safe characters as defined by section 2.3 of RFC 3986. */
@@ -1708,17 +1185,10 @@ export interface PlayerScore {
   /** The time span for this player score. */
   timeSpan?: PlayerScoreTimeSpanEnum;
 }
-const PlayerScore = /*@__PURE__*/ __L.at(__c16, 5) as any as S.Schema<PlayerScore>;
-
 export type PlayerScoreList = Array<PlayerScore>;
-const PlayerScoreList = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<PlayerScoreList>;
-
 export type PlayerScoreResponseBeatenScoreTimeSpansItemEnum = "ALL_TIME" | "WEEKLY" | "DAILY";
 export type PlayerScoreResponseBeatenScoreTimeSpansItemEnumList =
   Array<PlayerScoreResponseBeatenScoreTimeSpansItemEnum>;
-const PlayerScoreResponseBeatenScoreTimeSpansItemEnumList =
-  ApplicationEnabledFeaturesItemEnumList as any as S.Schema<PlayerScoreResponseBeatenScoreTimeSpansItemEnumList>;
-
 /** A list of leaderboard entry resources. */
 export interface PlayerScoreResponse {
   /** The scores in time spans that have not been beaten. As an example, the submitted score may be better than the player's `DAILY` score, but not better than the player's scores for the `WEEKLY` or `ALL_TIME` time spans. */
@@ -1734,14 +1204,7 @@ export interface PlayerScoreResponse {
   /** Additional information about this score. Values will contain no more than 64 URI-safe characters as defined by section 2.3 of RFC 3986. */
   scoreTag?: string;
 }
-const PlayerScoreResponse = /*@__PURE__*/ __L.at(__c16, 7) as any as S.Schema<PlayerScoreResponse>;
-
 export type PlayerScoreResponseList = Array<PlayerScoreResponse>;
-const PlayerScoreResponseList = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<PlayerScoreResponseList>;
-
 /** A list of score submission statuses. */
 export interface PlayerScoreListResponse {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#playerScoreListResponse`. */
@@ -1749,11 +1212,6 @@ export interface PlayerScoreListResponse {
   /** The score submissions statuses. */
   submittedScores?: PlayerScoreResponseList;
 }
-const PlayerScoreListResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<PlayerScoreListResponse>;
-
 export interface SubmitScoresRequest {
   /** Required. The score you're submitting. The submitted score is ignored if it is worse than a previously submitted score, where worse depends on the leaderboard sort order. The meaning of the score value depends on the leaderboard format type. For fixed-point, the score represents the raw value. For time, the score represents elapsed time in milliseconds. For currency, the score represents a value in micro units. */
   score: string;
@@ -1764,8 +1222,6 @@ export interface SubmitScoresRequest {
   /** Additional information about the score you're submitting. Values must contain no more than 64 URI-safe characters as defined by section 2.3 of RFC 3986. */
   scoreTag?: string;
 }
-const SubmitScoresRequest = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<SubmitScoresRequest>;
-
 /** Request to remove a Recall token linking PGS principal and an in-game account */
 export interface UnlinkPersonaRequest {
   /** Value of the Recall token as it was provided by the client in LinkPersona RPC */
@@ -1775,36 +1231,19 @@ export interface UnlinkPersonaRequest {
   /** Required. Opaque server-generated string that encodes all the necessary information to identify the PGS player / Google user and application. */
   sessionId?: string;
 }
-const UnlinkPersonaRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<UnlinkPersonaRequest>;
-
 export interface UnlinkPersonaRecallRequest {
   /** Request body */
   body?: UnlinkPersonaRequest;
 }
-const UnlinkPersonaRecallRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<UnlinkPersonaRecallRequest>;
-
 /** Response for the UnlinkPersona RPC */
 export interface UnlinkPersonaResponse {
   /** Required. Whether a Recall token specified by the request was deleted. Can be 'false' when there were no Recall tokens satisfied the criteria from the request. */
   unlinked?: boolean;
 }
-const UnlinkPersonaResponse = ResetPersonaResponse as any as S.Schema<UnlinkPersonaResponse>;
-
 export interface UnlockAchievementsRequest {
   /** The ID of the achievement used by this method. */
   achievementId: string;
 }
-const UnlockAchievementsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<UnlockAchievementsRequest>;
-
 /** An achievement unlock response */
 export interface AchievementUnlockResponse {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#achievementUnlockResponse`. */
@@ -1812,11 +1251,6 @@ export interface AchievementUnlockResponse {
   /** Whether this achievement was newly unlocked (that is, whether the unlock request for the achievement was the first for the player). */
   newlyUnlocked?: boolean;
 }
-const AchievementUnlockResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<AchievementUnlockResponse>;
-
 /** The payload to request to increment an achievement. */
 export interface GamesAchievementSetStepsAtLeast {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#GamesAchievementSetStepsAtLeast`. */
@@ -1824,18 +1258,11 @@ export interface GamesAchievementSetStepsAtLeast {
   /** The minimum number of steps for the achievement to be set to. */
   steps?: number;
 }
-const GamesAchievementSetStepsAtLeast = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<GamesAchievementSetStepsAtLeast>;
-
 export type AchievementUpdateRequestUpdateTypeEnum =
   | "REVEAL"
   | "UNLOCK"
   | "INCREMENT"
   | "SET_STEPS_AT_LEAST";
-const AchievementUpdateRequestUpdateTypeEnum = S.String;
-
 /** The payload to request to increment an achievement. */
 export interface GamesAchievementIncrement {
   /** The requestId associated with an increment to an achievement. */
@@ -1845,11 +1272,6 @@ export interface GamesAchievementIncrement {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#GamesAchievementIncrement`. */
   kind?: string;
 }
-const GamesAchievementIncrement = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<GamesAchievementIncrement>;
-
 /** A request to update an achievement. */
 export interface AchievementUpdateRequest {
   /** The payload if an update of type `SET_STEPS_AT_LEAST` was requested for the achievement. */
@@ -1863,17 +1285,7 @@ export interface AchievementUpdateRequest {
   /** The payload if an update of type `INCREMENT` was requested for the achievement. */
   incrementPayload?: GamesAchievementIncrement;
 }
-const AchievementUpdateRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<AchievementUpdateRequest>;
-
 export type AchievementUpdateRequestList = Array<AchievementUpdateRequest>;
-const AchievementUpdateRequestList = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<AchievementUpdateRequestList>;
-
 /** A list of achievement update requests. */
 export interface AchievementUpdateMultipleRequest {
   /** The individual achievement update requests. */
@@ -1881,23 +1293,11 @@ export interface AchievementUpdateMultipleRequest {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#achievementUpdateMultipleRequest`. */
   kind?: string;
 }
-const AchievementUpdateMultipleRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<AchievementUpdateMultipleRequest>;
-
 export interface UpdateMultipleAchievementsRequest {
   /** Request body */
   body?: AchievementUpdateMultipleRequest;
 }
-const UpdateMultipleAchievementsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<UpdateMultipleAchievementsRequest>;
-
 export type AchievementUpdateResponseCurrentStateEnum = "HIDDEN" | "REVEALED" | "UNLOCKED";
-const AchievementUpdateResponseCurrentStateEnum = S.String;
-
 /** An updated achievement. */
 export interface AchievementUpdateResponse {
   /** The current steps recorded for this achievement if it is incremental. */
@@ -1913,17 +1313,7 @@ export interface AchievementUpdateResponse {
   /** The current state of the achievement. */
   currentState?: AchievementUpdateResponseCurrentStateEnum;
 }
-const AchievementUpdateResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<AchievementUpdateResponse>;
-
 export type AchievementUpdateResponseList = Array<AchievementUpdateResponse>;
-const AchievementUpdateResponseList = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<AchievementUpdateResponseList>;
-
 /** Response message for UpdateMultipleAchievements rpc. */
 export interface AchievementUpdateMultipleResponse {
   /** The updated state of the achievements. */
@@ -1931,20 +1321,10 @@ export interface AchievementUpdateMultipleResponse {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#achievementUpdateMultipleResponse`. */
   kind?: string;
 }
-const AchievementUpdateMultipleResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<AchievementUpdateMultipleResponse>;
-
 export interface VerifyApplicationsRequest {
   /** The application ID from the Google Play developer console. */
   applicationId: string;
 }
-const VerifyApplicationsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<VerifyApplicationsRequest>;
-
 /** A third party application verification response resource. */
 export interface ApplicationVerifyResponse {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#applicationVerifyResponse`. */
@@ -1954,11 +1334,6 @@ export interface ApplicationVerifyResponse {
   /** An alternate ID that was once used for the player that was issued the auth token used in this request. (This field is not normally populated.) */
   alternate_player_id?: string;
 }
-const ApplicationVerifyResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<ApplicationVerifyResponse>;
-
 export type BatchRecordEventsGameStatsError =
   | NotFound
   | Forbidden
@@ -1972,8 +1347,8 @@ export const batchRecordEventsGameStats: API.OperationMethod<
   BatchRecordEventsGameStatsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchRecordEventsGameStatsRequest,
-  output: BatchRecordEventsResponse,
+  input: __S(5, __c0, 5) as any as S.Schema<BatchRecordEventsGameStatsRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<BatchRecordEventsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1987,8 +1362,8 @@ export const checkRevisions: API.OperationMethod<
   CheckRevisionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckRevisionsRequest,
-  output: RevisionCheckResponse,
+  input: __S(11, __c1, 3) as any as S.Schema<CheckRevisionsRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<RevisionCheckResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2002,8 +1377,8 @@ export const gamesPlayerTokensRecall: API.OperationMethod<
   GamesPlayerTokensRecallError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GamesPlayerTokensRecallRequest,
-  output: RetrieveGamesPlayerTokensResponse,
+  input: __S(14, __c1, 6) as any as S.Schema<GamesPlayerTokensRecallRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<RetrieveGamesPlayerTokensResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2022,8 +1397,8 @@ export const generatePlayGroupingApiTokenAccesstokens: API.OperationMethod<
   GeneratePlayGroupingApiTokenAccesstokensError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GeneratePlayGroupingApiTokenAccesstokensRequest,
-  output: GeneratePlayGroupingApiTokenResponse,
+  input: __S(19, __c2, 3) as any as S.Schema<GeneratePlayGroupingApiTokenAccesstokensRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<GeneratePlayGroupingApiTokenResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2042,8 +1417,8 @@ export const generateRecallPlayGroupingApiTokenAccesstokens: API.OperationMethod
   GenerateRecallPlayGroupingApiTokenAccesstokensError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GenerateRecallPlayGroupingApiTokenAccesstokensRequest,
-  output: GenerateRecallPlayGroupingApiTokenResponse,
+  input: __S(22, __c2, 6) as any as S.Schema<GenerateRecallPlayGroupingApiTokenAccesstokensRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<GenerateRecallPlayGroupingApiTokenResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2057,8 +1432,8 @@ export const getApplications: API.OperationMethod<
   GetApplicationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApplicationsRequest,
-  output: Application,
+  input: __S(23, __c2, 7) as any as S.Schema<GetApplicationsRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<Application>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2077,8 +1452,8 @@ export const getEndPointApplications: API.OperationMethod<
   GetEndPointApplicationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEndPointApplicationsRequest,
-  output: EndPoint,
+  input: __S(34, __c4, 2) as any as S.Schema<GetEndPointApplicationsRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<EndPoint>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2092,8 +1467,8 @@ export const getLeaderboards: API.OperationMethod<
   GetLeaderboardsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLeaderboardsRequest,
-  output: Leaderboard,
+  input: __S(36, __c4, 4) as any as S.Schema<GetLeaderboardsRequest>,
+  output: __S(37, __c4, 5) as any as S.Schema<Leaderboard>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2107,8 +1482,8 @@ export const getMetagameConfigMetagame: API.OperationMethod<
   GetMetagameConfigMetagameError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMetagameConfigMetagameRequest,
-  output: MetagameConfig,
+  input: __S(38, __c4, 6) as any as S.Schema<GetMetagameConfigMetagameRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<MetagameConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2122,8 +1497,8 @@ export const getMultipleApplicationPlayerIdsPlayers: API.OperationMethod<
   GetMultipleApplicationPlayerIdsPlayersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMultipleApplicationPlayerIdsPlayersRequest,
-  output: GetMultipleApplicationPlayerIdsResponse,
+  input: __S(42, __c5, 2) as any as S.Schema<GetMultipleApplicationPlayerIdsPlayersRequest>,
+  output: __S(45, __c5, 5) as any as S.Schema<GetMultipleApplicationPlayerIdsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2137,8 +1512,8 @@ export const getPlayers: API.OperationMethod<
   GetPlayersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPlayersRequest,
-  output: Player,
+  input: __S(46, __c5, 6) as any as S.Schema<GetPlayersRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<Player>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2152,8 +1527,8 @@ export const getScopedPlayerIdsPlayers: API.OperationMethod<
   GetScopedPlayerIdsPlayersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetScopedPlayerIdsPlayersRequest,
-  output: ScopedPlayerIds,
+  input: __S(51, __c6, 3) as any as S.Schema<GetScopedPlayerIdsPlayersRequest>,
+  output: __S(52, __c6, 4) as any as S.Schema<ScopedPlayerIds>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2168,8 +1543,8 @@ export const getScores: API.PaginatedOperationMethod<
   GcpOpContext,
   PlayerLeaderboardScore
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetScoresRequest,
-  output: PlayerLeaderboardScoreListResponse,
+  input: __S(53, __c6, 5) as any as S.Schema<GetScoresRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<PlayerLeaderboardScoreListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2184,8 +1559,8 @@ export const getSnapshots: API.OperationMethod<
   GetSnapshotsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSnapshotsRequest,
-  output: Snapshot,
+  input: __S(58, __c7, 2) as any as S.Schema<GetSnapshotsRequest>,
+  output: __S(60, __c7, 4) as any as S.Schema<Snapshot>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2199,8 +1574,8 @@ export const getStats: API.OperationMethod<
   GetStatsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetStatsRequest,
-  output: StatsResponse,
+  input: __S(61, __c7, 5) as any as S.Schema<GetStatsRequest>,
+  output: __S(62, __c7, 6) as any as S.Schema<StatsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2214,8 +1589,8 @@ export const getTokensRecall: API.OperationMethod<
   GetTokensRecallError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTokensRecallRequest,
-  output: RetrievePlayerTokensResponse,
+  input: __S(63, __c7, 7) as any as S.Schema<GetTokensRecallRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<RetrievePlayerTokensResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2229,8 +1604,8 @@ export const incrementAchievements: API.OperationMethod<
   IncrementAchievementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: IncrementAchievementsRequest,
-  output: AchievementIncrementResponse,
+  input: __S(66, __c8, 2) as any as S.Schema<IncrementAchievementsRequest>,
+  output: __S(67, __c8, 3) as any as S.Schema<AchievementIncrementResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2244,8 +1619,8 @@ export const lastTokenFromAllDeveloperGamesRecall: API.OperationMethod<
   LastTokenFromAllDeveloperGamesRecallError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LastTokenFromAllDeveloperGamesRecallRequest,
-  output: RetrieveDeveloperGamesLastPlayerTokenResponse,
+  input: __S(68, __c8, 4) as any as S.Schema<LastTokenFromAllDeveloperGamesRecallRequest>,
+  output: __S(69, __c8, 5) as any as S.Schema<RetrieveDeveloperGamesLastPlayerTokenResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2259,8 +1634,8 @@ export const linkPersonaRecall: API.OperationMethod<
   LinkPersonaRecallError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LinkPersonaRecallRequest,
-  output: LinkPersonaResponse,
+  input: __S(71, __c8, 7) as any as S.Schema<LinkPersonaRecallRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<LinkPersonaResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2275,8 +1650,8 @@ export const listAchievementDefinitions: API.PaginatedOperationMethod<
   GcpOpContext,
   AchievementDefinition
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAchievementDefinitionsRequest,
-  output: AchievementDefinitionsListResponse,
+  input: __S(73, __c9, 1) as any as S.Schema<ListAchievementDefinitionsRequest>,
+  output: __S(76, __c9, 4) as any as S.Schema<AchievementDefinitionsListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2292,8 +1667,8 @@ export const listAchievements: API.PaginatedOperationMethod<
   GcpOpContext,
   PlayerAchievement
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAchievementsRequest,
-  output: PlayerAchievementListResponse,
+  input: __S(77, __c9, 5) as any as S.Schema<ListAchievementsRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<PlayerAchievementListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2309,8 +1684,8 @@ export const listByPlayerEvents: API.PaginatedOperationMethod<
   GcpOpContext,
   PlayerEvent
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListByPlayerEventsRequest,
-  output: PlayerEventListResponse,
+  input: __S(81, __c10, 1) as any as S.Schema<ListByPlayerEventsRequest>,
+  output: __S(84, __c10, 4) as any as S.Schema<PlayerEventListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2326,8 +1701,8 @@ export const listCategoriesByPlayerMetagame: API.PaginatedOperationMethod<
   GcpOpContext,
   Category
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCategoriesByPlayerMetagameRequest,
-  output: CategoryListResponse,
+  input: __S(85, __c10, 5) as any as S.Schema<ListCategoriesByPlayerMetagameRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<CategoryListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2343,8 +1718,8 @@ export const listDefinitionsEvents: API.PaginatedOperationMethod<
   GcpOpContext,
   EventDefinition
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDefinitionsEventsRequest,
-  output: EventDefinitionListResponse,
+  input: __S(89, __c11, 1) as any as S.Schema<ListDefinitionsEventsRequest>,
+  output: __S(94, __c11, 6) as any as S.Schema<EventDefinitionListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2360,8 +1735,8 @@ export const listLeaderboards: API.PaginatedOperationMethod<
   GcpOpContext,
   Leaderboard
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListLeaderboardsRequest,
-  output: LeaderboardListResponse,
+  input: __S(95, __c11, 7) as any as S.Schema<ListLeaderboardsRequest>,
+  output: __S(97, __c12, 1) as any as S.Schema<LeaderboardListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2377,8 +1752,8 @@ export const listPlayers: API.PaginatedOperationMethod<
   GcpOpContext,
   Player
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListPlayersRequest,
-  output: PlayerListResponse,
+  input: __S(98, __c12, 2) as any as S.Schema<ListPlayersRequest>,
+  output: __S(100, __c12, 4) as any as S.Schema<PlayerListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2394,8 +1769,8 @@ export const listScores: API.PaginatedOperationMethod<
   GcpOpContext,
   LeaderboardEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListScoresRequest,
-  output: LeaderboardScores,
+  input: __S(101, __c12, 5) as any as S.Schema<ListScoresRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<LeaderboardScores>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2411,8 +1786,8 @@ export const listSnapshots: API.PaginatedOperationMethod<
   GcpOpContext,
   Snapshot
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListSnapshotsRequest,
-  output: SnapshotListResponse,
+  input: __S(105, __c13, 1) as any as S.Schema<ListSnapshotsRequest>,
+  output: __S(107, __c13, 3) as any as S.Schema<SnapshotListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2428,8 +1803,8 @@ export const listWindowScores: API.PaginatedOperationMethod<
   GcpOpContext,
   LeaderboardEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListWindowScoresRequest,
-  output: LeaderboardScores,
+  input: __S(108, __c13, 4) as any as S.Schema<ListWindowScoresRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<LeaderboardScores>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2444,8 +1819,8 @@ export const playedApplications: API.OperationMethod<
   PlayedApplicationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PlayedApplicationsRequest,
-  output: PlayedApplicationsResponse,
+  input: __S(109, __c13, 5) as any as S.Schema<PlayedApplicationsRequest>,
+  output: __S(110, __c13, 6) as any as S.Schema<PlayedApplicationsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2459,8 +1834,8 @@ export const recordEvents: API.OperationMethod<
   RecordEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RecordEventsRequest,
-  output: EventUpdateResponse,
+  input: __S(117, __c14, 5) as any as S.Schema<RecordEventsRequest>,
+  output: __S(122, __c15, 2) as any as S.Schema<EventUpdateResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2474,8 +1849,8 @@ export const resetPersonaRecall: API.OperationMethod<
   ResetPersonaRecallError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResetPersonaRecallRequest,
-  output: ResetPersonaResponse,
+  input: __S(124, __c15, 4) as any as S.Schema<ResetPersonaRecallRequest>,
+  output: __S(125, __c15, 5) as any as S.Schema<ResetPersonaResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2489,8 +1864,8 @@ export const revealAchievements: API.OperationMethod<
   RevealAchievementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevealAchievementsRequest,
-  output: AchievementRevealResponse,
+  input: __S(126, __c15, 6) as any as S.Schema<RevealAchievementsRequest>,
+  output: __S(127, __c15, 7) as any as S.Schema<AchievementRevealResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2509,8 +1884,8 @@ export const setStepsAtLeastAchievements: API.OperationMethod<
   SetStepsAtLeastAchievementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetStepsAtLeastAchievementsRequest,
-  output: AchievementSetStepsAtLeastResponse,
+  input: __S(128, __c16, 0) as any as S.Schema<SetStepsAtLeastAchievementsRequest>,
+  output: __S(67, __c8, 3) as any as S.Schema<AchievementSetStepsAtLeastResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2524,8 +1899,8 @@ export const submitMultipleScores: API.OperationMethod<
   SubmitMultipleScoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SubmitMultipleScoresRequest,
-  output: PlayerScoreListResponse,
+  input: __S(132, __c16, 4) as any as S.Schema<SubmitMultipleScoresRequest>,
+  output: __S(137, __c17, 1) as any as S.Schema<PlayerScoreListResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2539,8 +1914,8 @@ export const submitScores: API.OperationMethod<
   SubmitScoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SubmitScoresRequest,
-  output: PlayerScoreResponse,
+  input: __S(138, __c17, 2) as any as S.Schema<SubmitScoresRequest>,
+  output: __S(135, __c16, 7) as any as S.Schema<PlayerScoreResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2554,8 +1929,8 @@ export const unlinkPersonaRecall: API.OperationMethod<
   UnlinkPersonaRecallError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UnlinkPersonaRecallRequest,
-  output: UnlinkPersonaResponse,
+  input: __S(140, __c17, 4) as any as S.Schema<UnlinkPersonaRecallRequest>,
+  output: __S(125, __c15, 5) as any as S.Schema<UnlinkPersonaResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2569,8 +1944,8 @@ export const unlockAchievements: API.OperationMethod<
   UnlockAchievementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UnlockAchievementsRequest,
-  output: AchievementUnlockResponse,
+  input: __S(141, __c17, 5) as any as S.Schema<UnlockAchievementsRequest>,
+  output: __S(142, __c17, 6) as any as S.Schema<AchievementUnlockResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2589,8 +1964,8 @@ export const updateMultipleAchievements: API.OperationMethod<
   UpdateMultipleAchievementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateMultipleAchievementsRequest,
-  output: AchievementUpdateMultipleResponse,
+  input: __S(148, __c18, 4) as any as S.Schema<UpdateMultipleAchievementsRequest>,
+  output: __S(151, __c18, 7) as any as S.Schema<AchievementUpdateMultipleResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2604,8 +1979,8 @@ export const verifyApplications: API.OperationMethod<
   VerifyApplicationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VerifyApplicationsRequest,
-  output: ApplicationVerifyResponse,
+  input: __S(152, __c19, 0) as any as S.Schema<VerifyApplicationsRequest>,
+  output: __S(153, __c19, 1) as any as S.Schema<ApplicationVerifyResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2625,24 +2000,24 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "PropertyValue" });
     case 1:
-      return S.Record(S.String, PropertyValue);
+      return S.Record(S.String, __S(0, __c0, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           eventId: S.optional(S.String),
           eventName: S.optional(S.String),
           eventTime: S.optional(S.String),
-          eventProperties: S.optional(PropertyValueMap),
+          eventProperties: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({ identifier: "PlayerGameEvent" });
     case 3:
-      return S.Array(PlayerGameEvent);
+      return S.Array(__S(2, __c0, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           salt: S.optional(S.String),
           requestTime: S.optional(S.String),
-          events: S.optional(PlayerGameEventList),
+          events: S.optional(__S(3, __c0, 3)),
           droidGuardBlob: S.optional(S.String),
           packageName: S.optional(S.String),
         }),
@@ -2651,7 +2026,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           playerId: S.String.pipe(T.Label()),
-          body: S.optional(BatchRecordEventsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(4, __c0, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2665,7 +2040,7 @@ function __c0(j: number): any {
     case 6:
       return S.Record(S.String, S.Unknown);
     case 7:
-      return S.Array(DocumentMap);
+      return S.Array(__S(6, __c0, 6));
   }
 }
 function __c1(j: number): any {
@@ -2673,17 +2048,17 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(7, __c0, 7)),
           message: S.optional(S.String),
           code: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Status" });
     case 1:
-      return S.Record(S.String, Status);
+      return S.Record(S.String, __S(8, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          failedRequests: S.optional(StatusMap),
+          failedRequests: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({
         identifier: "BatchRecordEventsResponse",
@@ -2705,7 +2080,7 @@ function __c1(j: number): any {
         S.Struct({
           kind: S.optional(S.String),
           apiVersion: S.optional(S.String),
-          revisionStatus: S.optional(RevisionCheckResponseRevisionStatusEnum),
+          revisionStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "RevisionCheckResponse" });
     case 5:
@@ -2713,7 +2088,7 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          applicationIds: S.optional(StringList.pipe(T.Query())),
+          applicationIds: S.optional(__S(13, __c1, 5).pipe(T.Query())),
           sessionId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -2740,16 +2115,16 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          recallToken: S.optional(RecallToken),
+          recallToken: S.optional(__S(15, __c1, 7)),
           applicationId: S.optional(S.String),
         }),
       ).annotate({ identifier: "GamePlayerToken" });
     case 1:
-      return S.Array(GamePlayerToken);
+      return S.Array(__S(16, __c2, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          gamePlayerTokens: S.optional(GamePlayerTokenList),
+          gamePlayerTokens: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({
         identifier: "RetrieveGamesPlayerTokensResponse",
@@ -2778,7 +2153,7 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          token: S.optional(PlayGroupingApiToken),
+          token: S.optional(__S(20, __c2, 4)),
         }),
       ).annotate({
         identifier: "GeneratePlayGroupingApiTokenResponse",
@@ -2803,7 +2178,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.Label()),
-          platformType: S.optional(GetApplicationsPlatformTypeEnum.pipe(T.Query())),
+          platformType: S.optional(S.String.pipe(T.Query())),
           language: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -2826,7 +2201,7 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "ApplicationCategory" });
     case 1:
-      return S.Array(ApplicationEnabledFeaturesItemEnum);
+      return S.Array(S.String);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2859,19 +2234,19 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          platformType: S.optional(InstancePlatformTypeEnum),
+          platformType: S.optional(S.String),
           acquisitionUri: S.optional(S.String),
           kind: S.optional(S.String),
-          androidInstance: S.optional(InstanceAndroidDetails),
+          androidInstance: S.optional(__S(26, __c3, 2)),
           turnBasedPlay: S.optional(S.Boolean),
           name: S.optional(S.String),
-          webInstance: S.optional(InstanceWebDetails),
-          iosInstance: S.optional(InstanceIosDetails),
+          webInstance: S.optional(__S(27, __c3, 3)),
+          iosInstance: S.optional(__S(28, __c3, 4)),
           realtimePlay: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Instance" });
     case 6:
-      return S.Array(Instance);
+      return S.Array(__S(29, __c3, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -2887,22 +2262,22 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ImageAsset);
+      return S.Array(__S(31, __c3, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          category: S.optional(ApplicationCategory),
+          category: S.optional(__S(24, __c3, 0)),
           description: S.optional(S.String),
-          enabledFeatures: S.optional(ApplicationEnabledFeaturesItemEnumList),
+          enabledFeatures: S.optional(__S(25, __c3, 1)),
           leaderboard_count: S.optional(S.Number),
           themeColor: S.optional(S.String),
           id: S.optional(S.String),
           achievement_count: S.optional(S.Number),
           name: S.optional(S.String),
-          instances: S.optional(InstanceList),
+          instances: S.optional(__S(30, __c3, 6)),
           kind: S.optional(S.String),
           author: S.optional(S.String),
-          assets: S.optional(ImageAssetList),
+          assets: S.optional(__S(32, __c4, 0)),
           lastUpdatedTimestamp: S.optional(S.String),
         }),
       ).annotate({ identifier: "Application" });
@@ -2910,7 +2285,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           applicationId: S.optional(S.String.pipe(T.Query())),
-          endPointType: S.optional(GetEndPointApplicationsEndPointTypeEnum.pipe(T.Query())),
+          endPointType: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2946,7 +2321,7 @@ function __c4(j: number): any {
           kind: S.optional(S.String),
           iconUrl: S.optional(S.String),
           name: S.optional(S.String),
-          order: S.optional(LeaderboardOrderEnum),
+          order: S.optional(S.String),
           id: S.optional(S.String),
           isIconUrlDefault: S.optional(S.Boolean),
         }),
@@ -2977,11 +2352,11 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(PlayerLevel);
+      return S.Array(__S(39, __c4, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          playerLevels: S.optional(PlayerLevelList),
+          playerLevels: S.optional(__S(40, __c5, 0)),
           currentVersion: S.optional(S.Number),
           kind: S.optional(S.String),
         }),
@@ -2989,7 +2364,7 @@ function __c5(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          applicationIds: S.optional(StringList.pipe(T.Query())),
+          applicationIds: S.optional(__S(13, __c1, 5).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -3008,11 +2383,11 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "ApplicationPlayerId" });
     case 4:
-      return S.Array(ApplicationPlayerId);
+      return S.Array(__S(43, __c5, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          playerIds: S.optional(ApplicationPlayerIdList),
+          playerIds: S.optional(__S(44, __c5, 4)),
         }),
       ).annotate({
         identifier: "GetMultipleApplicationPlayerIdsResponse",
@@ -3035,8 +2410,8 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           currentExperiencePoints: S.optional(S.String),
-          currentLevel: S.optional(PlayerLevel),
-          nextLevel: S.optional(PlayerLevel),
+          currentLevel: S.optional(__S(39, __c4, 7)),
+          nextLevel: S.optional(__S(39, __c4, 7)),
           lastLevelUpTimestampMillis: S.optional(S.String),
           kind: S.optional(S.String),
         }),
@@ -3057,15 +2432,15 @@ function __c6(j: number): any {
         S.Struct({
           kind: S.optional(S.String),
           profileVisible: S.optional(S.Boolean),
-          friendsListVisibility: S.optional(ProfileSettingsFriendsListVisibilityEnum),
+          friendsListVisibility: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProfileSettings" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          experienceInfo: S.optional(PlayerExperienceInfo),
+          experienceInfo: S.optional(__S(47, __c5, 7)),
           gamePlayerId: S.optional(S.String),
-          name: S.optional(PlayerName),
+          name: S.optional(__S(48, __c6, 0)),
           bannerUrlPortrait: S.optional(S.String),
           kind: S.optional(S.String),
           originalPlayerId: S.optional(S.String),
@@ -3073,8 +2448,8 @@ function __c6(j: number): any {
           bannerUrlLandscape: S.optional(S.String),
           displayName: S.optional(S.String),
           title: S.optional(S.String),
-          friendStatus: S.optional(PlayerFriendStatusEnum),
-          profileSettings: S.optional(ProfileSettings),
+          friendStatus: S.optional(S.String),
+          profileSettings: S.optional(__S(49, __c6, 1)),
           playerId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Player" });
@@ -3100,10 +2475,10 @@ function __c6(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          includeRankType: S.optional(GetScoresIncludeRankTypeEnum.pipe(T.Query())),
+          includeRankType: S.optional(S.String.pipe(T.Query())),
           playerId: S.String.pipe(T.Label()),
           leaderboardId: S.String.pipe(T.Label()),
-          timeSpan: GetScoresTimeSpanEnum.pipe(T.Label()),
+          timeSpan: S.String.pipe(T.Label()),
           pageToken: S.optional(S.String.pipe(T.Query())),
           language: S.optional(S.String.pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
@@ -3129,15 +2504,15 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           scoreTag: S.optional(S.String),
-          socialRank: S.optional(LeaderboardScoreRank),
-          publicRank: S.optional(LeaderboardScoreRank),
-          timeSpan: S.optional(PlayerLeaderboardScoreTimeSpanEnum),
+          socialRank: S.optional(__S(54, __c6, 6)),
+          publicRank: S.optional(__S(54, __c6, 6)),
+          timeSpan: S.optional(S.String),
           kind: S.optional(S.String),
           leaderboard_id: S.optional(S.String),
           writeTimestamp: S.optional(S.String),
           scoreValue: S.optional(S.String),
           scoreString: S.optional(S.String),
-          friendsRank: S.optional(LeaderboardScoreRank),
+          friendsRank: S.optional(__S(54, __c6, 6)),
         }),
       ).annotate({ identifier: "PlayerLeaderboardScore" });
   }
@@ -3145,13 +2520,13 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(PlayerLeaderboardScore);
+      return S.Array(__S(55, __c6, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          player: S.optional(Player),
-          items: PlayerLeaderboardScoreList,
+          player: S.optional(__S(50, __c6, 2)),
+          items: __S(56, __c7, 0),
           kind: S.optional(S.String),
         }),
       ).annotate({
@@ -3188,11 +2563,11 @@ function __c7(j: number): any {
           lastModifiedMillis: S.optional(S.String),
           title: S.optional(S.String),
           uniqueName: S.optional(S.String),
-          coverImage: S.optional(SnapshotImage),
+          coverImage: S.optional(__S(59, __c7, 3)),
           kind: S.optional(S.String),
           id: S.optional(S.String),
           description: S.optional(S.String),
-          type: S.optional(SnapshotTypeEnum),
+          type: S.optional(S.String),
           progressValue: S.optional(S.String),
         }),
       ).annotate({ identifier: "Snapshot" });
@@ -3239,11 +2614,11 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(RecallToken);
+      return S.Array(__S(15, __c1, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          tokens: S.optional(RecallTokenList),
+          tokens: S.optional(__S(64, __c8, 0)),
         }),
       ).annotate({
         identifier: "RetrievePlayerTokensResponse",
@@ -3291,7 +2666,7 @@ function __c8(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          gamePlayerToken: S.optional(GamePlayerToken),
+          gamePlayerToken: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({
         identifier: "RetrieveDeveloperGamesLastPlayerTokenResponse",
@@ -3301,19 +2676,17 @@ function __c8(j: number): any {
         S.Struct({
           ttl: S.optional(S.String),
           sessionId: S.optional(S.String),
-          conflictingLinksResolutionPolicy: S.optional(
-            LinkPersonaRequestConflictingLinksResolutionPolicyEnum,
-          ),
+          conflictingLinksResolutionPolicy: S.optional(S.String),
           expireTime: S.optional(S.String),
           token: S.optional(S.String),
-          cardinalityConstraint: S.optional(LinkPersonaRequestCardinalityConstraintEnum),
+          cardinalityConstraint: S.optional(S.String),
           persona: S.optional(S.String),
         }),
       ).annotate({ identifier: "LinkPersonaRequest" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(LinkPersonaRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(70, __c8, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3329,7 +2702,7 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(LinkPersonaResponseStateEnum),
+          state: S.optional(S.String),
         }),
       ).annotate({ identifier: "LinkPersonaResponse" });
     case 1:
@@ -3353,14 +2726,14 @@ function __c9(j: number): any {
         S.Struct({
           unlockedIconUrl: S.optional(S.String),
           formattedTotalSteps: S.optional(S.String),
-          initialState: S.optional(AchievementDefinitionInitialStateEnum),
+          initialState: S.optional(S.String),
           id: S.optional(S.String),
-          achievementType: S.optional(AchievementDefinitionAchievementTypeEnum),
+          achievementType: S.optional(S.String),
           isRevealedIconUrlDefault: S.optional(S.Boolean),
           revealedIconUrl: S.optional(S.String),
           experiencePoints: S.optional(S.String),
           description: S.optional(S.String),
-          achievementLifecycleState: S.optional(AchievementDefinitionAchievementLifecycleStateEnum),
+          achievementLifecycleState: S.optional(S.String),
           kind: S.optional(S.String),
           isUnlockedIconUrlDefault: S.optional(S.Boolean),
           totalSteps: S.optional(S.Number),
@@ -3368,11 +2741,11 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "AchievementDefinition" });
     case 3:
-      return S.Array(AchievementDefinition);
+      return S.Array(__S(74, __c9, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          items: AchievementDefinitionList,
+          items: __S(75, __c9, 3),
           nextPageToken: S.optional(S.String),
           kind: S.optional(S.String),
         }),
@@ -3384,7 +2757,7 @@ function __c9(j: number): any {
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
           language: S.optional(S.String.pipe(T.Query())),
-          state: S.optional(ListAchievementsStateEnum.pipe(T.Query())),
+          state: S.optional(S.String.pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
           playerId: S.String.pipe(T.Label()),
         }).pipe(
@@ -3402,13 +2775,13 @@ function __c9(j: number): any {
           experiencePoints: S.optional(S.String),
           lastUpdatedTimestamp: S.optional(S.String),
           formattedCurrentStepsString: S.optional(S.String),
-          achievementState: S.optional(PlayerAchievementAchievementStateEnum),
+          achievementState: S.optional(S.String),
           currentSteps: S.optional(S.Number),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "PlayerAchievement" });
     case 7:
-      return S.Array(PlayerAchievement);
+      return S.Array(__S(78, __c9, 6));
   }
 }
 function __c10(j: number): any {
@@ -3418,7 +2791,7 @@ function __c10(j: number): any {
         S.Struct({
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
-          items: PlayerAchievementList,
+          items: __S(79, __c9, 7),
         }),
       ).annotate({
         identifier: "PlayerAchievementListResponse",
@@ -3450,19 +2823,19 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "PlayerEvent" });
     case 3:
-      return S.Array(PlayerEvent);
+      return S.Array(__S(82, __c10, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
-          items: PlayerEventList,
+          items: __S(83, __c10, 3),
         }),
       ).annotate({ identifier: "PlayerEventListResponse" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          collection: ListCategoriesByPlayerMetagameCollectionEnum.pipe(T.Label()),
+          collection: S.String.pipe(T.Label()),
           maxResults: S.optional(S.Number.pipe(T.Query())),
           playerId: S.String.pipe(T.Label()),
           language: S.optional(S.String.pipe(T.Query())),
@@ -3486,7 +2859,7 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "Category" });
     case 7:
-      return S.Array(Category);
+      return S.Array(__S(86, __c10, 6));
   }
 }
 function __c11(j: number): any {
@@ -3495,7 +2868,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          items: CategoryList,
+          items: __S(87, __c10, 7),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "CategoryListResponse" });
@@ -3523,26 +2896,26 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "EventChild" });
     case 3:
-      return S.Array(EventChild);
+      return S.Array(__S(90, __c11, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           imageUrl: S.optional(S.String),
-          childEvents: S.optional(EventChildList),
+          childEvents: S.optional(__S(91, __c11, 3)),
           description: S.optional(S.String),
           id: S.optional(S.String),
           kind: S.optional(S.String),
           isDefaultImageUrl: S.optional(S.Boolean),
           displayName: S.optional(S.String),
-          visibility: S.optional(EventDefinitionVisibilityEnum),
+          visibility: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventDefinition" });
     case 5:
-      return S.Array(EventDefinition);
+      return S.Array(__S(92, __c11, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          items: EventDefinitionList,
+          items: __S(93, __c11, 5),
           nextPageToken: S.optional(S.String),
           kind: S.optional(S.String),
         }),
@@ -3568,20 +2941,20 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Leaderboard);
+      return S.Array(__S(37, __c4, 5));
     case 1:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
-          items: LeaderboardList,
+          items: __S(96, __c12, 0),
         }),
       ).annotate({ identifier: "LeaderboardListResponse" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number.pipe(T.Query())),
-          collection: ListPlayersCollectionEnum.pipe(T.Label()),
+          collection: S.String.pipe(T.Label()),
           language: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -3593,22 +2966,22 @@ function __c12(j: number): any {
         ),
       ).annotate({ identifier: "ListPlayersRequest" });
     case 3:
-      return S.Array(Player);
+      return S.Array(__S(50, __c6, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
-          items: PlayerList,
+          items: __S(99, __c12, 3),
         }),
       ).annotate({ identifier: "PlayerListResponse" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          collection: ListScoresCollectionEnum.pipe(T.Label()),
+          collection: S.String.pipe(T.Label()),
           leaderboardId: S.String.pipe(T.Label()),
           maxResults: S.optional(S.Number.pipe(T.Query())),
-          timeSpan: ListScoresTimeSpanEnum.pipe(T.Query()),
+          timeSpan: S.String.pipe(T.Query()),
           language: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -3622,7 +2995,7 @@ function __c12(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          player: S.optional(Player),
+          player: S.optional(__S(50, __c6, 2)),
           scoreValue: S.optional(S.String),
           formattedScoreRank: S.optional(S.String),
           scoreTag: S.optional(S.String),
@@ -3630,11 +3003,11 @@ function __c12(j: number): any {
           scoreRank: S.optional(S.String),
           kind: S.optional(S.String),
           formattedScore: S.optional(S.String),
-          timeSpan: S.optional(LeaderboardEntryTimeSpanEnum),
+          timeSpan: S.optional(S.String),
         }),
       ).annotate({ identifier: "LeaderboardEntry" });
     case 7:
-      return S.Array(LeaderboardEntry);
+      return S.Array(__S(102, __c12, 6));
   }
 }
 function __c13(j: number): any {
@@ -3646,8 +3019,8 @@ function __c13(j: number): any {
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
           numScores: S.optional(S.String),
-          items: LeaderboardEntryList,
-          playerScore: S.optional(LeaderboardEntry),
+          items: __S(103, __c12, 7),
+          playerScore: S.optional(__S(102, __c12, 6)),
         }),
       ).annotate({ identifier: "LeaderboardScores" });
     case 1:
@@ -3666,11 +3039,11 @@ function __c13(j: number): any {
         ),
       ).annotate({ identifier: "ListSnapshotsRequest" });
     case 2:
-      return S.Array(Snapshot);
+      return S.Array(__S(60, __c7, 4));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          items: SnapshotList,
+          items: __S(106, __c13, 2),
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
         }),
@@ -3679,9 +3052,9 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resultsAbove: S.optional(S.Number.pipe(T.Query())),
-          timeSpan: ListWindowScoresTimeSpanEnum.pipe(T.Query()),
+          timeSpan: S.String.pipe(T.Query()),
           leaderboardId: S.String.pipe(T.Label()),
-          collection: ListWindowScoresCollectionEnum.pipe(T.Label()),
+          collection: S.String.pipe(T.Label()),
           language: S.optional(S.String.pipe(T.Query())),
           returnTopIfAbsent: S.optional(S.Boolean.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3723,7 +3096,7 @@ function __c13(j: number): any {
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(EventUpdateRequest);
+      return S.Array(__S(111, __c13, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3735,17 +3108,17 @@ function __c14(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          updates: S.optional(EventUpdateRequestList),
-          timePeriod: S.optional(EventPeriodRange),
+          updates: S.optional(__S(112, __c14, 0)),
+          timePeriod: S.optional(__S(113, __c14, 1)),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventPeriodUpdate" });
     case 3:
-      return S.Array(EventPeriodUpdate);
+      return S.Array(__S(114, __c14, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          timePeriods: S.optional(EventPeriodUpdateList),
+          timePeriods: S.optional(__S(115, __c14, 3)),
           requestId: S.optional(S.String),
           kind: S.optional(S.String),
           currentTimeMillis: S.optional(S.String),
@@ -3755,7 +3128,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           language: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(EventRecordRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(116, __c14, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3767,13 +3140,13 @@ function __c14(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          failureCause: S.optional(EventBatchRecordFailureFailureCauseEnum),
+          failureCause: S.optional(S.String),
           kind: S.optional(S.String),
-          range: S.optional(EventPeriodRange),
+          range: S.optional(__S(113, __c14, 1)),
         }),
       ).annotate({ identifier: "EventBatchRecordFailure" });
     case 7:
-      return S.Array(EventBatchRecordFailure);
+      return S.Array(__S(118, __c14, 6));
   }
 }
 function __c15(j: number): any {
@@ -3783,18 +3156,18 @@ function __c15(j: number): any {
         S.Struct({
           kind: S.optional(S.String),
           eventId: S.optional(S.String),
-          failureCause: S.optional(EventRecordFailureFailureCauseEnum),
+          failureCause: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventRecordFailure" });
     case 1:
-      return S.Array(EventRecordFailure);
+      return S.Array(__S(120, __c15, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          batchFailures: S.optional(EventBatchRecordFailureList),
-          playerEvents: S.optional(PlayerEventList),
-          eventFailures: S.optional(EventRecordFailureList),
+          batchFailures: S.optional(__S(119, __c14, 7)),
+          playerEvents: S.optional(__S(83, __c10, 3)),
+          eventFailures: S.optional(__S(121, __c15, 1)),
         }),
       ).annotate({ identifier: "EventUpdateResponse" });
     case 3:
@@ -3806,7 +3179,7 @@ function __c15(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(ResetPersonaRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(123, __c15, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3841,7 +3214,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          currentState: S.optional(AchievementRevealResponseCurrentStateEnum),
+          currentState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AchievementRevealResponse",
@@ -3876,11 +3249,11 @@ function __c16(j: number): any {
         }),
       ).annotate({ identifier: "ScoreSubmission" });
     case 2:
-      return S.Array(ScoreSubmission);
+      return S.Array(__S(129, __c16, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          scores: S.optional(ScoreSubmissionList),
+          scores: S.optional(__S(130, __c16, 2)),
           kind: S.optional(S.String),
         }),
       ).annotate({
@@ -3890,7 +3263,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           language: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(PlayerScoreSubmissionList.pipe(T.HttpBody())),
+          body: S.optional(__S(131, __c16, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3908,18 +3281,18 @@ function __c16(j: number): any {
           score: S.optional(S.String),
           formattedScore: S.optional(S.String),
           kind: S.optional(S.String),
-          timeSpan: S.optional(PlayerScoreTimeSpanEnum),
+          timeSpan: S.optional(S.String),
         }),
       ).annotate({ identifier: "PlayerScore" });
     case 6:
-      return S.Array(PlayerScore);
+      return S.Array(__S(133, __c16, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          unbeatenScores: S.optional(PlayerScoreList),
+          unbeatenScores: S.optional(__S(134, __c16, 6)),
           kind: S.optional(S.String),
           leaderboardId: S.optional(S.String),
-          beatenScoreTimeSpans: S.optional(PlayerScoreResponseBeatenScoreTimeSpansItemEnumList),
+          beatenScoreTimeSpans: S.optional(__S(25, __c3, 1)),
           formattedScore: S.optional(S.String),
           scoreTag: S.optional(S.String),
         }),
@@ -3929,12 +3302,12 @@ function __c16(j: number): any {
 function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(PlayerScoreResponse);
+      return S.Array(__S(135, __c16, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          submittedScores: S.optional(PlayerScoreResponseList),
+          submittedScores: S.optional(__S(136, __c17, 0)),
         }),
       ).annotate({ identifier: "PlayerScoreListResponse" });
     case 2:
@@ -3963,7 +3336,7 @@ function __c17(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(UnlinkPersonaRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(139, __c17, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4023,19 +3396,19 @@ function __c18(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          setStepsAtLeastPayload: S.optional(GamesAchievementSetStepsAtLeast),
+          setStepsAtLeastPayload: S.optional(__S(143, __c17, 7)),
           achievementId: S.optional(S.String),
           kind: S.optional(S.String),
-          updateType: S.optional(AchievementUpdateRequestUpdateTypeEnum),
-          incrementPayload: S.optional(GamesAchievementIncrement),
+          updateType: S.optional(S.String),
+          incrementPayload: S.optional(__S(144, __c18, 0)),
         }),
       ).annotate({ identifier: "AchievementUpdateRequest" });
     case 2:
-      return S.Array(AchievementUpdateRequest);
+      return S.Array(__S(145, __c18, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          updates: S.optional(AchievementUpdateRequestList),
+          updates: S.optional(__S(146, __c18, 2)),
           kind: S.optional(S.String),
         }),
       ).annotate({
@@ -4044,7 +3417,7 @@ function __c18(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(AchievementUpdateMultipleRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(147, __c18, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4063,17 +3436,17 @@ function __c18(j: number): any {
           kind: S.optional(S.String),
           newlyUnlocked: S.optional(S.Boolean),
           updateOccurred: S.optional(S.Boolean),
-          currentState: S.optional(AchievementUpdateResponseCurrentStateEnum),
+          currentState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AchievementUpdateResponse",
       });
     case 6:
-      return S.Array(AchievementUpdateResponse);
+      return S.Array(__S(149, __c18, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          updatedAchievements: S.optional(AchievementUpdateResponseList),
+          updatedAchievements: S.optional(__S(150, __c18, 6)),
           kind: S.optional(S.String),
         }),
       ).annotate({
@@ -4108,4 +3481,9 @@ function __c19(j: number): any {
         identifier: "ApplicationVerifyResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

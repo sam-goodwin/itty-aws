@@ -9,31 +9,18 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { HuggingFaceOpError, HuggingFaceOpContext };
 
 /** Raw access token values to invalidate, at most 1000. */
 export type RevokeLeakedTokensRequestCredentialsList = Array<string>;
-const RevokeLeakedTokensRequestCredentialsList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<RevokeLeakedTokensRequestCredentialsList>;
-
 export interface RevokeLeakedTokensRequest {
   /** Raw access token values to invalidate, at most 1000. */
   credentials: RevokeLeakedTokensRequestCredentialsList;
 }
-const RevokeLeakedTokensRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<RevokeLeakedTokensRequest>;
-
 export interface RevokeLeakedTokensResponse {}
-const RevokeLeakedTokensResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<RevokeLeakedTokensResponse>;
-
 export type RevokeLeakedTokensError = HuggingFaceOpError;
 /** Revoke leaked tokens Publicly invalidate leaked Hugging Face access tokens. Possession of the raw token value is the only proof required: no authentication is needed, and no rights over the owning account or org are necessary. Each raw token is fully invalidated, the owning user is notified by email. Always returns 202, whether or not any of the provided tokens existed, so the response cannot be used to probe token validity. */
 export const revokeLeakedTokens: API.OperationMethod<
@@ -42,8 +29,8 @@ export const revokeLeakedTokens: API.OperationMethod<
   RevokeLeakedTokensError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevokeLeakedTokensRequest,
-  output: RevokeLeakedTokensResponse,
+  input: __S(1, __c0, 1) as any as S.Schema<RevokeLeakedTokensRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<RevokeLeakedTokensResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -57,7 +44,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          credentials: RevokeLeakedTokensRequestCredentialsList,
+          credentials: __S(0, __c0, 0),
         }).pipe(T.Http({ method: "POST", uri: "/api/credentials/revoke", code: 200 })),
       ).annotate({
         identifier: "RevokeLeakedTokensRequest",
@@ -67,4 +54,9 @@ function __c0(j: number): any {
         identifier: "RevokeLeakedTokensResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

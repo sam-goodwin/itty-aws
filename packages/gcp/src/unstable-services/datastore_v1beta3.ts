@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -71,11 +73,7 @@ export interface PathElement {
   /** The name of the entity. A name matching regex `__.*__` is reserved/read-only. A name must not be more than 1500 bytes when UTF-8 encoded. Cannot be `""`. Must be valid UTF-8 bytes. Legacy values that are not valid UTF-8 are encoded as `__bytes__` where `` is the base-64 encoding of the bytes. */
   name?: string;
 }
-const PathElement = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<PathElement>;
-
 export type PathElementList = Array<PathElement>;
-const PathElementList = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<PathElementList>;
-
 /** A partition ID identifies a grouping of entities. The grouping is always by project and namespace, however the namespace ID may be empty. A partition ID contains several dimensions: project ID and namespace ID. Partition dimensions: - May be `""`. - Must be valid UTF-8 bytes. - Must have values that match regex `[A-Za-z\d\.\-_]{1,100}` If the value of any dimension matches regex `__.*__`, the partition is reserved/read-only. A reserved/read-only partition ID is forbidden in certain documented contexts. Foreign partition IDs (in which the project ID does not match the context project ID ) are discouraged. Reads and writes of foreign partition IDs may fail if the project is not in an active state. */
 export interface PartitionId {
   /** The ID of the project to which the entities belong. */
@@ -83,8 +81,6 @@ export interface PartitionId {
   /** If not empty, the ID of the namespace to which the entities belong. */
   namespaceId?: string;
 }
-const PartitionId = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<PartitionId>;
-
 /** A unique identifier for an entity. If a key's partition ID or any of its path kinds or names are reserved/read-only, the key is reserved/read-only. A reserved/read-only key is forbidden in certain documented contexts. */
 export interface Key {
   /** The entity path. An entity path consists of one or more elements composed of a kind and a string or numerical identifier, which identify entities. The first element identifies a _root entity_, the second element identifies a _child_ of the root entity, the third element identifies a child of the second entity, and so forth. The entities identified by all prefixes of the path are called the element's _ancestors_. An entity path is always fully complete: *all* of the entity's ancestors are required to be in the path along with the entity identifier itself. The only exception is that in some documented cases, the identifier in the last path element (for the entity) itself may be omitted. For example, the last path element of the key of `Mutation.insert` may have no identifier. A path can never be empty, and a path can have at most 100 elements. */
@@ -92,50 +88,33 @@ export interface Key {
   /** Entities are partitioned into subsets, currently identified by a project ID and namespace ID. Queries are scoped to a single partition. */
   partitionId?: PartitionId;
 }
-const Key = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Key>;
-
 export type KeyList = Array<Key>;
-const KeyList = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<KeyList>;
-
 /** The request for Datastore.AllocateIds. */
 export interface AllocateIdsRequest {
   /** Required. A list of keys with incomplete key paths for which to allocate IDs. No key may be reserved/read-only. */
   keys?: KeyList;
 }
-const AllocateIdsRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<AllocateIdsRequest>;
-
 export interface AllocateIdsProjectsRequest {
   /** Required. The ID of the project against which to make the request. */
   projectId: string;
   /** Request body */
   body?: AllocateIdsRequest;
 }
-const AllocateIdsProjectsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<AllocateIdsProjectsRequest>;
-
 /** The response for Datastore.AllocateIds. */
 export interface AllocateIdsResponse {
   /** The keys specified in the request (in the same order), each with its key path completed with a newly allocated ID. */
   keys?: KeyList;
 }
-const AllocateIdsResponse = AllocateIdsRequest as any as S.Schema<AllocateIdsResponse>;
-
 /** Options specific to read-only transactions. */
 export interface ReadOnly {
   /** Reads entities at the given time. This must be a microsecond precision timestamp within the past one hour, or if Point-in-Time Recovery is enabled, can additionally be a whole minute timestamp within the past 7 days. */
   readTime?: string;
 }
-const ReadOnly = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ReadOnly>;
-
 /** Options specific to read / write transactions. */
 export interface ReadWrite {
   /** The transaction identifier of the transaction being retried. */
   previousTransaction?: string;
 }
-const ReadWrite = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<ReadWrite>;
-
 /** Options for beginning a new transaction. Transactions can be created explicitly with calls to Datastore.BeginTransaction or implicitly by setting ReadOptions.new_transaction in read requests. */
 export interface TransactionOptions {
   /** The transaction should only allow reads. */
@@ -143,55 +122,30 @@ export interface TransactionOptions {
   /** The transaction should allow both reads and writes. */
   readWrite?: ReadWrite;
 }
-const TransactionOptions = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<TransactionOptions>;
-
 /** The request for Datastore.BeginTransaction. */
 export interface BeginTransactionRequest {
   /** Options for a new transaction. */
   transactionOptions?: TransactionOptions;
 }
-const BeginTransactionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<BeginTransactionRequest>;
-
 export interface BeginTransactionProjectsRequest {
   /** Required. The ID of the project against which to make the request. */
   projectId: string;
   /** Request body */
   body?: BeginTransactionRequest;
 }
-const BeginTransactionProjectsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<BeginTransactionProjectsRequest>;
-
 /** The response for Datastore.BeginTransaction. */
 export interface BeginTransactionResponse {
   /** The transaction identifier (always present). */
   transaction?: string;
 }
-const BeginTransactionResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<BeginTransactionResponse>;
-
 export type CommitRequestModeEnum = "MODE_UNSPECIFIED" | "TRANSACTIONAL" | "NON_TRANSACTIONAL";
-const CommitRequestModeEnum = S.String;
-
 export type ValueNullValueEnum = "NULL_VALUE";
-const ValueNullValueEnum = S.String;
-
 export type ValueList = Array<Value>;
-const ValueList = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<ValueList>;
-
 /** An array value. */
 export interface ArrayValue {
   /** Values in the array. The order of values in an array is preserved as long as all values have identical settings for 'exclude_from_indexes'. */
   values?: ValueList;
 }
-const ArrayValue = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<ArrayValue>;
-
 /** An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this object must conform to the WGS84 standard. Values must be within normalized ranges. */
 export interface LatLng {
   /** The longitude in degrees. It must be in the range [-180.0, +180.0]. */
@@ -199,8 +153,6 @@ export interface LatLng {
   /** The latitude in degrees. It must be in the range [-90.0, +90.0]. */
   latitude?: number;
 }
-const LatLng = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<LatLng>;
-
 /** A message that can hold any of the supported value types and associated metadata. */
 export interface Value {
   /** A null value. */
@@ -230,11 +182,7 @@ export interface Value {
   /** A boolean value. */
   booleanValue?: boolean;
 }
-const Value = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Value>;
-
 export type ValueMap = { [key: string]: Value | undefined };
-const ValueMap = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<ValueMap>;
-
 /** A Datastore data object. Must not exceed 1 MiB - 4 bytes. */
 export interface Entity {
   /** The entity's key. An entity must have a key, unless otherwise documented (for example, an entity in `Value.entity_value` may have no key). An entity's kind is its key path's last element's kind, or null if it has no key. */
@@ -242,17 +190,11 @@ export interface Entity {
   /** The entity's properties. The map's keys are property names. A property name matching regex `__.*__` is reserved. A reserved property name is forbidden in certain documented contexts. The map keys, represented as UTF-8, must not exceed 1,500 bytes and cannot be empty. */
   properties?: ValueMap;
 }
-const Entity = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<Entity>;
-
 export type MutationConflictResolutionStrategyEnum =
   | "STRATEGY_UNSPECIFIED"
   | "SERVER_VALUE"
   | "FAIL";
-const MutationConflictResolutionStrategyEnum = S.String;
-
 export type PropertyTransformSetToServerValueEnum = "SERVER_VALUE_UNSPECIFIED" | "REQUEST_TIME";
-const PropertyTransformSetToServerValueEnum = S.String;
-
 /** A transformation of an entity property. */
 export interface PropertyTransform {
   /** Appends the given elements in order if they are not already present in the current property value. If the property is not an array, or if the property does not yet exist, it is first set to the empty array. Equivalent numbers of different types (e.g. 3L and 3.0) are considered equal when checking if a value is missing. NaN is equal to NaN, and the null value is equal to the null value. If the input contains multiple equivalent values, only the first will be considered. The corresponding transform result will be the null value. */
@@ -270,24 +212,13 @@ export interface PropertyTransform {
   /** Sets the property to the minimum of its current value and the given value. This must be an integer or a double value. If the property is not an integer or double, or if the property does not yet exist, the transformation will set the property to the input value. If a minimum operation is applied where the property and the input value are of mixed types (that is - one is an integer and one is a double) the property takes on the type of the smaller operand. If the operands are equivalent (e.g. 3 and 3.0), the property does not change. 0, 0.0, and -0.0 are all zero. The minimum of a zero stored value and zero input value is always the stored value. The minimum of any numeric value x and NaN is NaN. */
   minimum?: Value;
 }
-const PropertyTransform = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<PropertyTransform>;
-
 export type PropertyTransformList = Array<PropertyTransform>;
-const PropertyTransformList = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<PropertyTransformList>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<StringList>;
-
 /** The set of arbitrarily nested property paths used to restrict an operation to only a subset of properties in an entity. */
 export interface PropertyMask {
   /** The paths to the properties covered by this mask. A path is a list of property names separated by dots (`.`), for example `foo.bar` means the property `bar` inside the entity property `foo` inside the entity associated with this path. If a property name contains a dot `.` or a backslash `\`, then that name must be escaped. A path must not be empty, and may not reference a value inside an array value. */
   paths?: StringList;
 }
-const PropertyMask = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<PropertyMask>;
-
 /** A mutation to apply to an entity. */
 export interface Mutation {
   /** The entity to update. The entity must already exist. Must have a complete key path. */
@@ -309,11 +240,7 @@ export interface Mutation {
   /** The properties to write in this mutation. None of the properties in the mask may have a reserved name, except for `__key__`. This field is ignored for `delete`. If the entity already exists, only properties referenced in the mask are updated, others are left untouched. Properties referenced in the mask but not in the entity are deleted. */
   propertyMask?: PropertyMask;
 }
-const Mutation = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<Mutation>;
-
 export type MutationList = Array<Mutation>;
-const MutationList = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<MutationList>;
-
 /** The request for Datastore.Commit. */
 export interface CommitRequest {
   /** The type of commit to perform. Defaults to `TRANSACTIONAL`. */
@@ -323,19 +250,12 @@ export interface CommitRequest {
   /** The mutations to perform. When mode is `TRANSACTIONAL`, mutations affecting a single entity are applied in order. The following sequences of mutations affecting a single entity are not permitted in a single `Commit` request: - `insert` followed by `insert` - `update` followed by `insert` - `upsert` followed by `insert` - `delete` followed by `update` When mode is `NON_TRANSACTIONAL`, no two mutations may affect a single entity. */
   mutations?: MutationList;
 }
-const CommitRequest = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<CommitRequest>;
-
 export interface CommitProjectsRequest {
   /** Required. The ID of the project against which to make the request. */
   projectId: string;
   /** Request body */
   body?: CommitRequest;
 }
-const CommitProjectsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<CommitProjectsRequest>;
-
 /** The result of applying a mutation. */
 export interface MutationResult {
   /** The version of the entity on the server after processing the mutation. If the mutation doesn't change anything on the server, then the version will be the version of the current entity or, if no entity is present, a version that is strictly greater than the version of any previous entity and less than the version of any possible future entity. */
@@ -351,11 +271,7 @@ export interface MutationResult {
   /** The create time of the entity. This field will not be set after a 'delete'. */
   createTime?: string;
 }
-const MutationResult = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<MutationResult>;
-
 export type MutationResultList = Array<MutationResult>;
-const MutationResultList = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<MutationResultList>;
-
 /** The response for Datastore.Commit. */
 export interface CommitResponse {
   /** The result of performing the mutations. The i-th mutation result corresponds to the i-th mutation in the request. */
@@ -365,11 +281,7 @@ export interface CommitResponse {
   /** The transaction commit timestamp. Not set for non-transactional commits. */
   commitTime?: string;
 }
-const CommitResponse = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<CommitResponse>;
-
 export type ReadOptionsReadConsistencyEnum = "READ_CONSISTENCY_UNSPECIFIED" | "STRONG" | "EVENTUAL";
-const ReadOptionsReadConsistencyEnum = S.String;
-
 /** The options shared by read requests. */
 export interface ReadOptions {
   /** The non-transactional read consistency to use. */
@@ -379,8 +291,6 @@ export interface ReadOptions {
   /** Reads entities as they were at the given time. This value is only supported for Cloud Firestore in Datastore mode. This must be a microsecond precision timestamp within the past one hour, or if Point-in-Time Recovery is enabled, can additionally be a whole minute timestamp within the past 7 days. */
   readTime?: string;
 }
-const ReadOptions = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<ReadOptions>;
-
 /** The request for Datastore.Lookup. */
 export interface LookupRequest {
   /** Required. Keys of entities to look up. */
@@ -390,19 +300,12 @@ export interface LookupRequest {
   /** The properties to return. Defaults to returning all properties. If this field is set and an entity has a property not referenced in the mask, it will be absent from LookupResponse.found.entity.properties. The entity's key is always returned. */
   propertyMask?: PropertyMask;
 }
-const LookupRequest = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<LookupRequest>;
-
 export interface LookupProjectsRequest {
   /** Required. The ID of the project against which to make the request. */
   projectId: string;
   /** Request body */
   body?: LookupRequest;
 }
-const LookupProjectsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<LookupProjectsRequest>;
-
 /** The result of fetching an entity from Datastore. */
 export interface EntityResult {
   /** A cursor that points to the position after the result entity. Set only when the `EntityResult` is part of a `QueryResultBatch` message. */
@@ -416,11 +319,7 @@ export interface EntityResult {
   /** The resulting entity. */
   entity?: Entity;
 }
-const EntityResult = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<EntityResult>;
-
 export type EntityResultList = Array<EntityResult>;
-const EntityResultList = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<EntityResultList>;
-
 /** The response for Datastore.Lookup. */
 export interface LookupResponse {
   /** Entities found as `ResultType.FULL` entities. The order of results in this field is undefined and has no relation to the order of the keys in the input. */
@@ -432,8 +331,6 @@ export interface LookupResponse {
   /** Entities not found as `ResultType.KEY_ONLY` entities. The order of results in this field is undefined and has no relation to the order of the keys in the input. */
   missing?: EntityResultList;
 }
-const LookupResponse = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<LookupResponse>;
-
 /** The request for Datastore.ReserveIds. */
 export interface ReserveIdsRequest {
   /** The ID of the database against which to make the request. '(default)' is not allowed; please use empty string '' to refer the default database. */
@@ -441,73 +338,47 @@ export interface ReserveIdsRequest {
   /** Required. A list of keys with complete key paths whose numeric IDs should not be auto-allocated. */
   keys?: KeyList;
 }
-const ReserveIdsRequest = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<ReserveIdsRequest>;
-
 export interface ReserveIdsProjectsRequest {
   /** Required. The ID of the project against which to make the request. */
   projectId: string;
   /** Request body */
   body?: ReserveIdsRequest;
 }
-const ReserveIdsProjectsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<ReserveIdsProjectsRequest>;
-
 /** The response for Datastore.ReserveIds. */
 export interface ReserveIdsResponse {}
-const ReserveIdsResponse = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<ReserveIdsResponse>;
-
 /** The request for Datastore.Rollback. */
 export interface RollbackRequest {
   /** Required. The transaction identifier, returned by a call to Datastore.BeginTransaction. */
   transaction?: string;
 }
-const RollbackRequest = BeginTransactionResponse as any as S.Schema<RollbackRequest>;
-
 export interface RollbackProjectsRequest {
   /** Required. The ID of the project against which to make the request. */
   projectId: string;
   /** Request body */
   body?: RollbackRequest;
 }
-const RollbackProjectsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<RollbackProjectsRequest>;
-
 /** The response for Datastore.Rollback. (an empty message). */
 export interface RollbackResponse {}
-const RollbackResponse = ReserveIdsResponse as any as S.Schema<RollbackResponse>;
-
 /** Explain options for the query. */
 export interface ExplainOptions {
   /** Optional. Whether to execute this query. When false (the default), the query will be planned, returning only metrics from the planning stages. When true, the query will be planned and executed, returning the full query results along with both planning and execution stage metrics. */
   analyze?: boolean;
 }
-const ExplainOptions = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<ExplainOptions>;
-
 /** A reference to a property relative to the kind expressions. */
 export interface PropertyReference {
   /** A reference to a property. Requires: * MUST be a dot-delimited (`.`) string of segments, where each segment conforms to entity property name limitations. */
   name?: string;
 }
-const PropertyReference = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<PropertyReference>;
-
 /** Average of the values of the requested property. * Only numeric values will be aggregated. All non-numeric values including `NULL` are skipped. * If the aggregated values contain `NaN`, returns `NaN`. Infinity math follows IEEE-754 standards. * If the aggregated value set is empty, returns `NULL`. * Always returns the result as a double. */
 export interface Avg {
   /** The property to aggregate on. */
   property?: PropertyReference;
 }
-const Avg = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<Avg>;
-
 /** Count of entities that match the query. The `COUNT(*)` aggregation function operates on the entire entity so it does not require a field reference. */
 export interface Count {
   /** Optional. Optional constraint on the maximum number of entities to count. This provides a way to set an upper bound on the number of entities to scan, limiting latency, and cost. Unspecified is interpreted as no bound. If a zero value is provided, a count result of zero should always be expected. High-Level Example: ``` AGGREGATE COUNT_UP_TO(1000) OVER ( SELECT * FROM k ); ``` Requires: * Must be non-negative when present. */
   upTo?: string;
 }
-const Count = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<Count>;
-
 /** Sum of the values of the requested property. * Only numeric values will be aggregated. All non-numeric values including `NULL` are skipped. * If the aggregated values contain `NaN`, returns `NaN`. Infinity math follows IEEE-754 standards. * If the aggregated value set is empty, returns 0. * Returns a 64-bit integer if all aggregated numbers are integers and the sum result does not overflow. Otherwise, the result is returned as a double. Note that even if all the aggregated values are integers, the result is returned as a double if it cannot fit within a 64-bit signed integer. When this occurs, the returned value will lose precision. * When underflow occurs, floating-point aggregation is non-deterministic. This means that running the same query repeatedly without any changes to the underlying values could produce slightly different results each time. In those cases, values should be stored as integers over floating-point numbers. */
 export type Sum = Avg;
 /** Defines an aggregation that produces a single result. */
@@ -521,28 +392,18 @@ export interface Aggregation {
   /** Sum aggregator. */
   sum?: Avg;
 }
-const Aggregation = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<Aggregation>;
-
 export type AggregationList = Array<Aggregation>;
-const AggregationList = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<AggregationList>;
-
 /** A representation of a property in a projection. */
 export interface Projection {
   /** The property to project. */
   property?: PropertyReference;
 }
-const Projection = Avg as any as S.Schema<Projection>;
-
 export type ProjectionList = Array<Projection>;
-const ProjectionList = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<ProjectionList>;
-
 export type FindNearestDistanceMeasureEnum =
   | "DISTANCE_MEASURE_UNSPECIFIED"
   | "EUCLIDEAN"
   | "COSINE"
   | "DOT_PRODUCT";
-const FindNearestDistanceMeasureEnum = S.String;
-
 /** Nearest Neighbors search config. The ordering provided by FindNearest supersedes the order_by stage. If multiple documents have the same vector distance, the returned document order is not guaranteed to be stable between queries. */
 export interface FindNearest {
   /** Optional. Optional name of the field to output the result of the vector distance calculation. Must conform to entity property limitations. */
@@ -558,8 +419,6 @@ export interface FindNearest {
   /** Required. An indexed vector property to search upon. Only documents which contain vectors whose dimensionality match the query_vector can be returned. */
   vectorProperty?: PropertyReference;
 }
-const FindNearest = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<FindNearest>;
-
 export type PropertyFilterOpEnum =
   | "OPERATOR_UNSPECIFIED"
   | "LESS_THAN"
@@ -571,8 +430,6 @@ export type PropertyFilterOpEnum =
   | "NOT_EQUAL"
   | "HAS_ANCESTOR"
   | "NOT_IN";
-const PropertyFilterOpEnum = S.String;
-
 /** A filter on a specific property. */
 export interface PropertyFilter {
   /** The operator to filter by. */
@@ -582,14 +439,8 @@ export interface PropertyFilter {
   /** The value to compare the property to. */
   value?: Value;
 }
-const PropertyFilter = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<PropertyFilter>;
-
 export type FilterList = Array<Filter>;
-const FilterList = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<FilterList>;
-
 export type CompositeFilterOpEnum = "OPERATOR_UNSPECIFIED" | "AND" | "OR";
-const CompositeFilterOpEnum = S.String;
-
 /** A filter that merges multiple other filters using the given operator. */
 export interface CompositeFilter {
   /** The list of filters to combine. Requires: * At least one filter is present. */
@@ -597,8 +448,6 @@ export interface CompositeFilter {
   /** The operator for combining multiple filters. */
   op?: CompositeFilterOpEnum | (string & {});
 }
-const CompositeFilter = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<CompositeFilter>;
-
 /** A holder for any type of filter. */
 export interface Filter {
   /** A filter on a property. */
@@ -606,25 +455,14 @@ export interface Filter {
   /** A composite filter. */
   compositeFilter?: CompositeFilter;
 }
-const Filter = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<Filter>;
-
 export type PropertyReferenceList = Array<PropertyReference>;
-const PropertyReferenceList = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<PropertyReferenceList>;
-
 /** A representation of a kind. */
 export interface KindExpression {
   /** The name of the kind. */
   name?: string;
 }
 export type KindExpressionList = Array<KindExpression>;
-const KindExpressionList = PropertyReferenceList as any as S.Schema<KindExpressionList>;
-
 export type PropertyOrderDirectionEnum = "DIRECTION_UNSPECIFIED" | "ASCENDING" | "DESCENDING";
-const PropertyOrderDirectionEnum = S.String;
-
 /** The desired order for a specific property. */
 export interface PropertyOrder {
   /** The property to order by. */
@@ -632,11 +470,7 @@ export interface PropertyOrder {
   /** The direction to order by. Defaults to `ASCENDING`. */
   direction?: PropertyOrderDirectionEnum | (string & {});
 }
-const PropertyOrder = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<PropertyOrder>;
-
 export type PropertyOrderList = Array<PropertyOrder>;
-const PropertyOrderList = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<PropertyOrderList>;
-
 /** A query for entities. The query stages are executed in the following order: 1. kind 2. filter 3. projection 4. order + start_cursor + end_cursor 5. offset 6. limit 7. find_nearest */
 export interface Query {
   /** The number of results to skip. Applies before limit, but after all other constraints. Optional. Must be >= 0 if specified. */
@@ -660,8 +494,6 @@ export interface Query {
   /** A starting point for the query results. Query cursors are returned in query result batches and [can only be used to continue the same query](https://cloud.google.com/datastore/docs/concepts/queries#cursors_limits_and_offsets). */
   startCursor?: string;
 }
-const Query = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<Query>;
-
 /** Datastore query for running an aggregation over a Query. */
 export interface AggregationQuery {
   /** Optional. Series of aggregations to apply over the results of the `nested_query`. Requires: * A minimum of one and maximum of five aggregations per query. */
@@ -669,8 +501,6 @@ export interface AggregationQuery {
   /** Nested query for aggregation */
   nestedQuery?: Query;
 }
-const AggregationQuery = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<AggregationQuery>;
-
 /** A binding parameter for a GQL query. */
 export interface GqlQueryParameter {
   /** A value parameter. */
@@ -678,17 +508,8 @@ export interface GqlQueryParameter {
   /** A query cursor. Query cursors are returned in query result batches. */
   cursor?: string;
 }
-const GqlQueryParameter = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<GqlQueryParameter>;
-
 export type GqlQueryParameterList = Array<GqlQueryParameter>;
-const GqlQueryParameterList = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<GqlQueryParameterList>;
-
 export type GqlQueryParameterMap = { [key: string]: GqlQueryParameter | undefined };
-const GqlQueryParameterMap = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<GqlQueryParameterMap>;
-
 /** A [GQL query](https://cloud.google.com/datastore/docs/apis/gql/gql_reference). */
 export interface GqlQuery {
   /** When false, the query string must not contain any literals and instead must bind all values. For example, `SELECT * FROM Kind WHERE a = 'string literal'` is not allowed, while `SELECT * FROM Kind WHERE a = @value` is. */
@@ -700,8 +521,6 @@ export interface GqlQuery {
   /** For each non-reserved named binding site in the query string, there must be a named parameter with that name, but not necessarily the inverse. Key must match regex `A-Za-z_$*`, must not match regex `__.*__`, and must not be `""`. */
   namedBindings?: GqlQueryParameterMap;
 }
-const GqlQuery = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<GqlQuery>;
-
 /** The request for Datastore.RunAggregationQuery. */
 export interface RunAggregationQueryRequest {
   /** Optional. Explain options for the query. If set, additional query statistics will be returned. If not, only query results will be returned. */
@@ -715,35 +534,19 @@ export interface RunAggregationQueryRequest {
   /** Entities are partitioned into subsets, identified by a partition ID. Queries are scoped to a single partition. This partition ID is normalized with the standard default context partition ID. */
   partitionId?: PartitionId;
 }
-const RunAggregationQueryRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<RunAggregationQueryRequest>;
-
 export interface RunAggregationQueryProjectsRequest {
   /** Required. The ID of the project against which to make the request. */
   projectId: string;
   /** Request body */
   body?: RunAggregationQueryRequest;
 }
-const RunAggregationQueryProjectsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<RunAggregationQueryProjectsRequest>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<DocumentMapList>;
-
 /** Planning phase information for the query. */
 export interface PlanSummary {
   /** The indexes selected for the query. For example: [ {"query_scope": "Collection", "properties": "(foo ASC, __name__ ASC)"}, {"query_scope": "Collection", "properties": "(bar ASC, __name__ ASC)"} ] */
   indexesUsed?: DocumentMapList;
 }
-const PlanSummary = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<PlanSummary>;
-
 /** Execution statistics for the query. */
 export interface ExecutionStats {
   /** Debugging statistics from the execution of the query. Note that the debugging stats are subject to change as Firestore evolves. It could include: { "indexes_entries_scanned": "1000", "documents_scanned": "20", "billing_details" : { "documents_billable": "20", "index_entries_billable": "1000", "min_query_cost": "0" } } */
@@ -755,8 +558,6 @@ export interface ExecutionStats {
   /** Total time to execute the query in the backend. */
   executionDuration?: string;
 }
-const ExecutionStats = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<ExecutionStats>;
-
 /** Explain metrics for the query. */
 export interface ExplainMetrics {
   /** Planning phase information for the query. */
@@ -764,29 +565,18 @@ export interface ExplainMetrics {
   /** Aggregated stats from the execution of the query. Only present when ExplainOptions.analyze is set to true. */
   executionStats?: ExecutionStats;
 }
-const ExplainMetrics = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<ExplainMetrics>;
-
 export type AggregationResultBatchMoreResultsEnum =
   | "MORE_RESULTS_TYPE_UNSPECIFIED"
   | "NOT_FINISHED"
   | "MORE_RESULTS_AFTER_LIMIT"
   | "MORE_RESULTS_AFTER_CURSOR"
   | "NO_MORE_RESULTS";
-const AggregationResultBatchMoreResultsEnum = S.String;
-
 /** The result of a single bucket from a Datastore aggregation query. The keys of `aggregate_properties` are the same for all results in an aggregation query, unlike entity queries which can have different fields present for each result. */
 export interface AggregationResult {
   /** The result of the aggregation functions, ex: `COUNT(*) AS total_entities`. The key is the alias assigned to the aggregation function on input and the size of this map equals the number of aggregation functions in the query. */
   aggregateProperties?: ValueMap;
 }
-const AggregationResult = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<AggregationResult>;
-
 export type AggregationResultList = Array<AggregationResult>;
-const AggregationResultList = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<AggregationResultList>;
-
 /** A batch of aggregation results produced by an aggregation query. */
 export interface AggregationResultBatch {
   /** The state of the query after the current batch. Only COUNT(*) aggregations are supported in the initial launch. Therefore, expected result type is limited to `NO_MORE_RESULTS`. */
@@ -796,11 +586,6 @@ export interface AggregationResultBatch {
   /** The aggregation results for this batch. */
   aggregationResults?: AggregationResultList;
 }
-const AggregationResultBatch = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<AggregationResultBatch>;
-
 /** The response for Datastore.RunAggregationQuery. */
 export interface RunAggregationQueryResponse {
   /** Query explain metrics. This is only present when the RunAggregationQueryRequest.explain_options is provided, and it is sent only once with the last response in the stream. */
@@ -810,11 +595,6 @@ export interface RunAggregationQueryResponse {
   /** The parsed form of the `GqlQuery` from the request, if it was set. */
   query?: AggregationQuery;
 }
-const RunAggregationQueryResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<RunAggregationQueryResponse>;
-
 /** The request for Datastore.RunQuery. */
 export interface RunQueryRequest {
   /** The GQL query to run. This query must be a non-aggregation query. */
@@ -830,34 +610,23 @@ export interface RunQueryRequest {
   /** Entities are partitioned into subsets, identified by a partition ID. Queries are scoped to a single partition. This partition ID is normalized with the standard default context partition ID. */
   partitionId?: PartitionId;
 }
-const RunQueryRequest = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<RunQueryRequest>;
-
 export interface RunQueryProjectsRequest {
   /** Required. The ID of the project against which to make the request. */
   projectId: string;
   /** Request body */
   body?: RunQueryRequest;
 }
-const RunQueryProjectsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<RunQueryProjectsRequest>;
-
 export type QueryResultBatchMoreResultsEnum =
   | "MORE_RESULTS_TYPE_UNSPECIFIED"
   | "NOT_FINISHED"
   | "MORE_RESULTS_AFTER_LIMIT"
   | "MORE_RESULTS_AFTER_CURSOR"
   | "NO_MORE_RESULTS";
-const QueryResultBatchMoreResultsEnum = S.String;
-
 export type QueryResultBatchEntityResultTypeEnum =
   | "RESULT_TYPE_UNSPECIFIED"
   | "FULL"
   | "PROJECTION"
   | "KEY_ONLY";
-const QueryResultBatchEntityResultTypeEnum = S.String;
-
 /** A batch of results produced by a query. */
 export interface QueryResultBatch {
   /** The version number of the snapshot this batch was returned from. This applies to the range of results from the query's `start_cursor` (or the beginning of the query if no cursor was given) to this batch's `end_cursor` (not the query's `end_cursor`). In a single transaction, subsequent query result batches for the same query can have a greater snapshot version number. Each batch's snapshot version is valid for all preceding batches. The value will be zero for eventually consistent queries. */
@@ -877,8 +646,6 @@ export interface QueryResultBatch {
   /** The results for this batch. */
   entityResults?: EntityResultList;
 }
-const QueryResultBatch = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<QueryResultBatch>;
-
 /** The response for Datastore.RunQuery. */
 export interface RunQueryResponse {
   /** A batch of query results. This is always present unless running a query under explain-only mode: RunQueryRequest.explain_options was provided and ExplainOptions.analyze was set to false. */
@@ -888,8 +655,6 @@ export interface RunQueryResponse {
   /** Query explain metrics. This is only present when the RunQueryRequest.explain_options is provided, and it is sent only once with the last response in the stream. */
   explainMetrics?: ExplainMetrics;
 }
-const RunQueryResponse = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<RunQueryResponse>;
-
 export type AllocateIdsProjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Allocates IDs for the given keys, which is useful for referencing an entity before it is inserted. */
 export const allocateIdsProjects: API.OperationMethod<
@@ -898,8 +663,8 @@ export const allocateIdsProjects: API.OperationMethod<
   AllocateIdsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AllocateIdsProjectsRequest,
-  output: AllocateIdsResponse,
+  input: __S(6, __c0, 6) as any as S.Schema<AllocateIdsProjectsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<AllocateIdsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -918,8 +683,8 @@ export const beginTransactionProjects: API.OperationMethod<
   BeginTransactionProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BeginTransactionProjectsRequest,
-  output: BeginTransactionResponse,
+  input: __S(11, __c1, 3) as any as S.Schema<BeginTransactionProjectsRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<BeginTransactionResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -933,8 +698,8 @@ export const commitProjects: API.OperationMethod<
   CommitProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CommitProjectsRequest,
-  output: CommitResponse,
+  input: __S(26, __c3, 2) as any as S.Schema<CommitProjectsRequest>,
+  output: __S(29, __c3, 5) as any as S.Schema<CommitResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -948,8 +713,8 @@ export const lookupProjects: API.OperationMethod<
   LookupProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LookupProjectsRequest,
-  output: LookupResponse,
+  input: __S(32, __c4, 0) as any as S.Schema<LookupProjectsRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<LookupResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -963,8 +728,8 @@ export const reserveIdsProjects: API.OperationMethod<
   ReserveIdsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReserveIdsProjectsRequest,
-  output: ReserveIdsResponse,
+  input: __S(37, __c4, 5) as any as S.Schema<ReserveIdsProjectsRequest>,
+  output: __S(38, __c4, 6) as any as S.Schema<ReserveIdsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -978,8 +743,8 @@ export const rollbackProjects: API.OperationMethod<
   RollbackProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RollbackProjectsRequest,
-  output: RollbackResponse,
+  input: __S(39, __c4, 7) as any as S.Schema<RollbackProjectsRequest>,
+  output: __S(38, __c4, 6) as any as S.Schema<RollbackResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -998,8 +763,8 @@ export const runAggregationQueryProjects: API.OperationMethod<
   RunAggregationQueryProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RunAggregationQueryProjectsRequest,
-  output: RunAggregationQueryResponse,
+  input: __S(62, __c7, 6) as any as S.Schema<RunAggregationQueryProjectsRequest>,
+  output: __S(71, __c8, 7) as any as S.Schema<RunAggregationQueryResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1013,8 +778,8 @@ export const runQueryProjects: API.OperationMethod<
   RunQueryProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RunQueryProjectsRequest,
-  output: RunQueryResponse,
+  input: __S(73, __c9, 1) as any as S.Schema<RunQueryProjectsRequest>,
+  output: __S(75, __c9, 3) as any as S.Schema<RunQueryResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1032,7 +797,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "PathElement" });
     case 1:
-      return S.Array(PathElement);
+      return S.Array(__S(0, __c0, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1043,23 +808,23 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          path: S.optional(PathElementList),
-          partitionId: S.optional(PartitionId),
+          path: S.optional(__S(1, __c0, 1)),
+          partitionId: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({ identifier: "Key" });
     case 4:
-      return S.Array(Key);
+      return S.Array(__S(3, __c0, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          keys: S.optional(KeyList),
+          keys: S.optional(__S(4, __c0, 4)),
         }),
       ).annotate({ identifier: "AllocateIdsRequest" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(AllocateIdsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1089,21 +854,21 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          readOnly: S.optional(ReadOnly),
-          readWrite: S.optional(ReadWrite),
+          readOnly: S.optional(__S(7, __c0, 7)),
+          readWrite: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({ identifier: "TransactionOptions" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          transactionOptions: S.optional(TransactionOptions),
+          transactionOptions: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({ identifier: "BeginTransactionRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(BeginTransactionRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1121,11 +886,11 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "BeginTransactionResponse" });
     case 5:
-      return S.Array(S.suspend(() => Value));
+      return S.Array(S.suspend(() => __S(16, __c2, 0)));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(ValueList),
+          values: S.optional(__S(13, __c1, 5)),
         }),
       ).annotate({ identifier: "ArrayValue" });
     case 7:
@@ -1142,64 +907,64 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          nullValue: S.optional(ValueNullValueEnum),
+          nullValue: S.optional(S.String),
           excludeFromIndexes: S.optional(S.Boolean),
-          entityValue: S.optional(S.suspend(() => Entity)),
+          entityValue: S.optional(S.suspend(() => __S(18, __c2, 2))),
           timestampValue: S.optional(S.String),
           meaning: S.optional(S.Number),
           stringValue: S.optional(S.String),
           blobValue: S.optional(S.String),
-          arrayValue: S.optional(ArrayValue),
+          arrayValue: S.optional(__S(14, __c1, 6)),
           integerValue: S.optional(S.String),
-          keyValue: S.optional(Key),
-          geoPointValue: S.optional(LatLng),
+          keyValue: S.optional(__S(3, __c0, 3)),
+          geoPointValue: S.optional(__S(15, __c1, 7)),
           doubleValue: S.optional(S.Number),
           booleanValue: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Value" });
     case 1:
-      return S.Record(S.String, Value);
+      return S.Record(S.String, __S(16, __c2, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          key: S.optional(Key),
-          properties: S.optional(ValueMap),
+          key: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({ identifier: "Entity" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          appendMissingElements: S.optional(ArrayValue),
+          appendMissingElements: S.optional(__S(14, __c1, 6)),
           property: S.optional(S.String),
-          increment: S.optional(Value),
-          maximum: S.optional(Value),
-          removeAllFromArray: S.optional(ArrayValue),
-          setToServerValue: S.optional(PropertyTransformSetToServerValueEnum),
-          minimum: S.optional(Value),
+          increment: S.optional(__S(16, __c2, 0)),
+          maximum: S.optional(__S(16, __c2, 0)),
+          removeAllFromArray: S.optional(__S(14, __c1, 6)),
+          setToServerValue: S.optional(S.String),
+          minimum: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({ identifier: "PropertyTransform" });
     case 4:
-      return S.Array(PropertyTransform);
+      return S.Array(__S(19, __c2, 3));
     case 5:
       return S.Array(S.String);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          paths: S.optional(StringList),
+          paths: S.optional(__S(21, __c2, 5)),
         }),
       ).annotate({ identifier: "PropertyMask" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          update: S.optional(Entity),
-          conflictResolutionStrategy: S.optional(MutationConflictResolutionStrategyEnum),
+          update: S.optional(__S(18, __c2, 2)),
+          conflictResolutionStrategy: S.optional(S.String),
           baseVersion: S.optional(S.String),
-          delete: S.optional(Key),
-          propertyTransforms: S.optional(PropertyTransformList),
+          delete: S.optional(__S(3, __c0, 3)),
+          propertyTransforms: S.optional(__S(20, __c2, 4)),
           updateTime: S.optional(S.String),
-          upsert: S.optional(Entity),
-          insert: S.optional(Entity),
-          propertyMask: S.optional(PropertyMask),
+          upsert: S.optional(__S(18, __c2, 2)),
+          insert: S.optional(__S(18, __c2, 2)),
+          propertyMask: S.optional(__S(22, __c2, 6)),
         }),
       ).annotate({ identifier: "Mutation" });
   }
@@ -1207,20 +972,20 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Mutation);
+      return S.Array(__S(23, __c2, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          mode: S.optional(CommitRequestModeEnum),
+          mode: S.optional(S.String),
           transaction: S.optional(S.String),
-          mutations: S.optional(MutationList),
+          mutations: S.optional(__S(24, __c3, 0)),
         }),
       ).annotate({ identifier: "CommitRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(CommitRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(25, __c3, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1234,18 +999,18 @@ function __c3(j: number): any {
         S.Struct({
           version: S.optional(S.String),
           conflictDetected: S.optional(S.Boolean),
-          transformResults: S.optional(ValueList),
+          transformResults: S.optional(__S(13, __c1, 5)),
           updateTime: S.optional(S.String),
-          key: S.optional(Key),
+          key: S.optional(__S(3, __c0, 3)),
           createTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "MutationResult" });
     case 4:
-      return S.Array(MutationResult);
+      return S.Array(__S(27, __c3, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          mutationResults: S.optional(MutationResultList),
+          mutationResults: S.optional(__S(28, __c3, 4)),
           indexUpdates: S.optional(S.Number),
           commitTime: S.optional(S.String),
         }),
@@ -1253,7 +1018,7 @@ function __c3(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          readConsistency: S.optional(ReadOptionsReadConsistencyEnum),
+          readConsistency: S.optional(S.String),
           transaction: S.optional(S.String),
           readTime: S.optional(S.String),
         }),
@@ -1261,9 +1026,9 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          keys: S.optional(KeyList),
-          readOptions: S.optional(ReadOptions),
-          propertyMask: S.optional(PropertyMask),
+          keys: S.optional(__S(4, __c0, 4)),
+          readOptions: S.optional(__S(30, __c3, 6)),
+          propertyMask: S.optional(__S(22, __c2, 6)),
         }),
       ).annotate({ identifier: "LookupRequest" });
   }
@@ -1274,7 +1039,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(LookupRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(31, __c3, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1290,32 +1055,32 @@ function __c4(j: number): any {
           version: S.optional(S.String),
           updateTime: S.optional(S.String),
           createTime: S.optional(S.String),
-          entity: S.optional(Entity),
+          entity: S.optional(__S(18, __c2, 2)),
         }),
       ).annotate({ identifier: "EntityResult" });
     case 2:
-      return S.Array(EntityResult);
+      return S.Array(__S(33, __c4, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          found: S.optional(EntityResultList),
-          deferred: S.optional(KeyList),
+          found: S.optional(__S(34, __c4, 2)),
+          deferred: S.optional(__S(4, __c0, 4)),
           readTime: S.optional(S.String),
-          missing: S.optional(EntityResultList),
+          missing: S.optional(__S(34, __c4, 2)),
         }),
       ).annotate({ identifier: "LookupResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           databaseId: S.optional(S.String),
-          keys: S.optional(KeyList),
+          keys: S.optional(__S(4, __c0, 4)),
         }),
       ).annotate({ identifier: "ReserveIdsRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(ReserveIdsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(36, __c4, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1334,7 +1099,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(RollbackRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(12, __c1, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1362,7 +1127,7 @@ function __c5(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          property: S.optional(PropertyReference),
+          property: S.optional(__S(41, __c5, 1)),
         }),
       ).annotate({ identifier: "Avg" });
     case 3:
@@ -1374,25 +1139,25 @@ function __c5(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          avg: S.optional(Avg),
-          count: S.optional(Count),
+          avg: S.optional(__S(42, __c5, 2)),
+          count: S.optional(__S(43, __c5, 3)),
           alias: S.optional(S.String),
-          sum: S.optional(Avg),
+          sum: S.optional(__S(42, __c5, 2)),
         }),
       ).annotate({ identifier: "Aggregation" });
     case 5:
-      return S.Array(Aggregation);
+      return S.Array(__S(44, __c5, 4));
     case 6:
-      return S.Array(Projection);
+      return S.Array(__S(42, __c5, 2));
     case 7:
       return S.suspend(() =>
         S.Struct({
           distanceResultProperty: S.optional(S.String),
           distanceThreshold: S.optional(S.Number),
-          queryVector: S.optional(Value),
+          queryVector: S.optional(__S(16, __c2, 0)),
           limit: S.optional(S.Number),
-          distanceMeasure: S.optional(FindNearestDistanceMeasureEnum),
-          vectorProperty: S.optional(PropertyReference),
+          distanceMeasure: S.optional(S.String),
+          vectorProperty: S.optional(__S(41, __c5, 1)),
         }),
       ).annotate({ identifier: "FindNearest" });
   }
@@ -1402,50 +1167,50 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          op: S.optional(PropertyFilterOpEnum),
-          property: S.optional(PropertyReference),
-          value: S.optional(Value),
+          op: S.optional(S.String),
+          property: S.optional(__S(41, __c5, 1)),
+          value: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({ identifier: "PropertyFilter" });
     case 1:
-      return S.Array(S.suspend(() => Filter));
+      return S.Array(S.suspend(() => __S(51, __c6, 3)));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          filters: S.optional(FilterList),
-          op: S.optional(CompositeFilterOpEnum),
+          filters: S.optional(__S(49, __c6, 1)),
+          op: S.optional(S.String),
         }),
       ).annotate({ identifier: "CompositeFilter" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          propertyFilter: S.optional(PropertyFilter),
-          compositeFilter: S.optional(CompositeFilter),
+          propertyFilter: S.optional(__S(48, __c6, 0)),
+          compositeFilter: S.optional(__S(50, __c6, 2)),
         }),
       ).annotate({ identifier: "Filter" });
     case 4:
-      return S.Array(PropertyReference);
+      return S.Array(__S(41, __c5, 1));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          property: S.optional(PropertyReference),
-          direction: S.optional(PropertyOrderDirectionEnum),
+          property: S.optional(__S(41, __c5, 1)),
+          direction: S.optional(S.String),
         }),
       ).annotate({ identifier: "PropertyOrder" });
     case 6:
-      return S.Array(PropertyOrder);
+      return S.Array(__S(53, __c6, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           offset: S.optional(S.Number),
-          projection: S.optional(ProjectionList),
-          findNearest: S.optional(FindNearest),
+          projection: S.optional(__S(46, __c5, 6)),
+          findNearest: S.optional(__S(47, __c5, 7)),
           limit: S.optional(S.Number),
-          filter: S.optional(Filter),
-          distinctOn: S.optional(PropertyReferenceList),
-          kind: S.optional(KindExpressionList),
+          filter: S.optional(__S(51, __c6, 3)),
+          distinctOn: S.optional(__S(52, __c6, 4)),
+          kind: S.optional(__S(52, __c6, 4)),
           endCursor: S.optional(S.String),
-          order: S.optional(PropertyOrderList),
+          order: S.optional(__S(54, __c6, 6)),
           startCursor: S.optional(S.String),
         }),
       ).annotate({ identifier: "Query" });
@@ -1456,38 +1221,38 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          aggregations: S.optional(AggregationList),
-          nestedQuery: S.optional(Query),
+          aggregations: S.optional(__S(45, __c5, 5)),
+          nestedQuery: S.optional(__S(55, __c6, 7)),
         }),
       ).annotate({ identifier: "AggregationQuery" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(Value),
+          value: S.optional(__S(16, __c2, 0)),
           cursor: S.optional(S.String),
         }),
       ).annotate({ identifier: "GqlQueryParameter" });
     case 2:
-      return S.Array(GqlQueryParameter);
+      return S.Array(__S(57, __c7, 1));
     case 3:
-      return S.Record(S.String, GqlQueryParameter);
+      return S.Record(S.String, __S(57, __c7, 1));
     case 4:
       return S.suspend(() =>
         S.Struct({
           allowLiterals: S.optional(S.Boolean),
-          positionalBindings: S.optional(GqlQueryParameterList),
+          positionalBindings: S.optional(__S(58, __c7, 2)),
           queryString: S.optional(S.String),
-          namedBindings: S.optional(GqlQueryParameterMap),
+          namedBindings: S.optional(__S(59, __c7, 3)),
         }),
       ).annotate({ identifier: "GqlQuery" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          explainOptions: S.optional(ExplainOptions),
-          aggregationQuery: S.optional(AggregationQuery),
-          gqlQuery: S.optional(GqlQuery),
-          readOptions: S.optional(ReadOptions),
-          partitionId: S.optional(PartitionId),
+          explainOptions: S.optional(__S(40, __c5, 0)),
+          aggregationQuery: S.optional(__S(56, __c7, 0)),
+          gqlQuery: S.optional(__S(60, __c7, 4)),
+          readOptions: S.optional(__S(30, __c3, 6)),
+          partitionId: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({
         identifier: "RunAggregationQueryRequest",
@@ -1496,7 +1261,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(RunAggregationQueryRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(61, __c7, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1514,17 +1279,17 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DocumentMap);
+      return S.Array(__S(63, __c7, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          indexesUsed: S.optional(DocumentMapList),
+          indexesUsed: S.optional(__S(64, __c8, 0)),
         }),
       ).annotate({ identifier: "PlanSummary" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          debugStats: S.optional(DocumentMap),
+          debugStats: S.optional(__S(63, __c7, 7)),
           readOperations: S.optional(S.String),
           resultsReturned: S.optional(S.String),
           executionDuration: S.optional(S.String),
@@ -1533,32 +1298,32 @@ function __c8(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          planSummary: S.optional(PlanSummary),
-          executionStats: S.optional(ExecutionStats),
+          planSummary: S.optional(__S(65, __c8, 1)),
+          executionStats: S.optional(__S(66, __c8, 2)),
         }),
       ).annotate({ identifier: "ExplainMetrics" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          aggregateProperties: S.optional(ValueMap),
+          aggregateProperties: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({ identifier: "AggregationResult" });
     case 5:
-      return S.Array(AggregationResult);
+      return S.Array(__S(68, __c8, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          moreResults: S.optional(AggregationResultBatchMoreResultsEnum),
+          moreResults: S.optional(S.String),
           readTime: S.optional(S.String),
-          aggregationResults: S.optional(AggregationResultList),
+          aggregationResults: S.optional(__S(69, __c8, 5)),
         }),
       ).annotate({ identifier: "AggregationResultBatch" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          explainMetrics: S.optional(ExplainMetrics),
-          batch: S.optional(AggregationResultBatch),
-          query: S.optional(AggregationQuery),
+          explainMetrics: S.optional(__S(67, __c8, 3)),
+          batch: S.optional(__S(70, __c8, 6)),
+          query: S.optional(__S(56, __c7, 0)),
         }),
       ).annotate({
         identifier: "RunAggregationQueryResponse",
@@ -1570,19 +1335,19 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          gqlQuery: S.optional(GqlQuery),
-          propertyMask: S.optional(PropertyMask),
-          explainOptions: S.optional(ExplainOptions),
-          readOptions: S.optional(ReadOptions),
-          query: S.optional(Query),
-          partitionId: S.optional(PartitionId),
+          gqlQuery: S.optional(__S(60, __c7, 4)),
+          propertyMask: S.optional(__S(22, __c2, 6)),
+          explainOptions: S.optional(__S(40, __c5, 0)),
+          readOptions: S.optional(__S(30, __c3, 6)),
+          query: S.optional(__S(55, __c6, 7)),
+          partitionId: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({ identifier: "RunQueryRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(RunQueryRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(72, __c9, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1598,19 +1363,24 @@ function __c9(j: number): any {
           endCursor: S.optional(S.String),
           skippedResults: S.optional(S.Number),
           readTime: S.optional(S.String),
-          moreResults: S.optional(QueryResultBatchMoreResultsEnum),
-          entityResultType: S.optional(QueryResultBatchEntityResultTypeEnum),
+          moreResults: S.optional(S.String),
+          entityResultType: S.optional(S.String),
           skippedCursor: S.optional(S.String),
-          entityResults: S.optional(EntityResultList),
+          entityResults: S.optional(__S(34, __c4, 2)),
         }),
       ).annotate({ identifier: "QueryResultBatch" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          batch: S.optional(QueryResultBatch),
-          query: S.optional(Query),
-          explainMetrics: S.optional(ExplainMetrics),
+          batch: S.optional(__S(74, __c9, 2)),
+          query: S.optional(__S(55, __c6, 7)),
+          explainMetrics: S.optional(__S(67, __c8, 3)),
         }),
       ).annotate({ identifier: "RunQueryResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

@@ -7,6 +7,8 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -50,38 +52,18 @@ export interface CancelBountySubmissionRequest {
   /** The bounty submission to act on (`btys_` tag). */
   id: string;
 }
-const CancelBountySubmissionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CancelBountySubmissionRequest>;
-
 export interface CancelBountySubmissionResponse {
   /** Always true. */
   deleted: boolean;
   /** ID of the cancelled submission. */
   id: string;
 }
-const CancelBountySubmissionResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CancelBountySubmissionResponse>;
-
 /** IDs of uploaded files attached as work, up to 10, each prefixed `file_`. Combinable with `urls` and `caption`. */
 export type CreateBountySubmissionRequestDeliverableFileIdsList = Array<string>;
-const CreateBountySubmissionRequestDeliverableFileIdsList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateBountySubmissionRequestDeliverableFileIdsList>;
-
 /** Legacy shape selector; no longer selects anything. When present it must name an inline shape (`content_url` or `media`). */
 export type CreateBountySubmissionRequestDeliverableType = "content_url" | "media";
-const CreateBountySubmissionRequestDeliverableType = S.String;
-
 /** Links to the posted work, up to 10. Combinable with `file_ids` and `caption`. */
 export type CreateBountySubmissionRequestDeliverableUrlsList = Array<string>;
-const CreateBountySubmissionRequestDeliverableUrlsList =
-  CreateBountySubmissionRequestDeliverableFileIdsList as any as S.Schema<CreateBountySubmissionRequestDeliverableUrlsList>;
-
 /** The submitted work. Combine `urls`, `file_ids`, and `caption` freely; at least one link or file is required. */
 export interface CreateBountySubmissionRequestDeliverable {
   /** Written context shown to reviewers alongside the work. */
@@ -93,11 +75,6 @@ export interface CreateBountySubmissionRequestDeliverable {
   /** Links to the posted work, up to 10. Combinable with `file_ids` and `caption`. */
   urls?: CreateBountySubmissionRequestDeliverableUrlsList;
 }
-const CreateBountySubmissionRequestDeliverable = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateBountySubmissionRequestDeliverable>;
-
 /** Optional capture metadata describing where and how the footage was recorded. Persisted on the submission. On a `data_capture` bounty every field except `fov` is required whenever metadata is provided. */
 export interface CreateBountySubmissionRequestMetadata {
   /** City the footage was recorded in. */
@@ -115,11 +92,6 @@ export interface CreateBountySubmissionRequestMetadata {
   /** Station or position within the site. */
   station?: string | null;
 }
-const CreateBountySubmissionRequestMetadata = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateBountySubmissionRequestMetadata>;
-
 export interface CreateBountySubmissionRequest {
   /** Affiliate code crediting the referrer, when the worker arrived through one. */
   affiliate_code?: string | null;
@@ -132,15 +104,8 @@ export interface CreateBountySubmissionRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const CreateBountySubmissionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateBountySubmissionRequest>;
-
 /** Recording and validation state. `recording` is still capturing; `verifying` is running server-side validation; `ready` passed validation and counts toward the verified-duration payout gate; `failed` did not validate. */
 export type BountyCaptureClipStatus = "recording" | "verifying" | "ready" | "failed";
-const BountyCaptureClipStatus = S.String;
-
 export interface BountyCaptureClip {
   /** The bounty submission (attempt) this clip belongs to, prefixed `btys_`. */
   bounty_submission_id: string;
@@ -171,26 +136,12 @@ export interface BountyCaptureClip {
   /** Temporary signed URL for the synchronized MP4 video. Returned only on single-clip reads for an authorized viewer; `null` on list responses or until the artifact is attached. */
   video_url: string | null;
 }
-const BountyCaptureClip = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<BountyCaptureClip>;
-
 export type BountySubmissionCaptureClipsList = Array<BountyCaptureClip>;
-const BountySubmissionCaptureClipsList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<BountySubmissionCaptureClipsList>;
-
 /** How the work arrived when it came in through the API in one shot, informational only -- read the work from `deliverable_urls`, `files`, and `capture_clips` directly. `null` for submissions whose proof is a livestream recording, including ones that attached links or files on submit. */
 export type BountySubmissionDeliverableType = "content_url" | "media" | "data_capture";
-const BountySubmissionDeliverableType = S.String;
-
 export type BountySubmissionDeliverableUrlsList = Array<string>;
-const BountySubmissionDeliverableUrlsList =
-  CreateBountySubmissionRequestDeliverableFileIdsList as any as S.Schema<BountySubmissionDeliverableUrlsList>;
-
 /** Broad kind of file. */
 export type BountySubmissionFileAttachmentType = "image" | "video" | "audio" | "other";
-const BountySubmissionFileAttachmentType = S.String;
-
 export interface BountySubmissionFile {
   /** Broad kind of file. */
   attachment_type: BountySubmissionFileAttachmentType | null;
@@ -203,22 +154,13 @@ export interface BountySubmissionFile {
   /** Temporary download URL for the file. */
   url: string | null;
 }
-const BountySubmissionFile = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<BountySubmissionFile>;
-
 export type BountySubmissionFilesList = Array<BountySubmissionFile>;
-const BountySubmissionFilesList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<BountySubmissionFilesList>;
-
 /** Recording lifecycle state. */
 export type BountySubmissionLivestreamFeedRecordingStatus =
   | "recording"
   | "processing"
   | "completed"
   | "failed";
-const BountySubmissionLivestreamFeedRecordingStatus = S.String;
-
 export interface BountySubmissionLivestreamFeed {
   /** When the proof livestream ended, as an ISO 8601 timestamp. `null` while it is still live -- a feed with a `started_at` and no `ended_at` is streaming right now. */
   ended_at: string | null;
@@ -235,21 +177,12 @@ export interface BountySubmissionLivestreamFeed {
   /** Display title for the proof livestream. */
   title: string;
 }
-const BountySubmissionLivestreamFeed = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<BountySubmissionLivestreamFeed>;
-
 /** Lifecycle state. `in_progress` submissions are active attempts that have not submitted proof yet; `submitted` submissions await review; `approved` submissions were accepted and paid; `denied` submissions were rejected. `null` when the attempt ended without proof, taking it out of the public lifecycle -- those attempts are absent from every public list and read. */
 export type BountySubmissionStatus = "in_progress" | "submitted" | "approved" | "denied";
-const BountySubmissionStatus = S.String;
-
 export interface UserProfilePicture {
   /** Avatar image URL. Always present -- a generated placeholder when the user set no picture. */
   url: string;
 }
-const UserProfilePicture = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<UserProfilePicture>;
-
 export interface UserSummary {
   /** User ID, prefixed `user_`. */
   id: string;
@@ -260,8 +193,6 @@ export interface UserSummary {
   /** Public username. */
   username: string;
 }
-const UserSummary = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<UserSummary>;
-
 export interface BountySubmission {
   /** The bounty the work was submitted to, prefixed `bnty_`. */
   bounty_id: string;
@@ -313,32 +244,19 @@ export interface BountySubmission {
   /** User who submitted the work. */
   worker: UserSummary;
 }
-const BountySubmission = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<BountySubmission>;
-
 export interface GetBountySubmissionRequest {
   /** The bounty submission to act on (`btys_` tag). */
   id: string;
   /** Read the submission as this account (`biz_` tag), scoping the lookup to its bounties rather than the caller's own work. Requires read access to the account. Without it the lookup covers only what the credential owns -- the submissions the caller authored plus those on bounties they posted. */
   account_id?: string;
 }
-const GetBountySubmissionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<GetBountySubmissionRequest>;
-
 export type ListBountySubmissionsRequestStatus =
   | "in_progress"
   | "submitted"
   | "approved"
   | "denied";
-const ListBountySubmissionsRequestStatus = S.String;
-
 export type ListBountySubmissionsRequestOrder = "created_at" | "updated_at";
-const ListBountySubmissionsRequestOrder = S.String;
-
 export type ListBountySubmissionsRequestDirection = "asc" | "desc";
-const ListBountySubmissionsRequestDirection = S.String;
-
 export interface ListBountySubmissionsRequest {
   /** Scope the list to submissions on this account's bounties (`biz_` tag). Requires read access to the account. */
   account_id?: string;
@@ -363,47 +281,21 @@ export interface ListBountySubmissionsRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
-const ListBountySubmissionsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ListBountySubmissionsRequest>;
-
 export type ListBountySubmissionsResponseDataList = Array<BountySubmission>;
-const ListBountySubmissionsResponseDataList = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ListBountySubmissionsResponseDataList>;
-
 export interface ListBountySubmissionsResponsePageInfo {
   end_cursor: string | null;
   has_next_page: boolean;
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-const ListBountySubmissionsResponsePageInfo = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ListBountySubmissionsResponsePageInfo>;
-
 export interface ListBountySubmissionsResponse {
   data: ListBountySubmissionsResponseDataList;
   page_info: ListBountySubmissionsResponsePageInfo;
 }
-const ListBountySubmissionsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ListBountySubmissionsResponse>;
-
 /** IDs of uploaded files attached as work, up to 10, each prefixed `file_`. Combinable with `urls` and `caption`. */
 export type SubmitBountySubmissionRequestDeliverableFileIdsList = Array<string>;
-const SubmitBountySubmissionRequestDeliverableFileIdsList =
-  CreateBountySubmissionRequestDeliverableFileIdsList as any as S.Schema<SubmitBountySubmissionRequestDeliverableFileIdsList>;
-
 /** Links to the posted work, up to 10. Combinable with `file_ids` and `caption`. */
 export type SubmitBountySubmissionRequestDeliverableUrlsList = Array<string>;
-const SubmitBountySubmissionRequestDeliverableUrlsList =
-  CreateBountySubmissionRequestDeliverableFileIdsList as any as S.Schema<SubmitBountySubmissionRequestDeliverableUrlsList>;
-
 /** Work to attach to the submission. Combine `urls`, `file_ids`, and `caption` freely; all are optional. */
 export interface SubmitBountySubmissionRequestDeliverable {
   /** Written context shown to reviewers alongside the work. */
@@ -413,11 +305,6 @@ export interface SubmitBountySubmissionRequestDeliverable {
   /** Links to the posted work, up to 10. Combinable with `file_ids` and `caption`. */
   urls?: SubmitBountySubmissionRequestDeliverableUrlsList;
 }
-const SubmitBountySubmissionRequestDeliverable = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<SubmitBountySubmissionRequestDeliverable>;
-
 export interface SubmitBountySubmissionRequest {
   /** The claimed attempt to submit for review (`btys_` tag). */
   id: string;
@@ -426,11 +313,6 @@ export interface SubmitBountySubmissionRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const SubmitBountySubmissionRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<SubmitBountySubmissionRequest>;
-
 export type CancelBountySubmissionError = Forbidden | NotFound | WhopOpError;
 /** Cancel Bounty Submission Cancels the caller's own active attempt on a bounty and discards any accumulated capture clips. Only the worker who started the attempt can cancel it -- account API keys cannot. */
 export const cancelBountySubmission: API.OperationMethod<
@@ -439,8 +321,8 @@ export const cancelBountySubmission: API.OperationMethod<
   CancelBountySubmissionError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelBountySubmissionRequest,
-  output: CancelBountySubmissionResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<CancelBountySubmissionRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CancelBountySubmissionResponse>,
   errors: [Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -459,8 +341,8 @@ export const createBountySubmission: API.OperationMethod<
   CreateBountySubmissionError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateBountySubmissionRequest,
-  output: BountySubmission,
+  input: __S(5, __c0, 5) as any as S.Schema<CreateBountySubmissionRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<BountySubmission>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -474,8 +356,8 @@ export const getBountySubmission: API.OperationMethod<
   GetBountySubmissionError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBountySubmissionRequest,
-  output: BountySubmission,
+  input: __S(14, __c1, 6) as any as S.Schema<GetBountySubmissionRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<BountySubmission>,
   errors: [NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -491,8 +373,8 @@ export const listBountySubmissions: API.PaginatedOperationMethod<
   BountySubmission
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListBountySubmissionsRequest,
-    output: ListBountySubmissionsResponse,
+    input: __S(15, __c1, 7) as any as S.Schema<ListBountySubmissionsRequest>,
+    output: __S(18, __c2, 2) as any as S.Schema<ListBountySubmissionsResponse>,
     errors: [BadRequest, Forbidden],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -521,8 +403,8 @@ export const submitBountySubmission: API.OperationMethod<
   SubmitBountySubmissionError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SubmitBountySubmissionRequest,
-  output: BountySubmission,
+  input: __S(20, __c2, 4) as any as S.Schema<SubmitBountySubmissionRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<BountySubmission>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -554,9 +436,9 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           caption: S.optional(S.NullOr(S.String)),
-          file_ids: S.optional(CreateBountySubmissionRequestDeliverableFileIdsList),
-          type: S.optional(S.NullOr(CreateBountySubmissionRequestDeliverableType)),
-          urls: S.optional(CreateBountySubmissionRequestDeliverableUrlsList),
+          file_ids: S.optional(__S(2, __c0, 2)),
+          type: S.optional(S.NullOr(S.String)),
+          urls: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({
         identifier: "CreateBountySubmissionRequestDeliverable",
@@ -580,8 +462,8 @@ function __c0(j: number): any {
         S.Struct({
           affiliate_code: S.optional(S.NullOr(S.String)),
           bounty_id: S.String,
-          deliverable: S.optional(S.NullOr(CreateBountySubmissionRequestDeliverable)),
-          metadata: S.optional(S.NullOr(CreateBountySubmissionRequestMetadata)),
+          deliverable: S.optional(S.NullOr(__S(3, __c0, 3))),
+          metadata: S.optional(S.NullOr(__S(4, __c0, 4))),
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/bounty_submissions", code: 200 })),
       ).annotate({
@@ -601,13 +483,13 @@ function __c0(j: number): any {
           manifest_url: S.NullOr(S.String),
           ready_at: S.NullOr(S.String),
           sequence: S.Number,
-          status: BountyCaptureClipStatus,
+          status: S.String,
           updated_at: S.String,
           video_url: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "BountyCaptureClip" });
     case 7:
-      return S.Array(BountyCaptureClip);
+      return S.Array(__S(6, __c0, 6));
   }
 }
 function __c1(j: number): any {
@@ -615,7 +497,7 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          attachment_type: S.NullOr(BountySubmissionFileAttachmentType),
+          attachment_type: S.NullOr(S.String),
           content_type: S.NullOr(S.String),
           filename: S.NullOr(S.String),
           id: S.String,
@@ -623,13 +505,13 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "BountySubmissionFile" });
     case 1:
-      return S.Array(BountySubmissionFile);
+      return S.Array(__S(8, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           ended_at: S.NullOr(S.String),
           id: S.String,
-          recording_status: S.NullOr(BountySubmissionLivestreamFeedRecordingStatus),
+          recording_status: S.NullOr(S.String),
           recording_url: S.NullOr(S.String),
           started_at: S.NullOr(S.String),
           thumbnail_url: S.NullOr(S.String),
@@ -649,7 +531,7 @@ function __c1(j: number): any {
         S.Struct({
           id: S.String,
           name: S.NullOr(S.String),
-          profile_picture: UserProfilePicture,
+          profile_picture: __S(11, __c1, 3),
           username: S.String,
         }),
       ).annotate({ identifier: "UserSummary" });
@@ -657,7 +539,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           bounty_id: S.String,
-          capture_clips: S.NullOr(BountySubmissionCaptureClipsList),
+          capture_clips: S.NullOr(__S(7, __c0, 7)),
           capture_filename: S.NullOr(S.String),
           captured_clip_count: S.Number,
           captured_duration_seconds: S.Number,
@@ -666,22 +548,22 @@ function __c1(j: number): any {
           content: S.NullOr(S.String),
           country: S.NullOr(S.String),
           created_at: S.String,
-          deliverable_type: S.NullOr(BountySubmissionDeliverableType),
-          deliverable_urls: S.NullOr(BountySubmissionDeliverableUrlsList),
+          deliverable_type: S.NullOr(S.String),
+          deliverable_urls: S.NullOr(__S(2, __c0, 2)),
           denial_reason: S.NullOr(S.String),
           device: S.NullOr(S.String),
-          files: BountySubmissionFilesList,
+          files: __S(9, __c1, 1),
           fov: S.NullOr(S.Number),
           id: S.String,
-          latest_proof_livestream_feed: S.NullOr(BountySubmissionLivestreamFeed),
+          latest_proof_livestream_feed: S.NullOr(__S(10, __c1, 2)),
           operator: S.NullOr(S.String),
           resolved_at: S.NullOr(S.String),
           site: S.NullOr(S.String),
           station: S.NullOr(S.String),
-          status: S.NullOr(BountySubmissionStatus),
+          status: S.NullOr(S.String),
           submitted_at: S.NullOr(S.String),
           updated_at: S.String,
-          worker: UserSummary,
+          worker: __S(12, __c1, 4),
         }),
       ).annotate({ identifier: "BountySubmission" });
     case 6:
@@ -698,11 +580,11 @@ function __c1(j: number): any {
         S.Struct({
           account_id: S.optional(S.String.pipe(T.Query())),
           bounty_id: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(ListBountySubmissionsRequestStatus.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
           created_after: S.optional(S.String.pipe(T.Query())),
           created_before: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(ListBountySubmissionsRequestOrder.pipe(T.Query())),
-          direction: S.optional(ListBountySubmissionsRequestDirection.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
           first: S.optional(S.Number.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           last: S.optional(S.Number.pipe(T.Query())),
@@ -716,7 +598,7 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(BountySubmission);
+      return S.Array(__S(13, __c1, 5));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -731,8 +613,8 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: ListBountySubmissionsResponseDataList,
-          page_info: ListBountySubmissionsResponsePageInfo,
+          data: __S(16, __c2, 0),
+          page_info: __S(17, __c2, 1),
         }),
       ).annotate({
         identifier: "ListBountySubmissionsResponse",
@@ -741,8 +623,8 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           caption: S.optional(S.NullOr(S.String)),
-          file_ids: S.optional(SubmitBountySubmissionRequestDeliverableFileIdsList),
-          urls: S.optional(SubmitBountySubmissionRequestDeliverableUrlsList),
+          file_ids: S.optional(__S(2, __c0, 2)),
+          urls: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({
         identifier: "SubmitBountySubmissionRequestDeliverable",
@@ -751,11 +633,16 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          deliverable: S.optional(S.NullOr(SubmitBountySubmissionRequestDeliverable)),
+          deliverable: S.optional(S.NullOr(__S(19, __c2, 3))),
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/bounty_submissions/{id}/submit", code: 200 })),
       ).annotate({
         identifier: "SubmitBountySubmissionRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

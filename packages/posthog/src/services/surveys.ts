@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -38,12 +40,8 @@ export class NotFound
 
 /** * `popover` - popover * `widget` - widget * `external_survey` - external survey * `api` - api */
 export type SurveyTypeEnum = "popover" | "widget" | "external_survey" | "api";
-const SurveyTypeEnum = S.String;
-
 /** * `once` - once * `recurring` - recurring * `always` - always */
 export type SurveyScheduleEnum = "once" | "recurring" | "always";
-const SurveyScheduleEnum = S.String;
-
 /** * `cohort` - cohort * `person` - person * `group` - group */
 export type PropertyGroupTypeEnum = "cohort" | "person" | "group";
 /** * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains * `starts_with` - starts_with * `not_starts_with` - not_starts_with * `ends_with` - ends_with * `not_ends_with` - not_ends_with * `regex` - regex * `not_regex` - not_regex * `gt` - gt * `gte` - gte * `lt` - lt * `lte` - lte */
@@ -139,11 +137,6 @@ export type FeatureFlagFilterPropertyMultiContainsSchemaOperatorEnum =
   | "not_icontains_multi";
 /** List of strings to evaluate against. */
 export type FeatureFlagFilterPropertyMultiContainsSchemaValueList = Array<string>;
-const FeatureFlagFilterPropertyMultiContainsSchemaValueList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<FeatureFlagFilterPropertyMultiContainsSchemaValueList>;
-
 export interface FeatureFlagFilterPropertyMultiContainsSchema {
   /** Property key used in this feature flag condition. */
   key?: string;
@@ -202,16 +195,8 @@ export type FeatureFlagFilterPropertySchema =
   | FeatureFlagFilterPropertyMultiContainsSchema
   | FeatureFlagFilterPropertyCohortInSchema
   | FeatureFlagFilterPropertyFlagEvaluatesSchema;
-const FeatureFlagFilterPropertySchema =
-  S.Unknown as any as S.Schema<FeatureFlagFilterPropertySchema>;
-
 /** Property conditions for this release condition group. */
 export type FeatureFlagConditionGroupSchemaPropertiesList = Array<FeatureFlagFilterPropertySchema>;
-const FeatureFlagConditionGroupSchemaPropertiesList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<FeatureFlagConditionGroupSchemaPropertiesList>;
-
 export interface FeatureFlagConditionGroupSchema {
   /** Property conditions for this release condition group. */
   properties?: FeatureFlagConditionGroupSchemaPropertiesList;
@@ -222,18 +207,8 @@ export interface FeatureFlagConditionGroupSchema {
   /** Group type index for this condition set. None means person-level aggregation. */
   aggregation_group_type_index?: number | null;
 }
-const FeatureFlagConditionGroupSchema = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<FeatureFlagConditionGroupSchema>;
-
 /** Release condition groups for the feature flag. */
 export type FeatureFlagFiltersSchemaGroupsList = Array<FeatureFlagConditionGroupSchema>;
-const FeatureFlagFiltersSchemaGroupsList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<FeatureFlagFiltersSchemaGroupsList>;
-
 export interface FeatureFlagMultivariateVariantSchema {
   /** Unique key for this variant. */
   key?: string;
@@ -242,34 +217,14 @@ export interface FeatureFlagMultivariateVariantSchema {
   /** Variant rollout percentage. */
   rollout_percentage?: number;
 }
-const FeatureFlagMultivariateVariantSchema = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<FeatureFlagMultivariateVariantSchema>;
-
 /** Variant definitions for multivariate feature flags. */
 export type FeatureFlagMultivariateSchemaVariantsList = Array<FeatureFlagMultivariateVariantSchema>;
-const FeatureFlagMultivariateSchemaVariantsList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<FeatureFlagMultivariateSchemaVariantsList>;
-
 export interface FeatureFlagMultivariateSchema {
   /** Variant definitions for multivariate feature flags. */
   variants?: FeatureFlagMultivariateSchemaVariantsList;
 }
-const FeatureFlagMultivariateSchema = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<FeatureFlagMultivariateSchema>;
-
 /** Optional payload values keyed by variant key. */
 export type FeatureFlagFiltersSchemaPayloadsMap = { [key: string]: string | undefined };
-const FeatureFlagFiltersSchemaPayloadsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<FeatureFlagFiltersSchemaPayloadsMap>;
-
 export interface FeatureFlagFiltersSchema {
   /** Release condition groups for the feature flag. */
   groups?: FeatureFlagFiltersSchemaGroupsList;
@@ -284,17 +239,10 @@ export interface FeatureFlagFiltersSchema {
   /** When true, condition evaluation stops at the first matching condition set rather than continuing to evaluate subsequent groups. */
   early_exit?: boolean;
 }
-const FeatureFlagFiltersSchema = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<FeatureFlagFiltersSchema>;
-
 /** * `open` - open */
 export type SurveyOpenQuestionSchemaTypeEnum = "open";
 /** * `html` - html * `text` - text */
 export type DescriptionContentTypeEnum = "html" | "text";
-const DescriptionContentTypeEnum = S.String;
-
 export interface SurveyOpenQuestionSchema {
   /** Stable question identifier (UUID). When editing an existing question, send back its current id so its responses (keyed by $survey_response_<id>) stay attached; omit it for new questions and the server generates one. */
   id?: string;
@@ -455,15 +403,8 @@ export type SurveyQuestionInputSchema =
   | SurveyRatingQuestionSchema
   | SurveySingleChoiceQuestionSchema
   | SurveyMultipleChoiceQuestionSchema;
-const SurveyQuestionInputSchema = S.Unknown as any as S.Schema<SurveyQuestionInputSchema>;
-
 /** The `array` of questions included in the survey. Each question must conform to one of the defined question types: Basic, Link, Rating, or Multiple Choice. Basic (open-ended question) - `id`: The question ID - `type`: `open` - `question`: The text of the question. - `description`: Optional description of the question. - `descriptionContentType`: Content type of the description (`html` or `text`). - `optional`: Whether the question is optional (`boolean`). - `buttonText`: Text displayed on the submit button. - `branching`: Branching logic for the question. See branching types below for details. Link (a question with a link) - `id`: The question ID - `type`: `link` - `question`: The text of the question. - `description`: Optional description of the question. - `descriptionContentType`: Content type of the description (`html` or `text`). - `optional`: Whether the question is optional (`boolean`). - `buttonText`: Text displayed on the submit button. - `link`: The URL associated with the question. - `branching`: Branching logic for the question. See branching types below for details. Rating (a question with a rating scale) - `id`: The question ID - `type`: `rating` - `question`: The text of the question. - `description`: Optional description of the question. - `descriptionContentType`: Content type of the description (`html` or `text`). - `optional`: Whether the question is optional (`boolean`). - `buttonText`: Text displayed on the submit button. - `display`: Display style of the rating (`number` or `emoji`). - `scale`: The scale of the rating (`number`). - `lowerBoundLabel`: Label for the lower bound of the scale. - `upperBoundLabel`: Label for the upper bound of the scale. - `isNpsQuestion`: Whether the question is an NPS rating. - `branching`: Branching logic for the question. See branching types below for details. Multiple choice - `id`: The question ID - `type`: `single_choice` or `multiple_choice` - `question`: The text of the question. - `description`: Optional description of the question. - `descriptionContentType`: Content type of the description (`html` or `text`). - `optional`: Whether the question is optional (`boolean`). - `buttonText`: Text displayed on the submit button. - `choices`: An array of choices for the question. - `shuffleOptions`: Whether to shuffle the order of the choices (`boolean`). - `hasOpenChoice`: Whether the question allows an open-ended response (`boolean`). - `branching`: Branching logic for the question. See branching types below for details. Branching logic can be one of the following types: Next question: Proceeds to the next question ```json { "type": "next_question" } ``` End: Ends the survey, optionally displaying a confirmation message. ```json { "type": "end" } ``` Response-based: Branches based on the response values. Available for the `rating` and `single_choice` question types. ```json { "type": "response_based", "responseValues": { "responseKey": "value" } } ``` Specific question: Proceeds to a specific question by index. ```json { "type": "specific_question", "index": 2 } ``` Translations: Each question can include inline translations. - `translations`: Object mapping language codes to translated fields. - Language codes: Canonical BCP-47-ish strings (e.g., "es", "es-MX", "zh-CN"). Aliases like "english" or "default" are rejected. The survey's `base_language` (default "en") declares the language of the untranslated text and cannot also appear as a translation key. - Translatable fields: `question`, `description`, `buttonText`, `choices`, `lowerBoundLabel`, `upperBoundLabel`, `link` Example with translations: ```json { "id": "uuid", "type": "rating", "question": "How satisfied are you?", "lowerBoundLabel": "Not satisfied", "upperBoundLabel": "Very satisfied", "translations": { "es": { "question": "¿Qué tan satisfecho estás?", "lowerBoundLabel": "No satisfecho", "upperBoundLabel": "Muy satisfecho" }, "fr": { "question": "Dans quelle mesure êtes-vous satisfait?" } } } ``` */
 export type CreateSurveyRequestQuestionsList = Array<SurveyQuestionInputSchema>;
-const CreateSurveyRequestQuestionsList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateSurveyRequestQuestionsList>;
-
 /** * `regex` - regex * `not_regex` - not_regex * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains */
 export type SurveyMatchTypeEnum =
   | "regex"
@@ -472,46 +413,22 @@ export type SurveyMatchTypeEnum =
   | "is_not"
   | "icontains"
   | "not_icontains";
-const SurveyMatchTypeEnum = S.String;
-
 export interface SurveyConditionEventValueSchema {
   /** Event name that triggers the survey. */
   name?: string;
 }
-const SurveyConditionEventValueSchema = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<SurveyConditionEventValueSchema>;
-
 /** Array of event names that trigger the survey. */
 export type SurveyEventsConditionSchemaValuesList = Array<SurveyConditionEventValueSchema>;
-const SurveyEventsConditionSchemaValuesList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<SurveyEventsConditionSchemaValuesList>;
-
 export interface SurveyEventsConditionSchema {
   /** Whether to show the survey every time one of the events is triggered (true), or just once (false). */
   repeatedActivation?: boolean;
   /** Array of event names that trigger the survey. */
   values?: SurveyEventsConditionSchemaValuesList;
 }
-const SurveyEventsConditionSchema = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<SurveyEventsConditionSchema>;
-
 /** * `Desktop` - Desktop * `Mobile` - Mobile * `Tablet` - Tablet */
 export type DeviceTypesEnum = "Desktop" | "Mobile" | "Tablet";
-const DeviceTypesEnum = S.String;
-
 /** Device types that should match for this survey to be shown. */
 export type SurveyConditionsSchemaDeviceTypesList = Array<DeviceTypesEnum | (string & {})>;
-const SurveyConditionsSchemaDeviceTypesList = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<SurveyConditionsSchemaDeviceTypesList>;
-
 export interface SurveyConditionsSchema {
   url?: string;
   selector?: string;
@@ -527,15 +444,8 @@ export interface SurveyConditionsSchema {
   /** The variant of the feature flag linked to this survey. */
   linkedFlagVariant?: string;
 }
-const SurveyConditionsSchema = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<SurveyConditionsSchema>;
-
 /** * `button` - button * `tab` - tab * `selector` - selector */
 export type WidgetTypeEnum = "button" | "tab" | "selector";
-const WidgetTypeEnum = S.String;
-
 export interface SurveyAppearanceSchema {
   backgroundColor?: string;
   submitButtonColor?: string;
@@ -571,26 +481,13 @@ export interface SurveyAppearanceSchema {
   disabledButtonOpacity?: string;
   boxPadding?: string;
 }
-const SurveyAppearanceSchema = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<SurveyAppearanceSchema>;
-
 export type CreateSurveyRequestIterationStartDatesList = Array<string | null>;
-const CreateSurveyRequestIterationStartDatesList = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CreateSurveyRequestIterationStartDatesList>;
-
 /** * `day` - day * `week` - week * `month` - month */
 export type SurveySamplingIntervalTypeEnum = "day" | "week" | "month";
 export type BlankEnum = "";
 export type CreateSurveyRequestResponseSamplingIntervalType =
   | SurveySamplingIntervalTypeEnum
   | BlankEnum;
-const CreateSurveyRequestResponseSamplingIntervalType =
-  S.Unknown as any as S.Schema<CreateSurveyRequestResponseSamplingIntervalType>;
-
 export interface CreateSurveyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -646,32 +543,16 @@ export interface CreateSurveyRequest {
   _create_in_folder?: string;
   form_content?: unknown;
 }
-const CreateSurveyRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<CreateSurveyRequest>;
-
 export type MinimalFeatureFlagFiltersMap = { [key: string]: unknown | undefined };
-const MinimalFeatureFlagFiltersMap = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<MinimalFeatureFlagFiltersMap>;
-
 /** * `server` - Server * `client` - Client * `all` - All */
 export type EvaluationRuntimeEnum = "server" | "client" | "all";
 /** Specifies where this feature flag should be evaluated * `server` - Server * `client` - Client * `all` - All */
 export type MinimalFeatureFlagEvaluationRuntime = EvaluationRuntimeEnum | BlankEnum;
-const MinimalFeatureFlagEvaluationRuntime =
-  S.Unknown as any as S.Schema<MinimalFeatureFlagEvaluationRuntime>;
-
 /** * `distinct_id` - User ID (default) * `device_id` - Device ID */
 export type BucketingIdentifierEnum = "distinct_id" | "device_id";
 /** Identifier used for bucketing users into rollout and variants * `distinct_id` - User ID (default) * `device_id` - Device ID */
 export type MinimalFeatureFlagBucketingIdentifier = BucketingIdentifierEnum | BlankEnum;
-const MinimalFeatureFlagBucketingIdentifier =
-  S.Unknown as any as S.Schema<MinimalFeatureFlagBucketingIdentifier>;
-
 export type MinimalFeatureFlagEvaluationContextsList = Array<string>;
-const MinimalFeatureFlagEvaluationContextsList =
-  FeatureFlagFilterPropertyMultiContainsSchemaValueList as any as S.Schema<MinimalFeatureFlagEvaluationContextsList>;
-
 export interface MinimalFeatureFlag {
   id?: number;
   team_id?: number;
@@ -688,12 +569,7 @@ export interface MinimalFeatureFlag {
   bucketing_identifier?: MinimalFeatureFlagBucketingIdentifier | null;
   evaluation_contexts?: MinimalFeatureFlagEvaluationContextsList;
 }
-const MinimalFeatureFlag = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<MinimalFeatureFlag>;
-
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-const UserBasicHedgehogConfigMap =
-  MinimalFeatureFlagFiltersMap as any as S.Schema<UserBasicHedgehogConfigMap>;
-
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
@@ -706,8 +582,6 @@ export type RoleAtOrganizationEnum =
   | "student"
   | "other";
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
-
 export interface UserBasic {
   id?: number;
   uuid?: string;
@@ -719,18 +593,10 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-const UserBasic = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<UserBasic>;
-
 export type SurveySerializerCreateUpdateOnlyOutputIterationStartDatesList = Array<string | null>;
-const SurveySerializerCreateUpdateOnlyOutputIterationStartDatesList =
-  CreateSurveyRequestIterationStartDatesList as any as S.Schema<SurveySerializerCreateUpdateOnlyOutputIterationStartDatesList>;
-
 export type SurveySerializerCreateUpdateOnlyOutputResponseSamplingIntervalType =
   | SurveySamplingIntervalTypeEnum
   | BlankEnum;
-const SurveySerializerCreateUpdateOnlyOutputResponseSamplingIntervalType =
-  S.Unknown as any as S.Schema<SurveySerializerCreateUpdateOnlyOutputResponseSamplingIntervalType>;
-
 export interface SurveySerializerCreateUpdateOnlyOutput {
   id?: string;
   name?: string;
@@ -767,11 +633,6 @@ export interface SurveySerializerCreateUpdateOnlyOutput {
   translations?: unknown;
   form_content?: unknown;
 }
-const SurveySerializerCreateUpdateOnlyOutput = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<SurveySerializerCreateUpdateOnlyOutput>;
-
 export interface CreateSurveysSummarizeResponseRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -784,27 +645,11 @@ export interface CreateSurveysSummarizeResponseRequest {
   /** When true, bypass cached summaries and regenerate. Defaults to false. */
   force_refresh?: boolean;
 }
-const CreateSurveysSummarizeResponseRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<CreateSurveysSummarizeResponseRequest>;
-
 export interface CreateSurveysSummarizeResponseResponse {}
-const CreateSurveysSummarizeResponseResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<CreateSurveysSummarizeResponseResponse>;
-
 export type CreateSurveysSummaryHeadlineRequestIterationStartDatesList = Array<string | null>;
-const CreateSurveysSummaryHeadlineRequestIterationStartDatesList =
-  CreateSurveyRequestIterationStartDatesList as any as S.Schema<CreateSurveysSummaryHeadlineRequestIterationStartDatesList>;
-
 export type CreateSurveysSummaryHeadlineRequestResponseSamplingIntervalType =
   | SurveySamplingIntervalTypeEnum
   | BlankEnum;
-const CreateSurveysSummaryHeadlineRequestResponseSamplingIntervalType =
-  S.Unknown as any as S.Schema<CreateSurveysSummaryHeadlineRequestResponseSamplingIntervalType>;
-
 export interface CreateSurveysSummaryHeadlineRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -845,49 +690,19 @@ export interface CreateSurveysSummaryHeadlineRequest {
   _create_in_folder?: string;
   form_content?: unknown;
 }
-const CreateSurveysSummaryHeadlineRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<CreateSurveysSummaryHeadlineRequest>;
-
 export interface CreateSurveysSummaryHeadlineResponse {}
-const CreateSurveysSummaryHeadlineResponse =
-  CreateSurveysSummarizeResponseResponse as any as S.Schema<CreateSurveysSummaryHeadlineResponse>;
-
 export interface GetSurveyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this survey. */
   id: string;
 }
-const GetSurveyRequest = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<GetSurveyRequest>;
-
 export type SurveyConditionsMap = { [key: string]: unknown | undefined };
-const SurveyConditionsMap = MinimalFeatureFlagFiltersMap as any as S.Schema<SurveyConditionsMap>;
-
 export type SurveyFeatureFlagKeysItemMap = { [key: string]: string | null | undefined };
-const SurveyFeatureFlagKeysItemMap = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<SurveyFeatureFlagKeysItemMap>;
-
 export type SurveyFeatureFlagKeysList = Array<SurveyFeatureFlagKeysItemMap>;
-const SurveyFeatureFlagKeysList = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<SurveyFeatureFlagKeysList>;
-
 export type SurveyIterationStartDatesList = Array<string | null>;
-const SurveyIterationStartDatesList =
-  CreateSurveyRequestIterationStartDatesList as any as S.Schema<SurveyIterationStartDatesList>;
-
 export type SurveyResponseSamplingIntervalType = SurveySamplingIntervalTypeEnum | BlankEnum;
-const SurveyResponseSamplingIntervalType =
-  S.Unknown as any as S.Schema<SurveyResponseSamplingIntervalType>;
-
 export type SearchMatchTypeEnum = "exact" | "similar";
-const SearchMatchTypeEnum = S.String;
-
 /** Mixin for serializers to add user access control fields */
 export interface Survey {
   id?: string;
@@ -932,53 +747,25 @@ export interface Survey {
   /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`. */
   search_match_type?: SearchMatchTypeEnum | null;
 }
-const Survey = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<Survey>;
-
 export interface GetSurveysActivityRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this survey. */
   id: string;
 }
-const GetSurveysActivityRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<GetSurveysActivityRequest>;
-
 export interface GetSurveysActivityResponse {}
-const GetSurveysActivityResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<GetSurveysActivityResponse>;
-
 export interface GetSurveysAllActivityRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const GetSurveysAllActivityRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<GetSurveysAllActivityRequest>;
-
 export interface GetSurveysAllActivityResponse {}
-const GetSurveysAllActivityResponse =
-  GetSurveysActivityResponse as any as S.Schema<GetSurveysAllActivityResponse>;
-
 export interface GetSurveysArchivedResponseUuidRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this survey. */
   id: string;
 }
-const GetSurveysArchivedResponseUuidRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<GetSurveysArchivedResponseUuidRequest>;
-
 export interface GetSurveysArchivedResponseUuidResponse {}
-const GetSurveysArchivedResponseUuidResponse =
-  CreateSurveysSummarizeResponseResponse as any as S.Schema<GetSurveysArchivedResponseUuidResponse>;
-
 export interface GetSurveysGlobalStatRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -987,45 +774,21 @@ export interface GetSurveysGlobalStatRequest {
   /** Optional ISO timestamp for end date (e.g. 2024-01-31T23:59:59Z) */
   date_to?: string;
 }
-const GetSurveysGlobalStatRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<GetSurveysGlobalStatRequest>;
-
 /** Event counts keyed by event name (survey shown, survey dismissed, survey sent). */
 export type SurveyGlobalStatsResponseStatsMap = { [key: string]: unknown | undefined };
-const SurveyGlobalStatsResponseStatsMap =
-  MinimalFeatureFlagFiltersMap as any as S.Schema<SurveyGlobalStatsResponseStatsMap>;
-
 /** Calculated response and dismissal rates. */
 export type SurveyGlobalStatsResponseRatesMap = { [key: string]: unknown | undefined };
-const SurveyGlobalStatsResponseRatesMap =
-  MinimalFeatureFlagFiltersMap as any as S.Schema<SurveyGlobalStatsResponseRatesMap>;
-
 export interface SurveyGlobalStatsResponse {
   /** Event counts keyed by event name (survey shown, survey dismissed, survey sent). */
   stats?: SurveyGlobalStatsResponseStatsMap;
   /** Calculated response and dismissal rates. */
   rates?: SurveyGlobalStatsResponseRatesMap;
 }
-const SurveyGlobalStatsResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<SurveyGlobalStatsResponse>;
-
 export interface GetSurveysResponsesCountRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const GetSurveysResponsesCountRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<GetSurveysResponsesCountRequest>;
-
 export interface GetSurveysResponsesCountResponse {}
-const GetSurveysResponsesCountResponse =
-  CreateSurveysSummarizeResponseResponse as any as S.Schema<GetSurveysResponsesCountResponse>;
-
 export interface GetSurveysStatRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1038,28 +801,12 @@ export interface GetSurveysStatRequest {
   /** When true, also return per-question response counts and answer distributions. Adds one extra HogQL query per question, so leave off unless you need the breakdown. */
   include_per_question_stats?: boolean;
 }
-const GetSurveysStatRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<GetSurveysStatRequest>;
-
 /** Event counts keyed by event name (survey shown, survey dismissed, survey sent). */
 export type SurveyStatsResponseStatsMap = { [key: string]: unknown | undefined };
-const SurveyStatsResponseStatsMap =
-  MinimalFeatureFlagFiltersMap as any as S.Schema<SurveyStatsResponseStatsMap>;
-
 /** Calculated response and dismissal rates. */
 export type SurveyStatsResponseRatesMap = { [key: string]: unknown | undefined };
-const SurveyStatsResponseRatesMap =
-  MinimalFeatureFlagFiltersMap as any as S.Schema<SurveyStatsResponseRatesMap>;
-
 /** Per-question response counts and distributions. Only present when include_per_question_stats=true was passed. For rating questions includes `average`; for choice/rating questions `distribution` maps answer value to count; for open questions `distribution` is empty (use surveys-responses-list to read free-text). */
 export type SurveyStatsResponsePerQuestionStatsList = Array<unknown>;
-const SurveyStatsResponsePerQuestionStatsList = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<SurveyStatsResponsePerQuestionStatsList>;
-
 export interface SurveyStatsResponse {
   /** The survey ID these stats belong to. */
   survey_id?: string;
@@ -1074,18 +821,9 @@ export interface SurveyStatsResponse {
   /** Per-question response counts and distributions. Only present when include_per_question_stats=true was passed. For rating questions includes `average`; for choice/rating questions `distribution` maps answer value to count; for open questions `distribution` is empty (use surveys-responses-list to read free-text). */
   per_question_stats?: SurveyStatsResponsePerQuestionStatsList;
 }
-const SurveyStatsResponse = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<SurveyStatsResponse>;
-
 export type ListSurveysRequestIdsList = Array<string>;
-const ListSurveysRequestIdsList =
-  FeatureFlagFilterPropertyMultiContainsSchemaValueList as any as S.Schema<ListSurveysRequestIdsList>;
-
 export type ListSurveysRequestStatus = "complete" | "draft" | "running";
-const ListSurveysRequestStatus = S.String;
-
 export type ListSurveysRequestType = "api" | "external_survey" | "popover" | "widget";
-const ListSurveysRequestType = S.String;
-
 export interface ListSurveysRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1105,22 +843,13 @@ export interface ListSurveysRequest {
   /** * `popover` - popover * `widget` - widget * `external_survey` - external survey * `api` - api */
   type?: ListSurveysRequestType | (string & {});
 }
-const ListSurveysRequest = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<ListSurveysRequest>;
-
 export type PaginatedSurveyListResultsList = Array<Survey>;
-const PaginatedSurveyListResultsList = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<PaginatedSurveyListResultsList>;
-
 export interface PaginatedSurveyList {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedSurveyListResultsList;
 }
-const PaginatedSurveyList = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<PaginatedSurveyList>;
-
 export interface ListSurveysResponsesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1143,11 +872,6 @@ export interface ListSurveysResponsesRequest {
   /** Only return responses submitted on or before this ISO 8601 timestamp. */
   until?: string;
 }
-const ListSurveysResponsesRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<ListSurveysResponsesRequest>;
-
 export interface SurveyResponseAnswer {
   /** UUID of the survey question this answer belongs to. */
   question_id: string;
@@ -1160,15 +884,8 @@ export interface SurveyResponseAnswer {
   /** Resolved answer. String for open/rating/single_choice/link questions, list of strings for multiple_choice questions. Already decoded from the raw $survey_response_<id> property so callers don't need to parse it. */
   answer: unknown;
 }
-const SurveyResponseAnswer = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<SurveyResponseAnswer>;
-
 /** One entry per survey question that received a non-empty answer. Question text is already resolved -- callers do not need to look up `$survey_response_<id>` keys. */
 export type SurveyResponseRowAnswersList = Array<SurveyResponseAnswer>;
-const SurveyResponseRowAnswersList = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<SurveyResponseRowAnswersList>;
-
 export interface SurveyResponseExtra {
   /** $device_type at the time the response was sent. */
   device_type?: string | null;
@@ -1187,8 +904,6 @@ export interface SurveyResponseExtra {
   /** Survey iteration number when the response was sent. Only set for recurring surveys. */
   iteration?: string | null;
 }
-const SurveyResponseExtra = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<SurveyResponseExtra>;
-
 export interface SurveyResponseRow {
   /** UUID of the underlying `survey sent` event. Use as the response identifier for archive operations. */
   uuid: string;
@@ -1203,15 +918,8 @@ export interface SurveyResponseRow {
   /** Convenience fields extracted from the event properties (device, browser, geoip, iteration). */
   extra: SurveyResponseExtra;
 }
-const SurveyResponseRow = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<SurveyResponseRow>;
-
 /** Survey response rows for the requested page. */
 export type SurveyResponsesListResultsList = Array<SurveyResponseRow>;
-const SurveyResponsesListResultsList = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<SurveyResponsesListResultsList>;
-
 export interface SurveyResponsesList {
   /** Survey response rows for the requested page. */
   results: SurveyResponsesListResultsList;
@@ -1222,41 +930,23 @@ export interface SurveyResponsesList {
   /** The offset applied to this query (echoed back for pagination). */
   offset: number;
 }
-const SurveyResponsesList = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<SurveyResponsesList>;
-
 export interface StopSurveyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this survey. */
   id: string;
 }
-const StopSurveyRequest = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<StopSurveyRequest>;
-
 export interface SurveysDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this survey. */
   id: string;
 }
-const SurveysDestroyRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<SurveysDestroyRequest>;
-
 export interface SurveysDestroyResponse {}
-const SurveysDestroyResponse =
-  GetSurveysActivityResponse as any as S.Schema<SurveysDestroyResponse>;
-
 export type SurveysDuplicateToProjectsCreateRequestIterationStartDatesList = Array<string | null>;
-const SurveysDuplicateToProjectsCreateRequestIterationStartDatesList =
-  CreateSurveyRequestIterationStartDatesList as any as S.Schema<SurveysDuplicateToProjectsCreateRequestIterationStartDatesList>;
-
 export type SurveysDuplicateToProjectsCreateRequestResponseSamplingIntervalType =
   | SurveySamplingIntervalTypeEnum
   | BlankEnum;
-const SurveysDuplicateToProjectsCreateRequestResponseSamplingIntervalType =
-  S.Unknown as any as S.Schema<SurveysDuplicateToProjectsCreateRequestResponseSamplingIntervalType>;
-
 export interface SurveysDuplicateToProjectsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1297,22 +987,11 @@ export interface SurveysDuplicateToProjectsCreateRequest {
   _create_in_folder?: string;
   form_content?: unknown;
 }
-const SurveysDuplicateToProjectsCreateRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<SurveysDuplicateToProjectsCreateRequest>;
-
 export interface SurveysDuplicateToProjectsCreateResponse {}
-const SurveysDuplicateToProjectsCreateResponse =
-  CreateSurveysSummarizeResponseResponse as any as S.Schema<SurveysDuplicateToProjectsCreateResponse>;
-
 /** Optional translation-only draft survey payload to translate instead of the last saved survey. */
 export type SurveysGenerateTranslationsCreateRequestSurveyMap = {
   [key: string]: unknown | undefined;
 };
-const SurveysGenerateTranslationsCreateRequestSurveyMap =
-  MinimalFeatureFlagFiltersMap as any as S.Schema<SurveysGenerateTranslationsCreateRequestSurveyMap>;
-
 export interface SurveysGenerateTranslationsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1327,11 +1006,6 @@ export interface SurveysGenerateTranslationsCreateRequest {
   /** Optional translation-only draft survey payload to translate instead of the last saved survey. */
   survey?: SurveysGenerateTranslationsCreateRequestSurveyMap;
 }
-const SurveysGenerateTranslationsCreateRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<SurveysGenerateTranslationsCreateRequest>;
-
 export interface GeneratedSurveyRootTranslation {
   /** Translated survey name. */
   name?: string;
@@ -1342,25 +1016,12 @@ export interface GeneratedSurveyRootTranslation {
   /** Translated thank-you close button text. */
   thankYouMessageCloseButtonText?: string;
 }
-const GeneratedSurveyRootTranslation = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<GeneratedSurveyRootTranslation>;
-
 /** Survey-level translation patch keyed by language. */
 export type GenerateSurveyTranslationsResponseTranslationsMap = {
   [key: string]: GeneratedSurveyRootTranslation | undefined;
 };
-const GenerateSurveyTranslationsResponseTranslationsMap = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<GenerateSurveyTranslationsResponseTranslationsMap>;
-
 /** Translated choices in the same order as the source choices. */
 export type GeneratedSurveyQuestionTranslationChoicesList = Array<string>;
-const GeneratedSurveyQuestionTranslationChoicesList =
-  FeatureFlagFilterPropertyMultiContainsSchemaValueList as any as S.Schema<GeneratedSurveyQuestionTranslationChoicesList>;
-
 export interface GeneratedSurveyQuestionTranslation {
   /** Translated question text. */
   question?: string;
@@ -1377,44 +1038,21 @@ export interface GeneratedSurveyQuestionTranslation {
   /** Translated link text or localized URL. */
   link?: string;
 }
-const GeneratedSurveyQuestionTranslation = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<GeneratedSurveyQuestionTranslation>;
-
 /** Question translation patch keyed by target language. */
 export type GeneratedSurveyQuestionTranslationPatchTranslationsMap = {
   [key: string]: GeneratedSurveyQuestionTranslation | undefined;
 };
-const GeneratedSurveyQuestionTranslationPatchTranslationsMap = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<GeneratedSurveyQuestionTranslationPatchTranslationsMap>;
-
 export interface GeneratedSurveyQuestionTranslationPatch {
   /** Survey question id this patch applies to. */
   id: string;
   /** Question translation patch keyed by target language. */
   translations: GeneratedSurveyQuestionTranslationPatchTranslationsMap;
 }
-const GeneratedSurveyQuestionTranslationPatch = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<GeneratedSurveyQuestionTranslationPatch>;
-
 /** Question-level translation patches keyed by question id and language. */
 export type GenerateSurveyTranslationsResponseQuestionsList =
   Array<GeneratedSurveyQuestionTranslationPatch>;
-const GenerateSurveyTranslationsResponseQuestionsList = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<GenerateSurveyTranslationsResponseQuestionsList>;
-
 /** Editor field paths generated by AI and safe to highlight as draft content. */
 export type GenerateSurveyTranslationsResponseGeneratedFieldPathsList = Array<string>;
-const GenerateSurveyTranslationsResponseGeneratedFieldPathsList =
-  FeatureFlagFilterPropertyMultiContainsSchemaValueList as any as S.Schema<GenerateSurveyTranslationsResponseGeneratedFieldPathsList>;
-
 export interface GenerateSurveyTranslationsResponse {
   /** Survey-level translation patch keyed by language. */
   translations: GenerateSurveyTranslationsResponseTranslationsMap;
@@ -1425,28 +1063,16 @@ export interface GenerateSurveyTranslationsResponse {
   /** LLM trace id for debugging and feedback. */
   trace_id: string;
 }
-const GenerateSurveyTranslationsResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<GenerateSurveyTranslationsResponse>;
-
 export interface SurveysLaunchRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this survey. */
   id: string;
 }
-const SurveysLaunchRequest = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<SurveysLaunchRequest>;
-
 export interface SurveysQuestionLabelsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const SurveysQuestionLabelsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<SurveysQuestionLabelsRequest>;
-
 export interface SurveyQuestionLabel {
   /** UUID assigned to the survey question. */
   question_id: string;
@@ -1459,34 +1085,16 @@ export interface SurveyQuestionLabel {
   /** Display name of the survey. */
   survey_name: string;
 }
-const SurveyQuestionLabel = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<SurveyQuestionLabel>;
-
 /** One entry per question that has an ID assigned, across all the team's surveys. */
 export type SurveyQuestionLabelsResponseLabelsList = Array<SurveyQuestionLabel>;
-const SurveyQuestionLabelsResponseLabelsList = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<SurveyQuestionLabelsResponseLabelsList>;
-
 export interface SurveyQuestionLabelsResponse {
   /** One entry per question that has an ID assigned, across all the team's surveys. */
   labels: SurveyQuestionLabelsResponseLabelsList;
 }
-const SurveyQuestionLabelsResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<SurveyQuestionLabelsResponse>;
-
 export type SurveysResponsesArchiveCreateRequestIterationStartDatesList = Array<string | null>;
-const SurveysResponsesArchiveCreateRequestIterationStartDatesList =
-  CreateSurveyRequestIterationStartDatesList as any as S.Schema<SurveysResponsesArchiveCreateRequestIterationStartDatesList>;
-
 export type SurveysResponsesArchiveCreateRequestResponseSamplingIntervalType =
   | SurveySamplingIntervalTypeEnum
   | BlankEnum;
-const SurveysResponsesArchiveCreateRequestResponseSamplingIntervalType =
-  S.Unknown as any as S.Schema<SurveysResponsesArchiveCreateRequestResponseSamplingIntervalType>;
-
 export interface SurveysResponsesArchiveCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1528,25 +1136,11 @@ export interface SurveysResponsesArchiveCreateRequest {
   _create_in_folder?: string;
   form_content?: unknown;
 }
-const SurveysResponsesArchiveCreateRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<SurveysResponsesArchiveCreateRequest>;
-
 export interface SurveysResponsesArchiveCreateResponse {}
-const SurveysResponsesArchiveCreateResponse =
-  CreateSurveysSummarizeResponseResponse as any as S.Schema<SurveysResponsesArchiveCreateResponse>;
-
 export type SurveysResponsesUnarchiveCreateRequestIterationStartDatesList = Array<string | null>;
-const SurveysResponsesUnarchiveCreateRequestIterationStartDatesList =
-  CreateSurveyRequestIterationStartDatesList as any as S.Schema<SurveysResponsesUnarchiveCreateRequestIterationStartDatesList>;
-
 export type SurveysResponsesUnarchiveCreateRequestResponseSamplingIntervalType =
   | SurveySamplingIntervalTypeEnum
   | BlankEnum;
-const SurveysResponsesUnarchiveCreateRequestResponseSamplingIntervalType =
-  S.Unknown as any as S.Schema<SurveysResponsesUnarchiveCreateRequestResponseSamplingIntervalType>;
-
 export interface SurveysResponsesUnarchiveCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1588,30 +1182,13 @@ export interface SurveysResponsesUnarchiveCreateRequest {
   _create_in_folder?: string;
   form_content?: unknown;
 }
-const SurveysResponsesUnarchiveCreateRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<SurveysResponsesUnarchiveCreateRequest>;
-
 export interface SurveysResponsesUnarchiveCreateResponse {}
-const SurveysResponsesUnarchiveCreateResponse =
-  CreateSurveysSummarizeResponseResponse as any as S.Schema<SurveysResponsesUnarchiveCreateResponse>;
-
 /** The `array` of questions included in the survey. Each question must conform to one of the defined question types: Basic, Link, Rating, or Multiple Choice. Basic (open-ended question) - `id`: The question ID - `type`: `open` - `question`: The text of the question. - `description`: Optional description of the question. - `descriptionContentType`: Content type of the description (`html` or `text`). - `optional`: Whether the question is optional (`boolean`). - `buttonText`: Text displayed on the submit button. - `branching`: Branching logic for the question. See branching types below for details. Link (a question with a link) - `id`: The question ID - `type`: `link` - `question`: The text of the question. - `description`: Optional description of the question. - `descriptionContentType`: Content type of the description (`html` or `text`). - `optional`: Whether the question is optional (`boolean`). - `buttonText`: Text displayed on the submit button. - `link`: The URL associated with the question. - `branching`: Branching logic for the question. See branching types below for details. Rating (a question with a rating scale) - `id`: The question ID - `type`: `rating` - `question`: The text of the question. - `description`: Optional description of the question. - `descriptionContentType`: Content type of the description (`html` or `text`). - `optional`: Whether the question is optional (`boolean`). - `buttonText`: Text displayed on the submit button. - `display`: Display style of the rating (`number` or `emoji`). - `scale`: The scale of the rating (`number`). - `lowerBoundLabel`: Label for the lower bound of the scale. - `upperBoundLabel`: Label for the upper bound of the scale. - `isNpsQuestion`: Whether the question is an NPS rating. - `branching`: Branching logic for the question. See branching types below for details. Multiple choice - `id`: The question ID - `type`: `single_choice` or `multiple_choice` - `question`: The text of the question. - `description`: Optional description of the question. - `descriptionContentType`: Content type of the description (`html` or `text`). - `optional`: Whether the question is optional (`boolean`). - `buttonText`: Text displayed on the submit button. - `choices`: An array of choices for the question. - `shuffleOptions`: Whether to shuffle the order of the choices (`boolean`). - `hasOpenChoice`: Whether the question allows an open-ended response (`boolean`). - `branching`: Branching logic for the question. See branching types below for details. Branching logic can be one of the following types: Next question: Proceeds to the next question ```json { "type": "next_question" } ``` End: Ends the survey, optionally displaying a confirmation message. ```json { "type": "end" } ``` Response-based: Branches based on the response values. Available for the `rating` and `single_choice` question types. ```json { "type": "response_based", "responseValues": { "responseKey": "value" } } ``` Specific question: Proceeds to a specific question by index. ```json { "type": "specific_question", "index": 2 } ``` Translations: Each question can include inline translations. - `translations`: Object mapping language codes to translated fields. - Language codes: Canonical BCP-47-ish strings (e.g., "es", "es-MX", "zh-CN"). Aliases like "english" or "default" are rejected. The survey's `base_language` (default "en") declares the language of the untranslated text and cannot also appear as a translation key. - Translatable fields: `question`, `description`, `buttonText`, `choices`, `lowerBoundLabel`, `upperBoundLabel`, `link` Example with translations: ```json { "id": "uuid", "type": "rating", "question": "How satisfied are you?", "lowerBoundLabel": "Not satisfied", "upperBoundLabel": "Very satisfied", "translations": { "es": { "question": "¿Qué tan satisfecho estás?", "lowerBoundLabel": "No satisfecho", "upperBoundLabel": "Muy satisfecho" }, "fr": { "question": "Dans quelle mesure êtes-vous satisfait?" } } } ``` */
 export type UpdateSurveyRequestQuestionsList = Array<SurveyQuestionInputSchema>;
-const UpdateSurveyRequestQuestionsList =
-  CreateSurveyRequestQuestionsList as any as S.Schema<UpdateSurveyRequestQuestionsList>;
-
 export type UpdateSurveyRequestIterationStartDatesList = Array<string | null>;
-const UpdateSurveyRequestIterationStartDatesList =
-  CreateSurveyRequestIterationStartDatesList as any as S.Schema<UpdateSurveyRequestIterationStartDatesList>;
-
 export type UpdateSurveyRequestResponseSamplingIntervalType =
   | SurveySamplingIntervalTypeEnum
   | BlankEnum;
-const UpdateSurveyRequestResponseSamplingIntervalType =
-  S.Unknown as any as S.Schema<UpdateSurveyRequestResponseSamplingIntervalType>;
-
 export interface UpdateSurveyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1669,23 +1246,12 @@ export interface UpdateSurveyRequest {
   _create_in_folder?: string;
   form_content?: unknown;
 }
-const UpdateSurveyRequest = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<UpdateSurveyRequest>;
-
 /** The `array` of questions included in the survey. Each question must conform to one of the defined question types: Basic, Link, Rating, or Multiple Choice. Basic (open-ended question) - `id`: The question ID - `type`: `open` - `question`: The text of the question. - `description`: Optional description of the question. - `descriptionContentType`: Content type of the description (`html` or `text`). - `optional`: Whether the question is optional (`boolean`). - `buttonText`: Text displayed on the submit button. - `branching`: Branching logic for the question. See branching types below for details. Link (a question with a link) - `id`: The question ID - `type`: `link` - `question`: The text of the question. - `description`: Optional description of the question. - `descriptionContentType`: Content type of the description (`html` or `text`). - `optional`: Whether the question is optional (`boolean`). - `buttonText`: Text displayed on the submit button. - `link`: The URL associated with the question. - `branching`: Branching logic for the question. See branching types below for details. Rating (a question with a rating scale) - `id`: The question ID - `type`: `rating` - `question`: The text of the question. - `description`: Optional description of the question. - `descriptionContentType`: Content type of the description (`html` or `text`). - `optional`: Whether the question is optional (`boolean`). - `buttonText`: Text displayed on the submit button. - `display`: Display style of the rating (`number` or `emoji`). - `scale`: The scale of the rating (`number`). - `lowerBoundLabel`: Label for the lower bound of the scale. - `upperBoundLabel`: Label for the upper bound of the scale. - `isNpsQuestion`: Whether the question is an NPS rating. - `branching`: Branching logic for the question. See branching types below for details. Multiple choice - `id`: The question ID - `type`: `single_choice` or `multiple_choice` - `question`: The text of the question. - `description`: Optional description of the question. - `descriptionContentType`: Content type of the description (`html` or `text`). - `optional`: Whether the question is optional (`boolean`). - `buttonText`: Text displayed on the submit button. - `choices`: An array of choices for the question. - `shuffleOptions`: Whether to shuffle the order of the choices (`boolean`). - `hasOpenChoice`: Whether the question allows an open-ended response (`boolean`). - `branching`: Branching logic for the question. See branching types below for details. Branching logic can be one of the following types: Next question: Proceeds to the next question ```json { "type": "next_question" } ``` End: Ends the survey, optionally displaying a confirmation message. ```json { "type": "end" } ``` Response-based: Branches based on the response values. Available for the `rating` and `single_choice` question types. ```json { "type": "response_based", "responseValues": { "responseKey": "value" } } ``` Specific question: Proceeds to a specific question by index. ```json { "type": "specific_question", "index": 2 } ``` Translations: Each question can include inline translations. - `translations`: Object mapping language codes to translated fields. - Language codes: Canonical BCP-47-ish strings (e.g., "es", "es-MX", "zh-CN"). Aliases like "english" or "default" are rejected. The survey's `base_language` (default "en") declares the language of the untranslated text and cannot also appear as a translation key. - Translatable fields: `question`, `description`, `buttonText`, `choices`, `lowerBoundLabel`, `upperBoundLabel`, `link` Example with translations: ```json { "id": "uuid", "type": "rating", "question": "How satisfied are you?", "lowerBoundLabel": "Not satisfied", "upperBoundLabel": "Very satisfied", "translations": { "es": { "question": "¿Qué tan satisfecho estás?", "lowerBoundLabel": "No satisfecho", "upperBoundLabel": "Muy satisfecho" }, "fr": { "question": "Dans quelle mesure êtes-vous satisfait?" } } } ``` */
 export type UpdateSurveysPartialRequestQuestionsList = Array<SurveyQuestionInputSchema>;
-const UpdateSurveysPartialRequestQuestionsList =
-  CreateSurveyRequestQuestionsList as any as S.Schema<UpdateSurveysPartialRequestQuestionsList>;
-
 export type UpdateSurveysPartialRequestIterationStartDatesList = Array<string | null>;
-const UpdateSurveysPartialRequestIterationStartDatesList =
-  CreateSurveyRequestIterationStartDatesList as any as S.Schema<UpdateSurveysPartialRequestIterationStartDatesList>;
-
 export type UpdateSurveysPartialRequestResponseSamplingIntervalType =
   | SurveySamplingIntervalTypeEnum
   | BlankEnum;
-const UpdateSurveysPartialRequestResponseSamplingIntervalType =
-  S.Unknown as any as S.Schema<UpdateSurveysPartialRequestResponseSamplingIntervalType>;
-
 export interface UpdateSurveysPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1743,11 +1309,6 @@ export interface UpdateSurveysPartialRequest {
   _create_in_folder?: string;
   form_content?: unknown;
 }
-const UpdateSurveysPartialRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<UpdateSurveysPartialRequest>;
-
 export type CreateSurveyError = BadRequest | Forbidden | NotFound | PosthogOpError;
 /** Mixin for ViewSets to handle approval-gate exceptions raised from decorated serializers. Intercepts ApprovalRequired (409) and PolicyConflict (400) raised by the @approval_gate decorator on serializer methods and converts them into the same responses the viewset path produces (see decorators._result_to_response), so both paths share one contract. */
 export const createSurvey: API.OperationMethod<
@@ -1756,8 +1317,8 @@ export const createSurvey: API.OperationMethod<
   CreateSurveyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSurveyRequest,
-  output: SurveySerializerCreateUpdateOnlyOutput,
+  input: __S(17, __c2, 1) as any as S.Schema<CreateSurveyRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<SurveySerializerCreateUpdateOnlyOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1775,8 +1336,8 @@ export const createSurveysSummarizeResponse: API.OperationMethod<
   CreateSurveysSummarizeResponseError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSurveysSummarizeResponseRequest,
-  output: CreateSurveysSummarizeResponseResponse,
+  input: __S(22, __c2, 6) as any as S.Schema<CreateSurveysSummarizeResponseRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<CreateSurveysSummarizeResponseResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1790,8 +1351,8 @@ export const createSurveysSummaryHeadline: API.OperationMethod<
   CreateSurveysSummaryHeadlineError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSurveysSummaryHeadlineRequest,
-  output: CreateSurveysSummaryHeadlineResponse,
+  input: __S(24, __c3, 0) as any as S.Schema<CreateSurveysSummaryHeadlineRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<CreateSurveysSummaryHeadlineResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1805,8 +1366,8 @@ export const getSurvey: API.OperationMethod<
   GetSurveyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSurveyRequest,
-  output: Survey,
+  input: __S(25, __c3, 1) as any as S.Schema<GetSurveyRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<Survey>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1820,8 +1381,8 @@ export const getSurveysActivity: API.OperationMethod<
   GetSurveysActivityError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSurveysActivityRequest,
-  output: GetSurveysActivityResponse,
+  input: __S(29, __c3, 5) as any as S.Schema<GetSurveysActivityRequest>,
+  output: __S(30, __c3, 6) as any as S.Schema<GetSurveysActivityResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1835,8 +1396,8 @@ export const getSurveysAllActivity: API.OperationMethod<
   GetSurveysAllActivityError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSurveysAllActivityRequest,
-  output: GetSurveysAllActivityResponse,
+  input: __S(31, __c3, 7) as any as S.Schema<GetSurveysAllActivityRequest>,
+  output: __S(30, __c3, 6) as any as S.Schema<GetSurveysAllActivityResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1850,8 +1411,8 @@ export const getSurveysArchivedResponseUuid: API.OperationMethod<
   GetSurveysArchivedResponseUuidError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSurveysArchivedResponseUuidRequest,
-  output: GetSurveysArchivedResponseUuidResponse,
+  input: __S(32, __c4, 0) as any as S.Schema<GetSurveysArchivedResponseUuidRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<GetSurveysArchivedResponseUuidResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1865,8 +1426,8 @@ export const getSurveysGlobalStat: API.OperationMethod<
   GetSurveysGlobalStatError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSurveysGlobalStatRequest,
-  output: SurveyGlobalStatsResponse,
+  input: __S(33, __c4, 1) as any as S.Schema<GetSurveysGlobalStatRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<SurveyGlobalStatsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1880,8 +1441,8 @@ export const getSurveysResponsesCount: API.OperationMethod<
   GetSurveysResponsesCountError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSurveysResponsesCountRequest,
-  output: GetSurveysResponsesCountResponse,
+  input: __S(35, __c4, 3) as any as S.Schema<GetSurveysResponsesCountRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<GetSurveysResponsesCountResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1895,8 +1456,8 @@ export const getSurveysStat: API.OperationMethod<
   GetSurveysStatError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSurveysStatRequest,
-  output: SurveyStatsResponse,
+  input: __S(36, __c4, 4) as any as S.Schema<GetSurveysStatRequest>,
+  output: __S(38, __c4, 6) as any as S.Schema<SurveyStatsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1910,8 +1471,8 @@ export const listSurveys: API.OperationMethod<
   ListSurveysError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSurveysRequest,
-  output: PaginatedSurveyList,
+  input: __S(39, __c4, 7) as any as S.Schema<ListSurveysRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<PaginatedSurveyList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1925,8 +1486,8 @@ export const listSurveysResponses: API.OperationMethod<
   ListSurveysResponsesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSurveysResponsesRequest,
-  output: SurveyResponsesList,
+  input: __S(42, __c5, 2) as any as S.Schema<ListSurveysResponsesRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<SurveyResponsesList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1940,8 +1501,8 @@ export const stopSurvey: API.OperationMethod<
   StopSurveyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopSurveyRequest,
-  output: Survey,
+  input: __S(49, __c6, 1) as any as S.Schema<StopSurveyRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<Survey>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1955,8 +1516,8 @@ export const surveysDestroy: API.OperationMethod<
   SurveysDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SurveysDestroyRequest,
-  output: SurveysDestroyResponse,
+  input: __S(50, __c6, 2) as any as S.Schema<SurveysDestroyRequest>,
+  output: __S(30, __c3, 6) as any as S.Schema<SurveysDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1974,8 +1535,8 @@ export const surveysDuplicateToProjectsCreate: API.OperationMethod<
   SurveysDuplicateToProjectsCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SurveysDuplicateToProjectsCreateRequest,
-  output: SurveysDuplicateToProjectsCreateResponse,
+  input: __S(51, __c6, 3) as any as S.Schema<SurveysDuplicateToProjectsCreateRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<SurveysDuplicateToProjectsCreateResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1989,8 +1550,8 @@ export const surveysGenerateTranslationsCreate: API.OperationMethod<
   SurveysGenerateTranslationsCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SurveysGenerateTranslationsCreateRequest,
-  output: GenerateSurveyTranslationsResponse,
+  input: __S(52, __c6, 4) as any as S.Schema<SurveysGenerateTranslationsCreateRequest>,
+  output: __S(59, __c7, 3) as any as S.Schema<GenerateSurveyTranslationsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2004,8 +1565,8 @@ export const surveysLaunch: API.OperationMethod<
   SurveysLaunchError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SurveysLaunchRequest,
-  output: Survey,
+  input: __S(60, __c7, 4) as any as S.Schema<SurveysLaunchRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<Survey>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2019,8 +1580,8 @@ export const surveysQuestionLabels: API.OperationMethod<
   SurveysQuestionLabelsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SurveysQuestionLabelsRequest,
-  output: SurveyQuestionLabelsResponse,
+  input: __S(61, __c7, 5) as any as S.Schema<SurveysQuestionLabelsRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<SurveyQuestionLabelsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2034,8 +1595,8 @@ export const surveysResponsesArchiveCreate: API.OperationMethod<
   SurveysResponsesArchiveCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SurveysResponsesArchiveCreateRequest,
-  output: SurveysResponsesArchiveCreateResponse,
+  input: __S(65, __c8, 1) as any as S.Schema<SurveysResponsesArchiveCreateRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<SurveysResponsesArchiveCreateResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2053,8 +1614,8 @@ export const surveysResponsesUnarchiveCreate: API.OperationMethod<
   SurveysResponsesUnarchiveCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SurveysResponsesUnarchiveCreateRequest,
-  output: SurveysResponsesUnarchiveCreateResponse,
+  input: __S(66, __c8, 2) as any as S.Schema<SurveysResponsesUnarchiveCreateRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<SurveysResponsesUnarchiveCreateResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2068,8 +1629,8 @@ export const updateSurvey: API.OperationMethod<
   UpdateSurveyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSurveyRequest,
-  output: SurveySerializerCreateUpdateOnlyOutput,
+  input: __S(67, __c8, 3) as any as S.Schema<UpdateSurveyRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<SurveySerializerCreateUpdateOnlyOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2083,8 +1644,8 @@ export const updateSurveysPartial: API.OperationMethod<
   UpdateSurveysPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSurveysPartialRequest,
-  output: SurveySerializerCreateUpdateOnlyOutput,
+  input: __S(68, __c8, 4) as any as S.Schema<UpdateSurveysPartialRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<SurveySerializerCreateUpdateOnlyOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2096,11 +1657,11 @@ function __c0(j: number): any {
     case 0:
       return S.Array(S.String);
     case 1:
-      return S.Array(FeatureFlagFilterPropertySchema);
+      return S.Array(S.Unknown);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(FeatureFlagConditionGroupSchemaPropertiesList),
+          properties: S.optional(__S(1, __c0, 1)),
           rollout_percentage: S.optional(S.Number),
           variant: S.optional(S.NullOr(S.String)),
           aggregation_group_type_index: S.optional(S.NullOr(S.Number)),
@@ -2109,7 +1670,7 @@ function __c0(j: number): any {
         identifier: "FeatureFlagConditionGroupSchema",
       });
     case 3:
-      return S.Array(FeatureFlagConditionGroupSchema);
+      return S.Array(__S(2, __c0, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2121,11 +1682,11 @@ function __c0(j: number): any {
         identifier: "FeatureFlagMultivariateVariantSchema",
       });
     case 5:
-      return S.Array(FeatureFlagMultivariateVariantSchema);
+      return S.Array(__S(4, __c0, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          variants: S.optional(FeatureFlagMultivariateSchemaVariantsList),
+          variants: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({
         identifier: "FeatureFlagMultivariateSchema",
@@ -2139,16 +1700,16 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          groups: S.optional(FeatureFlagFiltersSchemaGroupsList),
-          multivariate: S.optional(S.NullOr(FeatureFlagMultivariateSchema)),
+          groups: S.optional(__S(3, __c0, 3)),
+          multivariate: S.optional(S.NullOr(__S(6, __c0, 6))),
           aggregation_group_type_index: S.optional(S.NullOr(S.Number)),
-          payloads: S.optional(FeatureFlagFiltersSchemaPayloadsMap),
+          payloads: S.optional(__S(7, __c0, 7)),
           feature_enrollment: S.optional(S.NullOr(S.Boolean)),
           early_exit: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "FeatureFlagFiltersSchema" });
     case 1:
-      return S.Array(SurveyQuestionInputSchema);
+      return S.Array(S.Unknown);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2158,28 +1719,28 @@ function __c1(j: number): any {
         identifier: "SurveyConditionEventValueSchema",
       });
     case 3:
-      return S.Array(SurveyConditionEventValueSchema);
+      return S.Array(__S(10, __c1, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           repeatedActivation: S.optional(S.Boolean),
-          values: S.optional(SurveyEventsConditionSchemaValuesList),
+          values: S.optional(__S(11, __c1, 3)),
         }),
       ).annotate({
         identifier: "SurveyEventsConditionSchema",
       });
     case 5:
-      return S.Array(DeviceTypesEnum);
+      return S.Array(S.String);
     case 6:
       return S.suspend(() =>
         S.Struct({
           url: S.optional(S.String),
           selector: S.optional(S.String),
           seenSurveyWaitPeriodInDays: S.optional(S.Number),
-          urlMatchType: S.optional(SurveyMatchTypeEnum),
-          events: S.optional(SurveyEventsConditionSchema),
-          deviceTypes: S.optional(SurveyConditionsSchemaDeviceTypesList),
-          deviceTypesMatchType: S.optional(SurveyMatchTypeEnum),
+          urlMatchType: S.optional(S.String),
+          events: S.optional(__S(12, __c1, 4)),
+          deviceTypes: S.optional(__S(13, __c1, 5)),
+          deviceTypesMatchType: S.optional(S.String),
           linkedFlagVariant: S.optional(S.String),
         }),
       ).annotate({ identifier: "SurveyConditionsSchema" });
@@ -2200,7 +1761,7 @@ function __c1(j: number): any {
           displayThankYouMessage: S.optional(S.Boolean),
           thankYouMessageHeader: S.optional(S.String),
           thankYouMessageDescription: S.optional(S.String),
-          thankYouMessageDescriptionContentType: S.optional(DescriptionContentTypeEnum),
+          thankYouMessageDescriptionContentType: S.optional(S.String),
           thankYouMessageCloseButtonText: S.optional(S.String),
           borderColor: S.optional(S.String),
           placeholder: S.optional(S.String),
@@ -2208,7 +1769,7 @@ function __c1(j: number): any {
           surveyPopupDelaySeconds: S.optional(S.Number),
           allowGoBack: S.optional(S.Boolean),
           backButtonText: S.optional(S.String),
-          widgetType: S.optional(WidgetTypeEnum),
+          widgetType: S.optional(S.String),
           widgetSelector: S.optional(S.String),
           widgetLabel: S.optional(S.String),
           widgetColor: S.optional(S.String),
@@ -2231,29 +1792,27 @@ function __c2(j: number): any {
           project_id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          type: S.optional(SurveyTypeEnum),
-          schedule: S.optional(S.NullOr(SurveyScheduleEnum)),
+          type: S.optional(S.String),
+          schedule: S.optional(S.NullOr(S.String)),
           linked_flag_id: S.optional(S.NullOr(S.Number)),
           linked_insight_id: S.optional(S.NullOr(S.Number)),
           targeting_flag_id: S.optional(S.Number),
-          targeting_flag_filters: S.optional(S.NullOr(FeatureFlagFiltersSchema)),
+          targeting_flag_filters: S.optional(S.NullOr(__S(8, __c1, 0))),
           remove_targeting_flag: S.optional(S.NullOr(S.Boolean)),
-          questions: S.optional(S.NullOr(CreateSurveyRequestQuestionsList)),
-          conditions: S.optional(S.NullOr(SurveyConditionsSchema)),
-          appearance: S.optional(S.NullOr(SurveyAppearanceSchema)),
+          questions: S.optional(S.NullOr(__S(9, __c1, 1))),
+          conditions: S.optional(S.NullOr(__S(14, __c1, 6))),
+          appearance: S.optional(S.NullOr(__S(15, __c1, 7))),
           start_date: S.optional(S.NullOr(S.String)),
           end_date: S.optional(S.NullOr(S.String)),
           archived: S.optional(S.Boolean),
           responses_limit: S.optional(S.NullOr(S.Number)),
           iteration_count: S.optional(S.NullOr(S.Number)),
           iteration_frequency_days: S.optional(S.NullOr(S.Number)),
-          iteration_start_dates: S.optional(S.NullOr(CreateSurveyRequestIterationStartDatesList)),
+          iteration_start_dates: S.optional(S.NullOr(__S(16, __c2, 0))),
           current_iteration: S.optional(S.NullOr(S.Number)),
           current_iteration_start_date: S.optional(S.NullOr(S.String)),
           response_sampling_start_date: S.optional(S.NullOr(S.String)),
-          response_sampling_interval_type: S.optional(
-            S.NullOr(CreateSurveyRequestResponseSamplingIntervalType),
-          ),
+          response_sampling_interval_type: S.optional(S.NullOr(S.Unknown)),
           response_sampling_interval: S.optional(S.NullOr(S.Number)),
           response_sampling_limit: S.optional(S.NullOr(S.Number)),
           response_sampling_daily_limits: S.optional(S.Unknown),
@@ -2274,14 +1833,14 @@ function __c2(j: number): any {
           team_id: S.optional(S.Number),
           name: S.optional(S.String),
           key: S.optional(S.String),
-          filters: S.optional(MinimalFeatureFlagFiltersMap),
+          filters: S.optional(__S(18, __c2, 2)),
           deleted: S.optional(S.Boolean),
           active: S.optional(S.Boolean),
           ensure_experience_continuity: S.optional(S.NullOr(S.Boolean)),
           version: S.optional(S.NullOr(S.Number)),
-          evaluation_runtime: S.optional(S.NullOr(MinimalFeatureFlagEvaluationRuntime)),
-          bucketing_identifier: S.optional(S.NullOr(MinimalFeatureFlagBucketingIdentifier)),
-          evaluation_contexts: S.optional(MinimalFeatureFlagEvaluationContextsList),
+          evaluation_runtime: S.optional(S.NullOr(S.Unknown)),
+          bucketing_identifier: S.optional(S.NullOr(S.Unknown)),
+          evaluation_contexts: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({ identifier: "MinimalFeatureFlag" });
     case 4:
@@ -2294,8 +1853,8 @@ function __c2(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
-          role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
+          hedgehog_config: S.optional(S.NullOr(__S(18, __c2, 2))),
+          role_at_organization: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "UserBasic" });
     case 5:
@@ -2304,31 +1863,27 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          type: S.optional(SurveyTypeEnum),
+          type: S.optional(S.String),
           schedule: S.optional(S.NullOr(S.String)),
-          linked_flag: S.optional(MinimalFeatureFlag),
-          targeting_flag: S.optional(MinimalFeatureFlag),
-          internal_targeting_flag: S.optional(MinimalFeatureFlag),
+          linked_flag: S.optional(__S(19, __c2, 3)),
+          targeting_flag: S.optional(__S(19, __c2, 3)),
+          internal_targeting_flag: S.optional(__S(19, __c2, 3)),
           questions: S.optional(S.Unknown),
           conditions: S.optional(S.Unknown),
           appearance: S.optional(S.Unknown),
           created_at: S.optional(S.String),
-          created_by: S.optional(S.NullOr(UserBasic)),
+          created_by: S.optional(S.NullOr(__S(20, __c2, 4))),
           start_date: S.optional(S.NullOr(S.String)),
           end_date: S.optional(S.NullOr(S.String)),
           archived: S.optional(S.Boolean),
           responses_limit: S.optional(S.NullOr(S.Number)),
           iteration_count: S.optional(S.NullOr(S.Number)),
           iteration_frequency_days: S.optional(S.NullOr(S.Number)),
-          iteration_start_dates: S.optional(
-            S.NullOr(SurveySerializerCreateUpdateOnlyOutputIterationStartDatesList),
-          ),
+          iteration_start_dates: S.optional(S.NullOr(__S(16, __c2, 0))),
           current_iteration: S.optional(S.NullOr(S.Number)),
           current_iteration_start_date: S.optional(S.NullOr(S.String)),
           response_sampling_start_date: S.optional(S.NullOr(S.String)),
-          response_sampling_interval_type: S.optional(
-            S.NullOr(SurveySerializerCreateUpdateOnlyOutputResponseSamplingIntervalType),
-          ),
+          response_sampling_interval_type: S.optional(S.NullOr(S.Unknown)),
           response_sampling_interval: S.optional(S.NullOr(S.Number)),
           response_sampling_limit: S.optional(S.NullOr(S.Number)),
           response_sampling_daily_limits: S.optional(S.Unknown),
@@ -2374,7 +1929,7 @@ function __c3(j: number): any {
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          type: S.optional(SurveyTypeEnum),
+          type: S.optional(S.String),
           schedule: S.optional(S.NullOr(S.String)),
           linked_flag_id: S.optional(S.NullOr(S.Number)),
           linked_insight_id: S.optional(S.NullOr(S.Number)),
@@ -2390,15 +1945,11 @@ function __c3(j: number): any {
           responses_limit: S.optional(S.NullOr(S.Number)),
           iteration_count: S.optional(S.NullOr(S.Number)),
           iteration_frequency_days: S.optional(S.NullOr(S.Number)),
-          iteration_start_dates: S.optional(
-            S.NullOr(CreateSurveysSummaryHeadlineRequestIterationStartDatesList),
-          ),
+          iteration_start_dates: S.optional(S.NullOr(__S(16, __c2, 0))),
           current_iteration: S.optional(S.NullOr(S.Number)),
           current_iteration_start_date: S.optional(S.NullOr(S.String)),
           response_sampling_start_date: S.optional(S.NullOr(S.String)),
-          response_sampling_interval_type: S.optional(
-            S.NullOr(CreateSurveysSummaryHeadlineRequestResponseSamplingIntervalType),
-          ),
+          response_sampling_interval_type: S.optional(S.NullOr(S.Unknown)),
           response_sampling_interval: S.optional(S.NullOr(S.Number)),
           response_sampling_limit: S.optional(S.NullOr(S.Number)),
           response_sampling_daily_limits: S.optional(S.Unknown),
@@ -2430,37 +1981,37 @@ function __c3(j: number): any {
     case 2:
       return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.String));
     case 3:
-      return S.Array(SurveyFeatureFlagKeysItemMap);
+      return S.Array(__S(26, __c3, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          type: S.optional(SurveyTypeEnum),
+          type: S.optional(S.String),
           schedule: S.optional(S.NullOr(S.String)),
-          linked_flag: S.optional(MinimalFeatureFlag),
+          linked_flag: S.optional(__S(19, __c2, 3)),
           linked_flag_id: S.optional(S.NullOr(S.Number)),
           linked_insight_id: S.optional(S.NullOr(S.Number)),
-          targeting_flag: S.optional(MinimalFeatureFlag),
-          internal_targeting_flag: S.optional(MinimalFeatureFlag),
+          targeting_flag: S.optional(__S(19, __c2, 3)),
+          internal_targeting_flag: S.optional(__S(19, __c2, 3)),
           questions: S.optional(S.Unknown),
-          conditions: S.optional(S.NullOr(SurveyConditionsMap)),
+          conditions: S.optional(S.NullOr(__S(18, __c2, 2))),
           appearance: S.optional(S.Unknown),
           created_at: S.optional(S.String),
-          created_by: S.optional(S.NullOr(UserBasic)),
+          created_by: S.optional(S.NullOr(__S(20, __c2, 4))),
           start_date: S.optional(S.NullOr(S.String)),
           end_date: S.optional(S.NullOr(S.String)),
           archived: S.optional(S.Boolean),
           responses_limit: S.optional(S.NullOr(S.Number)),
-          feature_flag_keys: S.optional(SurveyFeatureFlagKeysList),
+          feature_flag_keys: S.optional(__S(27, __c3, 3)),
           iteration_count: S.optional(S.NullOr(S.Number)),
           iteration_frequency_days: S.optional(S.NullOr(S.Number)),
-          iteration_start_dates: S.optional(S.NullOr(SurveyIterationStartDatesList)),
+          iteration_start_dates: S.optional(S.NullOr(__S(16, __c2, 0))),
           current_iteration: S.optional(S.NullOr(S.Number)),
           current_iteration_start_date: S.optional(S.NullOr(S.String)),
           response_sampling_start_date: S.optional(S.NullOr(S.String)),
-          response_sampling_interval_type: S.optional(S.NullOr(SurveyResponseSamplingIntervalType)),
+          response_sampling_interval_type: S.optional(S.NullOr(S.Unknown)),
           response_sampling_interval: S.optional(S.NullOr(S.Number)),
           response_sampling_limit: S.optional(S.NullOr(S.Number)),
           response_sampling_daily_limits: S.optional(S.Unknown),
@@ -2470,7 +2021,7 @@ function __c3(j: number): any {
           translations: S.optional(S.Unknown),
           user_access_level: S.optional(S.NullOr(S.String)),
           form_content: S.optional(S.Unknown),
-          search_match_type: S.optional(S.NullOr(SearchMatchTypeEnum)),
+          search_match_type: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "Survey" });
     case 5:
@@ -2536,8 +2087,8 @@ function __c4(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          stats: S.optional(SurveyGlobalStatsResponseStatsMap),
-          rates: S.optional(SurveyGlobalStatsResponseRatesMap),
+          stats: S.optional(__S(18, __c2, 2)),
+          rates: S.optional(__S(18, __c2, 2)),
         }),
       ).annotate({
         identifier: "SurveyGlobalStatsResponse",
@@ -2580,9 +2131,9 @@ function __c4(j: number): any {
           survey_id: S.optional(S.String),
           start_date: S.optional(S.NullOr(S.String)),
           end_date: S.optional(S.NullOr(S.String)),
-          stats: S.optional(SurveyStatsResponseStatsMap),
-          rates: S.optional(SurveyStatsResponseRatesMap),
-          per_question_stats: S.optional(SurveyStatsResponsePerQuestionStatsList),
+          stats: S.optional(__S(18, __c2, 2)),
+          rates: S.optional(__S(18, __c2, 2)),
+          per_question_stats: S.optional(__S(37, __c4, 5)),
         }),
       ).annotate({ identifier: "SurveyStatsResponse" });
     case 7:
@@ -2591,12 +2142,12 @@ function __c4(j: number): any {
           project_id: S.String.pipe(T.Label()),
           archived: S.optional(S.Boolean.pipe(T.Query())),
           created_by: S.optional(S.Number.pipe(T.Query())),
-          ids: S.optional(ListSurveysRequestIdsList.pipe(T.Query())),
+          ids: S.optional(__S(0, __c0, 0).pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(ListSurveysRequestStatus.pipe(T.Query())),
-          type: S.optional(ListSurveysRequestType.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/projects/{project_id}/surveys/", code: 200 })),
       ).annotate({ identifier: "ListSurveysRequest" });
   }
@@ -2604,14 +2155,14 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Survey);
+      return S.Array(__S(28, __c3, 4));
     case 1:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(PaginatedSurveyListResultsList),
+          results: S.optional(__S(40, __c5, 0)),
         }),
       ).annotate({ identifier: "PaginatedSurveyList" });
     case 2:
@@ -2648,7 +2199,7 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "SurveyResponseAnswer" });
     case 4:
-      return S.Array(SurveyResponseAnswer);
+      return S.Array(__S(43, __c5, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -2669,12 +2220,12 @@ function __c5(j: number): any {
           distinct_id: S.String,
           session_id: S.NullOr(S.String),
           submitted_at: S.String,
-          answers: SurveyResponseRowAnswersList,
-          extra: SurveyResponseExtra,
+          answers: __S(44, __c5, 4),
+          extra: __S(45, __c5, 5),
         }),
       ).annotate({ identifier: "SurveyResponseRow" });
     case 7:
-      return S.Array(SurveyResponseRow);
+      return S.Array(__S(46, __c5, 6));
   }
 }
 function __c6(j: number): any {
@@ -2682,7 +2233,7 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          results: SurveyResponsesListResultsList,
+          results: __S(47, __c5, 7),
           has_more: S.Boolean,
           limit: S.Number,
           offset: S.Number,
@@ -2717,7 +2268,7 @@ function __c6(j: number): any {
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          type: S.optional(SurveyTypeEnum),
+          type: S.optional(S.String),
           schedule: S.optional(S.NullOr(S.String)),
           linked_flag_id: S.optional(S.NullOr(S.Number)),
           linked_insight_id: S.optional(S.NullOr(S.Number)),
@@ -2733,15 +2284,11 @@ function __c6(j: number): any {
           responses_limit: S.optional(S.NullOr(S.Number)),
           iteration_count: S.optional(S.NullOr(S.Number)),
           iteration_frequency_days: S.optional(S.NullOr(S.Number)),
-          iteration_start_dates: S.optional(
-            S.NullOr(SurveysDuplicateToProjectsCreateRequestIterationStartDatesList),
-          ),
+          iteration_start_dates: S.optional(S.NullOr(__S(16, __c2, 0))),
           current_iteration: S.optional(S.NullOr(S.Number)),
           current_iteration_start_date: S.optional(S.NullOr(S.String)),
           response_sampling_start_date: S.optional(S.NullOr(S.String)),
-          response_sampling_interval_type: S.optional(
-            S.NullOr(SurveysDuplicateToProjectsCreateRequestResponseSamplingIntervalType),
-          ),
+          response_sampling_interval_type: S.optional(S.NullOr(S.Unknown)),
           response_sampling_interval: S.optional(S.NullOr(S.Number)),
           response_sampling_limit: S.optional(S.NullOr(S.Number)),
           response_sampling_daily_limits: S.optional(S.Unknown),
@@ -2769,7 +2316,7 @@ function __c6(j: number): any {
           target_language: S.String,
           source_language: S.optional(S.String),
           overwrite: S.optional(S.Boolean),
-          survey: S.optional(SurveysGenerateTranslationsCreateRequestSurveyMap),
+          survey: S.optional(__S(18, __c2, 2)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2792,14 +2339,14 @@ function __c6(j: number): any {
         identifier: "GeneratedSurveyRootTranslation",
       });
     case 6:
-      return S.Record(S.String, GeneratedSurveyRootTranslation);
+      return S.Record(S.String, __S(53, __c6, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           question: S.optional(S.String),
           description: S.optional(S.String),
           buttonText: S.optional(S.String),
-          choices: S.optional(GeneratedSurveyQuestionTranslationChoicesList),
+          choices: S.optional(__S(0, __c0, 0)),
           lowerBoundLabel: S.optional(S.String),
           upperBoundLabel: S.optional(S.String),
           link: S.optional(S.String),
@@ -2812,24 +2359,24 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, GeneratedSurveyQuestionTranslation);
+      return S.Record(S.String, __S(55, __c6, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          translations: GeneratedSurveyQuestionTranslationPatchTranslationsMap,
+          translations: __S(56, __c7, 0),
         }),
       ).annotate({
         identifier: "GeneratedSurveyQuestionTranslationPatch",
       });
     case 2:
-      return S.Array(GeneratedSurveyQuestionTranslationPatch);
+      return S.Array(__S(57, __c7, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          translations: GenerateSurveyTranslationsResponseTranslationsMap,
-          questions: GenerateSurveyTranslationsResponseQuestionsList,
-          generated_field_paths: GenerateSurveyTranslationsResponseGeneratedFieldPathsList,
+          translations: __S(54, __c6, 6),
+          questions: __S(58, __c7, 2),
+          generated_field_paths: __S(0, __c0, 0),
           trace_id: S.String,
         }),
       ).annotate({
@@ -2873,7 +2420,7 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "SurveyQuestionLabel" });
     case 7:
-      return S.Array(SurveyQuestionLabel);
+      return S.Array(__S(62, __c7, 6));
   }
 }
 function __c8(j: number): any {
@@ -2881,7 +2428,7 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          labels: SurveyQuestionLabelsResponseLabelsList,
+          labels: __S(63, __c7, 7),
         }),
       ).annotate({
         identifier: "SurveyQuestionLabelsResponse",
@@ -2894,7 +2441,7 @@ function __c8(j: number): any {
           response_uuid: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          type: S.optional(SurveyTypeEnum),
+          type: S.optional(S.String),
           schedule: S.optional(S.NullOr(S.String)),
           linked_flag_id: S.optional(S.NullOr(S.Number)),
           linked_insight_id: S.optional(S.NullOr(S.Number)),
@@ -2910,15 +2457,11 @@ function __c8(j: number): any {
           responses_limit: S.optional(S.NullOr(S.Number)),
           iteration_count: S.optional(S.NullOr(S.Number)),
           iteration_frequency_days: S.optional(S.NullOr(S.Number)),
-          iteration_start_dates: S.optional(
-            S.NullOr(SurveysResponsesArchiveCreateRequestIterationStartDatesList),
-          ),
+          iteration_start_dates: S.optional(S.NullOr(__S(16, __c2, 0))),
           current_iteration: S.optional(S.NullOr(S.Number)),
           current_iteration_start_date: S.optional(S.NullOr(S.String)),
           response_sampling_start_date: S.optional(S.NullOr(S.String)),
-          response_sampling_interval_type: S.optional(
-            S.NullOr(SurveysResponsesArchiveCreateRequestResponseSamplingIntervalType),
-          ),
+          response_sampling_interval_type: S.optional(S.NullOr(S.Unknown)),
           response_sampling_interval: S.optional(S.NullOr(S.Number)),
           response_sampling_limit: S.optional(S.NullOr(S.Number)),
           response_sampling_daily_limits: S.optional(S.Unknown),
@@ -2946,7 +2489,7 @@ function __c8(j: number): any {
           response_uuid: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          type: S.optional(SurveyTypeEnum),
+          type: S.optional(S.String),
           schedule: S.optional(S.NullOr(S.String)),
           linked_flag_id: S.optional(S.NullOr(S.Number)),
           linked_insight_id: S.optional(S.NullOr(S.Number)),
@@ -2962,15 +2505,11 @@ function __c8(j: number): any {
           responses_limit: S.optional(S.NullOr(S.Number)),
           iteration_count: S.optional(S.NullOr(S.Number)),
           iteration_frequency_days: S.optional(S.NullOr(S.Number)),
-          iteration_start_dates: S.optional(
-            S.NullOr(SurveysResponsesUnarchiveCreateRequestIterationStartDatesList),
-          ),
+          iteration_start_dates: S.optional(S.NullOr(__S(16, __c2, 0))),
           current_iteration: S.optional(S.NullOr(S.Number)),
           current_iteration_start_date: S.optional(S.NullOr(S.String)),
           response_sampling_start_date: S.optional(S.NullOr(S.String)),
-          response_sampling_interval_type: S.optional(
-            S.NullOr(SurveysResponsesUnarchiveCreateRequestResponseSamplingIntervalType),
-          ),
+          response_sampling_interval_type: S.optional(S.NullOr(S.Unknown)),
           response_sampling_interval: S.optional(S.NullOr(S.Number)),
           response_sampling_limit: S.optional(S.NullOr(S.Number)),
           response_sampling_daily_limits: S.optional(S.Unknown),
@@ -2997,29 +2536,27 @@ function __c8(j: number): any {
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          type: S.optional(SurveyTypeEnum),
-          schedule: S.optional(S.NullOr(SurveyScheduleEnum)),
+          type: S.optional(S.String),
+          schedule: S.optional(S.NullOr(S.String)),
           linked_flag_id: S.optional(S.NullOr(S.Number)),
           linked_insight_id: S.optional(S.NullOr(S.Number)),
           targeting_flag_id: S.optional(S.Number),
-          targeting_flag_filters: S.optional(S.NullOr(FeatureFlagFiltersSchema)),
+          targeting_flag_filters: S.optional(S.NullOr(__S(8, __c1, 0))),
           remove_targeting_flag: S.optional(S.NullOr(S.Boolean)),
-          questions: S.optional(S.NullOr(UpdateSurveyRequestQuestionsList)),
-          conditions: S.optional(S.NullOr(SurveyConditionsSchema)),
-          appearance: S.optional(S.NullOr(SurveyAppearanceSchema)),
+          questions: S.optional(S.NullOr(__S(9, __c1, 1))),
+          conditions: S.optional(S.NullOr(__S(14, __c1, 6))),
+          appearance: S.optional(S.NullOr(__S(15, __c1, 7))),
           start_date: S.optional(S.NullOr(S.String)),
           end_date: S.optional(S.NullOr(S.String)),
           archived: S.optional(S.Boolean),
           responses_limit: S.optional(S.NullOr(S.Number)),
           iteration_count: S.optional(S.NullOr(S.Number)),
           iteration_frequency_days: S.optional(S.NullOr(S.Number)),
-          iteration_start_dates: S.optional(S.NullOr(UpdateSurveyRequestIterationStartDatesList)),
+          iteration_start_dates: S.optional(S.NullOr(__S(16, __c2, 0))),
           current_iteration: S.optional(S.NullOr(S.Number)),
           current_iteration_start_date: S.optional(S.NullOr(S.String)),
           response_sampling_start_date: S.optional(S.NullOr(S.String)),
-          response_sampling_interval_type: S.optional(
-            S.NullOr(UpdateSurveyRequestResponseSamplingIntervalType),
-          ),
+          response_sampling_interval_type: S.optional(S.NullOr(S.Unknown)),
           response_sampling_interval: S.optional(S.NullOr(S.Number)),
           response_sampling_limit: S.optional(S.NullOr(S.Number)),
           response_sampling_daily_limits: S.optional(S.Unknown),
@@ -3040,31 +2577,27 @@ function __c8(j: number): any {
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          type: S.optional(SurveyTypeEnum),
-          schedule: S.optional(S.NullOr(SurveyScheduleEnum)),
+          type: S.optional(S.String),
+          schedule: S.optional(S.NullOr(S.String)),
           linked_flag_id: S.optional(S.NullOr(S.Number)),
           linked_insight_id: S.optional(S.NullOr(S.Number)),
           targeting_flag_id: S.optional(S.Number),
-          targeting_flag_filters: S.optional(S.NullOr(FeatureFlagFiltersSchema)),
+          targeting_flag_filters: S.optional(S.NullOr(__S(8, __c1, 0))),
           remove_targeting_flag: S.optional(S.NullOr(S.Boolean)),
-          questions: S.optional(S.NullOr(UpdateSurveysPartialRequestQuestionsList)),
-          conditions: S.optional(S.NullOr(SurveyConditionsSchema)),
-          appearance: S.optional(S.NullOr(SurveyAppearanceSchema)),
+          questions: S.optional(S.NullOr(__S(9, __c1, 1))),
+          conditions: S.optional(S.NullOr(__S(14, __c1, 6))),
+          appearance: S.optional(S.NullOr(__S(15, __c1, 7))),
           start_date: S.optional(S.NullOr(S.String)),
           end_date: S.optional(S.NullOr(S.String)),
           archived: S.optional(S.Boolean),
           responses_limit: S.optional(S.NullOr(S.Number)),
           iteration_count: S.optional(S.NullOr(S.Number)),
           iteration_frequency_days: S.optional(S.NullOr(S.Number)),
-          iteration_start_dates: S.optional(
-            S.NullOr(UpdateSurveysPartialRequestIterationStartDatesList),
-          ),
+          iteration_start_dates: S.optional(S.NullOr(__S(16, __c2, 0))),
           current_iteration: S.optional(S.NullOr(S.Number)),
           current_iteration_start_date: S.optional(S.NullOr(S.String)),
           response_sampling_start_date: S.optional(S.NullOr(S.String)),
-          response_sampling_interval_type: S.optional(
-            S.NullOr(UpdateSurveysPartialRequestResponseSamplingIntervalType),
-          ),
+          response_sampling_interval_type: S.optional(S.NullOr(S.Unknown)),
           response_sampling_interval: S.optional(S.NullOr(S.Number)),
           response_sampling_limit: S.optional(S.NullOr(S.Number)),
           response_sampling_daily_limits: S.optional(S.Unknown),
@@ -3081,4 +2614,9 @@ function __c8(j: number): any {
         identifier: "UpdateSurveysPartialRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

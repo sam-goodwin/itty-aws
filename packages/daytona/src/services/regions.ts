@@ -6,19 +6,14 @@ import { UnknownDaytonaError } from "../errors.ts";
 import { DaytonaProtocol, type DaytonaOpError, type DaytonaOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { DaytonaOpError, DaytonaOpContext };
 
 export interface ListSharedRegionsRequest {}
-const ListSharedRegionsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ListSharedRegionsRequest>;
-
 /** The type of the region */
 export type RegionType = "shared" | "dedicated" | "custom";
-const RegionType = S.String;
-
 export interface Region {
   /** Region ID */
   id: string;
@@ -41,20 +36,8 @@ export interface Region {
   /** OTel collector endpoint for sandboxes created in this region. When set, sandbox OTel data is sent to this endpoint instead of the Daytona-hosted collector and will not be available in the Daytona analytics API or dashboard. */
   otelEndpoint?: string | null;
 }
-const Region = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<Region>;
-
 export type ListSharedRegionsResponseBodyList = Array<Region>;
-const ListSharedRegionsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<ListSharedRegionsResponseBodyList>;
-
 export type ListSharedRegionsResponse = ListSharedRegionsResponseBodyList;
-const ListSharedRegionsResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ListSharedRegionsResponse>;
-
 export type ListSharedRegionsError = DaytonaOpError;
 /** List all shared regions */
 export const listSharedRegions: API.OperationMethod<
@@ -63,8 +46,8 @@ export const listSharedRegions: API.OperationMethod<
   ListSharedRegionsError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSharedRegionsRequest,
-  output: ListSharedRegionsResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<ListSharedRegionsRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<ListSharedRegionsResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -83,7 +66,7 @@ function __c0(j: number): any {
           id: S.String,
           name: S.String,
           organizationId: S.optional(S.NullOr(S.String)),
-          regionType: RegionType,
+          regionType: S.String,
           createdAt: S.String,
           updatedAt: S.String,
           proxyUrl: S.optional(S.NullOr(S.String)),
@@ -93,10 +76,15 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "Region" });
     case 2:
-      return S.Array(Region);
+      return S.Array(__S(1, __c0, 1));
     case 3:
-      return S.suspend(() => ListSharedRegionsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(2, __c0, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListSharedRegionsResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

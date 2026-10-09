@@ -10,6 +10,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -17,14 +19,8 @@ export interface GetRequest {
   /** Identifier. */
   zoneId: string;
 }
-const GetRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<GetRequest>;
-
 export type GetResponseDefaultMode = "off" | "min-friction" | "max-security";
-const GetResponseDefaultMode = S.String;
-
 export type GetResponseEnforcementRulesItemMode = "min-friction" | "max-security";
-const GetResponseEnforcementRulesItemMode = S.String;
-
 export interface GetResponseEnforcementRulesItem {
   /** The filter expression that determines which requests the rule matches. */
   expression: string;
@@ -37,17 +33,7 @@ export interface GetResponseEnforcementRulesItem {
   /** Whether the rule is active. */
   enabled?: boolean | null;
 }
-const GetResponseEnforcementRulesItem = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<GetResponseEnforcementRulesItem>;
-
 export type GetResponseEnforcementRulesList = Array<GetResponseEnforcementRulesItem>;
-const GetResponseEnforcementRulesList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<GetResponseEnforcementRulesList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetResponse {
   /** The zone-level Precursor enforcement mode applied to requests that do not match a more specific enforcement rule. */
@@ -55,14 +41,8 @@ export interface GetResponse {
   /** The ordered list of enforcement rules for the zone. */
   enforcementRules?: GetResponseEnforcementRulesList | null;
 }
-const GetResponse = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<GetResponse>;
-
 export type UpdateRequestDefaultMode = "off" | "min-friction" | "max-security";
-const UpdateRequestDefaultMode = S.String;
-
 export type UpdateRequestEnforcementRulesItemMode = "min-friction" | "max-security";
-const UpdateRequestEnforcementRulesItemMode = S.String;
-
 export interface UpdateRequestEnforcementRulesItem {
   /** The filter expression that determines which requests the rule matches. */
   expression: string;
@@ -75,17 +55,7 @@ export interface UpdateRequestEnforcementRulesItem {
   /** Whether the rule is active. */
   enabled?: boolean;
 }
-const UpdateRequestEnforcementRulesItem = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<UpdateRequestEnforcementRulesItem>;
-
 export type UpdateRequestEnforcementRulesList = Array<UpdateRequestEnforcementRulesItem>;
-const UpdateRequestEnforcementRulesList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<UpdateRequestEnforcementRulesList>;
-
 export interface UpdateRequest {
   /** Identifier. */
   zoneId: string;
@@ -94,8 +64,6 @@ export interface UpdateRequest {
   /** The ordered list of enforcement rules for the zone. */
   enforcementRules?: UpdateRequestEnforcementRulesList;
 }
-const UpdateRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<UpdateRequest>;
-
 export type UpdateResponseDefaultMode = "off" | "min-friction" | "max-security";
 export type UpdateResponseEnforcementRulesItemMode = "min-friction" | "max-security";
 export interface UpdateResponseEnforcementRulesItem {
@@ -118,14 +86,12 @@ export interface UpdateResponse {
   /** The ordered list of enforcement rules for the zone. */
   enforcementRules?: UpdateResponseEnforcementRulesList | null;
 }
-const UpdateResponse = GetResponse as any as S.Schema<UpdateResponse>;
-
 export type GetError = CloudflareOpError;
 /** Retrieve a zone's Precursor configuration: the zone-level `default_mode` and the ordered list of `enforcement_rules`. */
 export const get: API.OperationMethod<GetRequest, GetResponse, GetError, CloudflareOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: GetRequest,
-    output: GetResponse,
+    input: __S(0, __c0, 0) as any as S.Schema<GetRequest>,
+    output: __S(3, __c0, 3) as any as S.Schema<GetResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflareProtocol,
     retry: Retry.Retry,
@@ -139,8 +105,8 @@ export const update: API.OperationMethod<
   UpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRequest,
-  output: UpdateResponse,
+  input: __S(6, __c0, 6) as any as S.Schema<UpdateRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<UpdateResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -159,7 +125,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           expression: S.String,
-          mode: GetResponseEnforcementRulesItemMode,
+          mode: S.String,
           id: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
           enabled: S.optional(S.NullOr(S.Boolean)),
@@ -168,21 +134,19 @@ function __c0(j: number): any {
         identifier: "GetResponseEnforcementRulesItem",
       });
     case 2:
-      return S.Array(GetResponseEnforcementRulesItem);
+      return S.Array(__S(1, __c0, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          defaultMode: S.optional(S.NullOr(GetResponseDefaultMode).pipe(T.Body("default_mode"))),
-          enforcementRules: S.optional(
-            S.NullOr(GetResponseEnforcementRulesList).pipe(T.Body("enforcement_rules")),
-          ),
+          defaultMode: S.optional(S.NullOr(S.String).pipe(T.Body("default_mode"))),
+          enforcementRules: S.optional(S.NullOr(__S(2, __c0, 2)).pipe(T.Body("enforcement_rules"))),
         }),
       ).annotate({ identifier: "GetResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           expression: S.String,
-          mode: UpdateRequestEnforcementRulesItemMode,
+          mode: S.String,
           id: S.optional(S.String),
           description: S.optional(S.String),
           enabled: S.optional(S.Boolean),
@@ -191,16 +155,19 @@ function __c0(j: number): any {
         identifier: "UpdateRequestEnforcementRulesItem",
       });
     case 5:
-      return S.Array(UpdateRequestEnforcementRulesItem);
+      return S.Array(__S(4, __c0, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          defaultMode: S.optional(UpdateRequestDefaultMode.pipe(T.Body("default_mode"))),
-          enforcementRules: S.optional(
-            UpdateRequestEnforcementRulesList.pipe(T.Body("enforcement_rules")),
-          ),
+          defaultMode: S.optional(S.String.pipe(T.Body("default_mode"))),
+          enforcementRules: S.optional(__S(5, __c0, 5).pipe(T.Body("enforcement_rules"))),
         }).pipe(T.Http({ method: "PUT", uri: "/zones/{zone_id}/precursor", code: 200 })),
       ).annotate({ identifier: "UpdateRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

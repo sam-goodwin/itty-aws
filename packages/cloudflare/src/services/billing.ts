@@ -10,6 +10,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -99,11 +101,6 @@ export interface AddressValidationRequest {
   /** Postal or zip code. */
   zipcode?: string;
 }
-const AddressValidationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AddressValidationRequest>;
-
 export interface AddressValidationResponseValidatedAddressesItem {
   /** Validated address line 1. */
   address?: string | null;
@@ -120,28 +117,13 @@ export interface AddressValidationResponseValidatedAddressesItem {
   /** Validated postal or zip code. */
   zipcode?: string | null;
 }
-const AddressValidationResponseValidatedAddressesItem = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AddressValidationResponseValidatedAddressesItem>;
-
 export type AddressValidationResponseValidatedAddressesList =
   Array<AddressValidationResponseValidatedAddressesItem>;
-const AddressValidationResponseValidatedAddressesList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AddressValidationResponseValidatedAddressesList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AddressValidationResponse {
   /** List of validated address suggestions. */
   validatedAddresses?: AddressValidationResponseValidatedAddressesList | null;
 }
-const AddressValidationResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<AddressValidationResponse>;
-
 export interface CreateProfileRequest {
   /** Identifier */
   accountId: string;
@@ -184,8 +166,6 @@ export interface CreateProfileRequest {
   /** ZIP or postal code. */
   zipcode?: string;
 }
-const CreateProfileRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CreateProfileRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateProfileResponse {
   /** Billing item identifier tag. */
@@ -228,20 +208,10 @@ export interface CreateProfileResponse {
   vat?: string | null;
   zipcode?: string | null;
 }
-const CreateProfileResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateProfileResponse>;
-
 export interface CreateProfilesPaymentMethodRequest {
   /** Identifier */
   accountId: string;
 }
-const CreateProfilesPaymentMethodRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateProfilesPaymentMethodRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateProfilesPaymentMethodResponse {
   /** The Stripe client secret for frontend payment method collection. */
@@ -249,29 +219,15 @@ export interface CreateProfilesPaymentMethodResponse {
   /** The type of Stripe intent created. */
   intentType?: string | null;
 }
-const CreateProfilesPaymentMethodResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateProfilesPaymentMethodResponse>;
-
 export interface DeleteProfileRequest {
   /** Identifier */
   accountId: string;
 }
-const DeleteProfileRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<DeleteProfileRequest>;
-
 export interface DeleteProfileResponse {}
-const DeleteProfileResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<DeleteProfileResponse>;
-
 export interface GetBadDebtRequest {
   /** Identifier */
   accountId: string;
 }
-const GetBadDebtRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<GetBadDebtRequest>;
-
 export interface GetBadDebtResponseInvoicesItem {
   /** Billing history item identifier. */
   id?: string | null;
@@ -304,17 +260,7 @@ export interface GetBadDebtResponseInvoicesItem {
   /** The billing item type. */
   type?: string | null;
 }
-const GetBadDebtResponseInvoicesItem = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<GetBadDebtResponseInvoicesItem>;
-
 export type GetBadDebtResponseInvoicesList = Array<GetBadDebtResponseInvoicesItem>;
-const GetBadDebtResponseInvoicesList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<GetBadDebtResponseInvoicesList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetBadDebtResponse {
   /** Amount already paid towards the debt. */
@@ -326,14 +272,10 @@ export interface GetBadDebtResponse {
   /** Total outstanding debt amount. */
   totalDebtAmount?: number | null;
 }
-const GetBadDebtResponse = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<GetBadDebtResponse>;
-
 export interface GetCreditRequest {
   /** Identifier */
   accountId: string;
 }
-const GetCreditRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<GetCreditRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetCreditResponse {
   /** The confirmed credit balance in cents. */
@@ -357,14 +299,10 @@ export interface GetCreditResponse {
   /** When the credits expire. */
   validTo?: string | null;
 }
-const GetCreditResponse = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<GetCreditResponse>;
-
 export interface GetProfileRequest {
   /** Identifier */
   accountId: string;
 }
-const GetProfileRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<GetProfileRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetProfileResponse {
   /** Billing item identifier tag. */
@@ -407,25 +345,11 @@ export interface GetProfileResponse {
   vat?: string | null;
   zipcode?: string | null;
 }
-const GetProfileResponse = CreateProfileResponse as any as S.Schema<GetProfileResponse>;
-
 export interface GetRatePlanRequest {
   publicKey: string;
 }
-const GetRatePlanRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<GetRatePlanRequest>;
-
 export type GetRatePlanResponseComponentsItemMap = { [key: string]: unknown | undefined };
-const GetRatePlanResponseComponentsItemMap = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<GetRatePlanResponseComponentsItemMap>;
-
 export type GetRatePlanResponseComponentsList = Array<GetRatePlanResponseComponentsItemMap>;
-const GetRatePlanResponseComponentsList = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<GetRatePlanResponseComponentsList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetRatePlanResponse {
   /** The uppercase rate plan public key. */
@@ -437,32 +361,17 @@ export interface GetRatePlanResponse {
   /** Human-readable description of the rate plan. */
   publicName?: string | null;
 }
-const GetRatePlanResponse = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<GetRatePlanResponse>;
-
 export interface GetUnpaidInvoiceRequest {
   /** Identifier */
   accountId: string;
 }
-const GetUnpaidInvoiceRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<GetUnpaidInvoiceRequest>;
-
 export type GetUnpaidInvoiceResponseInvoicesItem = GetBadDebtResponseInvoicesItem;
 export type GetUnpaidInvoiceResponseInvoicesList = Array<GetBadDebtResponseInvoicesItem>;
-const GetUnpaidInvoiceResponseInvoicesList =
-  GetBadDebtResponseInvoicesList as any as S.Schema<GetUnpaidInvoiceResponseInvoicesList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetUnpaidInvoiceResponse {
   /** List of unpaid invoices. */
   invoices?: GetUnpaidInvoiceResponseInvoicesList | null;
 }
-const GetUnpaidInvoiceResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<GetUnpaidInvoiceResponse>;
-
 export interface GetUsageRequest {
   /** Represents a Cloudflare resource identifier tag. */
   accountId: string;
@@ -471,26 +380,11 @@ export interface GetUsageRequest {
   /** End date for the usage query (ISO 8601). Required if `from` is set. When omitted along with `from`, defaults to today. Filters by charge period (when consumption happened), not billing period. The maximum date range is 31 days. */
   to?: string;
 }
-const GetUsageRequest = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<GetUsageRequest>;
-
 export type UsageGetResultItemChargeCategory = "Usage";
-const UsageGetResultItemChargeCategory = S.String;
-
 export type UsageGetResultItemChargeFrequency = "Usage-Based";
-const UsageGetResultItemChargeFrequency = S.String;
-
 export type UsageGetResultItemChargeClass = "Correction";
-const UsageGetResultItemChargeClass = S.String;
-
 export type UsageGetResultItemTagsValue = string | boolean;
-const UsageGetResultItemTagsValue = /*@__PURE__*/ __L.at(__c3, 0);
-
 export type UsageGetResultItemTagsMap = { [key: string]: UsageGetResultItemTagsValue | undefined };
-const UsageGetResultItemTagsMap = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<UsageGetResultItemTagsMap>;
-
 export interface UsageGetResultItem {
   /** Highest-level classification of a charge based on the nature of how it gets billed. Currently only "Usage" is supported. */
   chargeCategory: UsageGetResultItemChargeCategory;
@@ -565,14 +459,8 @@ export interface UsageGetResultItem {
   /** The display name of the Cloudflare zone. Omitted when zone is not part of the requested grouping, and for usage measured at contract level. Cloudflare extension. */
   xZoneName?: string | null;
 }
-const UsageGetResultItem = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<UsageGetResultItem>;
-
 export type UsageGetResultList = Array<UsageGetResultItem>;
-const UsageGetResultList = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<UsageGetResultList>;
-
 export type GetUsageResponse = UsageGetResultList;
-const GetUsageResponse = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<GetUsageResponse>;
-
 export interface ListHistoryRequest {
   /** Identifier */
   accountId: string;
@@ -583,16 +471,9 @@ export interface ListHistoryRequest {
   /** Filter billing history by status. */
   status?: string;
 }
-const ListHistoryRequest = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<ListHistoryRequest>;
-
 export type ListHistoryResultItem = GetBadDebtResponseInvoicesItem;
 export type ListHistoryResultList = Array<GetBadDebtResponseInvoicesItem>;
-const ListHistoryResultList =
-  GetBadDebtResponseInvoicesList as any as S.Schema<ListHistoryResultList>;
-
 export type ListHistoryResponse = ListHistoryResultList;
-const ListHistoryResponse = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<ListHistoryResponse>;
-
 export interface PaygoUsageRequest {
   /** Represents a Cloudflare resource identifier tag. */
   accountId: string;
@@ -601,11 +482,7 @@ export interface PaygoUsageRequest {
   /** End date for the usage query (ISO 8601). */
   to?: string;
 }
-const PaygoUsageRequest = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<PaygoUsageRequest>;
-
 export type UsagePaygoResultItemChargeCategory = "Usage";
-const UsagePaygoResultItemChargeCategory = S.String;
-
 export interface UsagePaygoResultItem {
   /** The amount invoiced for this charge. PayGo is billed directly by Cloudflare, so this equals ContractedCost. */
   billedCost: number;
@@ -662,14 +539,8 @@ export interface UsagePaygoResultItem {
   /** The display name of the Cloudflare zone. */
   zoneName?: string | null;
 }
-const UsagePaygoResultItem = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<UsagePaygoResultItem>;
-
 export type UsagePaygoResultList = Array<UsagePaygoResultItem>;
-const UsagePaygoResultList = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<UsagePaygoResultList>;
-
 export type PaygoUsageResponse = UsagePaygoResultList;
-const PaygoUsageResponse = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<PaygoUsageResponse>;
-
 export interface ProfilesUpdateBillingEmailRequest {
   /** Identifier */
   accountId: string;
@@ -677,11 +548,6 @@ export interface ProfilesUpdateBillingEmailRequest {
   preferredLocale?: string;
   secondaryBillingEmail?: string;
 }
-const ProfilesUpdateBillingEmailRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<ProfilesUpdateBillingEmailRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ProfilesUpdateBillingEmailResponse {
   /** Billing item identifier tag. */
@@ -724,11 +590,6 @@ export interface ProfilesUpdateBillingEmailResponse {
   vat?: string | null;
   zipcode?: string | null;
 }
-const ProfilesUpdateBillingEmailResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<ProfilesUpdateBillingEmailResponse>;
-
 export interface UpdateProfileRequest {
   /** Identifier */
   accountId: string;
@@ -771,8 +632,6 @@ export interface UpdateProfileRequest {
   /** ZIP or postal code. */
   zipcode?: string;
 }
-const UpdateProfileRequest = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<UpdateProfileRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateProfileResponse {
   /** Billing item identifier tag. */
@@ -815,17 +674,10 @@ export interface UpdateProfileResponse {
   vat?: string | null;
   zipcode?: string | null;
 }
-const UpdateProfileResponse = CreateProfileResponse as any as S.Schema<UpdateProfileResponse>;
-
 export interface UsageGetAccountUsageInfoV1Request {
   /** Represents a Cloudflare resource identifier tag. */
   accountId: string;
 }
-const UsageGetAccountUsageInfoV1Request = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<UsageGetAccountUsageInfoV1Request>;
-
 export interface UsageGetAccountUsageInfoV1ResponseSubscriptionsItem {
   /** The identifier for the Cloudflare subscription. */
   id: string;
@@ -836,18 +688,8 @@ export interface UsageGetAccountUsageInfoV1ResponseSubscriptionsItem {
   /** The subscription end timestamp. Omitted for active subscriptions; present only when the subscription has been cancelled. */
   endTimestamp?: string | null;
 }
-const UsageGetAccountUsageInfoV1ResponseSubscriptionsItem = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<UsageGetAccountUsageInfoV1ResponseSubscriptionsItem>;
-
 export type UsageGetAccountUsageInfoV1ResponseSubscriptionsList =
   Array<UsageGetAccountUsageInfoV1ResponseSubscriptionsItem>;
-const UsageGetAccountUsageInfoV1ResponseSubscriptionsList = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<UsageGetAccountUsageInfoV1ResponseSubscriptionsList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UsageGetAccountUsageInfoV1Response {
   /** Indicates whether the account is covered. */
@@ -855,11 +697,6 @@ export interface UsageGetAccountUsageInfoV1Response {
   /** List of subscriptions for the account. */
   subscriptions: UsageGetAccountUsageInfoV1ResponseSubscriptionsList;
 }
-const UsageGetAccountUsageInfoV1Response = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<UsageGetAccountUsageInfoV1Response>;
-
 export interface UsageGetAccountUsageV1Request {
   /** Represents a Cloudflare resource identifier tag. */
   accountId: string;
@@ -868,14 +705,7 @@ export interface UsageGetAccountUsageV1Request {
   /** End date for the usage query (ISO 8601). */
   to?: string;
 }
-const UsageGetAccountUsageV1Request = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<UsageGetAccountUsageV1Request>;
-
 export type UsageGetAccountUsageV1ResultItemChargeCategory = "Usage";
-const UsageGetAccountUsageV1ResultItemChargeCategory = S.String;
-
 export interface UsageGetAccountUsageV1ResultItem {
   /** The amount invoiced for this charge. PayGo is billed directly by Cloudflare, so this equals ContractedCost. */
   billedCost: number;
@@ -932,23 +762,8 @@ export interface UsageGetAccountUsageV1ResultItem {
   /** The display name of the Cloudflare zone. */
   zoneName?: string | null;
 }
-const UsageGetAccountUsageV1ResultItem = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<UsageGetAccountUsageV1ResultItem>;
-
 export type UsageGetAccountUsageV1ResultList = Array<UsageGetAccountUsageV1ResultItem>;
-const UsageGetAccountUsageV1ResultList = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<UsageGetAccountUsageV1ResultList>;
-
 export type UsageGetAccountUsageV1Response = UsageGetAccountUsageV1ResultList;
-const UsageGetAccountUsageV1Response = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<UsageGetAccountUsageV1Response>;
-
 export interface UsageGetAccountUsageV2Request {
   /** Represents a Cloudflare resource identifier tag. */
   accountId: string;
@@ -957,31 +772,13 @@ export interface UsageGetAccountUsageV2Request {
   /** End date for the usage query (ISO 8601). Required if `from` is set. When omitted along with `from`, defaults to today. Filters by charge period (when consumption happened), not billing period. The maximum date range is 31 days. */
   to?: string;
 }
-const UsageGetAccountUsageV2Request = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<UsageGetAccountUsageV2Request>;
-
 export type UsageGetAccountUsageV2ResultItemChargeCategory = "Usage";
-const UsageGetAccountUsageV2ResultItemChargeCategory = S.String;
-
 export type UsageGetAccountUsageV2ResultItemChargeFrequency = "Usage-Based";
-const UsageGetAccountUsageV2ResultItemChargeFrequency = S.String;
-
 export type UsageGetAccountUsageV2ResultItemChargeClass = "Correction";
-const UsageGetAccountUsageV2ResultItemChargeClass = S.String;
-
 export type UsageGetAccountUsageV2ResultItemTagsValue = string | boolean;
-const UsageGetAccountUsageV2ResultItemTagsValue = /*@__PURE__*/ __L.at(__c5, 7);
-
 export type UsageGetAccountUsageV2ResultItemTagsMap = {
   [key: string]: UsageGetAccountUsageV2ResultItemTagsValue | undefined;
 };
-const UsageGetAccountUsageV2ResultItemTagsMap = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<UsageGetAccountUsageV2ResultItemTagsMap>;
-
 export interface UsageGetAccountUsageV2ResultItem {
   /** Highest-level classification of a charge based on the nature of how it gets billed. Currently only "Usage" is supported. */
   chargeCategory: UsageGetAccountUsageV2ResultItemChargeCategory;
@@ -1056,39 +853,16 @@ export interface UsageGetAccountUsageV2ResultItem {
   /** The display name of the Cloudflare zone. Omitted when zone is not part of the requested grouping, and for usage measured at contract level. Cloudflare extension. */
   xZoneName?: string | null;
 }
-const UsageGetAccountUsageV2ResultItem = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<UsageGetAccountUsageV2ResultItem>;
-
 export type UsageGetAccountUsageV2ResultList = Array<UsageGetAccountUsageV2ResultItem>;
-const UsageGetAccountUsageV2ResultList = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<UsageGetAccountUsageV2ResultList>;
-
 export type UsageGetAccountUsageV2Response = UsageGetAccountUsageV2ResultList;
-const UsageGetAccountUsageV2Response = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<UsageGetAccountUsageV2Response>;
-
 export interface UsagePaygoInfoRequest {
   /** Represents a Cloudflare resource identifier tag. */
   accountId: string;
 }
-const UsagePaygoInfoRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<UsagePaygoInfoRequest>;
-
 export type UsagePaygoInfoResponseSubscriptionsItem =
   UsageGetAccountUsageInfoV1ResponseSubscriptionsItem;
 export type UsagePaygoInfoResponseSubscriptionsList =
   Array<UsageGetAccountUsageInfoV1ResponseSubscriptionsItem>;
-const UsagePaygoInfoResponseSubscriptionsList =
-  UsageGetAccountUsageInfoV1ResponseSubscriptionsList as any as S.Schema<UsagePaygoInfoResponseSubscriptionsList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UsagePaygoInfoResponse {
   /** Indicates whether the account is covered. */
@@ -1096,11 +870,6 @@ export interface UsagePaygoInfoResponse {
   /** List of subscriptions for the account. */
   subscriptions: UsagePaygoInfoResponseSubscriptionsList;
 }
-const UsagePaygoInfoResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<UsagePaygoInfoResponse>;
-
 export type AddressValidationError = CloudflareOpError;
 /** Validates a billing address and returns validated address suggestions. Authentication is not enforced to support pre-signup address validation flows, so credentials are accepted but not required. */
 export const addressValidation: API.OperationMethod<
@@ -1109,8 +878,8 @@ export const addressValidation: API.OperationMethod<
   AddressValidationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddressValidationRequest,
-  output: AddressValidationResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<AddressValidationRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<AddressValidationResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1124,8 +893,8 @@ export const createProfile: API.OperationMethod<
   CreateProfileError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProfileRequest,
-  output: CreateProfileResponse,
+  input: __S(4, __c0, 4) as any as S.Schema<CreateProfileRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<CreateProfileResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1139,8 +908,8 @@ export const createProfilesPaymentMethod: API.OperationMethod<
   CreateProfilesPaymentMethodError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProfilesPaymentMethodRequest,
-  output: CreateProfilesPaymentMethodResponse,
+  input: __S(6, __c0, 6) as any as S.Schema<CreateProfilesPaymentMethodRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<CreateProfilesPaymentMethodResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1154,8 +923,8 @@ export const deleteProfile: API.OperationMethod<
   DeleteProfileError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProfileRequest,
-  output: DeleteProfileResponse,
+  input: __S(8, __c1, 0) as any as S.Schema<DeleteProfileRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<DeleteProfileResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1169,8 +938,8 @@ export const getBadDebt: API.OperationMethod<
   GetBadDebtError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBadDebtRequest,
-  output: GetBadDebtResponse,
+  input: __S(10, __c1, 2) as any as S.Schema<GetBadDebtRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<GetBadDebtResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1184,8 +953,8 @@ export const getCredit: API.OperationMethod<
   GetCreditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCreditRequest,
-  output: GetCreditResponse,
+  input: __S(14, __c1, 6) as any as S.Schema<GetCreditRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<GetCreditResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1199,8 +968,8 @@ export const getProfile: API.OperationMethod<
   GetProfileError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProfileRequest,
-  output: GetProfileResponse,
+  input: __S(16, __c2, 0) as any as S.Schema<GetProfileRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<GetProfileResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1214,8 +983,8 @@ export const getRatePlan: API.OperationMethod<
   GetRatePlanError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRatePlanRequest,
-  output: GetRatePlanResponse,
+  input: __S(17, __c2, 1) as any as S.Schema<GetRatePlanRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<GetRatePlanResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1229,8 +998,8 @@ export const getUnpaidInvoice: API.OperationMethod<
   GetUnpaidInvoiceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUnpaidInvoiceRequest,
-  output: GetUnpaidInvoiceResponse,
+  input: __S(21, __c2, 5) as any as S.Schema<GetUnpaidInvoiceRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<GetUnpaidInvoiceResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1244,8 +1013,8 @@ export const getUsage: API.OperationMethod<
   GetUsageError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUsageRequest,
-  output: GetUsageResponse,
+  input: __S(23, __c2, 7) as any as S.Schema<GetUsageRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<GetUsageResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1259,8 +1028,8 @@ export const listHistory: API.OperationMethod<
   ListHistoryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHistoryRequest,
-  output: ListHistoryResponse,
+  input: __S(29, __c3, 5) as any as S.Schema<ListHistoryRequest>,
+  output: __S(30, __c3, 6) as any as S.Schema<ListHistoryResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1274,8 +1043,8 @@ export const paygoUsage: API.OperationMethod<
   PaygoUsageError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PaygoUsageRequest,
-  output: PaygoUsageResponse,
+  input: __S(31, __c3, 7) as any as S.Schema<PaygoUsageRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<PaygoUsageResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1289,8 +1058,8 @@ export const profilesUpdateBillingEmail: API.OperationMethod<
   ProfilesUpdateBillingEmailError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ProfilesUpdateBillingEmailRequest,
-  output: ProfilesUpdateBillingEmailResponse,
+  input: __S(35, __c4, 3) as any as S.Schema<ProfilesUpdateBillingEmailRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<ProfilesUpdateBillingEmailResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1304,8 +1073,8 @@ export const updateProfile: API.OperationMethod<
   UpdateProfileError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateProfileRequest,
-  output: UpdateProfileResponse,
+  input: __S(37, __c4, 5) as any as S.Schema<UpdateProfileRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<UpdateProfileResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1319,8 +1088,8 @@ export const usageGetAccountUsageInfoV1: API.OperationMethod<
   UsageGetAccountUsageInfoV1Error,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UsageGetAccountUsageInfoV1Request,
-  output: UsageGetAccountUsageInfoV1Response,
+  input: __S(38, __c4, 6) as any as S.Schema<UsageGetAccountUsageInfoV1Request>,
+  output: __S(41, __c5, 1) as any as S.Schema<UsageGetAccountUsageInfoV1Response>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1334,8 +1103,8 @@ export const usageGetAccountUsageV1: API.OperationMethod<
   UsageGetAccountUsageV1Error,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UsageGetAccountUsageV1Request,
-  output: UsageGetAccountUsageV1Response,
+  input: __S(42, __c5, 2) as any as S.Schema<UsageGetAccountUsageV1Request>,
+  output: __S(45, __c5, 5) as any as S.Schema<UsageGetAccountUsageV1Response>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1349,8 +1118,8 @@ export const usageGetAccountUsageV2: API.OperationMethod<
   UsageGetAccountUsageV2Error,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UsageGetAccountUsageV2Request,
-  output: UsageGetAccountUsageV2Response,
+  input: __S(46, __c5, 6) as any as S.Schema<UsageGetAccountUsageV2Request>,
+  output: __S(51, __c6, 3) as any as S.Schema<UsageGetAccountUsageV2Response>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1364,8 +1133,8 @@ export const usagePaygoInfo: API.OperationMethod<
   UsagePaygoInfoError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UsagePaygoInfoRequest,
-  output: UsagePaygoInfoResponse,
+  input: __S(52, __c6, 4) as any as S.Schema<UsagePaygoInfoRequest>,
+  output: __S(53, __c6, 5) as any as S.Schema<UsagePaygoInfoResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1402,14 +1171,12 @@ function __c0(j: number): any {
         identifier: "AddressValidationResponseValidatedAddressesItem",
       });
     case 2:
-      return S.Array(AddressValidationResponseValidatedAddressesItem);
+      return S.Array(__S(1, __c0, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           validatedAddresses: S.optional(
-            S.NullOr(AddressValidationResponseValidatedAddressesList).pipe(
-              T.Body("validated_addresses"),
-            ),
+            S.NullOr(__S(2, __c0, 2)).pipe(T.Body("validated_addresses")),
           ),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -1567,13 +1334,13 @@ function __c1(j: number): any {
         identifier: "GetBadDebtResponseInvoicesItem",
       });
     case 4:
-      return S.Array(GetBadDebtResponseInvoicesItem);
+      return S.Array(__S(11, __c1, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           alreadyPaid: S.optional(S.NullOr(S.Number).pipe(T.Body("already_paid"))),
           badDebtStatus: S.optional(S.NullOr(S.String).pipe(T.Body("bad_debt_status"))),
-          invoices: S.optional(S.NullOr(GetBadDebtResponseInvoicesList)),
+          invoices: S.optional(S.NullOr(__S(12, __c1, 4))),
           totalDebtAmount: S.optional(S.NullOr(S.Number).pipe(T.Body("total_debt_amount"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetBadDebtResponse" });
@@ -1627,12 +1394,12 @@ function __c2(j: number): any {
     case 2:
       return S.Record(S.String, S.Unknown);
     case 3:
-      return S.Array(GetRatePlanResponseComponentsItemMap);
+      return S.Array(__S(18, __c2, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          components: S.optional(S.NullOr(GetRatePlanResponseComponentsList)),
+          components: S.optional(S.NullOr(__S(19, __c2, 3))),
           currency: S.optional(S.NullOr(S.String)),
           publicName: S.optional(S.NullOr(S.String).pipe(T.Body("public_name"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -1654,7 +1421,7 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          invoices: S.optional(S.NullOr(GetUnpaidInvoiceResponseInvoicesList)),
+          invoices: S.optional(S.NullOr(__S(12, __c1, 4))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetUnpaidInvoiceResponse" });
     case 7:
@@ -1674,13 +1441,13 @@ function __c3(j: number): any {
     case 0:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
     case 1:
-      return S.Record(S.String, UsageGetResultItemTagsValue);
+      return S.Record(S.String, __S(24, __c3, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          chargeCategory: UsageGetResultItemChargeCategory.pipe(T.Body("ChargeCategory")),
+          chargeCategory: S.String.pipe(T.Body("ChargeCategory")),
           chargeDescription: S.String.pipe(T.Body("ChargeDescription")),
-          chargeFrequency: UsageGetResultItemChargeFrequency.pipe(T.Body("ChargeFrequency")),
+          chargeFrequency: S.String.pipe(T.Body("ChargeFrequency")),
           chargePeriodEnd: S.String.pipe(T.Body("ChargePeriodEnd")),
           chargePeriodStart: S.String.pipe(T.Body("ChargePeriodStart")),
           consumedQuantity: S.Number.pipe(T.Body("ConsumedQuantity")),
@@ -1695,9 +1462,7 @@ function __c3(j: number): any {
           billingCurrency: S.optional(S.NullOr(S.String).pipe(T.Body("BillingCurrency"))),
           billingPeriodEnd: S.optional(S.NullOr(S.String).pipe(T.Body("BillingPeriodEnd"))),
           billingPeriodStart: S.optional(S.NullOr(S.String).pipe(T.Body("BillingPeriodStart"))),
-          chargeClass: S.optional(
-            S.NullOr(UsageGetResultItemChargeClass).pipe(T.Body("ChargeClass")),
-          ),
+          chargeClass: S.optional(S.NullOr(S.String).pipe(T.Body("ChargeClass"))),
           contractedCost: S.optional(S.NullOr(S.Number).pipe(T.Body("ContractedCost"))),
           contractedUnitPrice: S.optional(S.NullOr(S.Number).pipe(T.Body("ContractedUnitPrice"))),
           effectiveCost: S.optional(S.NullOr(S.Number).pipe(T.Body("EffectiveCost"))),
@@ -1709,7 +1474,7 @@ function __c3(j: number): any {
           regionName: S.optional(S.NullOr(S.String).pipe(T.Body("RegionName"))),
           subAccountId: S.optional(S.NullOr(S.String).pipe(T.Body("SubAccountId"))),
           subAccountName: S.optional(S.NullOr(S.String).pipe(T.Body("SubAccountName"))),
-          tags: S.optional(S.NullOr(UsageGetResultItemTagsMap).pipe(T.Body("Tags"))),
+          tags: S.optional(S.NullOr(__S(25, __c3, 1)).pipe(T.Body("Tags"))),
           xBillableMetricName: S.optional(S.NullOr(S.String).pipe(T.Body("x_BillableMetricName"))),
           xProductCategoryName: S.optional(
             S.NullOr(S.String).pipe(T.Body("x_ProductCategoryName")),
@@ -1721,10 +1486,10 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "UsageGetResultItem" });
     case 3:
-      return S.Array(UsageGetResultItem);
+      return S.Array(__S(26, __c3, 2));
     case 4:
       return S.suspend(() =>
-        UsageGetResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(27, __c3, 3).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetUsageResponse" });
     case 5:
       return S.suspend(() =>
@@ -1739,7 +1504,7 @@ function __c3(j: number): any {
       ).annotate({ identifier: "ListHistoryRequest" });
     case 6:
       return S.suspend(() =>
-        ListHistoryResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(12, __c1, 4).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListHistoryResponse" });
     case 7:
       return S.suspend(() =>
@@ -1763,7 +1528,7 @@ function __c4(j: number): any {
           billingAccountName: S.String.pipe(T.Body("BillingAccountName")),
           billingCurrency: S.String.pipe(T.Body("BillingCurrency")),
           billingPeriodStart: S.String.pipe(T.Body("BillingPeriodStart")),
-          chargeCategory: UsagePaygoResultItemChargeCategory.pipe(T.Body("ChargeCategory")),
+          chargeCategory: S.String.pipe(T.Body("ChargeCategory")),
           chargeClass: S.String.pipe(T.Body("ChargeClass")),
           chargeDescription: S.String.pipe(T.Body("ChargeDescription")),
           chargePeriodEnd: S.String.pipe(T.Body("ChargePeriodEnd")),
@@ -1788,10 +1553,10 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "UsagePaygoResultItem" });
     case 1:
-      return S.Array(UsagePaygoResultItem);
+      return S.Array(__S(32, __c4, 0));
     case 2:
       return S.suspend(() =>
-        UsagePaygoResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(33, __c4, 1).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PaygoUsageResponse" });
     case 3:
       return S.suspend(() =>
@@ -1912,12 +1677,12 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(UsageGetAccountUsageInfoV1ResponseSubscriptionsItem);
+      return S.Array(__S(39, __c4, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           covered: S.Boolean,
-          subscriptions: UsageGetAccountUsageInfoV1ResponseSubscriptionsList,
+          subscriptions: __S(40, __c5, 0),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "UsageGetAccountUsageInfoV1Response",
@@ -1942,9 +1707,7 @@ function __c5(j: number): any {
           billingAccountName: S.String.pipe(T.Body("BillingAccountName")),
           billingCurrency: S.String.pipe(T.Body("BillingCurrency")),
           billingPeriodStart: S.String.pipe(T.Body("BillingPeriodStart")),
-          chargeCategory: UsageGetAccountUsageV1ResultItemChargeCategory.pipe(
-            T.Body("ChargeCategory"),
-          ),
+          chargeCategory: S.String.pipe(T.Body("ChargeCategory")),
           chargeClass: S.String.pipe(T.Body("ChargeClass")),
           chargeDescription: S.String.pipe(T.Body("ChargeDescription")),
           chargePeriodEnd: S.String.pipe(T.Body("ChargePeriodEnd")),
@@ -1971,13 +1734,10 @@ function __c5(j: number): any {
         identifier: "UsageGetAccountUsageV1ResultItem",
       });
     case 4:
-      return S.Array(UsageGetAccountUsageV1ResultItem);
+      return S.Array(__S(43, __c5, 3));
     case 5:
       return S.suspend(() =>
-        UsageGetAccountUsageV1ResultList.pipe(
-          T.EnvelopePayloadRoot(),
-          T.KeyDictionary(KEY_DICTIONARY),
-        ),
+        __S(44, __c5, 4).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "UsageGetAccountUsageV1Response",
       });
@@ -2000,17 +1760,13 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, UsageGetAccountUsageV2ResultItemTagsValue);
+      return S.Record(S.String, __S(47, __c5, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          chargeCategory: UsageGetAccountUsageV2ResultItemChargeCategory.pipe(
-            T.Body("ChargeCategory"),
-          ),
+          chargeCategory: S.String.pipe(T.Body("ChargeCategory")),
           chargeDescription: S.String.pipe(T.Body("ChargeDescription")),
-          chargeFrequency: UsageGetAccountUsageV2ResultItemChargeFrequency.pipe(
-            T.Body("ChargeFrequency"),
-          ),
+          chargeFrequency: S.String.pipe(T.Body("ChargeFrequency")),
           chargePeriodEnd: S.String.pipe(T.Body("ChargePeriodEnd")),
           chargePeriodStart: S.String.pipe(T.Body("ChargePeriodStart")),
           consumedQuantity: S.Number.pipe(T.Body("ConsumedQuantity")),
@@ -2025,9 +1781,7 @@ function __c6(j: number): any {
           billingCurrency: S.optional(S.NullOr(S.String).pipe(T.Body("BillingCurrency"))),
           billingPeriodEnd: S.optional(S.NullOr(S.String).pipe(T.Body("BillingPeriodEnd"))),
           billingPeriodStart: S.optional(S.NullOr(S.String).pipe(T.Body("BillingPeriodStart"))),
-          chargeClass: S.optional(
-            S.NullOr(UsageGetAccountUsageV2ResultItemChargeClass).pipe(T.Body("ChargeClass")),
-          ),
+          chargeClass: S.optional(S.NullOr(S.String).pipe(T.Body("ChargeClass"))),
           contractedCost: S.optional(S.NullOr(S.Number).pipe(T.Body("ContractedCost"))),
           contractedUnitPrice: S.optional(S.NullOr(S.Number).pipe(T.Body("ContractedUnitPrice"))),
           effectiveCost: S.optional(S.NullOr(S.Number).pipe(T.Body("EffectiveCost"))),
@@ -2039,7 +1793,7 @@ function __c6(j: number): any {
           regionName: S.optional(S.NullOr(S.String).pipe(T.Body("RegionName"))),
           subAccountId: S.optional(S.NullOr(S.String).pipe(T.Body("SubAccountId"))),
           subAccountName: S.optional(S.NullOr(S.String).pipe(T.Body("SubAccountName"))),
-          tags: S.optional(S.NullOr(UsageGetAccountUsageV2ResultItemTagsMap).pipe(T.Body("Tags"))),
+          tags: S.optional(S.NullOr(__S(48, __c6, 0)).pipe(T.Body("Tags"))),
           xBillableMetricName: S.optional(S.NullOr(S.String).pipe(T.Body("x_BillableMetricName"))),
           xProductCategoryName: S.optional(
             S.NullOr(S.String).pipe(T.Body("x_ProductCategoryName")),
@@ -2053,13 +1807,10 @@ function __c6(j: number): any {
         identifier: "UsageGetAccountUsageV2ResultItem",
       });
     case 2:
-      return S.Array(UsageGetAccountUsageV2ResultItem);
+      return S.Array(__S(49, __c6, 1));
     case 3:
       return S.suspend(() =>
-        UsageGetAccountUsageV2ResultList.pipe(
-          T.EnvelopePayloadRoot(),
-          T.KeyDictionary(KEY_DICTIONARY),
-        ),
+        __S(50, __c6, 2).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "UsageGetAccountUsageV2Response",
       });
@@ -2077,8 +1828,13 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           covered: S.Boolean,
-          subscriptions: UsagePaygoInfoResponseSubscriptionsList,
+          subscriptions: __S(40, __c5, 0),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UsagePaygoInfoResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

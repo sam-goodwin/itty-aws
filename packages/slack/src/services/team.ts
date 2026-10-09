@@ -7,13 +7,13 @@ import { slackPaginate } from "../pagination.ts";
 import { SlackProtocol, type SlackOpError, type SlackOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { SlackOpError, SlackOpContext };
 
 export type AccessLogsRequestBeforeCase0 = "now";
 export type AccessLogsRequestBefore = AccessLogsRequestBeforeCase0 | (string & {}) | string;
-const AccessLogsRequestBefore = /*@__PURE__*/ __L.at(__c0, 0);
-
 export interface AccessLogsRequest {
   /** End of time range of logs to include in results (inclusive). */
   before?: AccessLogsRequestBefore;
@@ -26,8 +26,6 @@ export interface AccessLogsRequest {
   /** encoded team id to get logs from, required if org token is used */
   team_id?: string;
 }
-const AccessLogsRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<AccessLogsRequest>;
-
 export interface AccessLogsResponseLoginsItem {
   username: string;
   count: number;
@@ -40,38 +38,18 @@ export interface AccessLogsResponseLoginsItem {
   date_first: number;
   date_last: number;
 }
-const AccessLogsResponseLoginsItem = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AccessLogsResponseLoginsItem>;
-
 export type AccessLogsResponseLoginsList = Array<AccessLogsResponseLoginsItem>;
-const AccessLogsResponseLoginsList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<AccessLogsResponseLoginsList>;
-
 export interface AccessLogsResponsePaging {
   count: number;
   total: number;
   page: number;
   pages: number;
 }
-const AccessLogsResponsePaging = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<AccessLogsResponsePaging>;
-
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export interface AccessLogsResponseResponseMetadata {
   /** Cursor for the next page -- pass as `cursor` on the next call. */
   next_cursor?: string;
 }
-const AccessLogsResponseResponseMetadata = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<AccessLogsResponseResponseMetadata>;
-
 export interface AccessLogsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -80,8 +58,6 @@ export interface AccessLogsResponse {
   /** Pagination metadata. An empty `next_cursor` means the last page. */
   response_metadata?: AccessLogsResponseResponseMetadata;
 }
-const AccessLogsResponse = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<AccessLogsResponse>;
-
 export interface BillableInfoRequest {
   /** Set `cursor` to `next_cursor` returned by previous call, to indicate from where you want to list next page of users list. Default value fetches the first page. */
   cursor?: string;
@@ -92,16 +68,9 @@ export interface BillableInfoRequest {
   /** encoded team id to get the billable information from, required if org token is used */
   team_id?: string;
 }
-const BillableInfoRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<BillableInfoRequest>;
-
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type BillableInfoResponseResponseMetadata = AccessLogsResponseResponseMetadata;
 export type BillableInfoResponseBillableInfoMap = { [key: string]: unknown | undefined };
-const BillableInfoResponseBillableInfoMap = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<BillableInfoResponseBillableInfoMap>;
-
 export interface BillableInfoResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -109,80 +78,43 @@ export interface BillableInfoResponse {
   response_metadata?: AccessLogsResponseResponseMetadata;
   billable_info: BillableInfoResponseBillableInfoMap;
 }
-const BillableInfoResponse = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<BillableInfoResponse>;
-
 export interface BillingInfoRequest {}
-const BillingInfoRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<BillingInfoRequest>;
-
 export interface BillingInfoResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   plan: string;
 }
-const BillingInfoResponse = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<BillingInfoResponse>;
-
 export interface DisconnectExternalTeamRequest {
   /** The team ID of the target team. */
   target_team: string;
 }
-const DisconnectExternalTeamRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<DisconnectExternalTeamRequest>;
-
 export interface DisconnectExternalTeamResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   job_enqueued: boolean;
 }
-const DisconnectExternalTeamResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<DisconnectExternalTeamResponse>;
-
 export type GetProfileRequestVisibility = "all" | "visible" | "hidden";
-const GetProfileRequestVisibility = S.String;
-
 export interface GetProfileRequest {
   /** Filter by visibility. */
   visibility?: GetProfileRequestVisibility | (string & {});
 }
-const GetProfileRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<GetProfileRequest>;
-
 export type GetProfileResponseProfileFieldsList = Array<unknown>;
-const GetProfileResponseProfileFieldsList = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<GetProfileResponseProfileFieldsList>;
-
 export type GetProfileResponseProfileSectionsList = Array<unknown>;
-const GetProfileResponseProfileSectionsList =
-  GetProfileResponseProfileFieldsList as any as S.Schema<GetProfileResponseProfileSectionsList>;
-
 export interface GetProfileResponseProfile {
   fields?: GetProfileResponseProfileFieldsList;
   sections?: GetProfileResponseProfileSectionsList;
 }
-const GetProfileResponseProfile = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<GetProfileResponseProfile>;
-
 export interface GetProfileResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   profile: GetProfileResponseProfile;
 }
-const GetProfileResponse = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<GetProfileResponse>;
-
 export type IntegrationLogsRequestChangeType =
   | "added"
   | "removed"
   | "enabled"
   | "disabled"
   | "updated";
-const IntegrationLogsRequestChangeType = S.String;
-
 export interface IntegrationLogsRequest {
   /** Filter logs to this Slack app. Defaults to all logs. */
   app_id?: string;
@@ -197,41 +129,19 @@ export interface IntegrationLogsRequest {
   /** Filter logs generated by this user's actions. Defaults to all logs. */
   user?: string;
 }
-const IntegrationLogsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<IntegrationLogsRequest>;
-
 export type IntegrationLogsResponseLogsItemMap = { [key: string]: unknown | undefined };
-const IntegrationLogsResponseLogsItemMap =
-  BillableInfoResponseBillableInfoMap as any as S.Schema<IntegrationLogsResponseLogsItemMap>;
-
 export type IntegrationLogsResponseLogsList = Array<IntegrationLogsResponseLogsItemMap>;
-const IntegrationLogsResponseLogsList = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<IntegrationLogsResponseLogsList>;
-
 export interface IntegrationLogsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   paging: unknown;
   logs: IntegrationLogsResponseLogsList;
 }
-const IntegrationLogsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<IntegrationLogsResponse>;
-
 export type ListExternalTeamsRequestSortField =
   | "team_name"
   | "last_active_timestamp"
   | "connection_status";
-const ListExternalTeamsRequestSortField = S.String;
-
 export type ListExternalTeamsRequestSortDirection = "asc" | "desc";
-const ListExternalTeamsRequestSortDirection = S.String;
-
 export type ListExternalTeamsRequestSlackConnectPrefFilterItem =
   | "approved_orgs_only"
   | "allow_sc_file_uploads"
@@ -243,29 +153,15 @@ export type ListExternalTeamsRequestSlackConnectPrefFilterItem =
   | "external_awareness_context_bar"
   | "interact_with_externally_owned_workflows"
   | "external_teams_interact_with_locally_owned_workflows";
-const ListExternalTeamsRequestSlackConnectPrefFilterItem = S.String;
-
 export type ListExternalTeamsRequestSlackConnectPrefFilterList = Array<
   ListExternalTeamsRequestSlackConnectPrefFilterItem | (string & {})
 >;
-const ListExternalTeamsRequestSlackConnectPrefFilterList = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ListExternalTeamsRequestSlackConnectPrefFilterList>;
-
 export type ListExternalTeamsRequestWorkspaceFilterList = Array<string>;
-const ListExternalTeamsRequestWorkspaceFilterList = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<ListExternalTeamsRequestWorkspaceFilterList>;
-
 export type ListExternalTeamsRequestConnectionStatusFilter =
   | "CONNECTED"
   | "DISCONNECTED"
   | "BLOCKED"
   | "IN_REVIEW";
-const ListExternalTeamsRequestConnectionStatusFilter = S.String;
-
 export interface ListExternalTeamsRequest {
   /** The maximum number of items to return per page */
   limit?: number;
@@ -282,28 +178,13 @@ export interface ListExternalTeamsRequest {
   /** Status of the connected team. */
   connection_status_filter?: ListExternalTeamsRequestConnectionStatusFilter | (string & {});
 }
-const ListExternalTeamsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ListExternalTeamsRequest>;
-
 export interface ListExternalTeamsResponseOrganizationsItemConnectedWorkspacesItem {
   workspace_id: string;
   /** Name of the workspace. */
   workspace_name: string;
 }
-const ListExternalTeamsResponseOrganizationsItemConnectedWorkspacesItem = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ListExternalTeamsResponseOrganizationsItemConnectedWorkspacesItem>;
-
 export type ListExternalTeamsResponseOrganizationsItemConnectedWorkspacesList =
   Array<ListExternalTeamsResponseOrganizationsItemConnectedWorkspacesItem>;
-const ListExternalTeamsResponseOrganizationsItemConnectedWorkspacesList = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ListExternalTeamsResponseOrganizationsItemConnectedWorkspacesList>;
-
 /** Status of the connected team. (CONNECTED / DISCONNECTED / BLOCKED / IN_REVIEW / DISCONNECTiNG) */
 export type ListExternalTeamsResponseOrganizationsItemConnectionStatus =
   | "CONNECTED"
@@ -311,33 +192,16 @@ export type ListExternalTeamsResponseOrganizationsItemConnectionStatus =
   | "BLOCKED"
   | "IN_REVIEW"
   | "DISCONNECTING";
-const ListExternalTeamsResponseOrganizationsItemConnectionStatus = S.String;
-
 export interface ListExternalTeamsResponseOrganizationsItemCanvasOwnershipDetailsItem {
   team_id: string;
   count: number;
 }
-const ListExternalTeamsResponseOrganizationsItemCanvasOwnershipDetailsItem = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ListExternalTeamsResponseOrganizationsItemCanvasOwnershipDetailsItem>;
-
 export type ListExternalTeamsResponseOrganizationsItemCanvasOwnershipDetailsList =
   Array<ListExternalTeamsResponseOrganizationsItemCanvasOwnershipDetailsItem>;
-const ListExternalTeamsResponseOrganizationsItemCanvasOwnershipDetailsList = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<ListExternalTeamsResponseOrganizationsItemCanvasOwnershipDetailsList>;
-
 export interface ListExternalTeamsResponseOrganizationsItemCanvas {
   total_count: number;
   ownership_details: ListExternalTeamsResponseOrganizationsItemCanvasOwnershipDetailsList;
 }
-const ListExternalTeamsResponseOrganizationsItemCanvas = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<ListExternalTeamsResponseOrganizationsItemCanvas>;
-
 export type ListExternalTeamsResponseOrganizationsItemListsOwnershipDetailsItem =
   ListExternalTeamsResponseOrganizationsItemCanvasOwnershipDetailsItem;
 export type ListExternalTeamsResponseOrganizationsItemListsOwnershipDetailsList =
@@ -346,9 +210,6 @@ export interface ListExternalTeamsResponseOrganizationsItemLists {
   total_count: number;
   ownership_details: ListExternalTeamsResponseOrganizationsItemListsOwnershipDetailsList;
 }
-const ListExternalTeamsResponseOrganizationsItemLists =
-  ListExternalTeamsResponseOrganizationsItemCanvas as any as S.Schema<ListExternalTeamsResponseOrganizationsItemLists>;
-
 export interface ListExternalTeamsResponseOrganizationsItem {
   team_id: string;
   /** Name of the team that is connected */
@@ -374,18 +235,8 @@ export interface ListExternalTeamsResponseOrganizationsItem {
   canvas?: ListExternalTeamsResponseOrganizationsItemCanvas;
   lists?: ListExternalTeamsResponseOrganizationsItemLists;
 }
-const ListExternalTeamsResponseOrganizationsItem = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ListExternalTeamsResponseOrganizationsItem>;
-
 export type ListExternalTeamsResponseOrganizationsList =
   Array<ListExternalTeamsResponseOrganizationsItem>;
-const ListExternalTeamsResponseOrganizationsList = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<ListExternalTeamsResponseOrganizationsList>;
-
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type ListExternalTeamsResponseResponseMetadata = AccessLogsResponseResponseMetadata;
 export interface ListExternalTeamsResponse {
@@ -396,17 +247,7 @@ export interface ListExternalTeamsResponse {
   /** Pagination metadata. An empty `next_cursor` means the last page. */
   response_metadata?: AccessLogsResponseResponseMetadata;
 }
-const ListExternalTeamsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<ListExternalTeamsResponse>;
-
 export interface ListPreferencesRequest {}
-const ListPreferencesRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<ListPreferencesRequest>;
-
 export interface ListPreferencesResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -415,25 +256,16 @@ export interface ListPreferencesResponse {
   msg_edit_window_mins: number;
   who_can_post_general: string;
 }
-const ListPreferencesResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<ListPreferencesResponse>;
-
 export interface TeamInfoRequest {
   /** Query by domain instead of team (only when team is null). This only works for domains in the same enterprise as the querying team token. This also expects the domain to belong to a team and not the enterprise itself. This is the value set up for the 'Joining This Workspace' workspace setting. If it contains more than one domain, the field will contain multiple comma-separated domain values. If no domain is set, the field is empty. */
   domain?: string;
   /** Team to get info about; if omitted, will return information about the current team. */
   team?: string;
 }
-const TeamInfoRequest = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<TeamInfoRequest>;
-
 export interface TeamInfoResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-const TeamInfoResponse = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<TeamInfoResponse>;
-
 export type AccessLogsError = SlackOpError;
 /** Gets the access logs for the current team. Required scopes -- user: `admin` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `missing_argument` -- A required argument is missing. - `missing_scope` -- The provided token hasn't obtained the necessary scopes to use this method. - `not_allowed_token_type` -- Method was called with an invalid token type - `over_pagination_limit` -- It is not possible to request more than 1000 items per page or more than 100 pages. - `paid_only` -- This is only available to paid teams. - `token_revoked` -- token revoked (generated) - `invalid_cursor` -- Value passed for `cursor` was not valid or is no longer valid. - `invalid_limit` -- The value passed for `limit` was not valid. - `invalid_team_id` -- The value passed for `team_id` is not valid given the token context. See https://docs.slack.dev/reference/methods/team.accessLogs */
 export const accessLogs: API.PaginatedOperationMethod<
@@ -444,8 +276,8 @@ export const accessLogs: API.PaginatedOperationMethod<
   AccessLogsResponseLoginsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: AccessLogsRequest,
-    output: AccessLogsResponse,
+    input: __S(1, __c0, 1) as any as S.Schema<AccessLogsRequest>,
+    output: __S(6, __c0, 6) as any as S.Schema<AccessLogsResponse>,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -468,8 +300,8 @@ export const billableInfo: API.OperationMethod<
   BillableInfoError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BillableInfoRequest,
-  output: BillableInfoResponse,
+  input: __S(7, __c0, 7) as any as S.Schema<BillableInfoRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<BillableInfoResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -483,8 +315,8 @@ export const billingInfo: API.OperationMethod<
   BillingInfoError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BillingInfoRequest,
-  output: BillingInfoResponse,
+  input: __S(10, __c1, 2) as any as S.Schema<BillingInfoRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<BillingInfoResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -498,8 +330,8 @@ export const disconnectExternalTeam: API.OperationMethod<
   DisconnectExternalTeamError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisconnectExternalTeamRequest,
-  output: DisconnectExternalTeamResponse,
+  input: __S(12, __c1, 4) as any as S.Schema<DisconnectExternalTeamRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<DisconnectExternalTeamResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -513,8 +345,8 @@ export const getProfile: API.OperationMethod<
   GetProfileError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProfileRequest,
-  output: GetProfileResponse,
+  input: __S(14, __c1, 6) as any as S.Schema<GetProfileRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<GetProfileResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -528,8 +360,8 @@ export const integrationLogs: API.OperationMethod<
   IntegrationLogsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: IntegrationLogsRequest,
-  output: IntegrationLogsResponse,
+  input: __S(18, __c2, 2) as any as S.Schema<IntegrationLogsRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<IntegrationLogsResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -545,8 +377,8 @@ export const listExternalTeams: API.PaginatedOperationMethod<
   ListExternalTeamsResponseOrganizationsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListExternalTeamsRequest,
-    output: ListExternalTeamsResponse,
+    input: __S(23, __c2, 7) as any as S.Schema<ListExternalTeamsRequest>,
+    output: __S(31, __c3, 7) as any as S.Schema<ListExternalTeamsResponse>,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -569,8 +401,8 @@ export const listPreferences: API.OperationMethod<
   ListPreferencesError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPreferencesRequest,
-  output: ListPreferencesResponse,
+  input: __S(32, __c4, 0) as any as S.Schema<ListPreferencesRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<ListPreferencesResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -584,8 +416,8 @@ export const teamInfo: API.OperationMethod<
   TeamInfoError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TeamInfoRequest,
-  output: TeamInfoResponse,
+  input: __S(34, __c4, 2) as any as S.Schema<TeamInfoRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<TeamInfoResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -599,7 +431,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          before: S.optional(AccessLogsRequestBefore.pipe(T.Query())),
+          before: S.optional(__S(0, __c0, 0).pipe(T.Query())),
           count: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.String.pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
@@ -625,7 +457,7 @@ function __c0(j: number): any {
         identifier: "AccessLogsResponseLoginsItem",
       });
     case 3:
-      return S.Array(AccessLogsResponseLoginsItem);
+      return S.Array(__S(2, __c0, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -647,9 +479,9 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          logins: AccessLogsResponseLoginsList,
-          paging: S.optional(AccessLogsResponsePaging),
-          response_metadata: S.optional(AccessLogsResponseResponseMetadata),
+          logins: __S(3, __c0, 3),
+          paging: S.optional(__S(4, __c0, 4)),
+          response_metadata: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "AccessLogsResponse" });
     case 7:
@@ -671,8 +503,8 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          response_metadata: S.optional(AccessLogsResponseResponseMetadata),
-          billable_info: BillableInfoResponseBillableInfoMap,
+          response_metadata: S.optional(__S(5, __c0, 5)),
+          billable_info: __S(8, __c1, 0),
         }),
       ).annotate({ identifier: "BillableInfoResponse" });
     case 2:
@@ -713,7 +545,7 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          visibility: S.optional(GetProfileRequestVisibility.pipe(T.Query())),
+          visibility: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/team.profile.get", code: 200 })),
       ).annotate({ identifier: "GetProfileRequest" });
     case 7:
@@ -725,8 +557,8 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          fields: S.optional(GetProfileResponseProfileFieldsList),
-          sections: S.optional(GetProfileResponseProfileSectionsList),
+          fields: S.optional(__S(15, __c1, 7)),
+          sections: S.optional(__S(15, __c1, 7)),
         }),
       ).annotate({
         identifier: "GetProfileResponseProfile",
@@ -735,14 +567,14 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          profile: GetProfileResponseProfile,
+          profile: __S(16, __c2, 0),
         }),
       ).annotate({ identifier: "GetProfileResponse" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           app_id: S.optional(S.String.pipe(T.Query())),
-          change_type: S.optional(IntegrationLogsRequestChangeType.pipe(T.Query())),
+          change_type: S.optional(S.String.pipe(T.Query())),
           count: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.String.pipe(T.Query())),
           service_id: S.optional(S.String.pipe(T.Query())),
@@ -751,17 +583,17 @@ function __c2(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/team.integrationLogs", code: 200 })),
       ).annotate({ identifier: "IntegrationLogsRequest" });
     case 3:
-      return S.Array(IntegrationLogsResponseLogsItemMap);
+      return S.Array(__S(8, __c1, 0));
     case 4:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
           paging: S.Unknown,
-          logs: IntegrationLogsResponseLogsList,
+          logs: __S(19, __c2, 3),
         }),
       ).annotate({ identifier: "IntegrationLogsResponse" });
     case 5:
-      return S.Array(ListExternalTeamsRequestSlackConnectPrefFilterItem);
+      return S.Array(S.String);
     case 6:
       return S.Array(S.String);
     case 7:
@@ -769,15 +601,11 @@ function __c2(j: number): any {
         S.Struct({
           limit: S.optional(S.Number.pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
-          sort_field: S.optional(ListExternalTeamsRequestSortField.pipe(T.Query())),
-          sort_direction: S.optional(ListExternalTeamsRequestSortDirection.pipe(T.Query())),
-          slack_connect_pref_filter: S.optional(
-            ListExternalTeamsRequestSlackConnectPrefFilterList.pipe(T.Query()),
-          ),
-          workspace_filter: S.optional(ListExternalTeamsRequestWorkspaceFilterList.pipe(T.Query())),
-          connection_status_filter: S.optional(
-            ListExternalTeamsRequestConnectionStatusFilter.pipe(T.Query()),
-          ),
+          sort_field: S.optional(S.String.pipe(T.Query())),
+          sort_direction: S.optional(S.String.pipe(T.Query())),
+          slack_connect_pref_filter: S.optional(__S(21, __c2, 5).pipe(T.Query())),
+          workspace_filter: S.optional(__S(22, __c2, 6).pipe(T.Query())),
+          connection_status_filter: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/team.externalTeams.list", code: 200 })),
       ).annotate({ identifier: "ListExternalTeamsRequest" });
   }
@@ -794,7 +622,7 @@ function __c3(j: number): any {
         identifier: "ListExternalTeamsResponseOrganizationsItemConnectedWorkspacesItem",
       });
     case 1:
-      return S.Array(ListExternalTeamsResponseOrganizationsItemConnectedWorkspacesItem);
+      return S.Array(__S(24, __c3, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -805,12 +633,12 @@ function __c3(j: number): any {
         identifier: "ListExternalTeamsResponseOrganizationsItemCanvasOwnershipDetailsItem",
       });
     case 3:
-      return S.Array(ListExternalTeamsResponseOrganizationsItemCanvasOwnershipDetailsItem);
+      return S.Array(__S(26, __c3, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          ownership_details: ListExternalTeamsResponseOrganizationsItemCanvasOwnershipDetailsList,
+          ownership_details: __S(27, __c3, 3),
         }),
       ).annotate({
         identifier: "ListExternalTeamsResponseOrganizationsItemCanvas",
@@ -825,26 +653,26 @@ function __c3(j: number): any {
           private_channel_count: S.Number,
           im_channel_count: S.Number,
           mpim_channel_count: S.Number,
-          connected_workspaces: ListExternalTeamsResponseOrganizationsItemConnectedWorkspacesList,
+          connected_workspaces: __S(25, __c3, 1),
           slack_connect_prefs: S.Unknown,
-          connection_status: ListExternalTeamsResponseOrganizationsItemConnectionStatus,
+          connection_status: S.String,
           last_active_timestamp: S.Number,
           is_sponsored: S.Boolean,
-          canvas: S.optional(ListExternalTeamsResponseOrganizationsItemCanvas),
-          lists: S.optional(ListExternalTeamsResponseOrganizationsItemLists),
+          canvas: S.optional(__S(28, __c3, 4)),
+          lists: S.optional(__S(28, __c3, 4)),
         }),
       ).annotate({
         identifier: "ListExternalTeamsResponseOrganizationsItem",
       });
     case 6:
-      return S.Array(ListExternalTeamsResponseOrganizationsItem);
+      return S.Array(__S(29, __c3, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          organizations: ListExternalTeamsResponseOrganizationsList,
+          organizations: __S(30, __c3, 6),
           total_count: S.Number,
-          response_metadata: S.optional(AccessLogsResponseResponseMetadata),
+          response_metadata: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({
         identifier: "ListExternalTeamsResponse",
@@ -881,4 +709,9 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "TeamInfoResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }
